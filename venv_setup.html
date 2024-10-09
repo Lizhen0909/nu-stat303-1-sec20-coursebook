@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Data Science with Python - 3&nbsp; Setting up your environment with VS Code</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./workflow_enhance.html" rel="next">
+<link href="./data_structures.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./venv_setup.html">Prerequisite: Python programming</a></li><li class="breadcrumb-item"><a href="./venv_setup.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introduction to Data Science with Python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Prerequisite: Python programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction to Python and Jupyter Notebooks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Prerequisite: Python programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./venv_setup.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Exploratory data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-visual-studio-code-vs-code" id="toc-introduction-to-visual-studio-code-vs-code" class="nav-link active" data-scroll-target="#introduction-to-visual-studio-code-vs-code"><span class="header-section-number">3.1</span> 1. Introduction to Visual Studio Code (VS Code)</a>
+  <ul>
+  <li><a href="#core-features" id="toc-core-features" class="nav-link" data-scroll-target="#core-features"><span class="header-section-number">3.1.0.1</span> 1.1. Core Features</a></li>
+  <li><a href="#user-interface" id="toc-user-interface" class="nav-link" data-scroll-target="#user-interface"><span class="header-section-number">3.1.0.2</span> 1.2. User Interface</a></li>
+  <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions"><span class="header-section-number">3.1.0.3</span> 1.3. Extensions</a></li>
+  <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases"><span class="header-section-number">3.1.0.4</span> 1.4. Use Cases</a></li>
+  <li><a href="#cross-platform" id="toc-cross-platform" class="nav-link" data-scroll-target="#cross-platform"><span class="header-section-number">3.1.0.5</span> 1.5. Cross-Platform</a></li>
+  </ul></li>
+  <li><a href="#installing-visual-studio-code" id="toc-installing-visual-studio-code" class="nav-link" data-scroll-target="#installing-visual-studio-code"><span class="header-section-number">3.2</span> 2. Installing Visual Studio Code</a>
+  <ul>
+  <li><a href="#step-1-download-vs-code" id="toc-step-1-download-vs-code" class="nav-link" data-scroll-target="#step-1-download-vs-code"><span class="header-section-number">3.2.0.1</span> Step 1: <strong>Download VS Code:</strong></a></li>
+  <li><a href="#step-2-install-vs-code" id="toc-step-2-install-vs-code" class="nav-link" data-scroll-target="#step-2-install-vs-code"><span class="header-section-number">3.2.0.2</span> Step 2: <strong>Install VS Code:</strong></a></li>
+  <li><a href="#step-3-launch-vs-code" id="toc-step-3-launch-vs-code" class="nav-link" data-scroll-target="#step-3-launch-vs-code"><span class="header-section-number">3.2.0.3</span> Step 3: <strong>Launch VS Code:</strong></a></li>
+  </ul></li>
+  <li><a href="#setting-up-python-development-environment-in-vs-code-using-python-venv" id="toc-setting-up-python-development-environment-in-vs-code-using-python-venv" class="nav-link" data-scroll-target="#setting-up-python-development-environment-in-vs-code-using-python-venv"><span class="header-section-number">3.3</span> 3. Setting Up Python Development Environment in VS Code using python <code>venv</code></a>
+  <ul>
+  <li><a href="#step-1-install-python" id="toc-step-1-install-python" class="nav-link" data-scroll-target="#step-1-install-python"><span class="header-section-number">3.3.0.1</span> Step 1: Install Python</a></li>
+  <li><a href="#step-2-install-visual-studio-code-extensions" id="toc-step-2-install-visual-studio-code-extensions" class="nav-link" data-scroll-target="#step-2-install-visual-studio-code-extensions"><span class="header-section-number">3.3.0.2</span> Step 2: Install Visual Studio Code Extensions</a></li>
+  <li><a href="#step-3-set-up-a-python-workspace-for-this-course" id="toc-step-3-set-up-a-python-workspace-for-this-course" class="nav-link" data-scroll-target="#step-3-set-up-a-python-workspace-for-this-course"><span class="header-section-number">3.3.0.3</span> Step 3: Set Up a Python Workspace for this course</a></li>
+  <li><a href="#step-4-create-a-notebook-for-your-work" id="toc-step-4-create-a-notebook-for-your-work" class="nav-link" data-scroll-target="#step-4-create-a-notebook-for-your-work"><span class="header-section-number">3.3.0.4</span> Step 4: Create a Notebook for your work</a></li>
+  <li><a href="#step-5-create-a-python-environment-for-your-work---gui-method" id="toc-step-5-create-a-python-environment-for-your-work---gui-method" class="nav-link" data-scroll-target="#step-5-create-a-python-environment-for-your-work---gui-method"><span class="header-section-number">3.3.0.5</span> Step 5: Create a Python environment for your work - GUI method</a></li>
+  <li><a href="#step-5-create-a-python-environment-for-your-work---command-line-method" id="toc-step-5-create-a-python-environment-for-your-work---command-line-method" class="nav-link" data-scroll-target="#step-5-create-a-python-environment-for-your-work---command-line-method"><span class="header-section-number">3.3.0.6</span> Step 5: Create a Python environment for your work - Command Line Method</a></li>
+  <li><a href="#step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook" id="toc-step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook" class="nav-link" data-scroll-target="#step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook"><span class="header-section-number">3.3.0.7</span> Step 6: Choose the <code>.venv</code> environment as the kernel to run the notebook</a></li>
+  <li><a href="#step-7-installing-ipykernel-for-your-notebook" id="toc-step-7-installing-ipykernel-for-your-notebook" class="nav-link" data-scroll-target="#step-7-installing-ipykernel-for-your-notebook"><span class="header-section-number">3.3.0.8</span> Step 7: Installing <code>ipykernel</code> for your notebook</a></li>
+  <li><a href="#step-8-install-data-science-packages-within-the-created-environment" id="toc-step-8-install-data-science-packages-within-the-created-environment" class="nav-link" data-scroll-target="#step-8-install-data-science-packages-within-the-created-environment"><span class="header-section-number">3.3.0.9</span> Step 8: Install Data Science packages within the created Environment</a></li>
+  <li><a href="#step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator" id="toc-step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator" class="nav-link" data-scroll-target="#step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator"><span class="header-section-number">3.3.0.10</span> Step 9: Create a <code>requirement.txt</code> to back up your environment or share with your collaborator</a></li>
+  </ul></li>
+  <li><a href="#jupyter-notebooks-in-vs-code" id="toc-jupyter-notebooks-in-vs-code" class="nav-link" data-scroll-target="#jupyter-notebooks-in-vs-code"><span class="header-section-number">3.4</span> 4. Jupyter Notebooks in VS Code</a></li>
+  <li><a href="#exercise-setting-up-your-python-data-science-environment-using-pip-and-conda" id="toc-exercise-setting-up-your-python-data-science-environment-using-pip-and-conda" class="nav-link" data-scroll-target="#exercise-setting-up-your-python-data-science-environment-using-pip-and-conda"><span class="header-section-number">3.5</span> 5. Exercise: Setting Up Your Python Data Science Environment using <code>pip</code> and <code>conda</code></a>
+  <ul>
+  <li><a href="#using-pip" id="toc-using-pip" class="nav-link" data-scroll-target="#using-pip"><span class="header-section-number">3.5.1</span> Using <code>pip</code></a>
+  <ul class="collapse">
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="header-section-number">3.5.1.1</span> Instructions</a></li>
+  </ul></li>
+  <li><a href="#using-conda" id="toc-using-conda" class="nav-link" data-scroll-target="#using-conda"><span class="header-section-number">3.5.2</span> Using <code>conda</code></a>
+  <ul class="collapse">
+  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1"><span class="header-section-number">3.5.2.1</span> Instructions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#expected-outcome" id="toc-expected-outcome" class="nav-link" data-scroll-target="#expected-outcome"><span class="header-section-number">3.6</span> 6. Expected Outcome</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">3.7</span> 7. Reference</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-visual-studio-code-vs-code" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction-to-visual-studio-code-vs-code"><span class="header-section-number">3.1</span> 1. Introduction to Visual Studio Code (VS Code)</h2>
+<p><strong>Visual Studio Code (VS Code)</strong> is a free, open-source, and lightweight code editor developed by Microsoft. It’s widely used for coding, debugging, and working with <strong>various programming languages</strong> and frameworks. Here’s an overview of its key features and functionalities:</p>
+<section id="core-features" class="level4" data-number="3.1.0.1">
+<h4 data-number="3.1.0.1" class="anchored" data-anchor-id="core-features"><span class="header-section-number">3.1.0.1</span> 1.1. Core Features</h4>
+<ul>
+<li><strong>Multi-language Support:</strong> VS Code supports a wide range of programming languages out of the box, including Python, JavaScript, TypeScript, HTML, CSS, and more. Additional language support can be added via extensions.</li>
+<li><strong>Extensibility:</strong> The editor has a rich ecosystem of extensions available through the Visual Studio Code Marketplace. These extensions add support for additional programming languages, themes, debuggers, and tools like Git integration.</li>
+<li><strong>IntelliSense:</strong> Provides intelligent code completion, parameter info, quick info, and code navigation for many languages, enhancing productivity and reducing errors.</li>
+<li><strong>Integrated Terminal:</strong> Allows you to run command-line tools directly from the editor, making it easy to execute scripts, install packages, and more without leaving the coding environment.</li>
+<li><strong>Version Control Integration:</strong> Seamless integration with Git and other version control systems, allowing you to manage source code repositories, stage changes, commit, and view diffs within the editor.</li>
+<li><strong>Debugging:</strong> Supports debugging with breakpoints, call stacks, and an interactive console for various languages and frameworks.</li>
+</ul>
+</section>
+<section id="user-interface" class="level4" data-number="3.1.0.2">
+<h4 data-number="3.1.0.2" class="anchored" data-anchor-id="user-interface"><span class="header-section-number">3.1.0.2</span> 1.2. User Interface</h4>
+<ul>
+<li><strong>Explorer:</strong> A file explorer on the left side that lets you navigate your project files and folders.</li>
+<li><strong>Editor:</strong> The central area where you write and edit your code. You can open multiple files in separate tabs or split the editor to view multiple files side-by-side.</li>
+<li><strong>Sidebar:</strong> Displays additional views like Search, Source Control, Extensions, and more.</li>
+<li><strong>Status Bar:</strong> Shows information about the current file, like the programming language mode, current branch (for version control), and any active extensions or warnings.</li>
+<li><strong>Command Palette:</strong> Accessed with <code>Ctrl+Shift+P</code> (or <code>Cmd+Shift+P</code> on macOS), it provides a quick way to execute commands, switch themes, change settings, and more.</li>
+</ul>
+</section>
+<section id="extensions" class="level4" data-number="3.1.0.3">
+<h4 data-number="3.1.0.3" class="anchored" data-anchor-id="extensions"><span class="header-section-number">3.1.0.3</span> 1.3. Extensions</h4>
+<ul>
+<li><strong>Language Extensions:</strong> Add support for additional languages such as Rust, Go, C++, and more.</li>
+<li><strong>Linters and Formatters:</strong> Extensions like ESLint, Prettier, and Pylint help with code quality and formatting.</li>
+<li><strong>Development Tools:</strong> Extensions for Docker, Kubernetes, database management, and more.</li>
+<li><strong>Productivity Tools:</strong> Extensions for snippets, file explorers, and workflow enhancements.</li>
+</ul>
+</section>
+<section id="use-cases" class="level4" data-number="3.1.0.4">
+<h4 data-number="3.1.0.4" class="anchored" data-anchor-id="use-cases"><span class="header-section-number">3.1.0.4</span> 1.4. Use Cases</h4>
+<ul>
+<li><strong>Web Development:</strong> VS Code is popular among web developers for its robust support for HTML, CSS, JavaScript, and front-end frameworks like React, Angular, and Vue.</li>
+<li><strong>Python Development:</strong> With the Python extension, it provides features like IntelliSense, debugging, linting, and Jupyter Notebook support.</li>
+<li><strong>Data Science:</strong> Supports Jupyter notebooks, allowing data scientists to write and run Python code interactively.</li>
+<li><strong>DevOps and Scripting:</strong> Useful for writing and debugging scripts in languages like PowerShell, Bash, and YAML for CI/CD pipelines.</li>
+</ul>
+</section>
+<section id="cross-platform" class="level4" data-number="3.1.0.5">
+<h4 data-number="3.1.0.5" class="anchored" data-anchor-id="cross-platform"><span class="header-section-number">3.1.0.5</span> 1.5. Cross-Platform</h4>
+<ul>
+<li>Available on Windows, macOS, and Linux, making it accessible to developers across different operating systems.</li>
+</ul>
+<p>Overall, VS Code is a versatile and powerful tool for a wide range of development activities, from simple scripting to complex software projects.</p>
+</section>
+</section>
+<section id="installing-visual-studio-code" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="installing-visual-studio-code"><span class="header-section-number">3.2</span> 2. Installing Visual Studio Code</h2>
+<section id="step-1-download-vs-code" class="level4" data-number="3.2.0.1">
+<h4 data-number="3.2.0.1" class="anchored" data-anchor-id="step-1-download-vs-code"><span class="header-section-number">3.2.0.1</span> Step 1: <strong>Download VS Code:</strong></h4>
+<ul>
+<li>Go to the <a href="https://code.visualstudio.com/">official VS Code website</a> and download the installer for your operating system.</li>
+</ul>
+</section>
+<section id="step-2-install-vs-code" class="level4" data-number="3.2.0.2">
+<h4 data-number="3.2.0.2" class="anchored" data-anchor-id="step-2-install-vs-code"><span class="header-section-number">3.2.0.2</span> Step 2: <strong>Install VS Code:</strong></h4>
+<ul>
+<li>Run the installer and follow the prompts to complete the installation.</li>
+</ul>
+</section>
+<section id="step-3-launch-vs-code" class="level4" data-number="3.2.0.3">
+<h4 data-number="3.2.0.3" class="anchored" data-anchor-id="step-3-launch-vs-code"><span class="header-section-number">3.2.0.3</span> Step 3: <strong>Launch VS Code:</strong></h4>
+<ul>
+<li>Open VS Code after installation to ensure it’s working correctly.</li>
+</ul>
+</section>
+</section>
+<section id="setting-up-python-development-environment-in-vs-code-using-python-venv" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="setting-up-python-development-environment-in-vs-code-using-python-venv"><span class="header-section-number">3.3</span> 3. Setting Up Python Development Environment in VS Code using python <code>venv</code></h2>
+<p>Unlike <code>Spyder</code> and <code>PyCharm</code>, which are specifically designed for Python development, VS Code is a versatile code editor with multi-language support. As a result, setting up the Python environment requires some additional configuration.</p>
+<p>This guide will walk you through setting up your Python environment in Visual Studio Code from scratch using <code>venv</code>. After the lecture, you will be tasked with creating and managing virtual environments using <code>conda</code>.</p>
+<section id="step-1-install-python" class="level4" data-number="3.3.0.1">
+<h4 data-number="3.3.0.1" class="anchored" data-anchor-id="step-1-install-python"><span class="header-section-number">3.3.0.1</span> Step 1: Install Python</h4>
+<ol type="1">
+<li><strong>Download Python:</strong>
+<ul>
+<li>Go to the <a href="https://www.python.org/downloads/">official Python website</a> and download the latest version of Python for your operating system.</li>
+<li>Ensure that you check the box <strong>“Add Python to PATH”</strong> during installation.</li>
+</ul></li>
+<li><strong>Verify Python Installation:</strong>
+<ul>
+<li><p>Open a terminal (Command Prompt on Windows, Terminal on macOS/Linux) and type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>You should see the installed Python version.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="step-2-install-visual-studio-code-extensions" class="level4" data-number="3.3.0.2">
+<h4 data-number="3.3.0.2" class="anchored" data-anchor-id="step-2-install-visual-studio-code-extensions"><span class="header-section-number">3.3.0.2</span> Step 2: Install Visual Studio Code Extensions</h4>
+<ol type="1">
+<li><strong>Open VS Code.</strong></li>
+<li><strong>Go to Extensions:</strong>
+<ul>
+<li>Click on the Extensions icon on the sidebar or press <code>Ctrl+Shift+X</code>.</li>
+</ul></li>
+<li><strong>Install Python Extension:</strong>
+<ul>
+<li>Search for the “Python” extension by Microsoft and install it.</li>
+</ul></li>
+<li><strong>Install Jupyter Extension:</strong>
+<ul>
+<li>Search for the “Jupyter” extension by Microsoft and install it.</li>
+</ul></li>
+</ol>
+</section>
+<section id="step-3-set-up-a-python-workspace-for-this-course" class="level4" data-number="3.3.0.3">
+<h4 data-number="3.3.0.3" class="anchored" data-anchor-id="step-3-set-up-a-python-workspace-for-this-course"><span class="header-section-number">3.3.0.3</span> Step 3: Set Up a Python Workspace for this course</h4>
+<ol type="1">
+<li><strong>Create a New Folder:</strong>
+<ul>
+<li>Create a new folder on your computer where you want to store your Python code for this course.</li>
+</ul></li>
+<li><strong>Open Folder in VS Code:</strong>
+<ul>
+<li>Go to <code>File &gt; Open Folder</code> and select the newly created folder.</li>
+</ul></li>
+</ol>
+</section>
+<section id="step-4-create-a-notebook-for-your-work" class="level4" data-number="3.3.0.4">
+<h4 data-number="3.3.0.4" class="anchored" data-anchor-id="step-4-create-a-notebook-for-your-work"><span class="header-section-number">3.3.0.4</span> Step 4: Create a Notebook for your work</h4>
+<ul>
+<li>In VS Code, go to <code>File &gt; New File</code> and select <code>Jupyter Notebook</code>.</li>
+</ul>
+</section>
+<section id="step-5-create-a-python-environment-for-your-work---gui-method" class="level4" data-number="3.3.0.5">
+<h4 data-number="3.3.0.5" class="anchored" data-anchor-id="step-5-create-a-python-environment-for-your-work---gui-method"><span class="header-section-number">3.3.0.5</span> Step 5: Create a Python environment for your work - GUI method</h4>
+<ul>
+<li><p>When you start a Jupyter Notebook in VS Code, you need to choose a kernel. Kernel is the “engine” that runs your code within your Jupyter notebook, and it is tied to a specific Python interpreter or environment.</p>
+<ul>
+<li><strong>What’s the difference between an interpreter and an environment?</strong> An interpreter is a program that runs your Python code. An environment, on the other hand, is a standalone “space” where your code runs. It’s like a container that holds its own interpreter and environment-specific libraries/dependencies, so each project can have its own environment setup without affecting others.</li>
+<li><strong>Why do we prefer creating an environment for this course rather than using the global interpreter that comes with your Python installation?</strong> As a data scientist, you may work on multiple projects and attend different courses that require different sets of packages, dependencies, or even Python versions. By creating a separate environment, you can prevent conflicts between libraries, dependencies, and Python versions across your projects (<a href="https://en.wikipedia.org/wiki/Dependency_hell">dependency hell</a>) and also ensure code reproducibility. It is always good practice to work within python environments, especially when you have different projects going on.</li>
+<li>Let’s create a Python environment for the upcoming coursework.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/env_add.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Alt Text</figcaption>
+</figure>
+</div></li>
+<li><p>Create using <code>venv</code> in the current workspace</p>
+<p><img src="images/env_create_option.png" class="img-fluid" alt="Alt Text">:</p>
+<p><strong>Key Differences between <code>venv</code> and <code>conda</code></strong></p>
+<ol type="1">
+<li><strong>Ecosystem</strong>:</li>
+</ol>
+<ul>
+<li><code>venv</code> is specifically for Python and is part of the standard library.</li>
+<li><code>conda</code> is part of the broader Anaconda ecosystem, which supports multiple languages and is focused on data science.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Package Management</strong>:</li>
+</ol>
+<ul>
+<li><code>venv</code> relies on <code>pip</code> for package management.</li>
+<li><code>conda</code> has its own package management system, which can sometimes resolve dependencies better, especially for data science libraries that require non-Python dependencies.</li>
+</ul>
+<p>. <strong>Environment Creation</strong>:</p>
+<ul>
+<li><code>venv</code> creates lightweight virtual environments tied to a specific version of Python.</li>
+<li><code>conda</code> allows you to specify not just Python but also other packages during environment creation, which can save time and ensure compatibility.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Cross-Platform</strong>:</li>
+</ol>
+<ul>
+<li>Both tools are cross-platform, but <code>conda</code> is often favored in data science for its ability to manage complex dependencies.</li>
+</ul>
+<p><strong>How to choose</strong></p>
+<ul>
+<li>Use <code>venv</code> for lightweight, Python-only projects where you want a simple way to manage dependencies. We are going with <code>venv</code> for our course.</li>
+<li>Use <code>conda</code> for data science projects, or when you need to manage packages across multiple languages and require better dependency management.</li>
+</ul></li>
+<li><p>Choose python interpreter for your environment:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/interpreter.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Alt Text</figcaption>
+</figure>
+</div></li>
+</ul>
+<p>Congratulations! A virtual environment named <code>.venv</code> has been successfully created in your project folder.</p>
+</section>
+<section id="step-5-create-a-python-environment-for-your-work---command-line-method" class="level4" data-number="3.3.0.6">
+<h4 data-number="3.3.0.6" class="anchored" data-anchor-id="step-5-create-a-python-environment-for-your-work---command-line-method"><span class="header-section-number">3.3.0.6</span> Step 5: Create a Python environment for your work - Command Line Method</h4>
+<p>Instead of using the VSCode GUI, we can also create a <code>venv</code> environment with command line commands.</p>
+<ol type="1">
+<li><strong>Create a Virtual Environment:</strong>
+<ul>
+<li><p>Open the terminal in VS Code and run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>This creates a virtual environment named <code>venv</code> in your project folder.</p></li>
+</ul></li>
+<li><strong>Activate the Virtual Environment:</strong>
+<ul>
+<li><p>Windows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">venv\Scripts\activate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>macOS/Linux:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ol>
+</section>
+<section id="step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook" class="level4" data-number="3.3.0.7">
+<h4 data-number="3.3.0.7" class="anchored" data-anchor-id="step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook"><span class="header-section-number">3.3.0.7</span> Step 6: Choose the <code>.venv</code> environment as the kernel to run the notebook</h4>
+<p>For all your upcoming work in this project, you can select this environment to ensure a consistent setup.</p>
+</section>
+<section id="step-7-installing-ipykernel-for-your-notebook" class="level4" data-number="3.3.0.8">
+<h4 data-number="3.3.0.8" class="anchored" data-anchor-id="step-7-installing-ipykernel-for-your-notebook"><span class="header-section-number">3.3.0.8</span> Step 7: Installing <code>ipykernel</code> for your notebook</h4>
+<p>Create a code cell in the notebook and run it. The first time you run a code cell, you will run into</p>
+<p><img src="images/ipykernel.png" class="img-fluid" alt="Alt Text"> - After installing <code>ipykernel</code>, you should be able to run the following cell.</p>
+<div class="cell" data-execution_count="1">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Current Python executable:"</span>, sys.executable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Current Python executable: c:\Users\lsi8012\OneDrive - Northwestern University\FA24\303-1\test_env\.venv\Scripts\python.exe</code></pre>
+</div>
+</div>
+<p><code>sys.executable</code> is an attribute in the Python <code>sys</code> module that returns the path to the Python interpreter that is currently executing your code.</p>
+<p>However, none of the data science packages are installed in the environment by default. To perform your data science tasks, you’ll need to import some commonly used Python libraries for Data Science, including <code>NumPy</code>, <code>Pandas</code>, and <code>Matplotlib</code>. While Anaconda typically has these libraries installed automatically, in VS Code, you’ll need to install them for your specific environment. If you don’t, you may encounter errors when trying to use these libraries.</p>
+<div class="cell" data-execution_count="2">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'nummpy'</code></pre>
+</div>
+</div>
+</section>
+<section id="step-8-install-data-science-packages-within-the-created-environment" class="level4" data-number="3.3.0.9">
+<h4 data-number="3.3.0.9" class="anchored" data-anchor-id="step-8-install-data-science-packages-within-the-created-environment"><span class="header-section-number">3.3.0.9</span> Step 8: Install Data Science packages within the created Environment</h4>
+<p>Packages are collections of pre-written code that provide specific functionality such as scientific computing, linear algegra, visualization, or machine learning models without having to write everything from scratch. You will come across lots of packages in this sequence course, so make sure that you know how to install required packages when you see a <code>ModuleNotFoundError</code>.</p>
+<p>You have two primary ways to install DS packages 1. Installing from the Terminal 2. Installing from the Notebook</p>
+<section id="installing-from-the-terminal" class="level5" data-number="3.3.0.9.1">
+<h5 data-number="3.3.0.9.1" class="anchored" data-anchor-id="installing-from-the-terminal"><span class="header-section-number">3.3.0.9.1</span> 8.1. Installing from the terminal</h5>
+<ol type="1">
+<li><strong>Open a New Terminal:</strong> Check the terminal prompt to see if the active environment is consistent with the kernel you’ve chosen for your notebook.
+<ul>
+<li>If you see <code>(.venv)</code> at the beginning of the prompt, it means the virtual environment <code>.venv</code> is active and matches the notebook kernel.</li>
+<li>If you see something else, for example, <code>(base)</code> at the beginning of the prompt, it indicates that the base conda environment (installed by Anaconda) is currently active</li>
+<li>You can also use the <code>which</code> or <code>where</code> (<code>where.exe</code> in windows) command: On macOS/Linux, use: <code>which python</code> ; On windows, use: <code>where.exe python</code></li>
+</ul></li>
+</ol>
+<blockquote class="blockquote">
+<p>Note that when you have both Anaconda and VS Code installed on your system, sometimes the environments can conflict with each other. If the terminal environment is inconsistent with the notebook kernel, packages may be installed in a different environment than intended. This can lead to issues where the notebook cannot access the installed packages.</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Using <code>pip</code> (if you create a <code>venv</code> environment)</li>
+</ol>
+<p><code>pip install numpy pandas matplotlib</code></p>
+</section>
+<section id="installing-from-the-notebook" class="level5" data-number="3.3.0.9.2">
+<h5 data-number="3.3.0.9.2" class="anchored" data-anchor-id="installing-from-the-notebook"><span class="header-section-number">3.3.0.9.2</span> 8.2. Installing from the Notebook</h5>
+<p>You can also install packages directly from a Jupyter Notebook cell using a magic command. This is often convenient because it allows you to install packages without leaving the notebook interface.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pip install numpy pandas matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Let’s rerun this code cell and see whether the error is addressed</p>
+<div class="cell" data-execution_count="3">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>Key takeaway</strong></p>
+<p>Both methods are valid, and the choice depends on your preference and workflow. Installing from the terminal is common for batch installations or when setting up a new environment, while installing from the notebook can be handy for quick additions during your data analysis work.</p>
+</section>
+</section>
+<section id="step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator" class="level4" data-number="3.3.0.10">
+<h4 data-number="3.3.0.10" class="anchored" data-anchor-id="step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator"><span class="header-section-number">3.3.0.10</span> Step 9: Create a <code>requirement.txt</code> to back up your environment or share with your collaborator</h4>
+<p><code>pip freeze</code> outputs the packages and their versions installed in the current environment in a format that can be used as <code>requirements.txt</code>, which allows you to easily recreate the environment or share it with others for consistent setups.</p>
+<div class="cell" data-execution_count="4">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pip freeze</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>asttokens==2.4.1
+colorama==0.4.6
+comm==0.2.2
+contourpy==1.3.0
+cycler==0.12.1
+debugpy==1.8.6
+decorator==5.1.1
+executing==2.1.0
+fonttools==4.54.1
+ipykernel==6.29.5
+ipython==8.27.0
+jedi==0.19.1
+jupyter_client==8.6.3
+jupyter_core==5.7.2
+kiwisolver==1.4.7
+matplotlib==3.9.2
+matplotlib-inline==0.1.7
+nest-asyncio==1.6.0
+numpy==2.1.1
+packaging==24.1
+pandas==2.2.3
+parso==0.8.4
+pillow==10.4.0
+platformdirs==4.3.6
+prompt_toolkit==3.0.48
+psutil==6.0.0
+pure_eval==0.2.3
+Pygments==2.18.0
+pyparsing==3.1.4
+python-dateutil==2.9.0.post0
+pytz==2024.2
+pywin32==306
+pyzmq==26.2.0
+six==1.16.0
+stack-data==0.6.3
+tornado==6.4.1
+traitlets==5.14.3
+tzdata==2024.2
+wcwidth==0.2.13
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<p>Using the redirection operator <code>&gt;</code>, you can save the output of <code>pip freeze</code> to a <code>requirement.txt</code>. This file can be used to install the same versions of packages in a different environment.</p>
+<div class="cell" data-execution_count="5">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pip freeze <span class="op">&gt;</span> requirement.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<p>Let’s check whether the <code>requirement.txt</code> is in the current working directory</p>
+<div class="cell" data-execution_count="6">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> Volume in drive C is Windows
+ Volume Serial Number is A80C-7DEC
+
+ Directory of c:\Users\lsi8012\OneDrive - Northwestern University\FA24\303-1\test_env
+
+09/27/2024  02:25 PM    &lt;DIR&gt;          .
+09/27/2024  02:25 PM    &lt;DIR&gt;          ..
+09/27/2024  07:44 AM    &lt;DIR&gt;          .venv
+09/27/2024  01:42 PM    &lt;DIR&gt;          images
+09/27/2024  02:25 PM               695 requirement.txt
+09/27/2024  02:25 PM            21,352 venv_setup.ipynb
+               2 File(s)         22,047 bytes
+               4 Dir(s)  166,334,562,304 bytes free</code></pre>
+</div>
+</div>
+<p>You can copy the <code>requirements.txt</code> file and share it with your collaborator to help them set up the same environment for your project. They can quickly install the necessary dependencies from the file using the following command:</p>
+<div class="cell" data-execution_count="7">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">-</span>r requirement.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: asttokens==2.4.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 1)) (2.4.1)
+Requirement already satisfied: colorama==0.4.6 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 2)) (0.4.6)
+Requirement already satisfied: comm==0.2.2 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 3)) (0.2.2)
+Requirement already satisfied: contourpy==1.3.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 4)) (1.3.0)
+Requirement already satisfied: cycler==0.12.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 5)) (0.12.1)
+Requirement already satisfied: debugpy==1.8.6 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 6)) (1.8.6)
+Requirement already satisfied: decorator==5.1.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 7)) (5.1.1)
+Requirement already satisfied: executing==2.1.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 8)) (2.1.0)
+Requirement already satisfied: fonttools==4.54.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 9)) (4.54.1)
+Requirement already satisfied: ipykernel==6.29.5 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 10)) (6.29.5)
+Requirement already satisfied: ipython==8.27.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 11)) (8.27.0)
+Requirement already satisfied: jedi==0.19.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 12)) (0.19.1)
+Requirement already satisfied: jupyter_client==8.6.3 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 13)) (8.6.3)
+Requirement already satisfied: jupyter_core==5.7.2 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 14)) (5.7.2)
+Requirement already satisfied: kiwisolver==1.4.7 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 15)) (1.4.7)
+Requirement already satisfied: matplotlib==3.9.2 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 16)) (3.9.2)
+Requirement already satisfied: matplotlib-inline==0.1.7 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 17)) (0.1.7)
+Requirement already satisfied: nest-asyncio==1.6.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 18)) (1.6.0)
+Requirement already satisfied: numpy==2.1.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 19)) (2.1.1)
+Requirement already satisfied: packaging==24.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 20)) (24.1)
+Requirement already satisfied: pandas==2.2.3 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 21)) (2.2.3)
+Requirement already satisfied: parso==0.8.4 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 22)) (0.8.4)
+Requirement already satisfied: pillow==10.4.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 23)) (10.4.0)
+Requirement already satisfied: platformdirs==4.3.6 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 24)) (4.3.6)
+Requirement already satisfied: prompt_toolkit==3.0.48 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 25)) (3.0.48)
+Requirement already satisfied: psutil==6.0.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 26)) (6.0.0)
+Requirement already satisfied: pure_eval==0.2.3 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 27)) (0.2.3)
+Requirement already satisfied: Pygments==2.18.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 28)) (2.18.0)
+Requirement already satisfied: pyparsing==3.1.4 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 29)) (3.1.4)
+Requirement already satisfied: python-dateutil==2.9.0.post0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 30)) (2.9.0.post0)
+Requirement already satisfied: pytz==2024.2 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 31)) (2024.2)
+Requirement already satisfied: pywin32==306 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 32)) (306)
+Requirement already satisfied: pyzmq==26.2.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 33)) (26.2.0)
+Requirement already satisfied: six==1.16.0 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 34)) (1.16.0)
+Requirement already satisfied: stack-data==0.6.3 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 35)) (0.6.3)
+Requirement already satisfied: tornado==6.4.1 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 36)) (6.4.1)
+Requirement already satisfied: traitlets==5.14.3 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 37)) (5.14.3)
+Requirement already satisfied: tzdata==2024.2 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 38)) (2024.2)
+Requirement already satisfied: wcwidth==0.2.13 in c:\users\lsi8012\onedrive - northwestern university\fa24\303-1\test_env\.venv\lib\site-packages (from -r requirement.txt (line 39)) (0.2.13)
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<p>This will ensure that both of you are working with the same setup.</p>
+</section>
+</section>
+<section id="jupyter-notebooks-in-vs-code" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="jupyter-notebooks-in-vs-code"><span class="header-section-number">3.4</span> 4. Jupyter Notebooks in VS Code</h2>
+<p>After setting up your environment, follow this <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">instruction</a> to become familiar with the native support for Jupyter Notebooks in VS Code</p>
+</section>
+<section id="exercise-setting-up-your-python-data-science-environment-using-pip-and-conda" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exercise-setting-up-your-python-data-science-environment-using-pip-and-conda"><span class="header-section-number">3.5</span> 5. Exercise: Setting Up Your Python Data Science Environment using <code>pip</code> and <code>conda</code></h2>
+<p><strong>Objective</strong>: Practice creating and managing Python packages and environments using <code>pip</code> and <code>conda</code>, and verifying your setup.</p>
+<p>Note: Feel free to use ChatGPT to find the commands you need.</p>
+<section id="using-pip" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="using-pip"><span class="header-section-number">3.5.1</span> Using <code>pip</code></h3>
+<section id="instructions" class="level4" data-number="3.5.1.1">
+<h4 data-number="3.5.1.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">3.5.1.1</span> Instructions</h4>
+<ol type="1">
+<li><p><strong>Create a New Workplace</strong></p>
+<ul>
+<li>Create a folder named <code>test_pip_env</code>.</li>
+<li>Open the folder in VS code</li>
+<li>Within the workplace, create a new notebook</li>
+</ul></li>
+<li><p><strong>Create a pip environment named <code>stat303_pip_env</code> in the current workplace</strong></p>
+<ul>
+<li>Create the env using pip command line</li>
+<li>Activate the environment.</li>
+</ul></li>
+<li><p><strong>Install Required Packages for the env</strong></p>
+<ul>
+<li>Inside the <code>stat303_pip_env</code>, install the following packages using <code>pip</code>:
+<ul>
+<li><code>numpy</code></li>
+<li><code>pandas</code></li>
+<li><code>matplotlib</code></li>
+</ul></li>
+<li>Install the following packages using <code>conda</code>
+<ul>
+<li><code>statsmodels</code></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export the Environment Configuration</strong></p>
+<ul>
+<li>Export the configuration of your <code>stat303_pip_env</code> environment to a file named <code>stat303_env.txt</code>.</li>
+</ul></li>
+<li><p><strong>Deactivate and Remove the Environment</strong></p>
+<ul>
+<li>Deactivate the <code>stat303_pip_env</code> environment.</li>
+<li>Remove the <code>stat303_pip_env</code> environment to ensure you understand how to clean up.</li>
+</ul></li>
+<li><p><strong>Recreate the Environment Using the YML File</strong></p>
+<ul>
+<li>Create a new environment using the <code>stat303_env.txt</code> file.</li>
+<li>Activate the <code>stat303_pip_env</code> environment.</li>
+<li>Verify that the packages <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code> are installed.</li>
+</ul></li>
+<li><p><strong>Run a Jupyter Notebook</strong></p>
+<ul>
+<li>Launch Jupyter Notebook within the created environment.</li>
+<li>Create a new notebook and write a simple Python script to:
+<ul>
+<li>Import <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</li>
+<li>Print the versions of these packages.</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="using-conda" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="using-conda"><span class="header-section-number">3.5.2</span> Using <code>conda</code></h3>
+<section id="instructions-1" class="level4" data-number="3.5.2.1">
+<h4 data-number="3.5.2.1" class="anchored" data-anchor-id="instructions-1"><span class="header-section-number">3.5.2.1</span> Instructions</h4>
+<ol type="1">
+<li><p><strong>Create a New Workplace</strong></p>
+<ul>
+<li>Create a folder named <code>test_conda_env</code>.</li>
+<li>Open the folder in VS code</li>
+<li>Within the workplace, create a new notebook</li>
+</ul></li>
+<li><p><strong>Create a conda environment named <code>stat303_conda_env</code></strong></p>
+<ul>
+<li>Create the env using conda command line</li>
+<li>Activate the environment.</li>
+</ul></li>
+<li><p><strong>Install Required Packages for the env</strong></p>
+<ul>
+<li>Inside the <code>stat303_conda_env</code>, install the following packages using <code>conda</code>:
+<ul>
+<li><code>numpy</code></li>
+<li><code>pandas</code></li>
+<li><code>matplotlib</code></li>
+</ul></li>
+<li>Install the following packages using <code>pip</code>
+<ul>
+<li><code>scikit-learn</code></li>
+<li><code>statsmodels</code></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export the Environment Configuration</strong></p>
+<ul>
+<li>Export the configuration of your <code>stat303_conda_env</code> environment to a file named <code>stat303_env.yml</code>.</li>
+</ul></li>
+<li><p><strong>Deactivate and Remove the Environment</strong></p>
+<ul>
+<li>Deactivate the <code>stat303_conda_env</code> environment.</li>
+<li>Remove the <code>stat303_conda_env</code> environment to ensure you understand how to clean up.</li>
+</ul></li>
+<li><p><strong>Recreate the Environment Using the YML File</strong></p>
+<ul>
+<li>Create a new environment using the <code>stat303_env.yml</code> file.</li>
+<li>Activate the <code>stat303_conda_env</code> environment.</li>
+<li>Verify that the packages <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, <code>scikit-learn</code>, and <code>statsmodels</code> are installed.</li>
+</ul></li>
+<li><p><strong>Run a Jupyter Notebook</strong></p>
+<ul>
+<li>Launch Jupyter Notebook within the created environment.</li>
+<li>Create a new notebook and write a simple Python script to:
+<ul>
+<li>Import <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</li>
+<li>Print the versions of these packages.</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="expected-outcome" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="expected-outcome"><span class="header-section-number">3.6</span> 6. Expected Outcome</h2>
+<p>By completing this lecture, you will be able to:</p>
+<ul>
+<li>Create and manage Python virtual environments using both <code>pip</code> and <code>conda</code>.</li>
+<li>Install and verify packages within these environments.</li>
+<li>Export and recreate environments using env files.</li>
+<li>Use Jupyter Notebook for data science tasks.</li>
+</ul>
+</section>
+<section id="reference" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="reference"><span class="header-section-number">3.7</span> 7. Reference</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Notebooks in VS Code</a></li>
+<li><a href="https://packaging.python.org/en/latest/tutorials/installing-packages/">Install Python Packages</a></li>
+<li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing environments with <code>conda</code></a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_structures.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data structures</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./workflow_enhance.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

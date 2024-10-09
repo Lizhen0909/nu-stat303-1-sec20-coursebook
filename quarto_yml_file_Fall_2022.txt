@@ -1,0 +1,52 @@
+project:
+  type: book
+
+book:  
+  title: "Introduction to Data Science with Python"
+  author: "Arvind Krishna, Lizhen Shi, Emre Besler, and Arend Kuyper"
+  date: "9/20/2022"
+  
+  sidebar:
+    search: true
+    logo: "NU_Stat_logo.png"
+    logo-href: "https://statistics.northwestern.edu/"
+
+  chapters:
+    - index.qmd
+    - part: 'Quick overview: Python programming'
+      chapters:
+        - Introduction to Python and Jupyter Notebooks.ipynb
+        - data_structures.ipynb
+    - part: 'Exploratory data analysis'
+      chapters:
+        - Reading data.ipynb
+        - NumPy.ipynb
+        - Pandas.ipynb
+        - Data visualization.ipynb
+        - Data cleaning and preparation.ipynb
+        - Data wrangling.ipynb
+        - Data aggregation.ipynb
+        - student_solutions.ipynb
+    - part: 'Assignments' 
+      chapters:
+        - Assignment 1 (Reading data).ipynb
+        - Assignment 2 (NumPy).ipynb
+        - Assignment 3 (Pandas).ipynb
+        - Assignment 4 (Data Visualization).ipynb
+        - Assignment 5 (Data cleaning and preparation).ipynb
+        - Assignment 6 (Data wrangling).ipynb
+        - Assignment 7 (Data aggregation).ipynb
+  appendices: 
+    - Datasets.ipynb
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
