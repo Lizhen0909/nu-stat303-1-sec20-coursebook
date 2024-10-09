@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./venv_setup.html">Prerequisite: Python programming</a></li><li class="breadcrumb-item"><a href="./workflow_enhance.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./venv_setup.html">Getting started: Coding environment</a></li><li class="breadcrumb-item"><a href="./workflow_enhance.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Prerequisite: Python programming</span></a>
+ <span class="menu-text">Getting started: Coding environment</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -238,41 +238,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#magic-commands" id="toc-magic-commands" class="nav-link active" data-scroll-target="#magic-commands"><span class="header-section-number">4.1</span> 1. Magic Commands</a>
+  <li><a href="#magic-commands" id="toc-magic-commands" class="nav-link active" data-scroll-target="#magic-commands"><span class="header-section-number">4.1</span> Magic Commands</a>
   <ul>
   <li><a href="#what-are-magic-commands" id="toc-what-are-magic-commands" class="nav-link" data-scroll-target="#what-are-magic-commands"><span class="header-section-number">4.1.1</span> What are Magic Commands?</a></li>
-  <li><a href="#line-magic-commands" id="toc-line-magic-commands" class="nav-link" data-scroll-target="#line-magic-commands"><span class="header-section-number">4.1.2</span> 1.1. Line Magic Commands</a>
+  <li><a href="#line-magic-commands" id="toc-line-magic-commands" class="nav-link" data-scroll-target="#line-magic-commands"><span class="header-section-number">4.1.2</span> Line Magic Commands</a>
   <ul class="collapse">
-  <li><a href="#time-timing-the-execution-of-code" id="toc-time-timing-the-execution-of-code" class="nav-link" data-scroll-target="#time-timing-the-execution-of-code"><span class="header-section-number">4.1.2.1</span> 1.1.1 <code>%time</code>: Timing the execution of code</a></li>
-  <li><a href="#who-and-whos-listing-variables" id="toc-who-and-whos-listing-variables" class="nav-link" data-scroll-target="#who-and-whos-listing-variables"><span class="header-section-number">4.1.2.2</span> 1.1.2 <code>%who</code> and <code>%whos</code>: Listing variables</a></li>
-  <li><a href="#matplotlib-inline-displaying-plots-inline" id="toc-matplotlib-inline-displaying-plots-inline" class="nav-link" data-scroll-target="#matplotlib-inline-displaying-plots-inline"><span class="header-section-number">4.1.2.3</span> 1.1.3 <code>%matplotlib inline</code>: Displaying plots inline</a></li>
+  <li><a href="#time-timing-the-execution-of-code" id="toc-time-timing-the-execution-of-code" class="nav-link" data-scroll-target="#time-timing-the-execution-of-code"><span class="header-section-number">4.1.2.1</span> <code>%time</code>: Timing the execution of code</a></li>
+  <li><a href="#who-and-whos-listing-variables" id="toc-who-and-whos-listing-variables" class="nav-link" data-scroll-target="#who-and-whos-listing-variables"><span class="header-section-number">4.1.2.2</span> <code>%who</code> and <code>%whos</code>: Listing variables</a></li>
+  <li><a href="#matplotlib-inline-displaying-plots-inline" id="toc-matplotlib-inline-displaying-plots-inline" class="nav-link" data-scroll-target="#matplotlib-inline-displaying-plots-inline"><span class="header-section-number">4.1.2.3</span> <code>%matplotlib inline</code>: Displaying plots inline</a></li>
   </ul></li>
-  <li><a href="#cell-magic-commands" id="toc-cell-magic-commands" class="nav-link" data-scroll-target="#cell-magic-commands"><span class="header-section-number">4.1.3</span> 1.2. Cell Magic Commands</a>
+  <li><a href="#cell-magic-commands" id="toc-cell-magic-commands" class="nav-link" data-scroll-target="#cell-magic-commands"><span class="header-section-number">4.1.3</span> Cell Magic Commands</a>
   <ul class="collapse">
-  <li><a href="#time-timing-cell-execution" id="toc-time-timing-cell-execution" class="nav-link" data-scroll-target="#time-timing-cell-execution"><span class="header-section-number">4.1.3.1</span> 1.2.1 <code>%%time</code>: Timing cell execution</a></li>
-  <li><a href="#writefile-writing-content-to-a-file" id="toc-writefile-writing-content-to-a-file" class="nav-link" data-scroll-target="#writefile-writing-content-to-a-file"><span class="header-section-number">4.1.3.2</span> 1.2.2 <code>%%writefile</code>: Writing content to a file</a></li>
+  <li><a href="#time-timing-cell-execution" id="toc-time-timing-cell-execution" class="nav-link" data-scroll-target="#time-timing-cell-execution"><span class="header-section-number">4.1.3.1</span> <code>%%time</code>: Timing cell execution</a></li>
+  <li><a href="#writefile-writing-content-to-a-file" id="toc-writefile-writing-content-to-a-file" class="nav-link" data-scroll-target="#writefile-writing-content-to-a-file"><span class="header-section-number">4.1.3.2</span> <code>%%writefile</code>: Writing content to a file</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#shell-commands-in-jupyter-notebooks" id="toc-shell-commands-in-jupyter-notebooks" class="nav-link" data-scroll-target="#shell-commands-in-jupyter-notebooks"><span class="header-section-number">4.2</span> 2. Shell Commands in Jupyter Notebooks</a>
+  <li><a href="#shell-commands-in-jupyter-notebooks" id="toc-shell-commands-in-jupyter-notebooks" class="nav-link" data-scroll-target="#shell-commands-in-jupyter-notebooks"><span class="header-section-number">4.2</span> Shell Commands in Jupyter Notebooks</a>
   <ul>
-  <li><a href="#using-shell-commands" id="toc-using-shell-commands" class="nav-link" data-scroll-target="#using-shell-commands"><span class="header-section-number">4.2.1</span> 2.1. Using Shell Commands</a>
+  <li><a href="#using-shell-commands" id="toc-using-shell-commands" class="nav-link" data-scroll-target="#using-shell-commands"><span class="header-section-number">4.2.1</span> Using Shell Commands</a>
   <ul class="collapse">
-  <li><a href="#pwdcd-in-windows-print-working-directory" id="toc-pwdcd-in-windows-print-working-directory" class="nav-link" data-scroll-target="#pwdcd-in-windows-print-working-directory"><span class="header-section-number">4.2.1.1</span> 2.1.1 <code>!pwd</code>(<code>!cd</code> in windows): Print working directory</a></li>
-  <li><a href="#lsdir-in-windows-listing-files-and-directories" id="toc-lsdir-in-windows-listing-files-and-directories" class="nav-link" data-scroll-target="#lsdir-in-windows-listing-files-and-directories"><span class="header-section-number">4.2.1.2</span> 2.1.2 <code>!ls</code>(<code>!dir</code> in windows): Listing files and directories</a></li>
-  <li><a href="#mkdir-creating-a-new-directory" id="toc-mkdir-creating-a-new-directory" class="nav-link" data-scroll-target="#mkdir-creating-a-new-directory"><span class="header-section-number">4.2.1.3</span> 2.1.3 <code>!mkdir</code>: Creating a new directory</a></li>
-  <li><a href="#cattype-in-windows-displaying-file-content" id="toc-cattype-in-windows-displaying-file-content" class="nav-link" data-scroll-target="#cattype-in-windows-displaying-file-content"><span class="header-section-number">4.2.1.4</span> 2.1.4 <code>!cat</code>(<code>type</code> in windows): Displaying file content</a></li>
+  <li><a href="#pwdcd-in-windows-print-working-directory" id="toc-pwdcd-in-windows-print-working-directory" class="nav-link" data-scroll-target="#pwdcd-in-windows-print-working-directory"><span class="header-section-number">4.2.1.1</span> <code>!pwd</code>(<code>!cd</code> in windows): Print working directory</a></li>
+  <li><a href="#lsdir-in-windows-listing-files-and-directories" id="toc-lsdir-in-windows-listing-files-and-directories" class="nav-link" data-scroll-target="#lsdir-in-windows-listing-files-and-directories"><span class="header-section-number">4.2.1.2</span> <code>!ls</code>(<code>!dir</code> in windows): Listing files and directories</a></li>
+  <li><a href="#mkdir-creating-a-new-directory" id="toc-mkdir-creating-a-new-directory" class="nav-link" data-scroll-target="#mkdir-creating-a-new-directory"><span class="header-section-number">4.2.1.3</span> <code>!mkdir</code>: Creating a new directory</a></li>
+  <li><a href="#cattype-in-windows-displaying-file-content" id="toc-cattype-in-windows-displaying-file-content" class="nav-link" data-scroll-target="#cattype-in-windows-displaying-file-content"><span class="header-section-number">4.2.1.4</span> <code>!cat</code>(<code>type</code> in windows): Displaying file content</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#installing-required-packages-within-your-notebook" id="toc-installing-required-packages-within-your-notebook" class="nav-link" data-scroll-target="#installing-required-packages-within-your-notebook"><span class="header-section-number">4.3</span> 3. Installing required packages within your notebook</a></li>
-  <li><a href="#file-path-in-data-science" id="toc-file-path-in-data-science" class="nav-link" data-scroll-target="#file-path-in-data-science"><span class="header-section-number">4.4</span> 4. File Path in Data Science</a>
+  <li><a href="#installing-required-packages-within-your-notebook" id="toc-installing-required-packages-within-your-notebook" class="nav-link" data-scroll-target="#installing-required-packages-within-your-notebook"><span class="header-section-number">4.3</span> Installing required packages within your notebook</a></li>
+  <li><a href="#file-path-in-data-science" id="toc-file-path-in-data-science" class="nav-link" data-scroll-target="#file-path-in-data-science"><span class="header-section-number">4.4</span> File Path in Data Science</a>
   <ul>
-  <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path"><span class="header-section-number">4.4.0.1</span> 4.1. Absolute Path</a></li>
+  <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path"><span class="header-section-number">4.4.0.1</span> Absolute Path</a></li>
   <li><a href="#example-of-an-absolute-path-windows" id="toc-example-of-an-absolute-path-windows" class="nav-link" data-scroll-target="#example-of-an-absolute-path-windows"><span class="header-section-number">4.4.0.2</span> Example of an Absolute Path (Windows):</a></li>
-  <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path"><span class="header-section-number">4.4.0.3</span> 4.2. Relative Path</a></li>
-  <li><a href="#methods-to-specify-file-path-in-windows" id="toc-methods-to-specify-file-path-in-windows" class="nav-link" data-scroll-target="#methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.0.4</span> 4.3. Methods to Specify file path in Windows</a></li>
-  <li><a href="#best-practices-for-file-paths-in-data-science" id="toc-best-practices-for-file-paths-in-data-science" class="nav-link" data-scroll-target="#best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.0.5</span> 4.4. Best Practices for File Paths in Data Science</a></li>
+  <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path"><span class="header-section-number">4.4.0.3</span> Relative Path</a></li>
+  <li><a href="#methods-to-specify-file-path-in-windows" id="toc-methods-to-specify-file-path-in-windows" class="nav-link" data-scroll-target="#methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.0.4</span> Methods to Specify file path in Windows</a></li>
+  <li><a href="#best-practices-for-file-paths-in-data-science" id="toc-best-practices-for-file-paths-in-data-science" class="nav-link" data-scroll-target="#best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.0.5</span> Best Practices for File Paths in Data Science</a></li>
   </ul></li>
-  <li><a href="#interacting-with-the-os-and-filesystem" id="toc-interacting-with-the-os-and-filesystem" class="nav-link" data-scroll-target="#interacting-with-the-os-and-filesystem"><span class="header-section-number">4.5</span> 5. Interacting with the OS and filesystem</a></li>
+  <li><a href="#interacting-with-the-os-and-filesystem" id="toc-interacting-with-the-os-and-filesystem" class="nav-link" data-scroll-target="#interacting-with-the-os-and-filesystem"><span class="header-section-number">4.5</span> Interacting with the OS and filesystem</a></li>
   </ul>
 </nav>
     </div>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>By mastering these techniques, you’ll be able to work more efficiently and handle complex data science tasks with ease.</p>
 <section id="magic-commands" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="magic-commands"><span class="header-section-number">4.1</span> 1. Magic Commands</h2>
+<h2 data-number="4.1" class="anchored" data-anchor-id="magic-commands"><span class="header-section-number">4.1</span> Magic Commands</h2>
 <section id="what-are-magic-commands" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="what-are-magic-commands"><span class="header-section-number">4.1.1</span> What are Magic Commands?</h3>
 <p>Magic commands in Jupyter are shortcuts that extend the functionality of the notebook environment. There are two types of magic commands: - <strong>Line magics</strong>: Commands that operate on a single line. - <strong>Cell magics</strong>: Commands that operate on the entire cell.</p>
@@ -329,9 +329,9 @@ Automagic is ON, % prefix IS NOT needed for line magics.</code></pre>
 <p>:::</p>
 </section>
 <section id="line-magic-commands" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="line-magic-commands"><span class="header-section-number">4.1.2</span> 1.1. Line Magic Commands</h3>
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="line-magic-commands"><span class="header-section-number">4.1.2</span> Line Magic Commands</h3>
 <section id="time-timing-the-execution-of-code" class="level4" data-number="4.1.2.1">
-<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="time-timing-the-execution-of-code"><span class="header-section-number">4.1.2.1</span> 1.1.1 <code>%time</code>: Timing the execution of code</h4>
+<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="time-timing-the-execution-of-code"><span class="header-section-number">4.1.2.1</span> <code>%time</code>: Timing the execution of code</h4>
 <p>In data science, it is often crucial to evaluate the performance of specific code snippets or algorithms, and the <code>%time</code> magic command provides a simple and efficient way to measure the execution time of individual statements, helping you identify bottlenecks and optimize your code for better performance.</p>
 <div class="cell" data-execution_count="30">
 <details open="">
@@ -422,7 +422,7 @@ loop version duration: 2228.7092 ms </code></pre>
 </div>
 </section>
 <section id="who-and-whos-listing-variables" class="level4" data-number="4.1.2.2">
-<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="who-and-whos-listing-variables"><span class="header-section-number">4.1.2.2</span> 1.1.2 <code>%who</code> and <code>%whos</code>: Listing variables</h4>
+<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="who-and-whos-listing-variables"><span class="header-section-number">4.1.2.2</span> <code>%who</code> and <code>%whos</code>: Listing variables</h4>
 <ul>
 <li><code>%who</code>: Lists all variables in the current namespace.</li>
 <li><code>%whos</code>: Lists variables along with their types, sizes, and values</li>
@@ -493,7 +493,7 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </div>
 </section>
 <section id="matplotlib-inline-displaying-plots-inline" class="level4" data-number="4.1.2.3">
-<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="matplotlib-inline-displaying-plots-inline"><span class="header-section-number">4.1.2.3</span> 1.1.3 <code>%matplotlib inline</code>: Displaying plots inline</h4>
+<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="matplotlib-inline-displaying-plots-inline"><span class="header-section-number">4.1.2.3</span> <code>%matplotlib inline</code>: Displaying plots inline</h4>
 <p>This command allows you to embed plots within the notebook.</p>
 <div class="cell" data-execution_count="9">
 <details open="">
@@ -515,10 +515,10 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </section>
 </section>
 <section id="cell-magic-commands" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="cell-magic-commands"><span class="header-section-number">4.1.3</span> 1.2. Cell Magic Commands</h3>
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="cell-magic-commands"><span class="header-section-number">4.1.3</span> Cell Magic Commands</h3>
 <p>A cell magic command in Jupyter notebook has to be the first line in the code cell</p>
 <section id="time-timing-cell-execution" class="level4" data-number="4.1.3.1">
-<h4 data-number="4.1.3.1" class="anchored" data-anchor-id="time-timing-cell-execution"><span class="header-section-number">4.1.3.1</span> 1.2.1 <code>%%time</code>: Timing cell execution</h4>
+<h4 data-number="4.1.3.1" class="anchored" data-anchor-id="time-timing-cell-execution"><span class="header-section-number">4.1.3.1</span> <code>%%time</code>: Timing cell execution</h4>
 <p>This cell magic is useful for measuring the execution time of an entire cell.</p>
 <div class="cell" data-execution_count="58">
 <details open="">
@@ -538,7 +538,7 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </div>
 </section>
 <section id="writefile-writing-content-to-a-file" class="level4" data-number="4.1.3.2">
-<h4 data-number="4.1.3.2" class="anchored" data-anchor-id="writefile-writing-content-to-a-file"><span class="header-section-number">4.1.3.2</span> 1.2.2 <code>%%writefile</code>: Writing content to a file</h4>
+<h4 data-number="4.1.3.2" class="anchored" data-anchor-id="writefile-writing-content-to-a-file"><span class="header-section-number">4.1.3.2</span> <code>%%writefile</code>: Writing content to a file</h4>
 <p>This command writes the contents of the cell to a file. <strong>Note that, it has to be the first line in the code cell</strong></p>
 <div class="cell" data-execution_count="13">
 <details open="">
@@ -555,13 +555,13 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </section>
 </section>
 <section id="shell-commands-in-jupyter-notebooks" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="shell-commands-in-jupyter-notebooks"><span class="header-section-number">4.2</span> 2. Shell Commands in Jupyter Notebooks</h2>
+<h2 data-number="4.2" class="anchored" data-anchor-id="shell-commands-in-jupyter-notebooks"><span class="header-section-number">4.2</span> Shell Commands in Jupyter Notebooks</h2>
 <p><strong>What are Shell Commands?</strong></p>
 <p>Shell commands allow you to interact with the underlying operating system. You can execute them directly within Jupyter by prefixing the command with an exclamation mark (<code>!</code>). In a Jupyter notebook, while the <code>IPython kernel</code> executes the Python code, it delegates the shell commands to the operating system’s shell. They are not executed by the same engine. The IPython kernel is for Python code, while the shell commands are handled by underlying <code>operating system shell</code> (e.g., Bash on macOS/Linux, or Command Prompt/PowerShell on Windows).</p>
 <section id="using-shell-commands" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="using-shell-commands"><span class="header-section-number">4.2.1</span> 2.1. Using Shell Commands</h3>
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="using-shell-commands"><span class="header-section-number">4.2.1</span> Using Shell Commands</h3>
 <section id="pwdcd-in-windows-print-working-directory" class="level4" data-number="4.2.1.1">
-<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="pwdcd-in-windows-print-working-directory"><span class="header-section-number">4.2.1.1</span> 2.1.1 <code>!pwd</code>(<code>!cd</code> in windows): Print working directory</h4>
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="pwdcd-in-windows-print-working-directory"><span class="header-section-number">4.2.1.1</span> <code>!pwd</code>(<code>!cd</code> in windows): Print working directory</h4>
 <p>You can check current working directory with the <code>!pwd</code>(<code>!cd</code> in windows) command.</p>
 <div class="cell" data-execution_count="15">
 <details open="">
@@ -574,7 +574,7 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </div>
 </section>
 <section id="lsdir-in-windows-listing-files-and-directories" class="level4" data-number="4.2.1.2">
-<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="lsdir-in-windows-listing-files-and-directories"><span class="header-section-number">4.2.1.2</span> 2.1.2 <code>!ls</code>(<code>!dir</code> in windows): Listing files and directories</h4>
+<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="lsdir-in-windows-listing-files-and-directories"><span class="header-section-number">4.2.1.2</span> <code>!ls</code>(<code>!dir</code> in windows): Listing files and directories</h4>
 <p>List the contents of the current directory.</p>
 <div class="cell" data-execution_count="16">
 <details open="">
@@ -604,7 +604,7 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </div>
 </section>
 <section id="mkdir-creating-a-new-directory" class="level4" data-number="4.2.1.3">
-<h4 data-number="4.2.1.3" class="anchored" data-anchor-id="mkdir-creating-a-new-directory"><span class="header-section-number">4.2.1.3</span> 2.1.3 <code>!mkdir</code>: Creating a new directory</h4>
+<h4 data-number="4.2.1.3" class="anchored" data-anchor-id="mkdir-creating-a-new-directory"><span class="header-section-number">4.2.1.3</span> <code>!mkdir</code>: Creating a new directory</h4>
 <p>You can create a new directory using the <code>!mkdir</code> command.</p>
 <div class="cell" data-execution_count="17">
 <details open="">
@@ -614,7 +614,7 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </div>
 </section>
 <section id="cattype-in-windows-displaying-file-content" class="level4" data-number="4.2.1.4">
-<h4 data-number="4.2.1.4" class="anchored" data-anchor-id="cattype-in-windows-displaying-file-content"><span class="header-section-number">4.2.1.4</span> 2.1.4 <code>!cat</code>(<code>type</code> in windows): Displaying file content</h4>
+<h4 data-number="4.2.1.4" class="anchored" data-anchor-id="cattype-in-windows-displaying-file-content"><span class="header-section-number">4.2.1.4</span> <code>!cat</code>(<code>type</code> in windows): Displaying file content</h4>
 <p>Use <code>!cat</code>(<code>type</code> in windows) to display the contents of a file.</p>
 <div class="cell" data-execution_count="20">
 <details open="">
@@ -629,7 +629,7 @@ file_path     str     C:Users\Username\Documents\data.csv</code></pre>
 </section>
 </section>
 <section id="installing-required-packages-within-your-notebook" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="installing-required-packages-within-your-notebook"><span class="header-section-number">4.3</span> 3. Installing required packages within your notebook</h2>
+<h2 data-number="4.3" class="anchored" data-anchor-id="installing-required-packages-within-your-notebook"><span class="header-section-number">4.3</span> Installing required packages within your notebook</h2>
 <p>When installing packages from within a Jupyter notebook, you have two main options: using a shell command or a magic command</p>
 <ul>
 <li><code>!pip install package_name</code></li>
@@ -670,10 +670,10 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </section>
 <section id="file-path-in-data-science" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="file-path-in-data-science"><span class="header-section-number">4.4</span> 4. File Path in Data Science</h2>
+<h2 data-number="4.4" class="anchored" data-anchor-id="file-path-in-data-science"><span class="header-section-number">4.4</span> File Path in Data Science</h2>
 <p>Next, we will discuss how to specify file paths in Python for loading and saving data, with an emphasis on <strong>absolute</strong> and <strong>relative</strong> paths. File paths are crucial when working with files in Python, such as reading datasets and writing results to files. Let’s explore the difference between <strong>absolute paths</strong> and <strong>relative paths</strong>.</p>
 <section id="absolute-path" class="level4" data-number="4.4.0.1">
-<h4 data-number="4.4.0.1" class="anchored" data-anchor-id="absolute-path"><span class="header-section-number">4.4.0.1</span> 4.1. Absolute Path</h4>
+<h4 data-number="4.4.0.1" class="anchored" data-anchor-id="absolute-path"><span class="header-section-number">4.4.0.1</span> Absolute Path</h4>
 <p>An <strong>absolute path</strong> provides the complete location of a file or directory from the root directory of your file system. It is independent of the current working directory.</p>
 </section>
 <section id="example-of-an-absolute-path-windows" class="level4" data-number="4.4.0.2">
@@ -695,7 +695,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <p>The path associated with each conda env is absolute path.</p>
 </section>
 <section id="relative-path" class="level4" data-number="4.4.0.3">
-<h4 data-number="4.4.0.3" class="anchored" data-anchor-id="relative-path"><span class="header-section-number">4.4.0.3</span> 4.2. Relative Path</h4>
+<h4 data-number="4.4.0.3" class="anchored" data-anchor-id="relative-path"><span class="header-section-number">4.4.0.3</span> Relative Path</h4>
 <p>A <strong>relative path</strong> specifies the file location in relation to the current working directory. It is shorter and more flexible since it doesn’t require the full path from the root.</p>
 <p>To find the current working directory in Python, you can use either a magic command or a shell command, as shown below:</p>
 <div class="cell" data-execution_count="27">
@@ -729,7 +729,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <p>The relative path <code>sample.txt</code> means that there is a file in the current working directory.</p>
 </section>
 <section id="methods-to-specify-file-path-in-windows" class="level4" data-number="4.4.0.4">
-<h4 data-number="4.4.0.4" class="anchored" data-anchor-id="methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.0.4</span> 4.3. Methods to Specify file path in Windows</h4>
+<h4 data-number="4.4.0.4" class="anchored" data-anchor-id="methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.0.4</span> Methods to Specify file path in Windows</h4>
 <p>Windows uses backslashes (<code>\</code>) to separate directories in file paths. However, in Python, the backslash is an escape character, so you need to either: * Escape backslashes by using a double backslash (<code>\\</code>), or * Use raw strings by prefixing the path with <code>r</code>.</p>
 <section id="method-1-using-escaped-backslashes" class="level5" data-number="4.4.0.4.1">
 <h5 data-number="4.4.0.4.1" class="anchored" data-anchor-id="method-1-using-escaped-backslashes"><span class="header-section-number">4.4.0.4.1</span> Method 1: <strong>Using escaped backslashes</strong></h5>
@@ -772,7 +772,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </section>
 </section>
 <section id="best-practices-for-file-paths-in-data-science" class="level4" data-number="4.4.0.5">
-<h4 data-number="4.4.0.5" class="anchored" data-anchor-id="best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.0.5</span> 4.4. Best Practices for File Paths in Data Science</h4>
+<h4 data-number="4.4.0.5" class="anchored" data-anchor-id="best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.0.5</span> Best Practices for File Paths in Data Science</h4>
 <ul>
 <li>Use relative paths when working in a project structure, as it allows the project to be portable.</li>
 <li>Use absolute paths when working with external or shared files that aren’t part of your project.</li>
@@ -783,7 +783,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </section>
 </section>
 <section id="interacting-with-the-os-and-filesystem" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="interacting-with-the-os-and-filesystem"><span class="header-section-number">4.5</span> 5. Interacting with the OS and filesystem</h2>
+<h2 data-number="4.5" class="anchored" data-anchor-id="interacting-with-the-os-and-filesystem"><span class="header-section-number">4.5</span> Interacting with the OS and filesystem</h2>
 <p>In data science, you frequently work with data files (e.g., CSVs, Excel, JSON) stored in different directories. The <code>os</code> module allow you to interact with the OS and the filesystem. Let’s import it and try out some commonly used functions in this module.</p>
 <div class="cell" data-execution_count="49">
 <details open="">

@@ -5,8 +5,6 @@ project:
 
 book:  
   title: "Introduction to Data Science with Python"
-  author: "Arvind Krishna, Lizhen Shi, Emre Besler, and Arend Kuyper"
-  date: "9/20/2022"
   
   sidebar:
     search: true
@@ -19,7 +17,7 @@ book:
       chapters:
         - Introduction to Python and Jupyter Notebooks.ipynb
         - data_structures.ipynb
-    - part: 'Prerequisite: Python programming'
+    - part: 'Getting started: Coding environment'
       chapters:
         - venv_setup.ipynb
         - workflow_enhance.ipynb

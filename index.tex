@@ -181,7 +181,6 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Introduction to Data Science with Python},
-  pdfauthor={Arvind Krishna, Lizhen Shi, Emre Besler, and Arend Kuyper},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -190,12 +189,12 @@
   pdfcreator={LaTeX via pandoc}}
 
 \title{Introduction to Data Science with Python}
-\author{Arvind Krishna, Lizhen Shi, Emre Besler, and Arend Kuyper}
-\date{2022-09-20}
+\author{}
+\date{}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, enhanced, interior hidden, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -3466,14 +3465,14 @@ Answer
 \href{https://nustat.github.io/DataScience_Intro_python/data_structures.html\#section-14}{Q2.5.1.5}
 using only dictionary comprehension.
 
-\part{Prerequisite: Python programming}
+\part{Getting started: Coding environment}
 
 \hypertarget{setting-up-your-environment-with-vs-code}{%
 \chapter{Setting up your environment with VS
 Code}\label{setting-up-your-environment-with-vs-code}}
 
 \hypertarget{introduction-to-visual-studio-code-vs-code}{%
-\section{1. Introduction to Visual Studio Code (VS
+\section{Introduction to Visual Studio Code (VS
 Code)}\label{introduction-to-visual-studio-code-vs-code}}
 
 \textbf{Visual Studio Code (VS Code)} is a free, open-source, and
@@ -3483,7 +3482,7 @@ languages} and frameworks. Here's an overview of its key features and
 functionalities:
 
 \hypertarget{core-features}{%
-\subsubsection{1.1. Core Features}\label{core-features}}
+\subsubsection{Core Features}\label{core-features}}
 
 \begin{itemize}
 \tightlist
@@ -3515,7 +3514,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{user-interface}{%
-\subsubsection{1.2. User Interface}\label{user-interface}}
+\subsubsection{User Interface}\label{user-interface}}
 
 \begin{itemize}
 \tightlist
@@ -3540,7 +3539,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{extensions}{%
-\subsubsection{1.3. Extensions}\label{extensions}}
+\subsubsection{Extensions}\label{extensions}}
 
 \begin{itemize}
 \tightlist
@@ -3559,7 +3558,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{use-cases}{%
-\subsubsection{1.4. Use Cases}\label{use-cases}}
+\subsubsection{Use Cases}\label{use-cases}}
 
 \begin{itemize}
 \tightlist
@@ -3581,7 +3580,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{cross-platform}{%
-\subsubsection{1.5. Cross-Platform}\label{cross-platform}}
+\subsubsection{Cross-Platform}\label{cross-platform}}
 
 \begin{itemize}
 \tightlist
@@ -3595,7 +3594,7 @@ development activities, from simple scripting to complex software
 projects.
 
 \hypertarget{installing-visual-studio-code}{%
-\section{2. Installing Visual Studio
+\section{Installing Visual Studio
 Code}\label{installing-visual-studio-code}}
 
 \hypertarget{step-1-download-vs-code}{%
@@ -3630,9 +3629,9 @@ Code:}}{Step 3: Launch VS Code:}}\label{step-3-launch-vs-code}}
 \end{itemize}
 
 \hypertarget{setting-up-python-development-environment-in-vs-code-using-python-venv}{%
-\section{\texorpdfstring{3. Setting Up Python Development Environment in
-VS Code using python
-\texttt{venv}}{3. Setting Up Python Development Environment in VS Code using python venv}}\label{setting-up-python-development-environment-in-vs-code-using-python-venv}}
+\section{\texorpdfstring{Setting Up Python Development Environment in VS
+Code using python
+\texttt{venv}}{Setting Up Python Development Environment in VS Code using python venv}}\label{setting-up-python-development-environment-in-vs-code-using-python-venv}}
 
 Unlike \texttt{Spyder} and \texttt{PyCharm}, which are specifically
 designed for Python development, VS Code is a versatile code editor with
@@ -4019,7 +4018,7 @@ You have two primary ways to install DS packages 1. Installing from the
 Terminal 2. Installing from the Notebook
 
 \hypertarget{installing-from-the-terminal}{%
-\paragraph{8.1. Installing from the
+\paragraph{Installing from the
 terminal}\label{installing-from-the-terminal}}
 
 \begin{enumerate}
@@ -4066,7 +4065,7 @@ to issues where the notebook cannot access the installed packages.
 \texttt{pip\ install\ numpy\ pandas\ matplotlib}
 
 \hypertarget{installing-from-the-notebook}{%
-\paragraph{8.2. Installing from the
+\paragraph{Installing from the
 Notebook}\label{installing-from-the-notebook}}
 
 You can also install packages directly from a Jupyter Notebook cell
@@ -4252,7 +4251,7 @@ Note: you may need to restart the kernel to use updated packages.
 This will ensure that both of you are working with the same setup.
 
 \hypertarget{jupyter-notebooks-in-vs-code}{%
-\section{4. Jupyter Notebooks in VS
+\section{Jupyter Notebooks in VS
 Code}\label{jupyter-notebooks-in-vs-code}}
 
 After setting up your environment, follow this
@@ -4261,9 +4260,9 @@ to become familiar with the native support for Jupyter Notebooks in VS
 Code
 
 \hypertarget{exercise-setting-up-your-python-data-science-environment-using-pip-and-conda}{%
-\section{\texorpdfstring{5. Exercise: Setting Up Your Python Data
-Science Environment using \texttt{pip} and
-\texttt{conda}}{5. Exercise: Setting Up Your Python Data Science Environment using pip and conda}}\label{exercise-setting-up-your-python-data-science-environment-using-pip-and-conda}}
+\section{\texorpdfstring{Exercise: Setting Up Your Python Data Science
+Environment using \texttt{pip} and
+\texttt{conda}}{Exercise: Setting Up Your Python Data Science Environment using pip and conda}}\label{exercise-setting-up-your-python-data-science-environment-using-pip-and-conda}}
 
 \textbf{Objective}: Practice creating and managing Python packages and
 environments using \texttt{pip} and \texttt{conda}, and verifying your
@@ -4278,111 +4277,99 @@ Note: Feel free to use ChatGPT to find the commands you need.
 \hypertarget{instructions}{%
 \subsubsection{Instructions}\label{instructions}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+Step 1: \textbf{Create a New Workplace} - Create a folder named
+\texttt{test\_pip\_env}. - Open the folder in VS code - Within the
+workplace, create a new notebook
+
+Step 2: \textbf{Create a pip environment named
+\texttt{stat303\_pip\_env} in the current workplace}
+
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Create a New Workplace}
+  Create the env using pip command line
+\item
+  Activate the environment.
+\end{itemize}
+
+Step 3: \textbf{Install Required Packages for the env}
+
+\begin{itemize}
+\tightlist
+\item
+  Inside the \texttt{stat303\_pip\_env}, install the following packages
+  using \texttt{pip}:
 
   \begin{itemize}
   \tightlist
   \item
-    Create a folder named \texttt{test\_pip\_env}.
+    \texttt{numpy}
   \item
-    Open the folder in VS code
+    \texttt{pandas}
   \item
-    Within the workplace, create a new notebook
+    \texttt{matplotlib}
   \end{itemize}
 \item
-  \textbf{Create a pip environment named \texttt{stat303\_pip\_env} in
-  the current workplace}
+  Install the following packages using \texttt{conda}
 
   \begin{itemize}
   \tightlist
   \item
-    Create the env using pip command line
-  \item
-    Activate the environment.
+    \texttt{statsmodels}
   \end{itemize}
+\end{itemize}
+
+Step 4: \textbf{Export the Environment Configuration}
+
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Install Required Packages for the env}
+  Export the configuration of your \texttt{stat303\_pip\_env}
+  environment to a file named \texttt{stat303\_env.txt}.
+\end{itemize}
+
+Step 6: \textbf{Deactivate and Remove the Environment}
+
+\begin{itemize}
+\tightlist
+\item
+  Deactivate the \texttt{stat303\_pip\_env} environment.
+\item
+  Remove the \texttt{stat303\_pip\_env} environment to ensure you
+  understand how to clean up.
+\end{itemize}
+
+Step 7: \textbf{Recreate the Environment Using the YML File}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a new environment using the \texttt{stat303\_env.txt} file.
+\item
+  Activate the \texttt{stat303\_pip\_env} environment.
+\item
+  Verify that the packages \texttt{numpy}, \texttt{pandas},
+  \texttt{matplotlib}, and \texttt{scikit-learn} are installed.
+\end{itemize}
+
+Step 8: \textbf{Run a Jupyter Notebook}
+
+\begin{itemize}
+\tightlist
+\item
+  Launch Jupyter Notebook within the created environment.
+\item
+  Create a new notebook and write a simple Python script to:
 
   \begin{itemize}
   \tightlist
   \item
-    Inside the \texttt{stat303\_pip\_env}, install the following
-    packages using \texttt{pip}:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \texttt{numpy}
-    \item
-      \texttt{pandas}
-    \item
-      \texttt{matplotlib}
-    \end{itemize}
+    Import \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}, and
+    \texttt{scikit-learn}.
   \item
-    Install the following packages using \texttt{conda}
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \texttt{statsmodels}
-    \end{itemize}
+    Print the versions of these packages.
   \end{itemize}
-\item
-  \textbf{Export the Environment Configuration}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Export the configuration of your \texttt{stat303\_pip\_env}
-    environment to a file named \texttt{stat303\_env.txt}.
-  \end{itemize}
-\item
-  \textbf{Deactivate and Remove the Environment}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Deactivate the \texttt{stat303\_pip\_env} environment.
-  \item
-    Remove the \texttt{stat303\_pip\_env} environment to ensure you
-    understand how to clean up.
-  \end{itemize}
-\item
-  \textbf{Recreate the Environment Using the YML File}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Create a new environment using the \texttt{stat303\_env.txt} file.
-  \item
-    Activate the \texttt{stat303\_pip\_env} environment.
-  \item
-    Verify that the packages \texttt{numpy}, \texttt{pandas},
-    \texttt{matplotlib}, and \texttt{scikit-learn} are installed.
-  \end{itemize}
-\item
-  \textbf{Run a Jupyter Notebook}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Launch Jupyter Notebook within the created environment.
-  \item
-    Create a new notebook and write a simple Python script to:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Import \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}, and
-      \texttt{scikit-learn}.
-    \item
-      Print the versions of these packages.
-    \end{itemize}
-  \end{itemize}
-\end{enumerate}
+\end{itemize}
 
 \hypertarget{using-conda}{%
 \subsection{\texorpdfstring{Using
@@ -4391,116 +4378,105 @@ Note: Feel free to use ChatGPT to find the commands you need.
 \hypertarget{instructions-1}{%
 \subsubsection{Instructions}\label{instructions-1}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+Step 1: \textbf{Create a New Workplace} - Create a folder named
+\texttt{test\_conda\_env}. - Open the folder in VS code - Within the
+workplace, create a new notebook
+
+Step 2: \textbf{Create a conda environment named
+\texttt{stat303\_conda\_env}}
+
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Create a New Workplace}
+  Create the env using conda command line
+\item
+  Activate the environment.
+\end{itemize}
+
+Step 3: \textbf{Install Required Packages for the env}
+
+\begin{itemize}
+\tightlist
+\item
+  Inside the \texttt{stat303\_conda\_env}, install the following
+  packages using \texttt{conda}:
 
   \begin{itemize}
   \tightlist
   \item
-    Create a folder named \texttt{test\_conda\_env}.
+    \texttt{numpy}
   \item
-    Open the folder in VS code
+    \texttt{pandas}
   \item
-    Within the workplace, create a new notebook
+    \texttt{matplotlib}
   \end{itemize}
 \item
-  \textbf{Create a conda environment named \texttt{stat303\_conda\_env}}
+  Install the following packages using \texttt{pip}
 
   \begin{itemize}
   \tightlist
   \item
-    Create the env using conda command line
+    \texttt{scikit-learn}
   \item
-    Activate the environment.
+    \texttt{statsmodels}
   \end{itemize}
+\end{itemize}
+
+Step 4: \textbf{Export the Environment Configuration}
+
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Install Required Packages for the env}
+  Export the configuration of your \texttt{stat303\_conda\_env}
+  environment to a file named \texttt{stat303\_env.yml}.
+\end{itemize}
+
+Step 5: \textbf{Deactivate and Remove the Environment}
+
+\begin{itemize}
+\tightlist
+\item
+  Deactivate the \texttt{stat303\_conda\_env} environment.
+\item
+  Remove the \texttt{stat303\_conda\_env} environment to ensure you
+  understand how to clean up.
+\end{itemize}
+
+Step 6: \textbf{Recreate the Environment Using the YML File}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a new environment using the \texttt{stat303\_env.yml} file.
+\item
+  Activate the \texttt{stat303\_conda\_env} environment.
+\item
+  Verify that the packages \texttt{numpy}, \texttt{pandas},
+  \texttt{matplotlib}, \texttt{scikit-learn}, and \texttt{statsmodels}
+  are installed.
+\end{itemize}
+
+Step 7: \textbf{Run a Jupyter Notebook}
+
+\begin{itemize}
+\tightlist
+\item
+  Launch Jupyter Notebook within the created environment.
+\item
+  Create a new notebook and write a simple Python script to:
 
   \begin{itemize}
   \tightlist
   \item
-    Inside the \texttt{stat303\_conda\_env}, install the following
-    packages using \texttt{conda}:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \texttt{numpy}
-    \item
-      \texttt{pandas}
-    \item
-      \texttt{matplotlib}
-    \end{itemize}
+    Import \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}, and
+    \texttt{scikit-learn}.
   \item
-    Install the following packages using \texttt{pip}
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \texttt{scikit-learn}
-    \item
-      \texttt{statsmodels}
-    \end{itemize}
+    Print the versions of these packages.
   \end{itemize}
-\item
-  \textbf{Export the Environment Configuration}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Export the configuration of your \texttt{stat303\_conda\_env}
-    environment to a file named \texttt{stat303\_env.yml}.
-  \end{itemize}
-\item
-  \textbf{Deactivate and Remove the Environment}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Deactivate the \texttt{stat303\_conda\_env} environment.
-  \item
-    Remove the \texttt{stat303\_conda\_env} environment to ensure you
-    understand how to clean up.
-  \end{itemize}
-\item
-  \textbf{Recreate the Environment Using the YML File}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Create a new environment using the \texttt{stat303\_env.yml} file.
-  \item
-    Activate the \texttt{stat303\_conda\_env} environment.
-  \item
-    Verify that the packages \texttt{numpy}, \texttt{pandas},
-    \texttt{matplotlib}, \texttt{scikit-learn}, and \texttt{statsmodels}
-    are installed.
-  \end{itemize}
-\item
-  \textbf{Run a Jupyter Notebook}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Launch Jupyter Notebook within the created environment.
-  \item
-    Create a new notebook and write a simple Python script to:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Import \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}, and
-      \texttt{scikit-learn}.
-    \item
-      Print the versions of these packages.
-    \end{itemize}
-  \end{itemize}
-\end{enumerate}
+\end{itemize}
 
 \hypertarget{expected-outcome}{%
-\section{6. Expected Outcome}\label{expected-outcome}}
+\section{Expected Outcome}\label{expected-outcome}}
 
 By completing this lecture, you will be able to:
 
@@ -4518,7 +4494,7 @@ By completing this lecture, you will be able to:
 \end{itemize}
 
 \hypertarget{reference}{%
-\section{7. Reference}\label{reference}}
+\section{Reference}\label{reference}}
 
 \begin{itemize}
 \tightlist
@@ -4561,7 +4537,7 @@ By mastering these techniques, you'll be able to work more efficiently
 and handle complex data science tasks with ease.
 
 \hypertarget{magic-commands}{%
-\section{1. Magic Commands}\label{magic-commands}}
+\section{Magic Commands}\label{magic-commands}}
 
 \hypertarget{what-are-magic-commands}{%
 \subsection{What are Magic Commands?}\label{what-are-magic-commands}}
@@ -4604,12 +4580,11 @@ Automagic is ON, % prefix IS NOT needed for line magics.
 :::
 
 \hypertarget{line-magic-commands}{%
-\subsection{1.1. Line Magic Commands}\label{line-magic-commands}}
+\subsection{Line Magic Commands}\label{line-magic-commands}}
 
 \hypertarget{time-timing-the-execution-of-code}{%
-\subsubsection{\texorpdfstring{1.1.1 \texttt{\%time}: Timing the
-execution of
-code}{1.1.1 \%time: Timing the execution of code}}\label{time-timing-the-execution-of-code}}
+\subsubsection{\texorpdfstring{\texttt{\%time}: Timing the execution of
+code}{\%time: Timing the execution of code}}\label{time-timing-the-execution-of-code}}
 
 In data science, it is often crucial to evaluate the performance of
 specific code snippets or algorithms, and the \texttt{\%time} magic
@@ -4718,9 +4693,9 @@ loop version duration: 2228.7092 ms
 \end{verbatim}
 
 \hypertarget{who-and-whos-listing-variables}{%
-\subsubsection{\texorpdfstring{1.1.2 \texttt{\%who} and \texttt{\%whos}:
+\subsubsection{\texorpdfstring{\texttt{\%who} and \texttt{\%whos}:
 Listing
-variables}{1.1.2 \%who and \%whos: Listing variables}}\label{who-and-whos-listing-variables}}
+variables}{\%who and \%whos: Listing variables}}\label{who-and-whos-listing-variables}}
 
 \begin{itemize}
 \tightlist
@@ -4803,9 +4778,9 @@ file_path     str     C:Users\Username\Documents\data.csv
 \end{verbatim}
 
 \hypertarget{matplotlib-inline-displaying-plots-inline}{%
-\subsubsection{\texorpdfstring{1.1.3 \texttt{\%matplotlib\ inline}:
-Displaying plots
-inline}{1.1.3 \%matplotlib inline: Displaying plots inline}}\label{matplotlib-inline-displaying-plots-inline}}
+\subsubsection{\texorpdfstring{\texttt{\%matplotlib\ inline}: Displaying
+plots
+inline}{\%matplotlib inline: Displaying plots inline}}\label{matplotlib-inline-displaying-plots-inline}}
 
 This command allows you to embed plots within the notebook.
 
@@ -4832,14 +4807,14 @@ This command allows you to embed plots within the notebook.
 \end{figure}
 
 \hypertarget{cell-magic-commands}{%
-\subsection{1.2. Cell Magic Commands}\label{cell-magic-commands}}
+\subsection{Cell Magic Commands}\label{cell-magic-commands}}
 
 A cell magic command in Jupyter notebook has to be the first line in the
 code cell
 
 \hypertarget{time-timing-cell-execution}{%
-\subsubsection{\texorpdfstring{1.2.1 \texttt{\%\%time}: Timing cell
-execution}{1.2.1 \%\%time: Timing cell execution}}\label{time-timing-cell-execution}}
+\subsubsection{\texorpdfstring{\texttt{\%\%time}: Timing cell
+execution}{\%\%time: Timing cell execution}}\label{time-timing-cell-execution}}
 
 This cell magic is useful for measuring the execution time of an entire
 cell.
@@ -4862,9 +4837,9 @@ UsageError: Line magic function `%%time` not found.
 \end{verbatim}
 
 \hypertarget{writefile-writing-content-to-a-file}{%
-\subsubsection{\texorpdfstring{1.2.2 \texttt{\%\%writefile}: Writing
-content to a
-file}{1.2.2 \%\%writefile: Writing content to a file}}\label{writefile-writing-content-to-a-file}}
+\subsubsection{\texorpdfstring{\texttt{\%\%writefile}: Writing content
+to a
+file}{\%\%writefile: Writing content to a file}}\label{writefile-writing-content-to-a-file}}
 
 This command writes the contents of the cell to a file. \textbf{Note
 that, it has to be the first line in the code cell}
@@ -4886,7 +4861,7 @@ due to their similarities, they are \texttt{\%time},\texttt{\%timeit},
 differences among them
 
 \hypertarget{shell-commands-in-jupyter-notebooks}{%
-\section{2. Shell Commands in Jupyter
+\section{Shell Commands in Jupyter
 Notebooks}\label{shell-commands-in-jupyter-notebooks}}
 
 \textbf{What are Shell Commands?}
@@ -4902,12 +4877,12 @@ while the shell commands are handled by underlying
 Prompt/PowerShell on Windows).
 
 \hypertarget{using-shell-commands}{%
-\subsection{2.1. Using Shell Commands}\label{using-shell-commands}}
+\subsection{Using Shell Commands}\label{using-shell-commands}}
 
 \hypertarget{pwdcd-in-windows-print-working-directory}{%
-\subsubsection{\texorpdfstring{2.1.1 \texttt{!pwd}(\texttt{!cd} in
-windows): Print working
-directory}{2.1.1 !pwd(!cd in windows): Print working directory}}\label{pwdcd-in-windows-print-working-directory}}
+\subsubsection{\texorpdfstring{\texttt{!pwd}(\texttt{!cd} in windows):
+Print working
+directory}{!pwd(!cd in windows): Print working directory}}\label{pwdcd-in-windows-print-working-directory}}
 
 You can check current working directory with the
 \texttt{!pwd}(\texttt{!cd} in windows) command.
@@ -4923,9 +4898,9 @@ c:\Users\lsi8012\OneDrive - Northwestern University\FA24\303-1\Week2
 \end{verbatim}
 
 \hypertarget{lsdir-in-windows-listing-files-and-directories}{%
-\subsubsection{\texorpdfstring{2.1.2 \texttt{!ls}(\texttt{!dir} in
-windows): Listing files and
-directories}{2.1.2 !ls(!dir in windows): Listing files and directories}}\label{lsdir-in-windows-listing-files-and-directories}}
+\subsubsection{\texorpdfstring{\texttt{!ls}(\texttt{!dir} in windows):
+Listing files and
+directories}{!ls(!dir in windows): Listing files and directories}}\label{lsdir-in-windows-listing-files-and-directories}}
 
 List the contents of the current directory.
 
@@ -4957,8 +4932,8 @@ List the contents of the current directory.
 \end{verbatim}
 
 \hypertarget{mkdir-creating-a-new-directory}{%
-\subsubsection{\texorpdfstring{2.1.3 \texttt{!mkdir}: Creating a new
-directory}{2.1.3 !mkdir: Creating a new directory}}\label{mkdir-creating-a-new-directory}}
+\subsubsection{\texorpdfstring{\texttt{!mkdir}: Creating a new
+directory}{!mkdir: Creating a new directory}}\label{mkdir-creating-a-new-directory}}
 
 You can create a new directory using the \texttt{!mkdir} command.
 
@@ -4969,9 +4944,9 @@ You can create a new directory using the \texttt{!mkdir} command.
 \end{Shaded}
 
 \hypertarget{cattype-in-windows-displaying-file-content}{%
-\subsubsection{\texorpdfstring{2.1.4 \texttt{!cat}(\texttt{type} in
-windows): Displaying file
-content}{2.1.4 !cat(type in windows): Displaying file content}}\label{cattype-in-windows-displaying-file-content}}
+\subsubsection{\texorpdfstring{\texttt{!cat}(\texttt{type} in windows):
+Displaying file
+content}{!cat(type in windows): Displaying file content}}\label{cattype-in-windows-displaying-file-content}}
 
 Use \texttt{!cat}(\texttt{type} in windows) to display the contents of a
 file.
@@ -4987,7 +4962,7 @@ This is an example of writing content to a file using %%writefile magic command.
 \end{verbatim}
 
 \hypertarget{installing-required-packages-within-your-notebook}{%
-\section{3. Installing required packages within your
+\section{Installing required packages within your
 notebook}\label{installing-required-packages-within-your-notebook}}
 
 When installing packages from within a Jupyter notebook, you have two
@@ -5051,7 +5026,7 @@ Note: you may need to restart the kernel to use updated packages.
 \end{verbatim}
 
 \hypertarget{file-path-in-data-science}{%
-\section{4. File Path in Data Science}\label{file-path-in-data-science}}
+\section{File Path in Data Science}\label{file-path-in-data-science}}
 
 Next, we will discuss how to specify file paths in Python for loading
 and saving data, with an emphasis on \textbf{absolute} and
@@ -5061,7 +5036,7 @@ explore the difference between \textbf{absolute paths} and
 \textbf{relative paths}.
 
 \hypertarget{absolute-path}{%
-\subsubsection{4.1. Absolute Path}\label{absolute-path}}
+\subsubsection{Absolute Path}\label{absolute-path}}
 
 An \textbf{absolute path} provides the complete location of a file or
 directory from the root directory of your file system. It is independent
@@ -5094,7 +5069,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 The path associated with each conda env is absolute path.
 
 \hypertarget{relative-path}{%
-\subsubsection{4.2. Relative Path}\label{relative-path}}
+\subsubsection{Relative Path}\label{relative-path}}
 
 A \textbf{relative path} specifies the file location in relation to the
 current working directory. It is shorter and more flexible since it
@@ -5138,7 +5113,7 @@ The relative path \texttt{sample.txt} means that there is a file in the
 current working directory.
 
 \hypertarget{methods-to-specify-file-path-in-windows}{%
-\subsubsection{4.3. Methods to Specify file path in
+\subsubsection{Methods to Specify file path in
 Windows}\label{methods-to-specify-file-path-in-windows}}
 
 Windows uses backslashes (\texttt{\textbackslash{}}) to separate
@@ -5197,7 +5172,7 @@ because macOS (like Linux) uses forward slashes (\texttt{/}) as the path
 separator, which is consistent with Python's expectations.
 
 \hypertarget{best-practices-for-file-paths-in-data-science}{%
-\subsubsection{4.4. Best Practices for File Paths in Data
+\subsubsection{Best Practices for File Paths in Data
 Science}\label{best-practices-for-file-paths-in-data-science}}
 
 \begin{itemize}
@@ -5221,7 +5196,7 @@ Science}\label{best-practices-for-file-paths-in-data-science}}
 \end{itemize}
 
 \hypertarget{interacting-with-the-os-and-filesystem}{%
-\section{5. Interacting with the OS and
+\section{Interacting with the OS and
 filesystem}\label{interacting-with-the-os-and-filesystem}}
 
 In data science, you frequently work with data files (e.g., CSVs, Excel,
@@ -5336,7 +5311,7 @@ False
 \chapter{Reading Data}\label{reading-data}}
 
 \hypertarget{types-of-data}{%
-\section{3.1 Types of data}\label{types-of-data}}
+\section{Types of data}\label{types-of-data}}
 
 In this course, we will focus on analyzing structured data.
 
