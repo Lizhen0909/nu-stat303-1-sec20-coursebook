@@ -289,16 +289,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#std" id="toc-std" class="nav-link" data-scroll-target="#std"><span class="header-section-number">7.5.2.6</span> <code>std()</code></a></li>
   <li><a href="#samplen" id="toc-samplen" class="nav-link" data-scroll-target="#samplen"><span class="header-section-number">7.5.2.7</span> <code>sample(n)</code></a></li>
   <li><a href="#dropna" id="toc-dropna" class="nav-link" data-scroll-target="#dropna"><span class="header-section-number">7.5.2.8</span> <code>dropna()</code></a></li>
-  <li><a href="#drop" id="toc-drop" class="nav-link" data-scroll-target="#drop"><span class="header-section-number">7.5.2.9</span> <code>drop()</code></a></li>
-  <li><a href="#unique" id="toc-unique" class="nav-link" data-scroll-target="#unique"><span class="header-section-number">7.5.2.10</span> <code>unique()</code></a></li>
-  <li><a href="#value_counts" id="toc-value_counts" class="nav-link" data-scroll-target="#value_counts"><span class="header-section-number">7.5.2.11</span> <code>value_counts()</code></a></li>
-  <li><a href="#isin" id="toc-isin" class="nav-link" data-scroll-target="#isin"><span class="header-section-number">7.5.2.12</span> <code>isin()</code></a></li>
+  <li><a href="#unique" id="toc-unique" class="nav-link" data-scroll-target="#unique"><span class="header-section-number">7.5.2.9</span> <code>unique()</code></a></li>
+  <li><a href="#value_counts" id="toc-value_counts" class="nav-link" data-scroll-target="#value_counts"><span class="header-section-number">7.5.2.10</span> <code>value_counts()</code></a></li>
+  <li><a href="#isin" id="toc-isin" class="nav-link" data-scroll-target="#isin"><span class="header-section-number">7.5.2.11</span> <code>isin()</code></a></li>
   </ul></li>
   </ul></li>
   <li><a href="#data-manipulations-with-pandas" id="toc-data-manipulations-with-pandas" class="nav-link" data-scroll-target="#data-manipulations-with-pandas"><span class="header-section-number">7.6</span> Data manipulations with Pandas</a>
   <ul>
   <li><a href="#sub-setting-data" id="toc-sub-setting-data" class="nav-link" data-scroll-target="#sub-setting-data"><span class="header-section-number">7.6.1</span> Sub-setting data</a></li>
-  <li><a href="#setting-and-resetting-indices-df.set_index-df.reset_index" id="toc-setting-and-resetting-indices-df.set_index-df.reset_index" class="nav-link" data-scroll-target="#setting-and-resetting-indices-df.set_index-df.reset_index"><span class="header-section-number">7.6.2</span> Setting and Resetting indices: <code>df.set_index()</code>, <code>df.reset_index()</code></a></li>
+  <li><a href="#setting-and-resetting-indices" id="toc-setting-and-resetting-indices" class="nav-link" data-scroll-target="#setting-and-resetting-indices"><span class="header-section-number">7.6.2</span> Setting and Resetting indices</a></li>
   <li><a href="#dropping-a-column" id="toc-dropping-a-column" class="nav-link" data-scroll-target="#dropping-a-column"><span class="header-section-number">7.6.3</span> Dropping a column</a></li>
   <li><a href="#adding-a-column" id="toc-adding-a-column" class="nav-link" data-scroll-target="#adding-a-column"><span class="header-section-number">7.6.4</span> Adding a column</a></li>
   <li><a href="#renaming-a-column" id="toc-renaming-a-column" class="nav-link" data-scroll-target="#renaming-a-column"><span class="header-section-number">7.6.5</span> Renaming a column</a></li>
@@ -318,8 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#advanced-dataframe-operations" id="toc-advanced-dataframe-operations" class="nav-link" data-scroll-target="#advanced-dataframe-operations"><span class="header-section-number">7.8</span> Advanced DataFrame Operations</a>
   <ul>
-  <li><a href="#apply-row-wise-column-wise-or-dataframe-wise" id="toc-apply-row-wise-column-wise-or-dataframe-wise" class="nav-link" data-scroll-target="#apply-row-wise-column-wise-or-dataframe-wise"><span class="header-section-number">7.8.1</span> <code>apply()</code>: Row-wise, Column-wise, or DataFrame-wise</a></li>
-  <li><a href="#map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe" id="toc-map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe" class="nav-link" data-scroll-target="#map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe"><span class="header-section-number">7.8.2</span> <code>map()</code>: Apply a function or mapping to each value in a Series or a DataFrame</a></li>
+  <li><a href="#apply-row-wise-or-column-wise" id="toc-apply-row-wise-or-column-wise" class="nav-link" data-scroll-target="#apply-row-wise-or-column-wise"><span class="header-section-number">7.8.1</span> <code>apply()</code>: Row-wise, or Column-wise</a></li>
+  <li><a href="#map-element-wise" id="toc-map-element-wise" class="nav-link" data-scroll-target="#map-element-wise"><span class="header-section-number">7.8.2</span> <code>map()</code>: Element-wise</a></li>
   <li><a href="#key-differences-between-map-and-apply" id="toc-key-differences-between-map-and-apply" class="nav-link" data-scroll-target="#key-differences-between-map-and-apply"><span class="header-section-number">7.8.3</span> Key Differences Between <code>map()</code> and <code>apply()</code></a>
   <ul class="collapse">
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.8.3.1</span> Summary:</a></li>
@@ -799,9 +798,9 @@ dtype: int64</code></pre>
 <h2 data-number="7.4" class="anchored" data-anchor-id="creating-a-seriesdataframe-by-reading-data-from-a-file"><span class="header-section-number">7.4</span> Creating a Series/DataFrame by Reading Data from a File</h2>
 <p>In the real world, a Pandas DataFrame will typically be created by loading the datasets from existing storage such as SQL Database, CSV file, Excel file, text files, HTML files, etc., as we learned in the perious chapter of the book on Reading data.</p>
 <ul>
-<li><strong>Using read_csv()</strong>: This is one of the most common methods to read data from a CSV file into a pandas DataFrame.</li>
-<li><strong>Using read_excel()</strong>: You can also read data from Excel files.</li>
-<li><strong>Using read_json()</strong>: You can also read data from json files.</li>
+<li><strong>Using <code>read_csv()</code></strong>: This is one of the most common methods to read data from a CSV file into a pandas DataFrame.</li>
+<li><strong>Using <code>read_excel()</code></strong>: You can also read data from Excel files.</li>
+<li><strong>Using <code>read_json()</code></strong>: You can also read data from json files.</li>
 </ul>
 </section>
 <section id="attributes-and-methods-of-a-pandas-dataframe" class="level2" data-number="7.5">
@@ -1938,173 +1937,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="drop" class="level4" data-number="7.5.2.9">
-<h4 data-number="7.5.2.9" class="anchored" data-anchor-id="drop"><span class="header-section-number">7.5.2.9</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html"><code>drop()</code></a></h4>
-<p>This function is used to drop rows/columns from a DataFrame.</p>
-<p>For example, let us drop the columns <code>mode</code> from the spotify dataset:</p>
-<div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dropping the column 'mode'</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>spotify_data_new <span class="op">=</span> spotify_data.drop(<span class="st">'mode'</span>,axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>spotify_data_new.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">artist_followers</th>
-<th data-quarto-table-cell-role="th">genres</th>
-<th data-quarto-table-cell-role="th">artist_name</th>
-<th data-quarto-table-cell-role="th">artist_popularity</th>
-<th data-quarto-table-cell-role="th">track_name</th>
-<th data-quarto-table-cell-role="th">track_popularity</th>
-<th data-quarto-table-cell-role="th">duration_ms</th>
-<th data-quarto-table-cell-role="th">explicit</th>
-<th data-quarto-table-cell-role="th">release_year</th>
-<th data-quarto-table-cell-role="th">danceability</th>
-<th data-quarto-table-cell-role="th">energy</th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">loudness</th>
-<th data-quarto-table-cell-role="th">speechiness</th>
-<th data-quarto-table-cell-role="th">acousticness</th>
-<th data-quarto-table-cell-role="th">instrumentalness</th>
-<th data-quarto-table-cell-role="th">liveness</th>
-<th data-quarto-table-cell-role="th">valence</th>
-<th data-quarto-table-cell-role="th">tempo</th>
-<th data-quarto-table-cell-role="th">time_signature</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>16996777</td>
-<td>rap</td>
-<td>Juice WRLD</td>
-<td>96</td>
-<td>All Girls Are The Same</td>
-<td>0</td>
-<td>165820</td>
-<td>1</td>
-<td>2021</td>
-<td>0.673</td>
-<td>0.529</td>
-<td>0</td>
-<td>-7.226</td>
-<td>0.3060</td>
-<td>0.0769</td>
-<td>0.000338</td>
-<td>0.0856</td>
-<td>0.203</td>
-<td>161.991</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>16996777</td>
-<td>rap</td>
-<td>Juice WRLD</td>
-<td>96</td>
-<td>Lucid Dreams</td>
-<td>0</td>
-<td>239836</td>
-<td>1</td>
-<td>2021</td>
-<td>0.511</td>
-<td>0.566</td>
-<td>6</td>
-<td>-7.230</td>
-<td>0.2000</td>
-<td>0.3490</td>
-<td>0.000000</td>
-<td>0.3400</td>
-<td>0.218</td>
-<td>83.903</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>16996777</td>
-<td>rap</td>
-<td>Juice WRLD</td>
-<td>96</td>
-<td>Hear Me Calling</td>
-<td>0</td>
-<td>189977</td>
-<td>1</td>
-<td>2021</td>
-<td>0.699</td>
-<td>0.687</td>
-<td>7</td>
-<td>-3.997</td>
-<td>0.1060</td>
-<td>0.3080</td>
-<td>0.000036</td>
-<td>0.1210</td>
-<td>0.499</td>
-<td>88.933</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>16996777</td>
-<td>rap</td>
-<td>Juice WRLD</td>
-<td>96</td>
-<td>Robbery</td>
-<td>0</td>
-<td>240527</td>
-<td>1</td>
-<td>2021</td>
-<td>0.708</td>
-<td>0.690</td>
-<td>2</td>
-<td>-5.181</td>
-<td>0.0442</td>
-<td>0.3480</td>
-<td>0.000000</td>
-<td>0.2220</td>
-<td>0.543</td>
-<td>79.993</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5988689</td>
-<td>rap</td>
-<td>Roddy Ricch</td>
-<td>88</td>
-<td>Big Stepper</td>
-<td>0</td>
-<td>175170</td>
-<td>0</td>
-<td>2021</td>
-<td>0.753</td>
-<td>0.597</td>
-<td>8</td>
-<td>-8.469</td>
-<td>0.2920</td>
-<td>0.0477</td>
-<td>0.000000</td>
-<td>0.1970</td>
-<td>0.616</td>
-<td>76.997</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>Note that if multiple columns or rows are to be dropped, they must be enclosed in box brackets.</p>
-</section>
-<section id="unique" class="level4" data-number="7.5.2.10">
-<h4 data-number="7.5.2.10" class="anchored" data-anchor-id="unique"><span class="header-section-number">7.5.2.10</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.unique.html"><code>unique()</code></a></h4>
+<section id="unique" class="level4" data-number="7.5.2.9">
+<h4 data-number="7.5.2.9" class="anchored" data-anchor-id="unique"><span class="header-section-number">7.5.2.9</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.unique.html"><code>unique()</code></a></h4>
 <p>This functions provides the unique values of a Series. For example, let us find the number of unique genres of songs in the spotify dataset:</p>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>spotify_data.genres.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>spotify_data.genres.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>array(['rap', 'pop', 'miscellaneous', 'metal', 'hip hop', 'rock',
        'pop &amp; rock', 'hoerspiel', 'folk', 'electronic', 'jazz', 'country',
@@ -2112,11 +1949,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="value_counts" class="level4" data-number="7.5.2.11">
-<h4 data-number="7.5.2.11" class="anchored" data-anchor-id="value_counts"><span class="header-section-number">7.5.2.11</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts()</code></a></h4>
+<section id="value_counts" class="level4" data-number="7.5.2.10">
+<h4 data-number="7.5.2.10" class="anchored" data-anchor-id="value_counts"><span class="header-section-number">7.5.2.10</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts()</code></a></h4>
 <p>This function provides the number of observations of each value of a Series. For example, let us find the number of songs of each genre in the spotify dataset:</p>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>spotify_data.genres.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>spotify_data.genres.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>genres
 pop              70441
@@ -2137,12 +1974,12 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>More than half the songs in the dataset are <em>pop, rock</em> or <em>pop &amp; rock</em>.</p>
 </section>
-<section id="isin" class="level4" data-number="7.5.2.12">
-<h4 data-number="7.5.2.12" class="anchored" data-anchor-id="isin"><span class="header-section-number">7.5.2.12</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html"><code>isin()</code></a></h4>
+<section id="isin" class="level4" data-number="7.5.2.11">
+<h4 data-number="7.5.2.11" class="anchored" data-anchor-id="isin"><span class="header-section-number">7.5.2.11</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html"><code>isin()</code></a></h4>
 <p>This function provides a boolean Series indicating the position of certain values in a Series. The function is helpful in sub-setting data. For example, let us subset the songs that are either <em>latin, rap,</em> or <em>metal</em>:</p>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>latin_rap_metal_songs <span class="op">=</span> spotify_data.loc[spotify_data.genres.isin([<span class="st">'latin'</span>,<span class="st">'rap'</span>,<span class="st">'metal'</span>]),:]</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>latin_rap_metal_songs.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>latin_rap_metal_songs <span class="op">=</span> spotify_data.loc[spotify_data.genres.isin([<span class="st">'latin'</span>,<span class="st">'rap'</span>,<span class="st">'metal'</span>]),:]</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>latin_rap_metal_songs.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
@@ -2318,13 +2155,13 @@ Name: count, dtype: int64</code></pre>
 <li>Selecting by multiple conditions: <code>df[(df['column_name'] &gt; value) &amp; (df['other_column'] == another_value)]</code></li>
 </ul>
 </section>
-<section id="setting-and-resetting-indices-df.set_index-df.reset_index" class="level3" data-number="7.6.2">
-<h3 data-number="7.6.2" class="anchored" data-anchor-id="setting-and-resetting-indices-df.set_index-df.reset_index"><span class="header-section-number">7.6.2</span> Setting and Resetting indices: <code>df.set_index()</code>, <code>df.reset_index()</code></h3>
+<section id="setting-and-resetting-indices" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="setting-and-resetting-indices"><span class="header-section-number">7.6.2</span> Setting and Resetting indices</h3>
 <p>In pandas, the <code>index</code> of a dataframe can be accessed by using <code>index</code> attribute, it represents the row labels of a DataFrame. When you create a DataFrame without specifying an index, pandas automatically assigns a RangeIndex, which is a sequence of integers starting from 0.</p>
 <div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the txt data</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>bestseller_data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/bestseller_books.txt'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>bestseller_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the txt data</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>bestseller_data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/bestseller_books.txt'</span>, sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>bestseller_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
@@ -2412,16 +2249,16 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing the index of the DataFrame</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>bestseller_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing the index of the DataFrame</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>bestseller_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>RangeIndex(start=0, stop=550, step=1)</code></pre>
 </div>
 </div>
 <p>Alternatively, we can use the <code>index_col</code> parameter in the <code>pd.read_csv()</code> function to set a specific column as the index when reading a CSV file in pandas. This allows us to directly specify which column should be used as the index of the resulting DataFrame.</p>
 <div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>bestseller_index_data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/bestseller_books.txt'</span>, sep<span class="op">=</span><span class="st">';'</span>, index_col<span class="op">=</span><span class="st">'Unnamed: 0.1'</span>)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>bestseller_index_data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/bestseller_books.txt'</span>, sep<span class="op">=</span><span class="st">';'</span>, index_col<span class="op">=</span><span class="st">'Unnamed: 0.1'</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <div>
 
@@ -2503,7 +2340,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
        ...
@@ -2513,8 +2350,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>The <code>index</code> is crucial when subsetting your dataset using methods like <code>loc[]</code>, as it identifies the rows you want to select based on their labels.</p>
 <div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the book that User rating is greater than 4.5</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.loc[bestseller_index_data[<span class="st">'User Rating'</span>]<span class="op">==</span> <span class="fl">4.9</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the book that User rating is greater than 4.5</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.loc[bestseller_index_data[<span class="st">'User Rating'</span>]<span class="op">==</span> <span class="fl">4.9</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <div>
 
@@ -2597,8 +2434,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>Additionally, you can modify the index at any point after the DataFrame is created by using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html">set_index()</a> function to re-index the rows based on existing column(s) of the DataFrame.</p>
 <div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>bestseller_data_reindexed <span class="op">=</span> bestseller_data.set_index(<span class="st">'Unnamed: 0.1'</span>)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>bestseller_data_reindexed.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>bestseller_data_reindexed <span class="op">=</span> bestseller_data.set_index(<span class="st">'Unnamed: 0.1'</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>bestseller_data_reindexed.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
        ...
@@ -2608,8 +2445,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>Note that, the index column does not have to uniquely identify each row. For example, if we need to subset data by <code>Author</code> frequently in our analysis, we can set it as our index</p>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>bestseller_author_index <span class="op">=</span> bestseller_data.set_index(<span class="st">'Author'</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>bestseller_author_index.loc[<span class="st">'Jen Sincero'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>bestseller_author_index <span class="op">=</span> bestseller_data.set_index(<span class="st">'Author'</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>bestseller_author_index.loc[<span class="st">'Jen Sincero'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 
@@ -2691,7 +2528,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>bestseller_author_index.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>bestseller_author_index.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>Index(['JJ Smith', 'Stephen King', 'Jordan B. Peterson', 'George Orwell',
        'National Geographic Kids', 'George R. R. Martin',
@@ -2705,7 +2542,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>You can revert it back to a default index using <code>reset_index()</code>. It converts the current index into a regular column and resets the index to a default integer sequence.</p>
 <div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>bestseller_author_index.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>bestseller_author_index.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <div>
 
@@ -2874,9 +2711,9 @@ Name: count, dtype: int64</code></pre>
 <pre><code>df.drop(columns='column_name')
 df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the repeated rows in the bestseller dataframe</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>bestseller_df <span class="op">=</span> bestseller_index_data.drop(columns <span class="op">=</span> <span class="st">'Unnamed: 0'</span>)</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the repeated rows in the bestseller dataframe</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>bestseller_df <span class="op">=</span> bestseller_index_data.drop(columns <span class="op">=</span> <span class="st">'Unnamed: 0'</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <div>
 
@@ -2952,8 +2789,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another way to drop the column</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.drop(<span class="st">'Unnamed: 0'</span>, axis<span class="op">=</span><span class="dv">1</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another way to drop the column</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>bestseller_index_data.drop(<span class="st">'Unnamed: 0'</span>, axis<span class="op">=</span><span class="dv">1</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 
@@ -3034,18 +2871,18 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>In a DataFrame, it’s common to create new columns based on existing columns for analysis or prediction purposes. If the column name you specify does not already exist, a new column will be added to the DataFrame. If the column name already exists, the new values will overwrite the existing column.</p>
 <p>Let’s classify books based on their user rating</p>
 <div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_rating(rating):</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating <span class="op">&gt;=</span> <span class="fl">4.5</span>:</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Highly Rated'</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="fl">3.0</span> <span class="op">&lt;=</span> rating <span class="op">&lt;</span> <span class="fl">4.5</span>:</span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Moderately Rated'</span></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Low Rated'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_rating(rating):</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating <span class="op">&gt;=</span> <span class="fl">4.5</span>:</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Highly Rated'</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="fl">3.0</span> <span class="op">&lt;=</span> rating <span class="op">&lt;</span> <span class="fl">4.5</span>:</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Moderately Rated'</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Low Rated'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>bestseller_df[<span class="st">'Rating_Class'</span>] <span class="op">=</span> bestseller_df[<span class="st">'User Rating'</span>].<span class="bu">apply</span>(classify_rating)</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>bestseller_df[<span class="st">'Rating_Class'</span>] <span class="op">=</span> bestseller_df[<span class="st">'User Rating'</span>].<span class="bu">apply</span>(classify_rating)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <div>
 
@@ -3147,9 +2984,9 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </ul>
 <pre><code>df.rename(columns={'old_name': 'new_name'}, inplace=False)</code></pre>
 <div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename Year to Publication Year</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>bestseller_df.rename(columns<span class="op">=</span>{<span class="st">'Year'</span>:<span class="st">'Publication Year'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename Year to Publication Year</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>bestseller_df.rename(columns<span class="op">=</span>{<span class="st">'Year'</span>:<span class="st">'Publication Year'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <div>
 
@@ -3230,9 +3067,9 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>Specifying a dictionary that maps old column names to new one</p>
 <pre><code>df_renamed_multiple = df.rename(columns={'col1': 'new_col1', 'col2': 'new_col2'})</code></pre>
 <div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename Name to Book Name, and Author to Writer</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>bestseller_df.rename(columns<span class="op">=</span>{<span class="st">'Name'</span>:<span class="st">'Book Name'</span>, <span class="st">'Author'</span>:<span class="st">'Writer'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename Name to Book Name, and Author to Writer</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>bestseller_df.rename(columns<span class="op">=</span>{<span class="st">'Name'</span>:<span class="st">'Book Name'</span>, <span class="st">'Author'</span>:<span class="st">'Writer'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>bestseller_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <div>
 
@@ -3312,8 +3149,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <h3 data-number="7.6.6" class="anchored" data-anchor-id="sorting-data"><span class="header-section-number">7.6.6</span> Sorting data</h3>
 <p>Sorting dataset is a very common operation. The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html">sort_values()</a> function of Pandas can be used to sort a Pandas DataFrame or Series. Let us sort the spotify data in decreasing order of <em>track_popularity</em>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>bestseller_sorted <span class="op">=</span> bestseller_index_data.sort_values(by <span class="op">=</span> <span class="st">'User Rating'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>bestseller_sorted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>bestseller_sorted <span class="op">=</span> bestseller_index_data.sort_values(by <span class="op">=</span> <span class="st">'User Rating'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>bestseller_sorted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -3400,9 +3237,9 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>With the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rank.html">rank()</a> function, we can rank the observations.</p>
 <p>For example, let us add a new column to the bestseller data that provides the rank of the <code>User Rating</code> column:</p>
 <div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>bestseller_ranked <span class="op">=</span> bestseller_df.copy()</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>bestseller_ranked[<span class="st">'Rating_rank'</span>]<span class="op">=</span>bestseller_ranked[<span class="st">'User Rating'</span>].rank()</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>bestseller_ranked.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>bestseller_ranked <span class="op">=</span> bestseller_df.copy()</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>bestseller_ranked[<span class="st">'Rating_rank'</span>]<span class="op">=</span>bestseller_ranked[<span class="st">'User Rating'</span>].rank()</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>bestseller_ranked.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <div>
 
@@ -3496,19 +3333,19 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <li>Arithmetic Between Columns</li>
 </ul>
 <div class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]}</span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding two columns</span></span>
-<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_plus_B'</span>] <span class="op">=</span> df[<span class="st">'A'</span>] <span class="op">+</span> df[<span class="st">'B'</span>]</span>
-<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying two columns</span></span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_times_C'</span>] <span class="op">=</span> df[<span class="st">'A'</span>] <span class="op">*</span> df[<span class="st">'C'</span>]</span>
-<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]}</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding two columns</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_plus_B'</span>] <span class="op">=</span> df[<span class="st">'A'</span>] <span class="op">+</span> df[<span class="st">'B'</span>]</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying two columns</span></span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_times_C'</span>] <span class="op">=</span> df[<span class="st">'A'</span>] <span class="op">*</span> df[<span class="st">'C'</span>]</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 
@@ -3559,9 +3396,9 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <li>Arithmetic on Entire Rows</li>
 </ul>
 <div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summing values across columns for each row</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'row_sum'</span>] <span class="op">=</span> df.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summing values across columns for each row</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'row_sum'</span>] <span class="op">=</span> df.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <div>
 
@@ -3618,13 +3455,13 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>When performing operations between two DataFrames, pandas aligns the data based on both the <code>index</code> and <code>column labels</code>. If the indices or columns do not match, pandas automatically fills the missing values with NaN (not-a-number) unless a fill value is provided.</p>
 <p>Let us create two toy DataFrames:</p>
 <div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating two toy DataFrames</span></span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">=</span> pd.DataFrame([(<span class="dv">1</span>,<span class="dv">2</span>),(<span class="dv">3</span>,<span class="dv">4</span>),(<span class="dv">5</span>,<span class="dv">6</span>)], columns<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'b'</span>])</span>
-<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>toy_df2 <span class="op">=</span> pd.DataFrame([(<span class="dv">100</span>,<span class="dv">200</span>),(<span class="dv">300</span>,<span class="dv">400</span>),(<span class="dv">500</span>,<span class="dv">600</span>)], columns<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'b'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating two toy DataFrames</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">=</span> pd.DataFrame([(<span class="dv">1</span>,<span class="dv">2</span>),(<span class="dv">3</span>,<span class="dv">4</span>),(<span class="dv">5</span>,<span class="dv">6</span>)], columns<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'b'</span>])</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>toy_df2 <span class="op">=</span> pd.DataFrame([(<span class="dv">100</span>,<span class="dv">200</span>),(<span class="dv">300</span>,<span class="dv">400</span>),(<span class="dv">500</span>,<span class="dv">600</span>)], columns<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'b'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DataFrame 1</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>toy_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DataFrame 1</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>toy_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <div>
 
@@ -3660,8 +3497,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DataFrame 2</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>toy_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DataFrame 2</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>toy_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <div>
 
@@ -3698,8 +3535,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 <p>Element by element operations between two DataFrames can be performed with the operators <code>+</code>, <code>-</code>, <code>*</code>,<code>/</code>,<code>**</code>, and <code>%</code>. Below is an example of element-by-element addition of two DataFrames:</p>
 <div class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-by-element arithmetic addition of the two DataFrames</span></span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">+</span> toy_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-by-element arithmetic addition of the two DataFrames</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">+</span> toy_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <div>
 
@@ -3736,9 +3573,9 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 <p>Note that these operations create problems when the row indices and/or column names of the two DataFrames do not match. See the example below:</p>
 <div class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating another toy example of a DataFrame</span></span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>toy_df3 <span class="op">=</span> pd.DataFrame([(<span class="dv">100</span>,<span class="dv">200</span>),(<span class="dv">300</span>,<span class="dv">400</span>),(<span class="dv">500</span>,<span class="dv">600</span>)], columns<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'b'</span>], index<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
-<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>toy_df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating another toy example of a DataFrame</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>toy_df3 <span class="op">=</span> pd.DataFrame([(<span class="dv">100</span>,<span class="dv">200</span>),(<span class="dv">300</span>,<span class="dv">400</span>),(<span class="dv">500</span>,<span class="dv">600</span>)], columns<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'b'</span>], index<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>toy_df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <div>
 
@@ -3774,8 +3611,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Adding DataFrames with some unmatching row indices</span></span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">+</span> toy_df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Adding DataFrames with some unmatching row indices</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">+</span> toy_df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <div>
 
@@ -3818,8 +3655,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>Note that the rows whose indices match between the two DataFrames are added up. The rest of the values are missing (or <code>NaN</code>) because only one of the DataFrames has that index.</p>
 <p>As in the case of row indices, missing values will also appear in the case of unmatching column names, as shown in the example below.</p>
 <div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>toy_df4 <span class="op">=</span> pd.DataFrame([(<span class="dv">100</span>,<span class="dv">200</span>),(<span class="dv">300</span>,<span class="dv">400</span>),(<span class="dv">500</span>,<span class="dv">600</span>)], columns<span class="op">=</span>[<span class="st">'b'</span>,<span class="st">'c'</span>])</span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>toy_df4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>toy_df4 <span class="op">=</span> pd.DataFrame([(<span class="dv">100</span>,<span class="dv">200</span>),(<span class="dv">300</span>,<span class="dv">400</span>),(<span class="dv">500</span>,<span class="dv">600</span>)], columns<span class="op">=</span>[<span class="st">'b'</span>,<span class="st">'c'</span>])</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>toy_df4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <div>
 
@@ -3855,8 +3692,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Adding DataFrames with some unmatching column names</span></span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">+</span> toy_df4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Adding DataFrames with some unmatching column names</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>toy_df1 <span class="op">+</span> toy_df4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <div>
 
@@ -3900,8 +3737,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <h3 data-number="7.7.3" class="anchored" data-anchor-id="arithmetic-between-dataframe-and-series-broadcasting"><span class="header-section-number">7.7.3</span> Arithmetic Between DataFrame and Series (Broadcasting)</h3>
 <p>Pandas supports <strong>broadcasting</strong>, where a Series can be broadcasted to match the dimensions of a DataFrame during an arithmetic operation.</p>
 <div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Broadcasting: The row [1,2] (a Series) is added on every row in df2 </span></span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>toy_df1.loc[<span class="dv">0</span>,:] <span class="op">+</span> toy_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Broadcasting: The row [1,2] (a Series) is added on every row in df2 </span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>toy_df1.loc[<span class="dv">0</span>,:] <span class="op">+</span> toy_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <div>
 
@@ -3939,8 +3776,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>Note that the <code>+</code> operator is used to add values of a Series to a DataFrame based on column names. For adding a Series to a DataFrame based on row indices, we cannot use the <code>+</code> operator. Instead, we’ll need to use the <code>add()</code> function as explained below.</p>
 <p><strong>Broadcasting based on row/column labels:</strong> We can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.add.html">add()</a> function to broadcast a Series to a DataFrame. By default the Series adds based on column names, as in the case of the <code>+</code> operator.</p>
 <div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the first row of df1 (a Series) to every row in df2 </span></span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>toy_df2.add(toy_df1.loc[<span class="dv">0</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the first row of df1 (a Series) to every row in df2 </span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>toy_df2.add(toy_df1.loc[<span class="dv">0</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <div>
 
@@ -3977,8 +3814,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 <p>For broadcasting based on row indices, we use the <code>axis</code> argument of the <code>add()</code> function.</p>
 <div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The second column of df1 (a Series) is added to every col in df2</span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>toy_df2.add(toy_df1.loc[:,<span class="st">'b'</span>],axis<span class="op">=</span><span class="st">'index'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The second column of df1 (a Series) is added to every col in df2</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>toy_df2.add(toy_df1.loc[:,<span class="st">'b'</span>],axis<span class="op">=</span><span class="st">'index'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <div>
 
@@ -4025,7 +3862,7 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <li><p>It provides a direct conversion, but it has been deprecated in favor of the newer <code>.to_numpy()</code> method because .values does not always handle all DataFrame types consistently.</p></li>
 </ul>
 <div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>toy_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>toy_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <div>
 
@@ -4061,7 +3898,7 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>toy_df1.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>toy_df1.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>array([[1, 2],
        [3, 4],
@@ -4077,7 +3914,7 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <li>Additional parameters: .to_numpy() can take parameters like dtype (to specify the data type) and copy (to create a copy or not).</li>
 </ul>
 <div class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>toy_df1.to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>toy_df1.to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>array([[1, 2],
        [3, 4],
@@ -4086,18 +3923,18 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 <p>In the NumPy chapter, we explored the below case study that demonstrated the benefits of using matrix multiplication in NumPy over python loops. However, this same operation cannot be directly performed in a pandas DataFrame in the same way.</p>
 <div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>food_qty <span class="op">=</span> pd.read_csv(<span class="st">'../data/food_quantity.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> pd.read_csv(<span class="st">'../data/price.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>food_qty <span class="op">=</span> pd.read_csv(<span class="st">'../data/food_quantity.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> pd.read_csv(<span class="st">'../data/price.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>store_expense <span class="op">=</span> pd.DataFrame(<span class="fl">0.0</span>, columns<span class="op">=</span>price.columns, index <span class="op">=</span> food_qty.index)</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> store_expense.index:</span>
-<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> store <span class="kw">in</span> store_expense.columns:</span>
-<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
-<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>            store_expense.loc[person, store] <span class="op">+=</span> food_qty.loc[person, food]<span class="op">*</span>price.loc[food, store]</span>
-<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>store_expense</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>store_expense <span class="op">=</span> pd.DataFrame(<span class="fl">0.0</span>, columns<span class="op">=</span>price.columns, index <span class="op">=</span> food_qty.index)</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> store_expense.index:</span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> store <span class="kw">in</span> store_expense.columns:</span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>            store_expense.loc[person, store] <span class="op">+=</span> food_qty.loc[person, food]<span class="op">*</span>price.loc[food, store]</span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>store_expense</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
 Wall time: 5.01 ms</code></pre>
@@ -4142,10 +3979,10 @@ Wall time: 5.01 ms</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using matrix multiplication in numpy</span></span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>np.dot(food_qty.values, price.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using matrix multiplication in numpy</span></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>np.dot(food_qty.values, price.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
 Wall time: 996 μs</code></pre>
@@ -4157,8 +3994,8 @@ Wall time: 996 μs</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the result to a DataFrame</span></span>
-<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.dot(food_qty.values, price.values), columns<span class="op">=</span>price.columns, index<span class="op">=</span>food_qty.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the result to a DataFrame</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.dot(food_qty.values, price.values), columns<span class="op">=</span>price.columns, index<span class="op">=</span>food_qty.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="80">
 <div>
 
@@ -4204,8 +4041,8 @@ Wall time: 996 μs</code></pre>
 <section id="advanced-dataframe-operations" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="advanced-dataframe-operations"><span class="header-section-number">7.8</span> Advanced DataFrame Operations</h2>
 <p>Pandas provides powerful methods for applying functions to DataFrame rows, columns, or individual elements. These methods allow for flexible data transformations, making them essential for advanced data manipulation.</p>
-<section id="apply-row-wise-column-wise-or-dataframe-wise" class="level3" data-number="7.8.1">
-<h3 data-number="7.8.1" class="anchored" data-anchor-id="apply-row-wise-column-wise-or-dataframe-wise"><span class="header-section-number">7.8.1</span> <code>apply()</code>: Row-wise, Column-wise, or DataFrame-wise</h3>
+<section id="apply-row-wise-or-column-wise" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="apply-row-wise-or-column-wise"><span class="header-section-number">7.8.1</span> <code>apply()</code>: Row-wise, or Column-wise</h3>
 <p>The <code>apply()</code> function in pandas is used to apply a function along an axis of a DataFrame.</p>
 <ul>
 <li>Row-wise: You can apply a function to each row using <code>axis=1</code>.</li>
@@ -4213,15 +4050,15 @@ Wall time: 996 μs</code></pre>
 </ul>
 <p>Let’s create a DataFrame and apply a custom function to each row.</p>
 <div class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
-<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <div>
 
@@ -4261,14 +4098,14 @@ Wall time: 996 μs</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute the row sum</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_sum(row):</span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute the row sum</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_sum(row):</span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function row-wise (axis=1)</span></span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Row_Sum'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(row_sum, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function row-wise (axis=1)</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Row_Sum'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(row_sum, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="84">
 <div>
 
@@ -4313,9 +4150,9 @@ Wall time: 996 μs</code></pre>
 </div>
 <p>Let’s apply the same function to each column next</p>
 <div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function column-wise (axis=0)</span></span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>column_sum <span class="op">=</span> df.<span class="bu">apply</span>(<span class="bu">sum</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>column_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function column-wise (axis=0)</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>column_sum <span class="op">=</span> df.<span class="bu">apply</span>(<span class="bu">sum</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>column_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>A           6
 B          15
@@ -4325,17 +4162,17 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe" class="level3" data-number="7.8.2">
-<h3 data-number="7.8.2" class="anchored" data-anchor-id="map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe"><span class="header-section-number">7.8.2</span> <code>map()</code>: Apply a function or mapping to each value in a Series or a DataFrame</h3>
-<p><code>map()</code> is typically used for element-wise transformations on a Series. It is used to substitute each value in a Series with another value or a transformation based on a function, dictionary, or another Series.</p>
+<section id="map-element-wise" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="map-element-wise"><span class="header-section-number">7.8.2</span> <code>map()</code>: Element-wise</h3>
+<p><code>map()</code> is typically used for element-wise transformations on a Series.</p>
 <div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the function to compute square of a number</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x):</span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use the map() function to apply a function element-wise</span></span>
-<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_squared'</span>] <span class="op">=</span> df[<span class="st">'A'</span>].<span class="bu">map</span>(square)</span>
-<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the function to compute square of a number</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x):</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use the map() function to apply a function element-wise</span></span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_squared'</span>] <span class="op">=</span> df[<span class="st">'A'</span>].<span class="bu">map</span>(square)</span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <div>
 
@@ -4382,9 +4219,9 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>However, to apply a function to each value in an entire DataFrame, we can use the <code>apply()</code> function with a suitable approach for element-wise operations.</p>
+<p>Element-wise transformation on an entire DataFrame.</p>
 <div class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">map</span>(square)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">map</span>(square)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="87">
 <div>
 
@@ -4433,14 +4270,14 @@ dtype: int64</code></pre>
 </div>
 <p>When applying a function to an entire DataFrame, it’s important to ensure that all columns have the same data type. Otherwise, you might encounter errors or unexpected behavior.</p>
 <div class="cell" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>df_str <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="st">'I'</span>, <span class="st">'major'</span>, <span class="st">'in'</span>],</span>
-<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
-<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment the following line to run the code</span></span>
-<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a><span class="co"># df_str.map(square)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>df_str <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="st">'I'</span>, <span class="st">'major'</span>, <span class="st">'in'</span>],</span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment the following line to run the code</span></span>
+<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co"># df_str.map(square)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="key-differences-between-map-and-apply" class="level3" data-number="7.8.3">
@@ -4461,7 +4298,7 @@ dtype: int64</code></pre>
 <tbody>
 <tr class="odd">
 <td>Applies to</td>
-<td>Series</td>
+<td>Both Series and DataFrame</td>
 <td>Both Series and DataFrame</td>
 </tr>
 <tr class="even">
@@ -4489,10 +4326,9 @@ dtype: int64</code></pre>
 <section id="summary" class="level4" data-number="7.8.3.1">
 <h4 data-number="7.8.3.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.8.3.1</span> Summary:</h4>
 <ul>
-<li><code>map()</code>: Primarily used for element-wise operations on a Series. It can take functions, dictionaries, or Series as input for substitution or transformation.</li>
-<li><code>apply()</code>: More flexible and can be used on both Series and DataFrame. It can apply complex functions across rows or columns.</li>
+<li><code>map()</code>: Primarily used for element-wise operations. It can take functions, dictionaries, or Series as input for substitution or transformation.</li>
+<li><code>apply()</code>: Apply complex functions across rows or columns.</li>
 </ul>
-<p>If you’re working with a DataFrame and need to apply functions on a row or column basis, <code>apply()</code> is the preferred choice. For simpler transformations on a Series, use <code>map()</code>.</p>
 </section>
 </section>
 </section>
@@ -4501,7 +4337,7 @@ dtype: int64</code></pre>
 <p>A lambda function is a small, anonymous function defined using the lambda keyword in Python. It can take any number of arguments but can only have one expression. In pandas, lambda functions are often used for quick and concise operations on data.</p>
 <section id="syntax-of-lambda-functions" class="level3" data-number="7.9.1">
 <h3 data-number="7.9.1" class="anchored" data-anchor-id="syntax-of-lambda-functions"><span class="header-section-number">7.9.1</span> Syntax of Lambda Functions:</h3>
-<pre><code>lambda arguments: expression</code></pre>
+<p><code>lambda arguments: expression</code></p>
 </section>
 <section id="key-features" class="level3" data-number="7.9.2">
 <h3 data-number="7.9.2" class="anchored" data-anchor-id="key-features"><span class="header-section-number">7.9.2</span> Key Features</h3>
@@ -4513,8 +4349,8 @@ dtype: int64</code></pre>
 <p>Lambda functions are commonly used with <code>apply()</code> and <code>map()</code> to efficiently transform data in pandas, allowing for quick, inline function definitions without the need to explicitly define separate functions.</p>
 <p>Let’s use a lambda function to rewrite the <code>apply()</code> and <code>map()</code> operations from the previous example</p>
 <div class="cell" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_squared_lamdba'</span>] <span class="op">=</span> df[<span class="st">'A'</span>].<span class="bu">map</span>(<span class="kw">lambda</span> x: x <span class="op">**</span> <span class="dv">2</span>)</span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_squared_lamdba'</span>] <span class="op">=</span> df[<span class="st">'A'</span>].<span class="bu">map</span>(<span class="kw">lambda</span> x: x <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="89">
 <div>
 
@@ -4566,8 +4402,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>df_squared <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">**</span> <span class="dv">2</span>)</span>
-<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>df_squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>df_squared <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>df_squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="90">
 <div>
 
@@ -4621,15 +4457,15 @@ dtype: int64</code></pre>
 <p>Let’s look at other examples using lambda</p>
 <p>Example 1: adding a new column based on existing columns</p>
 <div class="cell" data-execution_count="91">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
-<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a lambda function to create a new column 'C' as the sum of 'A' and 'B'</span></span>
-<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'C'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: row[<span class="st">'A'</span>] <span class="op">+</span> row[<span class="st">'B'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a lambda function to create a new column 'C' as the sum of 'A' and 'B'</span></span>
+<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'C'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: row[<span class="st">'A'</span>] <span class="op">+</span> row[<span class="st">'B'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C
 0  1  4  5
@@ -4639,9 +4475,9 @@ dtype: int64</code></pre>
 </div>
 <p>Example 2: Filter rows based on a condition</p>
 <div class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows where values in column 'A' are greater than 1</span></span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[df[<span class="st">'A'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;</span> <span class="dv">1</span>)]</span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows where values in column 'A' are greater than 1</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[df[<span class="st">'A'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;</span> <span class="dv">1</span>)]</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C
 1  2  5  7
@@ -4656,7 +4492,7 @@ dtype: int64</code></pre>
 <p><strong>Song recommendation:</strong> Spotify recommends songs based on songs listened by the user. Suppose you have listened to the song <em>drivers license</em>. Spotify intends to recommend you 5 songs that are <em>similar</em> to <em>drivers license</em>. Which songs should it recommend?</p>
 <p>Let us see the available song information that can help us identify songs similar to <em>drivers license</em>. The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html">columns</a> attribute of DataFrame will display all the columns names. The description of some of the column names relating to audio features is <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features">here</a>.</p>
 <div class="cell" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>spotify_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>spotify_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="93">
 <pre><code>Index(['artist_followers', 'genres', 'artist_name', 'artist_popularity',
        'track_name', 'track_popularity', 'duration_ms', 'explicit',
@@ -4672,11 +4508,11 @@ dtype: int64</code></pre>
 <p>where the subscript <em>DL</em> stands for <em>drivers license</em> and <em>S</em> stands for any song. The top 5 songs with the least value of <span class="math inline">\(Similarity_{DL-S}\)</span> will be the most similar to <em>drivers lincense</em> and should be recommended.</p>
 <p>Let us subset the columns that we need to use to compute the Euclidean distance.</p>
 <div class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>audio_features <span class="op">=</span> spotify_data[[<span class="st">'danceability'</span>, <span class="st">'energy'</span>, <span class="st">'key'</span>, <span class="st">'loudness'</span>,<span class="st">'mode'</span>,<span class="st">'speechiness'</span>,</span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'acousticness'</span>, <span class="st">'instrumentalness'</span>, <span class="st">'liveness'</span>,<span class="st">'valence'</span>, <span class="st">'tempo'</span>, <span class="st">'time_signature'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>audio_features <span class="op">=</span> spotify_data[[<span class="st">'danceability'</span>, <span class="st">'energy'</span>, <span class="st">'key'</span>, <span class="st">'loudness'</span>,<span class="st">'mode'</span>,<span class="st">'speechiness'</span>,</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'acousticness'</span>, <span class="st">'instrumentalness'</span>, <span class="st">'liveness'</span>,<span class="st">'valence'</span>, <span class="st">'tempo'</span>, <span class="st">'time_signature'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>audio_features.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>audio_features.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="95">
 <div>
 
@@ -4782,8 +4618,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Distribution of values of audio_features</span></span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>audio_features.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Distribution of values of audio_features</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>audio_features.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="96">
 <div>
 
@@ -4937,10 +4773,10 @@ dtype: int64</code></pre>
 <p>Let us scale the value of each column to a standard uniform distribution: <span class="math inline">\(U[0,1]\)</span>.</p>
 <p>For scaling the values of a column to <span class="math inline">\(U[0,1]\)</span>, we need to subtract the minimum value of the column from each value, and divide by the range of values of the column. For example, <em>danceability</em> can be standardized as follows:</p>
 <div class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling danceability to U[0,1]</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>danceability_value_range <span class="op">=</span> audio_features.danceability.<span class="bu">max</span>()<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>()</span>
-<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>danceability_std <span class="op">=</span> (audio_features.danceability<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>())<span class="op">/</span>danceability_value_range</span>
-<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>danceability_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling danceability to U[0,1]</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>danceability_value_range <span class="op">=</span> audio_features.danceability.<span class="bu">max</span>()<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>()</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>danceability_std <span class="op">=</span> (audio_features.danceability<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>())<span class="op">/</span>danceability_value_range</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>danceability_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="97">
 <pre><code>0         0.681174
 1         0.517206
@@ -4958,22 +4794,22 @@ Name: danceability, Length: 243190, dtype: float64</code></pre>
 </div>
 <p>However, it will be cumbersome to repeat the above code for each audio feature. We can instead write a function that scales values of a column to <span class="math inline">\(U[0,1]\)</span>, and apply the function on all the audio features.</p>
 <div class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to scale a column to U[0,1]</span></span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scale_uniform(x):</span>
-<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to scale a column to U[0,1]</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scale_uniform(x):</span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will use the Pandas function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html">apply()</a> to apply the above function to the DataFrame <code>audio_features</code>.</p>
 <div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling all audio features to U[0,1]</span></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(scale_uniform)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling all audio features to U[0,1]</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(scale_uniform)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above two blocks of code can be concisely written with the <code>lambda</code> function as:</p>
 <div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co">#All the audio features are scaled to U[0,1]</span></span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#All the audio features are scaled to U[0,1]</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="101">
 <div>
 
@@ -5125,12 +4961,12 @@ Name: danceability, Length: 243190, dtype: float64</code></pre>
 </div>
 <p>Since we need to find the Euclidean distance from the song <em>drivers license</em>, let us find the index of the row containing features of <em>drivers license.</em></p>
 <div class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Index of the row consisting of drivers license can be found with the index attribute</span></span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>drivers_license_index <span class="op">=</span> spotify_data[spotify_data.track_name<span class="op">==</span><span class="st">'drivers license'</span>].index[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Index of the row consisting of drivers license can be found with the index attribute</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>drivers_license_index <span class="op">=</span> spotify_data[spotify_data.track_name<span class="op">==</span><span class="st">'drivers license'</span>].index[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the object returned by the <code>index</code> attribute is of type <code>pandas.core.indexes.numeric.Int64Index</code>. The elements of this object can be retrieved like the elements of a python list. That is why the object is sliced with <code>[0]</code> to return the first element of the object. As there is only one observation with the <code>track_name</code> as <em>drivers license</em>, we sliced the first element. If there were multiple observations with <code>track_name</code> as <em>drivers license</em>, we will obtain the indices of all those observations with the <code>index</code> attribute.</p>
 <div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="108">
 <pre><code>danceability        0.592105
 energy              0.436000
@@ -5149,13 +4985,13 @@ Name: 2398, dtype: float64</code></pre>
 </div>
 <p>Now, we’ll subtract the audio features of <em>drivers license</em> from all other songs (broadcasting):</p>
 <div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Audio features of drivers license are being subtracted from audio features of all songs by broadcasting</span></span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL <span class="op">=</span> audio_features_scaled<span class="op">-</span>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Audio features of drivers license are being subtracted from audio features of all songs by broadcasting</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL <span class="op">=</span> audio_features_scaled<span class="op">-</span>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let us square the difference computed above. We’ll use the in-built python function <code>pow()</code> to square the difference:</p>
 <div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq <span class="op">=</span> songs_minus_DL.<span class="bu">pow</span>(<span class="dv">2</span>)</span>
-<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq <span class="op">=</span> songs_minus_DL.<span class="bu">pow</span>(<span class="dv">2</span>)</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
 <div>
 
@@ -5262,8 +5098,8 @@ Name: 2398, dtype: float64</code></pre>
 </div>
 <p>Now, we’ll sum the squares of differences from all audio features to compute the similarity of all songs to <em>drivers license</em>.</p>
 <div class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>distance_squared <span class="op">=</span> songs_minus_DL_sq.<span class="bu">sum</span>(axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>distance_squared.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>distance_squared <span class="op">=</span> songs_minus_DL_sq.<span class="bu">sum</span>(axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>distance_squared.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="105">
 <pre><code>0    1.337163
 1    1.438935
@@ -5275,8 +5111,8 @@ dtype: float64</code></pre>
 </div>
 <p>Now, we’ll sort these distances to find the top 5 songs closest to drivers’s license.</p>
 <div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>distances_sorted <span class="op">=</span> distance_squared.sort_values()</span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>distances_sorted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>distances_sorted <span class="op">=</span> distance_squared.sort_values()</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>distances_sorted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>2398      0.000000
 81844     0.008633
@@ -5288,7 +5124,7 @@ dtype: float64</code></pre>
 </div>
 <p>Using the indices of the top 5 distances, we will identify the top 5 songs most similar to <em>drivers license</em>:</p>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>spotify_data.loc[distances_sorted.index[<span class="dv">0</span>:<span class="dv">6</span>],:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>spotify_data.loc[distances_sorted.index[<span class="dv">0</span>:<span class="dv">6</span>],:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="107">
 <div>
 

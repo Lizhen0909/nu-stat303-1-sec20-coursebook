@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, frame hidden, boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -7683,9 +7683,9 @@ to define a one-dimensional NumPy array.
 \end{Shaded}
 
 \begin{verbatim}
-Time take to multiply numbers in a list =  0.02404475212097168
-Time take to multiply numbers in a tuple =  0.025005578994750977
-Time take to multiply numbers in a NumPy array =  0.010440349578857422
+Time take to multiply numbers in a list =  0.021925687789916992
+Time take to multiply numbers in a tuple =  0.028903484344482422
+Time take to multiply numbers in a NumPy array =  0.011997461318969727
 \end{verbatim}
 
 \hypertarget{basics-of-numpy-arrays}{%
@@ -7802,7 +7802,7 @@ object\_.
 \end{Shaded}
 
 \begin{verbatim}
-dtype('int32')
+dtype('int64')
 \end{verbatim}
 
 \hypertarget{array-indexing-and-slicing}{%
@@ -8151,7 +8151,7 @@ array([[ 11,  24,  39,  56],
 \begin{verbatim}
 array([[1, 2, 3, 0],
        [1, 2, 3, 0],
-       [1, 1, 2, 3]], dtype=int32)
+       [1, 1, 2, 3]])
 \end{verbatim}
 
 \hypertarget{comparison-and-logical-operation}{%
@@ -8225,7 +8225,7 @@ elements in two arrays using the \texttt{sum} method. Remember that
 \end{Shaded}
 
 \begin{verbatim}
-3
+np.int64(3)
 \end{verbatim}
 
 \hypertarget{aggregate-functions-np.sum-np.mean-np.min-np.max}{%
@@ -8746,8 +8746,8 @@ the benefits of vectorization.
 \end{Shaded}
 
 \begin{verbatim}
-Loop-based implementation result: 249915.69608, Time: 0.19019 seconds
-NumPy np.dot result: 249915.69608, Time: 0.00496 seconds
+Loop-based implementation result: 250068.46992, Time: 0.19136 seconds
+NumPy np.dot result: 250068.46992, Time: 0.00199 seconds
 \end{verbatim}
 
 The \texttt{np.dot} function significantly outperforms the manual
@@ -8938,12 +8938,185 @@ Element-wise Multiplication after reshaping:
  [40 55 72]]
 \end{verbatim}
 
-\hypertarget{practical-applications-using-numpy}{%
-\section{Practical Applications using
-NumPy}\label{practical-applications-using-numpy}}
+\hypertarget{random-number-generation-in-numpy}{%
+\section{Random Number Generation in
+NumPy}\label{random-number-generation-in-numpy}}
 
-\hypertarget{practice-1}{%
-\subsection{Practice 1}\label{practice-1}}
+NumPy provides a variety of functions for generating random numbers
+through its numpy.random module. These functions can generate random
+numbers for different distributions and array shapes, making them
+essential for simulations, statistical sampling, and machine learning
+applications.
+
+\hypertarget{key-functions-for-random-number-generation-in-numpy}{%
+\subsection{Key Functions for Random Number Generation in
+NumPy}\label{key-functions-for-random-number-generation-in-numpy}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{np.random.rand()}: Generates random numbers from a uniform
+  distribution between 0 and 1.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate a 2x3 array of random values between 0 and 1}
+\NormalTok{rand\_array }\OperatorTok{=}\NormalTok{ np.random.rand(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(rand\_array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[0.59160333 0.1864713  0.70446818]
+ [0.46476414 0.75172527 0.2225734 ]]
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \texttt{np.random.randn()}: Generates random numbers from a standard
+  normal distribution (mean = 0, standard deviation = 1). It is useful
+  for simulating Gaussian distributed data
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{normal\_array }\OperatorTok{=}\NormalTok{ np.random.randn(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(normal\_array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[ 0.96287539 -0.57932461 -0.25728454]
+ [ 0.33379165  0.01331971 -0.19328112]
+ [-0.79966965 -1.20325527  1.50081961]]
+\end{verbatim}
+
+NumPy's
+\href{https://numpy.org/doc/stable/reference/random/index.html}{random}
+module can be used to generate arrays of random numbers from several
+different probability distributions. For example, a \texttt{3x5} array
+of uniformly distributed random numbers can be generated using the
+\texttt{uniform} function of the \texttt{random} module.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \texttt{np.random.randint()}: Generate random integers within a
+  specific range, you can specify \texttt{low} and \texttt{high} values
+  and the shape of the output array
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate a 4x4 matrix of random integers between 10 and 20}
+\NormalTok{int\_array }\OperatorTok{=}\NormalTok{ np.random.randint(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, (}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(int\_array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[13 17 15 18]
+ [10 11 13 15]
+ [13 12 12 13]
+ [17 14 11 16]]
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \texttt{np.random.choice()}: Random selects elements from an input
+  array
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select 5 random elements from the array [1, 2, 3, 4, 5] with replacement}
+\NormalTok{choice\_array }\OperatorTok{=}\NormalTok{ np.random.choice([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{], size}\OperatorTok{=}\DecValTok{5}\NormalTok{, replace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(choice\_array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[4 3 5 2 2]
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  \texttt{np.random.uniform()}: Generates random floating-point numbers
+  between a specified range (low, high) that follow uniform distribution
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate 6 random numbers from a normal distribution with mean=10 and std=2}
+\NormalTok{custom\_normal }\OperatorTok{=}\NormalTok{ np.random.normal(}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{, size}\OperatorTok{=}\DecValTok{6}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(custom\_normal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[ 8.96337061  9.80411528  7.1623284   9.58883996 11.82330829 10.53508984]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate a 1D array of 5 random numbers between {-}5 and 5}
+\NormalTok{uniform\_array }\OperatorTok{=}\NormalTok{ np.random.uniform(}\OperatorTok{{-}}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, size}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(uniform\_array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[-4.76424391 -2.90776829  4.56871733  2.3230159  -4.72083461]
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  \texttt{np.random.normal()}: Generates random numbers from a normal
+  distribution with a specified mean and standard deviation.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.random.uniform(size }\OperatorTok{=}\NormalTok{ (}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[0.66198756, 0.76365694, 0.79924355, 0.80723229, 0.0661366 ],
+       [0.5777333 , 0.49288606, 0.02914087, 0.61883579, 0.04236321],
+       [0.2049758 , 0.9819383 , 0.65983787, 0.87025466, 0.39354816]])
+\end{verbatim}
+
+For a full list, please check the
+\href{https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html}{offcial
+website}
+
+Random numbers can also be generated by Python's built-in
+\href{https://docs.python.org/3/library/random.html}{random} module.
+However, it generates one random number at a time, which makes it much
+slower than NumPy's random module.
+
+\hypertarget{independent-practice}{%
+\section{Independent Practice:}\label{independent-practice}}
+
+\hypertarget{practice-exercise-1-1}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-1}}
 
 \hypertarget{section-17}{%
 \subsubsection{}\label{section-17}}
@@ -8991,7 +9164,7 @@ Note that:
 \begin{Shaded}
 \begin{Highlighting}[]
 
-\NormalTok{capital\_cities }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/country{-}capital{-}lat{-}long{-}population.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{capital\_cities }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./datasets/country{-}capital{-}lat{-}long{-}population.csv\textquotesingle{}}\NormalTok{)}
 \NormalTok{coordinates\_capital\_cities }\OperatorTok{=}\NormalTok{ capital\_cities[[}\StringTok{\textquotesingle{}Latitude\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Longitude\textquotesingle{}}\NormalTok{]].to\_numpy()}
 \NormalTok{us\_coordinates }\OperatorTok{=}\NormalTok{ capital\_cities.loc[capital\_cities[}\StringTok{\textquotesingle{}Country\textquotesingle{}}\NormalTok{]}\OperatorTok{==}\StringTok{\textquotesingle{}United States of America\textquotesingle{}}\NormalTok{,[}\StringTok{\textquotesingle{}Latitude\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Longitude\textquotesingle{}}\NormalTok{]].to\_numpy()}
 
@@ -9064,8 +9237,8 @@ Coordinates of the top 10 cities closest to US are:
  [ 18.3419 -64.9307]]
 \end{verbatim}
 
-\hypertarget{practice-2}{%
-\subsubsection{Practice 2:}\label{practice-2}}
+\hypertarget{practice-exercise-2-1}{%
+\subsection{Practice exercise 2:}\label{practice-exercise-2-1}}
 
 This exercise will show vectorized computations with NumPy. Vectorized
 computations help perform computations more efficiently, and also make
@@ -9257,8 +9430,8 @@ straightforward, regardless of complexity. Vectorized computations are
 not only cleaner but also significantly faster, providing a more
 efficient solution.
 
-\hypertarget{practice-3}{%
-\subsection{Practice 3}\label{practice-3}}
+\hypertarget{practice-exercise-3-1}{%
+\subsection{Practice exercise 3}\label{practice-exercise-3-1}}
 
 Use matrix multiplication to find the average IMDB rating and average
 Rotten tomatoes rating for each genre - comedy, action, drama and
@@ -9451,186 +9624,9 @@ IMDB users prefer \emph{drama}, and are amused the least by
 would rather watch \emph{comedy} than \emph{horror} movies, on an
 average.
 
-\hypertarget{random-number-generation-in-numpy}{%
-\section{Random Number Generation in
-NumPy}\label{random-number-generation-in-numpy}}
-
-NumPy provides a variety of functions for generating random numbers
-through its numpy.random module. These functions can generate random
-numbers for different distributions and array shapes, making them
-essential for simulations, statistical sampling, and machine learning
-applications.
-
-\hypertarget{key-functions-for-random-number-generation-in-numpy}{%
-\subsection{Key Functions for Random Number Generation in
-NumPy}\label{key-functions-for-random-number-generation-in-numpy}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \texttt{np.random.rand()}: Generates random numbers from a uniform
-  distribution between 0 and 1.
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Generate a 2x3 array of random values between 0 and 1}
-\NormalTok{rand\_array }\OperatorTok{=}\NormalTok{ np.random.rand(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(rand\_array)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[[2.74215580e-04 2.08327329e-01 6.06536187e-01]
- [4.36072591e-01 5.14811095e-01 8.86915952e-01]]
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \texttt{np.random.randn()}: Generates random numbers from a standard
-  normal distribution (mean = 0, standard deviation = 1). It is useful
-  for simulating Gaussian distributed data
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{normal\_array }\OperatorTok{=}\NormalTok{ np.random.randn(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(normal\_array)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[[ 0.19086626 -1.38810614 -0.61883952]
- [ 0.1143216  -0.94453043  0.96887712]
- [-1.25773631 -0.86073842  1.33257953]]
-\end{verbatim}
-
-NumPy's
-\href{https://numpy.org/doc/stable/reference/random/index.html}{random}
-module can be used to generate arrays of random numbers from several
-different probability distributions. For example, a \texttt{3x5} array
-of uniformly distributed random numbers can be generated using the
-\texttt{uniform} function of the \texttt{random} module.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  \texttt{np.random.randint()}: Generate random integers within a
-  specific range, you can specify \texttt{low} and \texttt{high} values
-  and the shape of the output array
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Generate a 4x4 matrix of random integers between 10 and 20}
-\NormalTok{int\_array }\OperatorTok{=}\NormalTok{ np.random.randint(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, (}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{))}
-\BuiltInTok{print}\NormalTok{(int\_array)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[[17 17 13 12]
- [11 12 17 14]
- [17 16 18 15]
- [15 19 10 14]]
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  \texttt{np.random.choice()}: Random selects elements from an input
-  array
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Select 5 random elements from the array [1, 2, 3, 4, 5] with replacement}
-\NormalTok{choice\_array }\OperatorTok{=}\NormalTok{ np.random.choice([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{], size}\OperatorTok{=}\DecValTok{5}\NormalTok{, replace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(choice\_array)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[5 2 2 2 4]
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  \texttt{np.random.uniform()}: Generates random floating-point numbers
-  between a specified range (low, high) that follow uniform distribution
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Generate 6 random numbers from a normal distribution with mean=10 and std=2}
-\NormalTok{custom\_normal }\OperatorTok{=}\NormalTok{ np.random.normal(}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{, size}\OperatorTok{=}\DecValTok{6}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(custom\_normal)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[10.92245938  7.03853843 13.98985012 11.48219507 14.44385393 10.59496425]
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Generate a 1D array of 5 random numbers between {-}5 and 5}
-\NormalTok{uniform\_array }\OperatorTok{=}\NormalTok{ np.random.uniform(}\OperatorTok{{-}}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, size}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(uniform\_array)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[-3.51460535  1.06082243  2.00940807  1.33195996 -4.27081513]
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
-\item
-  \texttt{np.random.normal()}: Generates random numbers from a normal
-  distribution with a specified mean and standard deviation.
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{np.random.uniform(size }\OperatorTok{=}\NormalTok{ (}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-array([[0.69256322, 0.69259973, 0.03515058, 0.45186048, 0.43513769],
-       [0.07373366, 0.07465425, 0.92195975, 0.72915895, 0.8906299 ],
-       [0.15816734, 0.88144978, 0.05954028, 0.81403832, 0.97725557]])
-\end{verbatim}
-
-For a full list, please check the
-\href{https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html}{offcial
-website}
-
-Random numbers can also be generated by Python's built-in
-\href{https://docs.python.org/3/library/random.html}{random} module.
-However, it generates one random number at a time, which makes it much
-slower than NumPy's random module.
-
-\hypertarget{practical-applications-using-numpy-in-random-number-generation}{%
-\subsection{Practical Applications using NumPy in random number
-generation}\label{practical-applications-using-numpy-in-random-number-generation}}
-
-\hypertarget{practice-1-1}{%
-\subsubsection{Practice 1}\label{practice-1-1}}
+\hypertarget{practice-exercise-4-random-number-generation-using-numpy}{%
+\subsubsection{Practice exercise 4: Random number generation using
+NumPy}\label{practice-exercise-4-random-number-generation-using-numpy}}
 
 Suppose 500 people eat at Food cart 1, and another 500 eat at Food cart
 2, everyday.
@@ -9710,8 +9706,8 @@ Time taken =  0.008000850677490234
 
 The approach with NumPy is much faster than the one with loops.
 
-\hypertarget{practice-2-1}{%
-\subsection{Practice 2}\label{practice-2-1}}
+\hypertarget{practice-exercise-5-2}{%
+\subsection{Practice exercise 5}\label{practice-exercise-5-2}}
 
 \textbf{Bootstrapping:} Find the 95\% confidence interval of mean profit
 for `Action' movies, using Bootstrapping.
@@ -10112,12 +10108,14 @@ perious chapter of the book on Reading data.
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Using read\_csv()}: This is one of the most common methods to
-  read data from a CSV file into a pandas DataFrame.
+  \textbf{Using \texttt{read\_csv()}}: This is one of the most common
+  methods to read data from a CSV file into a pandas DataFrame.
 \item
-  \textbf{Using read\_excel()}: You can also read data from Excel files.
+  \textbf{Using \texttt{read\_excel()}}: You can also read data from
+  Excel files.
 \item
-  \textbf{Using read\_json()}: You can also read data from json files.
+  \textbf{Using \texttt{read\_json()}}: You can also read data from json
+  files.
 \end{itemize}
 
 \hypertarget{attributes-and-methods-of-a-pandas-dataframe}{%
@@ -10692,53 +10690,6 @@ The Street - Part 2 & 4 & 185973 & 0 & 1923 & 0.559 & ... & 0 & -9.804 &
 0.0633 & 0.816 & 105.840 & 4 \\
 \end{longtable}
 
-\hypertarget{drop}{%
-\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html}{\texttt{drop()}}}{drop()}}\label{drop}}
-
-This function is used to drop rows/columns from a DataFrame.
-
-For example, let us drop the columns \texttt{mode} from the spotify
-dataset:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Dropping the column \textquotesingle{}mode\textquotesingle{}}
-\NormalTok{spotify\_data\_new }\OperatorTok{=}\NormalTok{ spotify\_data.drop(}\StringTok{\textquotesingle{}mode\textquotesingle{}}\NormalTok{,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\NormalTok{spotify\_data\_new.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lllllllllllllllllllll@{}}
-\toprule\noalign{}
-& artist\_followers & genres & artist\_name & artist\_popularity &
-track\_name & track\_popularity & duration\_ms & explicit &
-release\_year & danceability & energy & key & loudness & speechiness &
-acousticness & instrumentalness & liveness & valence & tempo &
-time\_signature \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & 16996777 & rap & Juice WRLD & 96 & All Girls Are The Same & 0 &
-165820 & 1 & 2021 & 0.673 & 0.529 & 0 & -7.226 & 0.3060 & 0.0769 &
-0.000338 & 0.0856 & 0.203 & 161.991 & 4 \\
-1 & 16996777 & rap & Juice WRLD & 96 & Lucid Dreams & 0 & 239836 & 1 &
-2021 & 0.511 & 0.566 & 6 & -7.230 & 0.2000 & 0.3490 & 0.000000 & 0.3400
-& 0.218 & 83.903 & 4 \\
-2 & 16996777 & rap & Juice WRLD & 96 & Hear Me Calling & 0 & 189977 & 1
-& 2021 & 0.699 & 0.687 & 7 & -3.997 & 0.1060 & 0.3080 & 0.000036 &
-0.1210 & 0.499 & 88.933 & 4 \\
-3 & 16996777 & rap & Juice WRLD & 96 & Robbery & 0 & 240527 & 1 & 2021 &
-0.708 & 0.690 & 2 & -5.181 & 0.0442 & 0.3480 & 0.000000 & 0.2220 & 0.543
-& 79.993 & 4 \\
-4 & 5988689 & rap & Roddy Ricch & 88 & Big Stepper & 0 & 175170 & 0 &
-2021 & 0.753 & 0.597 & 8 & -8.469 & 0.2920 & 0.0477 & 0.000000 & 0.1970
-& 0.616 & 76.997 & 4 \\
-\end{longtable}
-
-Note that if multiple columns or rows are to be dropped, they must be
-enclosed in box brackets.
-
 \hypertarget{unique}{%
 \subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.unique.html}{\texttt{unique()}}}{unique()}}\label{unique}}
 
@@ -10862,10 +10813,9 @@ subsetting data, specifically:
   \texttt{df{[}(df{[}\textquotesingle{}column\_name\textquotesingle{}{]}\ \textgreater{}\ value)\ \&\ (df{[}\textquotesingle{}other\_column\textquotesingle{}{]}\ ==\ another\_value){]}}
 \end{itemize}
 
-\hypertarget{setting-and-resetting-indices-df.set_index-df.reset_index}{%
-\subsection{\texorpdfstring{Setting and Resetting indices:
-\texttt{df.set\_index()},
-\texttt{df.reset\_index()}}{Setting and Resetting indices: df.set\_index(), df.reset\_index()}}\label{setting-and-resetting-indices-df.set_index-df.reset_index}}
+\hypertarget{setting-and-resetting-indices}{%
+\subsection{Setting and Resetting
+indices}\label{setting-and-resetting-indices}}
 
 In pandas, the \texttt{index} of a dataframe can be accessed by using
 \texttt{index} attribute, it represents the row labels of a DataFrame.
@@ -11885,9 +11835,9 @@ rows, columns, or individual elements. These methods allow for flexible
 data transformations, making them essential for advanced data
 manipulation.
 
-\hypertarget{apply-row-wise-column-wise-or-dataframe-wise}{%
-\subsection{\texorpdfstring{\texttt{apply()}: Row-wise, Column-wise, or
-DataFrame-wise}{apply(): Row-wise, Column-wise, or DataFrame-wise}}\label{apply-row-wise-column-wise-or-dataframe-wise}}
+\hypertarget{apply-row-wise-or-column-wise}{%
+\subsection{\texorpdfstring{\texttt{apply()}: Row-wise, or
+Column-wise}{apply(): Row-wise, or Column-wise}}\label{apply-row-wise-or-column-wise}}
 
 The \texttt{apply()} function in pandas is used to apply a function
 along an axis of a DataFrame.
@@ -11978,14 +11928,11 @@ Row_Sum    45
 dtype: int64
 \end{verbatim}
 
-\hypertarget{map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe}{%
-\subsection{\texorpdfstring{\texttt{map()}: Apply a function or mapping
-to each value in a Series or a
-DataFrame}{map(): Apply a function or mapping to each value in a Series or a DataFrame}}\label{map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe}}
+\hypertarget{map-element-wise}{%
+\subsection{\texorpdfstring{\texttt{map()}:
+Element-wise}{map(): Element-wise}}\label{map-element-wise}}
 
 \texttt{map()} is typically used for element-wise transformations on a
-Series. It is used to substitute each value in a Series with another
-value or a transformation based on a function, dictionary, or another
 Series.
 
 \begin{Shaded}
@@ -12012,9 +11959,7 @@ Series.
 2 & 3 & 6 & 9 & 18 & 9 \\
 \end{longtable}
 
-However, to apply a function to each value in an entire DataFrame, we
-can use the \texttt{apply()} function with a suitable approach for
-element-wise operations.
+Element-wise transformation on an entire DataFrame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -12071,7 +12016,7 @@ Feature
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Applies to & Series & Both Series and DataFrame \\
+Applies to & Both Series and DataFrame & Both Series and DataFrame \\
 Functionality & Element-wise transformations & Can apply more complex
 functions (row-wise or column-wise for DataFrame) \\
 Input & Function, dictionary, or another Series & Function \\
@@ -12088,17 +12033,12 @@ column-wise) \\
 \begin{itemize}
 \tightlist
 \item
-  \texttt{map()}: Primarily used for element-wise operations on a
-  Series. It can take functions, dictionaries, or Series as input for
-  substitution or transformation.
+  \texttt{map()}: Primarily used for element-wise operations. It can
+  take functions, dictionaries, or Series as input for substitution or
+  transformation.
 \item
-  \texttt{apply()}: More flexible and can be used on both Series and
-  DataFrame. It can apply complex functions across rows or columns.
+  \texttt{apply()}: Apply complex functions across rows or columns.
 \end{itemize}
-
-If you're working with a DataFrame and need to apply functions on a row
-or column basis, \texttt{apply()} is the preferred choice. For simpler
-transformations on a Series, use \texttt{map()}.
 
 \hypertarget{introduction-to-lambda-functions-in-pandas}{%
 \section{Introduction to Lambda Functions in
@@ -12113,9 +12053,7 @@ quick and concise operations on data.
 \subsection{Syntax of Lambda
 Functions:}\label{syntax-of-lambda-functions}}
 
-\begin{verbatim}
-lambda arguments: expression
-\end{verbatim}
+\texttt{lambda\ arguments:\ expression}
 
 \hypertarget{key-features}{%
 \subsection{Key Features}\label{key-features}}
@@ -12621,11 +12559,11 @@ We can see the top 5 songs most similar to \emph{drivers license} in the
 \emph{track\_name} column above. Interestingly, three of the five songs
 are Asian! These songs indeed sound similar to \emph{drivers license}!
 
-\hypertarget{independent-practice}{%
-\section{Independent Practice:}\label{independent-practice}}
+\hypertarget{independent-practice-1}{%
+\section{Independent Practice:}\label{independent-practice-1}}
 
-\hypertarget{practice-exercise-1-1}{%
-\subsection{Practice exercise 1}\label{practice-exercise-1-1}}
+\hypertarget{practice-exercise-1-2}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-2}}
 
 \hypertarget{section-18}{%
 \subsubsection{}\label{section-18}}
@@ -12694,8 +12632,8 @@ are there?
 Which album amongst hip-hop has the higest mean sales per year per
 track, and who is its artist?
 
-\hypertarget{practice-exercise-2-1}{%
-\subsection{Practice exercise 2}\label{practice-exercise-2-1}}
+\hypertarget{practice-exercise-2-2}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-2}}
 
 \hypertarget{section-26}{%
 \subsubsection{}\label{section-26}}
@@ -12793,8 +12731,8 @@ people in terms of number of instagram followers?
 What is the mean \texttt{internet\_hours\_per\_day} for the remaining
 people?
 
-\hypertarget{practice-exercise-3-1}{%
-\subsection{Practice exercise 3}\label{practice-exercise-3-1}}
+\hypertarget{practice-exercise-3-2}{%
+\subsection{Practice exercise 3}\label{practice-exercise-3-2}}
 
 \hypertarget{section-39}{%
 \subsubsection{}\label{section-39}}
