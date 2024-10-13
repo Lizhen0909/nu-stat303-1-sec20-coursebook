@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, frame hidden, boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -8800,9 +8800,15 @@ replication without actually creating three copies of the smaller
 dimension array, thus improving performance and using lower memory.
 
 Broadcasting only works if one of the arrays can be replicated to match
-the other array's shape. * Dimensions of size 1 will broadcast (as if
-the value was repeated). * Otherwise, the dimension must have the same
-shape.
+the other array's shape.
+
+\begin{itemize}
+\tightlist
+\item
+  Dimensions of size 1 will broadcast (as if the value was repeated).
+\item
+  Otherwise, the dimension must have the same shape.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9764,6 +9770,3069 @@ interval. Use the algorithm below to find the confidence interval:
 Confidence interval = [$132.53 million, $182.69 million]
 \end{verbatim}
 
+\hypertarget{pandas}{%
+\chapter{Pandas}\label{pandas}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Pandas is an essential tool in the data scientist or data analyst's
+toolkit due to its ability to handle and transform data with ease and
+efficiency.
+
+Built on top of the NumPy package, Pandas extends the capabilities of
+NumPy by offering support for working with tabular or heterogeneous
+data. While NumPy is optimized for working with homogeneous numerical
+arrays, Pandas is specifically designed for handling structured, labeled
+data, commonly represented in two-dimensional tables known as
+DataFrames. There are some similarities between the two libraries. Like
+NumPy, Pandas provides basic mathematical functionalities such as
+addition, subtraction, conditional operations, and broadcasting.
+However, while NumPy focuses on multi-dimensional arrays, Pandas excels
+in offering the powerful 2D \texttt{DataFrame} object for data
+manipulation.
+
+Data in Pandas is often used to feed statistical analyses in SciPy,
+visualization functions in Matplotlib, and machine learning algorithms
+in Scikit-learn.
+
+Typically, the Pandas library is used for:
+
+\begin{itemize}
+\tightlist
+\item
+  Data reading/writing from different sources (CSV, Excel, SQL, etc.).
+\item
+  Data manipulation, cleaning, and transformation.
+\item
+  Computing data distribution and summary statistics
+\item
+  Grouping, aggregation, and pivoting for advanced data analysis.
+\item
+  Merging, concatenating, and reshaping data.
+\item
+  Handling time series and datetime data.
+\item
+  Data visualization and plotting.
+\end{itemize}
+
+Let's import the Pandas library to use its methods and functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{pandas-data-structures---series-and-dataframe}{%
+\section{Pandas data structures - Series and
+DataFrame}\label{pandas-data-structures---series-and-dataframe}}
+
+There are two core components of the Pandas library - Series and
+DataFrame.
+
+A DataFrame is a two-dimensional object - comprising of tabular data
+organized in rows and columns, where individual columns can be of
+different value types (numeric / string / boolean etc.). A DataFrame has
+row labels (also called row indices) which refer to individual rows, and
+column labels (also called column names) that refer to individual
+columns. By default, the row indices are integers starting from zero.
+However, both the row indices and column names can be customized by the
+user.
+
+Let us read the spotify data - \emph{spotify\_data.csv}, using the
+Pandas function \texttt{read\_csv()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/spotify\_data.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{spotify\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16996777 & rap & Juice WRLD & 96 & All Girls Are The Same & 0 &
+165820 & 1 & 2021 & 0.673 & ... & 0 & -7.226 & 1 & 0.3060 & 0.0769 &
+0.000338 & 0.0856 & 0.203 & 161.991 & 4 \\
+1 & 16996777 & rap & Juice WRLD & 96 & Lucid Dreams & 0 & 239836 & 1 &
+2021 & 0.511 & ... & 6 & -7.230 & 0 & 0.2000 & 0.3490 & 0.000000 &
+0.3400 & 0.218 & 83.903 & 4 \\
+2 & 16996777 & rap & Juice WRLD & 96 & Hear Me Calling & 0 & 189977 & 1
+& 2021 & 0.699 & ... & 7 & -3.997 & 0 & 0.1060 & 0.3080 & 0.000036 &
+0.1210 & 0.499 & 88.933 & 4 \\
+3 & 16996777 & rap & Juice WRLD & 96 & Robbery & 0 & 240527 & 1 & 2021 &
+0.708 & ... & 2 & -5.181 & 1 & 0.0442 & 0.3480 & 0.000000 & 0.2220 &
+0.543 & 79.993 & 4 \\
+4 & 5988689 & rap & Roddy Ricch & 88 & Big Stepper & 0 & 175170 & 0 &
+2021 & 0.753 & ... & 8 & -8.469 & 1 & 0.2920 & 0.0477 & 0.000000 &
+0.1970 & 0.616 & 76.997 & 4 \\
+\end{longtable}
+
+The object \texttt{spotify\_data} is a pandas DataFrame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{type}\NormalTok{(spotify\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+pandas.core.frame.DataFrame
+\end{verbatim}
+
+A Series is a one-dimensional array-like object in pandas that contains
+a sequence of values, where each value is associated with an index. All
+the values in a Series must have the same data type. Each column of a
+DataFrame is Series as shown in the example below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Extracting song titles from the spotify\_songs DataFrame}
+\NormalTok{spotify\_songs }\OperatorTok{=}\NormalTok{ spotify\_data[}\StringTok{\textquotesingle{}track\_name\textquotesingle{}}\NormalTok{]}
+\NormalTok{spotify\_songs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0                           All Girls Are The Same
+1                                     Lucid Dreams
+2                                  Hear Me Calling
+3                                          Robbery
+4                                      Big Stepper
+                            ...                   
+243185                                    Stardust
+243186             Knockin' A Jug - 78 rpm Version
+243187            When It's Sleepy Time Down South
+243188    On The Sunny Side Of The Street - Part 2
+243189                                    My Sweet
+Name: track_name, Length: 243190, dtype: object
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The object spotify\_songs is a Series}
+\BuiltInTok{type}\NormalTok{(spotify\_songs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+pandas.core.series.Series
+\end{verbatim}
+
+A~Series~is essentially a column, and a~DataFrame~is a two-dimensional
+table made up of a collection of Series
+
+\hypertarget{creating-a-pandas-series-dataframe}{%
+\section{Creating a Pandas Series /
+DataFrame}\label{creating-a-pandas-series-dataframe}}
+
+\begin{itemize}
+\tightlist
+\item
+  From a Python List or Dictionary
+\item
+  By Reading Data from a file
+\end{itemize}
+
+\hypertarget{creating-a-seriesdataframe-from-python-list-or-dictionary}{%
+\subsection{Creating a Series/DataFrame from Python List or
+Dictionary}\label{creating-a-seriesdataframe-from-python-list-or-dictionary}}
+
+\hypertarget{creating-a-series}{%
+\subsubsection{Creating a series:}\label{creating-a-series}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{From a Python List}: You can create a pandas Series by passing
+  a list of values.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Defining a Pandas Series}
+\NormalTok{series\_example }\OperatorTok{=}\NormalTok{ pd.Series([}\StringTok{\textquotesingle{}these\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}are\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}english\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}words\textquotesingle{}}\NormalTok{])}
+\NormalTok{series\_example}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0      these
+1        are
+2    english
+3      words
+dtype: object
+\end{verbatim}
+
+Note that the default row indices are integers starting from 0. However,
+the index can be specified with the \texttt{index} argument if desired
+by the user:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Defining a Pandas Series with custom row labels}
+\NormalTok{series\_example }\OperatorTok{=}\NormalTok{ pd.Series([}\StringTok{\textquotesingle{}these\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}are\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}english\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}words\textquotesingle{}}\NormalTok{], index }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\DecValTok{101}\NormalTok{,}\DecValTok{105}\NormalTok{))}
+\NormalTok{series\_example}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+101      these
+102        are
+103    english
+104      words
+dtype: object
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{From a Dictionary}: A dictionary can also be used to create a
+  Series, where keys become index labels.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Dictionary consisting of the GDP per capita of the US from 1960 to 2021 with some missing values}
+\NormalTok{GDP\_per\_capita\_dict }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}1960\textquotesingle{}}\NormalTok{:}\DecValTok{3007}\NormalTok{,}\StringTok{\textquotesingle{}1961\textquotesingle{}}\NormalTok{:}\DecValTok{3067}\NormalTok{,}\StringTok{\textquotesingle{}1962\textquotesingle{}}\NormalTok{:}\DecValTok{3244}\NormalTok{,}\StringTok{\textquotesingle{}1963\textquotesingle{}}\NormalTok{:}\DecValTok{3375}\NormalTok{,}\StringTok{\textquotesingle{}1964\textquotesingle{}}\NormalTok{:}\DecValTok{3574}\NormalTok{,}\StringTok{\textquotesingle{}1965\textquotesingle{}}\NormalTok{:}\DecValTok{3828}\NormalTok{,}\StringTok{\textquotesingle{}1966\textquotesingle{}}\NormalTok{:}\DecValTok{4146}\NormalTok{,}\StringTok{\textquotesingle{}1967\textquotesingle{}}\NormalTok{:}\DecValTok{4336}\NormalTok{,}\StringTok{\textquotesingle{}1968\textquotesingle{}}\NormalTok{:}\DecValTok{4696}\NormalTok{,}\StringTok{\textquotesingle{}1970\textquotesingle{}}\NormalTok{:}\DecValTok{5234}\NormalTok{,}\StringTok{\textquotesingle{}1971\textquotesingle{}}\NormalTok{:}\DecValTok{5609}\NormalTok{,}\StringTok{\textquotesingle{}1972\textquotesingle{}}\NormalTok{:}\DecValTok{6094}\NormalTok{,}\StringTok{\textquotesingle{}1973\textquotesingle{}}\NormalTok{:}\DecValTok{6726}\NormalTok{,}\StringTok{\textquotesingle{}1974\textquotesingle{}}\NormalTok{:}\DecValTok{7226}\NormalTok{,}\StringTok{\textquotesingle{}1975\textquotesingle{}}\NormalTok{:}\DecValTok{7801}\NormalTok{,}\StringTok{\textquotesingle{}1976\textquotesingle{}}\NormalTok{:}\DecValTok{8592}\NormalTok{,}\StringTok{\textquotesingle{}1978\textquotesingle{}}\NormalTok{:}\DecValTok{10565}\NormalTok{,}\StringTok{\textquotesingle{}1979\textquotesingle{}}\NormalTok{:}\DecValTok{11674}\NormalTok{, }\StringTok{\textquotesingle{}1980\textquotesingle{}}\NormalTok{:}\DecValTok{12575}\NormalTok{,}\StringTok{\textquotesingle{}1981\textquotesingle{}}\NormalTok{:}\DecValTok{13976}\NormalTok{,}\StringTok{\textquotesingle{}1982\textquotesingle{}}\NormalTok{:}\DecValTok{14434}\NormalTok{,}\StringTok{\textquotesingle{}1983\textquotesingle{}}\NormalTok{:}\DecValTok{15544}\NormalTok{,}\StringTok{\textquotesingle{}1984\textquotesingle{}}\NormalTok{:}\DecValTok{17121}\NormalTok{,}\StringTok{\textquotesingle{}1985\textquotesingle{}}\NormalTok{:}\DecValTok{18237}\NormalTok{,  }\StringTok{\textquotesingle{}1986\textquotesingle{}}\NormalTok{:}\DecValTok{19071}\NormalTok{,}\StringTok{\textquotesingle{}1987\textquotesingle{}}\NormalTok{:}\DecValTok{20039}\NormalTok{,}\StringTok{\textquotesingle{}1988\textquotesingle{}}\NormalTok{:}\DecValTok{21417}\NormalTok{,}\StringTok{\textquotesingle{}1989\textquotesingle{}}\NormalTok{:}\DecValTok{22857}\NormalTok{,}\StringTok{\textquotesingle{}1990\textquotesingle{}}\NormalTok{:}\DecValTok{23889}\NormalTok{,}\StringTok{\textquotesingle{}1991\textquotesingle{}}\NormalTok{:}\DecValTok{24342}\NormalTok{,  }\StringTok{\textquotesingle{}1992\textquotesingle{}}\NormalTok{:}\DecValTok{25419}\NormalTok{,}\StringTok{\textquotesingle{}1993\textquotesingle{}}\NormalTok{:}\DecValTok{26387}\NormalTok{,}\StringTok{\textquotesingle{}1994\textquotesingle{}}\NormalTok{:}\DecValTok{27695}\NormalTok{,}\StringTok{\textquotesingle{}1995\textquotesingle{}}\NormalTok{:}\DecValTok{28691}\NormalTok{,}\StringTok{\textquotesingle{}1996\textquotesingle{}}\NormalTok{:}\DecValTok{29968}\NormalTok{,}\StringTok{\textquotesingle{}1997\textquotesingle{}}\NormalTok{:}\DecValTok{31459}\NormalTok{,  }\StringTok{\textquotesingle{}1998\textquotesingle{}}\NormalTok{:}\DecValTok{32854}\NormalTok{,}\StringTok{\textquotesingle{}2000\textquotesingle{}}\NormalTok{:}\DecValTok{36330}\NormalTok{,}\StringTok{\textquotesingle{}2001\textquotesingle{}}\NormalTok{:}\DecValTok{37134}\NormalTok{,}\StringTok{\textquotesingle{}2002\textquotesingle{}}\NormalTok{:}\DecValTok{37998}\NormalTok{,}\StringTok{\textquotesingle{}2003\textquotesingle{}}\NormalTok{:}\DecValTok{39490}\NormalTok{,}\StringTok{\textquotesingle{}2004\textquotesingle{}}\NormalTok{:}\DecValTok{41725}\NormalTok{,  }\StringTok{\textquotesingle{}2005\textquotesingle{}}\NormalTok{:}\DecValTok{44123}\NormalTok{,}\StringTok{\textquotesingle{}2006\textquotesingle{}}\NormalTok{:}\DecValTok{46302}\NormalTok{,}\StringTok{\textquotesingle{}2007\textquotesingle{}}\NormalTok{:}\DecValTok{48050}\NormalTok{,}\StringTok{\textquotesingle{}2008\textquotesingle{}}\NormalTok{:}\DecValTok{48570}\NormalTok{,}\StringTok{\textquotesingle{}2009\textquotesingle{}}\NormalTok{:}\DecValTok{47195}\NormalTok{,}\StringTok{\textquotesingle{}2010\textquotesingle{}}\NormalTok{:}\DecValTok{48651}\NormalTok{,  }\StringTok{\textquotesingle{}2011\textquotesingle{}}\NormalTok{:}\DecValTok{50066}\NormalTok{,}\StringTok{\textquotesingle{}2012\textquotesingle{}}\NormalTok{:}\DecValTok{51784}\NormalTok{,}\StringTok{\textquotesingle{}2013\textquotesingle{}}\NormalTok{:}\DecValTok{53291}\NormalTok{,}\StringTok{\textquotesingle{}2015\textquotesingle{}}\NormalTok{:}\DecValTok{56763}\NormalTok{,}\StringTok{\textquotesingle{}2016\textquotesingle{}}\NormalTok{:}\DecValTok{57867}\NormalTok{,}\StringTok{\textquotesingle{}2017\textquotesingle{}}\NormalTok{:}\DecValTok{59915}\NormalTok{,}\StringTok{\textquotesingle{}2018\textquotesingle{}}\NormalTok{:}\DecValTok{62805}\NormalTok{, }\StringTok{\textquotesingle{}2019\textquotesingle{}}\NormalTok{:}\DecValTok{65095}\NormalTok{,}\StringTok{\textquotesingle{}2020\textquotesingle{}}\NormalTok{:}\DecValTok{63028}\NormalTok{,}\StringTok{\textquotesingle{}2021\textquotesingle{}}\NormalTok{:}\DecValTok{69288}\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Example 2: Creating a Pandas Series from a Dictionary}
+\NormalTok{GDP\_per\_capita\_series }\OperatorTok{=}\NormalTok{ pd.Series(GDP\_per\_capita\_dict)}
+\NormalTok{GDP\_per\_capita\_series.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+1960    3007
+1961    3067
+1962    3244
+1963    3375
+1964    3574
+dtype: int64
+\end{verbatim}
+
+\hypertarget{creating-a-dataframe}{%
+\subsubsection{Creating a DataFrame}\label{creating-a-dataframe}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{From a list of Python Dictionary}: You can create a DataFrame
+  where keys are column names and values are lists representing column
+  data.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#List of dictionary consisting of 52 playing cards of the deck}
+\NormalTok{deck\_list\_of\_dictionaries }\OperatorTok{=}\NormalTok{ [\{}\StringTok{\textquotesingle{}value\textquotesingle{}}\NormalTok{:i, }\StringTok{\textquotesingle{}suit\textquotesingle{}}\NormalTok{:c\}}
+\ControlFlowTok{for}\NormalTok{ c }\KeywordTok{in}\NormalTok{ [}\StringTok{\textquotesingle{}spades\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}clubs\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}hearts\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}diamonds\textquotesingle{}}\NormalTok{]}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Example 3: Creating a Pandas DataFrame from a List of dictionaries}
+\NormalTok{deck\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(deck\_list\_of\_dictionaries)}
+\NormalTok{deck\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& value & suit \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 2 & spades \\
+1 & 3 & spades \\
+2 & 4 & spades \\
+3 & 5 & spades \\
+4 & 6 & spades \\
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{From a Python Dictionary}: You can create a DataFrame where
+  keys are column names and values are lists representing column data.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Example 4: Creating a Pandas DataFrame from a Dictionary}
+\NormalTok{dict\_data }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{],}
+        \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{20}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{30}\NormalTok{],}
+        \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: [}\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{400}\NormalTok{, }\DecValTok{500}\NormalTok{]\}}
+
+\NormalTok{dict\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(dict\_data)}
+\NormalTok{dict\_df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& A & B & C \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 20 & 100 \\
+1 & 2 & 10 & 200 \\
+2 & 3 & 50 & 300 \\
+3 & 4 & 40 & 400 \\
+4 & 5 & 30 & 500 \\
+\end{longtable}
+
+\hypertarget{creating-a-seriesdataframe-by-reading-data-from-a-file}{%
+\section{Creating a Series/DataFrame by Reading Data from a
+File}\label{creating-a-seriesdataframe-by-reading-data-from-a-file}}
+
+In the real world, a Pandas DataFrame will typically be created by
+loading the datasets from existing storage such as SQL Database, CSV
+file, Excel file, text files, HTML files, etc., as we learned in the
+perious chapter of the book on Reading data.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Using read\_csv()}: This is one of the most common methods to
+  read data from a CSV file into a pandas DataFrame.
+\item
+  \textbf{Using read\_excel()}: You can also read data from Excel files.
+\item
+  \textbf{Using read\_json()}: You can also read data from json files.
+\end{itemize}
+
+\hypertarget{attributes-and-methods-of-a-pandas-dataframe}{%
+\section{Attributes and Methods of a Pandas
+DataFrame}\label{attributes-and-methods-of-a-pandas-dataframe}}
+
+All attributes and methods of a Pandas DataFrame object can be viewed
+with the python's built-in
+\href{https://docs.python.org/3/library/functions.html\#dir}{dir()}
+function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#List of attributes and methods of a Pandas DataFrame}
+\CommentTok{\#This code is not executed as the list is too long}
+\CommentTok{\# dir(spotify\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+Although we'll see examples of attributes and methods of a Pandas
+DataFrame, please note that most of these attributes and methods are
+also applicable to the Pandas Series object.
+
+\hypertarget{attributes-of-a-pandas-dataframe}{%
+\subsection{Attributes of a Pandas
+DataFrame}\label{attributes-of-a-pandas-dataframe}}
+
+Some of the attributes of the Pandas DataFrame class are the following.
+
+\hypertarget{dtypes}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html}{\texttt{dtypes}}}{dtypes}}\label{dtypes}}
+
+This attribute is a Series consisting the datatypes of columns of a
+Pandas DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.dtypes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+artist_followers       int64
+genres                object
+artist_name           object
+artist_popularity      int64
+track_name            object
+track_popularity       int64
+duration_ms            int64
+explicit               int64
+release_year           int64
+danceability         float64
+energy               float64
+key                    int64
+loudness             float64
+mode                   int64
+speechiness          float64
+acousticness         float64
+instrumentalness     float64
+liveness             float64
+valence              float64
+tempo                float64
+time_signature         int64
+dtype: object
+\end{verbatim}
+
+The table below describes the datatypes of columns in a Pandas
+DataFrame.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Pandas Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Native Python Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+object & string & The most general dtype. This datatype is assigned to a
+column if the column has mixed types (numbers and strings) \\
+int64 & int & This datatype is for integers from
+-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 or for integers
+having a maximum size of 64 bits \\
+float64 & float & This datatype is for real numbers. If a column
+contains integers and NaNs, Pandas will default to float64. This is
+because the missing values may be a real number \\
+datetime64, timedelta{[}ns{]} & N/A (but see
+the~\href{https://docs.python.org/2/library/datetime.html}{datetime}~module
+in Python's standard library) & Values meant to hold time data. This
+datatype is useful for time series analysis \\
+\end{longtable}
+
+\hypertarget{columns}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html}{\texttt{columns}}}{columns}}\label{columns}}
+
+This attribute consists of the column labels (or column names) of a
+Pandas DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['artist_followers', 'genres', 'artist_name', 'artist_popularity',
+       'track_name', 'track_popularity', 'duration_ms', 'explicit',
+       'release_year', 'danceability', 'energy', 'key', 'loudness', 'mode',
+       'speechiness', 'acousticness', 'instrumentalness', 'liveness',
+       'valence', 'tempo', 'time_signature'],
+      dtype='object')
+\end{verbatim}
+
+\hypertarget{index}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.Index.html}{\texttt{index}}}{index}}\label{index}}
+
+This attribute consists of the row lables (or row indices) of a Pandas
+DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RangeIndex(start=0, stop=243190, step=1)
+\end{verbatim}
+
+\hypertarget{axes}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.axes.html}{\texttt{axes}}}{axes}}\label{axes}}
+
+This is a list of length two, where the first element is the row labels,
+and the second element is the columns labels. In other words, this
+attribute combines the information in the attributes - \texttt{index}
+and \texttt{columns}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.axes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[RangeIndex(start=0, stop=243190, step=1),
+ Index(['artist_followers', 'genres', 'artist_name', 'artist_popularity',
+        'track_name', 'track_popularity', 'duration_ms', 'explicit',
+        'release_year', 'danceability', 'energy', 'key', 'loudness', 'mode',
+        'speechiness', 'acousticness', 'instrumentalness', 'liveness',
+        'valence', 'tempo', 'time_signature'],
+       dtype='object')]
+\end{verbatim}
+
+\hypertarget{ndim-1}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html}{\texttt{ndim}}}{ndim}}\label{ndim-1}}
+
+As in NumPy, this attribute specifies the number of dimensions. However,
+unlike NumPy, a Pandas DataFrame has a fixed dimenstion of 2, and a
+Pandas Series has a fixed dimesion of 1.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.ndim}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+\hypertarget{size-1}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html}{\texttt{size}}}{size}}\label{size-1}}
+
+This attribute specifies the number of elements in a DataFrame. Its
+value is the product of the number of rows and columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.size}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+5106990
+\end{verbatim}
+
+\hypertarget{shape-1}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.shape.html}{\texttt{shape}}}{shape}}\label{shape-1}}
+
+This is a tuple consisting of the number of rows and columns in a Pandas
+DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(243190, 21)
+\end{verbatim}
+
+\hypertarget{values}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.values.html}{\texttt{values}}}{values}}\label{values}}
+
+This provides a NumPy representation of a Pandas DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.values}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[16996777, 'rap', 'Juice WRLD', ..., 0.203, 161.991, 4],
+       [16996777, 'rap', 'Juice WRLD', ..., 0.218, 83.903, 4],
+       [16996777, 'rap', 'Juice WRLD', ..., 0.499, 88.933, 4],
+       ...,
+       [2256652, 'jazz', 'Louis Armstrong', ..., 0.37, 105.093, 4],
+       [2256652, 'jazz', 'Louis Armstrong', ..., 0.576, 101.279, 4],
+       [2256652, 'jazz', 'Louis Armstrong', ..., 0.816, 105.84, 4]],
+      dtype=object)
+\end{verbatim}
+
+\hypertarget{methods-of-a-pandas-dataframe}{%
+\subsection{Methods of a Pandas
+DataFrame}\label{methods-of-a-pandas-dataframe}}
+
+Some of the commonly used methods of the Pandas DataFrame class are the
+following.
+
+\hypertarget{head}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html}{\texttt{head()}}}{head()}}\label{head}}
+
+Prints the first \emph{n} rows of a DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.head(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16996777 & rap & Juice WRLD & 96 & All Girls Are The Same & 0 &
+165820 & 1 & 2021 & 0.673 & ... & 0 & -7.226 & 1 & 0.306 & 0.0769 &
+0.000338 & 0.0856 & 0.203 & 161.991 & 4 \\
+1 & 16996777 & rap & Juice WRLD & 96 & Lucid Dreams & 0 & 239836 & 1 &
+2021 & 0.511 & ... & 6 & -7.230 & 0 & 0.200 & 0.3490 & 0.000000 & 0.3400
+& 0.218 & 83.903 & 4 \\
+\end{longtable}
+
+\hypertarget{tail}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html}{\texttt{tail()}}}{tail()}}\label{tail}}
+
+Prints the last \emph{n} rows of a DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.tail(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+243187 & 2256652 & jazz & Louis Armstrong & 74 & When
+It\textquotesingle s Sleepy Time Down South & 4 & 200200 & 0 & 1923 &
+0.527 & ... & 3 & -14.814 & 1 & 0.0793 & 0.989 & 0.00001 & 0.1040 &
+0.370 & 105.093 & 4 \\
+243188 & 2256652 & jazz & Louis Armstrong & 74 & On The Sunny Side Of
+The Street - Part 2 & 4 & 185973 & 0 & 1923 & 0.559 & ... & 0 & -9.804 &
+1 & 0.0512 & 0.989 & 0.84700 & 0.4480 & 0.576 & 101.279 & 4 \\
+243189 & 2256652 & jazz & Louis Armstrong & 74 & My Sweet & 4 & 195960 &
+0 & 1923 & 0.741 & ... & 3 & -10.406 & 1 & 0.0505 & 0.927 & 0.07880 &
+0.0633 & 0.816 & 105.840 & 4 \\
+\end{longtable}
+
+\hypertarget{describe}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html}{\texttt{describe()}}}{describe()}}\label{describe}}
+
+Print summary statistics of a Pandas DataFrame, as seen in chapter 3 on
+Reading Data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.describe()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & artist\_popularity & track\_popularity &
+duration\_ms & explicit & release\_year & danceability & energy & key &
+loudness & mode & speechiness & acousticness & instrumentalness &
+liveness & valence & tempo & time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+count & 2.431900e+05 & 243190.000000 & 243190.000000 & 2.431900e+05 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 \\
+mean & 1.960931e+06 & 65.342633 & 36.080772 & 2.263209e+05 & 0.050039 &
+1992.475258 & 0.568357 & 0.580633 & 5.240326 & -9.432548 & 0.670928 &
+0.111984 & 0.383938 & 0.071169 & 0.223756 & 0.552302 & 119.335060 &
+3.884177 \\
+std & 5.028746e+06 & 10.289182 & 16.476836 & 9.973214e+04 & 0.218026 &
+18.481463 & 0.159444 & 0.236631 & 3.532546 & 4.449731 & 0.469877 &
+0.198068 & 0.321142 & 0.209555 & 0.198076 & 0.250017 & 29.864219 &
+0.458082 \\
+min & 2.300000e+01 & 51.000000 & 0.000000 & 3.344000e+03 & 0.000000 &
+1923.000000 & 0.000000 & 0.000000 & 0.000000 & -60.000000 & 0.000000 &
+0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 &
+0.000000 \\
+25\% & 1.832620e+05 & 57.000000 & 25.000000 & 1.776670e+05 & 0.000000 &
+1980.000000 & 0.462000 & 0.405000 & 2.000000 & -11.990000 & 0.000000 &
+0.033200 & 0.070000 & 0.000000 & 0.098100 & 0.353000 & 96.099250 &
+4.000000 \\
+50\% & 5.352520e+05 & 64.000000 & 36.000000 & 2.188670e+05 & 0.000000 &
+1994.000000 & 0.579000 & 0.591000 & 5.000000 & -8.645000 & 1.000000 &
+0.043100 & 0.325000 & 0.000011 & 0.141000 & 0.560000 & 118.002000 &
+4.000000 \\
+75\% & 1.587332e+06 & 72.000000 & 48.000000 & 2.645465e+05 & 0.000000 &
+2008.000000 & 0.685000 & 0.776000 & 8.000000 & -6.131000 & 1.000000 &
+0.075300 & 0.671000 & 0.002220 & 0.292000 & 0.760000 & 137.929000 &
+4.000000 \\
+max & 7.890023e+07 & 100.000000 & 99.000000 & 4.995083e+06 & 1.000000 &
+2021.000000 & 0.988000 & 1.000000 & 11.000000 & 3.744000 & 1.000000 &
+0.969000 & 0.996000 & 1.000000 & 1.000000 & 1.000000 & 243.507000 &
+5.000000 \\
+\end{longtable}
+
+\hypertarget{maxmin}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html}{\texttt{max()}}/\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html}{\texttt{min()}}}{max()/min()}}\label{maxmin}}
+
+Returns the max/min values of numeric columns. If the function is
+applied on non-numeric columns, it will return the maximum/minimum value
+based on the order of the alphabet.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The max() method applied on a Series}
+\NormalTok{spotify\_data[}\StringTok{\textquotesingle{}artist\_popularity\textquotesingle{}}\NormalTok{].}\BuiltInTok{max}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+np.int64(100)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The max() method applied on a DataFrame}
+\NormalTok{spotify\_data.}\BuiltInTok{max}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+artist_followers                    78900234
+genres                                  rock
+artist_name                          高爾宣 OSN
+artist_popularity                        100
+track_name           행복했던 날들이었다 days gone by
+track_popularity                          99
+duration_ms                          4995083
+explicit                                   1
+release_year                            2021
+danceability                           0.988
+energy                                   1.0
+key                                       11
+loudness                               3.744
+mode                                       1
+speechiness                            0.969
+acousticness                           0.996
+instrumentalness                         1.0
+liveness                                 1.0
+valence                                  1.0
+tempo                                243.507
+time_signature                             5
+dtype: object
+\end{verbatim}
+
+\hypertarget{meanmedian}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html}{\texttt{mean()}}/\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.median.html}{\texttt{median()}}}{mean()/median()}}\label{meanmedian}}
+
+Returns the mean/median values of numeric columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# apply median to the numeric columns}
+
+\NormalTok{spotify\_data.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).median()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+artist_followers     535252.000000
+artist_popularity        64.000000
+track_popularity         36.000000
+duration_ms          218867.000000
+explicit                  0.000000
+release_year           1994.000000
+danceability              0.579000
+energy                    0.591000
+key                       5.000000
+loudness                 -8.645000
+mode                      1.000000
+speechiness               0.043100
+acousticness              0.325000
+instrumentalness          0.000011
+liveness                  0.141000
+valence                   0.560000
+tempo                   118.002000
+time_signature            4.000000
+dtype: float64
+\end{verbatim}
+
+\hypertarget{std}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html}{\texttt{std()}}}{std()}}\label{std}}
+
+Returns the standard deviation of numeric columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).std()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+artist_followers     5.028746e+06
+artist_popularity    1.028918e+01
+track_popularity     1.647684e+01
+duration_ms          9.973214e+04
+explicit             2.180260e-01
+release_year         1.848146e+01
+danceability         1.594436e-01
+energy               2.366309e-01
+key                  3.532546e+00
+loudness             4.449731e+00
+mode                 4.698771e-01
+speechiness          1.980684e-01
+acousticness         3.211417e-01
+instrumentalness     2.095551e-01
+liveness             1.980759e-01
+valence              2.500172e-01
+tempo                2.986422e+01
+time_signature       4.580822e-01
+dtype: float64
+\end{verbatim}
+
+\hypertarget{samplen}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html}{\texttt{sample(n)}}}{sample(n)}}\label{samplen}}
+
+Returns \emph{n} random observations from a Pandas DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.sample(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+95984 & 1179716 & pop \& rock & mor ve ötesi & 65 & Yalnız Şarkı & 36 &
+286440 & 0 & 1997 & 0.441 & ... & 9 & -9.126 & 1 & 0.0305 & 0.000003 &
+0.000000 & 0.0698 & 0.282 & 89.998 & 4 \\
+201066 & 1582426 & pop \& rock & Andrés Calamaro & 73 & Clonazepán y
+circo & 36 & 179093 & 0 & 1999 & 0.381 & ... & 9 & -7.031 & 1 & 0.0326 &
+0.153000 & 0.000000 & 0.0892 & 0.409 & 77.131 & 3 \\
+15002 & 666680 & rock & Indio Solari y los Fundamentalistas del Aire
+A... & 61 & El Ruiseñor, el Amor y la Muerte & 45 & 310173 & 0 & 2018 &
+0.583 & ... & 0 & -6.853 & 1 & 0.0251 & 0.087700 & 0.008010 & 0.0830 &
+0.446 & 80.001 & 4 \\
+186925 & 295211 & jazz & Stan Getz & 68 & In Your Own Sweet Way - Live
+In Kildevælds Chu... & 6 & 365493 & 0 & 1960 & 0.448 & ... & 10 &
+-19.986 & 0 & 0.0431 & 0.901000 & 0.000008 & 0.1290 & 0.482 & 140.798 &
+4 \\
+\end{longtable}
+
+\hypertarget{dropna}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html}{\texttt{dropna()}}}{dropna()}}\label{dropna}}
+
+Drops all observations with at least one missing value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This code is not executed to avoid prining a large table}
+\NormalTok{spotify\_data.dropna()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16996777 & rap & Juice WRLD & 96 & All Girls Are The Same & 0 &
+165820 & 1 & 2021 & 0.673 & ... & 0 & -7.226 & 1 & 0.3060 & 0.0769 &
+0.000338 & 0.0856 & 0.203 & 161.991 & 4 \\
+1 & 16996777 & rap & Juice WRLD & 96 & Lucid Dreams & 0 & 239836 & 1 &
+2021 & 0.511 & ... & 6 & -7.230 & 0 & 0.2000 & 0.3490 & 0.000000 &
+0.3400 & 0.218 & 83.903 & 4 \\
+2 & 16996777 & rap & Juice WRLD & 96 & Hear Me Calling & 0 & 189977 & 1
+& 2021 & 0.699 & ... & 7 & -3.997 & 0 & 0.1060 & 0.3080 & 0.000036 &
+0.1210 & 0.499 & 88.933 & 4 \\
+3 & 16996777 & rap & Juice WRLD & 96 & Robbery & 0 & 240527 & 1 & 2021 &
+0.708 & ... & 2 & -5.181 & 1 & 0.0442 & 0.3480 & 0.000000 & 0.2220 &
+0.543 & 79.993 & 4 \\
+4 & 5988689 & rap & Roddy Ricch & 88 & Big Stepper & 0 & 175170 & 0 &
+2021 & 0.753 & ... & 8 & -8.469 & 1 & 0.2920 & 0.0477 & 0.000000 &
+0.1970 & 0.616 & 76.997 & 4 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+243185 & 2256652 & jazz & Louis Armstrong & 74 & Stardust & 5 & 213667 &
+0 & 1923 & 0.614 & ... & 3 & -11.004 & 0 & 0.0541 & 0.9700 & 0.646000 &
+0.0514 & 0.772 & 122.319 & 4 \\
+243186 & 2256652 & jazz & Louis Armstrong & 74 &
+Knockin\textquotesingle{} A Jug - 78 rpm Version & 6 & 193760 & 0 & 1923
+& 0.788 & ... & 10 & -14.032 & 1 & 0.3010 & 0.8820 & 0.844000 & 0.1240 &
+0.676 & 113.336 & 4 \\
+243187 & 2256652 & jazz & Louis Armstrong & 74 & When
+It\textquotesingle s Sleepy Time Down South & 4 & 200200 & 0 & 1923 &
+0.527 & ... & 3 & -14.814 & 1 & 0.0793 & 0.9890 & 0.000010 & 0.1040 &
+0.370 & 105.093 & 4 \\
+243188 & 2256652 & jazz & Louis Armstrong & 74 & On The Sunny Side Of
+The Street - Part 2 & 4 & 185973 & 0 & 1923 & 0.559 & ... & 0 & -9.804 &
+1 & 0.0512 & 0.9890 & 0.847000 & 0.4480 & 0.576 & 101.279 & 4 \\
+243189 & 2256652 & jazz & Louis Armstrong & 74 & My Sweet & 4 & 195960 &
+0 & 1923 & 0.741 & ... & 3 & -10.406 & 1 & 0.0505 & 0.9270 & 0.078800 &
+0.0633 & 0.816 & 105.840 & 4 \\
+\end{longtable}
+
+\hypertarget{drop}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html}{\texttt{drop()}}}{drop()}}\label{drop}}
+
+This function is used to drop rows/columns from a DataFrame.
+
+For example, let us drop the columns \texttt{mode} from the spotify
+dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Dropping the column \textquotesingle{}mode\textquotesingle{}}
+\NormalTok{spotify\_data\_new }\OperatorTok{=}\NormalTok{ spotify\_data.drop(}\StringTok{\textquotesingle{}mode\textquotesingle{}}\NormalTok{,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{spotify\_data\_new.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & energy & key & loudness & speechiness &
+acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16996777 & rap & Juice WRLD & 96 & All Girls Are The Same & 0 &
+165820 & 1 & 2021 & 0.673 & 0.529 & 0 & -7.226 & 0.3060 & 0.0769 &
+0.000338 & 0.0856 & 0.203 & 161.991 & 4 \\
+1 & 16996777 & rap & Juice WRLD & 96 & Lucid Dreams & 0 & 239836 & 1 &
+2021 & 0.511 & 0.566 & 6 & -7.230 & 0.2000 & 0.3490 & 0.000000 & 0.3400
+& 0.218 & 83.903 & 4 \\
+2 & 16996777 & rap & Juice WRLD & 96 & Hear Me Calling & 0 & 189977 & 1
+& 2021 & 0.699 & 0.687 & 7 & -3.997 & 0.1060 & 0.3080 & 0.000036 &
+0.1210 & 0.499 & 88.933 & 4 \\
+3 & 16996777 & rap & Juice WRLD & 96 & Robbery & 0 & 240527 & 1 & 2021 &
+0.708 & 0.690 & 2 & -5.181 & 0.0442 & 0.3480 & 0.000000 & 0.2220 & 0.543
+& 79.993 & 4 \\
+4 & 5988689 & rap & Roddy Ricch & 88 & Big Stepper & 0 & 175170 & 0 &
+2021 & 0.753 & 0.597 & 8 & -8.469 & 0.2920 & 0.0477 & 0.000000 & 0.1970
+& 0.616 & 76.997 & 4 \\
+\end{longtable}
+
+Note that if multiple columns or rows are to be dropped, they must be
+enclosed in box brackets.
+
+\hypertarget{unique}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.unique.html}{\texttt{unique()}}}{unique()}}\label{unique}}
+
+This functions provides the unique values of a Series. For example, let
+us find the number of unique genres of songs in the spotify dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.genres.unique()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array(['rap', 'pop', 'miscellaneous', 'metal', 'hip hop', 'rock',
+       'pop & rock', 'hoerspiel', 'folk', 'electronic', 'jazz', 'country',
+       'latin'], dtype=object)
+\end{verbatim}
+
+\hypertarget{value_counts}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html}{\texttt{value\_counts()}}}{value\_counts()}}\label{value_counts}}
+
+This function provides the number of observations of each value of a
+Series. For example, let us find the number of songs of each genre in
+the spotify dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.genres.value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+genres
+pop              70441
+rock             49785
+pop & rock       43437
+miscellaneous    35848
+jazz             13363
+hoerspiel        12514
+hip hop           7373
+folk              2821
+latin             2125
+rap               1798
+metal             1659
+country           1236
+electronic         790
+Name: count, dtype: int64
+\end{verbatim}
+
+More than half the songs in the dataset are \emph{pop, rock} or
+\emph{pop \& rock}.
+
+\hypertarget{isin}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html}{\texttt{isin()}}}{isin()}}\label{isin}}
+
+This function provides a boolean Series indicating the position of
+certain values in a Series. The function is helpful in sub-setting data.
+For example, let us subset the songs that are either \emph{latin, rap,}
+or \emph{metal}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{latin\_rap\_metal\_songs }\OperatorTok{=}\NormalTok{ spotify\_data.loc[spotify\_data.genres.isin([}\StringTok{\textquotesingle{}latin\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}rap\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}metal\textquotesingle{}}\NormalTok{]),:]}
+\NormalTok{latin\_rap\_metal\_songs.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16996777 & rap & Juice WRLD & 96 & All Girls Are The Same & 0 &
+165820 & 1 & 2021 & 0.673 & ... & 0 & -7.226 & 1 & 0.3060 & 0.0769 &
+0.000338 & 0.0856 & 0.203 & 161.991 & 4 \\
+1 & 16996777 & rap & Juice WRLD & 96 & Lucid Dreams & 0 & 239836 & 1 &
+2021 & 0.511 & ... & 6 & -7.230 & 0 & 0.2000 & 0.3490 & 0.000000 &
+0.3400 & 0.218 & 83.903 & 4 \\
+2 & 16996777 & rap & Juice WRLD & 96 & Hear Me Calling & 0 & 189977 & 1
+& 2021 & 0.699 & ... & 7 & -3.997 & 0 & 0.1060 & 0.3080 & 0.000036 &
+0.1210 & 0.499 & 88.933 & 4 \\
+3 & 16996777 & rap & Juice WRLD & 96 & Robbery & 0 & 240527 & 1 & 2021 &
+0.708 & ... & 2 & -5.181 & 1 & 0.0442 & 0.3480 & 0.000000 & 0.2220 &
+0.543 & 79.993 & 4 \\
+4 & 5988689 & rap & Roddy Ricch & 88 & Big Stepper & 0 & 175170 & 0 &
+2021 & 0.753 & ... & 8 & -8.469 & 1 & 0.2920 & 0.0477 & 0.000000 &
+0.1970 & 0.616 & 76.997 & 4 \\
+\end{longtable}
+
+\hypertarget{data-manipulations-with-pandas}{%
+\section{Data manipulations with
+Pandas}\label{data-manipulations-with-pandas}}
+
+\hypertarget{sub-setting-data}{%
+\subsection{Sub-setting data}\label{sub-setting-data}}
+
+In the chapter on reading data, we learned about different ways for
+subsetting data, specifically:
+
+\begin{itemize}
+\tightlist
+\item
+  Selecting columns:
+  \texttt{df{[}\textquotesingle{}column\_name\textquotesingle{}{]}},
+  \texttt{df{[}{[}\textquotesingle{}col1\textquotesingle{},\ \textquotesingle{}col2\textquotesingle{}{]}{]}}
+\item
+  Selecting rows by label: \texttt{df.loc{[}{]}}
+\item
+  Selecting rows by integer position: \texttt{df.iloc{[}{]}}
+\item
+  Selecting by condition (Boolean indexing):
+  \texttt{df{[}df{[}\textquotesingle{}column\_name\textquotesingle{}{]}\ \textgreater{}\ value{]}}
+\item
+  Selecting by multiple conditions:
+  \texttt{df{[}(df{[}\textquotesingle{}column\_name\textquotesingle{}{]}\ \textgreater{}\ value)\ \&\ (df{[}\textquotesingle{}other\_column\textquotesingle{}{]}\ ==\ another\_value){]}}
+\end{itemize}
+
+\hypertarget{setting-and-resetting-indices-df.set_index-df.reset_index}{%
+\subsection{\texorpdfstring{Setting and Resetting indices:
+\texttt{df.set\_index()},
+\texttt{df.reset\_index()}}{Setting and Resetting indices: df.set\_index(), df.reset\_index()}}\label{setting-and-resetting-indices-df.set_index-df.reset_index}}
+
+In pandas, the \texttt{index} of a dataframe can be accessed by using
+\texttt{index} attribute, it represents the row labels of a DataFrame.
+When you create a DataFrame without specifying an index, pandas
+automatically assigns a RangeIndex, which is a sequence of integers
+starting from 0.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read the txt data}
+\NormalTok{bestseller\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/bestseller\_books.txt\textquotesingle{}}\NormalTok{, sep}\OperatorTok{=}\StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0.1 & Unnamed: 0 & Name & Author & User Rating & Reviews &
+Price & Year & Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0 & 0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 &
+2016 & Non Fiction \\
+1 & 1 & 1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 2 & 2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson
+& 4.7 & 18979 & 15 & 2018 & Non Fiction \\
+3 & 3 & 3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 &
+2017 & Fiction \\
+4 & 4 & 4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# accessing the index of the DataFrame}
+\NormalTok{bestseller\_data.index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RangeIndex(start=0, stop=550, step=1)
+\end{verbatim}
+
+Alternatively, we can use the \texttt{index\_col} parameter in the
+\texttt{pd.read\_csv()} function to set a specific column as the index
+when reading a CSV file in pandas. This allows us to directly specify
+which column should be used as the index of the resulting DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_index\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/bestseller\_books.txt\textquotesingle{}}\NormalTok{, sep}\OperatorTok{=}\StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{, index\_col}\OperatorTok{=}\StringTok{\textquotesingle{}Unnamed: 0.1\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_index\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Name & Author & User Rating & Reviews & Price & Year &
+Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 &
+2016 & Non Fiction \\
+1 & 1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson &
+4.7 & 18979 & 15 & 2018 & Non Fiction \\
+3 & 3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017
+& Fiction \\
+4 & 4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_index\_data.index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+       ...
+       540, 541, 542, 543, 544, 545, 546, 547, 548, 549],
+      dtype='int64', length=550)
+\end{verbatim}
+
+The \texttt{index} is crucial when subsetting your dataset using methods
+like \texttt{loc{[}{]}}, as it identifies the rows you want to select
+based on their labels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the book that User rating is greater than 4.5}
+\NormalTok{bestseller\_index\_data.loc[bestseller\_index\_data[}\StringTok{\textquotesingle{}User Rating\textquotesingle{}}\NormalTok{]}\OperatorTok{==} \FloatTok{4.9}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Name & Author & User Rating & Reviews & Price & Year &
+Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+40 & 40 & Brown Bear, Brown Bear, What Do You See? & Bill Martin Jr. &
+4.9 & 14344 & 5 & 2017 & Fiction \\
+41 & 41 & Brown Bear, Brown Bear, What Do You See? & Bill Martin Jr. &
+4.9 & 14344 & 5 & 2019 & Fiction \\
+81 & 81 & Dog Man and Cat Kid: From the Creator of Capta... & Dav Pilkey
+& 4.9 & 5062 & 6 & 2018 & Fiction \\
+82 & 82 & Dog Man: A Tale of Two Kitties: From the Creat... & Dav Pilkey
+& 4.9 & 4786 & 8 & 2017 & Fiction \\
+83 & 83 & Dog Man: Brawl of the Wild: From the Creator o... & Dav Pilkey
+& 4.9 & 7235 & 4 & 2018 & Fiction \\
+\end{longtable}
+
+Additionally, you can modify the index at any point after the DataFrame
+is created by using the
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html}{set\_index()}
+function to re-index the rows based on existing column(s) of the
+DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_data\_reindexed }\OperatorTok{=}\NormalTok{ bestseller\_data.set\_index(}\StringTok{\textquotesingle{}Unnamed: 0.1\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_data\_reindexed.index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+       ...
+       540, 541, 542, 543, 544, 545, 546, 547, 548, 549],
+      dtype='int64', name='Unnamed: 0.1', length=550)
+\end{verbatim}
+
+Note that, the index column does not have to uniquely identify each row.
+For example, if we need to subset data by \texttt{Author} frequently in
+our analysis, we can set it as our index
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_author\_index }\OperatorTok{=}\NormalTok{ bestseller\_data.set\_index(}\StringTok{\textquotesingle{}Author\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_author\_index.loc[}\StringTok{\textquotesingle{}Jen Sincero\textquotesingle{}}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0.1 & Unnamed: 0 & Name & User Rating & Reviews & Price &
+Year & Genre \\
+Author & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Jen Sincero & 546 & 546 & You Are a Badass: How to Stop Doubting Your
+Gr... & 4.7 & 14331 & 8 & 2016 & Non Fiction \\
+Jen Sincero & 547 & 547 & You Are a Badass: How to Stop Doubting Your
+Gr... & 4.7 & 14331 & 8 & 2017 & Non Fiction \\
+Jen Sincero & 548 & 548 & You Are a Badass: How to Stop Doubting Your
+Gr... & 4.7 & 14331 & 8 & 2018 & Non Fiction \\
+Jen Sincero & 549 & 549 & You Are a Badass: How to Stop Doubting Your
+Gr... & 4.7 & 14331 & 8 & 2019 & Non Fiction \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_author\_index.index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['JJ Smith', 'Stephen King', 'Jordan B. Peterson', 'George Orwell',
+       'National Geographic Kids', 'George R. R. Martin',
+       'George R. R. Martin', 'Amor Towles', 'James Comey', 'Fredrik Backman',
+       ...
+       'R. J. Palacio', 'R. J. Palacio', 'R. J. Palacio', 'R. J. Palacio',
+       'R. J. Palacio', 'Jeff Kinney', 'Jen Sincero', 'Jen Sincero',
+       'Jen Sincero', 'Jen Sincero'],
+      dtype='object', name='Author', length=550)
+\end{verbatim}
+
+You can revert it back to a default index using \texttt{reset\_index()}.
+It converts the current index into a regular column and resets the index
+to a default integer sequence.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_author\_index.reset\_index()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\toprule\noalign{}
+& Author & Unnamed: 0.1 & Unnamed: 0 & Name & User Rating & Reviews &
+Price & Year & Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & JJ Smith & 0 & 0 & 10-Day Green Smoothie Cleanse & 4.7 & 17350 & 8 &
+2016 & Non Fiction \\
+1 & Stephen King & 1 & 1 & 11/22/63: A Novel & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & Jordan B. Peterson & 2 & 2 & 12 Rules for Life: An Antidote to Chaos
+& 4.7 & 18979 & 15 & 2018 & Non Fiction \\
+3 & George Orwell & 3 & 3 & 1984 (Signet Classics) & 4.7 & 21424 & 6 &
+2017 & Fiction \\
+4 & National Geographic Kids & 4 & 4 & 5,000 Awesome Facts (About
+Everything!) (Natio... & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+545 & Jeff Kinney & 545 & 545 & Wrecking Ball (Diary of a Wimpy Kid Book
+14) & 4.9 & 9413 & 8 & 2019 & Fiction \\
+546 & Jen Sincero & 546 & 546 & You Are a Badass: How to Stop Doubting
+Your Gr... & 4.7 & 14331 & 8 & 2016 & Non Fiction \\
+547 & Jen Sincero & 547 & 547 & You Are a Badass: How to Stop Doubting
+Your Gr... & 4.7 & 14331 & 8 & 2017 & Non Fiction \\
+548 & Jen Sincero & 548 & 548 & You Are a Badass: How to Stop Doubting
+Your Gr... & 4.7 & 14331 & 8 & 2018 & Non Fiction \\
+549 & Jen Sincero & 549 & 549 & You Are a Badass: How to Stop Doubting
+Your Gr... & 4.7 & 14331 & 8 & 2019 & Non Fiction \\
+\end{longtable}
+
+In summary, the index is a powerful feature of pandas for organizing and
+accessing data, and it can be set, changed, or reset as needed to suit
+your data analysis.
+
+Later, you will learn about \textbf{hierarchical indexing}, which allows
+you to create multi-level indices by passing multiple columns.
+
+\hypertarget{dropping-a-column}{%
+\subsection{Dropping a column}\label{dropping-a-column}}
+
+In pandas, you can drop a column from a DataFrame using the drop()
+method. This is useful when you want to remove columns that are
+redundant or when you want to simplify your DataFrame by excluding
+unnecessary data.
+
+\begin{verbatim}
+df.drop(columns='column_name')
+df.drop(columns= ['col_1', 'col_2'])
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# drop the repeated rows in the bestseller dataframe}
+\NormalTok{bestseller\_df }\OperatorTok{=}\NormalTok{ bestseller\_index\_data.drop(columns }\OperatorTok{=} \StringTok{\textquotesingle{}Unnamed: 0\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& Name & Author & User Rating & Reviews & Price & Year & Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 & 2016 &
+Non Fiction \\
+1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson & 4.7 &
+18979 & 15 & 2018 & Non Fiction \\
+3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017 &
+Fiction \\
+4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# another way to drop the column}
+\NormalTok{bestseller\_index\_data.drop(}\StringTok{\textquotesingle{}Unnamed: 0\textquotesingle{}}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{).head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& Name & Author & User Rating & Reviews & Price & Year & Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 & 2016 &
+Non Fiction \\
+1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson & 4.7 &
+18979 & 15 & 2018 & Non Fiction \\
+3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017 &
+Fiction \\
+4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\hypertarget{adding-a-column}{%
+\subsection{Adding a column}\label{adding-a-column}}
+
+In a DataFrame, it's common to create new columns based on existing
+columns for analysis or prediction purposes. If the column name you
+specify does not already exist, a new column will be added to the
+DataFrame. If the column name already exists, the new values will
+overwrite the existing column.
+
+Let's classify books based on their user rating
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ classify\_rating(rating):}
+    \ControlFlowTok{if}\NormalTok{ rating }\OperatorTok{\textgreater{}=} \FloatTok{4.5}\NormalTok{:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Highly Rated\textquotesingle{}}
+    \ControlFlowTok{elif} \FloatTok{3.0} \OperatorTok{\textless{}=}\NormalTok{ rating }\OperatorTok{\textless{}} \FloatTok{4.5}\NormalTok{:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Moderately Rated\textquotesingle{}}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Low Rated\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_df[}\StringTok{\textquotesingle{}Rating\_Class\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ bestseller\_df[}\StringTok{\textquotesingle{}User Rating\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(classify\_rating)}
+
+\NormalTok{bestseller\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule\noalign{}
+& Name & Author & User Rating & Reviews & Price & Year & Genre &
+rating\_class & Rating\_class & Rating\_Class \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 & 2016 &
+Non Fiction & Highly Rated & Highly Rated & Highly Rated \\
+1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 & Fiction
+& Highly Rated & Highly Rated & Highly Rated \\
+2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson & 4.7 &
+18979 & 15 & 2018 & Non Fiction & Highly Rated & Highly Rated & Highly
+Rated \\
+3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017 &
+Fiction & Highly Rated & Highly Rated & Highly Rated \\
+4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction & Highly Rated &
+Highly Rated & Highly Rated \\
+\end{longtable}
+
+\hypertarget{renaming-a-column}{%
+\subsection{Renaming a column}\label{renaming-a-column}}
+
+To rename a column in a pandas DataFrame, you can use the
+\texttt{rename()} method. .
+
+\begin{itemize}
+\tightlist
+\item
+  Renaming a single column
+\end{itemize}
+
+\begin{verbatim}
+df.rename(columns={'old_name': 'new_name'}, inplace=False)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# rename Year to Publication Year}
+\NormalTok{bestseller\_df.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}Publication Year\textquotesingle{}}\NormalTok{\}, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{bestseller\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& Name & Author & User Rating & Reviews & Price & Publication Year &
+Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 & 2016 &
+Non Fiction \\
+1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson & 4.7 &
+18979 & 15 & 2018 & Non Fiction \\
+3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017 &
+Fiction \\
+4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Renameing multiple columns
+\end{itemize}
+
+Specifying a dictionary that maps old column names to new one
+
+\begin{verbatim}
+df_renamed_multiple = df.rename(columns={'col1': 'new_col1', 'col2': 'new_col2'})
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# rename Name to Book Name, and Author to Writer}
+\NormalTok{bestseller\_df.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}Book Name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Author\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}Writer\textquotesingle{}}\NormalTok{\}, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{bestseller\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& Book Name & Writer & User Rating & Reviews & Price & Publication Year
+& Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 & 2016 &
+Non Fiction \\
+1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson & 4.7 &
+18979 & 15 & 2018 & Non Fiction \\
+3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017 &
+Fiction \\
+4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\hypertarget{sorting-data}{%
+\subsection{Sorting data}\label{sorting-data}}
+
+Sorting dataset is a very common operation. The
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html}{sort\_values()}
+function of Pandas can be used to sort a Pandas DataFrame or Series. Let
+us sort the spotify data in decreasing order of
+\emph{track\_popularity}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_sorted }\OperatorTok{=}\NormalTok{ bestseller\_index\_data.sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}User Rating\textquotesingle{}}\NormalTok{, ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\NormalTok{bestseller\_sorted.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Name & Author & User Rating & Reviews & Price & Year &
+Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+521 & 521 & Unfreedom of the Press & Mark R. Levin & 4.9 & 5956 & 11 &
+2019 & Non Fiction \\
+420 & 420 & The Legend of Zelda: Hyrule Historia & Patrick Thorpe & 4.9
+& 5396 & 20 & 2013 & Fiction \\
+248 & 248 & Oh, the Places You\textquotesingle ll Go! & Dr. Seuss & 4.9
+& 21834 & 8 & 2015 & Fiction \\
+247 & 247 & Oh, the Places You\textquotesingle ll Go! & Dr. Seuss & 4.9
+& 21834 & 8 & 2014 & Fiction \\
+246 & 246 & Oh, the Places You\textquotesingle ll Go! & Dr. Seuss & 4.9
+& 21834 & 8 & 2013 & Fiction \\
+\end{longtable}
+
+\hypertarget{ranking-data}{%
+\subsection{Ranking data}\label{ranking-data}}
+
+With the
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rank.html}{rank()}
+function, we can rank the observations.
+
+For example, let us add a new column to the bestseller data that
+provides the rank of the \texttt{User\ Rating} column:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_ranked }\OperatorTok{=}\NormalTok{ bestseller\_df.copy()}
+\NormalTok{bestseller\_ranked[}\StringTok{\textquotesingle{}Rating\_rank\textquotesingle{}}\NormalTok{]}\OperatorTok{=}\NormalTok{bestseller\_ranked[}\StringTok{\textquotesingle{}User Rating\textquotesingle{}}\NormalTok{].rank()}
+\NormalTok{bestseller\_ranked.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& Book Name & Writer & User Rating & Reviews & Price & Publication Year
+& Genre & Rating\_rank \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 & 2016 &
+Non Fiction & 317.5 \\
+1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 & Fiction
+& 211.0 \\
+2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson & 4.7 &
+18979 & 15 & 2018 & Non Fiction & 317.5 \\
+3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 & 2017 &
+Fiction & 317.5 \\
+4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction & 435.0 \\
+\end{longtable}
+
+Note the column \texttt{Rating\_rank}. Why does it contain floating
+point numbers? Check the \texttt{rank()} documentation to find out!
+
+\hypertarget{arithematic-operations-within-and-between-dataframes}{%
+\section{Arithematic operations within and between
+DataFrames}\label{arithematic-operations-within-and-between-dataframes}}
+
+Pandas is built on top of NumPy, and for arithmetic operations, it
+inherits many of NumPy's powerful features. Pandas provides an intuitive
+and efficient way to perform arithmetic operations both within a
+DataFrame (on columns or rows) and between multiple DataFrames. These
+operations are element-wise, meaning they are applied to corresponding
+elements of the DataFrame or Series.
+
+\hypertarget{arithematic-operations-within-a-dataframe}{%
+\subsection{Arithematic operations within a
+DataFrame}\label{arithematic-operations-within-a-dataframe}}
+
+You can easily perform arithmetic operations on columns or rows within a
+DataFrame
+
+\begin{itemize}
+\tightlist
+\item
+  Arithmetic Between Columns
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a DataFrame}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+        \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{],}
+        \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: [}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{]\}}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(data)}
+
+\CommentTok{\# Adding two columns}
+\NormalTok{df[}\StringTok{\textquotesingle{}A\_plus\_B\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{] }\OperatorTok{+}\NormalTok{ df[}\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\# Multiplying two columns}
+\NormalTok{df[}\StringTok{\textquotesingle{}A\_times\_C\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{] }\OperatorTok{*}\NormalTok{ df[}\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& A & B & C & A\_plus\_B & A\_times\_C \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 4 & 7 & 5 & 7 \\
+1 & 2 & 5 & 8 & 7 & 16 \\
+2 & 3 & 6 & 9 & 9 & 27 \\
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Arithmetic on Entire Rows
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Summing values across columns for each row}
+\NormalTok{df[}\StringTok{\textquotesingle{}row\_sum\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& A & B & C & A\_plus\_B & A\_times\_C & row\_sum \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 4 & 7 & 5 & 7 & 24 \\
+1 & 2 & 5 & 8 & 7 & 16 & 38 \\
+2 & 3 & 6 & 9 & 9 & 27 & 54 \\
+\end{longtable}
+
+\hypertarget{arithematic-operations-between-dataframes}{%
+\subsection{Arithematic operations between
+DataFrames}\label{arithematic-operations-between-dataframes}}
+
+When performing operations between two DataFrames, pandas aligns the
+data based on both the \texttt{index} and \texttt{column\ labels}. If
+the indices or columns do not match, pandas automatically fills the
+missing values with NaN (not-a-number) unless a fill value is provided.
+
+Let us create two toy DataFrames:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating two toy DataFrames}
+\NormalTok{toy\_df1 }\OperatorTok{=}\NormalTok{ pd.DataFrame([(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{),(}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{),(}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{)], columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{])}
+\NormalTok{toy\_df2 }\OperatorTok{=}\NormalTok{ pd.DataFrame([(}\DecValTok{100}\NormalTok{,}\DecValTok{200}\NormalTok{),(}\DecValTok{300}\NormalTok{,}\DecValTok{400}\NormalTok{),(}\DecValTok{500}\NormalTok{,}\DecValTok{600}\NormalTok{)], columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#DataFrame 1}
+\NormalTok{toy\_df1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 2 \\
+1 & 3 & 4 \\
+2 & 5 & 6 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#DataFrame 2}
+\NormalTok{toy\_df2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 100 & 200 \\
+1 & 300 & 400 \\
+2 & 500 & 600 \\
+\end{longtable}
+
+Element by element operations between two DataFrames can be performed
+with the operators \texttt{+}, \texttt{-},
+\texttt{*},\texttt{/},\texttt{**}, and \texttt{\%}. Below is an example
+of element-by-element addition of two DataFrames:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Element{-}by{-}element arithmetic addition of the two DataFrames}
+\NormalTok{toy\_df1 }\OperatorTok{+}\NormalTok{ toy\_df2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 101 & 202 \\
+1 & 303 & 404 \\
+2 & 505 & 606 \\
+\end{longtable}
+
+Note that these operations create problems when the row indices and/or
+column names of the two DataFrames do not match. See the example below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating another toy example of a DataFrame}
+\NormalTok{toy\_df3 }\OperatorTok{=}\NormalTok{ pd.DataFrame([(}\DecValTok{100}\NormalTok{,}\DecValTok{200}\NormalTok{),(}\DecValTok{300}\NormalTok{,}\DecValTok{400}\NormalTok{),(}\DecValTok{500}\NormalTok{,}\DecValTok{600}\NormalTok{)], columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{], index}\OperatorTok{=}\NormalTok{[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{])}
+\NormalTok{toy\_df3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 100 & 200 \\
+2 & 300 & 400 \\
+3 & 500 & 600 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Adding DataFrames with some unmatching row indices}
+\NormalTok{toy\_df1 }\OperatorTok{+}\NormalTok{ toy\_df3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & NaN & NaN \\
+1 & 103.0 & 204.0 \\
+2 & 305.0 & 406.0 \\
+3 & NaN & NaN \\
+\end{longtable}
+
+Note that the rows whose indices match between the two DataFrames are
+added up. The rest of the values are missing (or \texttt{NaN}) because
+only one of the DataFrames has that index.
+
+As in the case of row indices, missing values will also appear in the
+case of unmatching column names, as shown in the example below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{toy\_df4 }\OperatorTok{=}\NormalTok{ pd.DataFrame([(}\DecValTok{100}\NormalTok{,}\DecValTok{200}\NormalTok{),(}\DecValTok{300}\NormalTok{,}\DecValTok{400}\NormalTok{),(}\DecValTok{500}\NormalTok{,}\DecValTok{600}\NormalTok{)], columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{])}
+\NormalTok{toy\_df4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& b & c \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 100 & 200 \\
+1 & 300 & 400 \\
+2 & 500 & 600 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Adding DataFrames with some unmatching column names}
+\NormalTok{toy\_df1 }\OperatorTok{+}\NormalTok{ toy\_df4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& a & b & c \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & NaN & 102 & NaN \\
+1 & NaN & 304 & NaN \\
+2 & NaN & 506 & NaN \\
+\end{longtable}
+
+\hypertarget{arithmetic-between-dataframe-and-series-broadcasting}{%
+\subsection{Arithmetic Between DataFrame and Series
+(Broadcasting)}\label{arithmetic-between-dataframe-and-series-broadcasting}}
+
+Pandas supports \textbf{broadcasting}, where a Series can be broadcasted
+to match the dimensions of a DataFrame during an arithmetic operation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Broadcasting: The row [1,2] (a Series) is added on every row in df2 }
+\NormalTok{toy\_df1.loc[}\DecValTok{0}\NormalTok{,:] }\OperatorTok{+}\NormalTok{ toy\_df2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 101 & 202 \\
+1 & 301 & 402 \\
+2 & 501 & 602 \\
+\end{longtable}
+
+Note that the \texttt{+} operator is used to add values of a Series to a
+DataFrame based on column names. For adding a Series to a DataFrame
+based on row indices, we cannot use the \texttt{+} operator. Instead,
+we'll need to use the \texttt{add()} function as explained below.
+
+\textbf{Broadcasting based on row/column labels:} We can use the
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.add.html}{add()}
+function to broadcast a Series to a DataFrame. By default the Series
+adds based on column names, as in the case of the \texttt{+} operator.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add the first row of df1 (a Series) to every row in df2 }
+\NormalTok{toy\_df2.add(toy\_df1.loc[}\DecValTok{0}\NormalTok{,:])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 101 & 202 \\
+1 & 301 & 402 \\
+2 & 501 & 602 \\
+\end{longtable}
+
+For broadcasting based on row indices, we use the \texttt{axis} argument
+of the \texttt{add()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The second column of df1 (a Series) is added to every col in df2}
+\NormalTok{toy\_df2.add(toy\_df1.loc[:,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{],axis}\OperatorTok{=}\StringTok{\textquotesingle{}index\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 102 & 202 \\
+1 & 304 & 404 \\
+2 & 506 & 606 \\
+\end{longtable}
+
+\hypertarget{converting-a-dataframe-to-a-numpy-array}{%
+\subsection{Converting a DataFrame to a NumPy
+Array}\label{converting-a-dataframe-to-a-numpy-array}}
+
+In pandas, you often need to convert a DataFrame or Series into a NumPy
+array to perform specific operations or to interface with libraries that
+require NumPy arrays.
+
+There are two common methods for converting pandas objects to NumPy
+arrays: \texttt{.values} and \texttt{.to\_numpy()}.
+
+\hypertarget{using-.values}{%
+\subsubsection{\texorpdfstring{Using
+\texttt{.values}}{Using .values}}\label{using-.values}}
+
+\begin{itemize}
+\item
+  The \texttt{.values} attribute returns the underlying NumPy array
+  representation of a DataFrame or Series.
+\item
+  It provides a direct conversion, but it has been deprecated in favor
+  of the newer \texttt{.to\_numpy()} method because .values does not
+  always handle all DataFrame types consistently.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{toy\_df1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& a & b \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 2 \\
+1 & 3 & 4 \\
+2 & 5 & 6 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{toy\_df1.values}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+\end{verbatim}
+
+\hypertarget{using-.to_numpy}{%
+\subsubsection{\texorpdfstring{Using
+\texttt{.to\_numpy()}}{Using .to\_numpy()}}\label{using-.to_numpy}}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{.to\_numpy()} method is a recommended way to convert a
+  DataFrame to a NumPy array.
+\item
+  It handles different types of data, such as nullable types or mixed
+  data types, more consistently than .values.
+\item
+  Additional parameters: .to\_numpy() can take parameters like dtype (to
+  specify the data type) and copy (to create a copy or not).
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{toy\_df1.to\_numpy()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+\end{verbatim}
+
+In the NumPy chapter, we explored the below case study that demonstrated
+the benefits of using matrix multiplication in NumPy over python loops.
+However, this same operation cannot be directly performed in a pandas
+DataFrame in the same way.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{food\_qty }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/food\_quantity.csv\textquotesingle{}}\NormalTok{,index\_col}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\NormalTok{price }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/price.csv\textquotesingle{}}\NormalTok{,index\_col}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\%\%}\NormalTok{time}
+\NormalTok{store\_expense }\OperatorTok{=}\NormalTok{ pd.DataFrame(}\FloatTok{0.0}\NormalTok{, columns}\OperatorTok{=}\NormalTok{price.columns, index }\OperatorTok{=}\NormalTok{ food\_qty.index)}
+\ControlFlowTok{for}\NormalTok{ person }\KeywordTok{in}\NormalTok{ store\_expense.index:}
+    \ControlFlowTok{for}\NormalTok{ store }\KeywordTok{in}\NormalTok{ store\_expense.columns:}
+        \ControlFlowTok{for}\NormalTok{ food }\KeywordTok{in}\NormalTok{ food\_qty.columns:}
+\NormalTok{            store\_expense.loc[person, store] }\OperatorTok{+=}\NormalTok{ food\_qty.loc[person, food]}\OperatorTok{*}\NormalTok{price.loc[food, store]}
+
+\NormalTok{store\_expense}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+CPU times: total: 0 ns
+Wall time: 5.01 ms
+\end{verbatim}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& Target & Kroger \\
+Person & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Ben & 50.0 & 49.0 \\
+Barbara & 58.5 & 61.0 \\
+Beth & 43.5 & 43.5 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\%\%}\NormalTok{time}
+\CommentTok{\# using matrix multiplication in numpy}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{np.dot(food\_qty.values, price.values)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+CPU times: total: 0 ns
+Wall time: 996 μs
+\end{verbatim}
+
+\begin{verbatim}
+array([[50. , 49. ],
+       [58.5, 61. ],
+       [43.5, 43.5]])
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# converting the result to a DataFrame}
+\NormalTok{pd.DataFrame(np.dot(food\_qty.values, price.values), columns}\OperatorTok{=}\NormalTok{price.columns, index}\OperatorTok{=}\NormalTok{food\_qty.index)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& Target & Kroger \\
+Person & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Ben & 50.0 & 49.0 \\
+Barbara & 58.5 & 61.0 \\
+Beth & 43.5 & 43.5 \\
+\end{longtable}
+
+\hypertarget{advanced-dataframe-operations}{%
+\section{Advanced DataFrame
+Operations}\label{advanced-dataframe-operations}}
+
+Pandas provides powerful methods for applying functions to DataFrame
+rows, columns, or individual elements. These methods allow for flexible
+data transformations, making them essential for advanced data
+manipulation.
+
+\hypertarget{apply-row-wise-column-wise-or-dataframe-wise}{%
+\subsection{\texorpdfstring{\texttt{apply()}: Row-wise, Column-wise, or
+DataFrame-wise}{apply(): Row-wise, Column-wise, or DataFrame-wise}}\label{apply-row-wise-column-wise-or-dataframe-wise}}
+
+The \texttt{apply()} function in pandas is used to apply a function
+along an axis of a DataFrame.
+
+\begin{itemize}
+\tightlist
+\item
+  Row-wise: You can apply a function to each row using \texttt{axis=1}.
+\item
+  Column-wise: You can apply a function to each column using
+  \texttt{axis=0} (default behavior).
+\end{itemize}
+
+Let's create a DataFrame and apply a custom function to each row.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a DataFrame}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}
+    \StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+    \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{],}
+    \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: [}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{]}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& A & B & C \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 4 & 7 \\
+1 & 2 & 5 & 8 \\
+2 & 3 & 6 & 9 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Function to compute the row sum}
+\KeywordTok{def}\NormalTok{ row\_sum(row):}
+    \ControlFlowTok{return}\NormalTok{ row.}\BuiltInTok{sum}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Apply the function row{-}wise (axis=1)}
+\NormalTok{df[}\StringTok{\textquotesingle{}Row\_Sum\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{apply}\NormalTok{(row\_sum, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& A & B & C & Row\_Sum \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 4 & 7 & 12 \\
+1 & 2 & 5 & 8 & 15 \\
+2 & 3 & 6 & 9 & 18 \\
+\end{longtable}
+
+Let's apply the same function to each column next
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Apply the function column{-}wise (axis=0)}
+\NormalTok{column\_sum }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{apply}\NormalTok{(}\BuiltInTok{sum}\NormalTok{, axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\NormalTok{column\_sum}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+A           6
+B          15
+C          24
+Row_Sum    45
+dtype: int64
+\end{verbatim}
+
+\hypertarget{map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe}{%
+\subsection{\texorpdfstring{\texttt{map()}: Apply a function or mapping
+to each value in a Series or a
+DataFrame}{map(): Apply a function or mapping to each value in a Series or a DataFrame}}\label{map-apply-a-function-or-mapping-to-each-value-in-a-series-or-a-dataframe}}
+
+\texttt{map()} is typically used for element-wise transformations on a
+Series. It is used to substitute each value in a Series with another
+value or a transformation based on a function, dictionary, or another
+Series.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# write the function to compute square of a number}
+\KeywordTok{def}\NormalTok{ square(x):}
+    \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{**} \DecValTok{2}
+
+\CommentTok{\# use the map() function to apply a function element{-}wise}
+\NormalTok{df[}\StringTok{\textquotesingle{}A\_squared\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(square)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& A & B & C & Row\_Sum & A\_squared \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 4 & 7 & 12 & 1 \\
+1 & 2 & 5 & 8 & 15 & 4 \\
+2 & 3 & 6 & 9 & 18 & 9 \\
+\end{longtable}
+
+However, to apply a function to each value in an entire DataFrame, we
+can use the \texttt{apply()} function with a suitable approach for
+element-wise operations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.}\BuiltInTok{map}\NormalTok{(square)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& A & B & C & Row\_Sum & A\_squared \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 16 & 49 & 144 & 1 \\
+1 & 4 & 25 & 64 & 225 & 16 \\
+2 & 9 & 36 & 81 & 324 & 81 \\
+\end{longtable}
+
+When applying a function to an entire DataFrame, it's important to
+ensure that all columns have the same data type. Otherwise, you might
+encounter errors or unexpected behavior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a DataFrame}
+\NormalTok{df\_str }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}
+    \StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+    \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\StringTok{\textquotesingle{}I\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}major\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}in\textquotesingle{}}\NormalTok{],}
+    \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: [}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{]}
+\NormalTok{\})}
+\CommentTok{\# uncomment the following line to run the code}
+\CommentTok{\# df\_str.map(square)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{key-differences-between-map-and-apply}{%
+\subsection{\texorpdfstring{Key Differences Between \texttt{map()} and
+\texttt{apply()}}{Key Differences Between map() and apply()}}\label{key-differences-between-map-and-apply}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2150}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4019}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3832}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Feature
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\texttt{map()}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\texttt{apply()}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Applies to & Series & Both Series and DataFrame \\
+Functionality & Element-wise transformations & Can apply more complex
+functions (row-wise or column-wise for DataFrame) \\
+Input & Function, dictionary, or another Series & Function \\
+Use Case & Used for simpler element-wise replacements or mappings & Used
+for more complex operations that can act on rows, columns, or individual
+elements \\
+Axis Option & N/A & Can specify axis in DataFrame (row-wise or
+column-wise) \\
+\end{longtable}
+
+\hypertarget{summary}{%
+\subsubsection{Summary:}\label{summary}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{map()}: Primarily used for element-wise operations on a
+  Series. It can take functions, dictionaries, or Series as input for
+  substitution or transformation.
+\item
+  \texttt{apply()}: More flexible and can be used on both Series and
+  DataFrame. It can apply complex functions across rows or columns.
+\end{itemize}
+
+If you're working with a DataFrame and need to apply functions on a row
+or column basis, \texttt{apply()} is the preferred choice. For simpler
+transformations on a Series, use \texttt{map()}.
+
+\hypertarget{introduction-to-lambda-functions-in-pandas}{%
+\section{Introduction to Lambda Functions in
+Pandas}\label{introduction-to-lambda-functions-in-pandas}}
+
+A lambda function is a small, anonymous function defined using the
+lambda keyword in Python. It can take any number of arguments but can
+only have one expression. In pandas, lambda functions are often used for
+quick and concise operations on data.
+
+\hypertarget{syntax-of-lambda-functions}{%
+\subsection{Syntax of Lambda
+Functions:}\label{syntax-of-lambda-functions}}
+
+\begin{verbatim}
+lambda arguments: expression
+\end{verbatim}
+
+\hypertarget{key-features}{%
+\subsection{Key Features}\label{key-features}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Anonymous}: Lambda functions are defined without a name.
+\item
+  \textbf{Concise}: They are typically used for small, simple functions
+  that are not reused elsewhere.
+\item
+  \textbf{Single Expression}: They can only contain one expression,
+  which is evaluated and returned.
+\end{itemize}
+
+Lambda functions are commonly used with \texttt{apply()} and
+\texttt{map()} to efficiently transform data in pandas, allowing for
+quick, inline function definitions without the need to explicitly define
+separate functions.
+
+Let's use a lambda function to rewrite the \texttt{apply()} and
+\texttt{map()} operations from the previous example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\StringTok{\textquotesingle{}A\_squared\_lamdba\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x }\OperatorTok{**} \DecValTok{2}\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& A & B & C & Row\_Sum & A\_squared & A\_squared\_lamdba \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 4 & 7 & 12 & 1 & 1 \\
+1 & 2 & 5 & 8 & 15 & 4 & 4 \\
+2 & 3 & 6 & 9 & 18 & 9 & 9 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_squared }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x }\OperatorTok{**} \DecValTok{2}\NormalTok{)}
+\NormalTok{df\_squared}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& A & B & C & Row\_Sum & A\_squared & A\_squared\_lamdba \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 16 & 49 & 144 & 1 & 1 \\
+1 & 4 & 25 & 64 & 225 & 16 & 16 \\
+2 & 9 & 36 & 81 & 324 & 81 & 81 \\
+\end{longtable}
+
+Let's look at other examples using lambda
+
+Example 1: adding a new column based on existing columns
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a DataFrame}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}
+    \StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+    \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{]}
+\NormalTok{\})}
+
+\CommentTok{\# Use a lambda function to create a new column \textquotesingle{}C\textquotesingle{} as the sum of \textquotesingle{}A\textquotesingle{} and \textquotesingle{}B\textquotesingle{}}
+\NormalTok{df[}\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ row: row[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{] }\OperatorTok{+}\NormalTok{ row[}\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   A  B  C
+0  1  4  5
+1  2  5  7
+2  3  6  9
+\end{verbatim}
+
+Example 2: Filter rows based on a condition
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter rows where values in column \textquotesingle{}A\textquotesingle{} are greater than 1}
+\NormalTok{filtered\_df }\OperatorTok{=}\NormalTok{ df[df[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{)]}
+\BuiltInTok{print}\NormalTok{(filtered\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   A  B  C
+1  2  5  7
+2  3  6  9
+\end{verbatim}
+
+\hypertarget{case-study}{%
+\section{Case study}\label{case-study}}
+
+To see the application of arithematic operations on DataFrames, let us
+see the case study below.
+
+\textbf{Song recommendation:} Spotify recommends songs based on songs
+listened by the user. Suppose you have listened to the song
+\emph{drivers license}. Spotify intends to recommend you 5 songs that
+are \emph{similar} to \emph{drivers license}. Which songs should it
+recommend?
+
+Let us see the available song information that can help us identify
+songs similar to \emph{drivers license}. The
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html}{columns}
+attribute of DataFrame will display all the columns names. The
+description of some of the column names relating to audio features is
+\href{https://developer.spotify.com/documentation/web-api/reference/\#/operations/get-audio-features}{here}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['artist_followers', 'genres', 'artist_name', 'artist_popularity',
+       'track_name', 'track_popularity', 'duration_ms', 'explicit',
+       'release_year', 'danceability', 'energy', 'key', 'loudness', 'mode',
+       'speechiness', 'acousticness', 'instrumentalness', 'liveness',
+       'valence', 'tempo', 'time_signature'],
+      dtype='object')
+\end{verbatim}
+
+\textbf{Solution approach:} We have several features of a song. Let us
+find songs similar to \emph{drivers license} in terms of
+\emph{danceability, energy, key, loudness, mode, speechiness,
+acousticness, instrumentalness, liveness, valence, time\_signature} and
+\emph{tempo}. Note that we are considering only audio features for
+simplicity.
+
+To find the songs most similar to \emph{drivers license}, we need to
+define a measure that quantifies the similarity. Let us define
+similarity of a song with \emph{drivers license} as the Euclidean
+distance of the song from \emph{drivers license}, where the coordinates
+of a song are: (danceability, energy, key, loudness, mode, speechiness,
+acousticness, instrumentalness, liveness, valence, time\_signature,
+tempo). Thus, similarity can be formulated as:
+
+\[Similarity_{DL-S} = \sqrt{(danceability_{DL}-danceability_{S})^2+(energy_{DL}-energy_{S})^2 +...+ (tempo_{DL}-tempo_{S})^2)},\]
+
+where the subscript \emph{DL} stands for \emph{drivers license} and
+\emph{S} stands for any song. The top 5 songs with the least value of
+\(Similarity_{DL-S}\) will be the most similar to \emph{drivers
+lincense} and should be recommended.
+
+Let us subset the columns that we need to use to compute the Euclidean
+distance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{audio\_features }\OperatorTok{=}\NormalTok{ spotify\_data[[}\StringTok{\textquotesingle{}danceability\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}energy\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}key\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}loudness\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}mode\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}speechiness\textquotesingle{}}\NormalTok{,}
+                               \StringTok{\textquotesingle{}acousticness\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}instrumentalness\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}liveness\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}valence\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}tempo\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}time\_signature\textquotesingle{}}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{audio\_features.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& danceability & energy & key & loudness & mode & speechiness &
+acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.673 & 0.529 & 0 & -7.226 & 1 & 0.3060 & 0.0769 & 0.000338 & 0.0856
+& 0.203 & 161.991 & 4 \\
+1 & 0.511 & 0.566 & 6 & -7.230 & 0 & 0.2000 & 0.3490 & 0.000000 & 0.3400
+& 0.218 & 83.903 & 4 \\
+2 & 0.699 & 0.687 & 7 & -3.997 & 0 & 0.1060 & 0.3080 & 0.000036 & 0.1210
+& 0.499 & 88.933 & 4 \\
+3 & 0.708 & 0.690 & 2 & -5.181 & 1 & 0.0442 & 0.3480 & 0.000000 & 0.2220
+& 0.543 & 79.993 & 4 \\
+4 & 0.753 & 0.597 & 8 & -8.469 & 1 & 0.2920 & 0.0477 & 0.000000 & 0.1970
+& 0.616 & 76.997 & 4 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Distribution of values of audio\_features}
+\NormalTok{audio\_features.describe()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& danceability & energy & key & loudness & mode & speechiness &
+acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+count & 243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 \\
+mean & 0.568357 & 0.580633 & 5.240326 & -9.432548 & 0.670928 & 0.111984
+& 0.383938 & 0.071169 & 0.223756 & 0.552302 & 119.335060 & 3.884177 \\
+std & 0.159444 & 0.236631 & 3.532546 & 4.449731 & 0.469877 & 0.198068 &
+0.321142 & 0.209555 & 0.198076 & 0.250017 & 29.864219 & 0.458082 \\
+min & 0.000000 & 0.000000 & 0.000000 & -60.000000 & 0.000000 & 0.000000
+& 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 \\
+25\% & 0.462000 & 0.405000 & 2.000000 & -11.990000 & 0.000000 & 0.033200
+& 0.070000 & 0.000000 & 0.098100 & 0.353000 & 96.099250 & 4.000000 \\
+50\% & 0.579000 & 0.591000 & 5.000000 & -8.645000 & 1.000000 & 0.043100
+& 0.325000 & 0.000011 & 0.141000 & 0.560000 & 118.002000 & 4.000000 \\
+75\% & 0.685000 & 0.776000 & 8.000000 & -6.131000 & 1.000000 & 0.075300
+& 0.671000 & 0.002220 & 0.292000 & 0.760000 & 137.929000 & 4.000000 \\
+max & 0.988000 & 1.000000 & 11.000000 & 3.744000 & 1.000000 & 0.969000 &
+0.996000 & 1.000000 & 1.000000 & 1.000000 & 243.507000 & 5.000000 \\
+\end{longtable}
+
+Note that the audio features differ in terms of scale. Some features
+like \emph{key} have a wide range of {[}0,11{]}, while others like
+\emph{danceability} have a very narrow range of {[}0,0.988{]}. If we use
+them directly, features like \emph{danceability} will have a much higher
+influence on \(Similarity_{DL-S}\) as compared to features like
+\emph{key}. Assuming we wish all the features to have equal weight in
+quantifying a song's similarity to \emph{drivers license}, we should
+scale the features, so that their values are comparable.
+
+Let us scale the value of each column to a standard uniform
+distribution: \(U[0,1]\).
+
+For scaling the values of a column to \(U[0,1]\), we need to subtract
+the minimum value of the column from each value, and divide by the range
+of values of the column. For example, \emph{danceability} can be
+standardized as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Scaling danceability to U[0,1]}
+\NormalTok{danceability\_value\_range }\OperatorTok{=}\NormalTok{ audio\_features.danceability.}\BuiltInTok{max}\NormalTok{()}\OperatorTok{{-}}\NormalTok{audio\_features.danceability.}\BuiltInTok{min}\NormalTok{()}
+\NormalTok{danceability\_std }\OperatorTok{=}\NormalTok{ (audio\_features.danceability}\OperatorTok{{-}}\NormalTok{audio\_features.danceability.}\BuiltInTok{min}\NormalTok{())}\OperatorTok{/}\NormalTok{danceability\_value\_range}
+\NormalTok{danceability\_std}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0         0.681174
+1         0.517206
+2         0.707490
+3         0.716599
+4         0.762146
+            ...   
+243185    0.621457
+243186    0.797571
+243187    0.533401
+243188    0.565789
+243189    0.750000
+Name: danceability, Length: 243190, dtype: float64
+\end{verbatim}
+
+However, it will be cumbersome to repeat the above code for each audio
+feature. We can instead write a function that scales values of a column
+to \(U[0,1]\), and apply the function on all the audio features.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Function to scale a column to U[0,1]}
+\KeywordTok{def}\NormalTok{ scale\_uniform(x):}
+    \ControlFlowTok{return}\NormalTok{ (x}\OperatorTok{{-}}\NormalTok{x.}\BuiltInTok{min}\NormalTok{())}\OperatorTok{/}\NormalTok{(x.}\BuiltInTok{max}\NormalTok{()}\OperatorTok{{-}}\NormalTok{x.}\BuiltInTok{min}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+We will use the Pandas function
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html}{apply()}
+to apply the above function to the DataFrame \texttt{audio\_features}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Scaling all audio features to U[0,1]}
+\NormalTok{audio\_features\_scaled }\OperatorTok{=}\NormalTok{ audio\_features.}\BuiltInTok{apply}\NormalTok{(scale\_uniform)}
+\end{Highlighting}
+\end{Shaded}
+
+The above two blocks of code can be concisely written with the
+\texttt{lambda} function as:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{audio\_features\_scaled }\OperatorTok{=}\NormalTok{ audio\_features.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: (x}\OperatorTok{{-}}\NormalTok{x.}\BuiltInTok{min}\NormalTok{())}\OperatorTok{/}\NormalTok{(x.}\BuiltInTok{max}\NormalTok{()}\OperatorTok{{-}}\NormalTok{x.}\BuiltInTok{min}\NormalTok{()))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#All the audio features are scaled to U[0,1]}
+\NormalTok{audio\_features\_scaled.describe()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& danceability & energy & key & loudness & mode & speechiness &
+acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+count & 243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 &
+243190.000000 & 243190.000000 & 243190.000000 & 243190.000000 \\
+mean & 0.575260 & 0.580633 & 0.476393 & 0.793290 & 0.670928 & 0.115566 &
+0.385480 & 0.071169 & 0.223756 & 0.552302 & 0.490068 & 0.776835 \\
+std & 0.161380 & 0.236631 & 0.321141 & 0.069806 & 0.469877 & 0.204405 &
+0.322431 & 0.209555 & 0.198076 & 0.250017 & 0.122642 & 0.091616 \\
+min & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 &
+0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 \\
+25\% & 0.467611 & 0.405000 & 0.181818 & 0.753169 & 0.000000 & 0.034262 &
+0.070281 & 0.000000 & 0.098100 & 0.353000 & 0.394647 & 0.800000 \\
+50\% & 0.586032 & 0.591000 & 0.454545 & 0.805644 & 1.000000 & 0.044479 &
+0.326305 & 0.000011 & 0.141000 & 0.560000 & 0.484594 & 0.800000 \\
+75\% & 0.693320 & 0.776000 & 0.727273 & 0.845083 & 1.000000 & 0.077709 &
+0.673695 & 0.002220 & 0.292000 & 0.760000 & 0.566427 & 0.800000 \\
+max & 1.000000 & 1.000000 & 1.000000 & 1.000000 & 1.000000 & 1.000000 &
+1.000000 & 1.000000 & 1.000000 & 1.000000 & 1.000000 & 1.000000 \\
+\end{longtable}
+
+Since we need to find the Euclidean distance from the song \emph{drivers
+license}, let us find the index of the row containing features of
+\emph{drivers license.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Index of the row consisting of drivers license can be found with the index attribute}
+\NormalTok{drivers\_license\_index }\OperatorTok{=}\NormalTok{ spotify\_data[spotify\_data.track\_name}\OperatorTok{==}\StringTok{\textquotesingle{}drivers license\textquotesingle{}}\NormalTok{].index[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the object returned by the \texttt{index} attribute is of type
+\texttt{pandas.core.indexes.numeric.Int64Index}. The elements of this
+object can be retrieved like the elements of a python list. That is why
+the object is sliced with \texttt{{[}0{]}} to return the first element
+of the object. As there is only one observation with the
+\texttt{track\_name} as \emph{drivers license}, we sliced the first
+element. If there were multiple observations with \texttt{track\_name}
+as \emph{drivers license}, we will obtain the indices of all those
+observations with the \texttt{index} attribute.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{audio\_features\_scaled.loc[drivers\_license\_index,:]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+danceability        0.592105
+energy              0.436000
+key                 0.909091
+loudness            0.803825
+mode                1.000000
+speechiness         0.062023
+acousticness        0.723896
+instrumentalness    0.000013
+liveness            0.105000
+valence             0.132000
+tempo               0.590841
+time_signature      0.800000
+Name: 2398, dtype: float64
+\end{verbatim}
+
+Now, we'll subtract the audio features of \emph{drivers license} from
+all other songs (broadcasting):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Audio features of drivers license are being subtracted from audio features of all songs by broadcasting}
+\NormalTok{songs\_minus\_DL }\OperatorTok{=}\NormalTok{ audio\_features\_scaled}\OperatorTok{{-}}\NormalTok{audio\_features\_scaled.loc[drivers\_license\_index,:]}
+\end{Highlighting}
+\end{Shaded}
+
+Now, let us square the difference computed above. We'll use the in-built
+python function \texttt{pow()} to square the difference:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{songs\_minus\_DL\_sq }\OperatorTok{=}\NormalTok{ songs\_minus\_DL.}\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{songs\_minus\_DL\_sq.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& danceability & energy & key & loudness & mode & speechiness &
+acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.007933 & 0.008649 & 0.826446 & 0.000580 & 0.0 & 0.064398 &
+0.418204 & 1.055600e-07 & 0.000376 & 0.005041 & 0.005535 & 0.0 \\
+1 & 0.005610 & 0.016900 & 0.132231 & 0.000577 & 1.0 & 0.020844 &
+0.139498 & 1.716100e-10 & 0.055225 & 0.007396 & 0.060654 & 0.0 \\
+2 & 0.013314 & 0.063001 & 0.074380 & 0.005586 & 1.0 & 0.002244 &
+0.171942 & 5.382400e-10 & 0.000256 & 0.134689 & 0.050906 & 0.0 \\
+3 & 0.015499 & 0.064516 & 0.528926 & 0.003154 & 0.0 & 0.000269 &
+0.140249 & 1.716100e-10 & 0.013689 & 0.168921 & 0.068821 & 0.0 \\
+4 & 0.028914 & 0.025921 & 0.033058 & 0.000021 & 0.0 & 0.057274 &
+0.456981 & 1.716100e-10 & 0.008464 & 0.234256 & 0.075428 & 0.0 \\
+\end{longtable}
+
+Now, we'll sum the squares of differences from all audio features to
+compute the similarity of all songs to \emph{drivers license}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{distance\_squared }\OperatorTok{=}\NormalTok{ songs\_minus\_DL\_sq.}\BuiltInTok{sum}\NormalTok{(axis }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\NormalTok{distance\_squared.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0    1.337163
+1    1.438935
+2    1.516317
+3    1.004043
+4    0.920316
+dtype: float64
+\end{verbatim}
+
+Now, we'll sort these distances to find the top 5 songs closest to
+drivers's license.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{distances\_sorted }\OperatorTok{=}\NormalTok{ distance\_squared.sort\_values()}
+\NormalTok{distances\_sorted.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2398      0.000000
+81844     0.008633
+4397      0.011160
+130789    0.015018
+143744    0.015058
+dtype: float64
+\end{verbatim}
+
+Using the indices of the top 5 distances, we will identify the top 5
+songs most similar to \emph{drivers license}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spotify\_data.loc[distances\_sorted.index[}\DecValTok{0}\NormalTok{:}\DecValTok{6}\NormalTok{],:]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& artist\_followers & genres & artist\_name & artist\_popularity &
+track\_name & track\_popularity & duration\_ms & explicit &
+release\_year & danceability & ... & key & loudness & mode & speechiness
+& acousticness & instrumentalness & liveness & valence & tempo &
+time\_signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2398 & 1444702 & pop & Olivia Rodrigo & 88 & drivers license & 99 &
+242014 & 1 & 2021 & 0.585 & ... & 10 & -8.761 & 1 & 0.0601 & 0.721 &
+0.000013 & 0.105 & 0.132 & 143.874 & 4 \\
+81844 & 2264501 & pop & Jay Chou & 74 & 安靜 & 49 & 334240 & 0 & 2001 &
+0.513 & ... & 10 & -7.853 & 1 & 0.0281 & 0.688 & 0.000008 & 0.116 &
+0.123 & 143.924 & 4 \\
+4397 & 25457 & pop & Terence Lam & 60 & 拼命無恙 in Bb major & 52 &
+241062 & 0 & 2020 & 0.532 & ... & 10 & -9.690 & 1 & 0.0269 & 0.674 &
+0.000000 & 0.117 & 0.190 & 151.996 & 4 \\
+130789 & 176266 & pop & Alan Tam & 54 & 從後趕上 & 8 & 258427 & 0 & 1988
+& 0.584 & ... & 10 & -11.889 & 1 & 0.0282 & 0.707 & 0.000002 & 0.107 &
+0.124 & 140.147 & 4 \\
+143744 & 396326 & pop \& rock & Laura Branigan & 64 & How Am I Supposed
+to Live Without You & 40 & 263320 & 0 & 1983 & 0.559 & ... & 10 & -8.260
+& 1 & 0.0355 & 0.813 & 0.000083 & 0.134 & 0.185 & 139.079 & 4 \\
+35627 & 1600562 & pop & Tiziano Ferro & 68 & Non Me Lo So Spiegare & 44
+& 240040 & 0 & 2014 & 0.609 & ... & 11 & -7.087 & 1 & 0.0352 & 0.706 &
+0.000000 & 0.130 & 0.207 & 146.078 & 4 \\
+\end{longtable}
+
+We can see the top 5 songs most similar to \emph{drivers license} in the
+\emph{track\_name} column above. Interestingly, three of the five songs
+are Asian! These songs indeed sound similar to \emph{drivers license}!
+
+\hypertarget{independent-practice}{%
+\section{Independent Practice:}\label{independent-practice}}
+
+\hypertarget{practice-exercise-1-1}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-1}}
+
+\hypertarget{section-18}{%
+\subsubsection{}\label{section-18}}
+
+Read the file \emph{Top 10 Albums By Year.csv}. This file contains the
+top 10 albums for each year from 1990 to 2021. Each row corresponds to a
+unique album.
+
+\hypertarget{section-19}{%
+\subsubsection{}\label{section-19}}
+
+Print the summary statistics of the data, and answer the following
+questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What proportion of albums have 15 or lesser tracks? Mention a range
+  for the proportion.
+\item
+  What is the mean length of a track (in minutes)?
+\end{enumerate}
+
+\hypertarget{section-20}{%
+\subsubsection{}\label{section-20}}
+
+Why is \texttt{Worldwide\ Sales} not included in the summary statistics
+table printed in Practice exercise 1?
+
+\hypertarget{section-21}{%
+\subsubsection{}\label{section-21}}
+
+Update the DataFrame so that \texttt{Worldwide\ Sales} is included in
+the summary statistics table. Print the summary statistics table.
+
+\textbf{Hint}: Sometimes it may not be possible to convert an object to
+numeric(). For example, the object `hi' cannot be converted to a
+numeric() by the python compiler. To avoid getting an error, use the
+\texttt{errors} argument of \texttt{to\_numeric()} to force such
+conversions to NaN (missing value).
+
+\hypertarget{section-22}{%
+\subsubsection{}\label{section-22}}
+
+Create a new column called \texttt{mean\_sales\_per\_year} that computes
+the average worldwide sales per year for each album, assuming that the
+worldwide sales are as of 2022. Print the first 5 rows of the updated
+DataFrame.
+
+\hypertarget{section-23}{%
+\subsubsection{}\label{section-23}}
+
+Find the album having the highest worldwide sales per year, and its
+artist.
+
+\hypertarget{section-24}{%
+\subsubsection{}\label{section-24}}
+
+Subset the data to include only Hip-Hop albums. How many Hip\_Hop albums
+are there?
+
+\hypertarget{section-25}{%
+\subsubsection{}\label{section-25}}
+
+Which album amongst hip-hop has the higest mean sales per year per
+track, and who is its artist?
+
+\hypertarget{practice-exercise-2-1}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-1}}
+
+\hypertarget{section-26}{%
+\subsubsection{}\label{section-26}}
+
+Read the file \emph{STAT303-1 survey for data analysis.csv}.
+
+\hypertarget{section-27}{%
+\subsubsection{}\label{section-27}}
+
+How many observations and variables are there in the data?
+
+\hypertarget{section-28}{%
+\subsubsection{}\label{section-28}}
+
+Rename all the columns of the data, except the first two columns, with
+the shorter names in the list \texttt{new\_col\_names} given below. The
+order of column names in the list is the same as the order in which the
+columns are to be renamed starting with the third column from the left.
+
+\hypertarget{section-29}{%
+\subsubsection{}\label{section-29}}
+
+Rename the following columns again:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Rename \texttt{do\_you\_smoke} to \texttt{smoke}.
+\item
+  Rename \texttt{are\_you\_an\_introvert\_or\_extrovert} to
+  \texttt{introvert\_extrovert}.
+\end{enumerate}
+
+\textbf{Hint:} Use the function
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html}{rename()}
+
+\hypertarget{section-30}{%
+\subsubsection{}\label{section-30}}
+
+Find the proportion of people going to more than 4 parties per month.
+Use the variable \texttt{parties\_per\_month}.
+
+\hypertarget{section-31}{%
+\subsubsection{}\label{section-31}}
+
+Among the people who go to more than 4 parties a month, what proportion
+of them are introverts?
+
+\hypertarget{section-32}{%
+\subsubsection{}\label{section-32}}
+
+Find the proportion of people in each category of the variable
+\texttt{how\_happy}.
+
+\hypertarget{section-33}{%
+\subsubsection{}\label{section-33}}
+
+Among the people who go to more than 4 parties a month, what proportion
+of them are either \texttt{Pretty\ happy} or \texttt{Very\ happy}?
+
+\hypertarget{section-34}{%
+\subsubsection{}\label{section-34}}
+
+Examine the column \texttt{num\_insta\_followers}. Some numbers in the
+column contain a comma(\texttt{,}) or a
+tilde(\texttt{\textasciitilde{}}). Remove both these characters from the
+numbers in the column.
+
+\textbf{Hint:} You may use the function
+\href{https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html}{str.replace()}
+of the Pandas Series class.
+
+\hypertarget{section-35}{%
+\subsubsection{}\label{section-35}}
+
+Convert the column \texttt{num\_insta\_followers} to numeric. Coerce the
+errors.
+
+\hypertarget{section-36}{%
+\subsubsection{}\label{section-36}}
+
+Drop the observations consisting of missing values for
+\texttt{num\_insta\_followers}. Report the number of observations
+dropped.
+
+\hypertarget{section-37}{%
+\subsubsection{}\label{section-37}}
+
+What is the mean \texttt{internet\_hours\_per\_day} for the top 46
+people in terms of number of instagram followers?
+
+\hypertarget{section-38}{%
+\subsubsection{}\label{section-38}}
+
+What is the mean \texttt{internet\_hours\_per\_day} for the remaining
+people?
+
+\hypertarget{practice-exercise-3-1}{%
+\subsection{Practice exercise 3}\label{practice-exercise-3-1}}
+
+\hypertarget{section-39}{%
+\subsubsection{}\label{section-39}}
+
+Use the updated dataset from Practice exercise 1.
+
+The last four variables in the dataset are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \texttt{cant\_change\_math\_ability}
+\item
+  \texttt{can\_change\_math\_ability}
+\item
+  \texttt{math\_is\_genetic}
+\item
+  \texttt{much\_effort\_is\_lack\_of\_talent}
+\end{enumerate}
+
+Each of the above variables has values - \texttt{Agree} /
+\texttt{Disagree}. Replace \texttt{Agree} with \texttt{1} and
+\texttt{Disagree} with \texttt{0}.
+
+\textbf{Hint :} You can do it with any one of the following methods:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the map() function
+\item
+  Use the apply() function with the lambda function
+\item
+  Use the replace() function
+\end{enumerate}
+
+Two of the above methods avoid a \texttt{for}-loop. Which ones?
+
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{Appendices}
@@ -9837,8 +12906,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-18}{%
-\subsection{}\label{section-18}}
+\hypertarget{section-40}{%
+\subsection{}\label{section-40}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -9847,24 +12916,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-19}{%
-\subsection{}\label{section-19}}
+\hypertarget{section-41}{%
+\subsection{}\label{section-41}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-20}{%
-\subsection{}\label{section-20}}
+\hypertarget{section-42}{%
+\subsection{}\label{section-42}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-21}{%
-\subsection{}\label{section-21}}
+\hypertarget{section-43}{%
+\subsection{}\label{section-43}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -9875,8 +12944,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-22}{%
-\subsection{}\label{section-22}}
+\hypertarget{section-44}{%
+\subsection{}\label{section-44}}
 
 Use list comprehension to:
 
@@ -9925,16 +12994,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-23}{%
-\subsection{}\label{section-23}}
+\hypertarget{section-45}{%
+\subsection{}\label{section-45}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-24}{%
-\subsection{}\label{section-24}}
+\hypertarget{section-46}{%
+\subsection{}\label{section-46}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -9943,8 +13012,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-25}{%
-\subsection{}\label{section-25}}
+\hypertarget{section-47}{%
+\subsection{}\label{section-47}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -9953,8 +13022,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-26}{%
-\subsection{}\label{section-26}}
+\hypertarget{section-48}{%
+\subsection{}\label{section-48}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -9978,8 +13047,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-27}{%
-\subsection{}\label{section-27}}
+\hypertarget{section-49}{%
+\subsection{}\label{section-49}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -9988,8 +13057,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-28}{%
-\subsection{}\label{section-28}}
+\hypertarget{section-50}{%
+\subsection{}\label{section-50}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -10001,8 +13070,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-29}{%
-\subsection{}\label{section-29}}
+\hypertarget{section-51}{%
+\subsection{}\label{section-51}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -10010,23 +13079,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-30}{%
-\subsection{}\label{section-30}}
+\hypertarget{section-52}{%
+\subsection{}\label{section-52}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-31}{%
-\subsection{}\label{section-31}}
+\hypertarget{section-53}{%
+\subsection{}\label{section-53}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-32}{%
-\subsection{}\label{section-32}}
+\hypertarget{section-54}{%
+\subsection{}\label{section-54}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -10035,16 +13104,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-33}{%
-\subsection{}\label{section-33}}
+\hypertarget{section-55}{%
+\subsection{}\label{section-55}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-34}{%
-\subsection{}\label{section-34}}
+\hypertarget{section-56}{%
+\subsection{}\label{section-56}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -10054,16 +13123,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-35}{%
-\subsection{}\label{section-35}}
+\hypertarget{section-57}{%
+\subsection{}\label{section-57}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-36}{%
-\subsection{}\label{section-36}}
+\hypertarget{section-58}{%
+\subsection{}\label{section-58}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -10076,38 +13145,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-37}{%
-\subsection{}\label{section-37}}
+\hypertarget{section-59}{%
+\subsection{}\label{section-59}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-38}{%
-\subsection{}\label{section-38}}
+\hypertarget{section-60}{%
+\subsection{}\label{section-60}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-39}{%
-\subsection{}\label{section-39}}
+\hypertarget{section-61}{%
+\subsection{}\label{section-61}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-40}{%
-\subsection{}\label{section-40}}
+\hypertarget{section-62}{%
+\subsection{}\label{section-62}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-41}{%
-\subsection{}\label{section-41}}
+\hypertarget{section-63}{%
+\subsection{}\label{section-63}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -10116,16 +13185,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-42}{%
-\subsection{}\label{section-42}}
+\hypertarget{section-64}{%
+\subsection{}\label{section-64}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-43}{%
-\subsection{}\label{section-43}}
+\hypertarget{section-65}{%
+\subsection{}\label{section-65}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -10139,6 +13208,387 @@ Consider the file formats - \emph{csv, JSON, txt}. Mention one advantage
 and one disadvantage of each format over the other two formats.
 
 \emph{(2+2+2 = 6 points)}
+
+\hypertarget{assignment-b}{%
+\chapter{Assignment B}\label{assignment-b}}
+
+NumPy
+
+\hfill\break
+
+\hypertarget{instructions-3}{%
+\section*{Instructions}\label{instructions-3}}
+\addcontentsline{toc}{section}{Instructions}
+
+\markright{Instructions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You may talk to a friend, discuss the questions and potential
+  directions for solving them. However, you need to write your own
+  solutions and code separately, and not as a group activity.
+\item
+  Write your code in the \emph{Code} cells and your answer in the
+  \emph{Markdown} cells of the Jupyter notebook. Ensure that the
+  solution is written neatly enough to understand and grade.
+\item
+  Use
+  \href{https://quarto.org/docs/output-formats/html-basics.html}{Quarto}
+  to print the \emph{.ipynb} file as HTML. You will need to open the
+  command prompt, navigate to the directory containing the file, and use
+  the command: \texttt{quarto\ render\ filename.ipynb\ -\/-to\ html}.
+  Submit the HTML file.
+\item
+  The assignment is worth 100 points, and is due on \textbf{20th October
+  2024 at 11:59 pm}.
+\item
+  \textbf{Five points are properly formatting the assignment}. The
+  breakdown is as follows:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Must be an HTML file rendered using Quarto (2 pts).
+\item
+  There aren't excessively long outputs of extraneous information
+  (e.g.~no printouts of entire data frames without good reason, there
+  aren't long printouts of which iteration a loop is on, there aren't
+  long sections of commented-out code, etc.) (1 pt)
+\item
+  Final answers of each question are written in Markdown cells (1 pt).
+\item
+  There is no piece of unnecessary / redundant code, and no unnecessary
+  / redundant text (1 pt)
+\end{itemize}
+
+\hypertarget{air-quality-sensors}{%
+\section{Air quality sensors}\label{air-quality-sensors}}
+
+\textbf{(An application of broadcasting NumPy arrays)}
+
+Air quality sensors are used to measure the amount of contaminants in
+air. This question will guide you in finding the location of installing
+50 air quality sensors in the State of Colorado, such that they are as
+far away from each other as possible. The approach below is a greedy
+algorithm to find an approximate
+\href{https://www.sciencedirect.com/science/article/abs/pii/037837589090122B}{Maximin
+design}.
+
+The file \emph{colorado\_coordinate\_grid.txt} contains the
+coordinate-pairs (latitude and longitude) of potential locations for
+installing an air quality sensor.
+
+\hypertarget{data}{%
+\subsection{Data}\label{data}}
+
+Read the file with NumPy. How many coordinate-pairs are there in the
+file?
+
+Note that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A coordinate-pair means a latitude-longitude pair.
+\item
+  `Air quality sensor' will be referred as `sensor' in the questions
+  below for brevity.
+\end{enumerate}
+
+\emph{(4 points)}
+
+\hypertarget{first-sensor}{%
+\subsection{First sensor}\label{first-sensor}}
+
+The first sensor is to be installed closest to Denver \emph{(closest in
+terms of Euclidean distance)}. Find the coordinate-pair of the location
+where the first sensor will be installed. The coordinate-pair of Denver
+is: {[}39.7392\(^{\circ}\) N, 104.9903\(^{\circ}\) W{]}
+
+Note that the suffixes \(^{\circ}\) N and \(^{\circ}\) W are omitted in
+the file \emph{colorado\_coordinate\_grid.txt}.
+
+\textbf{Hint:} Broadcasting
+
+\emph{(4 points)}
+
+\hypertarget{second-sensor}{%
+\subsection{Second sensor}\label{second-sensor}}
+
+Find the coordinate-pair of the installation of the next sensor, such
+that it is as far as possible from the first sensor installed near
+Denver.
+
+\textbf{Hint:} Broadcasting
+
+\emph{(4 points)}
+
+\hypertarget{first-two-sensors}{%
+\subsection{First two sensors}\label{first-two-sensors}}
+
+Stack the coordinate-pairs of the first and second sensors vertically to
+obtain a 2 x 2 NumPy array. Name the array as
+\texttt{air\_sensor\_coordinates}.
+
+Run the code below to check if your results seem correct. The
+coordinate-pairs of the two air quality sensors will be marked as blue
+dots.
+
+\emph{(4 points)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\KeywordTok{def}\NormalTok{ sensor\_viz():}
+\NormalTok{    img }\OperatorTok{=}\NormalTok{ plt.imread(}\StringTok{"colorado.jpg"}\NormalTok{)}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{),dpi}\OperatorTok{=}\DecValTok{80}\NormalTok{)}
+\NormalTok{    fig.set\_size\_inches(}\FloatTok{10.5}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\NormalTok{    ax.imshow(img,extent}\OperatorTok{=}\NormalTok{[}\OperatorTok{{-}}\DecValTok{109}\NormalTok{, }\OperatorTok{{-}}\DecValTok{102}\NormalTok{, }\DecValTok{37}\NormalTok{, }\DecValTok{41}\NormalTok{])}
+\NormalTok{    plt.scatter(y }\OperatorTok{=}\NormalTok{ air\_sensor\_coordinates[:,}\DecValTok{0}\NormalTok{], x }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{air\_sensor\_coordinates[:,}\DecValTok{1}\NormalTok{])}
+\NormalTok{    plt.xlim(}\OperatorTok{{-}}\FloatTok{109.05}\NormalTok{,}\OperatorTok{{-}}\FloatTok{101.95}\NormalTok{)}
+\NormalTok{    plt.ylim(}\FloatTok{36.95}\NormalTok{,}\FloatTok{41.05}\NormalTok{)}
+\NormalTok{    plt.xlabel(}\StringTok{"Longitude"}\NormalTok{)}
+\NormalTok{    plt.ylabel(}\StringTok{"Latitude"}\NormalTok{)}
+\NormalTok{sensor\_viz()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{third-sensor}{%
+\subsection{Third sensor}\label{third-sensor}}
+
+Now you need to find the coordinate-pair for installing the third sensor
+such that it is far away from the two already-installed sensors. Proceed
+as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the minimum distance of each coordinate-pair in
+  \emph{colorado\_coordinate\_grid.txt} from the two already installed
+  sensors. For example, if a coordinate-pair is at a distance of 5 units
+  from the first sensor, and 10 units from the second sensor, then its
+  minimum distance from the sensors will be \(\min(5,10) = 5\) units.
+\item
+  Select the coordinate-pair (from
+  \emph{colorado\_coordinate\_grid.txt}) whose minimum distance from the
+  two already installed sensors is the maximum.
+\item
+  Stack the coordinate-pair of the third air quality sensor vertically
+  on the array \texttt{air\_sensor\_coordinates}.
+\end{enumerate}
+
+Call the function \texttt{sensor\_viz()} to check if your results seem
+correct. The coordinate-pairs of the three air quality sensors will be
+marked as blue dots.
+
+\textbf{Hint:}
+
+For step (1) above:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Define a function which computes the distances of a coordinate-pair
+  from all the coordinates of \texttt{air\_sensor\_coordinates}, and
+  returns the minimum distance.
+\item
+  Apply the function on all the coordinate-pairs in
+  \emph{colorado\_coordinate\_grid.txt} using the NumPy function
+  \texttt{apply\_along\_axis()}.
+\end{enumerate}
+
+\emph{(20 points)}
+
+\hypertarget{all-50-sensors}{%
+\subsection{All 50 sensors}\label{all-50-sensors}}
+
+You need to find 47 more coordinate-pairs to install air quality sensors
+well-spread across Colorado. We will generalize the steps in the
+previous question to proceed as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Suppose you have already found the coordinate-pairs for the
+  installation of \emph{i} sensors.
+\item
+  Find the minimum distance of each coordinate in
+  \emph{colorado\_coordinate\_grid.txt} from the \emph{i} already
+  installed sensors. For example, if a coordinate-pair is at a distance
+  of \(d_1\) from the first sensor, \(d_2\) from the second
+  sensor,\ldots, and \(d_i\) from the \(i^{th}\) sensor, then its
+  minimum distance from the sensors will be \(min(d_1, d_2, ..., d_i\)).
+\item
+  Select the \(i+1^{th}\) coordinate-pair (from
+  \emph{colorado\_coordinate\_grid.txt}) as the one whose minimum
+  distance from the \(i\) already installed sensors is the maximum.
+\end{enumerate}
+
+Call the function \texttt{sensor\_viz()} to check if your results seem
+correct. You should see 50 blue dots well spread across Colorado.
+
+\emph{(10 points)}
+
+\hypertarget{sales}{%
+\section{Sales}\label{sales}}
+
+\textbf{(An application of matrix multiplication with NumPy arrays)}
+
+When the monthly sales of a product are subject to seasonal
+fluctuations, a curve that approximates the sales formula might have the
+form:
+
+\[y = a + b*x + c*\sin\bigg(2*\pi*\frac{x}{12}\bigg),\]
+
+where \(x\) is the time since the starting point in months and \(y\) is
+the monthly sales in USD (million). The term \(a + b*x\) gives the basic
+sales trend and the \(\sin\) term reflects the seasonal changes in
+sales. Suppose the model parameters (i.e., \(a\), \(b\), and \(c\)) are
+estimated and put on the list below for the sales of a certain brand of
+sunscreen starting June 1, 2017.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_parameters }\OperatorTok{=}\NormalTok{ [}\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{18}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Then, the total monthly sales in June 2017 will be calculated by
+plugging 1 as \(x\) into the equation.
+
+Using matrix multiplication with NumPy, we wish to estimate the total
+sales between June 1 2017 and March 1, 2020. \emph{(So many models
+failed to predict sales after that - probably due to covid.)}
+
+Proceed as follows.
+
+\hypertarget{create-first-array}{%
+\subsection{Create first array}\label{create-first-array}}
+
+Create a numpy array where the first column is all \(1\)s, the second
+column is a range of numbers from 1 to the total number of months from
+June 1 2017 to March 1 2020 and the third column is \(\sin(2*\pi*x/12)\)
+values with \(x\) values as plugged-in in the second column.
+
+\emph{(10 points)}
+
+\hypertarget{create-second-array}{%
+\subsection{Create second array}\label{create-second-array}}
+
+Create an array from the list \texttt{model\_parameters}.
+
+\emph{(3 points)}
+
+\hypertarget{multiply-arrays}{%
+\subsection{Multiply arrays}\label{multiply-arrays}}
+
+Use matrix multiplication to get the monthly sales estimates for each
+month in the range: June 1 2017 and March 1, 2020.
+
+\emph{(8 points)}
+
+\hypertarget{sum-array-elements}{%
+\subsection{Sum array elements}\label{sum-array-elements}}
+
+Find the total sales between June 1 2017 and March 1, 2020.
+
+\emph{(3 points)}
+
+\hypertarget{exercise-minutes}{%
+\section{Exercise minutes}\label{exercise-minutes}}
+
+\textbf{(An application of parallel computation with NumPy)}
+
+This problem demonstrates the benefit of generating pseudo random number
+matrix with NumPy.
+
+The list \texttt{exercise\_minutes} below consists of exercise minutes
+per week of the students of STAT303-1 Fall 2022 class.
+
+We wish to find the \textbf{95\% confidence interval} of mean
+\texttt{exercise\_minutes}, using
+\href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{Bootstrapping}.
+
+Bootstrapping is a non-parametric method for obtaining confidence
+interval. The method is as follows.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Suppose the list \texttt{exercise\_minutes} has \(N\) values.
+\item
+  Randomly sample \(N\) values with replacement from
+  \texttt{exercise\_minutes}
+\item
+  Find the mean of the \(N\) values obtained in (b)
+\item
+  Repeat steps (b) and (c) 10,000 times
+\item
+  The 95\% Confidence interval is the range between the 2.5\% and 97.5\%
+  percentile values of the 10,000 means obtained in (c)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{exercise\_minutes}\OperatorTok{=}\NormalTok{[}\DecValTok{240}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{140}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{630}\NormalTok{, }\DecValTok{420}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{420}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{1200}\NormalTok{, }\DecValTok{210}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{720}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{600}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{420}\NormalTok{, }\DecValTok{420}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{350}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{450}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{225}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{700}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{420}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{375}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{400}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{480}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{280}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{600}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{420}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{280}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{540}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{210}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{540}\NormalTok{, }\DecValTok{400}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{210}\NormalTok{, }\DecValTok{315}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{275}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1200}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{360}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{630}\NormalTok{, }\DecValTok{250}\NormalTok{, }\DecValTok{240}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{90}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Answer the following questions.
+
+\hypertarget{sequential-computation-without-numpy}{%
+\subsection{Sequential computation without
+NumPy}\label{sequential-computation-without-numpy}}
+
+Without using NumPy, compute the:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Confidence interval of mean \texttt{exercise\_minutes}, and
+\item
+  Time taken to execute the code
+\end{enumerate}
+
+\textbf{Hints:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You may use the library \texttt{random}.
+\item
+  You may use the library \texttt{time} for computing the time taken to
+  execute the code.
+\end{enumerate}
+
+\emph{(12 points)}
+
+\hypertarget{parallel-computation-with-numpy}{%
+\subsection{Parallel computation with
+NumPy}\label{parallel-computation-with-numpy}}
+
+Using NumPy, and without using loops, compute the:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Confidence interval of mean \texttt{exercise\_minutes}, and
+\item
+  Time taken to execute the code
+\end{enumerate}
+
+\emph{(12 points)}
+
+\hypertarget{time-saving-with-numpy}{%
+\subsection{Time saving with NumPy}\label{time-saving-with-numpy}}
+
+Report the ratio of time taken to execute the code wihout NumPy to the
+time taken to execute the code with NumPy.
+
+\emph{(1 point)}
 
 
 
