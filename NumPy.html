@@ -1494,7 +1494,11 @@ NumPy np.dot result: 249915.69608, Time: 0.00496 seconds</code></pre>
 </div>
 <p>When the expression <code>arr2 + arr4</code> is evaluated, <code>arr4</code> (which has the shape <code>(4,)</code>) is replicated three times to match the shape <code>(3, 4)</code> of <code>arr2</code>. Numpy performs the replication without actually creating three copies of the smaller dimension array, thus improving performance and using lower memory.</p>
 <p><img src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/02.05-broadcasting.png" width="360"></p>
-<p>Broadcasting only works if one of the arrays can be replicated to match the other array’s shape. * Dimensions of size 1 will broadcast (as if the value was repeated). * Otherwise, the dimension must have the same shape.</p>
+<p>Broadcasting only works if one of the arrays can be replicated to match the other array’s shape.</p>
+<ul>
+<li>Dimensions of size 1 will broadcast (as if the value was repeated).</li>
+<li>Otherwise, the dimension must have the same shape.</li>
+</ul>
 <div class="cell" data-execution_count="83">
 <details open="">
 <summary>Code</summary>
