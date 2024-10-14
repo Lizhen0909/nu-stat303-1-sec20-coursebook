@@ -335,39 +335,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#syntax-of-lambda-functions" id="toc-syntax-of-lambda-functions" class="nav-link" data-scroll-target="#syntax-of-lambda-functions"><span class="header-section-number">7.9.1</span> Syntax of Lambda Functions:</a></li>
   <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features"><span class="header-section-number">7.9.2</span> Key Features</a></li>
   </ul></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">7.10</span> Case study</a></li>
-  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">7.11</span> Independent Practice:</a>
+  <li><a href="#understanding-inplacetrue-and-inplacefalse" id="toc-understanding-inplacetrue-and-inplacefalse" class="nav-link" data-scroll-target="#understanding-inplacetrue-and-inplacefalse"><span class="header-section-number">7.10</span> Understanding <code>inplace=True</code> and <code>inplace=False</code></a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">7.11</span> Case study</a></li>
+  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">7.12</span> Independent Practice:</a>
   <ul>
-  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">7.11.1</span> Practice exercise 1</a>
+  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">7.12.1</span> Practice exercise 1</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">7.11.1.1</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">7.11.1.2</span> </a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">7.11.1.3</span> </a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">7.11.1.4</span> </a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">7.11.1.5</span> </a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">7.11.1.6</span> </a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7.11.1.7</span> </a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">7.11.1.8</span> </a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">7.12.1.1</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">7.12.1.2</span> </a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">7.12.1.3</span> </a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">7.12.1.4</span> </a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">7.12.1.5</span> </a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">7.12.1.6</span> </a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7.12.1.7</span> </a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">7.12.1.8</span> </a></li>
   </ul></li>
-  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">7.11.2</span> Practice exercise 2</a>
+  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">7.12.2</span> Practice exercise 2</a>
   <ul class="collapse">
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">7.11.2.1</span> </a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">7.11.2.2</span> </a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">7.11.2.3</span> </a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">7.11.2.4</span> </a></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">7.11.2.5</span> </a></li>
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"><span class="header-section-number">7.11.2.6</span> </a></li>
-  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"><span class="header-section-number">7.11.2.7</span> </a></li>
-  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"><span class="header-section-number">7.11.2.8</span> </a></li>
-  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"><span class="header-section-number">7.11.2.9</span> </a></li>
-  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">7.11.2.10</span> </a></li>
-  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">7.11.2.11</span> </a></li>
-  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">7.11.2.12</span> </a></li>
-  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">7.11.2.13</span> </a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">7.12.2.1</span> </a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">7.12.2.2</span> </a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">7.12.2.3</span> </a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">7.12.2.4</span> </a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">7.12.2.5</span> </a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"><span class="header-section-number">7.12.2.6</span> </a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"><span class="header-section-number">7.12.2.7</span> </a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"><span class="header-section-number">7.12.2.8</span> </a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"><span class="header-section-number">7.12.2.9</span> </a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">7.12.2.10</span> </a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">7.12.2.11</span> </a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">7.12.2.12</span> </a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">7.12.2.13</span> </a></li>
   </ul></li>
-  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">7.11.3</span> Practice exercise 3</a>
+  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">7.12.3</span> Practice exercise 3</a>
   <ul class="collapse">
-  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"><span class="header-section-number">7.11.3.1</span> </a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"><span class="header-section-number">7.12.3.1</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -4492,13 +4493,53 @@ dtype: int64</code></pre>
 </div>
 </section>
 </section>
-<section id="case-study" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="case-study"><span class="header-section-number">7.10</span> Case study</h2>
+<section id="understanding-inplacetrue-and-inplacefalse" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="understanding-inplacetrue-and-inplacefalse"><span class="header-section-number">7.10</span> Understanding <code>inplace=True</code> and <code>inplace=False</code></h2>
+<p>Above, we covered multiple methods that allow you to modify a DataFrame or Series. The <code>inplace</code> parameter of these methods determines whether the operation modifies the original object or returns a new object.</p>
+<ul>
+<li><code>inplace=True</code>: Modifies the original DataFrame or Series directly and returns None. The changes are made in place, meaning the original object is altered.</li>
+<li><code>inplace=False</code>: Returns a new DataFrame or Series with the modifications, leaving the original object unchanged. This is the default behavior for most methods.</li>
+</ul>
+<p><strong>Note</strong>: The default value for the inplace parameter is False for most methods.</p>
+<p>Usage Example:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>inplace_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop a column without modifying the original DataFrame</span></span>
+<span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a>df_dropped <span class="op">=</span> inplace_df.drop(<span class="st">'A'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb118-9"><a href="#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_dropped)  <span class="co"># New DataFrame without column 'A'</span></span>
+<span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inplace_df)          <span class="co"># Original DataFrame remains unchanged</span></span>
+<span id="cb118-11"><a href="#cb118-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-12"><a href="#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop a column in place</span></span>
+<span id="cb118-13"><a href="#cb118-13" aria-hidden="true" tabindex="-1"></a>inplace_df.drop(<span class="st">'A'</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb118-14"><a href="#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inplace_df)          <span class="co"># Original DataFrame is now modified</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   B
+0  4
+1  5
+2  6
+   A  B
+0  1  4
+1  2  5
+2  3  6
+   B
+0  4
+1  5
+2  6</code></pre>
+</div>
+</div>
+</section>
+<section id="case-study" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="case-study"><span class="header-section-number">7.11</span> Case study</h2>
 <p>To see the application of arithematic operations on DataFrames, let us see the case study below.</p>
 <p><strong>Song recommendation:</strong> Spotify recommends songs based on songs listened by the user. Suppose you have listened to the song <em>drivers license</em>. Spotify intends to recommend you 5 songs that are <em>similar</em> to <em>drivers license</em>. Which songs should it recommend?</p>
 <p>Let us see the available song information that can help us identify songs similar to <em>drivers license</em>. The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html">columns</a> attribute of DataFrame will display all the columns names. The description of some of the column names relating to audio features is <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features">here</a>.</p>
 <div class="cell" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>spotify_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>spotify_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="93">
 <pre><code>Index(['artist_followers', 'genres', 'artist_name', 'artist_popularity',
        'track_name', 'track_popularity', 'duration_ms', 'explicit',
@@ -4514,11 +4555,11 @@ dtype: int64</code></pre>
 <p>where the subscript <em>DL</em> stands for <em>drivers license</em> and <em>S</em> stands for any song. The top 5 songs with the least value of <span class="math inline">\(Similarity_{DL-S}\)</span> will be the most similar to <em>drivers lincense</em> and should be recommended.</p>
 <p>Let us subset the columns that we need to use to compute the Euclidean distance.</p>
 <div class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>audio_features <span class="op">=</span> spotify_data[[<span class="st">'danceability'</span>, <span class="st">'energy'</span>, <span class="st">'key'</span>, <span class="st">'loudness'</span>,<span class="st">'mode'</span>,<span class="st">'speechiness'</span>,</span>
-<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'acousticness'</span>, <span class="st">'instrumentalness'</span>, <span class="st">'liveness'</span>,<span class="st">'valence'</span>, <span class="st">'tempo'</span>, <span class="st">'time_signature'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>audio_features <span class="op">=</span> spotify_data[[<span class="st">'danceability'</span>, <span class="st">'energy'</span>, <span class="st">'key'</span>, <span class="st">'loudness'</span>,<span class="st">'mode'</span>,<span class="st">'speechiness'</span>,</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'acousticness'</span>, <span class="st">'instrumentalness'</span>, <span class="st">'liveness'</span>,<span class="st">'valence'</span>, <span class="st">'tempo'</span>, <span class="st">'time_signature'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>audio_features.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>audio_features.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="95">
 <div>
 
@@ -4624,8 +4665,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Distribution of values of audio_features</span></span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>audio_features.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Distribution of values of audio_features</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>audio_features.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="96">
 <div>
 
@@ -4779,10 +4820,10 @@ dtype: int64</code></pre>
 <p>Let us scale the value of each column to a standard uniform distribution: <span class="math inline">\(U[0,1]\)</span>.</p>
 <p>For scaling the values of a column to <span class="math inline">\(U[0,1]\)</span>, we need to subtract the minimum value of the column from each value, and divide by the range of values of the column. For example, <em>danceability</em> can be standardized as follows:</p>
 <div class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling danceability to U[0,1]</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>danceability_value_range <span class="op">=</span> audio_features.danceability.<span class="bu">max</span>()<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>()</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>danceability_std <span class="op">=</span> (audio_features.danceability<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>())<span class="op">/</span>danceability_value_range</span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>danceability_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling danceability to U[0,1]</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>danceability_value_range <span class="op">=</span> audio_features.danceability.<span class="bu">max</span>()<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>()</span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>danceability_std <span class="op">=</span> (audio_features.danceability<span class="op">-</span>audio_features.danceability.<span class="bu">min</span>())<span class="op">/</span>danceability_value_range</span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>danceability_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="97">
 <pre><code>0         0.681174
 1         0.517206
@@ -4800,22 +4841,22 @@ Name: danceability, Length: 243190, dtype: float64</code></pre>
 </div>
 <p>However, it will be cumbersome to repeat the above code for each audio feature. We can instead write a function that scales values of a column to <span class="math inline">\(U[0,1]\)</span>, and apply the function on all the audio features.</p>
 <div class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to scale a column to U[0,1]</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scale_uniform(x):</span>
-<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to scale a column to U[0,1]</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scale_uniform(x):</span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will use the Pandas function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html">apply()</a> to apply the above function to the DataFrame <code>audio_features</code>.</p>
 <div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling all audio features to U[0,1]</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(scale_uniform)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scaling all audio features to U[0,1]</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(scale_uniform)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above two blocks of code can be concisely written with the <code>lambda</code> function as:</p>
 <div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled <span class="op">=</span> audio_features.<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x<span class="op">-</span>x.<span class="bu">min</span>())<span class="op">/</span>(x.<span class="bu">max</span>()<span class="op">-</span>x.<span class="bu">min</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#All the audio features are scaled to U[0,1]</span></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co">#All the audio features are scaled to U[0,1]</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="101">
 <div>
 
@@ -4967,12 +5008,12 @@ Name: danceability, Length: 243190, dtype: float64</code></pre>
 </div>
 <p>Since we need to find the Euclidean distance from the song <em>drivers license</em>, let us find the index of the row containing features of <em>drivers license.</em></p>
 <div class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Index of the row consisting of drivers license can be found with the index attribute</span></span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>drivers_license_index <span class="op">=</span> spotify_data[spotify_data.track_name<span class="op">==</span><span class="st">'drivers license'</span>].index[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Index of the row consisting of drivers license can be found with the index attribute</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>drivers_license_index <span class="op">=</span> spotify_data[spotify_data.track_name<span class="op">==</span><span class="st">'drivers license'</span>].index[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the object returned by the <code>index</code> attribute is of type <code>pandas.core.indexes.numeric.Int64Index</code>. The elements of this object can be retrieved like the elements of a python list. That is why the object is sliced with <code>[0]</code> to return the first element of the object. As there is only one observation with the <code>track_name</code> as <em>drivers license</em>, we sliced the first element. If there were multiple observations with <code>track_name</code> as <em>drivers license</em>, we will obtain the indices of all those observations with the <code>index</code> attribute.</p>
 <div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="108">
 <pre><code>danceability        0.592105
 energy              0.436000
@@ -4991,13 +5032,13 @@ Name: 2398, dtype: float64</code></pre>
 </div>
 <p>Now, we’ll subtract the audio features of <em>drivers license</em> from all other songs (broadcasting):</p>
 <div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Audio features of drivers license are being subtracted from audio features of all songs by broadcasting</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL <span class="op">=</span> audio_features_scaled<span class="op">-</span>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Audio features of drivers license are being subtracted from audio features of all songs by broadcasting</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL <span class="op">=</span> audio_features_scaled<span class="op">-</span>audio_features_scaled.loc[drivers_license_index,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let us square the difference computed above. We’ll use the in-built python function <code>pow()</code> to square the difference:</p>
 <div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq <span class="op">=</span> songs_minus_DL.<span class="bu">pow</span>(<span class="dv">2</span>)</span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq <span class="op">=</span> songs_minus_DL.<span class="bu">pow</span>(<span class="dv">2</span>)</span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a>songs_minus_DL_sq.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
 <div>
 
@@ -5104,8 +5145,8 @@ Name: 2398, dtype: float64</code></pre>
 </div>
 <p>Now, we’ll sum the squares of differences from all audio features to compute the similarity of all songs to <em>drivers license</em>.</p>
 <div class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>distance_squared <span class="op">=</span> songs_minus_DL_sq.<span class="bu">sum</span>(axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>distance_squared.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>distance_squared <span class="op">=</span> songs_minus_DL_sq.<span class="bu">sum</span>(axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>distance_squared.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="105">
 <pre><code>0    1.337163
 1    1.438935
@@ -5117,8 +5158,8 @@ dtype: float64</code></pre>
 </div>
 <p>Now, we’ll sort these distances to find the top 5 songs closest to drivers’s license.</p>
 <div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>distances_sorted <span class="op">=</span> distance_squared.sort_values()</span>
-<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>distances_sorted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>distances_sorted <span class="op">=</span> distance_squared.sort_values()</span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>distances_sorted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>2398      0.000000
 81844     0.008633
@@ -5130,7 +5171,7 @@ dtype: float64</code></pre>
 </div>
 <p>Using the indices of the top 5 distances, we will identify the top 5 songs most similar to <em>drivers license</em>:</p>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>spotify_data.loc[distances_sorted.index[<span class="dv">0</span>:<span class="dv">6</span>],:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>spotify_data.loc[distances_sorted.index[<span class="dv">0</span>:<span class="dv">6</span>],:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="107">
 <div>
 
@@ -5316,64 +5357,64 @@ dtype: float64</code></pre>
 </div>
 <p>We can see the top 5 songs most similar to <em>drivers license</em> in the <em>track_name</em> column above. Interestingly, three of the five songs are Asian! These songs indeed sound similar to <em>drivers license</em>!</p>
 </section>
-<section id="independent-practice" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">7.11</span> Independent Practice:</h2>
-<section id="practice-exercise-1" class="level3" data-number="7.11.1">
-<h3 data-number="7.11.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">7.11.1</span> Practice exercise 1</h3>
-<section id="section" class="level4" data-number="7.11.1.1">
-<h4 data-number="7.11.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">7.11.1.1</span> </h4>
+<section id="independent-practice" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">7.12</span> Independent Practice:</h2>
+<section id="practice-exercise-1" class="level3" data-number="7.12.1">
+<h3 data-number="7.12.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">7.12.1</span> Practice exercise 1</h3>
+<section id="section" class="level4" data-number="7.12.1.1">
+<h4 data-number="7.12.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">7.12.1.1</span> </h4>
 <p>Read the file <em>Top 10 Albums By Year.csv</em>. This file contains the top 10 albums for each year from 1990 to 2021. Each row corresponds to a unique album.</p>
 </section>
-<section id="section-1" class="level4" data-number="7.11.1.2">
-<h4 data-number="7.11.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">7.11.1.2</span> </h4>
+<section id="section-1" class="level4" data-number="7.12.1.2">
+<h4 data-number="7.12.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">7.12.1.2</span> </h4>
 <p>Print the summary statistics of the data, and answer the following questions:</p>
 <ol type="1">
 <li>What proportion of albums have 15 or lesser tracks? Mention a range for the proportion.</li>
 <li>What is the mean length of a track (in minutes)?</li>
 </ol>
 </section>
-<section id="section-2" class="level4" data-number="7.11.1.3">
-<h4 data-number="7.11.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">7.11.1.3</span> </h4>
+<section id="section-2" class="level4" data-number="7.12.1.3">
+<h4 data-number="7.12.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">7.12.1.3</span> </h4>
 <p>Why is <code>Worldwide Sales</code> not included in the summary statistics table printed in Practice exercise 1?</p>
 </section>
-<section id="section-3" class="level4" data-number="7.11.1.4">
-<h4 data-number="7.11.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">7.11.1.4</span> </h4>
+<section id="section-3" class="level4" data-number="7.12.1.4">
+<h4 data-number="7.12.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">7.12.1.4</span> </h4>
 <p>Update the DataFrame so that <code>Worldwide Sales</code> is included in the summary statistics table. Print the summary statistics table.</p>
 <p><strong>Hint</strong>: Sometimes it may not be possible to convert an object to numeric(). For example, the object ‘hi’ cannot be converted to a numeric() by the python compiler. To avoid getting an error, use the <code>errors</code> argument of <code>to_numeric()</code> to force such conversions to NaN (missing value).</p>
 </section>
-<section id="section-4" class="level4" data-number="7.11.1.5">
-<h4 data-number="7.11.1.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">7.11.1.5</span> </h4>
+<section id="section-4" class="level4" data-number="7.12.1.5">
+<h4 data-number="7.12.1.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">7.12.1.5</span> </h4>
 <p>Create a new column called <code>mean_sales_per_year</code> that computes the average worldwide sales per year for each album, assuming that the worldwide sales are as of 2022. Print the first 5 rows of the updated DataFrame.</p>
 </section>
-<section id="section-5" class="level4" data-number="7.11.1.6">
-<h4 data-number="7.11.1.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">7.11.1.6</span> </h4>
+<section id="section-5" class="level4" data-number="7.12.1.6">
+<h4 data-number="7.12.1.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">7.12.1.6</span> </h4>
 <p>Find the album having the highest worldwide sales per year, and its artist.</p>
 </section>
-<section id="section-6" class="level4" data-number="7.11.1.7">
-<h4 data-number="7.11.1.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">7.11.1.7</span> </h4>
+<section id="section-6" class="level4" data-number="7.12.1.7">
+<h4 data-number="7.12.1.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">7.12.1.7</span> </h4>
 <p>Subset the data to include only Hip-Hop albums. How many Hip_Hop albums are there?</p>
 </section>
-<section id="section-7" class="level4" data-number="7.11.1.8">
-<h4 data-number="7.11.1.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">7.11.1.8</span> </h4>
+<section id="section-7" class="level4" data-number="7.12.1.8">
+<h4 data-number="7.12.1.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">7.12.1.8</span> </h4>
 <p>Which album amongst hip-hop has the higest mean sales per year per track, and who is its artist?</p>
 </section>
 </section>
-<section id="practice-exercise-2" class="level3" data-number="7.11.2">
-<h3 data-number="7.11.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">7.11.2</span> Practice exercise 2</h3>
-<section id="section-8" class="level4" data-number="7.11.2.1">
-<h4 data-number="7.11.2.1" class="anchored" data-anchor-id="section-8"><span class="header-section-number">7.11.2.1</span> </h4>
+<section id="practice-exercise-2" class="level3" data-number="7.12.2">
+<h3 data-number="7.12.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">7.12.2</span> Practice exercise 2</h3>
+<section id="section-8" class="level4" data-number="7.12.2.1">
+<h4 data-number="7.12.2.1" class="anchored" data-anchor-id="section-8"><span class="header-section-number">7.12.2.1</span> </h4>
 <p>Read the file <em>STAT303-1 survey for data analysis.csv</em>.</p>
 </section>
-<section id="section-9" class="level4" data-number="7.11.2.2">
-<h4 data-number="7.11.2.2" class="anchored" data-anchor-id="section-9"><span class="header-section-number">7.11.2.2</span> </h4>
+<section id="section-9" class="level4" data-number="7.12.2.2">
+<h4 data-number="7.12.2.2" class="anchored" data-anchor-id="section-9"><span class="header-section-number">7.12.2.2</span> </h4>
 <p>How many observations and variables are there in the data?</p>
 </section>
-<section id="section-10" class="level4" data-number="7.11.2.3">
-<h4 data-number="7.11.2.3" class="anchored" data-anchor-id="section-10"><span class="header-section-number">7.11.2.3</span> </h4>
+<section id="section-10" class="level4" data-number="7.12.2.3">
+<h4 data-number="7.12.2.3" class="anchored" data-anchor-id="section-10"><span class="header-section-number">7.12.2.3</span> </h4>
 <p>Rename all the columns of the data, except the first two columns, with the shorter names in the list <code>new_col_names</code> given below. The order of column names in the list is the same as the order in which the columns are to be renamed starting with the third column from the left.</p>
 </section>
-<section id="section-11" class="level4" data-number="7.11.2.4">
-<h4 data-number="7.11.2.4" class="anchored" data-anchor-id="section-11"><span class="header-section-number">7.11.2.4</span> </h4>
+<section id="section-11" class="level4" data-number="7.12.2.4">
+<h4 data-number="7.12.2.4" class="anchored" data-anchor-id="section-11"><span class="header-section-number">7.12.2.4</span> </h4>
 <p>Rename the following columns again:</p>
 <ol type="1">
 <li><p>Rename <code>do_you_smoke</code> to <code>smoke</code>.</p></li>
@@ -5381,48 +5422,48 @@ dtype: float64</code></pre>
 </ol>
 <p><strong>Hint:</strong> Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html">rename()</a></p>
 </section>
-<section id="section-12" class="level4" data-number="7.11.2.5">
-<h4 data-number="7.11.2.5" class="anchored" data-anchor-id="section-12"><span class="header-section-number">7.11.2.5</span> </h4>
+<section id="section-12" class="level4" data-number="7.12.2.5">
+<h4 data-number="7.12.2.5" class="anchored" data-anchor-id="section-12"><span class="header-section-number">7.12.2.5</span> </h4>
 <p>Find the proportion of people going to more than 4 parties per month. Use the variable <code>parties_per_month</code>.</p>
 </section>
-<section id="section-13" class="level4" data-number="7.11.2.6">
-<h4 data-number="7.11.2.6" class="anchored" data-anchor-id="section-13"><span class="header-section-number">7.11.2.6</span> </h4>
+<section id="section-13" class="level4" data-number="7.12.2.6">
+<h4 data-number="7.12.2.6" class="anchored" data-anchor-id="section-13"><span class="header-section-number">7.12.2.6</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are introverts?</p>
 </section>
-<section id="section-14" class="level4" data-number="7.11.2.7">
-<h4 data-number="7.11.2.7" class="anchored" data-anchor-id="section-14"><span class="header-section-number">7.11.2.7</span> </h4>
+<section id="section-14" class="level4" data-number="7.12.2.7">
+<h4 data-number="7.12.2.7" class="anchored" data-anchor-id="section-14"><span class="header-section-number">7.12.2.7</span> </h4>
 <p>Find the proportion of people in each category of the variable <code>how_happy</code>.</p>
 </section>
-<section id="section-15" class="level4" data-number="7.11.2.8">
-<h4 data-number="7.11.2.8" class="anchored" data-anchor-id="section-15"><span class="header-section-number">7.11.2.8</span> </h4>
+<section id="section-15" class="level4" data-number="7.12.2.8">
+<h4 data-number="7.12.2.8" class="anchored" data-anchor-id="section-15"><span class="header-section-number">7.12.2.8</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are either <code>Pretty happy</code> or <code>Very happy</code>?</p>
 </section>
-<section id="section-16" class="level4" data-number="7.11.2.9">
-<h4 data-number="7.11.2.9" class="anchored" data-anchor-id="section-16"><span class="header-section-number">7.11.2.9</span> </h4>
+<section id="section-16" class="level4" data-number="7.12.2.9">
+<h4 data-number="7.12.2.9" class="anchored" data-anchor-id="section-16"><span class="header-section-number">7.12.2.9</span> </h4>
 <p>Examine the column <code>num_insta_followers</code>. Some numbers in the column contain a comma(<code>,</code>) or a tilde(<code>~</code>). Remove both these characters from the numbers in the column.</p>
 <p><strong>Hint:</strong> You may use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html">str.replace()</a> of the Pandas Series class.</p>
 </section>
-<section id="section-17" class="level4" data-number="7.11.2.10">
-<h4 data-number="7.11.2.10" class="anchored" data-anchor-id="section-17"><span class="header-section-number">7.11.2.10</span> </h4>
+<section id="section-17" class="level4" data-number="7.12.2.10">
+<h4 data-number="7.12.2.10" class="anchored" data-anchor-id="section-17"><span class="header-section-number">7.12.2.10</span> </h4>
 <p>Convert the column <code>num_insta_followers</code> to numeric. Coerce the errors.</p>
 </section>
-<section id="section-18" class="level4" data-number="7.11.2.11">
-<h4 data-number="7.11.2.11" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.11.2.11</span> </h4>
+<section id="section-18" class="level4" data-number="7.12.2.11">
+<h4 data-number="7.12.2.11" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.12.2.11</span> </h4>
 <p>Drop the observations consisting of missing values for <code>num_insta_followers</code>. Report the number of observations dropped.</p>
 </section>
-<section id="section-19" class="level4" data-number="7.11.2.12">
-<h4 data-number="7.11.2.12" class="anchored" data-anchor-id="section-19"><span class="header-section-number">7.11.2.12</span> </h4>
+<section id="section-19" class="level4" data-number="7.12.2.12">
+<h4 data-number="7.12.2.12" class="anchored" data-anchor-id="section-19"><span class="header-section-number">7.12.2.12</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
 </section>
-<section id="section-20" class="level4" data-number="7.11.2.13">
-<h4 data-number="7.11.2.13" class="anchored" data-anchor-id="section-20"><span class="header-section-number">7.11.2.13</span> </h4>
+<section id="section-20" class="level4" data-number="7.12.2.13">
+<h4 data-number="7.12.2.13" class="anchored" data-anchor-id="section-20"><span class="header-section-number">7.12.2.13</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
 </section>
 </section>
-<section id="practice-exercise-3" class="level3" data-number="7.11.3">
-<h3 data-number="7.11.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">7.11.3</span> Practice exercise 3</h3>
-<section id="section-21" class="level4" data-number="7.11.3.1">
-<h4 data-number="7.11.3.1" class="anchored" data-anchor-id="section-21"><span class="header-section-number">7.11.3.1</span> </h4>
+<section id="practice-exercise-3" class="level3" data-number="7.12.3">
+<h3 data-number="7.12.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">7.12.3</span> Practice exercise 3</h3>
+<section id="section-21" class="level4" data-number="7.12.3.1">
+<h4 data-number="7.12.3.1" class="anchored" data-anchor-id="section-21"><span class="header-section-number">7.12.3.1</span> </h4>
 <p>Use the updated dataset from Practice exercise 1.</p>
 <p>The last four variables in the dataset are:</p>
 <ol type="1">
