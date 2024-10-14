@@ -364,11 +364,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">7.12.2.10</span> </a></li>
   <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">7.12.2.11</span> </a></li>
   <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">7.12.2.12</span> </a></li>
-  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">7.12.2.13</span> </a></li>
   </ul></li>
   <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">7.12.3</span> Practice exercise 3</a>
   <ul class="collapse">
-  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"><span class="header-section-number">7.12.3.1</span> </a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">7.12.3.1</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -2872,6 +2871,7 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </div>
+<p><strong>Note</strong>: The <code>df.drop()</code> function can be used to remove rows by specifying row labels, index values, or based on conditions. It includes an <code>axis</code> parameter, which defaults to dropping rows (<code>axis=0</code>). Feel free to explore its additional options.</p>
 </section>
 <section id="adding-a-column" class="level3" data-number="7.6.4">
 <h3 data-number="7.6.4" class="anchored" data-anchor-id="adding-a-column"><span class="header-section-number">7.6.4</span> Adding a column</h3>
@@ -5375,7 +5375,7 @@ dtype: float64</code></pre>
 </section>
 <section id="section-2" class="level4" data-number="7.12.1.3">
 <h4 data-number="7.12.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">7.12.1.3</span> </h4>
-<p>Why is <code>Worldwide Sales</code> not included in the summary statistics table printed in Practice exercise 1?</p>
+<p>Why is <code>Worldwide Sales</code> not included in the summary statistics table printed in the above step?</p>
 </section>
 <section id="section-3" class="level4" data-number="7.12.1.4">
 <h4 data-number="7.12.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">7.12.1.4</span> </h4>
@@ -5449,22 +5449,18 @@ dtype: float64</code></pre>
 </section>
 <section id="section-18" class="level4" data-number="7.12.2.11">
 <h4 data-number="7.12.2.11" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.12.2.11</span> </h4>
-<p>Drop the observations consisting of missing values for <code>num_insta_followers</code>. Report the number of observations dropped.</p>
+<p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
 </section>
 <section id="section-19" class="level4" data-number="7.12.2.12">
 <h4 data-number="7.12.2.12" class="anchored" data-anchor-id="section-19"><span class="header-section-number">7.12.2.12</span> </h4>
-<p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
-</section>
-<section id="section-20" class="level4" data-number="7.12.2.13">
-<h4 data-number="7.12.2.13" class="anchored" data-anchor-id="section-20"><span class="header-section-number">7.12.2.13</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
 </section>
 </section>
 <section id="practice-exercise-3" class="level3" data-number="7.12.3">
 <h3 data-number="7.12.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">7.12.3</span> Practice exercise 3</h3>
-<section id="section-21" class="level4" data-number="7.12.3.1">
-<h4 data-number="7.12.3.1" class="anchored" data-anchor-id="section-21"><span class="header-section-number">7.12.3.1</span> </h4>
-<p>Use the updated dataset from Practice exercise 1.</p>
+<section id="section-20" class="level4" data-number="7.12.3.1">
+<h4 data-number="7.12.3.1" class="anchored" data-anchor-id="section-20"><span class="header-section-number">7.12.3.1</span> </h4>
+<p>Use the updated dataset from Practice exercise 2.</p>
 <p>The last four variables in the dataset are:</p>
 <ol type="1">
 <li><p><code>cant_change_math_ability</code></p></li>
