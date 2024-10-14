@@ -1,0 +1,2812 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Data Science with Python - 8&nbsp; Introduction to Data Visualization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Assignment A.html" rel="next">
+<link href="./Pandas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="./Data visualization.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introduction to Data Science with Python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Prerequisite: Python programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction to Python and Jupyter Notebooks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Getting started: Coding environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./venv_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Exploratory data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data visualization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-plotting-with-matplotlib" id="toc-data-plotting-with-matplotlib" class="nav-link active" data-scroll-target="#data-plotting-with-matplotlib"><span class="header-section-number">8.1</span> Data Plotting with Matplotlib</a></li>
+  <li><a href="#matplotlib-pyplot" id="toc-matplotlib-pyplot" class="nav-link" data-scroll-target="#matplotlib-pyplot"><span class="header-section-number">8.2</span> Matplotlib pyplot</a>
+  <ul>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source"><span class="header-section-number">8.2.1</span> Data Source</a></li>
+  <li><a href="#basic-plotting" id="toc-basic-plotting" class="nav-link" data-scroll-target="#basic-plotting"><span class="header-section-number">8.2.2</span> Basic Plotting</a>
+  <ul class="collapse">
+  <li><a href="#plotting-the-overall-trend" id="toc-plotting-the-overall-trend" class="nav-link" data-scroll-target="#plotting-the-overall-trend"><span class="header-section-number">8.2.2.1</span> Plotting the overall trend</a></li>
+  <li><a href="#customizing-the-x-axis" id="toc-customizing-the-x-axis" class="nav-link" data-scroll-target="#customizing-the-x-axis"><span class="header-section-number">8.2.2.2</span> Customizing the X-axis</a></li>
+  <li><a href="#ploting-multiple-lines" id="toc-ploting-multiple-lines" class="nav-link" data-scroll-target="#ploting-multiple-lines"><span class="header-section-number">8.2.2.3</span> Ploting multiple lines</a></li>
+  </ul></li>
+  <li><a href="#enhancing-the-plot" id="toc-enhancing-the-plot" class="nav-link" data-scroll-target="#enhancing-the-plot"><span class="header-section-number">8.2.3</span> Enhancing the plot</a>
+  <ul class="collapse">
+  <li><a href="#adding-axis-lables" id="toc-adding-axis-lables" class="nav-link" data-scroll-target="#adding-axis-lables"><span class="header-section-number">8.2.3.1</span> Adding Axis Lables</a></li>
+  <li><a href="#adding-chart-title-and-legend" id="toc-adding-chart-title-and-legend" class="nav-link" data-scroll-target="#adding-chart-title-and-legend"><span class="header-section-number">8.2.3.2</span> Adding Chart Title and Legend</a></li>
+  <li><a href="#adding-line-markers" id="toc-adding-line-markers" class="nav-link" data-scroll-target="#adding-line-markers"><span class="header-section-number">8.2.3.3</span> Adding Line Markers</a></li>
+  <li><a href="#styling-lines-and-markers" id="toc-styling-lines-and-markers" class="nav-link" data-scroll-target="#styling-lines-and-markers"><span class="header-section-number">8.2.3.4</span> Styling Lines and Markers</a></li>
+  <li><a href="#changing-the-figure-size" id="toc-changing-the-figure-size" class="nav-link" data-scroll-target="#changing-the-figure-size"><span class="header-section-number">8.2.3.5</span> Changing the Figure Size</a></li>
+  </ul></li>
+  <li><a href="#real-world-examples" id="toc-real-world-examples" class="nav-link" data-scroll-target="#real-world-examples"><span class="header-section-number">8.2.4</span> Real World Examples</a></li>
+  <li><a href="#plotting-other-types-of-plots" id="toc-plotting-other-types-of-plots" class="nav-link" data-scroll-target="#plotting-other-types-of-plots"><span class="header-section-number">8.2.5</span> Plotting other types of plots</a>
+  <ul class="collapse">
+  <li><a href="#plotting-histgram" id="toc-plotting-histgram" class="nav-link" data-scroll-target="#plotting-histgram"><span class="header-section-number">8.2.5.1</span> Plotting histgram</a></li>
+  <li><a href="#plotting-bar-chart" id="toc-plotting-bar-chart" class="nav-link" data-scroll-target="#plotting-bar-chart"><span class="header-section-number">8.2.5.2</span> Plotting bar chart</a></li>
+  <li><a href="#plotting-pie-chart" id="toc-plotting-pie-chart" class="nav-link" data-scroll-target="#plotting-pie-chart"><span class="header-section-number">8.2.5.3</span> Plotting pie chart</a></li>
+  <li><a href="#pie-chart-on-wight-of-players" id="toc-pie-chart-on-wight-of-players" class="nav-link" data-scroll-target="#pie-chart-on-wight-of-players"><span class="header-section-number">8.2.5.4</span> Pie Chart on wight of players</a></li>
+  <li><a href="#box-and-whiskers-chart" id="toc-box-and-whiskers-chart" class="nav-link" data-scroll-target="#box-and-whiskers-chart"><span class="header-section-number">8.2.5.5</span> Box and Whiskers Chart</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#data-plotting-with-matplotlib-wrappers-pandas-and-seaborn" id="toc-data-plotting-with-matplotlib-wrappers-pandas-and-seaborn" class="nav-link" data-scroll-target="#data-plotting-with-matplotlib-wrappers-pandas-and-seaborn"><span class="header-section-number">8.3</span> Data Plotting with Matplotlib Wrappers: Pandas and Seaborn</a>
+  <ul>
+  <li><a href="#basic-plotting-with-pandas" id="toc-basic-plotting-with-pandas" class="nav-link" data-scroll-target="#basic-plotting-with-pandas"><span class="header-section-number">8.3.1</span> Basic Plotting with Pandas</a></li>
+  <li><a href="#plotting-with-seaborn" id="toc-plotting-with-seaborn" class="nav-link" data-scroll-target="#plotting-with-seaborn"><span class="header-section-number">8.3.2</span> Plotting with Seaborn</a>
+  <ul class="collapse">
+  <li><a href="#scatter-plots-using-sns.scatterplot" id="toc-scatter-plots-using-sns.scatterplot" class="nav-link" data-scroll-target="#scatter-plots-using-sns.scatterplot"><span class="header-section-number">8.3.2.1</span> Scatter plots using <code>sns.scatterplot()</code>:</a></li>
+  <li><a href="#barplot-using-sns.barplot" id="toc-barplot-using-sns.barplot" class="nav-link" data-scroll-target="#barplot-using-sns.barplot"><span class="header-section-number">8.3.2.2</span> Barplot using <code>sns.barplot</code></a></li>
+  <li><a href="#heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors" id="toc-heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors" class="nav-link" data-scroll-target="#heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors"><span class="header-section-number">8.3.2.3</span> Heatmap: Represent 2-dimensional data like a matrix or table using colors</a></li>
+  <li><a href="#correlation-map" id="toc-correlation-map" class="nav-link" data-scroll-target="#correlation-map"><span class="header-section-number">8.3.2.4</span> Correlation Map</a></li>
+  </ul></li>
+  <li><a href="#boxplots-with-seaborn" id="toc-boxplots-with-seaborn" class="nav-link" data-scroll-target="#boxplots-with-seaborn"><span class="header-section-number">8.3.3</span> Boxplots with Seaborn</a></li>
+  <li><a href="#scatterplots-with-seaborn" id="toc-scatterplots-with-seaborn" class="nav-link" data-scroll-target="#scatterplots-with-seaborn"><span class="header-section-number">8.3.4</span> Scatterplots with Seaborn</a></li>
+  <li><a href="#multiple-plots-in-a-single-figure-using-seaborn" id="toc-multiple-plots-in-a-single-figure-using-seaborn" class="nav-link" data-scroll-target="#multiple-plots-in-a-single-figure-using-seaborn"><span class="header-section-number">8.3.5</span> Multiple plots in a single figure using Seaborn</a></li>
+  </ul></li>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">8.4</span> Independent Study</a>
+  <ul>
+  <li><a href="#practice-problem-1" id="toc-practice-problem-1" class="nav-link" data-scroll-target="#practice-problem-1"><span class="header-section-number">8.4.1</span> Practice problem 1</a></li>
+  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">8.4.2</span> Practice exercise 2</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="93">
+<div class="cell-output cell-output-display" data-execution_count="93">
+<img src="../Data/dataviz.png" width="675">
+</div>
+</div>
+<p><strong><em>“One picture is worth a thousand words”</em></strong> - Fred R. Barnard</p>
+<p>Visual perception offers the highest bandwidth channel, as we acquire much more information through visual perception than with all of the other channels combined, as billions of our neurons are dedicated to this task. Moreover, the processing of visual information is, at its first stages, a highly parallel process. Thus, it is generally easier for humans to comprehend information with plots, diagrams and pictures, rather than with text and numbers. This makes data visualizations a vital part of data science. Some of the key purposes of data visualization are:</p>
+<ol type="1">
+<li>Data visualization is the first step towards exploratory data analysis (EDA), which reveals trends, patterns, insights, or even irregularities in data.</li>
+<li>Data visualization can help explain the workings of complex mathematical models.</li>
+<li>Data visualization are an elegant way to summarise the findings of a data analysis project.</li>
+<li>Data visualizations (especially interactive ones such as those on Tableau) may be the end-product of data analytics project, where the stakeholders make decisions based on the visualizations.</li>
+</ol>
+<p>We’ll use three libraries for making data visualizations - <a href="https://matplotlib.org/">matplotlib</a>, pandas, and <a href="https://seaborn.pydata.org/">seaborn</a>.</p>
+<section id="data-plotting-with-matplotlib" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="data-plotting-with-matplotlib"><span class="header-section-number">8.1</span> Data Plotting with Matplotlib</h2>
+<p><a href="https://matplotlib.org/">Matplotlib</a> is:</p>
+<ul>
+<li>a low-level graph plotting library in python that strives to emulate MATLAB,</li>
+<li>can be used in Python scripts, Python and IPython shells, Jupyter notebooks and web application servers.</li>
+<li>is mostly written in python, a few segments are written in C, Objective-C and Javascript for Platform compatibility.</li>
+</ul>
+</section>
+<section id="matplotlib-pyplot" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="matplotlib-pyplot"><span class="header-section-number">8.2</span> Matplotlib pyplot</h2>
+<ul>
+<li>Matplotlib is the whole package; pyplot is a module in matplotlib</li>
+<li>Most of the Matplotlib utilities lies under the pyplot module, and are usually imported under the plt alias:</li>
+</ul>
+<div class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-source" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="data-source"><span class="header-section-number">8.2.1</span> Data Source</h3>
+<ul>
+<li>Python lists, NumPy arrays as well as a pandas series</li>
+<li>However, all the sequences are internally converted to numpy arrays.</li>
+</ul>
+<p>Let’s create a python list to illustrate basic plotting with Matplotlib pyplot</p>
+<div class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>yield_apples <span class="op">=</span> [<span class="fl">0.895</span>, <span class="fl">0.91</span>, <span class="fl">0.919</span>, <span class="fl">0.926</span>, <span class="fl">0.929</span>, <span class="fl">0.931</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="basic-plotting" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="basic-plotting"><span class="header-section-number">8.2.2</span> Basic Plotting</h3>
+<section id="plotting-the-overall-trend" class="level4" data-number="8.2.2.1">
+<h4 data-number="8.2.2.1" class="anchored" data-anchor-id="plotting-the-overall-trend"><span class="header-section-number">8.2.2.1</span> Plotting the overall trend</h4>
+<div class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(yield_apples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Calling the <code>plt.plot</code> function draws the line chart as expected. It also returns a list of plots drawn <code>[&lt;matplotlib.lines.Line2D at 0x2194b571df0&gt;]</code>, shown within the output. We can include a semicolon (<code>;</code>) at the end of the last statement in the cell to avoiding showing the output and display just the graph.</p>
+<div class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.plot(yield_apples)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="customizing-the-x-axis" class="level4" data-number="8.2.2.2">
+<h4 data-number="8.2.2.2" class="anchored" data-anchor-id="customizing-the-x-axis"><span class="header-section-number">8.2.2.2</span> Customizing the X-axis</h4>
+<p>The X-axis of the plot currently shows list element indexes 0 to 5. The plot would be more informative if we could display the year for which we’re plotting the data. We can do this by two arguments <code>plt.plot</code>.</p>
+<div class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2010</span>, <span class="dv">2011</span>, <span class="dv">2012</span>, <span class="dv">2013</span>, <span class="dv">2014</span>, <span class="dv">2015</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>yield_apples <span class="op">=</span> [<span class="fl">0.895</span>, <span class="fl">0.91</span>, <span class="fl">0.919</span>, <span class="fl">0.926</span>, <span class="fl">0.929</span>, <span class="fl">0.931</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, yield_apples)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="ploting-multiple-lines" class="level4" data-number="8.2.2.3">
+<h4 data-number="8.2.2.3" class="anchored" data-anchor-id="ploting-multiple-lines"><span class="header-section-number">8.2.2.3</span> Ploting multiple lines</h4>
+<p>You can invoke the <code>plt.plot</code> function once for each line to plot multiple lines in the same graph. Let’s compare the yields of apples vs.&nbsp;oranges.</p>
+<div class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2000</span>, <span class="dv">2012</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>apples <span class="op">=</span> [<span class="fl">0.895</span>, <span class="fl">0.91</span>, <span class="fl">0.919</span>, <span class="fl">0.926</span>, <span class="fl">0.929</span>, <span class="fl">0.931</span>, <span class="fl">0.934</span>, <span class="fl">0.936</span>, <span class="fl">0.937</span>, <span class="fl">0.9375</span>, <span class="fl">0.9372</span>, <span class="fl">0.939</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>oranges <span class="op">=</span> [<span class="fl">0.962</span>, <span class="fl">0.941</span>, <span class="fl">0.930</span>, <span class="fl">0.923</span>, <span class="fl">0.918</span>, <span class="fl">0.908</span>, <span class="fl">0.907</span>, <span class="fl">0.904</span>, <span class="fl">0.901</span>, <span class="fl">0.898</span>, <span class="fl">0.9</span>, <span class="fl">0.896</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>When plt.plot command is called without any formatting parameters, pyplot uses the following defaults: * Figure size: 6.4 X 4.8 inches * Plot style: solid line * Linewidth: 1.5 * Color: Blue (code ‘b’, hex code: ‘#1f77b4’)</p>
+<p>You can also edit default styles directly by modifying the <code>matplotlib.rcParams</code> dictionary. Learn more: https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html#matplotlib-rcparams .</p>
+<div class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>matplotlib.rcParams[<span class="st">'font.size'</span>] <span class="op">=</span> <span class="dv">14</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>matplotlib.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">7</span>, <span class="dv">4</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>matplotlib.rcParams[<span class="st">'figure.facecolor'</span>] <span class="op">=</span> <span class="st">'#00000000'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Conceptual model:</strong> Plotting requires action on a range of levels, ranging from the size of the figure to the text object in the plot. Matplotlib provides <strong>object-oriented</strong> interface in the hierarchical fashion to provide complete control over the plot. The user generates and keeps track of the figure and axes objects. These axes objects are then used for most plotting actions.</p>
+</section>
+</section>
+<section id="enhancing-the-plot" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="enhancing-the-plot"><span class="header-section-number">8.2.3</span> Enhancing the plot</h3>
+<p>Matplotlib provides a wide range of customizable components within a figure, allowing for fine-tuned control over every aspect of the plot. These components include elements like axes, labels, ticks, legends, and the overall layout. Each can be tailored to enhance the clarity, aesthetics, and effectiveness of the visual representation, making the plot more engaging and easier to interpret.</p>
+<div class="cell" data-execution_count="104">
+<div id="fig-anatomy" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<img src="../Data/anatomy.webp" width="675" class="figure-img">
+<figcaption class="figure-caption">Figure&nbsp;8.1: Matplotlib anatomy of a figure</figcaption>
+</figure>
+</div>
+</div>
+<section id="adding-axis-lables" class="level4" data-number="8.2.3.1">
+<h4 data-number="8.2.3.1" class="anchored" data-anchor-id="adding-axis-lables"><span class="header-section-number">8.2.3.1</span> Adding Axis Lables</h4>
+<p>We can add labels to the axes to show what each axis represents using the <code>plt.xlabel</code> and <code>plt.ylabel</code> methods.</p>
+<div class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield (tons per hectare)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="adding-chart-title-and-legend" class="level4" data-number="8.2.3.2">
+<h4 data-number="8.2.3.2" class="anchored" data-anchor-id="adding-chart-title-and-legend"><span class="header-section-number">8.2.3.2</span> Adding Chart Title and Legend</h4>
+<p>To differentiate between multiple lines, we can include a legend within the graph using the <code>plt.legend</code> function. We can also set a title for the chart using the <code>plt.title</code> function.</p>
+<div class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Crop Yields in Kanto"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Apples'</span>, <span class="st">'Oranges'</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="adding-line-markers" class="level4" data-number="8.2.3.3">
+<h4 data-number="8.2.3.3" class="anchored" data-anchor-id="adding-line-markers"><span class="header-section-number">8.2.3.3</span> Adding Line Markers</h4>
+<p>We can also show markers for the data points on each line using the <code>marker</code> argument of <code>plt.plot</code>. Matplotlib provides many different markers, like a circle, cross, square, diamond, etc. You can find the full list of marker types <a href="https://matplotlib.org/3.1.1/api/markers_api.html">here</a>.</p>
+<div class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges, marker<span class="op">=</span><span class="st">'x'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Crop Yields in Kanto"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Apples'</span>, <span class="st">'Oranges'</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="styling-lines-and-markers" class="level4" data-number="8.2.3.4">
+<h4 data-number="8.2.3.4" class="anchored" data-anchor-id="styling-lines-and-markers"><span class="header-section-number">8.2.3.4</span> Styling Lines and Markers</h4>
+<p>The <code>plt.plot</code> function supports many arguments for styling lines and markers:</p>
+<ul>
+<li><code>color</code> or <code>c</code>: Set the color of the line (<a href="https://matplotlib.org/3.1.0/gallery/color/named_colors.html">supported colors</a>)</li>
+<li><code>linestyle</code> or <code>ls</code>: Choose between a solid or dashed line</li>
+<li><code>linewidth</code> or <code>lw</code>: Set the width of a line</li>
+<li><code>markersize</code> or <code>ms</code>: Set the size of markers</li>
+<li><code>markeredgecolor</code> or <code>mec</code>: Set the edge color for markers</li>
+<li><code>markeredgewidth</code> or <code>mew</code>: Set the edge width for markers</li>
+<li><code>markerfacecolor</code> or <code>mfc</code>: Set the fill color for markers</li>
+<li><code>alpha</code>: Opacity of the plot</li>
+</ul>
+<p>Check out the documentation for <code>plt.plot</code> to learn more: <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot</a> .</p>
+<div class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples, marker<span class="op">=</span><span class="st">'s'</span>, c<span class="op">=</span><span class="st">'b'</span>, ls<span class="op">=</span><span class="st">'-'</span>, lw<span class="op">=</span><span class="dv">2</span>, ms<span class="op">=</span><span class="dv">8</span>, mew<span class="op">=</span><span class="dv">2</span>, mec<span class="op">=</span><span class="st">'navy'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges, marker<span class="op">=</span><span class="st">'o'</span>, c<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">'--'</span>, lw<span class="op">=</span><span class="dv">3</span>, ms<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">.5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Crop Yields in Kanto"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Apples'</span>, <span class="st">'Oranges'</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The <code>fmt</code> argument provides a shorthand for specifying the marker shape, line style, and line color. It can be provided as the third argument to <code>plt.plot</code>.</p>
+<pre><code>fmt = '[marker][line][color]'</code></pre>
+<div class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples, <span class="st">'s-b'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges, <span class="st">'o--r'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Crop Yields in Kanto"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Apples'</span>, <span class="st">'Oranges'</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>If you don’t specify a line style in <code>fmt</code>, only markers are drawn.</p>
+<div class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, apples, <span class="st">'sb'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges, <span class="st">'or'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Yield (tons per hectare)"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="changing-the-figure-size" class="level4" data-number="8.2.3.5">
+<h4 data-number="8.2.3.5" class="anchored" data-anchor-id="changing-the-figure-size"><span class="header-section-number">8.2.3.5</span> Changing the Figure Size</h4>
+<p>You can use the <code>plt.figure</code> function to change the size of the figure.</p>
+<div class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.plot(years, oranges, <span class="st">'or'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Yield of Oranges (tons per hectare)"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="real-world-examples" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="real-world-examples"><span class="header-section-number">8.2.4</span> Real World Examples</h3>
+<p>Download data from Canvas (gas_prices.csv &amp; fifa_data.csv)</p>
+<div class="cell" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>gas <span class="op">=</span> pd.read_csv(<span class="st">'../data/gas_prices.csv'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Gas Prices over Time (in USD)'</span>, fontdict<span class="op">=</span>{<span class="st">'fontweight'</span>:<span class="st">'bold'</span>, <span class="st">'fontsize'</span>: <span class="dv">18</span>})</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.plot(gas.Year, gas.USA, <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">'United States'</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.plot(gas.Year, gas.Canada, <span class="st">'r.-'</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.plot(gas.Year, gas[<span class="st">'South Korea'</span>], <span class="st">'g.-'</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.plot(gas.Year, gas.Australia, <span class="st">'y.-'</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Another Way to plot many values!</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># countries_to_look_at = ['Australia', 'USA', 'Canada', 'South Korea']</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># for country in gas:</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     if country in countries_to_look_at:</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co">#         plt.plot(gas.Year, gas[country], marker='.')</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>plt.xticks(gas.Year[::<span class="dv">3</span>].tolist()<span class="op">+</span>[<span class="dv">2011</span>])</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'US Dollars'</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="plotting-other-types-of-plots" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="plotting-other-types-of-plots"><span class="header-section-number">8.2.5</span> Plotting other types of plots</h3>
+<p>Let’s read the fifa data</p>
+<div class="cell" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fifa <span class="op">=</span> pd.read_csv(<span class="st">'../data/fifa_data.csv'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>fifa.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="113">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Composure</th>
+<th data-quarto-table-cell-role="th">Marking</th>
+<th data-quarto-table-cell-role="th">StandingTackle</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>158023</td>
+<td>L. Messi</td>
+<td>31</td>
+<td>https://cdn.sofifa.org/players/4/19/158023.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.org/flags/52.png</td>
+<td>94</td>
+<td>94</td>
+<td>FC Barcelona</td>
+<td>...</td>
+<td>96.0</td>
+<td>33.0</td>
+<td>28.0</td>
+<td>26.0</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>15.0</td>
+<td>14.0</td>
+<td>8.0</td>
+<td>€226.5M</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>20801</td>
+<td>Cristiano Ronaldo</td>
+<td>33</td>
+<td>https://cdn.sofifa.org/players/4/19/20801.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.org/flags/38.png</td>
+<td>94</td>
+<td>94</td>
+<td>Juventus</td>
+<td>...</td>
+<td>95.0</td>
+<td>28.0</td>
+<td>31.0</td>
+<td>23.0</td>
+<td>7.0</td>
+<td>11.0</td>
+<td>15.0</td>
+<td>14.0</td>
+<td>11.0</td>
+<td>€127.1M</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>190871</td>
+<td>Neymar Jr</td>
+<td>26</td>
+<td>https://cdn.sofifa.org/players/4/19/190871.png</td>
+<td>Brazil</td>
+<td>https://cdn.sofifa.org/flags/54.png</td>
+<td>92</td>
+<td>93</td>
+<td>Paris Saint-Germain</td>
+<td>...</td>
+<td>94.0</td>
+<td>27.0</td>
+<td>24.0</td>
+<td>33.0</td>
+<td>9.0</td>
+<td>9.0</td>
+<td>15.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>€228.1M</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>193080</td>
+<td>De Gea</td>
+<td>27</td>
+<td>https://cdn.sofifa.org/players/4/19/193080.png</td>
+<td>Spain</td>
+<td>https://cdn.sofifa.org/flags/45.png</td>
+<td>91</td>
+<td>93</td>
+<td>Manchester United</td>
+<td>...</td>
+<td>68.0</td>
+<td>15.0</td>
+<td>21.0</td>
+<td>13.0</td>
+<td>90.0</td>
+<td>85.0</td>
+<td>87.0</td>
+<td>88.0</td>
+<td>94.0</td>
+<td>€138.6M</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>27</td>
+<td>https://cdn.sofifa.org/players/4/19/192985.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.org/flags/7.png</td>
+<td>91</td>
+<td>92</td>
+<td>Manchester City</td>
+<td>...</td>
+<td>88.0</td>
+<td>68.0</td>
+<td>58.0</td>
+<td>51.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>€196.4M</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 89 columns</p>
+</div>
+</div>
+</div>
+<section id="plotting-histgram" class="level4" data-number="8.2.5.1">
+<h4 data-number="8.2.5.1" class="anchored" data-anchor-id="plotting-histgram"><span class="header-section-number">8.2.5.1</span> Plotting histgram</h4>
+<div class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.hist(fifa.Overall, color<span class="op">=</span><span class="st">'#abcdef'</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Players'</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Skill Level'</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Player Skills in FIFA 2018'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="114">
+<pre><code>Text(0.5, 1.0, 'Distribution of Player Skills in FIFA 2018')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="plotting-bar-chart" class="level4" data-number="8.2.5.2">
+<h4 data-number="8.2.5.2" class="anchored" data-anchor-id="plotting-bar-chart"><span class="header-section-number">8.2.5.2</span> Plotting bar chart</h4>
+<div class="cell" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting bar chart for the best players</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> fifa.loc[fifa[<span class="st">'Preferred Foot'</span>] <span class="op">==</span> <span class="st">'Left'</span>].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> fifa.loc[fifa[<span class="st">'Preferred Foot'</span>] <span class="op">==</span> <span class="st">'Right'</span>].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.bar([<span class="st">'Left'</span>, <span class="st">'Right'</span>], [left, right], color<span class="op">=</span><span class="st">'#abcdef'</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Players'</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Foot Preference of FIFA Players'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="115">
+<pre><code>Text(0.5, 1.0, 'Foot Preference of FIFA Players')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="plotting-pie-chart" class="level4" data-number="8.2.5.3">
+<h4 data-number="8.2.5.3" class="anchored" data-anchor-id="plotting-pie-chart"><span class="header-section-number">8.2.5.3</span> Plotting pie chart</h4>
+<div class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> fifa.loc[fifa[<span class="st">'Preferred Foot'</span>] <span class="op">==</span> <span class="st">'Left'</span>].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> fifa.loc[fifa[<span class="st">'Preferred Foot'</span>] <span class="op">==</span> <span class="st">'Right'</span>].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'Left'</span>, <span class="st">'Right'</span>]</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'#abcdef'</span>, <span class="st">'#aabbcc'</span>]</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.pie([left, right], labels <span class="op">=</span> labels, colors<span class="op">=</span>colors, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%.2f</span><span class="st"> </span><span class="sc">%%</span><span class="st">'</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Foot Preference of FIFA Players'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<pre><code>Text(0.5, 1.0, 'Foot Preference of FIFA Players')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="pie-chart-on-wight-of-players" class="level4" data-number="8.2.5.4">
+<h4 data-number="8.2.5.4" class="anchored" data-anchor-id="pie-chart-on-wight-of-players"><span class="header-section-number">8.2.5.4</span> Pie Chart on wight of players</h4>
+<div class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>fifa.Weight <span class="op">=</span> [<span class="bu">int</span>(x.strip(<span class="st">'lbs'</span>)) <span class="cf">if</span> <span class="bu">type</span>(x)<span class="op">==</span><span class="bu">str</span> <span class="cf">else</span> x <span class="cf">for</span> x <span class="kw">in</span> fifa.Weight]</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>light <span class="op">=</span> fifa.loc[fifa.Weight <span class="op">&lt;</span> <span class="dv">125</span>].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>light_medium <span class="op">=</span> fifa[(fifa.Weight <span class="op">&gt;=</span> <span class="dv">125</span>) <span class="op">&amp;</span> (fifa.Weight <span class="op">&lt;</span> <span class="dv">150</span>)].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>medium <span class="op">=</span> fifa[(fifa.Weight <span class="op">&gt;=</span> <span class="dv">150</span>) <span class="op">&amp;</span> (fifa.Weight <span class="op">&lt;</span> <span class="dv">175</span>)].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>medium_heavy <span class="op">=</span> fifa[(fifa.Weight <span class="op">&gt;=</span> <span class="dv">175</span>) <span class="op">&amp;</span> (fifa.Weight <span class="op">&lt;</span> <span class="dv">200</span>)].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>heavy <span class="op">=</span> fifa[fifa.Weight <span class="op">&gt;=</span> <span class="dv">200</span>].count().iloc[<span class="dv">0</span>]</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> [light,light_medium, medium, medium_heavy, heavy]</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> [<span class="st">'under 125'</span>, <span class="st">'125-150'</span>, <span class="st">'150-175'</span>, <span class="st">'175-200'</span>, <span class="st">'over 200'</span>]</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>explode <span class="op">=</span> (<span class="fl">.4</span>,<span class="fl">.2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.4</span>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weight of Professional Soccer Players (lbs)'</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>plt.pie(weights, labels<span class="op">=</span>label, explode<span class="op">=</span>explode, pctdistance<span class="op">=</span><span class="fl">0.8</span>,autopct<span class="op">=</span><span class="st">'</span><span class="sc">%.2f</span><span class="st"> </span><span class="sc">%%</span><span class="st">'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="box-and-whiskers-chart" class="level4" data-number="8.2.5.5">
+<h4 data-number="8.2.5.5" class="anchored" data-anchor-id="box-and-whiskers-chart"><span class="header-section-number">8.2.5.5</span> Box and Whiskers Chart</h4>
+<div class="cell" data-execution_count="118">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">8</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'default'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>barcelona <span class="op">=</span> fifa.loc[fifa.Club <span class="op">==</span> <span class="st">"FC Barcelona"</span>][<span class="st">'Overall'</span>]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>madrid <span class="op">=</span> fifa.loc[fifa.Club <span class="op">==</span> <span class="st">"Real Madrid"</span>][<span class="st">'Overall'</span>]</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>revs <span class="op">=</span> fifa.loc[fifa.Club <span class="op">==</span> <span class="st">"New England Revolution"</span>][<span class="st">'Overall'</span>]</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#bp = plt.boxplot([barcelona, madrid, revs], labels=['a','b','c'], boxprops=dict(facecolor='red'))</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>bp <span class="op">=</span> plt.boxplot([barcelona, madrid, revs], tick_labels<span class="op">=</span>[<span class="st">'FC Barcelona'</span>,<span class="st">'Real Madrid'</span>,<span class="st">'NE Revolution'</span>], patch_artist<span class="op">=</span><span class="va">True</span>, medianprops<span class="op">=</span>{<span class="st">'linewidth'</span>: <span class="dv">2</span>})</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Professional Soccer Team Comparison'</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'FIFA Overall Rating'</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> box <span class="kw">in</span> bp[<span class="st">'boxes'</span>]:</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># change outline color</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    box.<span class="bu">set</span>(color<span class="op">=</span><span class="st">'#4286f4'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># change fill color</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    box.<span class="bu">set</span>(facecolor <span class="op">=</span> <span class="st">'#e0e0e0'</span> )</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># change hatch</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#box.set(hatch = '/')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>You’ve already learned how to create plots using Matplotlib’s Pyplot. Next, you’ll explore how to simplify and enhance your visualizations by using its powerful wrappers: Pandas and Seaborn.</p>
+</section>
+</section>
+</section>
+<section id="data-plotting-with-matplotlib-wrappers-pandas-and-seaborn" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="data-plotting-with-matplotlib-wrappers-pandas-and-seaborn"><span class="header-section-number">8.3</span> Data Plotting with Matplotlib Wrappers: Pandas and Seaborn</h2>
+<p>Matplotlib is a popular visualization library, but it has flaws.</p>
+<ul>
+<li>Defaults are not ideal (gridlines, background, etc need to be configured.)</li>
+<li>Library is low-level (doing anything complicated takes quite a bit of codes)</li>
+<li>Lack of integration with pandas data structures</li>
+</ul>
+<p>To address these challenges, Pandas and Seaborn act as higher-level interfaces to Matplotlib, offering better defaults, simpler syntax, and seamless integration with DataFrames.</p>
+<section id="basic-plotting-with-pandas" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="basic-plotting-with-pandas"><span class="header-section-number">8.3.1</span> Basic Plotting with Pandas</h3>
+<p>Pandas library in python is mainly used for data analysis. It is not a data visualization library but, we can create basic plots using Pandas. Pandas is highly useful and practical if we want to create exploratory data analysis plots. We do not need to import other data visualization libraries in addition to Pandas for such tasks.</p>
+<div class="cell" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>covid_df <span class="op">=</span> pd.read_csv(<span class="st">'../data/covid.csv'</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>covid_df.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="119">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">new_cases</th>
+<th data-quarto-table-cell-role="th">total_cases</th>
+<th data-quarto-table-cell-role="th">new_deaths</th>
+<th data-quarto-table-cell-role="th">total_deaths</th>
+<th data-quarto-table-cell-role="th">new_tests</th>
+<th data-quarto-table-cell-role="th">total_tests</th>
+<th data-quarto-table-cell-role="th">cases_per_million</th>
+<th data-quarto-table-cell-role="th">deaths_per_million</th>
+<th data-quarto-table-cell-role="th">tests_per_million</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2019-12-31</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2020-01-01</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2020-01-02</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2020-01-03</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020-01-04</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>covid_df.new_cases.plot(kind<span class="op">=</span><span class="st">'line'</span>, color<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">'New Cases'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, grid<span class="op">=</span><span class="va">True</span>, linestyle<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="120">
+<pre><code>&lt;Axes: &gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>While this plot shows the overall trend, it’s hard to tell where the peak occurred, as there are no dates on the X-axis. We can use the date column as the index for the data frame to address this issue since it is a time series dataset</p>
+<div class="cell" data-execution_count="121">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>covid_df.set_index(<span class="st">'date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>covid_df.new_cases.plot(kind<span class="op">=</span><span class="st">'line'</span>, color<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">'New Cases'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, grid<span class="op">=</span><span class="va">True</span>, linestyle<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="122">
+<pre><code>&lt;Axes: xlabel='date'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>covid_df.new_deaths.plot(kind<span class="op">=</span><span class="st">'line'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'New Deaths'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, grid<span class="op">=</span><span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>covid_df.new_cases.plot(kind<span class="op">=</span><span class="st">'line'</span>, color<span class="op">=</span><span class="st">'g'</span>, label<span class="op">=</span><span class="st">'New Tests'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, grid<span class="op">=</span><span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'-.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="123">
+<pre><code>&lt;Axes: xlabel='date'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>By default, Pandas generates line plots when using the plot method. However, you can create other types of visualizations by setting the kind parameter in the plot function. The kind parameter accepts eleven different string values, which specify the type of plot:</p>
+<ul>
+<li>“area” is for area plots.</li>
+<li>“bar” is for vertical bar charts.</li>
+<li>“barh” is for horizontal bar charts.</li>
+<li>“box” is for box plots.</li>
+<li>“hexbin” is for hexbin plots.</li>
+<li>“hist” is for histograms.</li>
+<li>“kde” is for kernel density estimate charts.</li>
+<li>“density” is an alias for “kde”.</li>
+<li>“line” is for line graphs.</li>
+<li>“pie” is for pie charts.</li>
+<li>“scatter” is for scatter plots.</li>
+</ul>
+<p>For more information, check out the official Pandas documentation:</p>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html">Series.plot</a></li>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html">DataFrame.plot</a></li>
+</ul>
+<div class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>covid_df.plot(kind<span class="op">=</span><span class="st">'scatter'</span>, x<span class="op">=</span><span class="st">'new_cases'</span>, y<span class="op">=</span><span class="st">'new_deaths'</span>, color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Look at the distribution of a proterty with a histogram. Then you’ll get to know some tools to examine the outliers</p>
+<div class="cell" data-execution_count="125">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>covid_df.new_deaths.plot(kind<span class="op">=</span><span class="st">'hist'</span>, color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="126">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>covid_df.new_cases.plot(kind<span class="op">=</span><span class="st">'box'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="plotting-with-seaborn" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="plotting-with-seaborn"><span class="header-section-number">8.3.2</span> Plotting with Seaborn</h3>
+<p>Seaborn is a powerful data visualization library built on top of Matplotlib, designed to make statistical plots easier and more attractive. It integrates seamlessly with Pandas, making it an excellent tool for plotting data from DataFrames. Seaborn comes with better default aesthetics and provides more specialized plots that are easy to implement.</p>
+<p>Some of the key advantages of using Seaborn include:</p>
+<ul>
+<li><strong>Simpler syntax</strong>: Seaborn simplifies the process of creating complex plots with just a few lines of code.</li>
+<li><strong>Beautiful default styles</strong>: Seaborn’s default plots are more polished and aesthetically pleasing compared to Matplotlib’s defaults.</li>
+<li><strong>Seamless Pandas integration</strong>: You can directly pass Pandas DataFrames to Seaborn, and it understands column names for axis labels and plot elements.</li>
+</ul>
+<p><code>seaborn</code> comes with 17 built-in datasets. That means you don’t have to spend a whole lot of your time finding the right dataset and cleaning it up to make Seaborn-ready; rather you will focus on the core features of Seaborn visualization techniques to solve problems.</p>
+<div class="cell" data-execution_count="127">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get names of the builtin dataset</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>sns.get_dataset_names()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre><code>['anagrams',
+ 'anscombe',
+ 'attention',
+ 'brain_networks',
+ 'car_crashes',
+ 'diamonds',
+ 'dots',
+ 'dowjones',
+ 'exercise',
+ 'flights',
+ 'fmri',
+ 'geyser',
+ 'glue',
+ 'healthexp',
+ 'iris',
+ 'mpg',
+ 'penguins',
+ 'planets',
+ 'seaice',
+ 'taxis',
+ 'tips',
+ 'titanic']</code></pre>
+</div>
+</div>
+<p>Let’s do a few common plots with Seaborn tips dataset</p>
+<div class="cell" data-execution_count="128">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data into a Pandas dataframe</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>flowers_df <span class="op">=</span> sns.load_dataset(<span class="st">"iris"</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>flowers_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="128">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sepal_length</th>
+<th data-quarto-table-cell-role="th">sepal_width</th>
+<th data-quarto-table-cell-role="th">petal_length</th>
+<th data-quarto-table-cell-role="th">petal_width</th>
+<th data-quarto-table-cell-role="th">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4.9</td>
+<td>3.0</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4.6</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5.0</td>
+<td>3.6</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="scatter-plots-using-sns.scatterplot" class="level4" data-number="8.3.2.1">
+<h4 data-number="8.3.2.1" class="anchored" data-anchor-id="scatter-plots-using-sns.scatterplot"><span class="header-section-number">8.3.2.1</span> Scatter plots using <code>sns.scatterplot()</code>:</h4>
+<div class="cell" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>flowers_df.sepal_length, y<span class="op">=</span>flowers_df.sepal_width)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="adding-hues-to-the-scatterplot" class="level5" data-number="8.3.2.1.1">
+<h5 data-number="8.3.2.1.1" class="anchored" data-anchor-id="adding-hues-to-the-scatterplot"><span class="header-section-number">8.3.2.1.1</span> Adding Hues to the scatterplot</h5>
+<p>Notice how the points in the above plot seem to form distinct clusters with some outliers. We can color the dots using the flower species as a <code>hue</code>. We can also make the points larger using the <code>s</code> argument.</p>
+<div class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>flowers_df.species.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="130">
+<pre><code>array(['setosa', 'versicolor', 'virginica'], dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>flowers_df.sepal_length, y<span class="op">=</span>flowers_df.sepal_width, hue<span class="op">=</span>flowers_df.species, s<span class="op">=</span><span class="dv">100</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Adding hues makes the plot more informative. We can immediately tell that Setosa flowers have a smaller sepal length but higher sepal widths. In contrast, the opposite is true for Virginica flowers.</p>
+</section>
+<section id="customizing-seaborn-figures" class="level5" data-number="8.3.2.1.2">
+<h5 data-number="8.3.2.1.2" class="anchored" data-anchor-id="customizing-seaborn-figures"><span class="header-section-number">8.3.2.1.2</span> Customizing Seaborn Figures</h5>
+<p>Since Seaborn uses Matplotlib’s plotting functions internally, we can use functions like <code>plt.figure</code> and <code>plt.title</code> to modify the figure.</p>
+<div class="cell" data-execution_count="132">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sepal Dimensions'</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>flowers_df.sepal_length, </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                y<span class="op">=</span>flowers_df.sepal_width, </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span>flowers_df.species,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                s<span class="op">=</span><span class="dv">100</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="integration-with-pandas-data-frames" class="level5" data-number="8.3.2.1.3">
+<h5 data-number="8.3.2.1.3" class="anchored" data-anchor-id="integration-with-pandas-data-frames"><span class="header-section-number">8.3.2.1.3</span> Integration with Pandas Data Frames</h5>
+<p>Seaborn has in-built support for Pandas data frames. Instead of passing each column as a series, you can provide column names and use the <code>data</code> argument to specify a data frame.</p>
+<div class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sepal Dimensions'</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'sepal_length'</span>, </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                y<span class="op">=</span><span class="st">'sepal_width'</span>, </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">'species'</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                s<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>flowers_df)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>Plotting histgram using <code>sns.histplot()</code>:</li>
+</ul>
+<div class="cell" data-execution_count="134">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>flowers_df, x<span class="op">=</span><span class="st">'sepal_width'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show kde(kernal density estimate)</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>flowers_df, x<span class="op">=</span><span class="st">'sepal_width'</span>, kde<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adding hue</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>flowers_df, x<span class="op">=</span><span class="st">"sepal_width"</span>, hue<span class="op">=</span><span class="st">"species"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="barplot-using-sns.barplot" class="level4" data-number="8.3.2.2">
+<h4 data-number="8.3.2.2" class="anchored" data-anchor-id="barplot-using-sns.barplot"><span class="header-section-number">8.3.2.2</span> Barplot using <code>sns.barplot</code></h4>
+<div class="cell" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>tips_df <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'day'</span>, y<span class="op">=</span><span class="st">'total_bill'</span>, data<span class="op">=</span>tips_df)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="138">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'day'</span>, y<span class="op">=</span><span class="st">'tip'</span>, hue<span class="op">=</span><span class="st">'sex'</span>, data<span class="op">=</span>tips_df)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make the bars horizontal simply by switching the axes</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'tip'</span>, y<span class="op">=</span><span class="st">'day'</span>, hue<span class="op">=</span><span class="st">'sex'</span>, data<span class="op">=</span>tips_df)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors" class="level4" data-number="8.3.2.3">
+<h4 data-number="8.3.2.3" class="anchored" data-anchor-id="heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors"><span class="header-section-number">8.3.2.3</span> Heatmap: Represent 2-dimensional data like a matrix or table using colors</h4>
+<div class="cell" data-execution_count="140">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>flights_df <span class="op">=</span> sns.load_dataset(<span class="st">"flights"</span>).pivot(index<span class="op">=</span><span class="st">"month"</span>, columns<span class="op">=</span><span class="st">"year"</span>, values<span class="op">=</span><span class="st">"passengers"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>flights_df</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you will learn pivot in the later chapters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="140">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">1949</th>
+<th data-quarto-table-cell-role="th">1950</th>
+<th data-quarto-table-cell-role="th">1951</th>
+<th data-quarto-table-cell-role="th">1952</th>
+<th data-quarto-table-cell-role="th">1953</th>
+<th data-quarto-table-cell-role="th">1954</th>
+<th data-quarto-table-cell-role="th">1955</th>
+<th data-quarto-table-cell-role="th">1956</th>
+<th data-quarto-table-cell-role="th">1957</th>
+<th data-quarto-table-cell-role="th">1958</th>
+<th data-quarto-table-cell-role="th">1959</th>
+<th data-quarto-table-cell-role="th">1960</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">month</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Jan</td>
+<td>112</td>
+<td>115</td>
+<td>145</td>
+<td>171</td>
+<td>196</td>
+<td>204</td>
+<td>242</td>
+<td>284</td>
+<td>315</td>
+<td>340</td>
+<td>360</td>
+<td>417</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Feb</td>
+<td>118</td>
+<td>126</td>
+<td>150</td>
+<td>180</td>
+<td>196</td>
+<td>188</td>
+<td>233</td>
+<td>277</td>
+<td>301</td>
+<td>318</td>
+<td>342</td>
+<td>391</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Mar</td>
+<td>132</td>
+<td>141</td>
+<td>178</td>
+<td>193</td>
+<td>236</td>
+<td>235</td>
+<td>267</td>
+<td>317</td>
+<td>356</td>
+<td>362</td>
+<td>406</td>
+<td>419</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Apr</td>
+<td>129</td>
+<td>135</td>
+<td>163</td>
+<td>181</td>
+<td>235</td>
+<td>227</td>
+<td>269</td>
+<td>313</td>
+<td>348</td>
+<td>348</td>
+<td>396</td>
+<td>461</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">May</td>
+<td>121</td>
+<td>125</td>
+<td>172</td>
+<td>183</td>
+<td>229</td>
+<td>234</td>
+<td>270</td>
+<td>318</td>
+<td>355</td>
+<td>363</td>
+<td>420</td>
+<td>472</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Jun</td>
+<td>135</td>
+<td>149</td>
+<td>178</td>
+<td>218</td>
+<td>243</td>
+<td>264</td>
+<td>315</td>
+<td>374</td>
+<td>422</td>
+<td>435</td>
+<td>472</td>
+<td>535</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Jul</td>
+<td>148</td>
+<td>170</td>
+<td>199</td>
+<td>230</td>
+<td>264</td>
+<td>302</td>
+<td>364</td>
+<td>413</td>
+<td>465</td>
+<td>491</td>
+<td>548</td>
+<td>622</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Aug</td>
+<td>148</td>
+<td>170</td>
+<td>199</td>
+<td>242</td>
+<td>272</td>
+<td>293</td>
+<td>347</td>
+<td>405</td>
+<td>467</td>
+<td>505</td>
+<td>559</td>
+<td>606</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Sep</td>
+<td>136</td>
+<td>158</td>
+<td>184</td>
+<td>209</td>
+<td>237</td>
+<td>259</td>
+<td>312</td>
+<td>355</td>
+<td>404</td>
+<td>404</td>
+<td>463</td>
+<td>508</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Oct</td>
+<td>119</td>
+<td>133</td>
+<td>162</td>
+<td>191</td>
+<td>211</td>
+<td>229</td>
+<td>274</td>
+<td>306</td>
+<td>347</td>
+<td>359</td>
+<td>407</td>
+<td>461</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Nov</td>
+<td>104</td>
+<td>114</td>
+<td>146</td>
+<td>172</td>
+<td>180</td>
+<td>203</td>
+<td>237</td>
+<td>271</td>
+<td>305</td>
+<td>310</td>
+<td>362</td>
+<td>390</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Dec</td>
+<td>118</td>
+<td>140</td>
+<td>166</td>
+<td>194</td>
+<td>201</td>
+<td>229</td>
+<td>278</td>
+<td>306</td>
+<td>336</td>
+<td>337</td>
+<td>405</td>
+<td>432</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><code>flights_df</code> is a matrix with one row for each month and one column for each year. The values show the number of passengers (in thousands) that visited the airport in a specific month of a year. We can use the <code>sns.heatmap</code> function to visualize the footfall at the airport.</p>
+<div class="cell" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"No. of Passengers (1000s)"</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(flights_df)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The brighter colors indicate a higher footfall at the airport. By looking at the graph, we can infer two things:</p>
+<ul>
+<li>The footfall at the airport in any given year tends to be the highest around July &amp; August.</li>
+<li>The footfall at the airport in any given month tends to grow year by year.</li>
+</ul>
+<p>We can also display the actual values in each block by specifying <code>annot=True</code> and using the <code>cmap</code> argument to change the color palette.</p>
+<div class="cell" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fmt = "d" decimal integer. output are the number in base 10</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"No. of Passengers (1000s)"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(flights_df, fmt<span class="op">=</span><span class="st">"d"</span>, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-51-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="correlation-map" class="level4" data-number="8.3.2.4">
+<h4 data-number="8.3.2.4" class="anchored" data-anchor-id="correlation-map"><span class="header-section-number">8.3.2.4</span> Correlation Map</h4>
+<p>A correlation map is a specific type of heatmap where the values represent the correlation coefficients between variables (ranging from -1 to 1). It visually shows the strength and direction of relationships between numerical variables.</p>
+<p>Correlation may refer to any kind of association between two random variables. However, in this book, we will always consider correlation as the linear association between two random variables, or the Pearson’s correlation coefficient. Note that correlation does not imply causality and vice-versa.</p>
+<p>The Pandas function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html">corr()</a> provides the pairwise correlation between all columns of a DataFrame, or between two Series. The function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corrwith.html#pandas.DataFrame.corrwith">corrwith()</a> provides the pairwise correlation of a DataFrame with another DataFrame or Series.</p>
+<div class="cell" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Pairwise correlation amongst all columns</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/survey_data_clean.csv'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>survey_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Timestamp</th>
+<th data-quarto-table-cell-role="th">fav_alcohol</th>
+<th data-quarto-table-cell-role="th">parties_per_month</th>
+<th data-quarto-table-cell-role="th">smoke</th>
+<th data-quarto-table-cell-role="th">weed</th>
+<th data-quarto-table-cell-role="th">introvert_extrovert</th>
+<th data-quarto-table-cell-role="th">love_first_sight</th>
+<th data-quarto-table-cell-role="th">learning_style</th>
+<th data-quarto-table-cell-role="th">left_right_brained</th>
+<th data-quarto-table-cell-role="th">personality_type</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">used_python_before</th>
+<th data-quarto-table-cell-role="th">dominant_hand</th>
+<th data-quarto-table-cell-role="th">childhood_in_US</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">region_of_residence</th>
+<th data-quarto-table-cell-role="th">political_affliation</th>
+<th data-quarto-table-cell-role="th">cant_change_math_ability</th>
+<th data-quarto-table-cell-role="th">can_change_math_ability</th>
+<th data-quarto-table-cell-role="th">math_is_genetic</th>
+<th data-quarto-table-cell-role="th">much_effort_is_lack_of_talent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022/09/13 1:43:34 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1.0</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Introvert</td>
+<td>0</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>INFJ</td>
+<td>...</td>
+<td>1</td>
+<td>Right</td>
+<td>1</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022/09/13 5:28:17 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3.0</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Extrovert</td>
+<td>0</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ESFJ</td>
+<td>...</td>
+<td>1</td>
+<td>Right</td>
+<td>1</td>
+<td>Male</td>
+<td>West</td>
+<td>Democrat</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022/09/13 7:56:38 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3.0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Introvert</td>
+<td>0</td>
+<td>Kinesthetic (learn best through figuring out h...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ISTJ</td>
+<td>...</td>
+<td>0</td>
+<td>Right</td>
+<td>0</td>
+<td>Female</td>
+<td>International</td>
+<td>No affiliation</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2022/09/13 10:34:37 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>12.0</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>0</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ENFJ</td>
+<td>...</td>
+<td>0</td>
+<td>Right</td>
+<td>1</td>
+<td>Female</td>
+<td>Southeast</td>
+<td>Democrat</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2022/09/14 4:46:19 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1.0</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>1</td>
+<td>Reading/Writing (learn best through words ofte...</td>
+<td>Right-brained (creative, art, imaginative, int...</td>
+<td>ENTJ</td>
+<td>...</td>
+<td>0</td>
+<td>Right</td>
+<td>1</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 51 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Pairwise correlation amongst all columns</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>survey_data.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="144">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">parties_per_month</th>
+<th data-quarto-table-cell-role="th">love_first_sight</th>
+<th data-quarto-table-cell-role="th">num_insta_followers</th>
+<th data-quarto-table-cell-role="th">expected_marriage_age</th>
+<th data-quarto-table-cell-role="th">expected_starting_salary</th>
+<th data-quarto-table-cell-role="th">minutes_ex_per_week</th>
+<th data-quarto-table-cell-role="th">sleep_hours_per_day</th>
+<th data-quarto-table-cell-role="th">farthest_distance_travelled</th>
+<th data-quarto-table-cell-role="th">fav_number</th>
+<th data-quarto-table-cell-role="th">internet_hours_per_day</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">procrastinator</th>
+<th data-quarto-table-cell-role="th">num_clubs</th>
+<th data-quarto-table-cell-role="th">student_athlete</th>
+<th data-quarto-table-cell-role="th">AP_stats</th>
+<th data-quarto-table-cell-role="th">used_python_before</th>
+<th data-quarto-table-cell-role="th">childhood_in_US</th>
+<th data-quarto-table-cell-role="th">cant_change_math_ability</th>
+<th data-quarto-table-cell-role="th">can_change_math_ability</th>
+<th data-quarto-table-cell-role="th">math_is_genetic</th>
+<th data-quarto-table-cell-role="th">much_effort_is_lack_of_talent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">parties_per_month</td>
+<td>1.000000</td>
+<td>0.096129</td>
+<td>0.239705</td>
+<td>-0.064079</td>
+<td>0.114881</td>
+<td>0.195561</td>
+<td>-0.052542</td>
+<td>-0.017081</td>
+<td>-0.050139</td>
+<td>0.087390</td>
+<td>...</td>
+<td>-0.056871</td>
+<td>-0.010514</td>
+<td>0.290830</td>
+<td>-0.013222</td>
+<td>-0.040033</td>
+<td>0.081905</td>
+<td>-0.052912</td>
+<td>0.055575</td>
+<td>-0.013374</td>
+<td>-0.029838</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">love_first_sight</td>
+<td>0.096129</td>
+<td>1.000000</td>
+<td>-0.024010</td>
+<td>-0.084406</td>
+<td>0.080138</td>
+<td>0.099244</td>
+<td>-0.025378</td>
+<td>-0.075539</td>
+<td>0.105095</td>
+<td>-0.007652</td>
+<td>...</td>
+<td>0.033951</td>
+<td>0.083342</td>
+<td>0.014595</td>
+<td>-0.062992</td>
+<td>-0.034692</td>
+<td>-0.118260</td>
+<td>0.005254</td>
+<td>0.020758</td>
+<td>-0.003710</td>
+<td>0.013376</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">num_insta_followers</td>
+<td>0.239705</td>
+<td>-0.024010</td>
+<td>1.000000</td>
+<td>-0.130157</td>
+<td>0.127226</td>
+<td>0.099341</td>
+<td>-0.042421</td>
+<td>0.011308</td>
+<td>-0.124763</td>
+<td>-0.028427</td>
+<td>...</td>
+<td>-0.089871</td>
+<td>0.265958</td>
+<td>0.044807</td>
+<td>0.005947</td>
+<td>-0.016201</td>
+<td>0.072622</td>
+<td>-0.150658</td>
+<td>0.130774</td>
+<td>-0.018411</td>
+<td>-0.165899</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">expected_marriage_age</td>
+<td>-0.064079</td>
+<td>-0.084406</td>
+<td>-0.130157</td>
+<td>1.000000</td>
+<td>-0.014881</td>
+<td>-0.088073</td>
+<td>0.182009</td>
+<td>-0.024038</td>
+<td>-0.008924</td>
+<td>-0.029772</td>
+<td>...</td>
+<td>-0.020012</td>
+<td>-0.137069</td>
+<td>-0.036122</td>
+<td>0.010447</td>
+<td>0.052727</td>
+<td>0.053759</td>
+<td>-0.072163</td>
+<td>0.087633</td>
+<td>-0.086898</td>
+<td>0.052813</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">expected_starting_salary</td>
+<td>0.114881</td>
+<td>0.080138</td>
+<td>0.127226</td>
+<td>-0.014881</td>
+<td>1.000000</td>
+<td>0.134065</td>
+<td>-0.005078</td>
+<td>-0.028329</td>
+<td>-0.028125</td>
+<td>0.017479</td>
+<td>...</td>
+<td>0.054273</td>
+<td>-0.100922</td>
+<td>-0.026219</td>
+<td>-0.084894</td>
+<td>-0.094541</td>
+<td>0.081142</td>
+<td>-0.011609</td>
+<td>0.019171</td>
+<td>0.078694</td>
+<td>0.097265</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">minutes_ex_per_week</td>
+<td>0.195561</td>
+<td>0.099244</td>
+<td>0.099341</td>
+<td>-0.088073</td>
+<td>0.134065</td>
+<td>1.000000</td>
+<td>0.049593</td>
+<td>-0.153188</td>
+<td>0.038758</td>
+<td>-0.028457</td>
+<td>...</td>
+<td>-0.045149</td>
+<td>-0.024572</td>
+<td>0.576301</td>
+<td>-0.062544</td>
+<td>0.057760</td>
+<td>0.235492</td>
+<td>-0.101282</td>
+<td>0.134430</td>
+<td>-0.047772</td>
+<td>-0.045141</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">sleep_hours_per_day</td>
+<td>-0.052542</td>
+<td>-0.025378</td>
+<td>-0.042421</td>
+<td>0.182009</td>
+<td>-0.005078</td>
+<td>0.049593</td>
+<td>1.000000</td>
+<td>0.104175</td>
+<td>-0.021909</td>
+<td>0.017435</td>
+<td>...</td>
+<td>-0.176579</td>
+<td>-0.163860</td>
+<td>0.058361</td>
+<td>-0.013909</td>
+<td>0.096528</td>
+<td>-0.059468</td>
+<td>-0.058086</td>
+<td>0.012174</td>
+<td>0.027052</td>
+<td>-0.022025</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">farthest_distance_travelled</td>
+<td>-0.017081</td>
+<td>-0.075539</td>
+<td>0.011308</td>
+<td>-0.024038</td>
+<td>-0.028329</td>
+<td>-0.153188</td>
+<td>0.104175</td>
+<td>1.000000</td>
+<td>-0.108661</td>
+<td>0.049450</td>
+<td>...</td>
+<td>0.032492</td>
+<td>-0.045214</td>
+<td>-0.158027</td>
+<td>0.010580</td>
+<td>0.012353</td>
+<td>-0.282821</td>
+<td>-0.046074</td>
+<td>0.017935</td>
+<td>0.110037</td>
+<td>0.046895</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">fav_number</td>
+<td>-0.050139</td>
+<td>0.105095</td>
+<td>-0.124763</td>
+<td>-0.008924</td>
+<td>-0.028125</td>
+<td>0.038758</td>
+<td>-0.021909</td>
+<td>-0.108661</td>
+<td>1.000000</td>
+<td>-0.013070</td>
+<td>...</td>
+<td>0.085508</td>
+<td>-0.013696</td>
+<td>-0.014435</td>
+<td>0.091011</td>
+<td>0.030736</td>
+<td>0.072894</td>
+<td>-0.032534</td>
+<td>0.034319</td>
+<td>-0.063692</td>
+<td>-0.073777</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">internet_hours_per_day</td>
+<td>0.087390</td>
+<td>-0.007652</td>
+<td>-0.028427</td>
+<td>-0.029772</td>
+<td>0.017479</td>
+<td>-0.028457</td>
+<td>0.017435</td>
+<td>0.049450</td>
+<td>-0.013070</td>
+<td>1.000000</td>
+<td>...</td>
+<td>0.048239</td>
+<td>0.064527</td>
+<td>-0.017944</td>
+<td>0.001818</td>
+<td>0.051970</td>
+<td>0.033120</td>
+<td>-0.033902</td>
+<td>0.050258</td>
+<td>0.190205</td>
+<td>-0.053708</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">only_child</td>
+<td>-0.142519</td>
+<td>0.124345</td>
+<td>-0.152184</td>
+<td>-0.043141</td>
+<td>-0.088648</td>
+<td>-0.123371</td>
+<td>0.038126</td>
+<td>0.214377</td>
+<td>-0.024419</td>
+<td>-0.035022</td>
+<td>...</td>
+<td>0.073415</td>
+<td>-0.065484</td>
+<td>0.064136</td>
+<td>0.048031</td>
+<td>-0.139898</td>
+<td>-0.387711</td>
+<td>0.023089</td>
+<td>-0.019982</td>
+<td>0.058226</td>
+<td>0.092372</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">num_majors_minors</td>
+<td>-0.073127</td>
+<td>0.108730</td>
+<td>0.050431</td>
+<td>-0.055280</td>
+<td>0.021278</td>
+<td>0.044450</td>
+<td>-0.024339</td>
+<td>-0.012779</td>
+<td>0.023903</td>
+<td>-0.073775</td>
+<td>...</td>
+<td>-0.073806</td>
+<td>0.311266</td>
+<td>-0.035500</td>
+<td>-0.068640</td>
+<td>-0.073388</td>
+<td>-0.153529</td>
+<td>-0.077501</td>
+<td>0.024734</td>
+<td>-0.125809</td>
+<td>-0.064939</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">high_school_GPA</td>
+<td>0.295646</td>
+<td>0.069288</td>
+<td>0.147402</td>
+<td>0.017052</td>
+<td>0.053354</td>
+<td>-0.076471</td>
+<td>-0.036904</td>
+<td>-0.064116</td>
+<td>-0.023081</td>
+<td>-0.034485</td>
+<td>...</td>
+<td>0.031561</td>
+<td>-0.020854</td>
+<td>0.006332</td>
+<td>0.066837</td>
+<td>0.072777</td>
+<td>0.005606</td>
+<td>-0.095025</td>
+<td>0.093416</td>
+<td>-0.082620</td>
+<td>0.001373</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NU_GPA</td>
+<td>-0.080548</td>
+<td>-0.114041</td>
+<td>0.004702</td>
+<td>0.011925</td>
+<td>-0.048069</td>
+<td>-0.108177</td>
+<td>0.143997</td>
+<td>0.038238</td>
+<td>-0.307656</td>
+<td>-0.014531</td>
+<td>...</td>
+<td>-0.269552</td>
+<td>0.016724</td>
+<td>-0.027378</td>
+<td>-0.026544</td>
+<td>-0.008536</td>
+<td>-0.028968</td>
+<td>0.002094</td>
+<td>-0.137330</td>
+<td>0.036731</td>
+<td>0.047840</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">age</td>
+<td>-0.032771</td>
+<td>0.142384</td>
+<td>-0.230698</td>
+<td>0.060416</td>
+<td>-0.102632</td>
+<td>-0.040906</td>
+<td>-0.035890</td>
+<td>0.018811</td>
+<td>0.096818</td>
+<td>0.017515</td>
+<td>...</td>
+<td>-0.005892</td>
+<td>-0.127760</td>
+<td>-0.038315</td>
+<td>-0.026959</td>
+<td>0.009924</td>
+<td>-0.152784</td>
+<td>-0.005954</td>
+<td>0.014759</td>
+<td>-0.009315</td>
+<td>-0.126370</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">height</td>
+<td>-0.005405</td>
+<td>0.216072</td>
+<td>0.009318</td>
+<td>0.044577</td>
+<td>0.151517</td>
+<td>0.182090</td>
+<td>-0.010650</td>
+<td>-0.235067</td>
+<td>0.041298</td>
+<td>-0.023174</td>
+<td>...</td>
+<td>0.063263</td>
+<td>0.212038</td>
+<td>0.080953</td>
+<td>0.022484</td>
+<td>0.016110</td>
+<td>0.160309</td>
+<td>-0.055641</td>
+<td>0.101811</td>
+<td>-0.064383</td>
+<td>0.028509</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">height_father</td>
+<td>0.126741</td>
+<td>0.029419</td>
+<td>0.179684</td>
+<td>0.026949</td>
+<td>0.011450</td>
+<td>0.156227</td>
+<td>0.097593</td>
+<td>-0.118669</td>
+<td>-0.032717</td>
+<td>-0.047314</td>
+<td>...</td>
+<td>-0.111183</td>
+<td>0.022701</td>
+<td>0.155003</td>
+<td>-0.010982</td>
+<td>-0.006480</td>
+<td>0.137934</td>
+<td>-0.019593</td>
+<td>0.008157</td>
+<td>0.010222</td>
+<td>0.060439</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">height_mother</td>
+<td>0.079121</td>
+<td>0.082684</td>
+<td>0.129716</td>
+<td>0.075316</td>
+<td>0.033947</td>
+<td>0.114181</td>
+<td>-0.044089</td>
+<td>-0.134582</td>
+<td>-0.029568</td>
+<td>-0.091417</td>
+<td>...</td>
+<td>-0.078265</td>
+<td>0.091390</td>
+<td>0.053258</td>
+<td>-0.100647</td>
+<td>-0.021396</td>
+<td>0.119292</td>
+<td>0.027120</td>
+<td>0.034961</td>
+<td>-0.035449</td>
+<td>0.074492</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">procrastinator</td>
+<td>-0.056871</td>
+<td>0.033951</td>
+<td>-0.089871</td>
+<td>-0.020012</td>
+<td>0.054273</td>
+<td>-0.045149</td>
+<td>-0.176579</td>
+<td>0.032492</td>
+<td>0.085508</td>
+<td>0.048239</td>
+<td>...</td>
+<td>1.000000</td>
+<td>0.078341</td>
+<td>0.094363</td>
+<td>0.003053</td>
+<td>-0.016254</td>
+<td>-0.090868</td>
+<td>0.002462</td>
+<td>0.084419</td>
+<td>-0.001738</td>
+<td>0.081471</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">num_clubs</td>
+<td>-0.010514</td>
+<td>0.083342</td>
+<td>0.265958</td>
+<td>-0.137069</td>
+<td>-0.100922</td>
+<td>-0.024572</td>
+<td>-0.163860</td>
+<td>-0.045214</td>
+<td>-0.013696</td>
+<td>0.064527</td>
+<td>...</td>
+<td>0.078341</td>
+<td>1.000000</td>
+<td>-0.084562</td>
+<td>0.087438</td>
+<td>0.115062</td>
+<td>-0.021044</td>
+<td>-0.136249</td>
+<td>0.070002</td>
+<td>-0.090570</td>
+<td>-0.108851</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">student_athlete</td>
+<td>0.290830</td>
+<td>0.014595</td>
+<td>0.044807</td>
+<td>-0.036122</td>
+<td>-0.026219</td>
+<td>0.576301</td>
+<td>0.058361</td>
+<td>-0.158027</td>
+<td>-0.014435</td>
+<td>-0.017944</td>
+<td>...</td>
+<td>0.094363</td>
+<td>-0.084562</td>
+<td>1.000000</td>
+<td>-0.040686</td>
+<td>-0.049288</td>
+<td>0.082888</td>
+<td>-0.066667</td>
+<td>-0.022576</td>
+<td>-0.060523</td>
+<td>0.121232</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">AP_stats</td>
+<td>-0.013222</td>
+<td>-0.062992</td>
+<td>0.005947</td>
+<td>0.010447</td>
+<td>-0.084894</td>
+<td>-0.062544</td>
+<td>-0.013909</td>
+<td>0.010580</td>
+<td>0.091011</td>
+<td>0.001818</td>
+<td>...</td>
+<td>0.003053</td>
+<td>0.087438</td>
+<td>-0.040686</td>
+<td>1.000000</td>
+<td>0.089517</td>
+<td>0.106584</td>
+<td>0.081109</td>
+<td>0.029743</td>
+<td>-0.048375</td>
+<td>-0.018043</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">used_python_before</td>
+<td>-0.040033</td>
+<td>-0.034692</td>
+<td>-0.016201</td>
+<td>0.052727</td>
+<td>-0.094541</td>
+<td>0.057760</td>
+<td>0.096528</td>
+<td>0.012353</td>
+<td>0.030736</td>
+<td>0.051970</td>
+<td>...</td>
+<td>-0.016254</td>
+<td>0.115062</td>
+<td>-0.049288</td>
+<td>0.089517</td>
+<td>1.000000</td>
+<td>0.041928</td>
+<td>-0.011217</td>
+<td>0.156806</td>
+<td>0.088566</td>
+<td>0.023366</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">childhood_in_US</td>
+<td>0.081905</td>
+<td>-0.118260</td>
+<td>0.072622</td>
+<td>0.053759</td>
+<td>0.081142</td>
+<td>0.235492</td>
+<td>-0.059468</td>
+<td>-0.282821</td>
+<td>0.072894</td>
+<td>0.033120</td>
+<td>...</td>
+<td>-0.090868</td>
+<td>-0.021044</td>
+<td>0.082888</td>
+<td>0.106584</td>
+<td>0.041928</td>
+<td>1.000000</td>
+<td>-0.008575</td>
+<td>0.057185</td>
+<td>-0.178003</td>
+<td>-0.013098</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">cant_change_math_ability</td>
+<td>-0.052912</td>
+<td>0.005254</td>
+<td>-0.150658</td>
+<td>-0.072163</td>
+<td>-0.011609</td>
+<td>-0.101282</td>
+<td>-0.058086</td>
+<td>-0.046074</td>
+<td>-0.032534</td>
+<td>-0.033902</td>
+<td>...</td>
+<td>0.002462</td>
+<td>-0.136249</td>
+<td>-0.066667</td>
+<td>0.081109</td>
+<td>-0.011217</td>
+<td>-0.008575</td>
+<td>1.000000</td>
+<td>-0.672777</td>
+<td>0.294544</td>
+<td>0.101835</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">can_change_math_ability</td>
+<td>0.055575</td>
+<td>0.020758</td>
+<td>0.130774</td>
+<td>0.087633</td>
+<td>0.019171</td>
+<td>0.134430</td>
+<td>0.012174</td>
+<td>0.017935</td>
+<td>0.034319</td>
+<td>0.050258</td>
+<td>...</td>
+<td>0.084419</td>
+<td>0.070002</td>
+<td>-0.022576</td>
+<td>0.029743</td>
+<td>0.156806</td>
+<td>0.057185</td>
+<td>-0.672777</td>
+<td>1.000000</td>
+<td>-0.361546</td>
+<td>-0.131047</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">math_is_genetic</td>
+<td>-0.013374</td>
+<td>-0.003710</td>
+<td>-0.018411</td>
+<td>-0.086898</td>
+<td>0.078694</td>
+<td>-0.047772</td>
+<td>0.027052</td>
+<td>0.110037</td>
+<td>-0.063692</td>
+<td>0.190205</td>
+<td>...</td>
+<td>-0.001738</td>
+<td>-0.090570</td>
+<td>-0.060523</td>
+<td>-0.048375</td>
+<td>0.088566</td>
+<td>-0.178003</td>
+<td>0.294544</td>
+<td>-0.361546</td>
+<td>1.000000</td>
+<td>0.154083</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">much_effort_is_lack_of_talent</td>
+<td>-0.029838</td>
+<td>0.013376</td>
+<td>-0.165899</td>
+<td>0.052813</td>
+<td>0.097265</td>
+<td>-0.045141</td>
+<td>-0.022025</td>
+<td>0.046895</td>
+<td>-0.073777</td>
+<td>-0.053708</td>
+<td>...</td>
+<td>0.081471</td>
+<td>-0.108851</td>
+<td>0.121232</td>
+<td>-0.018043</td>
+<td>0.023366</td>
+<td>-0.013098</td>
+<td>0.101835</td>
+<td>-0.131047</td>
+<td>0.154083</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+<p>28 rows × 28 columns</p>
+</div>
+</div>
+</div>
+<p><strong>Q:</strong> Which feature is the most correlated with <em>NU_GPA</em>?</p>
+<div class="cell" data-execution_count="145">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>survey_data.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).corrwith(survey_data.NU_GPA).sort_values(ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="145">
+<pre><code>NU_GPA                           1.000000
+sleep_hours_per_day              0.143997
+num_majors_minors                0.141988
+only_child                       0.106440
+much_effort_is_lack_of_talent    0.047840
+farthest_distance_travelled      0.038238
+math_is_genetic                  0.036731
+num_clubs                        0.016724
+expected_marriage_age            0.011925
+num_insta_followers              0.004702
+cant_change_math_ability         0.002094
+used_python_before              -0.008536
+internet_hours_per_day          -0.014531
+AP_stats                        -0.026544
+student_athlete                 -0.027378
+childhood_in_US                 -0.028968
+high_school_GPA                 -0.030883
+height_father                   -0.040120
+expected_starting_salary        -0.048069
+age                             -0.052039
+height_mother                   -0.079276
+parties_per_month               -0.080548
+height                          -0.099082
+minutes_ex_per_week             -0.108177
+love_first_sight                -0.114041
+can_change_math_ability         -0.137330
+procrastinator                  -0.269552
+fav_number                      -0.307656
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="146">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>{<span class="st">'figure.figsize'</span>:(<span class="dv">12</span>,<span class="dv">10</span>)})</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(survey_data.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).corr())<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From the above map, we can see that:</p>
+<ul>
+<li><code>student athlete</code> is strongly postively correlated with <code>minutes_ex_per_week</code></li>
+<li><code>procrastinator</code> is strongly negatively correlated with <code>NU_GPA</code></li>
+</ul>
+</section>
+</section>
+<section id="boxplots-with-seaborn" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="boxplots-with-seaborn"><span class="header-section-number">8.3.3</span> Boxplots with Seaborn</h3>
+<p><strong>Purpose:</strong> Boxplots is a standardized way of visualizing the distribution of a continuous variable. They show five key metrics that describe the data distribution - median, 25th percentile value, 75th percentile value, minimum and maximum, as shown in the figure below. Note that the minimum and maximum exclude the outliers.</p>
+<div class="cell" data-execution_count="267">
+<div class="cell-output cell-output-display" data-execution_count="267">
+<img src="./Datasets/boxplot.jpg" width="600">
+</div>
+</div>
+<p><strong>Example:</strong> Make a boxplot comparing the distributions of maximum temperatures of Sydney, Canberra and Melbourne, given whether or not it has rained on the day.</p>
+<div class="cell" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data <span class="op">=</span> aussie_weather,x <span class="op">=</span> <span class="st">'Location'</span>, y <span class="op">=</span> <span class="st">'MaxTemp'</span>,hue <span class="op">=</span> <span class="st">'RainToday'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="159">
+<pre><code>&lt;AxesSubplot:xlabel='Location', ylabel='MaxTemp'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-57-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From the above plot, we observe that: 1. The maximum temperature of the day, on an average, is lower if it rained on the day. 2. Sydney and Melbourne have some extremely high outlying values of maximum temperature.</p>
+<p>We have used the Seaborn <a href="https://seaborn.pydata.org/generated/seaborn.boxplot.html">boxplot()</a> function for the above plot.</p>
+</section>
+<section id="scatterplots-with-seaborn" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="scatterplots-with-seaborn"><span class="header-section-number">8.3.4</span> Scatterplots with Seaborn</h3>
+<p>We made scatterplots with Matplotlib and Pandas earlier. With Seaborn, the <code>regplot()</code> function allows us to plot a trendline over the scatterplot, along with a 95% confidence interval for the trendline. Note that this is much easier than making a trendline with Matplotlib.</p>
+<div class="cell" data-scrolled="true" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scatterplot and trendline with seaborn</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">9</span>,<span class="dv">6</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>sns.regplot(x <span class="op">=</span> <span class="st">'gdpPercap'</span>, y <span class="op">=</span> <span class="st">'lifeExp'</span>, data <span class="op">=</span> gdp_data,scatter_kws<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"orange"</span>}, line_kws<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"blue"</span>})</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_major_formatter(<span class="st">'${x:,.0f}'</span>)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'GDP per capita'</span>)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Life expectancy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>Text(0, 0.5, 'Life expectancy')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-58-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Note that the confidence interval of the trendline broadens as we move farther away from most of the data points. In other words, there is more uncertainty about the trend as we move to a domain space farther away from the data.</p>
+</section>
+<section id="multiple-plots-in-a-single-figure-using-seaborn" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="multiple-plots-in-a-single-figure-using-seaborn"><span class="header-section-number">8.3.5</span> Multiple plots in a single figure using Seaborn</h3>
+<p><strong>Purpose:</strong> Histogram and density plots visualize the distribution of a continuous variable.</p>
+<p>A histogram plots the number of observations occurring within discrete, evenly spaced bins of a random variable, to visualize the distribution of the variable. It may be considered a special case of a bar plot as bars are used to plot the observation counts.</p>
+<p>A density plot uses a kernel density estimate to approximate the distribution of random variable.</p>
+<p>We can use the Seaborn <a href="https://seaborn.pydata.org/generated/seaborn.histplot.html">displot()</a> function to make both kinds of plots - histogram or density plot.</p>
+<p><strong>Example:</strong> Make a histogram showing the distributions of maximum temperature in Sydney, Canberra and Melbourne.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>aussie_weather <span class="op">=</span> pd.read_csv(<span class="st">'../Data/Australia_weather.csv'</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>aussie_weather.head()</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale <span class="op">=</span> <span class="fl">1.4</span>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.displot(data <span class="op">=</span> aussie_weather, x <span class="op">=</span> <span class="st">'MaxTemp'</span>,kind <span class="op">=</span> <span class="st">'hist'</span>,col<span class="op">=</span><span class="st">'Location'</span>)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>a.set_axis_labels(<span class="st">"Maximum temperature"</span>, <span class="st">"Count"</span>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>a.set_titles(<span class="st">"</span><span class="sc">{col_name}</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14c944cfc20&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-59-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From the above plot, we observe that: 1. Melbourne has a right skewed distribution with the median temperature being smaller than the mean. 2. Canberra seems to have the highest variation in the temperature.</p>
+<p><strong>Example:</strong> Make a density plot showing the distributions of maximum temperature in Sydney, Canberra and Melbourne.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> aussie_weather, x <span class="op">=</span> <span class="st">'MaxTemp'</span>,kind <span class="op">=</span> <span class="st">'kde'</span>, col <span class="op">=</span> <span class="st">'Location'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14c9acc5040&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-60-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p><strong>Example:</strong> Show the distributions of the maximum and minimum temperatures in a single plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>aussie_weather, x<span class="op">=</span><span class="st">"MaxTemp"</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">"MaxTemp"</span>, kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>aussie_weather, x<span class="op">=</span><span class="st">"MinTemp"</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">"MinTemp"</span>, kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Text(0.5, 0, 'Temperature')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Data visualization_files/figure-html/cell-61-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The Seaborn function <a href="https://seaborn.pydata.org/generated/seaborn.histplot.html">histplot()</a> can be used to make a density plot overlapping on a histogram.</p>
+</section>
+</section>
+<section id="independent-study" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">8.4</span> Independent Study</h2>
+<section id="practice-problem-1" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="practice-problem-1"><span class="header-section-number">8.4.1</span> Practice problem 1</h3>
+<p>Is <code>NU_GPA</code> associated with <code>parties_per_month</code>? Analyze the association separately for <em>Sophomores, Juniors, and Seniors</em> (categories of the variable <code>school_year</code>).</p>
+<p>Make scatterplots of <code>NU_GPA</code> vs <code>parties_per_month</code> in a 1 x 3 grid, where each grid is for a distinct <code>school_year</code>. Plot the trendline as well for each scatterplot. Use the file <em>survey_data_clean.csv</em>.</p>
+<p>Capping the the values of <code>parties_per_month</code> to 30, and make the visualizations again.</p>
+</section>
+<section id="practice-exercise-2" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">8.4.2</span> Practice exercise 2</h3>
+<p>How does the expected marriage age of the people of STAT303-1 depend on their characteristics? We’ll use visualizations to answer this question. Use data from the file <em>survey_data_clean.csv.</em> Proceed as follows:</p>
+<ol type="1">
+<li><p>Make a visualization that compares the mean <code>expected_marriage_age</code> of introverts and extroverts <em>(use the variable <code>introvert_extrovert</code>)</em>. What insights do you obtain?</p></li>
+<li><p>Does the mean <code>expected_marriage_age</code> of introverts and extroverts depend on whether they believe in love in first sight <em>(variable name: <code>love_first_sight</code>)</em>? Update the previous visualization to answer the question.</p></li>
+<li><p>In addition to <code>love_first_sight</code>, does the mean <code>expected_marriage_age</code> of introverts and extroverts depend on whether they are a procrastinator <em>(variable name: <code>procrastinator</code>)</em>? Update the previous visualization to answer the question.</p></li>
+<li><p>Is there any critical information missing in the above visualizations that, if revealed, may cast doubts on the patterns observed in them?</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Pandas.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Assignment A.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

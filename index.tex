@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -12770,6 +12770,1833 @@ Each of the above variables has values - \texttt{Agree} /
 \end{enumerate}
 
 Two of the above methods avoid a \texttt{for}-loop. Which ones?
+
+\hypertarget{introduction-to-data-visualization}{%
+\chapter{Introduction to Data
+Visualization}\label{introduction-to-data-visualization}}
+
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\textbf{\emph{``One picture is worth a thousand words''}} - Fred R.
+Barnard
+
+Visual perception offers the highest bandwidth channel, as we acquire
+much more information through visual perception than with all of the
+other channels combined, as billions of our neurons are dedicated to
+this task. Moreover, the processing of visual information is, at its
+first stages, a highly parallel process. Thus, it is generally easier
+for humans to comprehend information with plots, diagrams and pictures,
+rather than with text and numbers. This makes data visualizations a
+vital part of data science. Some of the key purposes of data
+visualization are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Data visualization is the first step towards exploratory data analysis
+  (EDA), which reveals trends, patterns, insights, or even
+  irregularities in data.
+\item
+  Data visualization can help explain the workings of complex
+  mathematical models.
+\item
+  Data visualization are an elegant way to summarise the findings of a
+  data analysis project.
+\item
+  Data visualizations (especially interactive ones such as those on
+  Tableau) may be the end-product of data analytics project, where the
+  stakeholders make decisions based on the visualizations.
+\end{enumerate}
+
+We'll use three libraries for making data visualizations -
+\href{https://matplotlib.org/}{matplotlib}, pandas, and
+\href{https://seaborn.pydata.org/}{seaborn}.
+
+\hypertarget{data-plotting-with-matplotlib}{%
+\section{Data Plotting with
+Matplotlib}\label{data-plotting-with-matplotlib}}
+
+\href{https://matplotlib.org/}{Matplotlib} is:
+
+\begin{itemize}
+\tightlist
+\item
+  a low-level graph plotting library in python that strives to emulate
+  MATLAB,
+\item
+  can be used in Python scripts, Python and IPython shells, Jupyter
+  notebooks and web application servers.
+\item
+  is mostly written in python, a few segments are written in C,
+  Objective-C and Javascript for Platform compatibility.
+\end{itemize}
+
+\hypertarget{matplotlib-pyplot}{%
+\section{Matplotlib pyplot}\label{matplotlib-pyplot}}
+
+\begin{itemize}
+\tightlist
+\item
+  Matplotlib is the whole package; pyplot is a module in matplotlib
+\item
+  Most of the Matplotlib utilities lies under the pyplot module, and are
+  usually imported under the plt alias:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-source}{%
+\subsection{Data Source}\label{data-source}}
+
+\begin{itemize}
+\tightlist
+\item
+  Python lists, NumPy arrays as well as a pandas series
+\item
+  However, all the sequences are internally converted to numpy arrays.
+\end{itemize}
+
+Let's create a python list to illustrate basic plotting with Matplotlib
+pyplot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{yield\_apples }\OperatorTok{=}\NormalTok{ [}\FloatTok{0.895}\NormalTok{, }\FloatTok{0.91}\NormalTok{, }\FloatTok{0.919}\NormalTok{, }\FloatTok{0.926}\NormalTok{, }\FloatTok{0.929}\NormalTok{, }\FloatTok{0.931}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{basic-plotting}{%
+\subsection{Basic Plotting}\label{basic-plotting}}
+
+\hypertarget{plotting-the-overall-trend}{%
+\subsubsection{Plotting the overall
+trend}\label{plotting-the-overall-trend}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(yield\_apples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-5-output-1.png}
+
+}
+
+\end{figure}
+
+Calling the \texttt{plt.plot} function draws the line chart as expected.
+It also returns a list of plots drawn
+\texttt{{[}\textless{}matplotlib.lines.Line2D\ at\ 0x2194b571df0\textgreater{}{]}},
+shown within the output. We can include a semicolon (\texttt{;}) at the
+end of the last statement in the cell to avoiding showing the output and
+display just the graph.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(yield\_apples)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-6-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{customizing-the-x-axis}{%
+\subsubsection{Customizing the X-axis}\label{customizing-the-x-axis}}
+
+The X-axis of the plot currently shows list element indexes 0 to 5. The
+plot would be more informative if we could display the year for which
+we're plotting the data. We can do this by two arguments
+\texttt{plt.plot}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{years }\OperatorTok{=}\NormalTok{ [}\DecValTok{2010}\NormalTok{, }\DecValTok{2011}\NormalTok{, }\DecValTok{2012}\NormalTok{, }\DecValTok{2013}\NormalTok{, }\DecValTok{2014}\NormalTok{, }\DecValTok{2015}\NormalTok{]}
+\NormalTok{yield\_apples }\OperatorTok{=}\NormalTok{ [}\FloatTok{0.895}\NormalTok{, }\FloatTok{0.91}\NormalTok{, }\FloatTok{0.919}\NormalTok{, }\FloatTok{0.926}\NormalTok{, }\FloatTok{0.929}\NormalTok{, }\FloatTok{0.931}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, yield\_apples)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-8-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{ploting-multiple-lines}{%
+\subsubsection{Ploting multiple lines}\label{ploting-multiple-lines}}
+
+You can invoke the \texttt{plt.plot} function once for each line to plot
+multiple lines in the same graph. Let's compare the yields of apples
+vs.~oranges.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{years }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{2012}\NormalTok{)}
+\NormalTok{apples }\OperatorTok{=}\NormalTok{ [}\FloatTok{0.895}\NormalTok{, }\FloatTok{0.91}\NormalTok{, }\FloatTok{0.919}\NormalTok{, }\FloatTok{0.926}\NormalTok{, }\FloatTok{0.929}\NormalTok{, }\FloatTok{0.931}\NormalTok{, }\FloatTok{0.934}\NormalTok{, }\FloatTok{0.936}\NormalTok{, }\FloatTok{0.937}\NormalTok{, }\FloatTok{0.9375}\NormalTok{, }\FloatTok{0.9372}\NormalTok{, }\FloatTok{0.939}\NormalTok{]}
+\NormalTok{oranges }\OperatorTok{=}\NormalTok{ [}\FloatTok{0.962}\NormalTok{, }\FloatTok{0.941}\NormalTok{, }\FloatTok{0.930}\NormalTok{, }\FloatTok{0.923}\NormalTok{, }\FloatTok{0.918}\NormalTok{, }\FloatTok{0.908}\NormalTok{, }\FloatTok{0.907}\NormalTok{, }\FloatTok{0.904}\NormalTok{, }\FloatTok{0.901}\NormalTok{, }\FloatTok{0.898}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\FloatTok{0.896}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples)}
+\NormalTok{plt.plot(years, oranges)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-10-output-1.png}
+
+}
+
+\end{figure}
+
+When plt.plot command is called without any formatting parameters,
+pyplot uses the following defaults: * Figure size: 6.4 X 4.8 inches *
+Plot style: solid line * Linewidth: 1.5 * Color: Blue (code `b', hex
+code: `\#1f77b4')
+
+You can also edit default styles directly by modifying the
+\texttt{matplotlib.rcParams} dictionary. Learn more:
+https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html\#matplotlib-rcparams
+.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib}
+\NormalTok{matplotlib.rcParams[}\StringTok{\textquotesingle{}font.size\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \DecValTok{14}
+\NormalTok{matplotlib.rcParams[}\StringTok{\textquotesingle{}figure.figsize\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ (}\DecValTok{7}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{matplotlib.rcParams[}\StringTok{\textquotesingle{}figure.facecolor\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}\#00000000\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Conceptual model:} Plotting requires action on a range of
+levels, ranging from the size of the figure to the text object in the
+plot. Matplotlib provides \textbf{object-oriented} interface in the
+hierarchical fashion to provide complete control over the plot. The user
+generates and keeps track of the figure and axes objects. These axes
+objects are then used for most plotting actions.
+
+\hypertarget{enhancing-the-plot}{%
+\subsection{Enhancing the plot}\label{enhancing-the-plot}}
+
+Matplotlib provides a wide range of customizable components within a
+figure, allowing for fine-tuned control over every aspect of the plot.
+These components include elements like axes, labels, ticks, legends, and
+the overall layout. Each can be tailored to enhance the clarity,
+aesthetics, and effectiveness of the visual representation, making the
+plot more engaging and easier to interpret.
+
+\begin{figure}
+
+{\centering 
+
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+}
+
+\caption{\label{fig-anatomy}Matplotlib anatomy of a figure}
+
+\end{figure}
+
+\hypertarget{adding-axis-lables}{%
+\subsubsection{Adding Axis Lables}\label{adding-axis-lables}}
+
+We can add labels to the axes to show what each axis represents using
+the \texttt{plt.xlabel} and \texttt{plt.ylabel} methods.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples)}
+\NormalTok{plt.plot(years, oranges)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Yield (tons per hectare)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-14-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{adding-chart-title-and-legend}{%
+\subsubsection{Adding Chart Title and
+Legend}\label{adding-chart-title-and-legend}}
+
+To differentiate between multiple lines, we can include a legend within
+the graph using the \texttt{plt.legend} function. We can also set a
+title for the chart using the \texttt{plt.title} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples)}
+\NormalTok{plt.plot(years, oranges)}
+
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Yield (tons per hectare)\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{"Crop Yields in Kanto"}\NormalTok{)}
+\NormalTok{plt.legend([}\StringTok{\textquotesingle{}Apples\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Oranges\textquotesingle{}}\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-15-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{adding-line-markers}{%
+\subsubsection{Adding Line Markers}\label{adding-line-markers}}
+
+We can also show markers for the data points on each line using the
+\texttt{marker} argument of \texttt{plt.plot}. Matplotlib provides many
+different markers, like a circle, cross, square, diamond, etc. You can
+find the full list of marker types
+\href{https://matplotlib.org/3.1.1/api/markers_api.html}{here}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(years, oranges, marker}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Yield (tons per hectare)\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{"Crop Yields in Kanto"}\NormalTok{)}
+\NormalTok{plt.legend([}\StringTok{\textquotesingle{}Apples\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Oranges\textquotesingle{}}\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-16-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{styling-lines-and-markers}{%
+\subsubsection{Styling Lines and
+Markers}\label{styling-lines-and-markers}}
+
+The \texttt{plt.plot} function supports many arguments for styling lines
+and markers:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{color} or \texttt{c}: Set the color of the line
+  (\href{https://matplotlib.org/3.1.0/gallery/color/named_colors.html}{supported
+  colors})
+\item
+  \texttt{linestyle} or \texttt{ls}: Choose between a solid or dashed
+  line
+\item
+  \texttt{linewidth} or \texttt{lw}: Set the width of a line
+\item
+  \texttt{markersize} or \texttt{ms}: Set the size of markers
+\item
+  \texttt{markeredgecolor} or \texttt{mec}: Set the edge color for
+  markers
+\item
+  \texttt{markeredgewidth} or \texttt{mew}: Set the edge width for
+  markers
+\item
+  \texttt{markerfacecolor} or \texttt{mfc}: Set the fill color for
+  markers
+\item
+  \texttt{alpha}: Opacity of the plot
+\end{itemize}
+
+Check out the documentation for \texttt{plt.plot} to learn more:
+\url{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html\#matplotlib.pyplot.plot}
+.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples, marker}\OperatorTok{=}\StringTok{\textquotesingle{}s\textquotesingle{}}\NormalTok{, c}\OperatorTok{=}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, ls}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, lw}\OperatorTok{=}\DecValTok{2}\NormalTok{, ms}\OperatorTok{=}\DecValTok{8}\NormalTok{, mew}\OperatorTok{=}\DecValTok{2}\NormalTok{, mec}\OperatorTok{=}\StringTok{\textquotesingle{}navy\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(years, oranges, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, c}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, ls}\OperatorTok{=}\StringTok{\textquotesingle{}{-}{-}\textquotesingle{}}\NormalTok{, lw}\OperatorTok{=}\DecValTok{3}\NormalTok{, ms}\OperatorTok{=}\DecValTok{10}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{.5}\NormalTok{)}
+
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Yield (tons per hectare)\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{"Crop Yields in Kanto"}\NormalTok{)}
+\NormalTok{plt.legend([}\StringTok{\textquotesingle{}Apples\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Oranges\textquotesingle{}}\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-17-output-1.png}
+
+}
+
+\end{figure}
+
+The \texttt{fmt} argument provides a shorthand for specifying the marker
+shape, line style, and line color. It can be provided as the third
+argument to \texttt{plt.plot}.
+
+\begin{verbatim}
+fmt = '[marker][line][color]'
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples, }\StringTok{\textquotesingle{}s{-}b\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(years, oranges, }\StringTok{\textquotesingle{}o{-}{-}r\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Yield (tons per hectare)\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{"Crop Yields in Kanto"}\NormalTok{)}
+\NormalTok{plt.legend([}\StringTok{\textquotesingle{}Apples\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Oranges\textquotesingle{}}\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-18-output-1.png}
+
+}
+
+\end{figure}
+
+If you don't specify a line style in \texttt{fmt}, only markers are
+drawn.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.plot(years, apples, }\StringTok{\textquotesingle{}sb\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(years, oranges, }\StringTok{\textquotesingle{}or\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{"Yield (tons per hectare)"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-19-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{changing-the-figure-size}{%
+\subsubsection{Changing the Figure
+Size}\label{changing-the-figure-size}}
+
+You can use the \texttt{plt.figure} function to change the size of the
+figure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+
+\NormalTok{plt.plot(years, oranges, }\StringTok{\textquotesingle{}or\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{"Yield of Oranges (tons per hectare)"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-20-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{real-world-examples}{%
+\subsection{Real World Examples}\label{real-world-examples}}
+
+Download data from Canvas (gas\_prices.csv \& fifa\_data.csv)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\NormalTok{gas }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/gas\_prices.csv\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Gas Prices over Time (in USD)\textquotesingle{}}\NormalTok{, fontdict}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}fontweight\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fontsize\textquotesingle{}}\NormalTok{: }\DecValTok{18}\NormalTok{\})}
+
+\NormalTok{plt.plot(gas.Year, gas.USA, }\StringTok{\textquotesingle{}b.{-}\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(gas.Year, gas.Canada, }\StringTok{\textquotesingle{}r.{-}\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(gas.Year, gas[}\StringTok{\textquotesingle{}South Korea\textquotesingle{}}\NormalTok{], }\StringTok{\textquotesingle{}g.{-}\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.plot(gas.Year, gas.Australia, }\StringTok{\textquotesingle{}y.{-}\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Another Way to plot many values!}
+\CommentTok{\# countries\_to\_look\_at = [\textquotesingle{}Australia\textquotesingle{}, \textquotesingle{}USA\textquotesingle{}, \textquotesingle{}Canada\textquotesingle{}, \textquotesingle{}South Korea\textquotesingle{}]}
+\CommentTok{\# for country in gas:}
+\CommentTok{\#     if country in countries\_to\_look\_at:}
+\CommentTok{\#         plt.plot(gas.Year, gas[country], marker=\textquotesingle{}.\textquotesingle{})}
+
+\NormalTok{plt.xticks(gas.Year[::}\DecValTok{3}\NormalTok{].tolist()}\OperatorTok{+}\NormalTok{[}\DecValTok{2011}\NormalTok{])}
+
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}US Dollars\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.legend()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-21-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{plotting-other-types-of-plots}{%
+\subsection{Plotting other types of
+plots}\label{plotting-other-types-of-plots}}
+
+Let's read the fifa data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fifa }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/fifa\_data.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{fifa.head(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & ID & Name & Age & Photo & Nationality & Flag & Overall &
+Potential & Club & ... & Composure & Marking & StandingTackle &
+SlidingTackle & GKDiving & GKHandling & GKKicking & GKPositioning &
+GKReflexes & Release Clause \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0 & 158023 & L. Messi & 31 &
+https://cdn.sofifa.org/players/4/19/158023.png & Argentina &
+https://cdn.sofifa.org/flags/52.png & 94 & 94 & FC Barcelona & ... &
+96.0 & 33.0 & 28.0 & 26.0 & 6.0 & 11.0 & 15.0 & 14.0 & 8.0 & €226.5M \\
+1 & 1 & 20801 & Cristiano Ronaldo & 33 &
+https://cdn.sofifa.org/players/4/19/20801.png & Portugal &
+https://cdn.sofifa.org/flags/38.png & 94 & 94 & Juventus & ... & 95.0 &
+28.0 & 31.0 & 23.0 & 7.0 & 11.0 & 15.0 & 14.0 & 11.0 & €127.1M \\
+2 & 2 & 190871 & Neymar Jr & 26 &
+https://cdn.sofifa.org/players/4/19/190871.png & Brazil &
+https://cdn.sofifa.org/flags/54.png & 92 & 93 & Paris Saint-Germain &
+... & 94.0 & 27.0 & 24.0 & 33.0 & 9.0 & 9.0 & 15.0 & 15.0 & 11.0 &
+€228.1M \\
+3 & 3 & 193080 & De Gea & 27 &
+https://cdn.sofifa.org/players/4/19/193080.png & Spain &
+https://cdn.sofifa.org/flags/45.png & 91 & 93 & Manchester United & ...
+& 68.0 & 15.0 & 21.0 & 13.0 & 90.0 & 85.0 & 87.0 & 88.0 & 94.0 &
+€138.6M \\
+4 & 4 & 192985 & K. De Bruyne & 27 &
+https://cdn.sofifa.org/players/4/19/192985.png & Belgium &
+https://cdn.sofifa.org/flags/7.png & 91 & 92 & Manchester City & ... &
+88.0 & 68.0 & 58.0 & 51.0 & 15.0 & 13.0 & 5.0 & 10.0 & 13.0 & €196.4M \\
+\end{longtable}
+
+\hypertarget{plotting-histgram}{%
+\subsubsection{Plotting histgram}\label{plotting-histgram}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+\NormalTok{plt.hist(fifa.Overall, color}\OperatorTok{=}\StringTok{\textquotesingle{}\#abcdef\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Number of Players\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Skill Level\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Distribution of Player Skills in FIFA 2018\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0.5, 1.0, 'Distribution of Player Skills in FIFA 2018')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-23-output-2.png}
+
+}
+
+\end{figure}
+
+\hypertarget{plotting-bar-chart}{%
+\subsubsection{Plotting bar chart}\label{plotting-bar-chart}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# plotting bar chart for the best players}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+\NormalTok{left }\OperatorTok{=}\NormalTok{ fifa.loc[fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{right }\OperatorTok{=}\NormalTok{ fifa.loc[fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+
+\NormalTok{plt.bar([}\StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{], [left, right], color}\OperatorTok{=}\StringTok{\textquotesingle{}\#abcdef\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Number of Players\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Foot Preference of FIFA Players\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0.5, 1.0, 'Foot Preference of FIFA Players')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-24-output-2.png}
+
+}
+
+\end{figure}
+
+\hypertarget{plotting-pie-chart}{%
+\subsubsection{Plotting pie chart}\label{plotting-pie-chart}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{left }\OperatorTok{=}\NormalTok{ fifa.loc[fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{right }\OperatorTok{=}\NormalTok{ fifa.loc[fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+\NormalTok{labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{]}
+\NormalTok{colors }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}\#abcdef\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}\#aabbcc\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{plt.pie([left, right], labels }\OperatorTok{=}\NormalTok{ labels, colors}\OperatorTok{=}\NormalTok{colors, autopct}\OperatorTok{=}\StringTok{\textquotesingle{}}\SpecialCharTok{\%.2f}\StringTok{ }\SpecialCharTok{\%\%}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Foot Preference of FIFA Players\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0.5, 1.0, 'Foot Preference of FIFA Players')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-25-output-2.png}
+
+}
+
+\end{figure}
+
+\hypertarget{pie-chart-on-wight-of-players}{%
+\subsubsection{Pie Chart on wight of
+players}\label{pie-chart-on-wight-of-players}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{), dpi}\OperatorTok{=}\DecValTok{100}\NormalTok{)}
+
+\NormalTok{plt.style.use(}\StringTok{\textquotesingle{}ggplot\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{fifa.Weight }\OperatorTok{=}\NormalTok{ [}\BuiltInTok{int}\NormalTok{(x.strip(}\StringTok{\textquotesingle{}lbs\textquotesingle{}}\NormalTok{)) }\ControlFlowTok{if} \BuiltInTok{type}\NormalTok{(x)}\OperatorTok{==}\BuiltInTok{str} \ControlFlowTok{else}\NormalTok{ x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ fifa.Weight]}
+
+\NormalTok{light }\OperatorTok{=}\NormalTok{ fifa.loc[fifa.Weight }\OperatorTok{\textless{}} \DecValTok{125}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{light\_medium }\OperatorTok{=}\NormalTok{ fifa[(fifa.Weight }\OperatorTok{\textgreater{}=} \DecValTok{125}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (fifa.Weight }\OperatorTok{\textless{}} \DecValTok{150}\NormalTok{)].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{medium }\OperatorTok{=}\NormalTok{ fifa[(fifa.Weight }\OperatorTok{\textgreater{}=} \DecValTok{150}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (fifa.Weight }\OperatorTok{\textless{}} \DecValTok{175}\NormalTok{)].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{medium\_heavy }\OperatorTok{=}\NormalTok{ fifa[(fifa.Weight }\OperatorTok{\textgreater{}=} \DecValTok{175}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (fifa.Weight }\OperatorTok{\textless{}} \DecValTok{200}\NormalTok{)].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{heavy }\OperatorTok{=}\NormalTok{ fifa[fifa.Weight }\OperatorTok{\textgreater{}=} \DecValTok{200}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+
+\NormalTok{weights }\OperatorTok{=}\NormalTok{ [light,light\_medium, medium, medium\_heavy, heavy]}
+\NormalTok{label }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}under 125\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}125{-}150\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}150{-}175\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}175{-}200\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}over 200\textquotesingle{}}\NormalTok{]}
+\NormalTok{explode }\OperatorTok{=}\NormalTok{ (}\FloatTok{.4}\NormalTok{,}\FloatTok{.2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{.4}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Weight of Professional Soccer Players (lbs)\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.pie(weights, labels}\OperatorTok{=}\NormalTok{label, explode}\OperatorTok{=}\NormalTok{explode, pctdistance}\OperatorTok{=}\FloatTok{0.8}\NormalTok{,autopct}\OperatorTok{=}\StringTok{\textquotesingle{}}\SpecialCharTok{\%.2f}\StringTok{ }\SpecialCharTok{\%\%}\StringTok{\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-26-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{box-and-whiskers-chart}{%
+\subsubsection{Box and Whiskers Chart}\label{box-and-whiskers-chart}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{), dpi}\OperatorTok{=}\DecValTok{100}\NormalTok{)}
+
+\NormalTok{plt.style.use(}\StringTok{\textquotesingle{}default\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{barcelona }\OperatorTok{=}\NormalTok{ fifa.loc[fifa.Club }\OperatorTok{==} \StringTok{"FC Barcelona"}\NormalTok{][}\StringTok{\textquotesingle{}Overall\textquotesingle{}}\NormalTok{]}
+\NormalTok{madrid }\OperatorTok{=}\NormalTok{ fifa.loc[fifa.Club }\OperatorTok{==} \StringTok{"Real Madrid"}\NormalTok{][}\StringTok{\textquotesingle{}Overall\textquotesingle{}}\NormalTok{]}
+\NormalTok{revs }\OperatorTok{=}\NormalTok{ fifa.loc[fifa.Club }\OperatorTok{==} \StringTok{"New England Revolution"}\NormalTok{][}\StringTok{\textquotesingle{}Overall\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\#bp = plt.boxplot([barcelona, madrid, revs], labels=[\textquotesingle{}a\textquotesingle{},\textquotesingle{}b\textquotesingle{},\textquotesingle{}c\textquotesingle{}], boxprops=dict(facecolor=\textquotesingle{}red\textquotesingle{}))}
+\NormalTok{bp }\OperatorTok{=}\NormalTok{ plt.boxplot([barcelona, madrid, revs], tick\_labels}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}FC Barcelona\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Real Madrid\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}NE Revolution\textquotesingle{}}\NormalTok{], patch\_artist}\OperatorTok{=}\VariableTok{True}\NormalTok{, medianprops}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}linewidth\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{\})}
+
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Professional Soccer Team Comparison\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}FIFA Overall Rating\textquotesingle{}}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ box }\KeywordTok{in}\NormalTok{ bp[}\StringTok{\textquotesingle{}boxes\textquotesingle{}}\NormalTok{]:}
+    \CommentTok{\# change outline color}
+\NormalTok{    box.}\BuiltInTok{set}\NormalTok{(color}\OperatorTok{=}\StringTok{\textquotesingle{}\#4286f4\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+    \CommentTok{\# change fill color}
+\NormalTok{    box.}\BuiltInTok{set}\NormalTok{(facecolor }\OperatorTok{=} \StringTok{\textquotesingle{}\#e0e0e0\textquotesingle{}}\NormalTok{ )}
+    \CommentTok{\# change hatch}
+    \CommentTok{\#box.set(hatch = \textquotesingle{}/\textquotesingle{})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-27-output-1.png}
+
+}
+
+\end{figure}
+
+You've already learned how to create plots using Matplotlib's Pyplot.
+Next, you'll explore how to simplify and enhance your visualizations by
+using its powerful wrappers: Pandas and Seaborn.
+
+\hypertarget{data-plotting-with-matplotlib-wrappers-pandas-and-seaborn}{%
+\section{Data Plotting with Matplotlib Wrappers: Pandas and
+Seaborn}\label{data-plotting-with-matplotlib-wrappers-pandas-and-seaborn}}
+
+Matplotlib is a popular visualization library, but it has flaws.
+
+\begin{itemize}
+\tightlist
+\item
+  Defaults are not ideal (gridlines, background, etc need to be
+  configured.)
+\item
+  Library is low-level (doing anything complicated takes quite a bit of
+  codes)
+\item
+  Lack of integration with pandas data structures
+\end{itemize}
+
+To address these challenges, Pandas and Seaborn act as higher-level
+interfaces to Matplotlib, offering better defaults, simpler syntax, and
+seamless integration with DataFrames.
+
+\hypertarget{basic-plotting-with-pandas}{%
+\subsection{Basic Plotting with
+Pandas}\label{basic-plotting-with-pandas}}
+
+Pandas library in python is mainly used for data analysis. It is not a
+data visualization library but, we can create basic plots using Pandas.
+Pandas is highly useful and practical if we want to create exploratory
+data analysis plots. We do not need to import other data visualization
+libraries in addition to Pandas for such tasks.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/covid.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{covid\_df.head(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule\noalign{}
+& date & new\_cases & total\_cases & new\_deaths & total\_deaths &
+new\_tests & total\_tests & cases\_per\_million & deaths\_per\_million &
+tests\_per\_million \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 2019-12-31 & 0.0 & 0.0 & 0.0 & 0.0 & NaN & NaN & 0.0 & 0.0 & NaN \\
+1 & 2020-01-01 & 0.0 & 0.0 & 0.0 & 0.0 & NaN & NaN & 0.0 & 0.0 & NaN \\
+2 & 2020-01-02 & 0.0 & 0.0 & 0.0 & 0.0 & NaN & NaN & 0.0 & 0.0 & NaN \\
+3 & 2020-01-03 & 0.0 & 0.0 & 0.0 & 0.0 & NaN & NaN & 0.0 & 0.0 & NaN \\
+4 & 2020-01-04 & 0.0 & 0.0 & 0.0 & 0.0 & NaN & NaN & 0.0 & 0.0 & NaN \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.new\_cases.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}line\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}New Cases\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{1}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, grid}\OperatorTok{=}\VariableTok{True}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}:\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Axes: >
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-29-output-2.png}
+
+}
+
+\end{figure}
+
+While this plot shows the overall trend, it's hard to tell where the
+peak occurred, as there are no dates on the X-axis. We can use the date
+column as the index for the data frame to address this issue since it is
+a time series dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.set\_index(}\StringTok{\textquotesingle{}date\textquotesingle{}}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.new\_cases.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}line\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}New Cases\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{1}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, grid}\OperatorTok{=}\VariableTok{True}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}:\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Axes: xlabel='date'>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-31-output-2.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.new\_deaths.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}line\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}New Deaths\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{1}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, grid}\OperatorTok{=}\VariableTok{True}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}{-}\textquotesingle{}}\NormalTok{)}
+\NormalTok{covid\_df.new\_cases.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}line\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}g\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}New Tests\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{1}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, grid}\OperatorTok{=}\VariableTok{True}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}.\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Axes: xlabel='date'>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-32-output-2.png}
+
+}
+
+\end{figure}
+
+By default, Pandas generates line plots when using the plot method.
+However, you can create other types of visualizations by setting the
+kind parameter in the plot function. The kind parameter accepts eleven
+different string values, which specify the type of plot:
+
+\begin{itemize}
+\tightlist
+\item
+  ``area'' is for area plots.
+\item
+  ``bar'' is for vertical bar charts.
+\item
+  ``barh'' is for horizontal bar charts.
+\item
+  ``box'' is for box plots.
+\item
+  ``hexbin'' is for hexbin plots.
+\item
+  ``hist'' is for histograms.
+\item
+  ``kde'' is for kernel density estimate charts.
+\item
+  ``density'' is an alias for ``kde''.
+\item
+  ``line'' is for line graphs.
+\item
+  ``pie'' is for pie charts.
+\item
+  ``scatter'' is for scatter plots.
+\end{itemize}
+
+For more information, check out the official Pandas documentation:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html}{Series.plot}
+\item
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html}{DataFrame.plot}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, x}\OperatorTok{=}\StringTok{\textquotesingle{}new\_cases\textquotesingle{}}\NormalTok{, y}\OperatorTok{=}\StringTok{\textquotesingle{}new\_deaths\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-33-output-1.png}
+
+}
+
+\end{figure}
+
+Look at the distribution of a proterty with a histogram. Then you'll get
+to know some tools to examine the outliers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.new\_deaths.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}hist\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, bins}\OperatorTok{=}\DecValTok{50}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-34-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_df.new\_cases.plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}box\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-35-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{plotting-with-seaborn}{%
+\subsection{Plotting with Seaborn}\label{plotting-with-seaborn}}
+
+Seaborn is a powerful data visualization library built on top of
+Matplotlib, designed to make statistical plots easier and more
+attractive. It integrates seamlessly with Pandas, making it an excellent
+tool for plotting data from DataFrames. Seaborn comes with better
+default aesthetics and provides more specialized plots that are easy to
+implement.
+
+Some of the key advantages of using Seaborn include:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Simpler syntax}: Seaborn simplifies the process of creating
+  complex plots with just a few lines of code.
+\item
+  \textbf{Beautiful default styles}: Seaborn's default plots are more
+  polished and aesthetically pleasing compared to Matplotlib's defaults.
+\item
+  \textbf{Seamless Pandas integration}: You can directly pass Pandas
+  DataFrames to Seaborn, and it understands column names for axis labels
+  and plot elements.
+\end{itemize}
+
+\texttt{seaborn} comes with 17 built-in datasets. That means you don't
+have to spend a whole lot of your time finding the right dataset and
+cleaning it up to make Seaborn-ready; rather you will focus on the core
+features of Seaborn visualization techniques to solve problems.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\CommentTok{\# get names of the builtin dataset}
+\NormalTok{sns.get\_dataset\_names()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+['anagrams',
+ 'anscombe',
+ 'attention',
+ 'brain_networks',
+ 'car_crashes',
+ 'diamonds',
+ 'dots',
+ 'dowjones',
+ 'exercise',
+ 'flights',
+ 'fmri',
+ 'geyser',
+ 'glue',
+ 'healthexp',
+ 'iris',
+ 'mpg',
+ 'penguins',
+ 'planets',
+ 'seaice',
+ 'taxis',
+ 'tips',
+ 'titanic']
+\end{verbatim}
+
+Let's do a few common plots with Seaborn tips dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load data into a Pandas dataframe}
+\NormalTok{flowers\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"iris"}\NormalTok{)}
+\NormalTok{flowers\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& sepal\_length & sepal\_width & petal\_length & petal\_width &
+species \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 5.1 & 3.5 & 1.4 & 0.2 & setosa \\
+1 & 4.9 & 3.0 & 1.4 & 0.2 & setosa \\
+2 & 4.7 & 3.2 & 1.3 & 0.2 & setosa \\
+3 & 4.6 & 3.1 & 1.5 & 0.2 & setosa \\
+4 & 5.0 & 3.6 & 1.4 & 0.2 & setosa \\
+\end{longtable}
+
+\hypertarget{scatter-plots-using-sns.scatterplot}{%
+\subsubsection{\texorpdfstring{Scatter plots using
+\texttt{sns.scatterplot()}:}{Scatter plots using sns.scatterplot():}}\label{scatter-plots-using-sns.scatterplot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.scatterplot(x}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_length, y}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_width)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-38-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{adding-hues-to-the-scatterplot}{%
+\paragraph{Adding Hues to the
+scatterplot}\label{adding-hues-to-the-scatterplot}}
+
+Notice how the points in the above plot seem to form distinct clusters
+with some outliers. We can color the dots using the flower species as a
+\texttt{hue}. We can also make the points larger using the \texttt{s}
+argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flowers\_df.species.unique()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array(['setosa', 'versicolor', 'virginica'], dtype=object)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.scatterplot(x}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_length, y}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_width, hue}\OperatorTok{=}\NormalTok{flowers\_df.species, s}\OperatorTok{=}\DecValTok{100}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-40-output-1.png}
+
+}
+
+\end{figure}
+
+Adding hues makes the plot more informative. We can immediately tell
+that Setosa flowers have a smaller sepal length but higher sepal widths.
+In contrast, the opposite is true for Virginica flowers.
+
+\hypertarget{customizing-seaborn-figures}{%
+\paragraph{Customizing Seaborn
+Figures}\label{customizing-seaborn-figures}}
+
+Since Seaborn uses Matplotlib's plotting functions internally, we can
+use functions like \texttt{plt.figure} and \texttt{plt.title} to modify
+the figure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Sepal Dimensions\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{sns.scatterplot(x}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_length, }
+\NormalTok{                y}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_width, }
+\NormalTok{                hue}\OperatorTok{=}\NormalTok{flowers\_df.species,}
+\NormalTok{                s}\OperatorTok{=}\DecValTok{100}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-41-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{integration-with-pandas-data-frames}{%
+\paragraph{Integration with Pandas Data
+Frames}\label{integration-with-pandas-data-frames}}
+
+Seaborn has in-built support for Pandas data frames. Instead of passing
+each column as a series, you can provide column names and use the
+\texttt{data} argument to specify a data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Sepal Dimensions\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.scatterplot(x}\OperatorTok{=}\StringTok{\textquotesingle{}sepal\_length\textquotesingle{}}\NormalTok{, }
+\NormalTok{                y}\OperatorTok{=}\StringTok{\textquotesingle{}sepal\_width\textquotesingle{}}\NormalTok{, }
+\NormalTok{                hue}\OperatorTok{=}\StringTok{\textquotesingle{}species\textquotesingle{}}\NormalTok{,}
+\NormalTok{                s}\OperatorTok{=}\DecValTok{100}\NormalTok{,}
+\NormalTok{                data}\OperatorTok{=}\NormalTok{flowers\_df)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-42-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Plotting histgram using \texttt{sns.histplot()}:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.histplot(data}\OperatorTok{=}\NormalTok{flowers\_df, x}\OperatorTok{=}\StringTok{\textquotesingle{}sepal\_width\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-43-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# show kde(kernal density estimate)}
+\NormalTok{sns.histplot(data}\OperatorTok{=}\NormalTok{flowers\_df, x}\OperatorTok{=}\StringTok{\textquotesingle{}sepal\_width\textquotesingle{}}\NormalTok{, kde}\OperatorTok{=}\VariableTok{True}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-44-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding hue}
+\NormalTok{sns.histplot(data}\OperatorTok{=}\NormalTok{flowers\_df, x}\OperatorTok{=}\StringTok{"sepal\_width"}\NormalTok{, hue}\OperatorTok{=}\StringTok{"species"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-45-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{barplot-using-sns.barplot}{%
+\subsubsection{\texorpdfstring{Barplot using
+\texttt{sns.barplot}}{Barplot using sns.barplot}}\label{barplot-using-sns.barplot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tips\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"tips"}\NormalTok{)}
+\NormalTok{sns.barplot(x}\OperatorTok{=}\StringTok{\textquotesingle{}day\textquotesingle{}}\NormalTok{, y}\OperatorTok{=}\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, data}\OperatorTok{=}\NormalTok{tips\_df)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-46-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.barplot(x}\OperatorTok{=}\StringTok{\textquotesingle{}day\textquotesingle{}}\NormalTok{, y}\OperatorTok{=}\StringTok{\textquotesingle{}tip\textquotesingle{}}\NormalTok{, hue}\OperatorTok{=}\StringTok{\textquotesingle{}sex\textquotesingle{}}\NormalTok{, data}\OperatorTok{=}\NormalTok{tips\_df)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-47-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# make the bars horizontal simply by switching the axes}
+\NormalTok{sns.barplot(x}\OperatorTok{=}\StringTok{\textquotesingle{}tip\textquotesingle{}}\NormalTok{, y}\OperatorTok{=}\StringTok{\textquotesingle{}day\textquotesingle{}}\NormalTok{, hue}\OperatorTok{=}\StringTok{\textquotesingle{}sex\textquotesingle{}}\NormalTok{, data}\OperatorTok{=}\NormalTok{tips\_df)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-48-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors}{%
+\subsubsection{Heatmap: Represent 2-dimensional data like a matrix or
+table using
+colors}\label{heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flights\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"flights"}\NormalTok{).pivot(index}\OperatorTok{=}\StringTok{"month"}\NormalTok{, columns}\OperatorTok{=}\StringTok{"year"}\NormalTok{, values}\OperatorTok{=}\StringTok{"passengers"}\NormalTok{)}
+\NormalTok{flights\_df}
+\CommentTok{\# you will learn pivot in the later chapters}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+year & 1949 & 1950 & 1951 & 1952 & 1953 & 1954 & 1955 & 1956 & 1957 &
+1958 & 1959 & 1960 \\
+month & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Jan & 112 & 115 & 145 & 171 & 196 & 204 & 242 & 284 & 315 & 340 & 360 &
+417 \\
+Feb & 118 & 126 & 150 & 180 & 196 & 188 & 233 & 277 & 301 & 318 & 342 &
+391 \\
+Mar & 132 & 141 & 178 & 193 & 236 & 235 & 267 & 317 & 356 & 362 & 406 &
+419 \\
+Apr & 129 & 135 & 163 & 181 & 235 & 227 & 269 & 313 & 348 & 348 & 396 &
+461 \\
+May & 121 & 125 & 172 & 183 & 229 & 234 & 270 & 318 & 355 & 363 & 420 &
+472 \\
+Jun & 135 & 149 & 178 & 218 & 243 & 264 & 315 & 374 & 422 & 435 & 472 &
+535 \\
+Jul & 148 & 170 & 199 & 230 & 264 & 302 & 364 & 413 & 465 & 491 & 548 &
+622 \\
+Aug & 148 & 170 & 199 & 242 & 272 & 293 & 347 & 405 & 467 & 505 & 559 &
+606 \\
+Sep & 136 & 158 & 184 & 209 & 237 & 259 & 312 & 355 & 404 & 404 & 463 &
+508 \\
+Oct & 119 & 133 & 162 & 191 & 211 & 229 & 274 & 306 & 347 & 359 & 407 &
+461 \\
+Nov & 104 & 114 & 146 & 172 & 180 & 203 & 237 & 271 & 305 & 310 & 362 &
+390 \\
+Dec & 118 & 140 & 166 & 194 & 201 & 229 & 278 & 306 & 336 & 337 & 405 &
+432 \\
+\end{longtable}
+
+\texttt{flights\_df} is a matrix with one row for each month and one
+column for each year. The values show the number of passengers (in
+thousands) that visited the airport in a specific month of a year. We
+can use the \texttt{sns.heatmap} function to visualize the footfall at
+the airport.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.title(}\StringTok{"No. of Passengers (1000s)"}\NormalTok{)}
+\NormalTok{sns.heatmap(flights\_df)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-50-output-1.png}
+
+}
+
+\end{figure}
+
+The brighter colors indicate a higher footfall at the airport. By
+looking at the graph, we can infer two things:
+
+\begin{itemize}
+\tightlist
+\item
+  The footfall at the airport in any given year tends to be the highest
+  around July \& August.
+\item
+  The footfall at the airport in any given month tends to grow year by
+  year.
+\end{itemize}
+
+We can also display the actual values in each block by specifying
+\texttt{annot=True} and using the \texttt{cmap} argument to change the
+color palette.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fmt = "d" decimal integer. output are the number in base 10}
+\NormalTok{plt.title(}\StringTok{"No. of Passengers (1000s)"}\NormalTok{)}
+\NormalTok{sns.heatmap(flights\_df, fmt}\OperatorTok{=}\StringTok{"d"}\NormalTok{, annot}\OperatorTok{=}\VariableTok{True}\NormalTok{, cmap}\OperatorTok{=}\StringTok{\textquotesingle{}Blues\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-51-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{correlation-map}{%
+\subsubsection{Correlation Map}\label{correlation-map}}
+
+A correlation map is a specific type of heatmap where the values
+represent the correlation coefficients between variables (ranging from
+-1 to 1). It visually shows the strength and direction of relationships
+between numerical variables.
+
+Correlation may refer to any kind of association between two random
+variables. However, in this book, we will always consider correlation as
+the linear association between two random variables, or the Pearson's
+correlation coefficient. Note that correlation does not imply causality
+and vice-versa.
+
+The Pandas function
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html}{corr()}
+provides the pairwise correlation between all columns of a DataFrame, or
+between two Series. The function
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corrwith.html\#pandas.DataFrame.corrwith}{corrwith()}
+provides the pairwise correlation of a DataFrame with another DataFrame
+or Series.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Pairwise correlation amongst all columns}
+\NormalTok{survey\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/survey\_data\_clean.csv\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{survey\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Timestamp & fav\_alcohol & parties\_per\_month & smoke & weed &
+introvert\_extrovert & love\_first\_sight & learning\_style &
+left\_right\_brained & personality\_type & ... & used\_python\_before &
+dominant\_hand & childhood\_in\_US & gender & region\_of\_residence &
+political\_affliation & cant\_change\_math\_ability &
+can\_change\_math\_ability & math\_is\_genetic &
+much\_effort\_is\_lack\_of\_talent \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 2022/09/13 1:43:34 pm GMT-5 & I don\textquotesingle t drink & 1.0 &
+No & Occasionally & Introvert & 0 & Visual (learn best through images or
+graphic o... & Left-brained (logic, science, critical thinkin... & INFJ
+& ... & 1 & Right & 1 & Female & Northeast & Democrat & 0 & 1 & 0 & 0 \\
+1 & 2022/09/13 5:28:17 pm GMT-5 & Hard liquor/Mixed drink & 3.0 & No &
+Occasionally & Extrovert & 0 & Visual (learn best through images or
+graphic o... & Left-brained (logic, science, critical thinkin... & ESFJ
+& ... & 1 & Right & 1 & Male & West & Democrat & 0 & 1 & 0 & 0 \\
+2 & 2022/09/13 7:56:38 pm GMT-5 & Hard liquor/Mixed drink & 3.0 & No &
+Yes & Introvert & 0 & Kinesthetic (learn best through figuring out h...
+& Left-brained (logic, science, critical thinkin... & ISTJ & ... & 0 &
+Right & 0 & Female & International & No affiliation & 0 & 1 & 0 & 0 \\
+3 & 2022/09/13 10:34:37 pm GMT-5 & Hard liquor/Mixed drink & 12.0 & No &
+No & Extrovert & 0 & Visual (learn best through images or graphic o... &
+Left-brained (logic, science, critical thinkin... & ENFJ & ... & 0 &
+Right & 1 & Female & Southeast & Democrat & 0 & 1 & 0 & 0 \\
+4 & 2022/09/14 4:46:19 pm GMT-5 & I don\textquotesingle t drink & 1.0 &
+No & No & Extrovert & 1 & Reading/Writing (learn best through words
+ofte... & Right-brained (creative, art, imaginative, int... & ENTJ & ...
+& 0 & Right & 1 & Female & Northeast & Democrat & 1 & 0 & 0 & 0 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Pairwise correlation amongst all columns}
+\NormalTok{survey\_data.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).corr()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& parties\_per\_month & love\_first\_sight & num\_insta\_followers &
+expected\_marriage\_age & expected\_starting\_salary &
+minutes\_ex\_per\_week & sleep\_hours\_per\_day &
+farthest\_distance\_travelled & fav\_number & internet\_hours\_per\_day
+& ... & procrastinator & num\_clubs & student\_athlete & AP\_stats &
+used\_python\_before & childhood\_in\_US & cant\_change\_math\_ability &
+can\_change\_math\_ability & math\_is\_genetic &
+much\_effort\_is\_lack\_of\_talent \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+parties\_per\_month & 1.000000 & 0.096129 & 0.239705 & -0.064079 &
+0.114881 & 0.195561 & -0.052542 & -0.017081 & -0.050139 & 0.087390 & ...
+& -0.056871 & -0.010514 & 0.290830 & -0.013222 & -0.040033 & 0.081905 &
+-0.052912 & 0.055575 & -0.013374 & -0.029838 \\
+love\_first\_sight & 0.096129 & 1.000000 & -0.024010 & -0.084406 &
+0.080138 & 0.099244 & -0.025378 & -0.075539 & 0.105095 & -0.007652 & ...
+& 0.033951 & 0.083342 & 0.014595 & -0.062992 & -0.034692 & -0.118260 &
+0.005254 & 0.020758 & -0.003710 & 0.013376 \\
+num\_insta\_followers & 0.239705 & -0.024010 & 1.000000 & -0.130157 &
+0.127226 & 0.099341 & -0.042421 & 0.011308 & -0.124763 & -0.028427 & ...
+& -0.089871 & 0.265958 & 0.044807 & 0.005947 & -0.016201 & 0.072622 &
+-0.150658 & 0.130774 & -0.018411 & -0.165899 \\
+expected\_marriage\_age & -0.064079 & -0.084406 & -0.130157 & 1.000000 &
+-0.014881 & -0.088073 & 0.182009 & -0.024038 & -0.008924 & -0.029772 &
+... & -0.020012 & -0.137069 & -0.036122 & 0.010447 & 0.052727 & 0.053759
+& -0.072163 & 0.087633 & -0.086898 & 0.052813 \\
+expected\_starting\_salary & 0.114881 & 0.080138 & 0.127226 & -0.014881
+& 1.000000 & 0.134065 & -0.005078 & -0.028329 & -0.028125 & 0.017479 &
+... & 0.054273 & -0.100922 & -0.026219 & -0.084894 & -0.094541 &
+0.081142 & -0.011609 & 0.019171 & 0.078694 & 0.097265 \\
+minutes\_ex\_per\_week & 0.195561 & 0.099244 & 0.099341 & -0.088073 &
+0.134065 & 1.000000 & 0.049593 & -0.153188 & 0.038758 & -0.028457 & ...
+& -0.045149 & -0.024572 & 0.576301 & -0.062544 & 0.057760 & 0.235492 &
+-0.101282 & 0.134430 & -0.047772 & -0.045141 \\
+sleep\_hours\_per\_day & -0.052542 & -0.025378 & -0.042421 & 0.182009 &
+-0.005078 & 0.049593 & 1.000000 & 0.104175 & -0.021909 & 0.017435 & ...
+& -0.176579 & -0.163860 & 0.058361 & -0.013909 & 0.096528 & -0.059468 &
+-0.058086 & 0.012174 & 0.027052 & -0.022025 \\
+farthest\_distance\_travelled & -0.017081 & -0.075539 & 0.011308 &
+-0.024038 & -0.028329 & -0.153188 & 0.104175 & 1.000000 & -0.108661 &
+0.049450 & ... & 0.032492 & -0.045214 & -0.158027 & 0.010580 & 0.012353
+& -0.282821 & -0.046074 & 0.017935 & 0.110037 & 0.046895 \\
+fav\_number & -0.050139 & 0.105095 & -0.124763 & -0.008924 & -0.028125 &
+0.038758 & -0.021909 & -0.108661 & 1.000000 & -0.013070 & ... & 0.085508
+& -0.013696 & -0.014435 & 0.091011 & 0.030736 & 0.072894 & -0.032534 &
+0.034319 & -0.063692 & -0.073777 \\
+internet\_hours\_per\_day & 0.087390 & -0.007652 & -0.028427 & -0.029772
+& 0.017479 & -0.028457 & 0.017435 & 0.049450 & -0.013070 & 1.000000 &
+... & 0.048239 & 0.064527 & -0.017944 & 0.001818 & 0.051970 & 0.033120 &
+-0.033902 & 0.050258 & 0.190205 & -0.053708 \\
+only\_child & -0.142519 & 0.124345 & -0.152184 & -0.043141 & -0.088648 &
+-0.123371 & 0.038126 & 0.214377 & -0.024419 & -0.035022 & ... & 0.073415
+& -0.065484 & 0.064136 & 0.048031 & -0.139898 & -0.387711 & 0.023089 &
+-0.019982 & 0.058226 & 0.092372 \\
+num\_majors\_minors & -0.073127 & 0.108730 & 0.050431 & -0.055280 &
+0.021278 & 0.044450 & -0.024339 & -0.012779 & 0.023903 & -0.073775 & ...
+& -0.073806 & 0.311266 & -0.035500 & -0.068640 & -0.073388 & -0.153529 &
+-0.077501 & 0.024734 & -0.125809 & -0.064939 \\
+high\_school\_GPA & 0.295646 & 0.069288 & 0.147402 & 0.017052 & 0.053354
+& -0.076471 & -0.036904 & -0.064116 & -0.023081 & -0.034485 & ... &
+0.031561 & -0.020854 & 0.006332 & 0.066837 & 0.072777 & 0.005606 &
+-0.095025 & 0.093416 & -0.082620 & 0.001373 \\
+NU\_GPA & -0.080548 & -0.114041 & 0.004702 & 0.011925 & -0.048069 &
+-0.108177 & 0.143997 & 0.038238 & -0.307656 & -0.014531 & ... &
+-0.269552 & 0.016724 & -0.027378 & -0.026544 & -0.008536 & -0.028968 &
+0.002094 & -0.137330 & 0.036731 & 0.047840 \\
+age & -0.032771 & 0.142384 & -0.230698 & 0.060416 & -0.102632 &
+-0.040906 & -0.035890 & 0.018811 & 0.096818 & 0.017515 & ... & -0.005892
+& -0.127760 & -0.038315 & -0.026959 & 0.009924 & -0.152784 & -0.005954 &
+0.014759 & -0.009315 & -0.126370 \\
+height & -0.005405 & 0.216072 & 0.009318 & 0.044577 & 0.151517 &
+0.182090 & -0.010650 & -0.235067 & 0.041298 & -0.023174 & ... & 0.063263
+& 0.212038 & 0.080953 & 0.022484 & 0.016110 & 0.160309 & -0.055641 &
+0.101811 & -0.064383 & 0.028509 \\
+height\_father & 0.126741 & 0.029419 & 0.179684 & 0.026949 & 0.011450 &
+0.156227 & 0.097593 & -0.118669 & -0.032717 & -0.047314 & ... &
+-0.111183 & 0.022701 & 0.155003 & -0.010982 & -0.006480 & 0.137934 &
+-0.019593 & 0.008157 & 0.010222 & 0.060439 \\
+height\_mother & 0.079121 & 0.082684 & 0.129716 & 0.075316 & 0.033947 &
+0.114181 & -0.044089 & -0.134582 & -0.029568 & -0.091417 & ... &
+-0.078265 & 0.091390 & 0.053258 & -0.100647 & -0.021396 & 0.119292 &
+0.027120 & 0.034961 & -0.035449 & 0.074492 \\
+procrastinator & -0.056871 & 0.033951 & -0.089871 & -0.020012 & 0.054273
+& -0.045149 & -0.176579 & 0.032492 & 0.085508 & 0.048239 & ... &
+1.000000 & 0.078341 & 0.094363 & 0.003053 & -0.016254 & -0.090868 &
+0.002462 & 0.084419 & -0.001738 & 0.081471 \\
+num\_clubs & -0.010514 & 0.083342 & 0.265958 & -0.137069 & -0.100922 &
+-0.024572 & -0.163860 & -0.045214 & -0.013696 & 0.064527 & ... &
+0.078341 & 1.000000 & -0.084562 & 0.087438 & 0.115062 & -0.021044 &
+-0.136249 & 0.070002 & -0.090570 & -0.108851 \\
+student\_athlete & 0.290830 & 0.014595 & 0.044807 & -0.036122 &
+-0.026219 & 0.576301 & 0.058361 & -0.158027 & -0.014435 & -0.017944 &
+... & 0.094363 & -0.084562 & 1.000000 & -0.040686 & -0.049288 & 0.082888
+& -0.066667 & -0.022576 & -0.060523 & 0.121232 \\
+AP\_stats & -0.013222 & -0.062992 & 0.005947 & 0.010447 & -0.084894 &
+-0.062544 & -0.013909 & 0.010580 & 0.091011 & 0.001818 & ... & 0.003053
+& 0.087438 & -0.040686 & 1.000000 & 0.089517 & 0.106584 & 0.081109 &
+0.029743 & -0.048375 & -0.018043 \\
+used\_python\_before & -0.040033 & -0.034692 & -0.016201 & 0.052727 &
+-0.094541 & 0.057760 & 0.096528 & 0.012353 & 0.030736 & 0.051970 & ... &
+-0.016254 & 0.115062 & -0.049288 & 0.089517 & 1.000000 & 0.041928 &
+-0.011217 & 0.156806 & 0.088566 & 0.023366 \\
+childhood\_in\_US & 0.081905 & -0.118260 & 0.072622 & 0.053759 &
+0.081142 & 0.235492 & -0.059468 & -0.282821 & 0.072894 & 0.033120 & ...
+& -0.090868 & -0.021044 & 0.082888 & 0.106584 & 0.041928 & 1.000000 &
+-0.008575 & 0.057185 & -0.178003 & -0.013098 \\
+cant\_change\_math\_ability & -0.052912 & 0.005254 & -0.150658 &
+-0.072163 & -0.011609 & -0.101282 & -0.058086 & -0.046074 & -0.032534 &
+-0.033902 & ... & 0.002462 & -0.136249 & -0.066667 & 0.081109 &
+-0.011217 & -0.008575 & 1.000000 & -0.672777 & 0.294544 & 0.101835 \\
+can\_change\_math\_ability & 0.055575 & 0.020758 & 0.130774 & 0.087633 &
+0.019171 & 0.134430 & 0.012174 & 0.017935 & 0.034319 & 0.050258 & ... &
+0.084419 & 0.070002 & -0.022576 & 0.029743 & 0.156806 & 0.057185 &
+-0.672777 & 1.000000 & -0.361546 & -0.131047 \\
+math\_is\_genetic & -0.013374 & -0.003710 & -0.018411 & -0.086898 &
+0.078694 & -0.047772 & 0.027052 & 0.110037 & -0.063692 & 0.190205 & ...
+& -0.001738 & -0.090570 & -0.060523 & -0.048375 & 0.088566 & -0.178003 &
+0.294544 & -0.361546 & 1.000000 & 0.154083 \\
+much\_effort\_is\_lack\_of\_talent & -0.029838 & 0.013376 & -0.165899 &
+0.052813 & 0.097265 & -0.045141 & -0.022025 & 0.046895 & -0.073777 &
+-0.053708 & ... & 0.081471 & -0.108851 & 0.121232 & -0.018043 & 0.023366
+& -0.013098 & 0.101835 & -0.131047 & 0.154083 & 1.000000 \\
+\end{longtable}
+
+\textbf{Q:} Which feature is the most correlated with \emph{NU\_GPA}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey\_data.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).corrwith(survey\_data.NU\_GPA).sort\_values(ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+NU_GPA                           1.000000
+sleep_hours_per_day              0.143997
+num_majors_minors                0.141988
+only_child                       0.106440
+much_effort_is_lack_of_talent    0.047840
+farthest_distance_travelled      0.038238
+math_is_genetic                  0.036731
+num_clubs                        0.016724
+expected_marriage_age            0.011925
+num_insta_followers              0.004702
+cant_change_math_ability         0.002094
+used_python_before              -0.008536
+internet_hours_per_day          -0.014531
+AP_stats                        -0.026544
+student_athlete                 -0.027378
+childhood_in_US                 -0.028968
+high_school_GPA                 -0.030883
+height_father                   -0.040120
+expected_starting_salary        -0.048069
+age                             -0.052039
+height_mother                   -0.079276
+parties_per_month               -0.080548
+height                          -0.099082
+minutes_ex_per_week             -0.108177
+love_first_sight                -0.114041
+can_change_math_ability         -0.137330
+procrastinator                  -0.269552
+fav_number                      -0.307656
+dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(rc}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}figure.figsize\textquotesingle{}}\NormalTok{:(}\DecValTok{12}\NormalTok{,}\DecValTok{10}\NormalTok{)\})}
+\NormalTok{sns.heatmap(survey\_data.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).corr())}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-55-output-1.png}
+
+}
+
+\end{figure}
+
+From the above map, we can see that:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{student\ athlete} is strongly postively correlated with
+  \texttt{minutes\_ex\_per\_week}
+\item
+  \texttt{procrastinator} is strongly negatively correlated with
+  \texttt{NU\_GPA}
+\end{itemize}
+
+\hypertarget{boxplots-with-seaborn}{%
+\subsection{Boxplots with Seaborn}\label{boxplots-with-seaborn}}
+
+\textbf{Purpose:} Boxplots is a standardized way of visualizing the
+distribution of a continuous variable. They show five key metrics that
+describe the data distribution - median, 25th percentile value, 75th
+percentile value, minimum and maximum, as shown in the figure below.
+Note that the minimum and maximum exclude the outliers.
+
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\textbf{Example:} Make a boxplot comparing the distributions of maximum
+temperatures of Sydney, Canberra and Melbourne, given whether or not it
+has rained on the day.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.boxplot(data }\OperatorTok{=}\NormalTok{ aussie\_weather,x }\OperatorTok{=} \StringTok{\textquotesingle{}Location\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}MaxTemp\textquotesingle{}}\NormalTok{,hue }\OperatorTok{=} \StringTok{\textquotesingle{}RainToday\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<AxesSubplot:xlabel='Location', ylabel='MaxTemp'>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-57-output-2.png}
+
+}
+
+\end{figure}
+
+From the above plot, we observe that: 1. The maximum temperature of the
+day, on an average, is lower if it rained on the day. 2. Sydney and
+Melbourne have some extremely high outlying values of maximum
+temperature.
+
+We have used the Seaborn
+\href{https://seaborn.pydata.org/generated/seaborn.boxplot.html}{boxplot()}
+function for the above plot.
+
+\hypertarget{scatterplots-with-seaborn}{%
+\subsection{Scatterplots with Seaborn}\label{scatterplots-with-seaborn}}
+
+We made scatterplots with Matplotlib and Pandas earlier. With Seaborn,
+the \texttt{regplot()} function allows us to plot a trendline over the
+scatterplot, along with a 95\% confidence interval for the trendline.
+Note that this is much easier than making a trendline with Matplotlib.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Scatterplot and trendline with seaborn}
+\NormalTok{plt.rcParams[}\StringTok{"figure.figsize"}\NormalTok{] }\OperatorTok{=}\NormalTok{ (}\DecValTok{9}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.regplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, data }\OperatorTok{=}\NormalTok{ gdp\_data,scatter\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"orange"}\NormalTok{\}, line\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"blue"}\NormalTok{\})}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}GDP per capita\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Life expectancy\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0, 0.5, 'Life expectancy')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-58-output-2.png}
+
+}
+
+\end{figure}
+
+Note that the confidence interval of the trendline broadens as we move
+farther away from most of the data points. In other words, there is more
+uncertainty about the trend as we move to a domain space farther away
+from the data.
+
+\hypertarget{multiple-plots-in-a-single-figure-using-seaborn}{%
+\subsection{Multiple plots in a single figure using
+Seaborn}\label{multiple-plots-in-a-single-figure-using-seaborn}}
+
+\textbf{Purpose:} Histogram and density plots visualize the distribution
+of a continuous variable.
+
+A histogram plots the number of observations occurring within discrete,
+evenly spaced bins of a random variable, to visualize the distribution
+of the variable. It may be considered a special case of a bar plot as
+bars are used to plot the observation counts.
+
+A density plot uses a kernel density estimate to approximate the
+distribution of random variable.
+
+We can use the Seaborn
+\href{https://seaborn.pydata.org/generated/seaborn.histplot.html}{displot()}
+function to make both kinds of plots - histogram or density plot.
+
+\textbf{Example:} Make a histogram showing the distributions of maximum
+temperature in Sydney, Canberra and Melbourne.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aussie\_weather }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/Australia\_weather.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{aussie\_weather.head()}
+
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale }\OperatorTok{=} \FloatTok{1.4}\NormalTok{)}
+\NormalTok{a }\OperatorTok{=}\NormalTok{ sns.displot(data }\OperatorTok{=}\NormalTok{ aussie\_weather, x }\OperatorTok{=} \StringTok{\textquotesingle{}MaxTemp\textquotesingle{}}\NormalTok{,kind }\OperatorTok{=} \StringTok{\textquotesingle{}hist\textquotesingle{}}\NormalTok{,col}\OperatorTok{=}\StringTok{\textquotesingle{}Location\textquotesingle{}}\NormalTok{)}
+\NormalTok{a.set\_axis\_labels(}\StringTok{"Maximum temperature"}\NormalTok{, }\StringTok{"Count"}\NormalTok{)}
+\NormalTok{a.set\_titles(}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<seaborn.axisgrid.FacetGrid at 0x14c944cfc20>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-59-output-2.png}
+
+}
+
+\end{figure}
+
+From the above plot, we observe that: 1. Melbourne has a right skewed
+distribution with the median temperature being smaller than the mean. 2.
+Canberra seems to have the highest variation in the temperature.
+
+\textbf{Example:} Make a density plot showing the distributions of
+maximum temperature in Sydney, Canberra and Melbourne.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.displot(data }\OperatorTok{=}\NormalTok{ aussie\_weather, x }\OperatorTok{=} \StringTok{\textquotesingle{}MaxTemp\textquotesingle{}}\NormalTok{,kind }\OperatorTok{=} \StringTok{\textquotesingle{}kde\textquotesingle{}}\NormalTok{, col }\OperatorTok{=} \StringTok{\textquotesingle{}Location\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<seaborn.axisgrid.FacetGrid at 0x14c9acc5040>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-60-output-2.png}
+
+}
+
+\end{figure}
+
+\textbf{Example:} Show the distributions of the maximum and minimum
+temperatures in a single plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.histplot(data}\OperatorTok{=}\NormalTok{aussie\_weather, x}\OperatorTok{=}\StringTok{"MaxTemp"}\NormalTok{, color}\OperatorTok{=}\StringTok{"skyblue"}\NormalTok{, label}\OperatorTok{=}\StringTok{"MaxTemp"}\NormalTok{, kde}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{sns.histplot(data}\OperatorTok{=}\NormalTok{aussie\_weather, x}\OperatorTok{=}\StringTok{"MinTemp"}\NormalTok{, color}\OperatorTok{=}\StringTok{"red"}\NormalTok{, label}\OperatorTok{=}\StringTok{"MinTemp"}\NormalTok{, kde}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{plt.legend()}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Temperature\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0.5, 0, 'Temperature')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-61-output-2.png}
+
+}
+
+\end{figure}
+
+The Seaborn function
+\href{https://seaborn.pydata.org/generated/seaborn.histplot.html}{histplot()}
+can be used to make a density plot overlapping on a histogram.
+
+\hypertarget{independent-study}{%
+\section{Independent Study}\label{independent-study}}
+
+\hypertarget{practice-problem-1}{%
+\subsection{Practice problem 1}\label{practice-problem-1}}
+
+Is \texttt{NU\_GPA} associated with \texttt{parties\_per\_month}?
+Analyze the association separately for \emph{Sophomores, Juniors, and
+Seniors} (categories of the variable \texttt{school\_year}).
+
+Make scatterplots of \texttt{NU\_GPA} vs \texttt{parties\_per\_month} in
+a 1 x 3 grid, where each grid is for a distinct \texttt{school\_year}.
+Plot the trendline as well for each scatterplot. Use the file
+\emph{survey\_data\_clean.csv}.
+
+Capping the the values of \texttt{parties\_per\_month} to 30, and make
+the visualizations again.
+
+\hypertarget{practice-exercise-2-3}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-3}}
+
+How does the expected marriage age of the people of STAT303-1 depend on
+their characteristics? We'll use visualizations to answer this question.
+Use data from the file \emph{survey\_data\_clean.csv.} Proceed as
+follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Make a visualization that compares the mean
+  \texttt{expected\_marriage\_age} of introverts and extroverts
+  \emph{(use the variable \texttt{introvert\_extrovert})}. What insights
+  do you obtain?
+\item
+  Does the mean \texttt{expected\_marriage\_age} of introverts and
+  extroverts depend on whether they believe in love in first sight
+  \emph{(variable name: \texttt{love\_first\_sight})}? Update the
+  previous visualization to answer the question.
+\item
+  In addition to \texttt{love\_first\_sight}, does the mean
+  \texttt{expected\_marriage\_age} of introverts and extroverts depend
+  on whether they are a procrastinator \emph{(variable name:
+  \texttt{procrastinator})}? Update the previous visualization to answer
+  the question.
+\item
+  Is there any critical information missing in the above visualizations
+  that, if revealed, may cast doubts on the patterns observed in them?
+\end{enumerate}
 
 \cleardoublepage
 \phantomsection
