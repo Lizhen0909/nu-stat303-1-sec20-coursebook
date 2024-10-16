@@ -4551,7 +4551,9 @@ dtype: int64</code></pre>
 </div>
 <p><strong>Solution approach:</strong> We have several features of a song. Let us find songs similar to <em>drivers license</em> in terms of <em>danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, time_signature</em> and <em>tempo</em>. Note that we are considering only audio features for simplicity.</p>
 <p>To find the songs most similar to <em>drivers license</em>, we need to define a measure that quantifies the similarity. Let us define similarity of a song with <em>drivers license</em> as the Euclidean distance of the song from <em>drivers license</em>, where the coordinates of a song are: (danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, time_signature, tempo). Thus, similarity can be formulated as:</p>
-<p><span class="math display">\[Similarity_{DL-S} = \sqrt{(danceability_{DL}-danceability_{S})^2+(energy_{DL}-energy_{S})^2 +...+ (tempo_{DL}-tempo_{S})^2)},\]</span></p>
+<p><span class="math display">\[\scriptsize
+Similarity_{DL-S} = \sqrt{(danceability_{DL}-danceability_{S})^2+(energy_{DL}-energy_{S})^2 +\dots + (tempo_{DL}-tempo_{S})^2}
+\]</span></p>
 <p>where the subscript <em>DL</em> stands for <em>drivers license</em> and <em>S</em> stands for any song. The top 5 songs with the least value of <span class="math inline">\(Similarity_{DL-S}\)</span> will be the most similar to <em>drivers lincense</em> and should be recommended.</p>
 <p>Let us subset the columns that we need to use to compute the Euclidean distance.</p>
 <div class="cell" data-execution_count="94">
