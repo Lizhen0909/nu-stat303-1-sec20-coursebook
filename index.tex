@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, breakable, boxrule=0pt, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -5684,48 +5684,6 @@ inside a list.
 2227 & Spiceworld & 29342592 & 56042592 \\
 \end{longtable}
 
-\hypertarget{creating-new-columns-from-existing-columns}{%
-\subsection{Creating new columns from existing
-columns}\label{creating-new-columns-from-existing-columns}}
-
-New variables (or columns) can be created based on existing variables,
-or with external data (we'll see adding external data later). For
-example, let us create a new variable
-\texttt{ratio\_wgross\_by\_budget}, which is the ratio of
-\texttt{Worldwide\ Gross} and \texttt{Production\ Budget} for each
-movie:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}ratio\_wgross\_by\_budget\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movie\_ratings[}\StringTok{\textquotesingle{}Worldwide Gross\textquotesingle{}}\NormalTok{]}\OperatorTok{/}\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Production Budget\textquotesingle{}}\NormalTok{]}
-\NormalTok{movie\_ratings.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lllllllllllll@{}}
-\toprule\noalign{}
-& Title & US Gross & Worldwide Gross & Production Budget & Release Date
-& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
-IMDB Votes & ratio\_wgross\_by\_budget \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & Opal Dreams & 14443 & 14443 & 9000000 & Nov 22 2006 & PG/PG-13 &
-Adapted screenplay & Drama & Fiction & 6.5 & 468 & 0.001605 \\
-1 & Major Dundee & 14873 & 14873 & 3800000 & Apr 07 1965 & PG/PG-13 &
-Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 &
-0.003914 \\
-2 & The Informers & 315000 & 315000 & 18000000 & Apr 24 2009 & R &
-Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 &
-0.017500 \\
-3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & Jul 25 2003 & R &
-Adapted screenplay & Comedy & Fiction & 6.9 & 13510 & 0.023583 \\
-4 & The Last Sin Eater & 388390 & 388390 & 2200000 & Feb 09 2007 &
-PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 &
-0.176541 \\
-\end{longtable}
-
 \hypertarget{extracting-a-sub-set-of-data-loc-and-iloc}{%
 \subsection{\texorpdfstring{Extracting a sub-set of data: \texttt{loc}
 and
@@ -11119,6 +11077,11 @@ Fiction \\
 Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
 \end{longtable}
 
+\textbf{Note}: The \texttt{df.drop()} function can be used to remove
+rows by specifying row labels, index values, or based on conditions. It
+includes an \texttt{axis} parameter, which defaults to dropping rows
+(\texttt{axis=0}). Feel free to explore its additional options.
+
 \hypertarget{adding-a-column}{%
 \subsection{Adding a column}\label{adding-a-column}}
 
@@ -12157,6 +12120,66 @@ Example 2: Filter rows based on a condition
 2  3  6  9
 \end{verbatim}
 
+\hypertarget{understanding-inplacetrue-and-inplacefalse}{%
+\section{\texorpdfstring{Understanding \texttt{inplace=True} and
+\texttt{inplace=False}}{Understanding inplace=True and inplace=False}}\label{understanding-inplacetrue-and-inplacefalse}}
+
+Above, we covered multiple methods that allow you to modify a DataFrame
+or Series. The \texttt{inplace} parameter of these methods determines
+whether the operation modifies the original object or returns a new
+object.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{inplace=True}: Modifies the original DataFrame or Series
+  directly and returns None. The changes are made in place, meaning the
+  original object is altered.
+\item
+  \texttt{inplace=False}: Returns a new DataFrame or Series with the
+  modifications, leaving the original object unchanged. This is the
+  default behavior for most methods.
+\end{itemize}
+
+\textbf{Note}: The default value for the inplace parameter is False for
+most methods.
+
+Usage Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a DataFrame}
+\NormalTok{inplace\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}
+    \StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{],}
+    \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{]}
+\NormalTok{\})}
+
+\CommentTok{\# Drop a column without modifying the original DataFrame}
+\NormalTok{df\_dropped }\OperatorTok{=}\NormalTok{ inplace\_df.drop(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_dropped)  }\CommentTok{\# New DataFrame without column \textquotesingle{}A\textquotesingle{}}
+\BuiltInTok{print}\NormalTok{(inplace\_df)          }\CommentTok{\# Original DataFrame remains unchanged}
+
+\CommentTok{\# Drop a column in place}
+\NormalTok{inplace\_df.drop(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(inplace\_df)          }\CommentTok{\# Original DataFrame is now modified}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   B
+0  4
+1  5
+2  6
+   A  B
+0  1  4
+1  2  5
+2  3  6
+   B
+0  4
+1  5
+2  6
+\end{verbatim}
+
 \hypertarget{case-study}{%
 \section{Case study}\label{case-study}}
 
@@ -12592,7 +12615,7 @@ questions:
 \subsubsection{}\label{section-20}}
 
 Why is \texttt{Worldwide\ Sales} not included in the summary statistics
-table printed in Practice exercise 1?
+table printed in the above step?
 
 \hypertarget{section-21}{%
 \subsubsection{}\label{section-21}}
@@ -12715,18 +12738,11 @@ errors.
 \hypertarget{section-36}{%
 \subsubsection{}\label{section-36}}
 
-Drop the observations consisting of missing values for
-\texttt{num\_insta\_followers}. Report the number of observations
-dropped.
-
-\hypertarget{section-37}{%
-\subsubsection{}\label{section-37}}
-
 What is the mean \texttt{internet\_hours\_per\_day} for the top 46
 people in terms of number of instagram followers?
 
-\hypertarget{section-38}{%
-\subsubsection{}\label{section-38}}
+\hypertarget{section-37}{%
+\subsubsection{}\label{section-37}}
 
 What is the mean \texttt{internet\_hours\_per\_day} for the remaining
 people?
@@ -12734,10 +12750,10 @@ people?
 \hypertarget{practice-exercise-3-2}{%
 \subsection{Practice exercise 3}\label{practice-exercise-3-2}}
 
-\hypertarget{section-39}{%
-\subsubsection{}\label{section-39}}
+\hypertarget{section-38}{%
+\subsubsection{}\label{section-38}}
 
-Use the updated dataset from Practice exercise 1.
+Use the updated dataset from Practice exercise 2.
 
 The last four variables in the dataset are:
 
@@ -12835,7 +12851,7 @@ Matplotlib}\label{data-plotting-with-matplotlib}}
 \end{itemize}
 
 \hypertarget{matplotlib-pyplot}{%
-\section{Matplotlib pyplot}\label{matplotlib-pyplot}}
+\subsection{Matplotlib pyplot}\label{matplotlib-pyplot}}
 
 \begin{itemize}
 \tightlist
@@ -12872,8 +12888,8 @@ pyplot
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{basic-plotting}{%
-\subsection{Basic Plotting}\label{basic-plotting}}
+\hypertarget{basic-line-plotting}{%
+\subsection{Basic Line Plotting}\label{basic-line-plotting}}
 
 \hypertarget{plotting-the-overall-trend}{%
 \subsubsection{Plotting the overall
@@ -13283,9 +13299,8 @@ Download data from Canvas (gas\_prices.csv \& fifa\_data.csv)
 
 \end{figure}
 
-\hypertarget{plotting-other-types-of-plots}{%
-\subsection{Plotting other types of
-plots}\label{plotting-other-types-of-plots}}
+\hypertarget{other-types-of-plotting}{%
+\subsection{Other types of plotting}\label{other-types-of-plotting}}
 
 Let's read the fifa data
 
@@ -13330,8 +13345,9 @@ https://cdn.sofifa.org/flags/7.png & 91 & 92 & Manchester City & ... &
 88.0 & 68.0 & 58.0 & 51.0 & 15.0 & 13.0 & 5.0 & 10.0 & 13.0 & €196.4M \\
 \end{longtable}
 
-\hypertarget{plotting-histgram}{%
-\subsubsection{Plotting histgram}\label{plotting-histgram}}
+\hypertarget{histgram-with-plt.hist}{%
+\subsubsection{\texorpdfstring{Histgram with
+\texttt{plt.hist()}}{Histgram with plt.hist()}}\label{histgram-with-plt.hist}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13357,8 +13373,9 @@ Text(0.5, 1.0, 'Distribution of Player Skills in FIFA 2018')
 
 \end{figure}
 
-\hypertarget{plotting-bar-chart}{%
-\subsubsection{Plotting bar chart}\label{plotting-bar-chart}}
+\hypertarget{bar-chart-with-plt.bar}{%
+\subsubsection{\texorpdfstring{Bar chart with
+\texttt{plt.bar()}}{Bar chart with plt.bar()}}\label{bar-chart-with-plt.bar}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13387,8 +13404,9 @@ Text(0.5, 1.0, 'Foot Preference of FIFA Players')
 
 \end{figure}
 
-\hypertarget{plotting-pie-chart}{%
-\subsubsection{Plotting pie chart}\label{plotting-pie-chart}}
+\hypertarget{pie-chart-with-plt.pie}{%
+\subsubsection{\texorpdfstring{Pie chart with
+\texttt{plt.pie()}}{Pie chart with plt.pie()}}\label{pie-chart-with-plt.pie}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13418,9 +13436,7 @@ Text(0.5, 1.0, 'Foot Preference of FIFA Players')
 
 \end{figure}
 
-\hypertarget{pie-chart-on-wight-of-players}{%
-\subsubsection{Pie Chart on wight of
-players}\label{pie-chart-on-wight-of-players}}
+Another Pie Chart on wight of players
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13454,8 +13470,9 @@ players}\label{pie-chart-on-wight-of-players}}
 
 \end{figure}
 
-\hypertarget{box-and-whiskers-chart}{%
-\subsubsection{Box and Whiskers Chart}\label{box-and-whiskers-chart}}
+\hypertarget{box-and-whiskers-chart-with-plt.boxplot}{%
+\subsubsection{\texorpdfstring{Box and Whiskers Chart with
+\texttt{plt.boxplot()}}{Box and Whiskers Chart with plt.boxplot()}}\label{box-and-whiskers-chart-with-plt.boxplot}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13999,10 +14016,11 @@ each column as a series, you can provide column names and use the
 
 \end{figure}
 
-\hypertarget{heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors}{%
-\subsubsection{Heatmap: Represent 2-dimensional data like a matrix or
-table using
-colors}\label{heatmap-represent-2-dimensional-data-like-a-matrix-or-table-using-colors}}
+\hypertarget{heatmap-using-sns.heatmap}{%
+\subsubsection{\texorpdfstring{Heatmap using
+\texttt{sns.heatmap()}}{Heatmap using sns.heatmap()}}\label{heatmap-using-sns.heatmap}}
+
+Represent 2-dimensional data like a matrix or table using colors
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -14370,7 +14388,7 @@ From the above map, we can see that:
 \end{itemize}
 
 \hypertarget{boxplots-with-seaborn}{%
-\subsection{Boxplots with Seaborn}\label{boxplots-with-seaborn}}
+\subsubsection{Boxplots with Seaborn}\label{boxplots-with-seaborn}}
 
 \textbf{Purpose:} Boxplots is a standardized way of visualizing the
 distribution of a continuous variable. They show five key metrics that
@@ -14414,7 +14432,8 @@ We have used the Seaborn
 function for the above plot.
 
 \hypertarget{scatterplots-with-seaborn}{%
-\subsection{Scatterplots with Seaborn}\label{scatterplots-with-seaborn}}
+\subsubsection{Scatterplots with
+Seaborn}\label{scatterplots-with-seaborn}}
 
 We made scatterplots with Matplotlib and Pandas earlier. With Seaborn,
 the \texttt{regplot()} function allows us to plot a trendline over the
@@ -14451,7 +14470,7 @@ uncertainty about the trend as we move to a domain space farther away
 from the data.
 
 \hypertarget{multiple-plots-in-a-single-figure-using-seaborn}{%
-\subsection{Multiple plots in a single figure using
+\subsubsection{Multiple plots in a single figure using
 Seaborn}\label{multiple-plots-in-a-single-figure-using-seaborn}}
 
 \textbf{Purpose:} Histogram and density plots visualize the distribution
@@ -14671,8 +14690,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-40}{%
-\subsection{}\label{section-40}}
+\hypertarget{section-39}{%
+\subsection{}\label{section-39}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -14681,24 +14700,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-41}{%
-\subsection{}\label{section-41}}
+\hypertarget{section-40}{%
+\subsection{}\label{section-40}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-42}{%
-\subsection{}\label{section-42}}
+\hypertarget{section-41}{%
+\subsection{}\label{section-41}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-43}{%
-\subsection{}\label{section-43}}
+\hypertarget{section-42}{%
+\subsection{}\label{section-42}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -14709,8 +14728,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-44}{%
-\subsection{}\label{section-44}}
+\hypertarget{section-43}{%
+\subsection{}\label{section-43}}
 
 Use list comprehension to:
 
@@ -14759,16 +14778,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-45}{%
-\subsection{}\label{section-45}}
+\hypertarget{section-44}{%
+\subsection{}\label{section-44}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-46}{%
-\subsection{}\label{section-46}}
+\hypertarget{section-45}{%
+\subsection{}\label{section-45}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -14777,8 +14796,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-47}{%
-\subsection{}\label{section-47}}
+\hypertarget{section-46}{%
+\subsection{}\label{section-46}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -14787,8 +14806,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-48}{%
-\subsection{}\label{section-48}}
+\hypertarget{section-47}{%
+\subsection{}\label{section-47}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -14812,8 +14831,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-49}{%
-\subsection{}\label{section-49}}
+\hypertarget{section-48}{%
+\subsection{}\label{section-48}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -14822,8 +14841,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-50}{%
-\subsection{}\label{section-50}}
+\hypertarget{section-49}{%
+\subsection{}\label{section-49}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -14835,8 +14854,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-51}{%
-\subsection{}\label{section-51}}
+\hypertarget{section-50}{%
+\subsection{}\label{section-50}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -14844,23 +14863,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-52}{%
-\subsection{}\label{section-52}}
+\hypertarget{section-51}{%
+\subsection{}\label{section-51}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-53}{%
-\subsection{}\label{section-53}}
+\hypertarget{section-52}{%
+\subsection{}\label{section-52}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-54}{%
-\subsection{}\label{section-54}}
+\hypertarget{section-53}{%
+\subsection{}\label{section-53}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -14869,16 +14888,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-55}{%
-\subsection{}\label{section-55}}
+\hypertarget{section-54}{%
+\subsection{}\label{section-54}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-56}{%
-\subsection{}\label{section-56}}
+\hypertarget{section-55}{%
+\subsection{}\label{section-55}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -14888,16 +14907,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-57}{%
-\subsection{}\label{section-57}}
+\hypertarget{section-56}{%
+\subsection{}\label{section-56}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-58}{%
-\subsection{}\label{section-58}}
+\hypertarget{section-57}{%
+\subsection{}\label{section-57}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -14910,38 +14929,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-59}{%
-\subsection{}\label{section-59}}
+\hypertarget{section-58}{%
+\subsection{}\label{section-58}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-60}{%
-\subsection{}\label{section-60}}
+\hypertarget{section-59}{%
+\subsection{}\label{section-59}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-61}{%
-\subsection{}\label{section-61}}
+\hypertarget{section-60}{%
+\subsection{}\label{section-60}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-62}{%
-\subsection{}\label{section-62}}
+\hypertarget{section-61}{%
+\subsection{}\label{section-61}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-63}{%
-\subsection{}\label{section-63}}
+\hypertarget{section-62}{%
+\subsection{}\label{section-62}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -14950,16 +14969,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-64}{%
-\subsection{}\label{section-64}}
+\hypertarget{section-63}{%
+\subsection{}\label{section-63}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-65}{%
-\subsection{}\label{section-65}}
+\hypertarget{section-64}{%
+\subsection{}\label{section-64}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.

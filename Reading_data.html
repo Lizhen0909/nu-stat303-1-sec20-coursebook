@@ -74,10 +74,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link active" data-scroll-target="#types-of-data">Types of data</a></li>
+  <li><a href="#using-pandas-to-read-csvs" id="toc-using-pandas-to-read-csvs" class="nav-link" data-scroll-target="#using-pandas-to-read-csvs">Using Pandas to Read CSVs</a>
+  <ul>
+  <li><a href="#using-the-read_csv-function" id="toc-using-the-read_csv-function" class="nav-link" data-scroll-target="#using-the-read_csv-function">Using the <code>read_csv</code> function</a></li>
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
+  </ul></li>
+  <li><a href="#data-selection-and-filtering" id="toc-data-selection-and-filtering" class="nav-link" data-scroll-target="#data-selection-and-filtering">Data Selection and Filtering</a>
+  <ul>
+  <li><a href="#extracting-columns-from-pandas" id="toc-extracting-columns-from-pandas" class="nav-link" data-scroll-target="#extracting-columns-from-pandas">Extracting Column(s) from pandas</a></li>
+  <li><a href="#extracting-a-sub-set-of-data-loc-and-iloc" id="toc-extracting-a-sub-set-of-data-loc-and-iloc" class="nav-link" data-scroll-target="#extracting-a-sub-set-of-data-loc-and-iloc">Extracting a sub-set of data: <code>loc</code> and <code>iloc</code></a>
+  <ul class="collapse">
+  <li><a href="#subsetting-the-dataframe-by-loc" id="toc-subsetting-the-dataframe-by-loc" class="nav-link" data-scroll-target="#subsetting-the-dataframe-by-loc">Subsetting the DataFrame by <code>loc</code></a></li>
+  <li><a href="#subsetting-the-dataframe-by-iloc" id="toc-subsetting-the-dataframe-by-iloc" class="nav-link" data-scroll-target="#subsetting-the-dataframe-by-iloc">Subsetting the DataFrame by <code>iloc</code></a></li>
+  <li><a href="#key-differences-betweenloc-and-iloc-in-pandas" id="toc-key-differences-betweenloc-and-iloc-in-pandas" class="nav-link" data-scroll-target="#key-differences-betweenloc-and-iloc-in-pandas">Key differences between<code>loc</code> and <code>iloc</code> in pandas</a></li>
+  </ul></li>
+  <li><a href="#extracting-rows-based-on-a-single-condition-or-multiple-conditions" id="toc-extracting-rows-based-on-a-single-condition-or-multiple-conditions" class="nav-link" data-scroll-target="#extracting-rows-based-on-a-single-condition-or-multiple-conditions">Extracting rows based on a Single Condition or Multiple Conditions</a></li>
+  <li><a href="#finding-minimummaximum-of-a-column" id="toc-finding-minimummaximum-of-a-column" class="nav-link" data-scroll-target="#finding-minimummaximum-of-a-column">Finding minimum/maximum of a column</a></li>
+  </ul></li>
+  <li><a href="#datatype-and-datatype-conversion" id="toc-datatype-and-datatype-conversion" class="nav-link" data-scroll-target="#datatype-and-datatype-conversion">DataType and DataType Conversion</a>
+  <ul>
+  <li><a href="#available-data-types-and-associated-built-in-functions" id="toc-available-data-types-and-associated-built-in-functions" class="nav-link" data-scroll-target="#available-data-types-and-associated-built-in-functions">Available Data Types and Associated Built-in Functions</a></li>
+  <li><a href="#data-type-conversion" id="toc-data-type-conversion" class="nav-link" data-scroll-target="#data-type-conversion">Data Type Conversion</a></li>
+  <li><a href="#data-type-filtering" id="toc-data-type-filtering" class="nav-link" data-scroll-target="#data-type-filtering">Data Type Filtering</a></li>
+  <li><a href="#summary-statistics-across-rowscolumns-in-pandas-numeric-columns" id="toc-summary-statistics-across-rowscolumns-in-pandas-numeric-columns" class="nav-link" data-scroll-target="#summary-statistics-across-rowscolumns-in-pandas-numeric-columns">Summary statistics across rows/columns in Pandas: Numeric Columns</a></li>
+  </ul></li>
+  <li><a href="#writing-data-to-a-.csv-file" id="toc-writing-data-to-a-.csv-file" class="nav-link" data-scroll-target="#writing-data-to-a-.csv-file">Writing data to a <code>.csv</code> file</a></li>
+  <li><a href="#reading-other-data-formats---txt-html-json" id="toc-reading-other-data-formats---txt-html-json" class="nav-link" data-scroll-target="#reading-other-data-formats---txt-html-json">Reading other data formats - txt, html, json</a>
+  <ul>
+  <li><a href="#reading-.txt-files" id="toc-reading-.txt-files" class="nav-link" data-scroll-target="#reading-.txt-files">Reading <code>.txt</code> files</a></li>
+  <li><a href="#practice-exercise-4" id="toc-practice-exercise-4" class="nav-link" data-scroll-target="#practice-exercise-4">Practice exercise 4</a></li>
+  <li><a href="#reading-html-data" id="toc-reading-html-data" class="nav-link" data-scroll-target="#reading-html-data">Reading HTML data</a></li>
+  <li><a href="#practice-exercise-5" id="toc-practice-exercise-5" class="nav-link" data-scroll-target="#practice-exercise-5">Practice exercise 5</a></li>
+  <li><a href="#reading-json-data" id="toc-reading-json-data" class="nav-link" data-scroll-target="#reading-json-data">Reading JSON data</a></li>
+  <li><a href="#practice-exercise-6" id="toc-practice-exercise-6" class="nav-link" data-scroll-target="#practice-exercise-6">Practice exercise 6</a></li>
+  <li><a href="#reading-data-from-a-url-in-python" id="toc-reading-data-from-a-url-in-python" class="nav-link" data-scroll-target="#reading-data-from-a-url-in-python">Reading data from a URL in Python</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">

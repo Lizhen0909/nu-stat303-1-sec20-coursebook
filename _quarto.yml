@@ -23,7 +23,7 @@ book:
         - workflow_enhance.ipynb
     - part: 'Exploratory data analysis'
       chapters:
-        - Reading_data.ipynb
+        - Reading data.ipynb
         - NumPy.ipynb
         - Pandas.ipynb
         - Data visualization.ipynb
