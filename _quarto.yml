@@ -39,7 +39,7 @@ book:
     # - Assignment E.ipynb
     # - Assignment F.ipynb
     # - Assignment G.ipynb
-    # - Datasets.ipynb
+    - Datasets.ipynb
     # - references.qmd
 
 bibliography: references.bib
