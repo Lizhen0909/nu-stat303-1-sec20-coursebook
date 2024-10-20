@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, interior hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, enhanced, sharp corners, frame hidden, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -14880,6 +14880,1384 @@ Create a scatter plot with a trendline for \texttt{MinTemp} and
 to overlay a trendline on the scatter plot, complete with a 95\%
 confidence interval for the trendline
 
+\hypertarget{advanced-data-visualization}{%
+\chapter{Advanced Data
+visualization}\label{advanced-data-visualization}}
+
+We learned basic ploting using pandas, seaborn, and matplotlib in the
+last chapter. In this chapter, we'll focus on more advanced plotting,
+including subplots and geospatial plotting
+
+To get started, let's import necessary libraries.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+
+\OperatorTok{\%}\NormalTok{matplotlib inline}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matplotlib-plotting-interfaces}{%
+\section{Matplotlib Plotting
+Interfaces}\label{matplotlib-plotting-interfaces}}
+
+\hypertarget{pyplot-interface-and-oop-interface}{%
+\subsection{Pyplot interface and OOP
+Interface}\label{pyplot-interface-and-oop-interface}}
+
+There are two types of interfaces in Matplotlib for visualization and
+these are given below:
+
+\includegraphics{https://s3.ap-south-1.amazonaws.com/s3.studytonight.com/tutorials/uploads/pictures/1596086186-71449.png}
+
+\hypertarget{plot-a-simple-figure-using-two-interfaces}{%
+\subsection{Plot a simple figure using two
+interfaces}\label{plot-a-simple-figure-using-two-interfaces}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}datasets/gdp\_lifeExpectancy.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& country & continent & year & lifeExp & pop & gdpPercap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.445314 \\
+1 & Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.853030 \\
+2 & Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.100710 \\
+3 & Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.197138 \\
+4 & Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.981106 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Object{-}oriented interface}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots() }\CommentTok{\#Create a figure and an axes}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ gdp\_data.gdpPercap }
+\NormalTok{y }\OperatorTok{=}\NormalTok{ gdp\_data.lifeExp}
+\NormalTok{ax.plot(x,y,}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{)   }\CommentTok{\#Plot data on the axes}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}GDP per capita\textquotesingle{}}\NormalTok{)    }\CommentTok{\#Add an x{-}label to the axes}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Life expectancy\textquotesingle{}}\NormalTok{)   }\CommentTok{\#Add a y{-}label to the axes}
+\NormalTok{ax.set\_title(}\StringTok{\textquotesingle{}Life expectancy vs GDP per capita from 1952 to 2007\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-4-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#pyplot interface}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ gdp\_data.gdpPercap}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ gdp\_data.lifeExp}
+\NormalTok{plt.plot(x,y,}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{) }\CommentTok{\#By default, the plot() function makes a lineplot. The \textquotesingle{}o\textquotesingle{} arguments specifies a scatterplot}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}GDP per capita\textquotesingle{}}\NormalTok{)  }\CommentTok{\#Labelling the horizontal X{-}axis}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Life expectancy\textquotesingle{}}\NormalTok{) }\CommentTok{\#Labelling the verical Y{-}axis}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Life expectancy vs GDP per capita from 1952 to 2007\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-5-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{pyplot-interface}{%
+\subsection{Pyplot Interface}\label{pyplot-interface}}
+
+In the previous chapter, our plotting is completely based on pyplot
+interface of Matplotlib, which is just for basic plotting. You can
+easily generate plots using pyplot module in the matplotlib library just
+by importing \texttt{matplotlib.pyplot} module.
+
+\begin{itemize}
+\tightlist
+\item
+  pyplot interface is a \textbf{state-based interface.} It implicitly
+  tracks the plot that it wants to reference
+\item
+  Simple functions are used to \textbf{add plot elements and/or modify
+  the plot} as we need, whenever we need it.
+\item
+  The Pyplot interface \textbf{shares a lot of similarities in syntax
+  and methodology with MATLAB.}
+\end{itemize}
+
+However, The \texttt{pyplot} interface has limited functionality in
+these two cases:
+
+\begin{itemize}
+\tightlist
+\item
+  when there is a need to make multiple plots
+\item
+  when we have to make plots that require a lot of customization.
+\end{itemize}
+
+For more advanced plotting with Matplotlib, you have to learn
+Object-Oriented Interface.
+
+\hypertarget{plotting-with-object-oriented-interface-of-matplotlib}{%
+\section{Plotting with Object-Oriented Interface of
+Matplotlib}\label{plotting-with-object-oriented-interface-of-matplotlib}}
+
+\hypertarget{understanding-matplotlib-object-hierarchy}{%
+\subsection{Understanding Matplotlib Object
+Hierarchy}\label{understanding-matplotlib-object-hierarchy}}
+
+To understand the object-oriented interface of Matplotlib, we have to
+start with a couple of fundamental concepts related to a plot. * Figure
+* Axes
+
+Think of the entire plot as an object hierarchy with Figure at the top
+of it. Here is a small subset of the hierarchy with Figure being at the
+top, followed by Axes ( not the same as axis ), followed by different
+texts on the plot, different kinds of plots it can handle, the different
+axis and so on. The hierarchy doesn't stop there. Further to x-axis for
+example, there are ticks and further to ticks there are its subsequent
+properties and so on.
+
+\includegraphics{index_files/mediabag/matplotlib-object-or.png}
+
+\hypertarget{figure}{%
+\subsubsection{Figure}\label{figure}}
+
+The outermost object is the figure which is an instance of
+\texttt{figure.Figure}. It is the \textbf{top level container} for all
+the plot elements. The Figure is the final image that may contain one or
+more Axes and it keeps track of all the Axes. Figure is only a container
+and you can not plot data on figure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# To begin with, we create a fiture instance which provides an empty canvas}
+\NormalTok{fig }\OperatorTok{=}\NormalTok{ plt.figure()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Figure size 640x480 with 0 Axes>
+\end{verbatim}
+
+Figure is just a container, note that creating figure using
+\texttt{plt.figure()} does not automatically create an axes and hence
+all you can see is the figure object.
+
+\hypertarget{axes-1}{%
+\subsubsection{Axes}\label{axes-1}}
+
+\texttt{Axes} is the instance of \texttt{matplotlib.axes.Axes}. Axes
+\textbf{is the area on which data are plotted}. A given figure can
+contain many Axes, but a given Axes object can only be in one Figure.
+
+\hypertarget{creating-an-axes-object-explicitly}{%
+\paragraph{Creating an Axes Object
+Explicitly}\label{creating-an-axes-object-explicitly}}
+
+In the OOP interface, Axes objects are usually created using
+\texttt{plt.subplots()} or \texttt{plt.figure().add\_subplot()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# A figure only contains one axes by default}
+\NormalTok{fig }\OperatorTok{=}\NormalTok{ plt.figure()}
+\CommentTok{\# add axes to the figure}
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ fig.add\_subplot()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-7-output-1.png}
+
+}
+
+\end{figure}
+
+We create a blank axes (area) for plotting, if we need to add more axes
+to the figure
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a figure with 4 axes, arranged in 2 rows and 2 columns}
+\NormalTok{fig, axes }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-8-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{components-of-an-axes-object}{%
+\paragraph{Components of an Axes
+Object}\label{components-of-an-axes-object}}
+
+The \texttt{Axes} object contains several elements that make up the plot
+
+\begin{itemize}
+\tightlist
+\item
+  Data plotting area: Contains the data (lines, bars, points, etc.).
+\item
+  X-axis and Y-axis: Controls the axis limits, labels, and ticks.
+\item
+  Title and Labels: The overall title and labels for each axis.
+\item
+  Gridlines: Optional lines to help align the data visually.
+\item
+  Spines: The borders around the plot.
+\item
+  Legend: An optional component to explain the data series.
+\item
+  Annotations: Text or arrows highlighting points of interest.
+\end{itemize}
+
+This is what makes the \texttt{Axes} object central to any plot in the
+OOP interface of Matplotlib.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create data for plotting}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{10}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ x}\OperatorTok{**}\DecValTok{2} 
+
+\CommentTok{\# create a figure and axes}
+\NormalTok{fig,ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{) }
+
+\CommentTok{\# plot the data}
+\NormalTok{ax.plot(x,y)}
+
+\CommentTok{\# set the title}
+\NormalTok{ax.set\_title(}\StringTok{"Exponential Plot"}\NormalTok{)}
+ 
+\CommentTok{\# set the labels of x and y axes}
+\NormalTok{ax.set\_xlabel(}\StringTok{"age"}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{"Cell growth"}\NormalTok{)}
+
+\CommentTok{\# set the limits of x and y axes}
+\NormalTok{ax.set\_xlim([}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{])}
+\NormalTok{ax.set\_ylim([}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{])}
+
+\CommentTok{\# set the ticks of x and y axes}
+\NormalTok{ax.set\_xticks(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\NormalTok{ax.set\_yticks(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{101}\NormalTok{, }\DecValTok{20}\NormalTok{))}
+
+\CommentTok{\# add grid}
+\NormalTok{ax.grid(}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# add legend}
+\NormalTok{ax.legend([}\StringTok{"y = x\^{}2"}\NormalTok{], loc }\OperatorTok{=} \StringTok{"upper left"}\NormalTok{)}
+
+\CommentTok{\# show the plot}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-9-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{creating-complex-plots-with-multiple-subplots}{%
+\subsection{Creating Complex Plots with Multiple
+Subplots}\label{creating-complex-plots-with-multiple-subplots}}
+
+To help illustrate subplots in matplotlib, we can cover two scenarios:
+
+\begin{itemize}
+\tightlist
+\item
+  subplots that don't overlap and
+\item
+  subplots inside other subplots
+\end{itemize}
+
+\hypertarget{plotting-non-overlapped-subplots}{%
+\subsubsection{Plotting non-overlapped
+subplots}\label{plotting-non-overlapped-subplots}}
+
+This is the most common use case, where multiple plots are placed next
+to each other in a grid, without overlap. The \texttt{plt.subplots()}
+function allows for a clean layout where each plot is contained in its
+own space. You can specify the number of rows and columns to create a
+grid of subplots.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flowers\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{\textquotesingle{}iris\textquotesingle{}}\NormalTok{)}
+\NormalTok{tips\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{\textquotesingle{}tips\textquotesingle{}}\NormalTok{)}
+\NormalTok{flights\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"flights"}\NormalTok{).pivot(index}\OperatorTok{=}\StringTok{"month"}\NormalTok{, columns}\OperatorTok{=}\StringTok{"year"}\NormalTok{, values}\OperatorTok{=}\StringTok{"passengers"}\NormalTok{)}
+
+
+\NormalTok{fig, axes }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+
+\CommentTok{\# Pass the axes into seaborn}
+\NormalTok{axes[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{].set\_title(}\StringTok{\textquotesingle{}Sepal Length vs. Sepal Width\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.scatterplot(x}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_length, }
+\NormalTok{                y}\OperatorTok{=}\NormalTok{flowers\_df.sepal\_width, }
+\NormalTok{                hue}\OperatorTok{=}\NormalTok{flowers\_df.species, }
+\NormalTok{                s}\OperatorTok{=}\DecValTok{100}\NormalTok{, }
+\NormalTok{                ax}\OperatorTok{=}\NormalTok{axes[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+
+\CommentTok{\# Use the axes for plotting}
+\NormalTok{axes[}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{].set\_title(}\StringTok{\textquotesingle{}Distribution of Sepal Width\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.histplot(flowers\_df.sepal\_width, ax}\OperatorTok{=}\NormalTok{axes[}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\NormalTok{axes[}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{].legend([}\StringTok{\textquotesingle{}Setosa\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Versicolor\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Virginica\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\# Pass the axes into seaborn}
+\NormalTok{axes[}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{].set\_title(}\StringTok{\textquotesingle{}Restaurant bills\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.barplot(x}\OperatorTok{=}\StringTok{\textquotesingle{}day\textquotesingle{}}\NormalTok{, y}\OperatorTok{=}\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, hue}\OperatorTok{=}\StringTok{\textquotesingle{}sex\textquotesingle{}}\NormalTok{, data}\OperatorTok{=}\NormalTok{tips\_df, ax}\OperatorTok{=}\NormalTok{axes[}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+
+\CommentTok{\# Pass the axes into seaborn}
+\NormalTok{axes[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{].set\_title(}\StringTok{\textquotesingle{}Flight traffic\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.heatmap(flights\_df, cmap}\OperatorTok{=}\StringTok{\textquotesingle{}Blues\textquotesingle{}}\NormalTok{, ax}\OperatorTok{=}\NormalTok{axes[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+
+\NormalTok{plt.tight\_layout(pad}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-10-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{plt.tight\_layout()} ensures the subplots do not overlap
+  by adjusting the spacing automatically.
+\item
+  Seaborn and pandas are wrappers of Matplotlib. To create a
+  Seaborn/pandas plot in a specific Matplotlib subplot, you pass the
+  \texttt{ax} parameter to the its plotting function. This allows you to
+  use their visualization capabilities while fully controlling the
+  layout of the plot using Matplotlib's \texttt{plt.subplots()}
+\end{itemize}
+
+\hypertarget{plotting-nested-subplots-subplots-inside-other-subplots}{%
+\subsubsection{Plotting Nested Subplots (Subplots Inside Other
+Subplots)}\label{plotting-nested-subplots-subplots-inside-other-subplots}}
+
+You can create a subplot inside another plot using \texttt{add\_axes()}
+or \texttt{inset\_axes()} from matplotlib's \texttt{Axes} object. This
+is useful for creating insets or focusing on a specific region within a
+larger plot.
+
+Syntax of \texttt{add\_axes()}
+
+\texttt{ax\ =\ fig.add\_axes({[}left,\ bottom,\ width,\ height{]})}
+
+where * left: The x-position (horizontal starting point) of the axes, as
+a fraction of the figure width (0 to 1). * bottom: The y-position
+(vertical starting point) of the axes, as a fraction of the figure
+height (0 to 1). * width: The width of the axes, as a fraction of the
+figure width (0 to 1). * height: The height of the axes, as a fraction
+of the figure height (0 to 1).
+
+Below is an example demonstrating the use of \texttt{add\_axes()}. You
+can also explore the \texttt{inset\_axes()} method for creating inset
+plots with more flexibility
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create inset axes within the main plot axes  }
+
+\NormalTok{np.random.seed(}\DecValTok{19680801}\NormalTok{)  }\CommentTok{\# Fixing random state for reproducibility.}
+
+\CommentTok{\# create some data to use for the plot}
+\NormalTok{dt }\OperatorTok{=} \FloatTok{0.001}
+\NormalTok{t }\OperatorTok{=}\NormalTok{ np.arange(}\FloatTok{0.0}\NormalTok{, }\FloatTok{10.0}\NormalTok{, dt)}
+\NormalTok{r }\OperatorTok{=}\NormalTok{ np.exp(}\OperatorTok{{-}}\NormalTok{t[:}\DecValTok{1000}\NormalTok{] }\OperatorTok{/} \FloatTok{0.05}\NormalTok{)  }\CommentTok{\# impulse response}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.random.randn(}\BuiltInTok{len}\NormalTok{(t))}
+\NormalTok{s }\OperatorTok{=}\NormalTok{ np.convolve(x, r)[:}\BuiltInTok{len}\NormalTok{(x)] }\OperatorTok{*}\NormalTok{ dt  }\CommentTok{\# colored noise}
+
+\NormalTok{fig, main\_ax }\OperatorTok{=}\NormalTok{ plt.subplots()}
+\NormalTok{main\_ax.plot(t, s)}
+\NormalTok{main\_ax.set\_xlim(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{main\_ax.set\_ylim(}\FloatTok{1.1} \OperatorTok{*}\NormalTok{ np.}\BuiltInTok{min}\NormalTok{(s), }\DecValTok{2} \OperatorTok{*}\NormalTok{ np.}\BuiltInTok{max}\NormalTok{(s))}
+\NormalTok{main\_ax.set\_xlabel(}\StringTok{\textquotesingle{}time (s)\textquotesingle{}}\NormalTok{)}
+\NormalTok{main\_ax.set\_ylabel(}\StringTok{\textquotesingle{}current (nA)\textquotesingle{}}\NormalTok{)}
+\NormalTok{main\_ax.set\_title(}\StringTok{\textquotesingle{}Gaussian colored noise\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# this is an inset axes over the main axes}
+\NormalTok{right\_inset\_ax }\OperatorTok{=}\NormalTok{ fig.add\_axes([}\FloatTok{.65}\NormalTok{, }\FloatTok{.6}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.2}\NormalTok{], facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{right\_inset\_ax.hist(s, }\DecValTok{400}\NormalTok{, density}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{right\_inset\_ax.}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{\textquotesingle{}Probability\textquotesingle{}}\NormalTok{, xticks}\OperatorTok{=}\NormalTok{[], yticks}\OperatorTok{=}\NormalTok{[])}
+
+\CommentTok{\# this is another inset axes over the main axes}
+\NormalTok{left\_inset\_ax }\OperatorTok{=}\NormalTok{ fig.add\_axes([}\FloatTok{.2}\NormalTok{, }\FloatTok{.6}\NormalTok{, }\FloatTok{.2}\NormalTok{, }\FloatTok{.2}\NormalTok{], facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{left\_inset\_ax.plot(t[:}\BuiltInTok{len}\NormalTok{(r)], r)}
+\NormalTok{left\_inset\_ax.}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{\textquotesingle{}Impulse response\textquotesingle{}}\NormalTok{, xlim}\OperatorTok{=}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.2}\NormalTok{), xticks}\OperatorTok{=}\NormalTok{[], yticks}\OperatorTok{=}\NormalTok{[])}
+
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-11-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{pyplot-a-convenience-wrapper-around-the-object-oriented-interface}{%
+\subsubsection{\texorpdfstring{\texttt{pyplot}: a convenience wrapper
+around the object-oriented
+interface}{pyplot: a convenience wrapper around the object-oriented interface}}\label{pyplot-a-convenience-wrapper-around-the-object-oriented-interface}}
+
+While the pyplot interface is simpler for quick, basic plots, it
+ultimately wraps around the object-oriented structure of Matplotlib,
+meaning that it's built on top of the object-oriented interface.
+
+\includegraphics{index_files/mediabag/title_xlabel_ylabel_.png}
+
+\hypertarget{creating-subplots-with-seaborn}{%
+\section{Creating Subplots with
+Seaborn}\label{creating-subplots-with-seaborn}}
+
+We previously demonstrated how Seaborn integrates seamlessly with
+Matplotlib's object-oriented interface, allowing you to pass the
+\texttt{ax} argument to any Seaborn function, thereby directing the plot
+to a specific axis within a subplot grid.
+
+Additionally, Seaborn offers a more convenient and simplified approach
+to creating subplots, thanks to its high-level functions and built-in
+integration with Matplotlib. Here's how Seaborn makes working with
+subplots easier:
+
+\hypertarget{using-facetgrid}{%
+\subsection{\texorpdfstring{Using
+\texttt{Facetgrid}}{Using Facetgrid}}\label{using-facetgrid}}
+
+Seaborn's \texttt{FacetGrid} function make it very easy to create facet
+grids or subplots based on data dimensions (such as categories), which
+would require more manual effort with Matplotlib.
+
+You can use the \texttt{row} and \texttt{col} parameters to control how
+the data is split into subplots along these dimensions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Seaborn Example using FacetGrid:}
+\NormalTok{tips\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"tips"}\NormalTok{)}
+\NormalTok{tips\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& total\_bill & tip & sex & smoker & day & time & size \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16.99 & 1.01 & Female & No & Sun & Dinner & 2 \\
+1 & 10.34 & 1.66 & Male & No & Sun & Dinner & 3 \\
+2 & 21.01 & 3.50 & Male & No & Sun & Dinner & 3 \\
+3 & 23.68 & 3.31 & Male & No & Sun & Dinner & 2 \\
+4 & 24.59 & 3.61 & Female & No & Sun & Dinner & 4 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\OperatorTok{=}\NormalTok{ sns.FacetGrid(tips\_df, col}\OperatorTok{=}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{, row}\OperatorTok{=}\StringTok{\textquotesingle{}smoker\textquotesingle{}}\NormalTok{)}
+\NormalTok{g.}\BuiltInTok{map}\NormalTok{(sns.histplot, }\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{)}
+\NormalTok{g.set\_titles(col\_template}\OperatorTok{=}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{, row\_template}\OperatorTok{=}\StringTok{"Smoker: }\SpecialCharTok{\{row\_name\}}\StringTok{"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-13-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding hue to the FacetGrid}
+\NormalTok{g }\OperatorTok{=}\NormalTok{ sns.FacetGrid(tips\_df, col}\OperatorTok{=}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{, row}\OperatorTok{=}\StringTok{\textquotesingle{}smoker\textquotesingle{}}\NormalTok{,hue}\OperatorTok{=}\StringTok{\textquotesingle{}size\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Plot a scatterplot of the total bill and tip for each combination of time and smoker}
+\NormalTok{g.}\BuiltInTok{map}\NormalTok{(sns.scatterplot, }\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}tip\textquotesingle{}}\NormalTok{)}
+\NormalTok{g.set\_titles(col\_template}\OperatorTok{=}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{, row\_template}\OperatorTok{=}\StringTok{"Smoker: }\SpecialCharTok{\{row\_name\}}\StringTok{"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-14-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{using-seaborn-pairplot}{%
+\subsection{Using seaborn Pairplot}\label{using-seaborn-pairplot}}
+
+Pairplots are used to visualize the association between all
+variable-pairs in the data. In other words, pairplots simultaneously
+visualize the scatterplots between all variable-pairs.
+
+Let us visualize the pair-wise association of tips variables in the tips
+dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.pairplot(tips\_df )}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-15-output-1.png}
+
+}
+
+\end{figure}
+
+Let us visualize the pair-wise association of nutrition variables in the
+starbucks drinks data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starbucks\_drinks }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}datasets/starbucks{-}menu{-}nutrition{-}drinks.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.pairplot(starbucks\_drinks)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-16-output-1.png}
+
+}
+
+\end{figure}
+
+In the above pairplot, note that:
+
+\begin{itemize}
+\tightlist
+\item
+  The histograms on the diagonal of the grid show the distribution of
+  each of the variables.
+\item
+  Instead of a histogram, we can visualize the density plot with the
+  argument kde = True.
+\item
+  The scatterplots in the rest of the grid are the pair-wise plots of
+  all the variables.
+\end{itemize}
+
+\hypertarget{case-study-1}{%
+\section{Case Study}\label{case-study-1}}
+
+Below, we are reading the dataset of noise complaints of type Loud
+music/Party received the police in New York City in 2016.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nyc\_party\_complaints }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}datasets/party\_nyc.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{nyc\_party\_complaints.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule\noalign{}
+& Created Date & Closed Date & Location Type & Incident Zip & City &
+Borough & Latitude & Longitude & Hour\_of\_the\_day &
+Month\_of\_the\_year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 12/31/2015 0:01 & 12/31/2015 3:48 & Store/Commercial & 10034.0 & NEW
+YORK & MANHATTAN & 40.866183 & -73.918930 & 0 & 12 \\
+1 & 12/31/2015 0:02 & 12/31/2015 4:36 & Store/Commercial & 10040.0 & NEW
+YORK & MANHATTAN & 40.859324 & -73.931237 & 0 & 12 \\
+2 & 12/31/2015 0:03 & 12/31/2015 0:40 & Residential Building/House &
+10026.0 & NEW YORK & MANHATTAN & 40.799415 & -73.953371 & 0 & 12 \\
+3 & 12/31/2015 0:03 & 12/31/2015 1:53 & Residential Building/House &
+11231.0 & BROOKLYN & BROOKLYN & 40.678285 & -73.994668 & 0 & 12 \\
+4 & 12/31/2015 0:05 & 12/31/2015 3:49 & Residential Building/House &
+10033.0 & NEW YORK & MANHATTAN & 40.850304 & -73.938516 & 0 & 12 \\
+\end{longtable}
+
+Below, we will begin with basic plotting, utilizing Matplotlib's
+object-oriented interface to handle more complex tasks, such as setting
+the major axis formatting. When it comes to advanced customization,
+Matplotlib's object-oriented interface offers greater flexibility and
+control compared to the pyplot interface.
+
+\hypertarget{bar-plots-with-pandas}{%
+\subsubsection{Bar plots with Pandas}\label{bar-plots-with-pandas}}
+
+\textbf{Purpose of bar plots}: Barplots are used to visualize any
+aggregate statistics of a continuous variable with respect to the
+categories or levels of a categorical variable.
+
+Bar plots can be made using the pandas \texttt{bar} function with the
+DataFrame or Series, just like the line plots and scatterplots.
+
+Let us visualise the locations from where the the complaints are coming.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ nyc\_party\_complaints[}\StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{].value\_counts().plot.bar(ylabel }\OperatorTok{=} \StringTok{\textquotesingle{}Number of complaints\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-18-output-1.png}
+
+}
+
+\end{figure}
+
+In the above code, we use \texttt{ax.yaxis.set\_major\_formatter} to
+format the y-axis labels in a currency style. From the above plot, we
+observe that most of the complaints come from residential buildings and
+houses, as one may expect.
+
+For categorical variables, we can use the \texttt{.value\_counts()}
+method to get the statistical frequency of each unique value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nyc\_party\_complaints[}\StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{].value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Location Type
+Residential Building/House    146040
+Street/Sidewalk                42353
+Store/Commercial               17617
+Club/Bar/Restaurant            15766
+Park/Playground                 3036
+House of Worship                 602
+Name: count, dtype: int64
+\end{verbatim}
+
+Next, Let is visualize the time of the year when most complaints occur.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nyc\_party\_complaints[}\StringTok{\textquotesingle{}Month\_of\_the\_year\textquotesingle{}}\NormalTok{].value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Month_of_the_year
+6     25933
+5     25192
+9     25000
+7     24502
+8     20833
+10    19332
+4     17718
+12    15730
+11    14146
+3     13880
+1     12171
+2     10977
+Name: count, dtype: int64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Using the pandas function bar() to create bar plot}
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ nyc\_party\_complaints[}\StringTok{\textquotesingle{}Month\_of\_the\_year\textquotesingle{}}\NormalTok{].value\_counts().sort\_index().plot.bar(ylabel }\OperatorTok{=} \StringTok{\textquotesingle{}Number of complaints\textquotesingle{}}\NormalTok{,}
+\NormalTok{                                                                              xlabel }\OperatorTok{=} \StringTok{"Month"}\NormalTok{)}
+\NormalTok{ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-21-output-1.png}
+
+}
+
+\end{figure}
+
+Try executing the code without \texttt{sort\_index()} to figure out the
+purpose of using the function.
+
+From the above plot, we observe that most of the complaints occur during
+summer and early Fall.
+
+Let us create a stacked bar chart that combines both the above plots
+into a single plot. You may ignore the code used for re-shaping the data
+until Chapter 10. The purpose here is to show the utility of the pandas
+\texttt{bar()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Reshaping the data to make it suitable for a stacked barplot {-} ignore this code until chapter 8}
+\NormalTok{complaints\_location}\OperatorTok{=}\NormalTok{pd.crosstab(nyc\_party\_complaints.Month\_of\_the\_year, nyc\_party\_complaints[}\StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{])}
+\NormalTok{complaints\_location.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+Location Type & Club/Bar/Restaurant & House of Worship & Park/Playground
+& Residential Building/House & Store/Commercial & Street/Sidewalk \\
+Month\_of\_the\_year & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 748 & 24 & 17 & 9393 & 1157 & 832 \\
+2 & 570 & 29 & 16 & 8383 & 1197 & 782 \\
+3 & 747 & 39 & 90 & 9689 & 1480 & 1835 \\
+4 & 848 & 53 & 129 & 11984 & 1761 & 2943 \\
+5 & 2091 & 72 & 322 & 15676 & 1941 & 5090 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Stacked bar plot showing number of complaints at different months of the year, and from different locations}
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ complaints\_location.plot.bar(stacked}\OperatorTok{=}\VariableTok{True}\NormalTok{,ylabel }\OperatorTok{=} \StringTok{\textquotesingle{}Number of complaints\textquotesingle{}}\NormalTok{,figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{), xlabel }\OperatorTok{=} \StringTok{\textquotesingle{}Month\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.tick\_params(axis }\OperatorTok{=} \StringTok{\textquotesingle{}both\textquotesingle{}}\NormalTok{,labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{)}
+\NormalTok{ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-23-output-1.png}
+
+}
+
+\end{figure}
+
+The above plots gives the insights about location and day of the year
+simultaneously that were previously separately obtained by the
+individual plots.
+
+An alternative to stacked barplots are side-by-side barplots, as shown
+below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Side{-}by{-}side bar plot showing number of complaints at different months of the year, and from different locations}
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ complaints\_location.plot.bar(ylabel }\OperatorTok{=} \StringTok{\textquotesingle{}Number of complaints\textquotesingle{}}\NormalTok{,figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{), xlabel }\OperatorTok{=} \StringTok{\textquotesingle{}Month\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.tick\_params(axis }\OperatorTok{=} \StringTok{\textquotesingle{}both\textquotesingle{}}\NormalTok{,labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{)}
+\NormalTok{ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-24-output-1.png}
+
+}
+
+\end{figure}
+
+Question: In which scenarios should we use a stacked barplot instead of
+a side-by-side barplot and vice-versa?
+
+\hypertarget{bar-plots-with-confidence-intervals-with-seaborn}{%
+\subsubsection{Bar plots with confidence intervals with
+Seaborn}\label{bar-plots-with-confidence-intervals-with-seaborn}}
+
+We'll group the data to obtain the total complaints for each
+\emph{Location Type, Borough, Month\_of\_the\_year, and
+Hour\_of\_the\_day}. Note that you'll learn grouping data in later
+chapters, so you may ignore the next code block. The grouping is done to
+shape the data in a suitable form for visualization.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Grouping the data to make it suitable for visualization using Seaborn. Ignore this code block until learn chapter 9.}
+\NormalTok{nyc\_complaints\_grouped }\OperatorTok{=}\NormalTok{ nyc\_party\_complaints[[}\StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Borough\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Month\_of\_the\_year\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Latitude\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Hour\_of\_the\_day\textquotesingle{}}\NormalTok{]].groupby([}\StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Borough\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Month\_of\_the\_year\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Hour\_of\_the\_day\textquotesingle{}}\NormalTok{])[}\StringTok{\textquotesingle{}Latitude\textquotesingle{}}\NormalTok{].agg([(}\StringTok{\textquotesingle{}complaints\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{)]).reset\_index()}
+\NormalTok{nyc\_complaints\_grouped.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& Location Type & Borough & Month\_of\_the\_year & Hour\_of\_the\_day &
+complaints \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Club/Bar/Restaurant & BRONX & 1 & 0 & 10 \\
+1 & Club/Bar/Restaurant & BRONX & 1 & 1 & 10 \\
+2 & Club/Bar/Restaurant & BRONX & 1 & 2 & 6 \\
+3 & Club/Bar/Restaurant & BRONX & 1 & 3 & 6 \\
+4 & Club/Bar/Restaurant & BRONX & 1 & 4 & 3 \\
+\end{longtable}
+
+Let us create a bar plot visualizing the average number of complaints
+with the time of the day.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ sns.barplot(x}\OperatorTok{=}\StringTok{"Hour\_of\_the\_day"}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}complaints\textquotesingle{}}\NormalTok{,  data}\OperatorTok{=}\NormalTok{nyc\_complaints\_grouped)}
+\NormalTok{ax.figure.set\_figwidth(}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-26-output-1.png}
+
+}
+
+\end{figure}
+
+From the above plot, we observe that most of the complaints are made
+around midnight. However, interestingly, there are some complaints at
+each hour of the day.
+
+Note that the above barplot shows the mean number of complaints in a
+month at each hour of the day. The black lines are the 95\% confidence
+intervals of the mean number of complaints.
+
+\hypertarget{use-seaborn-facetgrid-to-quickly-create-figures-with-subplots}{%
+\subsection{Use Seaborn FacetGrid to Quickly Create Figures With
+Subplots}\label{use-seaborn-facetgrid-to-quickly-create-figures-with-subplots}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing the number of complaints with Month\_of\_the\_year, Location Type, and Borough.}
+\NormalTok{a }\OperatorTok{=}\NormalTok{ sns.FacetGrid(nyc\_complaints\_grouped, hue }\OperatorTok{=} \StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{, col }\OperatorTok{=} \StringTok{\textquotesingle{}Borough\textquotesingle{}}\NormalTok{,col\_wrap}\OperatorTok{=}\DecValTok{3}\NormalTok{,height}\OperatorTok{=}\FloatTok{3.5}\NormalTok{,aspect }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\NormalTok{a.}\BuiltInTok{map}\NormalTok{(sns.lineplot,}\StringTok{\textquotesingle{}Month\_of\_the\_year\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}complaints\textquotesingle{}}\NormalTok{)}
+\NormalTok{a.set\_axis\_labels(}\StringTok{"Month of the year"}\NormalTok{, }\StringTok{"Complaints"}\NormalTok{)}
+\NormalTok{a.add\_legend()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-27-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{geosptial-plotting}{%
+\section{Geosptial Plotting}\label{geosptial-plotting}}
+
+There are several widely used Python packages pecifically designed for
+working with geospatial datasets. In this lesson, we will cover:
+
+\begin{itemize}
+\tightlist
+\item
+  GeoPandas
+\item
+  Folium
+\end{itemize}
+
+Let's import them
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ geopandas }\ImportTok{as}\NormalTok{ gpd}
+\ImportTok{import}\NormalTok{ geopandas }
+\ImportTok{import}\NormalTok{ folium}
+\ImportTok{import}\NormalTok{ geodatasets}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated and will be removed in a future release
+  "class": algorithms.Blowfish,
+\end{verbatim}
+
+\hypertarget{static-plots-with-geopandas}{%
+\subsection{Static Plots with
+GeoPandas}\label{static-plots-with-geopandas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create figure and axis}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+
+\CommentTok{\# Plot your GeoDataFrame}
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(}\StringTok{\textquotesingle{}datasets/chicago\_boundaries\textbackslash{}geo\_export\_26bce2f2{-}c163{-}42a9{-}9329{-}9ca6e082c5e9.shp\textquotesingle{}}\NormalTok{)}
+\NormalTok{chicago.plot(column}\OperatorTok{=}\StringTok{\textquotesingle{}community\textquotesingle{}}\NormalTok{, ax}\OperatorTok{=}\NormalTok{ax, legend}\OperatorTok{=}\VariableTok{True}\NormalTok{, legend\_kwds}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}ncol\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{\textquotesingle{}bbox\_to\_anchor\textquotesingle{}}\NormalTok{: (}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)\})}
+
+\CommentTok{\# Add title (optional)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Show the plot}
+\NormalTok{plt.show()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<>:5: SyntaxWarning: invalid escape sequence '\g'
+<>:5: SyntaxWarning: invalid escape sequence '\g'
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\2125888739.py:5: SyntaxWarning: invalid escape sequence '\g'
+  chicago = gpd.read_file('datasets/chicago_boundaries\geo_export_26bce2f2-c163-42a9-9329-9ca6e082c5e9.shp')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-29-output-2.png}
+
+}
+
+\end{figure}
+
+\hypertarget{dataset-bicycle-sharing-in-chicago}{%
+\subsection{Dataset: Bicycle Sharing in
+Chicago}\label{dataset-bicycle-sharing-in-chicago}}
+
+Divvy is Chicagoland's bike share system (in collaboration with Chicago
+Department of Transportation), with 6,000 bikes available at 570+
+stations across Chicago and Evanston. Divvy provides residents and
+visitors with a convenient, fun and affordable transportation option for
+getting around and exploring Chicago.
+
+Divvy, like other bike share systems, consists of a fleet of specially
+designed, sturdy and durable bikes that are locked into a network of
+docking stations throughout the region. The bikes can be unlocked from
+one station and returned to any other station in the system. People use
+bike share to explore Chicago, commute to work or school, run errands,
+get to appointments or social engagements, and more.
+
+Divvy is available for use 24 hours/day, 7 days/week, 365 days/year, and
+riders have access to all bikes and stations across the system.
+
+We will be using divvy trips in the year of 2013
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read the csv file\textquotesingle{}divvy\_2013.csv\textquotesingle{} into pandas pandas dataframe}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}datasets/divvy\_2013.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& trip\_id & usertype & gender & starttime & stoptime & tripduration &
+from\_station\_id & from\_station\_name & latitude\_start &
+longitude\_start & ... & dewpoint & humidity & pressure & visibility &
+wind\_speed & precipitation & events & rain & conditions & month \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 3940 & Subscriber & Male & 2013-06-27 01:06:00 & 2013-06-27 09:46:00
+& 31177 & 91 & Clinton St \& Washington Blvd & 41.88338 & -87.641170 &
+... & 64.9 & 96.0 & 29.75 & 7.0 & 0.0 & -9999.0 & partlycloudy & 0 &
+Scattered Clouds & 6 \\
+1 & 4095 & Subscriber & Male & 2013-06-27 12:06:00 & 2013-06-27 12:11:00
+& 301 & 85 & Michigan Ave \& Oak St & 41.90096 & -87.623777 & ... & 69.1
+& 55.0 & 29.75 & 10.0 & 13.8 & -9999.0 & mostlycloudy & 0 & Mostly
+Cloudy & 6 \\
+2 & 4113 & Subscriber & Male & 2013-06-27 11:09:00 & 2013-06-27 11:11:00
+& 140 & 88 & May St \& Randolph St & 41.88397 & -87.655688 & ... & 70.0
+& 61.0 & 29.75 & 10.0 & 10.4 & -9999.0 & mostlycloudy & 0 & Mostly
+Cloudy & 6 \\
+3 & 4118 & Customer & NaN & 2013-06-27 12:11:00 & 2013-06-27 12:16:00 &
+316 & 85 & Michigan Ave \& Oak St & 41.90096 & -87.623777 & ... & 69.1 &
+55.0 & 29.75 & 10.0 & 13.8 & -9999.0 & mostlycloudy & 0 & Mostly Cloudy
+& 6 \\
+4 & 4119 & Subscriber & Male & 2013-06-27 11:12:00 & 2013-06-27 11:13:00
+& 87 & 88 & May St \& Randolph St & 41.88397 & -87.655688 & ... & 70.0 &
+61.0 & 29.75 & 10.0 & 10.4 & -9999.0 & mostlycloudy & 0 & Mostly Cloudy
+& 6 \\
+\end{longtable}
+
+Below are basic data cleaning
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# drop the duplicates in the column \textquotesingle{}to\_station\_id\textquotesingle{}, \textquotesingle{}to\_station\_name\textquotesingle{}, \textquotesingle{}latitude\_end\textquotesingle{}, \textquotesingle{}longitude\_end\textquotesingle{}}
+\NormalTok{data\_station\_same }\OperatorTok{=}\NormalTok{ data[[}\StringTok{\textquotesingle{}from\_station\_id\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}from\_station\_name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}to\_station\_id\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}to\_station\_name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}latitude\_end\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_end\textquotesingle{}}\NormalTok{]].drop\_duplicates()}
+\NormalTok{data\_station\_same.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(1757, 8)
+\end{verbatim}
+
+\hypertarget{adding-the-divvy-station-to-the-plot}{%
+\subsection{Adding the divvy station to the
+plot}\label{adding-the-divvy-station-to-the-plot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Adding the stations to the plot}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(}\StringTok{\textquotesingle{}datasets/chicago\_boundaries\textbackslash{}geo\_export\_26bce2f2{-}c163{-}42a9{-}9329{-}9ca6e082c5e9.shp\textquotesingle{}}\NormalTok{)}
+\NormalTok{chicago.plot(column}\OperatorTok{=}\StringTok{\textquotesingle{}community\textquotesingle{}}\NormalTok{, ax}\OperatorTok{=}\NormalTok{ax, legend}\OperatorTok{=}\VariableTok{True}\NormalTok{, legend\_kwds}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}ncol\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{\textquotesingle{}bbox\_to\_anchor\textquotesingle{}}\NormalTok{: (}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)\})}
+
+\CommentTok{\# Plot the stations}
+\NormalTok{longlat\_df }\OperatorTok{=}\NormalTok{ data[[ }\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{]].drop\_duplicates()}
+
+\NormalTok{plt.scatter(longlat\_df[}\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{], longlat\_df[}\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{], s}\OperatorTok{=}\DecValTok{10}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# data[[\textquotesingle{}longitude\_start\textquotesingle{}, \textquotesingle{}latitude\_start\textquotesingle{}]].drop\_duplicates().plot(ax=ax, color=\textquotesingle{}red\textquotesingle{}, markersize=10, marker=\textquotesingle{}o\textquotesingle{})}
+
+\CommentTok{\# Add title (optional)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Show the plot}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<>:4: SyntaxWarning: invalid escape sequence '\g'
+<>:4: SyntaxWarning: invalid escape sequence '\g'
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\1459074587.py:4: SyntaxWarning: invalid escape sequence '\g'
+  chicago = gpd.read_file('datasets/chicago_boundaries\geo_export_26bce2f2-c163-42a9-9329-9ca6e082c5e9.shp')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-32-output-2.png}
+
+}
+
+\end{figure}
+
+\hypertarget{change-the-chicago-shapefile}{%
+\subsection{Change the chicago
+shapefile}\label{change-the-chicago-shapefile}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(geodatasets.get\_path(}\StringTok{"geoda.chicago\_commpop"}\NormalTok{))}
+
+\CommentTok{\# Plot the data}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\NormalTok{chicago.boundary.plot(ax}\OperatorTok{=}\NormalTok{ax)}
+\NormalTok{plt.scatter(data[}\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{], data[}\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{], s}\OperatorTok{=}\DecValTok{10}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0.5, 1.0, 'Chicago Community Areas')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-33-output-2.png}
+
+}
+
+\end{figure}
+
+\hypertarget{interactive-plotting}{%
+\subsection{Interactive Plotting}\label{interactive-plotting}}
+
+Alongside static plots, \texttt{geopandas} can create interactive maps
+based on the
+\href{https://python-visualization.github.io/folium/latest/}{folium}
+library.
+
+Creating maps for interactive exploration mirrors the API of static
+\href{https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.plot.html}{plots}
+in an
+\href{https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html}{explore()}
+method of a GeoSeries or GeoDataFrame.
+
+Here's an explanation of how \texttt{explore()} works and its key
+features:
+
+Key Features of \texttt{explore()}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Interactive Map Display:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  When you call explore() on a Geodataframe (gdf), it launches an
+  interactive map widget directly within your Jupyter notebook.
+\item
+  This map allows you to pan, zoom, and interact with the geometries
+  (points, lines, polygons) in your Geodataframe.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Layer Control:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  explore() automatically adds the geometries from your Geodataframe as
+  layers on the map.
+\item
+  Each geometry type (points, lines, polygons) is displayed with
+  appropriate styling and markers.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Tooltip Information:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  When you hover over a geometry in the map, explore() displays tooltip
+  information that typically includes attribute data associated with
+  that geometry.
+\item
+  This feature is useful for inspecting specific details or properties
+  of individual features in your geospatial dataset.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Search and Filter:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  explore() provides basic search and filter functionalities directly on
+  the map.
+\item
+  You can search for specific attribute values or filter the displayed
+  features based on attribute criteria defined in your Geodataframe.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Customization:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Although explore() provides default styling and interaction behaviors,
+  you can customize the map further using parameters or by manipulating
+  the Geodataframe before calling explore().
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# use the geopandas explore default settings}
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(geodatasets.get\_path(}\StringTok{"geoda.chicago\_commpop"}\NormalTok{))}
+
+\NormalTok{chicago.explore()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<folium.folium.Map at 0x25e3903e720>
+\end{verbatim}
+
+Adding the population layer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Customerize the explore settings}
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(geodatasets.get\_path(}\StringTok{"geoda.chicago\_commpop"}\NormalTok{))}
+
+\NormalTok{m }\OperatorTok{=}\NormalTok{ chicago.explore(}
+\NormalTok{    column}\OperatorTok{=}\StringTok{"POP2010"}\NormalTok{,  }\CommentTok{\# make choropleth based on "POP2010" column}
+\NormalTok{    scheme}\OperatorTok{=}\StringTok{"naturalbreaks"}\NormalTok{,  }\CommentTok{\# use mapclassify\textquotesingle{}s natural breaks scheme}
+\NormalTok{    legend}\OperatorTok{=}\VariableTok{True}\NormalTok{,  }\CommentTok{\# show legend}
+\NormalTok{    k}\OperatorTok{=}\DecValTok{10}\NormalTok{,  }\CommentTok{\# use 10 bins}
+\NormalTok{    tooltip}\OperatorTok{=}\VariableTok{False}\NormalTok{,  }\CommentTok{\# hide tooltip}
+\NormalTok{    popup}\OperatorTok{=}\NormalTok{[}\StringTok{"POP2010"}\NormalTok{, }\StringTok{"POP2000"}\NormalTok{],  }\CommentTok{\# show popup (on{-}click)}
+\NormalTok{    legend\_kwds}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(colorbar}\OperatorTok{=}\VariableTok{False}\NormalTok{),  }\CommentTok{\# do not use colorbar}
+\NormalTok{    name}\OperatorTok{=}\StringTok{"chicago"}\NormalTok{,  }\CommentTok{\# name of the layer in the map}
+\NormalTok{)}
+
+\NormalTok{m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<folium.folium.Map at 0x25e183c6c30>
+\end{verbatim}
+
+The \texttt{explore()} method returns a \texttt{folium.Map} object,
+which can also be passed directly (as you do with \texttt{ax} in
+\texttt{plot()}). You can then use folium functionality directly on the
+resulting map. Next, let's add the divvy station plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{type}\NormalTok{(m)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+folium.folium.Map
+\end{verbatim}
+
+\hypertarget{adding-the-divvy-station-on-the-interactive-folium.map}{%
+\subsection{\texorpdfstring{Adding the divvy station on the interactive
+\texttt{Folium.Map}}{Adding the divvy station on the interactive Folium.Map}}\label{adding-the-divvy-station-on-the-interactive-folium.map}}
+
+We need to extract the station information from the trip dataset and add
+description to the station. You can skip this part
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Helper function for adding the description to the station}
+\KeywordTok{def}\NormalTok{ row\_to\_html(row):}
+\NormalTok{    row\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(row).T}
+\NormalTok{    row\_df.columns }\OperatorTok{=}\NormalTok{ [col.capitalize() }\ControlFlowTok{for}\NormalTok{ col }\KeywordTok{in}\NormalTok{ row\_df.columns]}
+    \ControlFlowTok{return}\NormalTok{ row\_df.to\_html(index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extracting the latitude, longitude, and station name for plotting, and also counting the number of trips from each station}
+\NormalTok{grouped\_df }\OperatorTok{=}\NormalTok{ data.groupby([}\StringTok{\textquotesingle{}from\_station\_name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{])[}\StringTok{\textquotesingle{}trip\_id\textquotesingle{}}\NormalTok{].count().reset\_index()}
+\NormalTok{display(grouped\_df.sort\_values(}\StringTok{\textquotesingle{}trip\_id\textquotesingle{}}\NormalTok{, ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{).head())}
+\NormalTok{grouped\_df.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}from\_station\_name\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}title\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}latitude\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}longitude\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}trip\_id\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{\}, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{grouped\_df[}\StringTok{\textquotesingle{}description\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ grouped\_df.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ row: row\_to\_html(row), axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{geometry }\OperatorTok{=}\NormalTok{ gpd.points\_from\_xy(grouped\_df[}\StringTok{\textquotesingle{}longitude\textquotesingle{}}\NormalTok{], grouped\_df[}\StringTok{\textquotesingle{}latitude\textquotesingle{}}\NormalTok{])}
+\NormalTok{geo\_df }\OperatorTok{=}\NormalTok{ gpd.GeoDataFrame(grouped\_df, geometry}\OperatorTok{=}\NormalTok{geometry)}
+\CommentTok{\# Optional: Assign Coordinate Reference System (CRS)}
+\NormalTok{geo\_df.crs }\OperatorTok{=} \StringTok{"EPSG:4326"}  \CommentTok{\# WGS84 coordinate system}
+\NormalTok{geo\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& from\_station\_name & latitude\_start & longitude\_start & trip\_id \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+193 & Millennium Park & 41.881032 & -87.624084 & 17270 \\
+269 & Streeter Dr \& Illinois St & 41.891071 & -87.612200 & 16709 \\
+148 & Lake Shore Dr \& Monroe St & 41.881050 & -87.616970 & 15671 \\
+69 & Clinton St \& Washington Blvd & 41.883380 & -87.641170 & 14962 \\
+189 & Michigan Ave \& Oak St & 41.900960 & -87.623777 & 13274 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& title & latitude & longitude & count & description & geometry \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 900 W Harrison & 41.874500 & -87.649800 & 1616 & \textless table
+border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.6498 41.8745) \\
+1 & Aberdeen St \& Jackson Blvd & 41.877726 & -87.654787 & 2773 &
+\textless table border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.65479 41.87773) \\
+2 & Aberdeen St \& Madison St & 41.881487 & -87.654752 & 4174 &
+\textless table border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.65475 41.88149) \\
+3 & Ada St \& Washington Blvd & 41.882830 & -87.661206 & 557 &
+\textless table border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.66121 41.88283) \\
+4 & Adler Planetarium & 41.866095 & -87.607267 & 1180 & \textless table
+border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.60727 41.8661) \\
+\end{longtable}
+
+We can add a hover tooltip (sometimes referred to as a tooltip or
+tooltip popup) for each point on your Folium map. This tooltip will
+appear when you hover over the markers on the map, providing additional
+information without needing to click on them. Here's how you can modify
+your existing code to include hover tooltips:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(geodatasets.get\_path(}\StringTok{"geoda.chicago\_commpop"}\NormalTok{))}
+
+\NormalTok{m }\OperatorTok{=}\NormalTok{ chicago.explore(}
+\NormalTok{    column}\OperatorTok{=}\StringTok{"POP2010"}\NormalTok{,  }\CommentTok{\# make choropleth based on "POP2010" column}
+\NormalTok{    scheme}\OperatorTok{=}\StringTok{"naturalbreaks"}\NormalTok{,  }\CommentTok{\# use mapclassify\textquotesingle{}s natural breaks scheme}
+\NormalTok{    legend}\OperatorTok{=}\VariableTok{True}\NormalTok{,  }\CommentTok{\# show legend}
+\NormalTok{    k}\OperatorTok{=}\DecValTok{10}\NormalTok{,  }\CommentTok{\# use 10 bins}
+\NormalTok{    tooltip}\OperatorTok{=}\VariableTok{False}\NormalTok{,  }\CommentTok{\# hide tooltip}
+\NormalTok{    popup}\OperatorTok{=}\NormalTok{[}\StringTok{"POP2010"}\NormalTok{, }\StringTok{"POP2000"}\NormalTok{],  }\CommentTok{\# show popup (on{-}click)}
+\NormalTok{    legend\_kwds}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(colorbar}\OperatorTok{=}\VariableTok{False}\NormalTok{),  }\CommentTok{\# do not use colorbar}
+\NormalTok{    name}\OperatorTok{=}\StringTok{"chicago"}\NormalTok{,  }\CommentTok{\# name of the layer in the map}
+\NormalTok{)}
+
+\NormalTok{geo\_df.explore(}
+\NormalTok{    m}\OperatorTok{=}\NormalTok{m,  }\CommentTok{\# pass the map object}
+\NormalTok{    color}\OperatorTok{=}\StringTok{"red"}\NormalTok{,  }\CommentTok{\# use red color on all points}
+\NormalTok{    marker\_kwds}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(radius}\OperatorTok{=}\DecValTok{5}\NormalTok{, fill}\OperatorTok{=}\VariableTok{True}\NormalTok{),  }\CommentTok{\# make marker radius 10px with fill}
+\NormalTok{    tooltip}\OperatorTok{=}\StringTok{"description"}\NormalTok{,  }\CommentTok{\# show "name" column in the tooltip}
+\NormalTok{    tooltip\_kwds}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(labels}\OperatorTok{=}\VariableTok{False}\NormalTok{),  }\CommentTok{\# do not show column label in the tooltip}
+\NormalTok{    name}\OperatorTok{=}\StringTok{"divstation"}\NormalTok{,  }\CommentTok{\# name of the layer in the map}
+\NormalTok{)}
+ 
+\NormalTok{m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<folium.folium.Map at 0x25e3c2768a0>
+\end{verbatim}
+
+References:
+
+https://ajaytech.co/matplotlib/
+
+https://www.studytonight.com/matplotlib/matplotlib-object-oriented-interface
+
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{Appendices}
@@ -15670,7 +17048,7 @@ Pandas
   the command: \texttt{quarto\ render\ filename.ipynb\ -\/-to\ html}.
   Submit the HTML file.
 \item
-  The assignment is worth 100 points, and is due on \textbf{28nd October
+  The assignment is worth 100 points, and is due on \textbf{28th October
   2024 at 11:59 pm}. There is an optional bonus question worth 10
   points. You can score a maximum of 110 (out of 100) points.
 \item
