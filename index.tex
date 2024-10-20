@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, interior hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -15636,6 +15636,444 @@ Report the ratio of time taken to execute the code wihout NumPy to the
 time taken to execute the code with NumPy.
 
 \emph{(1 point)}
+
+\hypertarget{assignment-c}{%
+\chapter{Assignment C}\label{assignment-c}}
+
+Pandas
+
+\hfill\break
+
+\hypertarget{instructions-4}{%
+\section*{Instructions}\label{instructions-4}}
+\addcontentsline{toc}{section}{Instructions}
+
+\markright{Instructions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You may talk to a friend, discuss the questions and potential
+  directions for solving them. However, you need to write your own
+  solutions and code separately, and not as a group activity.
+\item
+  Do not write your name on the assignment.
+\item
+  Write your code in the \emph{Code} cells and your answer in the
+  \emph{Markdown} cells of the Jupyter notebook. Ensure that the
+  solution is written neatly enough to understand and grade.
+\item
+  Use
+  \href{https://quarto.org/docs/output-formats/html-basics.html}{Quarto}
+  to print the \emph{.ipynb} file as HTML. You will need to open the
+  command prompt, navigate to the directory containing the file, and use
+  the command: \texttt{quarto\ render\ filename.ipynb\ -\/-to\ html}.
+  Submit the HTML file.
+\item
+  The assignment is worth 100 points, and is due on \textbf{28nd October
+  2024 at 11:59 pm}. There is an optional bonus question worth 10
+  points. You can score a maximum of 110 (out of 100) points.
+\item
+  You are \textbf{not allowed to use a \texttt{for} loop} or any other
+  kind of loop in this assignment.
+\end{enumerate}
+
+\hypertarget{gdp-per-capita-social-indicators}{%
+\section{GDP per capita \& social
+indicators}\label{gdp-per-capita-social-indicators}}
+
+Read the file \emph{social\_indicator.txt} with python. Set the first
+column as the index when reading the file. How many observations and
+variables are there in the data?
+
+\emph{(4 points)}
+
+\hypertarget{section-75}{%
+\subsection{}\label{section-75}}
+
+Which variables have the strongest and weakest correlations with GDP per
+capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
+female and male life expectancies respectively.
+
+Note that only when the magnitude of the correlation is considered when
+judging a correlation as strong or weak.
+
+\emph{(4 points)}
+
+\hypertarget{section-76}{%
+\subsection{}\label{section-76}}
+
+Does the male economic activity \emph{(in the column
+\texttt{economicActivityMale})} have a positive or negative correlation
+with GDP per capita? Did you expect the positive/negative correlation?
+If not, why do you think you are observing that correlation?
+
+\emph{(4 points)}
+
+\hypertarget{section-77}{%
+\subsection{}\label{section-77}}
+
+What is the rank of the US amongst all countries in terms of GDP per
+capita? Which countries lie immediately above, and immediately below the
+US in the ranking in terms of GDP per capita? The country having the
+highest GDP per capita ranks 1.
+
+Note that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The US is mentioned as \emph{United States} in the data.
+\item
+  The country with the highest GDP per capita will have rank 1, the
+  country with the second highest GDP per capita will have rank 2, and
+  so on.
+\end{enumerate}
+
+\textbf{Hint:}
+\href{https://pandas.pydata.org/docs/reference/api/pandas.Series.rank.html}{rank()}
+
+\emph{(4 points)}
+
+\hypertarget{section-78}{%
+\subsection{}\label{section-78}}
+
+Which country or countries rank among the top 20 in terms of each of
+these social indicators - \texttt{economicActivityFemale},
+\texttt{economicActivityMale}, \texttt{gdpPerCapita},
+\texttt{lifeFemale}, \texttt{lifeMale}? For each of these social
+indicators, the country having the largest value ranks 1 for that
+indicator.
+
+\emph{(6 points)}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rank.html}{rank()}.
+  Note that this method is different from the method given in the hint
+  of the previous question. This method is of the DataFrame class, while
+  the one in the previous question is of the Series class. \emph{This
+  part of the hint is just for your understanding. You don't need to
+  write any code in this part.}
+\item
+  Using \texttt{rank()}, get the DataFrame consisting of the ranks of
+  countries on each of the relevant social indicators \emph{(one line of
+  code)}.
+\item
+  In the DataFrame obtained in (2), filter the rows for which the
+  maximum rank is less than or equal to 20 \emph{(one line of code)}.
+\end{enumerate}
+
+\hypertarget{section-79}{%
+\subsection{}\label{section-79}}
+
+On which social indicator among \texttt{economicActivityFemale},
+\texttt{economicActivityMale}, \texttt{gdpPerCapita},
+\texttt{lifeFemale}, \texttt{lifeMale}, \texttt{illiteracyFemale},
+\texttt{illiteracyMale}, \texttt{infantMortality}, and
+\texttt{totalfertilityrate} does the US have its worst ranking, and what
+is the rank? Note that for \texttt{illiteracyFemale},
+\texttt{illiteracyMale}, and \texttt{infantMortality}, the country
+having the lowest value will rank 1, in contrast to the other social
+indicators.
+
+\emph{(8 points)}
+
+\hypertarget{section-80}{%
+\subsection{}\label{section-80}}
+
+Find all the countries that have a lower GDP per capita than the US,
+despite having lower illiteracy rates (for both genders), higher
+economic activity (for both genders), higher life expectancy (for both
+genders), and lower infant mortality rate than the US?
+
+\emph{(6 points)}
+
+\hypertarget{gdp-per-capita-vs-social-indicators}{%
+\section{GDP per capita vs social
+indicators}\label{gdp-per-capita-vs-social-indicators}}
+
+We'll use the same data as in in the previous question. For the
+questions below, assume that all numeric columns, \textbf{except GDP per
+capita}, are social indicators.
+
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
+
+Use the column \texttt{geographic\_location} to create a new column
+called \texttt{continent}. Merge the values of the
+\texttt{geographic\_location} column appropriately to obtain 6 distinct
+values for the \texttt{continent} column -- \emph{Asia, Africa, North
+America, South America, Europe} and \emph{Oceania}. Drop the column
+\texttt{geographic\_location}. Print the first 5 observations of the
+updated DataFrame.
+
+\emph{(8 points)}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use \texttt{value\_counts()} to see the values of
+  \texttt{geographic\_location}. The code
+  \texttt{if\ \textquotesingle{}Asia\textquotesingle{}\ in\ \textquotesingle{}something\textquotesingle{}}
+  will return \texttt{True} if `\emph{something}' contains the string
+  `\emph{Asia}', for example, if `\emph{something}' is `\emph{North
+  Asia}', the code with return True. \emph{This part of the hint is just
+  for your understanding. You don't need to write any code in this
+  part.}
+\item
+  Apply a lambda function on the Series \texttt{geographic\_location} to
+  replace a string that contains `\emph{Asia}' with `\emph{Asia}',
+  replace a string that contains `\emph{Europe}' with `\emph{Europe}',
+  and replace a string that contains `\emph{Africa}' with
+  `\emph{Africa}'. \emph{This will be a single line of code.}
+\item
+  Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
+\end{enumerate}
+
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
+
+Sort the column labels lexicographically. Drop the columns
+\texttt{region} and \texttt{contraception}. Print the first 5
+observations of the updated DataFrame.
+
+\textbf{Hint:}
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_index.html}{sort\_index()}
+
+\emph{(4 points)}
+
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
+
+Find the percentage of the total countries in each continent.
+
+\textbf{Hint:} One line of code with \texttt{value\_counts()} and
+\texttt{shape}
+
+\emph{(4 points)}
+
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
+
+Which country has the highest GDP per capita? Let us call it country
+\(G\).
+
+\emph{(4 points)}
+
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
+
+We need to find the African country that is the closest to country \(G\)
+with regard to social indicators. Perform the following steps:
+
+\hypertarget{section-86}{%
+\subsubsection{}\label{section-86}}
+
+Standardize each of the social indicators to a standard normal
+distribution so that all of them are on the same scale (remember to
+exclude \emph{GDP per capita} from social indicators).
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For scaling a random variable to standard normal, subtract the mean
+  from each value of the variable, and divide by its standard deviation.
+\item
+  Use the apply method with a lambda function to scale all the social
+  indicators to standard normal.
+\item
+  The above (1) and (2) together is a single line of code.
+\end{enumerate}
+
+\emph{(6 points)}
+
+\hypertarget{section-87}{%
+\subsubsection{}\label{section-87}}
+
+Compute the
+\href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
+distance} between country \(G\) and each of the African countries, based
+on the scaled social indicators.
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Broadcast a Series to a DataFrame
+\item
+  The Manhattan distance between two points \((x_1, x_2, ..., x_p)\) and
+  \((y_1, y_2, ..., y_p)\) is
+  \(|x_1 - y_1| + |x_2 - y_2| + ... + |x_p-y_p|\), where \(|.|\) stands
+  for absolute value (for example, \(|-2| = 2; |3| = 3\)).
+\end{enumerate}
+
+\emph{(8 points)}
+
+\hypertarget{section-88}{%
+\subsubsection{}\label{section-88}}
+
+Identify the African country, say country \(A\), with the least
+Manhattan distance to country \(G\).
+
+\emph{(8 points)}
+
+\hypertarget{section-89}{%
+\subsection{}\label{section-89}}
+
+Find the correlation between the Manhattan distance from country \(G\)
+and GDP per capita for African countries.
+
+\emph{(6 points)}
+
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
+
+Based on the correlation coefficient in \(2(f)\), do you think African
+countries should try to emulate the social characteristics of country
+\(G\)? Justify your answer.
+
+\emph{(4 points)}
+
+\hypertarget{medical-data}{%
+\section{Medical data}\label{medical-data}}
+
+Read the data sets \emph{conditions.csv and patients.csv}. Suppose we
+are interested in studying patients with prediabetes condition. Do not
+drop or compute any missing values. In \emph{condition.csv}, the patient
+IDs are stored in column \texttt{PATIENT}, and the medical conditions
+are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
+patient IDs are stored in column \texttt{Id}.
+
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
+
+Print the patient IDs of all the patients with prediabetes condition.
+
+\emph{(4 points)}
+
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
+
+Make a subset of the data with only prediabetes patients. How many
+prediabetes patients are there?
+
+\emph{(4 points)}
+
+\textbf{Hint:} \texttt{.isin()}
+
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
+
+What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
+patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
+patients.
+
+\emph{(4 points)}
+
+\hypertarget{bonus-question}{%
+\section{Bonus question}\label{bonus-question}}
+
+This is an optional question with no partial credit. You will get points
+only if your solution is completely correct. We advise you to attempt it
+only when you are done with the rest of the assignment.
+
+\emph{(10 points)}
+
+Read the file \emph{STAT303-1 survey for data analysis.csv}. In this
+question, we'll work to clean this data a bit. As with every question,
+you are \textbf{not} allowed to use a \texttt{for} loop or any other
+loop.
+
+Execute the following code to read the data and clean the column names.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}STAT303{-}1 survey for data analysis.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{new\_col\_names }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}parties\_per\_month\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}smoke\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}weed\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}introvert\_extrovert\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}love\_first\_sight\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}learning\_style\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}left\_right\_brained\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}personality\_type\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}social\_media\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}num\_insta\_followers\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}streaming\_platforms\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}expected\_marriage\_age\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}expected\_starting\_salary\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fav\_sport\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}minutes\_ex\_per\_week\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sleep\_hours\_per\_day\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}how\_happy\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}farthest\_distance\_travelled\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fav\_number\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fav\_letter\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}internet\_hours\_per\_day\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}only\_child\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}birthdate\_odd\_even\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}birth\_month\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fav\_season\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}living\_location\_on\_campus\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}major\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}num\_majors\_minors\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}high\_school\_GPA\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}NU\_GPA\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}age\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}height\_father\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}height\_mother\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}school\_year\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}procrastinator\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}num\_clubs\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}student\_athlete\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}AP\_stats\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}used\_python\_before\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}dominant\_hand\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}childhood\_in\_US\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gender\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}region\_of\_residence\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}political\_affliation\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}cant\_change\_math\_ability\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}can\_change\_math\_ability\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}math\_is\_genetic\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}much\_effort\_is\_lack\_of\_talent\textquotesingle{}}\NormalTok{]}
+\NormalTok{survey\_data.columns }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(survey\_data.columns[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{])}\OperatorTok{+}\NormalTok{new\_col\_names}
+\end{Highlighting}
+\end{Shaded}
+
+Check the datatype of the variables using the \texttt{dtypes} attribute
+of the Pandas DataFrame object. You will notice that only two variables
+are numeric. However, if you check the first few observations of the
+data with the function \texttt{head()} you will find the there are
+several more variables that seem to have numeric values.
+
+Write a function that accepts a Pandas Series \emph{(or a column of a
+Pandas DataFrame object)} as argument, and if the datatype of the Series
+is non-numeric, does the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Checks if at least 10 values of the Series contain a digit in them.
+\item
+  If at least 10 values are found to contain a digit, then:
+
+  A. Eliminate the characters \texttt{\textasciitilde{}}, \texttt{+},
+  and \texttt{,} from all the values of the Series.
+
+  B. Convert the Series to numeric (with coercion if needed).
+\item
+  If at least 10 values are NOT found to contain a digit, then:
+
+  A. If the values of the Series are \emph{`Yes'} and \emph{`No'}, then
+  replace \emph{`Yes'} with \emph{1} and \emph{`No'} with \emph{0}. The
+  Series datatype must change to numeric as well.
+
+  B. If the values of the Series are \emph{`Agree'} and
+  \emph{`Disagree'}, then replace \emph{`Agree'} with \emph{1} and
+  \emph{`Disagree'} with \emph{0}. The Series datatype must change to
+  numeric as well.
+\end{enumerate}
+
+Apply the function to each column of \texttt{survey\_data} using the
+\emph{apply()} method. Save the updated DataFrame as
+\texttt{survey\_data\_clean}. Then, execute the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey\_data\_clean.describe().loc[}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,:]}
+\end{Highlighting}
+\end{Shaded}
+
+The above code should print out the mean values of 28 numeric columns in
+the data \texttt{survey\_data\_clean}.
+
+The variables that you should see as numeric in
+\texttt{survey\_data\_clean} are given in the list
+\texttt{numeric\_columns} below \emph{(this is just to check your
+work)}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numeric\_columns }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}parties\_per\_month\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}love\_first\_sight\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}num\_insta\_followers\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}expected\_marriage\_age\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}expected\_starting\_salary\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}minutes\_ex\_per\_week\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sleep\_hours\_per\_day\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}farthest\_distance\_travelled\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fav\_number\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}internet\_hours\_per\_day\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}only\_child\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}num\_majors\_minors\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}high\_school\_GPA\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}NU\_GPA\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}age\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}height\_father\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}height\_mother\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}procrastinator\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}num\_clubs\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}student\_athlete\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}AP\_stats\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}used\_python\_before\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}childhood\_in\_US\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}cant\_change\_math\_ability\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}can\_change\_math\_ability\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}math\_is\_genetic\textquotesingle{}}\NormalTok{,}
+       \StringTok{\textquotesingle{}much\_effort\_is\_lack\_of\_talent\textquotesingle{}}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Note that your \textbf{function must be general}, i.e., it must work for
+any other dataset as well. This means, you cannot hard code a column
+name, or anything specific to \texttt{survey\_data} in the function.
 
 \hypertarget{datasets-templates}{%
 \chapter{Datasets \& Templates}\label{datasets-templates}}
