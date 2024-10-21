@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#plotting-with-seaborn" id="toc-plotting-with-seaborn" class="nav-link" data-scroll-target="#plotting-with-seaborn"><span class="header-section-number">8.2.3</span> Plotting with Seaborn</a>
   <ul class="collapse">
-  <li><a href="#customizing-plot-aesthetics-with-sns.set_style" id="toc-customizing-plot-aesthetics-with-sns.set_style" class="nav-link" data-scroll-target="#customizing-plot-aesthetics-with-sns.set_style"><span class="header-section-number">8.2.3.1</span> Customizing Plot Aesthetics with <code>sns.set_style()</code></a></li>
+  <li><a href="#customizing-plot-aesthetics" id="toc-customizing-plot-aesthetics" class="nav-link" data-scroll-target="#customizing-plot-aesthetics"><span class="header-section-number">8.2.3.1</span> Customizing Plot Aesthetics</a></li>
   <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot"><span class="header-section-number">8.2.3.2</span> Scatterplot</a></li>
   <li><a href="#histgram-1" id="toc-histgram-1" class="nav-link" data-scroll-target="#histgram-1"><span class="header-section-number">8.2.3.3</span> Histgram</a></li>
   <li><a href="#barplot" id="toc-barplot" class="nav-link" data-scroll-target="#barplot"><span class="header-section-number">8.2.3.4</span> Barplot</a></li>
@@ -743,6 +743,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Color: Blue (code ‘b’, hex code: ‘#1f77b4’)</li>
 </ul>
 <p>You can also edit default styles directly by modifying the <code>matplotlib.rcParams</code> dictionary. Learn more: https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html#matplotlib-rcparams .</p>
+<p>You can customize default plot styles by directly modifying the <code>matplotlib.rcParams</code> dictionary. For more details, visit the official Matplotlib guide on <a href="https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html#matplotlib-rcparams">customizing with rcParams</a>.</p>
 <div class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>matplotlib.rcParams[<span class="st">'font.size'</span>] <span class="op">=</span> <span class="dv">14</span></span>
@@ -1201,8 +1202,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  'titanic']</code></pre>
 </div>
 </div>
-<section id="customizing-plot-aesthetics-with-sns.set_style" class="level4" data-number="8.2.3.1">
-<h4 data-number="8.2.3.1" class="anchored" data-anchor-id="customizing-plot-aesthetics-with-sns.set_style"><span class="header-section-number">8.2.3.1</span> Customizing Plot Aesthetics with <code>sns.set_style()</code></h4>
+<section id="customizing-plot-aesthetics" class="level4" data-number="8.2.3.1">
+<h4 data-number="8.2.3.1" class="anchored" data-anchor-id="customizing-plot-aesthetics"><span class="header-section-number">8.2.3.1</span> Customizing Plot Aesthetics</h4>
 <p>Seaborn provides a convenient function called <code>sns.set_style()</code> that allows users to customize the visual appearance of their plots. This function is particularly useful for enhancing the aesthetics of visualizations, making them more appealing and easier to interpret.</p>
 <section id="purpose-of-sns.set_style" class="level5" data-number="8.2.3.1.1">
 <h5 data-number="8.2.3.1.1" class="anchored" data-anchor-id="purpose-of-sns.set_style"><span class="header-section-number">8.2.3.1.1</span> Purpose of <code>sns.set_style()</code></h5>
