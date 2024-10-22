@@ -221,13 +221,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Data visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Advanced_Data_Visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Advanced Data visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Advanced Data Visualization</span></span></a>
   </div>
 </li>
       </ul>
@@ -290,7 +290,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#basics-of-numpy-arrays" id="toc-basics-of-numpy-arrays" class="nav-link" data-scroll-target="#basics-of-numpy-arrays"><span class="header-section-number">6.5</span> Basics of NumPy Arrays</a>
   <ul>
-  <li><a href="#creating-arrays" id="toc-creating-arrays" class="nav-link" data-scroll-target="#creating-arrays"><span class="header-section-number">6.5.1</span> Creating Arrays:</a></li>
+  <li><a href="#creating-numpy-arrays" id="toc-creating-numpy-arrays" class="nav-link" data-scroll-target="#creating-numpy-arrays"><span class="header-section-number">6.5.1</span> Creating NumPy Arrays</a>
+  <ul class="collapse">
+  <li><a href="#creating-arrays-for-specific-use-cases" id="toc-creating-arrays-for-specific-use-cases" class="nav-link" data-scroll-target="#creating-arrays-for-specific-use-cases"><span class="header-section-number">6.5.1.1</span> Creating Arrays for specific use cases:</a></li>
+  <li><a href="#loading-data-from-file-into-a-numpy-array" id="toc-loading-data-from-file-into-a-numpy-array" class="nav-link" data-scroll-target="#loading-data-from-file-into-a-numpy-array"><span class="header-section-number">6.5.1.2</span> Loading data from file into a NumPy array</a></li>
+  </ul></li>
   <li><a href="#array-attributes" id="toc-array-attributes" class="nav-link" data-scroll-target="#array-attributes"><span class="header-section-number">6.5.2</span> Array Attributes:</a>
   <ul class="collapse">
   <li><a href="#ndim" id="toc-ndim" class="nav-link" data-scroll-target="#ndim"><span class="header-section-number">6.5.2.1</span> <code>ndim</code></a></li>
@@ -658,8 +662,10 @@ Time take to multiply numbers in a NumPy array =  0.011997461318969727</code></p
 </section>
 <section id="basics-of-numpy-arrays" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="basics-of-numpy-arrays"><span class="header-section-number">6.5</span> Basics of NumPy Arrays</h2>
-<section id="creating-arrays" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="creating-arrays"><span class="header-section-number">6.5.1</span> Creating Arrays:</h3>
+<section id="creating-numpy-arrays" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="creating-numpy-arrays"><span class="header-section-number">6.5.1</span> Creating NumPy Arrays</h3>
+<section id="creating-arrays-for-specific-use-cases" class="level4" data-number="6.5.1.1">
+<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="creating-arrays-for-specific-use-cases"><span class="header-section-number">6.5.1.1</span> Creating Arrays for specific use cases:</h4>
 <p>You can create a NumPy array using various methods, such as:</p>
 <ul>
 <li><code>np.array()</code>: Creates an array from a list or iterable.</li>
@@ -668,6 +674,15 @@ Time take to multiply numbers in a NumPy array =  0.011997461318969727</code></p
 <li><code>np.random</code> module: Generates arrays with random values.</li>
 </ul>
 <p>Each method is designed for different use cases. I encourage you to explore and experiment with these functions to see the types of arrays they produce and how they can be used in different scenarios.</p>
+</section>
+<section id="loading-data-from-file-into-a-numpy-array" class="level4" data-number="6.5.1.2">
+<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="loading-data-from-file-into-a-numpy-array"><span class="header-section-number">6.5.1.2</span> Loading data from file into a NumPy array</h4>
+<ul>
+<li><code>numpy.loadtxt()</code>: Reading simple numerical text files</li>
+<li><code>np.genfromtxt()</code>: Reading more complex text files</li>
+<li>‘df.to_numpy()’: Reading tabular data into pandas dataframe, then using `to_numpy()’ convert it to NumPy array</li>
+</ul>
+</section>
 </section>
 <section id="array-attributes" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="array-attributes"><span class="header-section-number">6.5.2</span> Array Attributes:</h3>
