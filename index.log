@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.7) (preloaded format=xelatex 2024.10.8)  20 OCT 2024 16:25
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.7) (preloaded format=xelatex 2024.10.8)  27 OCT 2024 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3619,7 +3619,7 @@ Package longtable Warning: Column widths have changed
 
 [115] [116] [117] [118] [119] [120] [121] [122] [123] [124] [125] [126] [127] [
 128] [129] [130] [131]
-Overfull \hbox (455.79352pt too wide) in paragraph at lines 8535--8535
+Overfull \hbox (455.79352pt too wide) in paragraph at lines 8554--8554
 []\TU/lmtt/m/n/10.95 ValueError: all the input arrays must have same number of 
 dimensions, but the array at index 0 has 2 dimension(s) and the array at index 
 1 has 1 dimension(s)[] 
@@ -3629,15 +3629,15 @@ dimensions, but the array at index 0 has 2 dimension(s) and the array at index
 ! Missing endcsname inserted.
 <to be read again> 
                    &
-l.8629 ...hGutgPqNO9OCLy-vDyJub4iLpgThGZ9A\&s.pdf}
+l.8648 ...hGutgPqNO9OCLy-vDyJub4iLpgThGZ9A\&s.pdf}
                                                    
 Here is how much of TeX's memory you used:
- 38088 strings out of 410654
- 779067 string characters out of 2815893
+ 38086 strings out of 410654
+ 779033 string characters out of 2815893
  2061098 words of memory out of 3000000
- 58627 multiletter control sequences out of 15000+600000
+ 58625 multiletter control sequences out of 15000+600000
  476111 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 108i,8n,121p,114925b,1114s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 108i,8n,121p,114925b,1112s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
 Output written on index.pdf (133 pages).

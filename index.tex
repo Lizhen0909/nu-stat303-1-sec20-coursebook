@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, enhanced, sharp corners, frame hidden, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -7649,8 +7649,12 @@ Time take to multiply numbers in a NumPy array =  0.011997461318969727
 \hypertarget{basics-of-numpy-arrays}{%
 \section{Basics of NumPy Arrays}\label{basics-of-numpy-arrays}}
 
-\hypertarget{creating-arrays}{%
-\subsection{Creating Arrays:}\label{creating-arrays}}
+\hypertarget{creating-numpy-arrays}{%
+\subsection{Creating NumPy Arrays}\label{creating-numpy-arrays}}
+
+\hypertarget{creating-arrays-for-specific-use-cases}{%
+\subsubsection{Creating Arrays for specific use
+cases:}\label{creating-arrays-for-specific-use-cases}}
 
 You can create a NumPy array using various methods, such as:
 
@@ -7671,6 +7675,21 @@ You can create a NumPy array using various methods, such as:
 Each method is designed for different use cases. I encourage you to
 explore and experiment with these functions to see the types of arrays
 they produce and how they can be used in different scenarios.
+
+\hypertarget{loading-data-from-file-into-a-numpy-array}{%
+\subsubsection{Loading data from file into a NumPy
+array}\label{loading-data-from-file-into-a-numpy-array}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{numpy.loadtxt()}: Reading simple numerical text files
+\item
+  \texttt{np.genfromtxt()}: Reading more complex text files
+\item
+  \texttt{df.to\_numpy()}: Reading tabular data into pandas dataframe,
+  then using `to\_numpy()' convert it to NumPy array
+\end{itemize}
 
 \hypertarget{array-attributes}{%
 \subsection{Array Attributes:}\label{array-attributes}}
@@ -12791,7 +12810,7 @@ Two of the above methods avoid a \texttt{for}-loop. Which ones?
 
 \hypertarget{introduction-to-data-visualization}{%
 \chapter{Introduction to Data
-visualization}\label{introduction-to-data-visualization}}
+Visualization}\label{introduction-to-data-visualization}}
 
 \begin{verbatim}
 <IPython.core.display.Image object>
@@ -12862,8 +12881,8 @@ Analysis}\label{the-role-of-visualization-in-data-analysis}}
 
 Data visualization is essential for effectively communicating insights
 derived from data analysis. By using various visualization techniques,
-we can explore data, uncover patterns, and understand relationships.
-Below, we discuss different types of data exploration and the relevant
+we can \textbf{uncover patterns, and understand relationships}. Below,
+we discuss different types of data exploration and the relevant
 visualizations used for each.
 
 \hypertarget{univariate-exploration}{%
@@ -12990,7 +13009,7 @@ consider what story you want to tell with your data and select your
 visualization method accordingly.
 
 \hypertarget{visulization-tools}{%
-\section{Visulization tools}\label{visulization-tools}}
+\section{Visulization Tools}\label{visulization-tools}}
 
 We'll use three libraries for making data visualizations - pandas,
 \href{https://matplotlib.org/}{matplotlib}, and
@@ -13013,10 +13032,13 @@ To get started, let's import these libraries.
 \subsection{Basic Plotting with
 Pandas}\label{basic-plotting-with-pandas}}
 
-In previous chapters, we explored the pandas library primarily for
-reading data and conducting data analysis. Additionally, pandas allows
-us to create basic plots, making it highly useful for exploratory data
-analysis.
+In previous chapters, we focused on using the pandas library for data
+reading and analysis. In addition to its powerful data manipulation
+capabilities, pandas also provides tools for creating basic plots,
+making it especially valuable for exploratory data analysis.
+
+In this section, we will use the COVID dataset to demonstrate basic
+plotting techniques with pandas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13041,8 +13063,11 @@ tests\_per\_million \\
 4 & 2020-01-04 & 0.0 & 0.0 & 0.0 & 0.0 & NaN & NaN & 0.0 & 0.0 & NaN \\
 \end{longtable}
 
-\hypertarget{plottiing}{%
-\subsubsection{Plottiing}\label{plottiing}}
+Let's begin by visualizing the trend of new COVID cases over time using
+a line plot.
+
+A line plot is ideal for showing changes over continuous data, such as
+the progression of new cases over a series of dates.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13075,7 +13100,7 @@ a time series dataset
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{covid\_df.new\_cases.plot()}
+\NormalTok{covid\_df.new\_cases.plot(rot}\OperatorTok{=}\DecValTok{45}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -13090,6 +13115,10 @@ a time series dataset
 }
 
 \end{figure}
+
+With the date set as the index, we can observe that the peak occurred
+around March 2020. Next, let's plot both new cases and new deaths
+together to compare their trends over the same time period.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13162,15 +13191,9 @@ different string values, which specify the type of plot:
   ``scatter'' is for scatter plots.
 \end{itemize}
 
-For more information, check out the official Pandas documentation:
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html}{Series.plot}
-\item
-  \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html}{DataFrame.plot}
-\end{itemize}
+Let's next create a scatter plot to visualize the relationship between
+new cases and new deaths, and explore whether there's a correlation
+between them.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13186,8 +13209,7 @@ For more information, check out the official Pandas documentation:
 
 \end{figure}
 
-Look at the distribution of a proterty with a histogram. Then you'll get
-to know some tools to examine the outliers
+Next, let's examine the distribution of new deaths using a histogram.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13217,6 +13239,17 @@ to know some tools to examine the outliers
 
 \end{figure}
 
+For more plot types and detailed information, refer to the official
+pandas documentation:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html}{Series.plot}
+\item
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html}{DataFrame.plot}
+\end{itemize}
+
 \hypertarget{limitation-of-using-pandas-for-plotting}{%
 \subsubsection{Limitation of using pandas for
 plotting}\label{limitation-of-using-pandas-for-plotting}}
@@ -13242,11 +13275,12 @@ some limitations to be aware of:
   customization might be necessary.
 \end{itemize}
 
-\hypertarget{data-plotting-with-matplotlib}{%
-\subsection{Data Plotting with
-Matplotlib}\label{data-plotting-with-matplotlib}}
+\hypertarget{data-plotting-with-matplotlib-pyplot-interface}{%
+\subsection{\texorpdfstring{Data Plotting with Matplotlib
+\texttt{Pyplot}
+Interface}{Data Plotting with Matplotlib Pyplot Interface}}\label{data-plotting-with-matplotlib-pyplot-interface}}
 
-pandas data visualization is built on top of matplotlib. When you use
+Pandas data visualization is built on top of matplotlib. When you use
 the \texttt{.plot()} method in pandas, it internally calls matplotlib
 functions to create the plots.
 
@@ -13405,14 +13439,30 @@ vs.~oranges.
 \end{figure}
 
 When plt.plot command is called without any formatting parameters,
-pyplot uses the following defaults: * Figure size: 6.4 X 4.8 inches *
-Plot style: solid line * Linewidth: 1.5 * Color: Blue (code `b', hex
-code: `\#1f77b4')
+pyplot uses the following defaults:
+
+\begin{itemize}
+\tightlist
+\item
+  Figure size: 6.4 X 4.8 inches
+\item
+  Plot style: solid line
+\item
+  Linewidth: 1.5
+\item
+  Color: Blue (code `b', hex code: `\#1f77b4')
+\end{itemize}
 
 You can also edit default styles directly by modifying the
 \texttt{matplotlib.rcParams} dictionary. Learn more:
 https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html\#matplotlib-rcparams
 .
+
+You can customize default plot styles by directly modifying the
+\texttt{matplotlib.rcParams} dictionary. For more details, visit the
+official Matplotlib guide on
+\href{https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html\#matplotlib-rcparams}{customizing
+with rcParams}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13423,12 +13473,15 @@ https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html\#matplotlib
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Conceptual model:} Plotting requires action on a range of
-levels, ranging from the size of the figure to the text object in the
-plot. Matplotlib provides \textbf{object-oriented} interface in the
-hierarchical fashion to provide complete control over the plot. The user
-generates and keeps track of the figure and axes objects. These axes
-objects are then used for most plotting actions.
+\textbf{Conceptual model}: Plotting in Matplotlib involves multiple
+levels of control, from setting the figure size to customizing
+individual text elements. To offer complete control over the plotting
+process, Matplotlib provides an object-oriented interface in a
+hierarchical structure. This approach allows users to create and manage
+\texttt{Figure} and \texttt{Axes} objects, which serve as the foundation
+for all plotting actions. In the next chapter, you will explore how to
+use this object-oriented interface to gain more precise control over
+your plots.
 
 \hypertarget{enhancing-the-plot}{%
 \subsubsection{Enhancing the plot}\label{enhancing-the-plot}}
@@ -13664,53 +13717,12 @@ figure.
 
 \end{figure}
 
-\hypertarget{real-world-examples}{%
-\subsubsection{Real World Examples}\label{real-world-examples}}
+\hypertarget{plotting-other-types-of-plots-with-matplotlib-pyplot}{%
+\subsubsection{\texorpdfstring{Plotting other types of plots with
+matplotlib
+\texttt{pyplot}}{Plotting other types of plots with matplotlib pyplot}}\label{plotting-other-types-of-plots-with-matplotlib-pyplot}}
 
-Download data from Canvas (gas\_prices.csv \& fifa\_data.csv)
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
-\NormalTok{gas }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/gas\_prices.csv\textquotesingle{}}\NormalTok{)}
-
-\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{))}
-
-\NormalTok{plt.title(}\StringTok{\textquotesingle{}Gas Prices over Time (in USD)\textquotesingle{}}\NormalTok{, fontdict}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}fontweight\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fontsize\textquotesingle{}}\NormalTok{: }\DecValTok{18}\NormalTok{\})}
-
-\NormalTok{plt.plot(gas.Year, gas.USA, }\StringTok{\textquotesingle{}b.{-}\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.plot(gas.Year, gas.Canada, }\StringTok{\textquotesingle{}r.{-}\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.plot(gas.Year, gas[}\StringTok{\textquotesingle{}South Korea\textquotesingle{}}\NormalTok{], }\StringTok{\textquotesingle{}g.{-}\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.plot(gas.Year, gas.Australia, }\StringTok{\textquotesingle{}y.{-}\textquotesingle{}}\NormalTok{)}
-
-\CommentTok{\# Another Way to plot many values!}
-\CommentTok{\# countries\_to\_look\_at = [\textquotesingle{}Australia\textquotesingle{}, \textquotesingle{}USA\textquotesingle{}, \textquotesingle{}Canada\textquotesingle{}, \textquotesingle{}South Korea\textquotesingle{}]}
-\CommentTok{\# for country in gas:}
-\CommentTok{\#     if country in countries\_to\_look\_at:}
-\CommentTok{\#         plt.plot(gas.Year, gas[country], marker=\textquotesingle{}.\textquotesingle{})}
-
-\NormalTok{plt.xticks(gas.Year[::}\DecValTok{3}\NormalTok{].tolist()}\OperatorTok{+}\NormalTok{[}\DecValTok{2011}\NormalTok{])}
-
-\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}US Dollars\textquotesingle{}}\NormalTok{)}
-
-\NormalTok{plt.legend()}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-30-output-1.png}
-
-}
-
-\end{figure}
-
-\hypertarget{plotting-other-types-of-plots}{%
-\subsubsection{Plotting other types of
-plots}\label{plotting-other-types-of-plots}}
-
-Let's read the fifa data
+Let's read the \emph{fifa\_data.csv} as our data source
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13774,7 +13786,7 @@ Text(0.5, 1.0, 'Distribution of Player Skills in FIFA 2018')
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-32-output-2.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-31-output-2.png}
 
 }
 
@@ -13788,23 +13800,18 @@ Text(0.5, 1.0, 'Distribution of Player Skills in FIFA 2018')
 \CommentTok{\# plotting bar chart for the best players}
 \NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{))}
 
-\NormalTok{left }\OperatorTok{=}\NormalTok{ fifa.loc[fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
-\NormalTok{right }\OperatorTok{=}\NormalTok{ fifa.loc[fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{].count().iloc[}\DecValTok{0}\NormalTok{]}
+\NormalTok{foot\_preference }\OperatorTok{=}\NormalTok{ fifa[}\StringTok{\textquotesingle{}Preferred Foot\textquotesingle{}}\NormalTok{].value\_counts()}
 
-\NormalTok{plt.bar([}\StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{], [left, right], color}\OperatorTok{=}\StringTok{\textquotesingle{}\#abcdef\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.bar([}\StringTok{\textquotesingle{}Left\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Right\textquotesingle{}}\NormalTok{], [foot\_preference.iloc[}\DecValTok{1}\NormalTok{], foot\_preference.iloc[}\DecValTok{0}\NormalTok{]], color}\OperatorTok{=}\StringTok{\textquotesingle{}\#abcdef\textquotesingle{}}\NormalTok{)}
 
 \NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Number of Players\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.title(}\StringTok{\textquotesingle{}Foot Preference of FIFA Players\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Foot Preference of FIFA Players\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-Text(0.5, 1.0, 'Foot Preference of FIFA Players')
-\end{verbatim}
-
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-33-output-2.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-32-output-1.png}
 
 }
 
@@ -13825,17 +13832,13 @@ Text(0.5, 1.0, 'Foot Preference of FIFA Players')
 
 \NormalTok{plt.pie([left, right], labels }\OperatorTok{=}\NormalTok{ labels, colors}\OperatorTok{=}\NormalTok{colors, autopct}\OperatorTok{=}\StringTok{\textquotesingle{}}\SpecialCharTok{\%.2f}\StringTok{ }\SpecialCharTok{\%\%}\StringTok{\textquotesingle{}}\NormalTok{)}
 
-\NormalTok{plt.title(}\StringTok{\textquotesingle{}Foot Preference of FIFA Players\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Foot Preference of FIFA Players\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-Text(0.5, 1.0, 'Foot Preference of FIFA Players')
-\end{verbatim}
-
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-34-output-2.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-33-output-1.png}
 
 }
 
@@ -13869,7 +13872,7 @@ Another Pie Chart on wight of players
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-35-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-34-output-1.png}
 
 }
 
@@ -13906,15 +13909,15 @@ Another Pie Chart on wight of players
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-36-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-35-output-1.png}
 
 }
 
 \end{figure}
 
-You've already learned how to create plots using Matplotlib's Pyplot.
-Next, you'll explore how to simplify and enhance your visualizations by
-using its powerful wrappers: Pandas and Seaborn.
+You've already learned how to create plots using Matplotlib's
+\texttt{Pyplot}. Next, you'll explore how to simplify and enhance your
+visualizations by using its powerful wrappers: Pandas and Seaborn.
 
 \hypertarget{limitations-of-using-matplotlib-for-plotting}{%
 \subsubsection{Limitations of Using Matplotlib for
@@ -14002,9 +14005,9 @@ features of Seaborn visualization techniques to solve problems.
  'titanic']
 \end{verbatim}
 
-\hypertarget{customizing-plot-aesthetics-with-sns.set_style}{%
-\subsubsection{\texorpdfstring{Customizing Plot Aesthetics with
-\texttt{sns.set\_style()}}{Customizing Plot Aesthetics with sns.set\_style()}}\label{customizing-plot-aesthetics-with-sns.set_style}}
+\hypertarget{customizing-plot-aesthetics}{%
+\subsubsection{Customizing Plot
+Aesthetics}\label{customizing-plot-aesthetics}}
 
 Seaborn provides a convenient function called \texttt{sns.set\_style()}
 that allows users to customize the visual appearance of their plots.
@@ -14133,7 +14136,7 @@ species \\
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-40-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-39-output-1.png}
 
 }
 
@@ -14166,7 +14169,7 @@ array(['setosa', 'versicolor', 'virginica'], dtype=object)
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-42-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-41-output-1.png}
 
 }
 
@@ -14198,7 +14201,7 @@ the figure.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-43-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-42-output-1.png}
 
 }
 
@@ -14225,7 +14228,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-44-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-43-output-1.png}
 
 }
 
@@ -14242,7 +14245,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-45-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-44-output-1.png}
 
 }
 
@@ -14257,7 +14260,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-46-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-45-output-1.png}
 
 }
 
@@ -14272,7 +14275,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-47-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-46-output-1.png}
 
 }
 
@@ -14290,7 +14293,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-48-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-47-output-1.png}
 
 }
 
@@ -14304,7 +14307,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-49-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-48-output-1.png}
 
 }
 
@@ -14319,7 +14322,7 @@ each column as a series, you can provide column names and use the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-50-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-49-output-1.png}
 
 }
 
@@ -14350,7 +14353,7 @@ and female patrons.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-52-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-51-output-1.png}
 
 }
 
@@ -14359,7 +14362,7 @@ and female patrons.
 From the above plot, what you can observe?
 
 \hypertarget{heatmap}{%
-\subsubsection{Heatmap:}\label{heatmap}}
+\subsubsection{Heatmap}\label{heatmap}}
 
 Represent 2-dimensional data like a matrix or table using colors
 
@@ -14421,7 +14424,7 @@ the airport.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-54-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-53-output-1.png}
 
 }
 
@@ -14454,7 +14457,7 @@ color palette.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-55-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-54-output-1.png}
 
 }
 
@@ -14710,7 +14713,7 @@ dtype: float64
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-59-output-1.png}
+{\centering \includegraphics{Data visualization_files/figure-pdf/cell-58-output-1.png}
 
 }
 
@@ -14728,67 +14731,17 @@ From the above map, we can see that:
   \texttt{NU\_GPA}
 \end{itemize}
 
-\hypertarget{multiple-plots-in-a-single-figure-using-seaborn}{%
-\subsubsection{Multiple plots in a single figure using
-Seaborn}\label{multiple-plots-in-a-single-figure-using-seaborn}}
-
-\textbf{Purpose:} Histogram and density plots visualize the distribution
-of a continuous variable.
-
-A histogram plots the number of observations occurring within discrete,
-evenly spaced bins of a random variable, to visualize the distribution
-of the variable. It may be considered a special case of a bar plot as
-bars are used to plot the observation counts.
-
-A density plot uses a kernel density estimate to approximate the
-distribution of random variable.
-
-We can use the Seaborn
-\href{https://seaborn.pydata.org/generated/seaborn.histplot.html}{displot()}
-function to make both kinds of plots - histogram or density plot.
-
-\textbf{Example:} Make a histogram showing the distributions of total
-bill on each day of the week
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale }\OperatorTok{=} \FloatTok{1.4}\NormalTok{)}
-\NormalTok{a }\OperatorTok{=}\NormalTok{ sns.displot(data }\OperatorTok{=}\NormalTok{ tips\_df, x }\OperatorTok{=} \StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{,kind }\OperatorTok{=} \StringTok{\textquotesingle{}hist\textquotesingle{}}\NormalTok{,col}\OperatorTok{=}\StringTok{\textquotesingle{}day\textquotesingle{}}\NormalTok{)}
-\NormalTok{a.set\_axis\_labels(}\StringTok{"Maximum temperature"}\NormalTok{, }\StringTok{"Count"}\NormalTok{)}
-\NormalTok{a.set\_titles(}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-60-output-1.png}
-
-}
-
-\end{figure}
-
-\textbf{Example:} Make a density plot showing the distributions of total
-bills on each day.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sns.displot(data }\OperatorTok{=}\NormalTok{ tips\_df, x }\OperatorTok{=} \StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{,kind }\OperatorTok{=} \StringTok{\textquotesingle{}kde\textquotesingle{}}\NormalTok{, col }\OperatorTok{=} \StringTok{\textquotesingle{}day\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Data visualization_files/figure-pdf/cell-61-output-1.png}
-
-}
-
-\end{figure}
-
 \hypertarget{independent-study}{%
 \section{Independent Study}\label{independent-study}}
 
-\hypertarget{practice-problem-1}{%
-\subsection{Practice problem 1}\label{practice-problem-1}}
+\hypertarget{practice-exercise-1-3}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-3}}
+
+Read the \emph{gas\_price.csv} file and plot the trend for each country
+over the time using matplotlib \texttt{pyplot}
+
+\hypertarget{practice-exercise-2-3}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-3}}
 
 \hypertarget{section-39}{%
 \subsubsection{}\label{section-39}}
@@ -14808,8 +14761,8 @@ Plot the trendline as well for each scatterplot. Use the file
 Capping the the values of \texttt{parties\_per\_month} to 30, and make
 the visualizations again.
 
-\hypertarget{practice-exercise-2-3}{%
-\subsection{Practice exercise 2}\label{practice-exercise-2-3}}
+\hypertarget{practice-exercise-3-3}{%
+\subsection{Practice exercise 3}\label{practice-exercise-3-3}}
 
 How does the expected marriage age of the people of STAT303-1 depend on
 their characteristics? We'll use visualizations to answer this question.
@@ -14847,8 +14800,8 @@ the question.
 Is there any critical information missing in the above visualizations
 that, if revealed, may cast doubts on the patterns observed in them?
 
-\hypertarget{practice-exercise-3-3}{%
-\subsection{Practice exercise 3}\label{practice-exercise-3-3}}
+\hypertarget{practice-exercise-4-2}{%
+\subsection{Practice exercise 4}\label{practice-exercise-4-2}}
 
 Read \emph{Australia\_weather.csv},
 
@@ -14882,11 +14835,13 @@ confidence interval for the trendline
 
 \hypertarget{advanced-data-visualization}{%
 \chapter{Advanced Data
-visualization}\label{advanced-data-visualization}}
+Visualization}\label{advanced-data-visualization}}
 
-We learned basic ploting using pandas, seaborn, and matplotlib in the
-last chapter. In this chapter, we'll focus on more advanced plotting,
-including subplots and geospatial plotting
+In the previous chapter, we explored basic plotting techniques using
+Pandas, Seaborn, and Matplotlib to create visualizations. Now, we'll
+elevate our skills by diving into more advanced topics, such as crafting
+complex subplots and visualizing geospatial data, enabling us to build
+richer and more insightful plots.
 
 To get started, let's import necessary libraries.
 
@@ -15329,157 +15284,9 @@ plots with more flexibility
 
 \end{figure}
 
-\hypertarget{pyplot-a-convenience-wrapper-around-the-object-oriented-interface}{%
-\subsubsection{\texorpdfstring{\texttt{pyplot}: a convenience wrapper
-around the object-oriented
-interface}{pyplot: a convenience wrapper around the object-oriented interface}}\label{pyplot-a-convenience-wrapper-around-the-object-oriented-interface}}
-
-While the pyplot interface is simpler for quick, basic plots, it
-ultimately wraps around the object-oriented structure of Matplotlib,
-meaning that it's built on top of the object-oriented interface.
-
-\includegraphics{index_files/mediabag/title_xlabel_ylabel_.png}
-
-\hypertarget{creating-subplots-with-seaborn}{%
-\section{Creating Subplots with
-Seaborn}\label{creating-subplots-with-seaborn}}
-
-We previously demonstrated how Seaborn integrates seamlessly with
-Matplotlib's object-oriented interface, allowing you to pass the
-\texttt{ax} argument to any Seaborn function, thereby directing the plot
-to a specific axis within a subplot grid.
-
-Additionally, Seaborn offers a more convenient and simplified approach
-to creating subplots, thanks to its high-level functions and built-in
-integration with Matplotlib. Here's how Seaborn makes working with
-subplots easier:
-
-\hypertarget{using-facetgrid}{%
-\subsection{\texorpdfstring{Using
-\texttt{Facetgrid}}{Using Facetgrid}}\label{using-facetgrid}}
-
-Seaborn's \texttt{FacetGrid} function make it very easy to create facet
-grids or subplots based on data dimensions (such as categories), which
-would require more manual effort with Matplotlib.
-
-You can use the \texttt{row} and \texttt{col} parameters to control how
-the data is split into subplots along these dimensions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Seaborn Example using FacetGrid:}
-\NormalTok{tips\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"tips"}\NormalTok{)}
-\NormalTok{tips\_df.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllllll@{}}
-\toprule\noalign{}
-& total\_bill & tip & sex & smoker & day & time & size \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & 16.99 & 1.01 & Female & No & Sun & Dinner & 2 \\
-1 & 10.34 & 1.66 & Male & No & Sun & Dinner & 3 \\
-2 & 21.01 & 3.50 & Male & No & Sun & Dinner & 3 \\
-3 & 23.68 & 3.31 & Male & No & Sun & Dinner & 2 \\
-4 & 24.59 & 3.61 & Female & No & Sun & Dinner & 4 \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\OperatorTok{=}\NormalTok{ sns.FacetGrid(tips\_df, col}\OperatorTok{=}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{, row}\OperatorTok{=}\StringTok{\textquotesingle{}smoker\textquotesingle{}}\NormalTok{)}
-\NormalTok{g.}\BuiltInTok{map}\NormalTok{(sns.histplot, }\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{)}
-\NormalTok{g.set\_titles(col\_template}\OperatorTok{=}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{, row\_template}\OperatorTok{=}\StringTok{"Smoker: }\SpecialCharTok{\{row\_name\}}\StringTok{"}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-13-output-1.png}
-
-}
-
-\end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# adding hue to the FacetGrid}
-\NormalTok{g }\OperatorTok{=}\NormalTok{ sns.FacetGrid(tips\_df, col}\OperatorTok{=}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{, row}\OperatorTok{=}\StringTok{\textquotesingle{}smoker\textquotesingle{}}\NormalTok{,hue}\OperatorTok{=}\StringTok{\textquotesingle{}size\textquotesingle{}}\NormalTok{)}
-\CommentTok{\# Plot a scatterplot of the total bill and tip for each combination of time and smoker}
-\NormalTok{g.}\BuiltInTok{map}\NormalTok{(sns.scatterplot, }\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}tip\textquotesingle{}}\NormalTok{)}
-\NormalTok{g.set\_titles(col\_template}\OperatorTok{=}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{, row\_template}\OperatorTok{=}\StringTok{"Smoker: }\SpecialCharTok{\{row\_name\}}\StringTok{"}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-14-output-1.png}
-
-}
-
-\end{figure}
-
-\hypertarget{using-seaborn-pairplot}{%
-\subsection{Using seaborn Pairplot}\label{using-seaborn-pairplot}}
-
-Pairplots are used to visualize the association between all
-variable-pairs in the data. In other words, pairplots simultaneously
-visualize the scatterplots between all variable-pairs.
-
-Let us visualize the pair-wise association of tips variables in the tips
-dataset
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sns.pairplot(tips\_df )}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-15-output-1.png}
-
-}
-
-\end{figure}
-
-Let us visualize the pair-wise association of nutrition variables in the
-starbucks drinks data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{starbucks\_drinks }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}datasets/starbucks{-}menu{-}nutrition{-}drinks.csv\textquotesingle{}}\NormalTok{)}
-\NormalTok{sns.pairplot(starbucks\_drinks)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-16-output-1.png}
-
-}
-
-\end{figure}
-
-In the above pairplot, note that:
-
-\begin{itemize}
-\tightlist
-\item
-  The histograms on the diagonal of the grid show the distribution of
-  each of the variables.
-\item
-  Instead of a histogram, we can visualize the density plot with the
-  argument kde = True.
-\item
-  The scatterplots in the rest of the grid are the pair-wise plots of
-  all the variables.
-\end{itemize}
-
-\hypertarget{case-study-1}{%
-\section{Case Study}\label{case-study-1}}
+\hypertarget{advanced-customization-with-matplotlibs-object-oriented-interface}{%
+\subsection{Advanced Customization with Matplotlib's Object-Oriented
+Interface}\label{advanced-customization-with-matplotlibs-object-oriented-interface}}
 
 Below, we are reading the dataset of noise complaints of type Loud
 music/Party received the police in New York City in 2016.
@@ -15539,7 +15346,7 @@ Let us visualise the locations from where the the complaints are coming.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-18-output-1.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-13-output-1.png}
 
 }
 
@@ -15606,7 +15413,7 @@ Name: count, dtype: int64
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-21-output-1.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-16-output-1.png}
 
 }
 
@@ -15658,7 +15465,7 @@ Month\_of\_the\_year & & & & & & \\
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-23-output-1.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-18-output-1.png}
 
 }
 
@@ -15682,7 +15489,7 @@ below.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-24-output-1.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-19-output-1.png}
 
 }
 
@@ -15736,7 +15543,7 @@ with the time of the day.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-26-output-1.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-21-output-1.png}
 
 }
 
@@ -15750,17 +15557,149 @@ Note that the above barplot shows the mean number of complaints in a
 month at each hour of the day. The black lines are the 95\% confidence
 intervals of the mean number of complaints.
 
-\hypertarget{use-seaborn-facetgrid-to-quickly-create-figures-with-subplots}{%
-\subsection{Use Seaborn FacetGrid to Quickly Create Figures With
-Subplots}\label{use-seaborn-facetgrid-to-quickly-create-figures-with-subplots}}
+\hypertarget{pyplot-a-convenience-wrapper-around-the-object-oriented-interface}{%
+\subsection{\texorpdfstring{\texttt{pyplot}: a convenience wrapper
+around the object-oriented
+interface}{pyplot: a convenience wrapper around the object-oriented interface}}\label{pyplot-a-convenience-wrapper-around-the-object-oriented-interface}}
+
+While the pyplot interface is simpler for quick, basic plots, it
+ultimately wraps around the object-oriented structure of Matplotlib,
+meaning that it's built on top of the object-oriented interface.
+
+\includegraphics{index_files/mediabag/title_xlabel_ylabel_.png}
+
+\hypertarget{creating-subplots-with-seaborn}{%
+\section{Creating Subplots with
+Seaborn}\label{creating-subplots-with-seaborn}}
+
+We previously demonstrated how Seaborn integrates seamlessly with
+Matplotlib's object-oriented interface, allowing you to pass the
+\texttt{ax} argument to any Seaborn function, thereby directing the plot
+to a specific axis within a subplot grid.
+
+Additionally, Seaborn offers a more convenient and simplified approach
+to creating subplots, thanks to its high-level functions and built-in
+integration with Matplotlib. Here's how Seaborn makes working with
+subplots easier:
+
+\hypertarget{using-facetgrid}{%
+\subsection{\texorpdfstring{Using
+\texttt{Facetgrid}}{Using Facetgrid}}\label{using-facetgrid}}
+
+Seaborn's \texttt{FacetGrid} function make it very easy to create facet
+grids or subplots based on data dimensions (such as categories), which
+would require more manual effort with Matplotlib.
+
+You can use the \texttt{row} and \texttt{col} parameters to control how
+the data is split into subplots along these dimensions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Seaborn Example using FacetGrid:}
+\NormalTok{tips\_df }\OperatorTok{=}\NormalTok{ sns.load\_dataset(}\StringTok{"tips"}\NormalTok{)}
+\NormalTok{tips\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& total\_bill & tip & sex & smoker & day & time & size \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 16.99 & 1.01 & Female & No & Sun & Dinner & 2 \\
+1 & 10.34 & 1.66 & Male & No & Sun & Dinner & 3 \\
+2 & 21.01 & 3.50 & Male & No & Sun & Dinner & 3 \\
+3 & 23.68 & 3.31 & Male & No & Sun & Dinner & 2 \\
+4 & 24.59 & 3.61 & Female & No & Sun & Dinner & 4 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\OperatorTok{=}\NormalTok{ sns.FacetGrid(tips\_df, col}\OperatorTok{=}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{, row}\OperatorTok{=}\StringTok{\textquotesingle{}smoker\textquotesingle{}}\NormalTok{)}
+\NormalTok{g.}\BuiltInTok{map}\NormalTok{(sns.histplot, }\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{)}
+\NormalTok{g.set\_titles(col\_template}\OperatorTok{=}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{, row\_template}\OperatorTok{=}\StringTok{"Smoker: }\SpecialCharTok{\{row\_name\}}\StringTok{"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-23-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding hue to the FacetGrid}
+\NormalTok{g }\OperatorTok{=}\NormalTok{ sns.FacetGrid(tips\_df, col}\OperatorTok{=}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{, row}\OperatorTok{=}\StringTok{\textquotesingle{}smoker\textquotesingle{}}\NormalTok{,hue}\OperatorTok{=}\StringTok{\textquotesingle{}size\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Plot a scatterplot of the total bill and tip for each combination of time and smoker}
+\NormalTok{g.}\BuiltInTok{map}\NormalTok{(sns.scatterplot, }\StringTok{\textquotesingle{}total\_bill\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}tip\textquotesingle{}}\NormalTok{)}
+\NormalTok{g.set\_titles(col\_template}\OperatorTok{=}\StringTok{"}\SpecialCharTok{\{col\_name\}}\StringTok{"}\NormalTok{, row\_template}\OperatorTok{=}\StringTok{"Smoker: }\SpecialCharTok{\{row\_name\}}\StringTok{"}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-24-output-1.png}
+
+}
+
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Visualizing the number of complaints with Month\_of\_the\_year, Location Type, and Borough.}
 \NormalTok{a }\OperatorTok{=}\NormalTok{ sns.FacetGrid(nyc\_complaints\_grouped, hue }\OperatorTok{=} \StringTok{\textquotesingle{}Location Type\textquotesingle{}}\NormalTok{, col }\OperatorTok{=} \StringTok{\textquotesingle{}Borough\textquotesingle{}}\NormalTok{,col\_wrap}\OperatorTok{=}\DecValTok{3}\NormalTok{,height}\OperatorTok{=}\FloatTok{3.5}\NormalTok{,aspect }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\CommentTok{\# Plotting a lineplot to show the number of complaints with Month\_of\_the\_year}
 \NormalTok{a.}\BuiltInTok{map}\NormalTok{(sns.lineplot,}\StringTok{\textquotesingle{}Month\_of\_the\_year\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}complaints\textquotesingle{}}\NormalTok{)}
 \NormalTok{a.set\_axis\_labels(}\StringTok{"Month of the year"}\NormalTok{, }\StringTok{"Complaints"}\NormalTok{)}
 \NormalTok{a.add\_legend()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-25-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{using-pairplot}{%
+\subsection{\texorpdfstring{Using
+\texttt{Pairplot}}{Using Pairplot}}\label{using-pairplot}}
+
+Pairplots are used to visualize the association between all
+variable-pairs in the data. In other words, pairplots simultaneously
+visualize the scatterplots between all variable-pairs.
+
+Let us visualize the pair-wise association of tips variables in the tips
+dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.pairplot(tips\_df )}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-26-output-1.png}
+
+}
+
+\end{figure}
+
+Let us visualize the pair-wise association of nutrition variables in the
+starbucks drinks data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starbucks\_drinks }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}datasets/starbucks{-}menu{-}nutrition{-}drinks.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.pairplot(starbucks\_drinks)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -15771,6 +15710,21 @@ Subplots}\label{use-seaborn-facetgrid-to-quickly-create-figures-with-subplots}}
 }
 
 \end{figure}
+
+In the above pairplot, note that:
+
+\begin{itemize}
+\tightlist
+\item
+  The histograms on the diagonal of the grid show the distribution of
+  each of the variables.
+\item
+  Instead of a histogram, we can visualize the density plot with the
+  argument kde = True.
+\item
+  The scatterplots in the rest of the grid are the pair-wise plots of
+  all the variables.
+\end{itemize}
 
 \hypertarget{geosptial-plotting}{%
 \section{Geosptial Plotting}\label{geosptial-plotting}}
@@ -15796,11 +15750,6 @@ Let's import them
 \ImportTok{import}\NormalTok{ geodatasets}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated and will be removed in a future release
-  "class": algorithms.Blowfish,
-\end{verbatim}
 
 \hypertarget{static-plots-with-geopandas}{%
 \subsection{Static Plots with
@@ -16100,7 +16049,7 @@ Key Features of \texttt{explore()}:
 \end{Shaded}
 
 \begin{verbatim}
-<folium.folium.Map at 0x25e3903e720>
+<folium.folium.Map at 0x1f6a6f672c0>
 \end{verbatim}
 
 Adding the population layer
@@ -16126,7 +16075,12 @@ Adding the population layer
 \end{Shaded}
 
 \begin{verbatim}
-<folium.folium.Map at 0x25e183c6c30>
+c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=1.
+  warnings.warn(
+\end{verbatim}
+
+\begin{verbatim}
+<folium.folium.Map at 0x1f6a7436e40>
 \end{verbatim}
 
 The \texttt{explore()} method returns a \texttt{folium.Map} object,
@@ -16183,11 +16137,11 @@ description to the station. You can skip this part
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-193 & Millennium Park & 41.881032 & -87.624084 & 17270 \\
-269 & Streeter Dr \& Illinois St & 41.891071 & -87.612200 & 16709 \\
-148 & Lake Shore Dr \& Monroe St & 41.881050 & -87.616970 & 15671 \\
-69 & Clinton St \& Washington Blvd & 41.883380 & -87.641170 & 14962 \\
-189 & Michigan Ave \& Oak St & 41.900960 & -87.623777 & 13274 \\
+75 & Millennium Park & 41.881032 & -87.624084 & 207 \\
+54 & Lake Shore Dr \& Monroe St & 41.881050 & -87.616970 & 191 \\
+72 & Michigan Ave \& Oak St & 41.900960 & -87.623777 & 186 \\
+68 & McClurg Ct \& Illinois St & 41.891020 & -87.617300 & 177 \\
+73 & Michigan Ave \& Pearson St & 41.897660 & -87.623510 & 127 \\
 \end{longtable}
 
 \begin{longtable}[]{@{}lllllll@{}}
@@ -16197,21 +16151,21 @@ description to the station. You can skip this part
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & 900 W Harrison & 41.874500 & -87.649800 & 1616 & \textless table
-border="1" class="dataframe"\textgreater\textbackslash n
-\textless thead... & POINT (-87.6498 41.8745) \\
-1 & Aberdeen St \& Jackson Blvd & 41.877726 & -87.654787 & 2773 &
+0 & Aberdeen St \& Jackson Blvd & 41.877726 & -87.654787 & 28 &
 \textless table border="1" class="dataframe"\textgreater\textbackslash n
 \textless thead... & POINT (-87.65479 41.87773) \\
-2 & Aberdeen St \& Madison St & 41.881487 & -87.654752 & 4174 &
+1 & Aberdeen St \& Madison St & 41.881487 & -87.654752 & 28 &
 \textless table border="1" class="dataframe"\textgreater\textbackslash n
 \textless thead... & POINT (-87.65475 41.88149) \\
-3 & Ada St \& Washington Blvd & 41.882830 & -87.661206 & 557 &
-\textless table border="1" class="dataframe"\textgreater\textbackslash n
-\textless thead... & POINT (-87.66121 41.88283) \\
-4 & Adler Planetarium & 41.866095 & -87.607267 & 1180 & \textless table
+2 & Adler Planetarium & 41.866095 & -87.607267 & 6 & \textless table
 border="1" class="dataframe"\textgreater\textbackslash n
 \textless thead... & POINT (-87.60727 41.8661) \\
+3 & Ashland Ave \& Armitage Ave & 41.917859 & -87.668919 & 20 &
+\textless table border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.66892 41.91786) \\
+4 & Ashland Ave \& Augusta Blvd & 41.899643 & -87.667700 & 27 &
+\textless table border="1" class="dataframe"\textgreater\textbackslash n
+\textless thead... & POINT (-87.6677 41.89964) \\
 \end{longtable}
 
 We can add a hover tooltip (sometimes referred to as a tooltip or
@@ -16249,14 +16203,45 @@ your existing code to include hover tooltips:
 \end{Shaded}
 
 \begin{verbatim}
-<folium.folium.Map at 0x25e3c2768a0>
+c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=1.
+  warnings.warn(
 \end{verbatim}
 
-References:
+\begin{verbatim}
+<folium.folium.Map at 0x1f6a369ddf0>
+\end{verbatim}
 
-https://ajaytech.co/matplotlib/
+\hypertarget{independent-study-1}{%
+\section{Independent Study}\label{independent-study-1}}
 
-https://www.studytonight.com/matplotlib/matplotlib-object-oriented-interface
+\hypertarget{multiple-plots-in-a-single-figure-using-seaborn}{%
+\subsection{Multiple plots in a single figure using
+Seaborn}\label{multiple-plots-in-a-single-figure-using-seaborn}}
+
+\textbf{Purpose:} Histogram and density plots visualize the distribution
+of a continuous variable.
+
+A histogram plots the number of observations occurring within discrete,
+evenly spaced bins of a random variable, to visualize the distribution
+of the variable. It may be considered a special case of a bar plot as
+bars are used to plot the observation counts.
+
+A density plot uses a kernel density estimate to approximate the
+distribution of random variable.
+
+Using the tips\_df dataset
+
+\hypertarget{section-49}{%
+\subsubsection{}\label{section-49}}
+
+Make a histogram showing the distributions of total bill on each day of
+the week
+
+\hypertarget{section-50}{%
+\subsubsection{}\label{section-50}}
+
+Make a density plot showing the distributions of total bills on each
+day.
 
 \cleardoublepage
 \phantomsection
@@ -16331,8 +16316,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-49}{%
-\subsection{}\label{section-49}}
+\hypertarget{section-51}{%
+\subsection{}\label{section-51}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -16341,24 +16326,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-50}{%
-\subsection{}\label{section-50}}
+\hypertarget{section-52}{%
+\subsection{}\label{section-52}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-51}{%
-\subsection{}\label{section-51}}
+\hypertarget{section-53}{%
+\subsection{}\label{section-53}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-52}{%
-\subsection{}\label{section-52}}
+\hypertarget{section-54}{%
+\subsection{}\label{section-54}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -16369,8 +16354,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-53}{%
-\subsection{}\label{section-53}}
+\hypertarget{section-55}{%
+\subsection{}\label{section-55}}
 
 Use list comprehension to:
 
@@ -16419,16 +16404,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-54}{%
-\subsection{}\label{section-54}}
+\hypertarget{section-56}{%
+\subsection{}\label{section-56}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-55}{%
-\subsection{}\label{section-55}}
+\hypertarget{section-57}{%
+\subsection{}\label{section-57}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -16437,8 +16422,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-56}{%
-\subsection{}\label{section-56}}
+\hypertarget{section-58}{%
+\subsection{}\label{section-58}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -16447,8 +16432,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-57}{%
-\subsection{}\label{section-57}}
+\hypertarget{section-59}{%
+\subsection{}\label{section-59}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -16472,8 +16457,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-58}{%
-\subsection{}\label{section-58}}
+\hypertarget{section-60}{%
+\subsection{}\label{section-60}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -16482,8 +16467,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-59}{%
-\subsection{}\label{section-59}}
+\hypertarget{section-61}{%
+\subsection{}\label{section-61}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -16495,8 +16480,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-60}{%
-\subsection{}\label{section-60}}
+\hypertarget{section-62}{%
+\subsection{}\label{section-62}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -16504,23 +16489,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-61}{%
-\subsection{}\label{section-61}}
+\hypertarget{section-63}{%
+\subsection{}\label{section-63}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-62}{%
-\subsection{}\label{section-62}}
+\hypertarget{section-64}{%
+\subsection{}\label{section-64}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-63}{%
-\subsection{}\label{section-63}}
+\hypertarget{section-65}{%
+\subsection{}\label{section-65}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -16529,16 +16514,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-64}{%
-\subsection{}\label{section-64}}
+\hypertarget{section-66}{%
+\subsection{}\label{section-66}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-65}{%
-\subsection{}\label{section-65}}
+\hypertarget{section-67}{%
+\subsection{}\label{section-67}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -16548,16 +16533,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-66}{%
-\subsection{}\label{section-66}}
+\hypertarget{section-68}{%
+\subsection{}\label{section-68}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-67}{%
-\subsection{}\label{section-67}}
+\hypertarget{section-69}{%
+\subsection{}\label{section-69}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -16570,38 +16555,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-68}{%
-\subsection{}\label{section-68}}
-
-Download the data set ``univ.txt''. Read it with python.
-
-\emph{(1 point)}
-
-\hypertarget{section-69}{%
-\subsection{}\label{section-69}}
-
-Find summary statistics of the data. Based on the statistics, answer the
-next four questions.
-
-\emph{(1 point)}
-
 \hypertarget{section-70}{%
 \subsection{}\label{section-70}}
 
-How many universities are there in the data set?
+Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
 \hypertarget{section-71}{%
 \subsection{}\label{section-71}}
 
+Find summary statistics of the data. Based on the statistics, answer the
+next four questions.
+
+\emph{(1 point)}
+
+\hypertarget{section-72}{%
+\subsection{}\label{section-72}}
+
+How many universities are there in the data set?
+
+\emph{(1 point)}
+
+\hypertarget{section-73}{%
+\subsection{}\label{section-73}}
+
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-72}{%
-\subsection{}\label{section-72}}
+\hypertarget{section-74}{%
+\subsection{}\label{section-74}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -16610,16 +16595,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-73}{%
-\subsection{}\label{section-73}}
+\hypertarget{section-75}{%
+\subsection{}\label{section-75}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-74}{%
-\subsection{}\label{section-74}}
+\hypertarget{section-76}{%
+\subsection{}\label{section-76}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -17066,8 +17051,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-75}{%
-\subsection{}\label{section-75}}
+\hypertarget{section-77}{%
+\subsection{}\label{section-77}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -17078,8 +17063,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-76}{%
-\subsection{}\label{section-76}}
+\hypertarget{section-78}{%
+\subsection{}\label{section-78}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -17088,8 +17073,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-77}{%
-\subsection{}\label{section-77}}
+\hypertarget{section-79}{%
+\subsection{}\label{section-79}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -17113,8 +17098,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-78}{%
-\subsection{}\label{section-78}}
+\hypertarget{section-80}{%
+\subsection{}\label{section-80}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -17146,8 +17131,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-79}{%
-\subsection{}\label{section-79}}
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -17161,8 +17146,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-80}{%
-\subsection{}\label{section-80}}
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -17179,8 +17164,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -17215,8 +17200,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -17227,8 +17212,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
 
 Find the percentage of the total countries in each continent.
 
@@ -17237,22 +17222,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-86}{%
-\subsubsection{}\label{section-86}}
+\hypertarget{section-88}{%
+\subsubsection{}\label{section-88}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -17274,8 +17259,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-87}{%
-\subsubsection{}\label{section-87}}
+\hypertarget{section-89}{%
+\subsubsection{}\label{section-89}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -17297,24 +17282,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-88}{%
-\subsubsection{}\label{section-88}}
+\hypertarget{section-90}{%
+\subsubsection{}\label{section-90}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-89}{%
-\subsection{}\label{section-89}}
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-90}{%
-\subsection{}\label{section-90}}
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -17332,15 +17317,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-91}{%
-\subsection{}\label{section-91}}
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-92}{%
-\subsection{}\label{section-92}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -17349,8 +17334,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-93}{%
-\subsection{}\label{section-93}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -17452,6 +17437,610 @@ work)}:
 Note that your \textbf{function must be general}, i.e., it must work for
 any other dataset as well. This means, you cannot hard code a column
 name, or anything specific to \texttt{survey\_data} in the function.
+
+\hypertarget{assignment-d}{%
+\chapter{Assignment D}\label{assignment-d}}
+
+Data Visualization
+
+\hfill\break
+
+\hypertarget{instructions-5}{%
+\section*{Instructions}\label{instructions-5}}
+\addcontentsline{toc}{section}{Instructions}
+
+\markright{Instructions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You may talk to a friend, discuss the questions and potential
+  directions for solving them. However, you need to write your own
+  solutions and code separately, and not as a group activity.
+\item
+  Do not write your name on the assignment.
+\item
+  Write your code in the \emph{Code} cells and your answer in the
+  \emph{Markdown} cells of the Jupyter notebook. Ensure that the
+  solution is written neatly enough to understand and grade.
+\item
+  Use
+  \href{https://quarto.org/docs/output-formats/html-basics.html}{Quarto}
+  to print the \emph{.ipynb} file as HTML. You will need to open the
+  command prompt, navigate to the directory containing the file, and use
+  the command: \texttt{quarto\ render\ filename.ipynb\ -\/-to\ html}.
+  Submit the HTML file.
+\item
+  The assignment is worth 100 points, and is due on \textbf{4th November
+  2024 at 11:59 pm}.
+\item
+  Some questions in this assignment do not have a single correct answer.
+  As data visualization is subject to interpretation, any logically
+  sound answer / explanation is acceptable.
+\item
+  There is a bonus question worth 20 points. However, there is no
+  partial credit for the bonus question. You will get 20 or 0. If
+  everything is correct, you can score 120 out of 100 in the assignment.
+\end{enumerate}
+
+\hypertarget{exploring-factors-associated-with-profitability-of-a-movie}{%
+\chapter*{Exploring factors associated with profitability of a
+movie}\label{exploring-factors-associated-with-profitability-of-a-movie}}
+\addcontentsline{toc}{chapter}{Exploring factors associated with
+profitability of a movie}
+
+\markboth{Exploring factors associated with profitability of a
+movie}{Exploring factors associated with profitability of a movie}
+
+In this assignment we'll attempt to find the factors (or variables) that
+make a movie profitable.
+
+Read the movies data from
+\href{https://raw.githubusercontent.com/vega/vega-datasets/master/data/movies.json}{here},
+in a Pandas DataFrame named as \texttt{movies\_data}. The profit of
+movie is defined as:
+
+\[profit = Worldwide \ Gross - Production \ Budget\]
+
+\hypertarget{time-trend}{%
+\section{Time trend}\label{time-trend}}
+
+Let us analyze if the profitability of a movie is associated with the
+time of its release.
+
+\hypertarget{month-of-release}{%
+\subsection{Month of release}\label{month-of-release}}
+
+\hypertarget{section-96}{%
+\subsubsection{}\label{section-96}}
+
+Make an appropriate plot to visualize the mean profit of movies released
+each month.
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the Pandas function
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html}{to\_datetime()}
+  to convert \emph{Release Date} to a \texttt{datetime} datatype.
+\item
+  Use the library
+  \href{https://docs.python.org/3/library/datetime.html}{\texttt{datetime}}
+  to extract the month from \emph{Release Date}.
+\end{enumerate}
+
+\emph{(6 points)}
+
+\hypertarget{section-97}{%
+\subsubsection{}\label{section-97}}
+
+Based on the plot, which seasons have been the most and least profitable
+(on an average) for a movie release. Don't worry about the exact start
+and end date of seasons. Don't perform any computations. Just make
+comments based on the plot. You can use seasons such as \emph{early
+summer, late spring} etc.
+
+\emph{(2 points)}
+
+\hypertarget{month-of-release-with-number-of-movies-in-each-genre}{%
+\subsection{Month of release with number of movies in each
+genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
+
+\hypertarget{section-98}{%
+\subsubsection{}\label{section-98}}
+
+Now that we know the most profitable season for releasing movies, let us
+visualize if some \texttt{genre}s are more popular during certain
+seasons.
+
+Use the code below to create a new column called \texttt{genre}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Combining Major Genre}
+\NormalTok{movies\_data[}\StringTok{\textquotesingle{}genre\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movies\_data[}\StringTok{\textquotesingle{}Major Genre\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:}\StringTok{\textquotesingle{}Comedy\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{!=}\VariableTok{None} \KeywordTok{and} \StringTok{\textquotesingle{}Comedy\textquotesingle{}} \KeywordTok{in}\NormalTok{ x }\ControlFlowTok{else} \StringTok{\textquotesingle{}Horror\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{!=}\VariableTok{None} \KeywordTok{and} \StringTok{\textquotesingle{}Thriller\textquotesingle{}} \KeywordTok{in}\NormalTok{ x }\ControlFlowTok{else} \StringTok{\textquotesingle{}Action/Adventure\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{!=}\VariableTok{None} \KeywordTok{and}\NormalTok{ (}\StringTok{\textquotesingle{}Action\textquotesingle{}} \KeywordTok{in}\NormalTok{ x }\KeywordTok{or} \StringTok{\textquotesingle{}Adventure\textquotesingle{}} \KeywordTok{in}\NormalTok{ x) }\ControlFlowTok{else} \StringTok{\textquotesingle{}Musical/Western\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{!=}\VariableTok{None} \KeywordTok{and}\NormalTok{ (}\StringTok{\textquotesingle{}Musical\textquotesingle{}} \KeywordTok{in}\NormalTok{ x }\KeywordTok{or} \StringTok{\textquotesingle{}Western\textquotesingle{}} \KeywordTok{in}\NormalTok{ x }\KeywordTok{or} \StringTok{\textquotesingle{}Concert\textquotesingle{}} \KeywordTok{in}\NormalTok{ x) }\ControlFlowTok{else}\NormalTok{ x)}
+\end{Highlighting}
+\end{Shaded}
+
+Make an appropriate plot to visualize the number of movies released for
+each \texttt{genre} in each calendar month.
+
+\emph{(8 points)}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use
+  \href{https://seaborn.pydata.org/generated/seaborn.barplot.html}{barplot()}
+  with \emph{estimator} as \texttt{len}
+\item
+  Use the \emph{hue} argument
+\end{enumerate}
+
+\hypertarget{section-99}{%
+\subsubsection{}\label{section-99}}
+
+Based on the above plot, which \texttt{genre} is the most popular during
+the most profitable season of release? And which genre is the most
+popular during the least profitable season of release?
+
+\emph{(2 points)}
+
+\hypertarget{month-of-release-with-proportion-of-movies-in-each-genre}{%
+\subsection{Month of release with proportion of movies in each
+genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
+
+\hypertarget{section-100}{%
+\subsubsection{}\label{section-100}}
+
+Visualize the proportion of movies in each \texttt{genre} for each month
+of release.
+
+Use the code below to re-arrange your data that will help with creating
+the visualization
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genre\_proportion\_release\_month }\OperatorTok{=}\NormalTok{ pd.crosstab(index}\OperatorTok{=}\NormalTok{movies\_data[}\StringTok{\textquotesingle{}release\_month\textquotesingle{}}\NormalTok{],}
+\NormalTok{                             columns}\OperatorTok{=}\NormalTok{movies\_data[}\StringTok{\textquotesingle{}genre\textquotesingle{}}\NormalTok{],}
+\NormalTok{                             normalize}\OperatorTok{=}\StringTok{"index"}\NormalTok{)}
+\NormalTok{genre\_proportion\_release\_month.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Make a 100\% stacked barplot with the Pandas
+  \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html}{plot()}
+  function
+\item
+  Use the argument \texttt{bbox\_to\_anchor} with the Matplotlib
+  function
+  \href{https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html}{legend()}
+  to place the legend outside the plot area.
+\end{enumerate}
+
+\emph{(8 points)}
+
+\hypertarget{section-101}{%
+\subsubsection{}\label{section-101}}
+
+Which \texttt{genre} is the most popular during the month of May, and
+which one is the most popular during December?
+
+\emph{(2 points)}
+
+\hypertarget{year-of-release-with-genre}{%
+\subsection{Year of release with
+genre}\label{year-of-release-with-genre}}
+
+\hypertarget{section-102}{%
+\subsubsection{}\label{section-102}}
+
+Make an appropriate figure to visualize the average profit of movies of
+each \texttt{genre} for each year. Consider only the movies released
+from 1991 to 2010. Also show the 95\% confidence interval in the average
+profit.
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the library \texttt{datetime} to extract year from
+  \texttt{Release\ Date}.
+\item
+  Use the Seaborn
+  \href{https://seaborn.pydata.org/generated/seaborn.FacetGrid.html}{Facetgrid()}
+  object.
+\item
+  A figure can have multiple subplots. Put the figure for each genre in
+  a separate subplot.
+\end{enumerate}
+
+\emph{(6 points)}
+
+\hypertarget{section-103}{%
+\subsubsection{}\label{section-103}}
+
+Based on the figure above, which \texttt{genre}'s profitability seems to
+be increasing over the years, and which \texttt{genre} has the least
+uncertainty in profit for most of the years.
+
+\emph{(2 points)}
+
+\hypertarget{associations}{%
+\section{Associations}\label{associations}}
+
+\hypertarget{pairplot-heatmap}{%
+\subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
+
+\hypertarget{section-104}{%
+\subsubsection{}\label{section-104}}
+
+Make a pairplot and heatmap of all the continuous variables in the data.
+
+\emph{(8 points)}
+
+\hypertarget{section-105}{%
+\subsubsection{}\label{section-105}}
+
+Are there any trends that you can see in the pairplot, but not in the
+heatmap?
+
+\emph{(2 points)}
+
+\hypertarget{section-106}{%
+\subsubsection{}\label{section-106}}
+
+Based on the plots in 2(a)(i), which variables are associated with
+profit?
+
+\emph{(2 points)}
+
+\hypertarget{section-107}{%
+\subsubsection{}\label{section-107}}
+
+Among the variables listed in 2(a)(iii), select a subset of variables
+such that none of them are highly associated with each other. The rest
+of the variables identified in 2(a)(iii) are redundant with regard to
+association with profit.
+
+\emph{(2 points)}
+
+\hypertarget{nested-associations}{%
+\subsection{Nested associations}\label{nested-associations}}
+
+\hypertarget{section-108}{%
+\subsubsection{}\label{section-108}}
+
+Use the code below to create some new columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movies\_data[}\StringTok{\textquotesingle{}screenplay\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movies\_data.Source.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:}\StringTok{\textquotesingle{}Non{-}original\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{!=}\StringTok{\textquotesingle{}Original Screenplay\textquotesingle{}} \ControlFlowTok{else}\NormalTok{ x)}
+\NormalTok{movies\_data[}\StringTok{\textquotesingle{}rating\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movies\_data[}\StringTok{\textquotesingle{}MPAA Rating\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:}\StringTok{\textquotesingle{}R rated\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{==}\StringTok{\textquotesingle{}R\textquotesingle{}} \ControlFlowTok{else} \StringTok{\textquotesingle{}Not R rated\textquotesingle{}}\NormalTok{)}
+\NormalTok{movies\_data[}\StringTok{\textquotesingle{}fiction\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movies\_data[}\StringTok{\textquotesingle{}Creative Type\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:}\StringTok{\textquotesingle{}Contemporary\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ x}\OperatorTok{==}\StringTok{\textquotesingle{}Contemporary Fiction\textquotesingle{}} \ControlFlowTok{else} \StringTok{\textquotesingle{}other\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Make an appropriate figure to visualize the association of the number of
+IMDB votes with profit for each genre (use the variable \texttt{genre}).
+Which genre has the highest association between profit and IMDB votes?
+
+\emph{(8 points)}
+
+\hypertarget{section-109}{%
+\subsubsection{}\label{section-109}}
+
+Make an appropriate figure to visualize the association between the
+number of IMDB votes and profit, for each combination of the fiction
+type (use the variable \texttt{fiction}) and the movie rating (use the
+variable \texttt{rating}).
+
+For which combination of \texttt{fiction} and \texttt{rating} categories
+do you observe the highest association between IMDB votes and profit?
+
+\emph{(8 points)}
+
+\textbf{Hint:} Use \emph{row} and \emph{col} attributes of the Seaborn
+\href{https://seaborn.pydata.org/generated/seaborn.FacetGrid.html}{Facetgrid()}
+object.
+
+\hypertarget{profit-based-on-movie-director}{%
+\subsection{Profit based on movie
+director}\label{profit-based-on-movie-director}}
+
+\hypertarget{section-110}{%
+\subsubsection{}\label{section-110}}
+
+Consider the directors who have directed more than 10 movies (based on
+the dataset). Make a horizontal barplot that shows the mean profit of
+the movies of these directors along with the 95\% confidence interval.
+Sort the bars of the barplot such that the director with the highest
+mean profit is at the top.
+
+If the dataset \texttt{director\_with\_more\_than\_10\_movies} has only
+those movies that correspond to directors with more than 10 movies, then
+the following code will give you the order in which the names of the
+directors must appear in the barplot:
+
+\emph{(8 points)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{director\_with\_more\_than\_10\_movies[[}\StringTok{\textquotesingle{}Director\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}profit\textquotesingle{}}\NormalTok{]].groupby(}\StringTok{\textquotesingle{}Director\textquotesingle{}}\NormalTok{).mean().sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}profit\textquotesingle{}}\NormalTok{,}
+\NormalTok{                                            ascending}\OperatorTok{=} \VariableTok{False}\NormalTok{).index.to\_list()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-111}{%
+\subsubsection{}\label{section-111}}
+
+Based on the above plot, which director has the highest mean
+profitability, and which one has the highest variation in profitability?
+
+\emph{(2 points)}
+
+\hypertarget{distributions}{%
+\section{Distributions}\label{distributions}}
+
+\hypertarget{distribution-of-profit-based-on-genre-boxplots}{%
+\subsection{Distribution of profit based on genre
+(boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
+
+\hypertarget{section-112}{%
+\subsubsection{}\label{section-112}}
+
+Make boxplots to visualize the distribution of \texttt{profit} based on
+\texttt{genre}. Based on the plot, which genre has the most profitable
+movies?
+
+\emph{(6 points)}
+
+\hypertarget{section-113}{%
+\subsubsection{}\label{section-113}}
+
+Which genre has the most variation in profit, and which one has the
+least?
+
+\emph{(2 points)}
+
+\hypertarget{distribution-of-profit-based-on-genre-density-plots}{%
+\subsection{Distribution of profit based on genre (density
+plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
+
+\hypertarget{section-114}{%
+\subsubsection{}\label{section-114}}
+
+Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
+the limit on the horizonal axis, so that the plots are clearly visible.
+
+\emph{(6 points)}
+
+\hypertarget{section-115}{%
+\subsubsection{}\label{section-115}}
+
+What additional insight / trend can you seen in the above plot that you
+cannot see with the boxplots?
+
+\emph{(2 points)}
+
+\hypertarget{insights}{%
+\section{Insights}\label{insights}}
+
+From all the visualizations above, describe the insights you get about
+the factors associated with the profitability of a movie.
+
+Also, elaborate on the extent to which these trends can be generalized.
+For example, comment on whether these trends be generalized to the
+current time and all the Hollywood movies? If not, is there any time
+period or type of movie to which these trends can be applicable?
+
+\emph{(4+ 4 points)}
+
+\hypertarget{bonus-question-stock-market}{%
+\chapter*{Bonus question: Stock
+Market}\label{bonus-question-stock-market}}
+\addcontentsline{toc}{chapter}{Bonus question: Stock Market}
+
+\markboth{Bonus question: Stock Market}{Bonus question: Stock Market}
+
+This question is worth 20 points. However, there is no partial credit.
+It will be 20 or 0.
+
+The stock market is made up of exchanges, such as the New York Stock
+Exchange and the Nasdaq. Stocks are listed on a specific exchange, which
+brings buyers and sellers together and acts as a market for the shares
+of those stocks. The exchange tracks the supply and demand --- and
+directly related, the price --- of each stock.
+
+A market index tracks the performance of a group of stocks, which either
+represents the market as a whole or a specific sector of the market,
+like technology or retail companies. You're likely to hear most about
+the S\&P 500, the Nasdaq composite and the Dow Jones Industrial Average;
+they are often used as proxies for the performance of the overall
+market.
+
+There are two types of investment stratigies: active and passive.
+
+\hypertarget{active-investing}{%
+\subsection*{Active investing}\label{active-investing}}
+\addcontentsline{toc}{subsection}{Active investing}
+
+An active investment strategy involves using the information acquired by
+expert stock analysts to actively buy and sell stocks with specific
+characteristics. The goal is to beat the results of the indices and
+general stock market with higher returns and/or lower risk.
+
+\hypertarget{passive-investing}{%
+\subsection*{Passive Investing}\label{passive-investing}}
+\addcontentsline{toc}{subsection}{Passive Investing}
+
+Passive investors have a buy-and-hold mentality that focuses on
+benefitting from the overall increase in market prices over time. One of
+the major benefits of passive investing is that it minimizes the
+mistakes investors can make when they react emotionally to every move of
+the stock market.
+
+The easiest way to implement a passive approach is to buy and hold an
+index fund that follows one of the major indices like the S\&P 500, Dow
+Jones, or Russell 2000 (small-cap stocks). These funds pool money from
+multiple investors to buy the individual stocks, bonds, or securities
+that make up their market index. When the index changes its components,
+the index funds that follow it also switch up their holdings to match.
+
+\hypertarget{tasks}{%
+\subsection*{Tasks}\label{tasks}}
+\addcontentsline{toc}{subsection}{Tasks}
+
+In this exercise, we use S\&P 500 index as an example to explore the
+gains/returns for passive invesement.
+
+\hypertarget{return}{%
+\subsection*{Return}\label{return}}
+\addcontentsline{toc}{subsection}{Return}
+
+The data is provided in a csv file, with dates roughly from 2000 to
+2022. And we use the column \textbf{Close} as the \textbf{price} on a
+specific day.
+
+If we buy the index on \(t_1\) and sell it on \(t_2\), the
+\textbf{return} is defined as
+\[r_{t_1,t_2} = (P_{t_2}-P_{t_1})/P_{t_1}\].
+
+Sometimes we are interested on the return on holding the index for a
+specific period \(T\), the return is \[r_{t,T} = (P_{t+T}-P_{t})/P_{t}\]
+where \(t\) is the date we buy the stock and \(T\) is the holding
+period. Since the stock is not traded on every day, when calculating
+\({t+T}\) we simply skip the non-trading dates.
+
+\hypertarget{risk}{%
+\subsection*{Risk}\label{risk}}
+\addcontentsline{toc}{subsection}{Risk}
+
+If we take the return as a random variable, we could use standard
+deviation as its risk. A risk-averse investor expects a stable (low
+volatility) return.
+
+\hypertarget{sharpe-ratio}{%
+\subsection*{Sharpe Ratio}\label{sharpe-ratio}}
+\addcontentsline{toc}{subsection}{Sharpe Ratio}
+
+People like high return and low risk investment. But on the other hand,
+in the market high return always associates high risk (e.g.~stock) and
+low risk means low return (e.g.~treasury bonds).
+
+The Sharpe ratio compares the excess return of an investment with its
+risk to make a single measure: \[SR=(R-R_f)/\sigma\] where \(R\) and
+\(\sigma\) are the expected return and stddev for the investment and
+\(R_f\) is the risk free rate.
+
+Risk free rate is the rate of return offered by an investment that
+carries zero risk. In reality there is no truly risk free rate, but we
+usually take something like three-month U.S. Treasury bill as a proxy as
+risk free rate. To be simple, in this exercise we just \textbf{take risk
+free rate as 0}.
+
+\textbf{Read the data from sp500.csv.} The dataset can be found in the
+Datasets section of the book.
+
+\hypertarget{return-on-investment}{%
+\section{Return on investment}\label{return-on-investment}}
+
+\hypertarget{impatient-investor-daily}{%
+\subsection{Impatient investor (daily)}\label{impatient-investor-daily}}
+
+Suppose there is an investor who only holds the index for a single day
+(buy yesterday sell today).
+
+Based on the data,
+
+\hypertarget{section-116}{%
+\subsubsection{}\label{section-116}}
+
+Show the histogram graph for all the possible returns.
+
+\hypertarget{section-117}{%
+\subsubsection{}\label{section-117}}
+
+What is the expected return, risk and sharpe ratio?
+
+\hypertarget{section-118}{%
+\subsubsection{}\label{section-118}}
+
+Is the return significantly greater than zero (a.k.a positive return)
+(use a threshold 0.01 for \(p\)-value) ?
+
+\textbf{HINT}: use \texttt{scipy.stats.ttest\_1samp} to do one-sided
+mean test. (We ignore the fact that \emph{T-test} requires the data are
+sampled from a population of normal distribution, which might not be
+true in this exercise)
+
+\emph{(6 points)}
+
+\hypertarget{patient-investor-yearly}{%
+\subsection{Patient Investor (yearly)}\label{patient-investor-yearly}}
+
+Suppose there is an investor who will hold the index for a year (suppose
+there are 250 trading days in a year). Do the same analysis as the
+above:
+
+\hypertarget{section-119}{%
+\subsubsection{}\label{section-119}}
+
+Show the histogram graph for all the possible returns.
+
+\hypertarget{section-120}{%
+\subsubsection{}\label{section-120}}
+
+What is the expected return, risk and sharpe ratio?
+
+\hypertarget{section-121}{%
+\subsubsection{}\label{section-121}}
+
+Is the return significantly greater than zero (a.k.a positive return)
+(use a threshold 0.01 for \(p\)-value) ?
+
+\emph{(6 points)}
+
+\hypertarget{from-daily-to-yearly}{%
+\subsection{From daily to yearly}\label{from-daily-to-yearly}}
+
+Explore how the expected return/risk/shape ratio change as we increase
+our holding period from 1 day to 1 year(250 days).
+
+Show/answer:
+
+\hypertarget{section-122}{%
+\subsubsection{}\label{section-122}}
+
+At least how many days do you need to hold the index in order to make a
+significant positive return (threshold 0.01)?
+
+\hypertarget{section-123}{%
+\subsubsection{}\label{section-123}}
+
+How are the returns associated with the risks for different investment
+strategies?
+
+\hypertarget{section-124}{%
+\subsubsection{}\label{section-124}}
+
+Make a graph as shown below.
+
+\emph{(18 points)}
+
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
 
 \hypertarget{datasets-templates}{%
 \chapter{Datasets \& Templates}\label{datasets-templates}}
