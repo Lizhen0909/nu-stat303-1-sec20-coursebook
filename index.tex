@@ -194,7 +194,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -14979,8 +14979,15 @@ Matplotlib}\label{plotting-with-object-oriented-interface-of-matplotlib}}
 Hierarchy}\label{understanding-matplotlib-object-hierarchy}}
 
 To understand the object-oriented interface of Matplotlib, we have to
-start with a couple of fundamental concepts related to a plot. * Figure
-* Axes
+start with a couple of fundamental concepts related to a plot.
+
+\begin{itemize}
+\tightlist
+\item
+  Figure
+\item
+  Axes
+\end{itemize}
 
 Think of the entire plot as an object hierarchy with Figure at the top
 of it. Here is a small subset of the hierarchy with Figure being at the
@@ -15230,12 +15237,23 @@ Syntax of \texttt{add\_axes()}
 
 \texttt{ax\ =\ fig.add\_axes({[}left,\ bottom,\ width,\ height{]})}
 
-where * left: The x-position (horizontal starting point) of the axes, as
-a fraction of the figure width (0 to 1). * bottom: The y-position
-(vertical starting point) of the axes, as a fraction of the figure
-height (0 to 1). * width: The width of the axes, as a fraction of the
-figure width (0 to 1). * height: The height of the axes, as a fraction
-of the figure height (0 to 1).
+where
+
+\begin{itemize}
+\tightlist
+\item
+  left: The x-position (horizontal starting point) of the axes, as a
+  fraction of the figure width (0 to 1).
+\item
+  bottom: The y-position (vertical starting point) of the axes, as a
+  fraction of the figure height (0 to 1).
+\item
+  width: The width of the axes, as a fraction of the figure width (0 to
+  1).
+\item
+  height: The height of the axes, as a fraction of the figure height (0
+  to 1).
+\end{itemize}
 
 Below is an example demonstrating the use of \texttt{add\_axes()}. You
 can also explore the \texttt{inset\_axes()} method for creating inset
@@ -15751,9 +15769,44 @@ Let's import them
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated and will be removed in a future release
+  "class": algorithms.Blowfish,
+\end{verbatim}
+
 \hypertarget{static-plots-with-geopandas}{%
 \subsection{Static Plots with
 GeoPandas}\label{static-plots-with-geopandas}}
+
+A \textbf{shapefile} is a widely-used format for storing geographic
+information system (GIS) data, specifically vector data. It contains
+geometries (like points, lines, and polygons) that represent features on
+the earth's surface, along with associated attributes for each feature,
+such as names, populations, or other data relevant to the feature.
+
+\hypertarget{components-of-a-shapefile}{%
+\subsubsection{Components of a
+Shapefile}\label{components-of-a-shapefile}}
+
+A shapefile isn't a single file but a collection of files with the same
+name and different extensions, which work together to store geographic
+and attribute data:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{.shp}: Stores the geometry (shapes of features, like points,
+  lines, polygons).
+\item
+  \texttt{.shx}: Contains an index to quickly access geometries in the
+  .shp file.
+\item
+  \texttt{.dbf}: A table storing attributes associated with each
+  feature.
+\end{itemize}
+
+There may also be other optional files (e.g., .prj for projection
+information).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -15775,7 +15828,7 @@ GeoPandas}\label{static-plots-with-geopandas}}
 \begin{verbatim}
 <>:5: SyntaxWarning: invalid escape sequence '\g'
 <>:5: SyntaxWarning: invalid escape sequence '\g'
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\2125888739.py:5: SyntaxWarning: invalid escape sequence '\g'
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_33016\2125888739.py:5: SyntaxWarning: invalid escape sequence '\g'
   chicago = gpd.read_file('datasets/chicago_boundaries\geo_export_26bce2f2-c163-42a9-9329-9ca6e082c5e9.shp')
 \end{verbatim}
 
@@ -15786,6 +15839,94 @@ C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\2125888739.py:5: SyntaxWarni
 }
 
 \end{figure}
+
+Let's print out the information in the shapefile
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule\noalign{}
+& area & area\_num\_1 & area\_numbe & comarea & comarea\_id & community
+& perimeter & shape\_area & shape\_len & geometry \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.0 & 35 & 35 & 0.0 & 0.0 & DOUGLAS & 0.0 & 4.600462e+07 &
+31027.054510 & POLYGON ((-87.60914 41.84469, -87.60915 41.844... \\
+1 & 0.0 & 36 & 36 & 0.0 & 0.0 & OAKLAND & 0.0 & 1.691396e+07 &
+19565.506153 & POLYGON ((-87.59215 41.81693, -87.59231 41.816... \\
+2 & 0.0 & 37 & 37 & 0.0 & 0.0 & FULLER PARK & 0.0 & 1.991670e+07 &
+25339.089750 & POLYGON ((-87.6288 41.80189, -87.62879 41.8017... \\
+3 & 0.0 & 38 & 38 & 0.0 & 0.0 & GRAND BOULEVARD & 0.0 & 4.849250e+07 &
+28196.837157 & POLYGON ((-87.60671 41.81681, -87.6067 41.8165... \\
+4 & 0.0 & 39 & 39 & 0.0 & 0.0 & KENWOOD & 0.0 & 2.907174e+07 &
+23325.167906 & POLYGON ((-87.59215 41.81693, -87.59215 41.816... \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago[}\StringTok{\textquotesingle{}geometry\textquotesingle{}}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0    POLYGON ((-87.60914 41.84469, -87.60915 41.844...
+1    POLYGON ((-87.59215 41.81693, -87.59231 41.816...
+2    POLYGON ((-87.6288 41.80189, -87.62879 41.8017...
+3    POLYGON ((-87.60671 41.81681, -87.6067 41.8165...
+4    POLYGON ((-87.59215 41.81693, -87.59215 41.816...
+Name: geometry, dtype: geometry
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check the column names to see available data fields}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Columns in the shapefile:"}\NormalTok{, chicago.columns)}
+
+\CommentTok{\# Check the data types of each column}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Data types:"}\NormalTok{, chicago.dtypes)}
+
+\CommentTok{\# View the spatial extent (bounding box) of the shapes}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Bounding box:"}\NormalTok{, chicago.total\_bounds)}
+
+\CommentTok{\# Check the coordinate reference system (CRS)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"CRS:"}\NormalTok{, chicago.crs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Columns in the shapefile: Index(['area', 'area_num_1', 'area_numbe', 'comarea', 'comarea_id',
+       'community', 'perimeter', 'shape_area', 'shape_len', 'geometry'],
+      dtype='object')
+Data types: area           float64
+area_num_1      object
+area_numbe      object
+comarea        float64
+comarea_id     float64
+community       object
+perimeter      float64
+shape_area     float64
+shape_len      float64
+geometry      geometry
+dtype: object
+Bounding box: [-87.94011408  41.64454312 -87.5241371   42.02303859]
+CRS: EPSG:4326
+\end{verbatim}
+
+To enhance the geospatial plot, we'll use the shapefile as a background
+to provide context for Chicago's community areas. On top of that, we'll
+layer points of interest, such as restaurants, and shops, to illustrate
+the city's amenities. This approach will make the map more informative
+and visually engaging, with community boundaries as the foundation and
+key locations overlayed to highlight areas of interest.
+
+Next, we will add the Divvy bicycle stations on top of the chicago
+shapefile
 
 \hypertarget{dataset-bicycle-sharing-in-chicago}{%
 \subsection{Dataset: Bicycle Sharing in
@@ -15849,7 +15990,16 @@ Cloudy & 6 \\
 & 6 \\
 \end{longtable}
 
-Below are basic data cleaning
+In the Divvy dataset, each trip record includes the latitude and
+longitude coordinates of both the pickup and drop-off locations, which
+correspond to Divvy bike stations. These coordinates allow us to map the
+precise locations of each station, making it possible to visually
+display the network of Divvy stations across the city. By plotting these
+stations on a map, we can better understand the geographic distribution
+and accessibility of Divvy's bike-sharing network.
+
+Below are the basic data cleaning steps to extract the coordinates of
+the Divvy stations.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -15866,6 +16016,9 @@ Below are basic data cleaning
 \hypertarget{adding-the-divvy-station-to-the-plot}{%
 \subsection{Adding the divvy station to the
 plot}\label{adding-the-divvy-station-to-the-plot}}
+
+Once the coordinates are prepared, we'll add them as scatter plots on
+top of the Chicago shapefile
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -15898,7 +16051,7 @@ C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\1459074587.py:4: SyntaxWarni
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-32-output-2.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-35-output-2.png}
 
 }
 
@@ -15907,6 +16060,9 @@ C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\1459074587.py:4: SyntaxWarni
 \hypertarget{change-the-chicago-shapefile}{%
 \subsection{Change the chicago
 shapefile}\label{change-the-chicago-shapefile}}
+
+Using a different Chicago shapefile from \texttt{GeoDa} is a great way
+to observe how geographic boundaries or data details may vary
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -15926,7 +16082,7 @@ Text(0.5, 1.0, 'Chicago Community Areas')
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-33-output-2.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-36-output-2.png}
 
 }
 
@@ -16243,6 +16399,1894 @@ the week
 Make a density plot showing the distributions of total bills on each
 day.
 
+\hypertarget{data-cleaning-and-preparation}{%
+\chapter{Data cleaning and
+preparation}\label{data-cleaning-and-preparation}}
+
+\hypertarget{handling-missing-data}{%
+\section{Handling missing data}\label{handling-missing-data}}
+
+Missing values in a dataset can occur due to several reasons such as
+breakdown of measuring equipment, accidental removal of observations,
+lack of response by respondents, error on the part of the researcher,
+etc.
+
+Let us read the dataset \emph{GDP\_missing\_data.csv}, in which we have
+randomly removed some values, or put missing values in some of the
+columns.
+
+We'll also read \emph{GDP\_complete\_data.csv}, in which we have not
+removed any values. We'll use this data later to assess the accuracy of
+our guess or estimate of missing values in
+\emph{GDP\_missing\_data.csv}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ sklearn }\ImportTok{as}\NormalTok{ sk}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\NormalTok{gdp\_missing\_values\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_missing\_data.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_complete\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_complete\_data.csv\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_missing\_values\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& economicActivityFemale & country & lifeMale & infantMortality &
+gdpPerCapita & economicActivityMale & illiteracyMale & illiteracyFemale
+& lifeFemale & geographic\_location & contraception & continent \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 7.2 & Afghanistan & 45.0 & 154.0 & 2474.0 & 87.5 & NaN & 85.0 & 46.0
+& Southern Asia & NaN & Asia \\
+1 & 7.8 & Algeria & 67.5 & 44.0 & 11433.0 & 76.4 & 26.1 & 51.0 & 70.3 &
+Northern Africa & NaN & Africa \\
+2 & 41.3 & Argentina & 69.6 & 22.0 & NaN & 76.2 & 3.8 & 3.8 & 76.8 &
+South America & NaN & South America \\
+3 & 52.0 & Armenia & 67.2 & 25.0 & 13638.0 & 65.0 & NaN & 0.5 & 74.0 &
+Western Asia & NaN & Asia \\
+4 & 53.8 & Australia & NaN & 6.0 & 54891.0 & NaN & 1.0 & 1.0 & 81.2 &
+Oceania & NaN & Oceania \\
+\end{longtable}
+
+Observe that the \texttt{gdp\_missing\_values\_data} dataset consists of
+some missing values shown as NaN (Not a Number).
+
+\hypertarget{identifying-missing-values-in-a-dataframe}{%
+\subsection{Identifying missing values in a
+dataframe}\label{identifying-missing-values-in-a-dataframe}}
+
+There are multiple ways to identify missing values in a dataframe
+
+\hypertarget{describe-method}{%
+\subsubsection{\texorpdfstring{\texttt{describe()}
+Method}{describe() Method}}\label{describe-method}}
+
+Note that the descriptive statistics methods associated with Pandas
+objects ignore missing values by default. Consider the summary
+statistics of \texttt{gdp\_missing\_values\_data}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_missing\_values\_data.describe()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\toprule\noalign{}
+& economicActivityFemale & lifeMale & infantMortality & gdpPerCapita &
+economicActivityMale & illiteracyMale & illiteracyFemale & lifeFemale &
+contraception \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+count & 145.000000 & 145.000000 & 145.000000 & 145.000000 & 145.000000 &
+145.000000 & 145.000000 & 145.000000 & 84.000000 \\
+mean & 45.935172 & 65.491724 & 37.158621 & 24193.482759 & 76.563448 &
+13.570028 & 21.448897 & 70.615862 & 51.773810 \\
+std & 16.875922 & 9.099256 & 34.465699 & 22748.764444 & 7.854730 &
+16.497954 & 25.497045 & 9.923791 & 31.930026 \\
+min & 1.900000 & 36.000000 & 3.000000 & 772.000000 & 51.200000 &
+0.000000 & 0.000000 & 39.100000 & 0.000000 \\
+25\% & 35.500000 & 62.900000 & 10.000000 & 6837.000000 & 72.000000 &
+1.000000 & 2.300000 & 67.500000 & 17.000000 \\
+50\% & 47.600000 & 67.800000 & 24.000000 & 15184.000000 & 77.300000 &
+6.600000 & 9.720000 & 73.900000 & 65.000000 \\
+75\% & 55.900000 & 72.400000 & 54.000000 & 35957.000000 & 81.600000 &
+19.500000 & 30.200000 & 78.100000 & 77.000000 \\
+max & 90.600000 & 77.400000 & 169.000000 & 122740.000000 & 93.000000 &
+70.500000 & 90.800000 & 82.900000 & 79.000000 \\
+\end{longtable}
+
+Observe that the \texttt{count} statistics report the number of
+non-missing values of each column in the data, as the number of rows in
+the data (see code below) is more than the number of non-missing values
+of all the variables in the above table. Similarly, for the rest of the
+statistics, such as \texttt{mean}, \texttt{std}, etc., the missing
+values are ignored.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The dataset gdp\_missing\_values\_data has 155 rows}
+\NormalTok{gdp\_missing\_values\_data.shape[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+155
+\end{verbatim}
+
+\hypertarget{info-method}{%
+\subsubsection{\texorpdfstring{\texttt{info()}
+Method}{info() Method}}\label{info-method}}
+
+Shows the count of non-null entries in each column, helping you quickly
+identify columns with missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_missing\_values\_data.info()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 155 entries, 0 to 154
+Data columns (total 12 columns):
+ #   Column                  Non-Null Count  Dtype  
+---  ------                  --------------  -----  
+ 0   economicActivityFemale  145 non-null    float64
+ 1   country                 155 non-null    object 
+ 2   lifeMale                145 non-null    float64
+ 3   infantMortality         145 non-null    float64
+ 4   gdpPerCapita            145 non-null    float64
+ 5   economicActivityMale    145 non-null    float64
+ 6   illiteracyMale          145 non-null    float64
+ 7   illiteracyFemale        145 non-null    float64
+ 8   lifeFemale              145 non-null    float64
+ 9   geographic_location     155 non-null    object 
+ 10  contraception           84 non-null     float64
+ 11  continent               155 non-null    object 
+dtypes: float64(9), object(3)
+memory usage: 14.7+ KB
+\end{verbatim}
+
+\hypertarget{isnull-method}{%
+\subsubsection{\texorpdfstring{\texttt{isnull()}
+Method}{isnull() Method}}\label{isnull-method}}
+
+This is one of the most direct methods. Using
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isnull.html}{\texttt{df.isnull()}}
+returns a DataFrame of Boolean values where \texttt{True} indicates a
+missing value. To get a summary, you can use \texttt{df.isnull().sum()}
+to see the count of missing values in each column.
+
+For finding the number of missing values in each column of
+\texttt{gdp\_missing\_values\_data}, we will sum up the missing values
+in each column of the dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_missing\_values\_data.isnull().}\BuiltInTok{sum}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+economicActivityFemale    10
+country                    0
+lifeMale                  10
+infantMortality           10
+gdpPerCapita              10
+economicActivityMale      10
+illiteracyMale            10
+illiteracyFemale          10
+lifeFemale                10
+geographic_location        0
+contraception             71
+continent                  0
+dtype: int64
+\end{verbatim}
+
+\hypertarget{types-of-missing-values}{%
+\subsection{Types of Missing Values}\label{types-of-missing-values}}
+
+In data science, missing values typically fall into three main types,
+each requiring different handling strategies:
+
+\hypertarget{missing-completely-at-random-mcar}{%
+\subsubsection{Missing Completely at Random
+(MCAR)}\label{missing-completely-at-random-mcar}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: Missing values are entirely independent of any
+  variables in the dataset.
+\item
+  \textbf{Example}: A respondent accidentally skips a question on a
+  survey.
+\item
+  \textbf{Impact}: MCAR data can usually be ignored or imputed without
+  biasing the analysis.
+\item
+  \textbf{Handling}: Simple imputation methods, like filling with mean
+  or median values, are often appropriate.
+\end{itemize}
+
+\hypertarget{missing-at-random-mar}{%
+\subsubsection{Missing at Random (MAR)}\label{missing-at-random-mar}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: The likelihood of a value being missing is
+  related to other observed variables but not to the missing data
+  itself.
+\item
+  \textbf{Example}: People with higher incomes may be less likely to
+  report their spending, but income data itself is not missing.
+\item
+  \textbf{Impact}: Ignoring MAR values may bias results, so careful
+  imputation based on related variables is recommended.
+\item
+  \textbf{Handling}: More complex imputation methods, like conditional
+  mean imputation or predictive modeling, are suitable.
+\end{itemize}
+
+\hypertarget{missing-not-at-random-mnar}{%
+\subsubsection{Missing Not at Random
+(MNAR)}\label{missing-not-at-random-mnar}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: The probability of missingness is related to the
+  missing data itself, meaning the value is systematically missing.
+\item
+  \textbf{Example}: Patients with severe health conditions might be less
+  likely to report their health status, or students with low scores may
+  be less likely to submit their grades.
+\item
+  \textbf{Impact}: MNAR is the most challenging type, as missing values
+  may introduce significant bias.
+\item
+  \textbf{Handling}: Solutions often include sensitivity analysis, data
+  augmentation, or modeling techniques that account for the missing
+  mechanism, though sometimes domain-specific approaches are necessary.
+\end{itemize}
+
+Understanding the type of missing data helps in selecting the right
+imputation method and mitigating potential biases in the analysis.
+
+\hypertarget{questions}{%
+\subsection{Questions}\label{questions}}
+
+\hypertarget{section-51}{%
+\subsubsection{}\label{section-51}}
+
+Why can we ignore observations with missing values without risking
+skewing the analysis or trends in the case of \textbf{Missing Completely
+at Random (MCAR)}?
+
+\hypertarget{section-52}{%
+\subsubsection{}\label{section-52}}
+
+Why could ignoring missing values lead to biased results for
+\textbf{Missing at Random (MAR)} and \textbf{Missing Not at Random
+(MNAR)} data?
+
+\hypertarget{section-53}{%
+\subsubsection{}\label{section-53}}
+
+For the datset consisting of GDP per capita, think of hypothetical
+scenarios in which the missing values of GDP per capita can correspond
+to \textbf{MCAR / MAR / MNAR}.
+
+\hypertarget{methods-for-handling-missing-values}{%
+\subsection{Methods for Handling missing
+values}\label{methods-for-handling-missing-values}}
+
+\hypertarget{removing-missing-values}{%
+\subsubsection{Removing Missing values}\label{removing-missing-values}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Row/Column Removal}: Use {[}\texttt{df.dropna()}{]}
+  (https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    When to Use: if the missing values are few or the rows/columns are
+    not critical.
+  \item
+    Risks: Can reduce the dataset's size, potentially losing valuable
+    information.
+  \end{itemize}
+\end{itemize}
+
+Let us drop the rows containing even a single value from
+\texttt{gdp\_missing\_values\_data}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_no\_missing\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.dropna()}
+\end{Highlighting}
+\end{Shaded}
+
+By default, \texttt{df.dropna()} will drop any row that contains at
+least one missing value, leaving only the rows that are completely free
+of missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Shape of gdp\_no\_missing\_data}
+\NormalTok{gdp\_no\_missing\_data.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(42, 12)
+\end{verbatim}
+
+Using \texttt{df.dropna()} to remove rows with missing values can
+sometimes lead to a significant reduction in data, which can be
+problematic if much of the data is valuable and non-missing. For
+example:
+
+\begin{itemize}
+\item
+  \textbf{Impact of Default Behavior}: Dropping rows with even a single
+  missing value reduced the number of rows from 155 to 42! This drastic
+  reduction happens because, by default, dropna() removes any row with
+  at least one missing value, keeping only rows that are completely
+  complete.
+\item
+  \textbf{Loss of Non-Missing Data}: Even though some columns may have
+  very few missing values (e.g., at most 10), using dropna() without
+  modification results in losing all non-missing data in affected rows.
+  This is typically a poor choice, especially when valuable, non-missing
+  data is removed unnecessarily.
+\end{itemize}
+
+To avoid losing too much data, you can adjust the behavior of
+\texttt{dropna()} using these parameters:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{how} Parameter
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Controls the criteria for dropping rows or columns.
+  \item
+    \texttt{how=\textquotesingle{}any\textquotesingle{}} (default):
+    Drops rows or columns if any values are missing.
+  \item
+    `how=`all': Drops rows or columns only if all values are missing
+  \end{itemize}
+\item
+  \texttt{thresh} Parameter
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sets a minimum number of non-missing values required to retain the
+    row or column.
+  \item
+    Useful when you want to keep rows or columns with substantial, but
+    not complete, data.
+  \end{itemize}
+\end{itemize}
+
+If a few values of a column are missing, we can possibly estimate them
+using the rest of the data, so that we can (hopefully) maximize the
+information that can be extracted from the data. However, if most of the
+values of a column are missing, it may be harder to estimate its values.
+
+In this dataset, we see that around 50\% values of the
+\texttt{contraception} column is missing. Thus, we'll drop the column as
+it may be hard to impute its values based on a relatively small number
+of non-missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Deleting column with missing values in almost half of the observations}
+\NormalTok{gdp\_missing\_values\_data.drop([}\StringTok{\textquotesingle{}contraception\textquotesingle{}}\NormalTok{],axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{gdp\_missing\_values\_data.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(155, 11)
+\end{verbatim}
+
+\hypertarget{imputing-missing-values}{%
+\subsubsection{Imputing Missing values}\label{imputing-missing-values}}
+
+There are an unlimited number of ways to impute missing values. Some
+imputation methods are provided in the
+\href{https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html}{Pandas
+documentation}.
+
+The best way to impute them will depend on the problem:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{For MCAR}: Simple imputation is generally acceptable.
+\item
+  \textbf{For MAR}: Imputation should consider relationships with other
+  variables, such as using conditional mean imputation.
+\item
+  \textbf{For MNAR}: Imputation requires careful analysis, and domain
+  knowledge is essential to avoid bias.
+\end{itemize}
+
+Below are some of the most common methods. Recall that we randomly
+introduced missing values in \texttt{gdp\_missing\_values\_data}, while
+the actual values are preserved in \texttt{gdp\_complete\_data}.
+
+We will apply these methods to \texttt{gdp\_missing\_values\_data}. To
+evaluate each method's effectiveness in imputing missing values, we'll
+compare the imputed gdpPerCapita values with the actual values and
+calculate the \texttt{Root\ Mean\ Square\ Error} (RMSE).
+
+To visualize the imputed vs actual values, let's define a helper
+function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Index of rows with missing values for GDP per capita}
+\NormalTok{null\_ind\_gdpPC }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.index[gdp\_missing\_values\_data.gdpPerCapita.isnull()]}
+
+\CommentTok{\#Defining a function to plot the imputed values vs actual values }
+\KeywordTok{def}\NormalTok{ plot\_actual\_vs\_predicted(y):}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}xtick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}ytick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ gdp\_complete\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
+    \CommentTok{\# y = y.loc[null\_ind\_gdpPC,\textquotesingle{}gdpPerCapita\textquotesingle{}]}
+\NormalTok{    plt.scatter(x,y.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{])}
+\NormalTok{    z}\OperatorTok{=}\NormalTok{np.polyfit(x,y.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{],}\DecValTok{1}\NormalTok{)}
+\NormalTok{    p}\OperatorTok{=}\NormalTok{np.poly1d(z)}
+\NormalTok{    plt.plot(x,x,color}\OperatorTok{=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    plt.title(}\StringTok{\textquotesingle{}Actual vs Imputed values for GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    rmse }\OperatorTok{=}\NormalTok{ np.sqrt(np.mean((y.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}\OperatorTok{{-}}\NormalTok{x)}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
+\NormalTok{    plt.text(}\DecValTok{10000}\NormalTok{, }\DecValTok{50000}\NormalTok{, }\StringTok{\textquotesingle{}RMSE = }\SpecialCharTok{\%.2f}\StringTok{\textquotesingle{}}\OperatorTok{\%}\NormalTok{rmse, fontsize}\OperatorTok{=}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{meanmedianmode-imputation}{%
+\paragraph{Mean/Median/Mode
+Imputation}\label{meanmedianmode-imputation}}
+
+This approach replaces missing values with the mean or median of the
+column.
+
+Let's impute missing values in the column by substituting them with the
+average of the non-missing values. Imputing with the mean tends to
+minimize the sum of squared differences between actual values and
+imputed values, especially in cases where data is Missing Completely at
+Random (MCAR). However, this might not hold true for other types of
+missing data, such as Missing at Random (MAR) or Missing Not at Random
+(MNAR).
+
+Let us impute missing values in the column as the average of the
+non-missing values of the column. The sum of squared differences between
+actual values and the imputed values is likely to be smaller if we
+impute using the mean. However, this may not be true in cases other than
+MCAR (Missing completely at random).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extracting the columns with missing values}
+\NormalTok{columns\_with\_missing }\OperatorTok{=}\NormalTok{ [col }\ControlFlowTok{for}\NormalTok{ col }\KeywordTok{in}\NormalTok{ gdp\_missing\_values\_data.columns }\ControlFlowTok{if}\NormalTok{ gdp\_missing\_values\_data[col].isnull().}\BuiltInTok{any}\NormalTok{()]}
+\NormalTok{columns\_with\_missing}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+['economicActivityFemale',
+ 'lifeMale',
+ 'infantMortality',
+ 'gdpPerCapita',
+ 'economicActivityMale',
+ 'illiteracyMale',
+ 'illiteracyFemale',
+ 'lifeFemale']
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Imputing missing values using the mean}
+\NormalTok{gdp\_imputed\_data\_mean }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data[columns\_with\_missing].fillna(gdp\_missing\_values\_data[columns\_with\_missing].mean())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_actual\_vs\_predicted(gdp\_imputed\_data\_mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-14-output-1.png}
+
+}
+
+\end{figure}
+
+Here, since all columns with missing values are numerical, we could use
+the mean to impute these values. Using the mean is generally suitable
+only for numerical data, as it represents a central tendency specific to
+numbers. For categorical data, however, mean imputation would be
+inappropriate. Instead, the mode, which identifies the most frequently
+occurring value, is a more suitable choice for imputing missing values
+in categorical columns.
+
+\hypertarget{conditional-imputation-use-other-related-variables-to-predict-missing-values}{%
+\paragraph{Conditional Imputation: Use other related variables to
+predict missing
+values}\label{conditional-imputation-use-other-related-variables-to-predict-missing-values}}
+
+\begin{itemize}
+\item
+  Based on correlated variables
+\item
+  KNN
+\item
+  Linear Regression
+\item
+  \textbf{Imputing missing values based on correlated variables in the
+  data}
+\end{itemize}
+
+If a variable is highly correlated with another variable in the dataset,
+we can approximate its missing values using the trendline with the
+highly correlated variable.
+
+Let us visualize the distribution of GDP per capita for different
+continents.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.rcParams[}\StringTok{"figure.figsize"}\NormalTok{] }\OperatorTok{=}\NormalTok{ (}\DecValTok{12}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{sns.boxplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,y}\OperatorTok{=}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{,data }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-15-output-1.png}
+
+}
+
+\end{figure}
+
+We observe that there is a distinct difference between the GDPs per
+capita of some of the contents. Let us impute the missing GDP per capita
+of a country as the mean GDP per capita of the corresponding continent.
+This imputation should be better than imputing the missing GDP per
+capita as the mean of all the non-missing values, as the GDP per capita
+of a country is likely to be closer to the mean GDP per capita of the
+continent, rather the mean GDP per capita of the whole world.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Finding the mean GDP per capita of the continent {-} please defer the understanding of this code to chapter 9.}
+\NormalTok{avg\_gdpPerCapita }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{].groupby(gdp\_missing\_values\_data[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{]).mean()}
+\NormalTok{avg\_gdpPerCapita}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+continent
+Africa            7638.178571
+Asia             25922.750000
+Europe           45455.303030
+North America    19625.210526
+Oceania          15385.857143
+South America    15360.909091
+Name: gdpPerCapita, dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating a copy of missing data to impute missing values}
+\NormalTok{gdp\_imputed\_data\_group\_mean }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.copy()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Replacing missing GDP per capita with the mean GDP per capita for the corresponding continent}
+
+\NormalTok{gdp\_imputed\_data\_group\_mean.gdpPerCapita }\OperatorTok{=} \OperatorTok{\textbackslash{}}
+\NormalTok{gdp\_imputed\_data\_group\_mean[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{].fillna(gdp\_imputed\_data\_group\_mean[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(avg\_gdpPerCapita))}
+\NormalTok{plot\_actual\_vs\_predicted(gdp\_imputed\_data\_group\_mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-18-output-1.png}
+
+}
+
+\end{figure}
+
+Note that the imputed values are closer to the actual values, and the
+RMSE has further reduced as expected.
+
+Suppose we wish to impute the missing values of each numeric column with
+the average of the non-missing values of the respective column
+corresponding to the continent of the observation. The above logic can
+be extended to each column as shown in the code below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all\_columns\_imputed\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.iloc[:,[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{]].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:}\OperatorTok{\textbackslash{}}
+\NormalTok{x.fillna(gdp\_imputed\_data\_group\_mean[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(x.groupby(gdp\_missing\_values\_data[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{]).mean())))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Using Regression}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Let us identify the variable highly correlated with GDP per capita.}
+\NormalTok{gdp\_missing\_values\_data.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).corrwith(gdp\_missing\_values\_data.gdpPerCapita)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+economicActivityFemale    0.078332
+lifeMale                  0.579850
+infantMortality          -0.572201
+gdpPerCapita              1.000000
+economicActivityMale     -0.134108
+illiteracyMale           -0.479143
+illiteracyFemale         -0.448273
+lifeFemale                0.615954
+dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The variable *lifeFemale* has the strongest correlation with GDP per capita. Let us use it to impute missing values of GDP per capita.}
+
+\CommentTok{\#  Extract the variables lifeFemale and GDP per capita}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.lifeFemale}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.gdpPerCapita}
+
+\CommentTok{\#  Identify non{-}missing indices}
+\NormalTok{idx\_non\_missing }\OperatorTok{=}\NormalTok{ np.isfinite(x) }\OperatorTok{\&}\NormalTok{ np.isfinite(y)}
+
+\CommentTok{\# Fit a linear regression model (degree=1) to predict GDP per capita given lifeFemale}
+\NormalTok{slope\_intercept\_trendline }\OperatorTok{=}\NormalTok{ np.polyfit(x[idx\_non\_missing],y[idx\_non\_missing],}\DecValTok{1}\NormalTok{)   }\CommentTok{\#Finding the slope and intercept for the trendline}
+\NormalTok{compute\_y\_given\_x }\OperatorTok{=}\NormalTok{ np.poly1d(slope\_intercept\_trendline)}
+
+\CommentTok{\#Creating a copy of missing data to impute missing values}
+\NormalTok{gdp\_imputed\_data\_lr }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.copy()}
+
+\CommentTok{\#Imputing missing values of GDP per capita using the linear regression model}
+\NormalTok{gdp\_imputed\_data\_lr.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}\OperatorTok{=}\NormalTok{compute\_y\_given\_x(gdp\_missing\_values\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}lifeFemale\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_actual\_vs\_predicted(gdp\_imputed\_data\_lr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-22-output-1.png}
+
+}
+
+\end{figure}
+
+\textbf{KNN: K-nearest neighbor}
+
+In this method, we'll impute the missing value of the variable as the
+mean value of the \(K\)-nearest neighbors having non-missing values for
+that variable. The neighbors to a data-point are identified based on
+their Euclidean distance to the point in terms of the standardized
+values of rest of the variables in the data.
+
+Let's consider a toy example to understand missing value imputation by
+KNN. Suppose we have to impute missing values in a toy dataset, named as
+\texttt{toy\_data} having 4 observations and 3 variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Toy example {-} A 4x3 array with missing values}
+\NormalTok{nan }\OperatorTok{=}\NormalTok{ np.nan}
+\NormalTok{toy\_data }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, nan], [}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{], [nan, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{], [}\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{7}\NormalTok{]])}
+\NormalTok{toy\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[ 1.,  2., nan],
+       [ 3.,  4.,  3.],
+       [nan,  6.,  5.],
+       [ 8.,  8.,  7.]])
+\end{verbatim}
+
+We'll use some functions from the \emph{sklearn} library to perform the
+KNN imputation. It is much easier to directly use the algorithm from
+\emph{sklearn}, instead of coding it from scratch.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Library to compute pair{-}wise Euclidean distance between all observations in the data}
+\ImportTok{from}\NormalTok{ sklearn }\ImportTok{import}\NormalTok{ metrics}
+
+\CommentTok{\#Library to impute missing values with the KNN algorithm}
+\ImportTok{from}\NormalTok{ sklearn }\ImportTok{import}\NormalTok{ impute}
+\end{Highlighting}
+\end{Shaded}
+
+We'll use the \emph{sklearn} function
+\href{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.nan_euclidean_distances.html}{nan\_euclidean\_distances()}
+to compute the Euclidean distance between all pairs of observations in
+the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This is the distance matrix containing the distance of the ith observation from the jth observation at the (i,j) position in the matrix}
+\NormalTok{metrics.pairwise.nan\_euclidean\_distances(toy\_data,toy\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[ 0.        ,  3.46410162,  6.92820323, 11.29158979],
+       [ 3.46410162,  0.        ,  3.46410162,  7.54983444],
+       [ 6.92820323,  3.46410162,  0.        ,  3.46410162],
+       [11.29158979,  7.54983444,  3.46410162,  0.        ]])
+\end{verbatim}
+
+Note that the size of the above matrix is 4x4. This is because the
+\((i,j)^{th}\) element of the matrix is the distance of the \(i^{th}\)
+observation from the \(j^{th}\) observation. The matrix is symmetric
+because the distance of \(i^{th}\) observation to the \(j^{th}\)
+observation is the same as the distance of the \(j^{th}\) observation to
+the \(i^{th}\) observation.
+
+We'll use the \emph{sklearn} function
+\href{https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html}{KNNImputer()}
+to impute the missing value of a column in \texttt{toy\_data} as the
+mean of the values of the \(K\) nearest neighbors to the observation
+that have non-missing values for that column.
+
+Let us impute the missing values in \texttt{toy\_data} using the values
+of \(K=2\) nearest neighbors from the corresponding observation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#imputing missing values with 2 nearest neighbors, where the neighbors have equal weights}
+
+\CommentTok{\#Define an object of type KNNImputer}
+\NormalTok{imputer }\OperatorTok{=}\NormalTok{ impute.KNNImputer(n\_neighbors}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\#Use the object method \textquotesingle{}fit\_transform\textquotesingle{} to impute missing values}
+\NormalTok{imputer.fit\_transform(toy\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[1. , 2. , 4. ],
+       [3. , 4. , 3. ],
+       [5.5, 6. , 5. ],
+       [8. , 8. , 7. ]])
+\end{verbatim}
+
+The third observation was the closest to the \(2nd\) and \(4th\)
+observations based on the Euclidean distance matrix. Thus, the missing
+value in the \(3rd\) row of the \texttt{toy\_data} has been imputed as
+the mean of the values in the \(2nd\) and \(4th\) observations for the
+corresponding column. Similarly, the \(1st\) observation is the closest
+to the \(2nd\) and \(3rd\) observations. Thus the missing value in the
+\(1st\) row of \texttt{toy\_data} has been imputed as the mean of the
+values in the \(1st\) and \(2nd\) observations for the corresponding
+column.
+
+Let us use KNN to impute the missing values of \texttt{gdpPerCapita} in
+\texttt{gdp\_missing\_values\_data}. We'll use only the numeric columns
+of the data in imputing the missing values. Also, we'll ignore
+\texttt{contraception} as it has a lot of missing values, and thus may
+not be useful.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Considering numeric columns in the data to use KNN}
+\NormalTok{num\_cols }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{))}\OperatorTok{+}\BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{9}\NormalTok{))}
+\NormalTok{num\_cols}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[0, 2, 3, 4, 5, 6, 7, 8]
+\end{verbatim}
+
+Before computing the pair-wise Euclidean distance of observations, we
+must standardize the data so that all columns are at the same scale.
+This will avoid columns with a higher magnitude of values having a
+higher weight in determining the Euclidean distance. Unless there is a
+reason to give a higher weight to a column, we assume all columns to
+have the same weight in the Euclidean distance computation.
+
+We can use the code below to scale the data. However, after imputing the
+missing values, the data is to be scaled back to the original scale, so
+that each variable is in the same units as in the original dataset.
+However, if the code below is used, we'll lose the orginal scale of each
+of the columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Scaling data to compute equally weighted distances from the \textquotesingle{}k\textquotesingle{} nearest neighbors}
+\NormalTok{scaled\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.iloc[:,num\_cols].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:(x}\OperatorTok{{-}}\NormalTok{x.}\BuiltInTok{min}\NormalTok{())}\OperatorTok{/}\NormalTok{(x.}\BuiltInTok{max}\NormalTok{()}\OperatorTok{{-}}\NormalTok{x.}\BuiltInTok{min}\NormalTok{()))}
+\end{Highlighting}
+\end{Shaded}
+
+To alleviate the problem of losing the orignial scale of the data, we'll
+use the
+\href{https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html}{MinMaxScaler}
+object of the \emph{sklearn} library. The object will store the original
+scale of the data, which will help transform the data back to the
+original scale once the missing values have been imputed in the
+standardized data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Scaling data {-} using sklearn}
+
+\CommentTok{\#Create an object of type MinMaxScaler}
+\NormalTok{scaler }\OperatorTok{=}\NormalTok{ sk.preprocessing.MinMaxScaler()}
+
+\CommentTok{\#Use the object method \textquotesingle{}fit\_transform\textquotesingle{} to scale the values to a standard uniform distribution}
+\NormalTok{scaled\_data }\OperatorTok{=}\NormalTok{ pd.DataFrame(scaler.fit\_transform(gdp\_missing\_values\_data.iloc[:,num\_cols]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Imputing missing values with KNNImputer}
+
+\CommentTok{\#Define an object of type KNNImputer}
+\NormalTok{imputer }\OperatorTok{=}\NormalTok{ impute.KNNImputer(n\_neighbors}\OperatorTok{=}\DecValTok{3}\NormalTok{, weights}\OperatorTok{=}\StringTok{"uniform"}\NormalTok{)}
+
+\CommentTok{\#Use the object method \textquotesingle{}fit\_transform\textquotesingle{} to impute missing values}
+\NormalTok{imputed\_arr }\OperatorTok{=}\NormalTok{ imputer.fit\_transform(scaled\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Scaling back the scaled array to obtain the data at the original scale}
+
+\CommentTok{\#Use the object method \textquotesingle{}inverse\_transform\textquotesingle{} to scale back the values to the original scale of the data}
+\NormalTok{unscaled\_data }\OperatorTok{=}\NormalTok{ scaler.inverse\_transform(imputed\_arr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Note the method imputes the missing value of all the columns}
+\CommentTok{\#However, we are interested in imputing the missing values of only the \textquotesingle{}gdpPerCapita\textquotesingle{} column}
+\NormalTok{gdp\_imputed\_data\_knn }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.copy()}
+\NormalTok{gdp\_imputed\_data\_knn.loc[:,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ unscaled\_data[:,}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing the accuracy of missing value imputation with KNN}
+\NormalTok{plot\_actual\_vs\_predicted(gdp\_imputed\_data\_knn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-33-output-1.png}
+
+}
+
+\end{figure}
+
+Note that the RMSE is the lowest in this method. It is because this
+method imputes missing values as the average of the values of
+``similar'' observations, which is smarter and more robust than the
+previous methods.
+
+We chose \(K=3\) in the missing value imputation for GDP per capita.
+However, the value of \(K\) is typically chosen using a method known as
+cross validation. We'll learn about cross-validation in the next course
+of the sequence.
+
+\hypertarget{forward-fillbackward-fill}{%
+\paragraph{Forward Fill/Backward Fill}\label{forward-fillbackward-fill}}
+
+To fill missing values in a column by copying the value of the previous
+or next non-missing observation, we can use forward fill (propagating
+the last valid observation forward) or backward fill (propagating the
+next valid observation backward).
+
+Below, we demonstrate forward fill. To perform backward fill instead,
+simply replace \texttt{ffill} with \texttt{bfill}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Filling missing values: Method 1{-} Naive way}
+\NormalTok{gdp\_imputed\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.fillna(method }\OperatorTok{=} \StringTok{\textquotesingle{}ffill\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\1555899051.py:2: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  gdp_imputed_data = gdp_missing_values_data.fillna(method = 'ffill')
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Checking if any missing values are remaining}
+\NormalTok{gdp\_imputed\_data.isnull().}\BuiltInTok{sum}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+economicActivityFemale    0
+country                   0
+lifeMale                  0
+infantMortality           0
+gdpPerCapita              0
+economicActivityMale      0
+illiteracyMale            1
+illiteracyFemale          0
+lifeFemale                0
+geographic_location       0
+continent                 0
+dtype: int64
+\end{verbatim}
+
+After imputing missing values, note there is still one missing value for
+\emph{illiteracyMale}. Can you guess why one missing value remained?
+
+Let us check how good is this method in imputing missing values. We'll
+compare the imputed values of \texttt{gdpPerCapita} with the actual
+values. Recall that we had randomly put some missing values in
+\texttt{gdp\_missing\_values\_data}, and we have the actual values in
+\texttt{gdp\_complete\_data}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Index of rows with missing values for GDP per capita}
+\NormalTok{null\_ind\_gdpPC }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.index[gdp\_missing\_values\_data.gdpPerCapita.isnull()]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Defining a function to plot the imputed values vs actual values }
+\KeywordTok{def}\NormalTok{ plot\_actual\_vs\_predicted():}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}xtick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}ytick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ gdp\_complete\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
+\NormalTok{    y }\OperatorTok{=}\NormalTok{ gdp\_imputed\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
+\NormalTok{    plt.scatter(x,y)}
+\NormalTok{    z}\OperatorTok{=}\NormalTok{np.polyfit(x,y,}\DecValTok{1}\NormalTok{)}
+\NormalTok{    p}\OperatorTok{=}\NormalTok{np.poly1d(z)}
+\NormalTok{    plt.plot(x,x,color}\OperatorTok{=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    rmse }\OperatorTok{=}\NormalTok{ np.sqrt(((x}\OperatorTok{{-}}\NormalTok{y).}\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{)).mean())}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"RMSE="}\NormalTok{,rmse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Plot comparing imputed values with actual values, and computing the Root mean square error (RMSE) of the imputed values}
+\NormalTok{plot\_actual\_vs\_predicted()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RMSE= 34843.91091137732
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-38-output-2.png}
+
+}
+
+\end{figure}
+
+We observe that the accuracy of imputation is poor as GDP per capita can
+vary a lot across countries, and the data is not sorted by GDP per
+capita. There is no reason why the GDP per capita of a country should be
+close to the GDP per capita of the country in the observation above it.
+
+\hypertarget{outlier-detection}{%
+\section{Outlier detection}\label{outlier-detection}}
+
+An outlier is an observation that is significantly different from the
+rest of the data. Detection of outliers is important as they may distort
+the general trends in data.
+
+The dataset \emph{College.csv} contains information about US
+universities. The description of variables of the dataset can be found
+on page 54 of this
+\href{https://hastie.su.domains/ISLR2/ISLRv2_website.pdf}{book}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/College.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{college.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & Room.Board & Books & Personal &
+PhD & Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
+2885 & 537 & 7440 & 3300 & 450 & 2200 & 70 & 78 & 18.1 & 12 & 7041 &
+60 \\
+1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
+& 12280 & 6450 & 750 & 1500 & 29 & 30 & 12.2 & 16 & 10527 & 56 \\
+2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
+11250 & 3750 & 400 & 1165 & 53 & 66 & 12.9 & 30 & 8735 & 54 \\
+3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
+12960 & 5450 & 450 & 875 & 92 & 97 & 7.7 & 37 & 19016 & 59 \\
+4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
+869 & 7560 & 4120 & 800 & 1500 & 76 & 72 & 11.9 & 2 & 10922 & 15 \\
+\end{longtable}
+
+Let us visualize outliers in average instructional expenditure per
+student given by the variable \texttt{Expend}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ax}\OperatorTok{=}\NormalTok{college.boxplot(column }\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-40-output-1.png}
+
+}
+
+\end{figure}
+
+There are several outliers (shown as circles in the above boxplot),
+which correspond to high values of average instructional expenditure per
+student. Boxplot identifies outliers based on the
+\href{https://en.wikipedia.org/wiki/Outlier}{Tukey's fences} criterion:
+
+\textbf{Tukey's fences:} John Tukey proposed that observations outside
+the range \([Q1 - 1.5(Q3-Q1), Q3+1.5(Q3-Q1)]\) are outliers, where
+\(Q1\) and \(Q3\) are the lower \((25\%)\) and upper \((75\%)\)
+quartiles respectively. Let us detect outliers based on Tukey's fences.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Finding upper and lower quartiles and interquartile range}
+\NormalTok{q1 }\OperatorTok{=}\NormalTok{ np.percentile(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{25}\NormalTok{)}
+\NormalTok{q3 }\OperatorTok{=}\NormalTok{ np.percentile(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{75}\NormalTok{)}
+\NormalTok{intQ\_range }\OperatorTok{=}\NormalTok{ q3}\OperatorTok{{-}}\NormalTok{q1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Tukey\textquotesingle{}s fences}
+\NormalTok{Lower\_fence }\OperatorTok{=}\NormalTok{ q1 }\OperatorTok{{-}} \FloatTok{1.5}\OperatorTok{*}\NormalTok{intQ\_range}
+\NormalTok{Upper\_fence }\OperatorTok{=}\NormalTok{ q3 }\OperatorTok{+} \FloatTok{1.5}\OperatorTok{*}\NormalTok{intQ\_range}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#These are the outlying observations {-} those outside of Tukey\textquotesingle{}s fences}
+\NormalTok{Outlying\_obs }\OperatorTok{=}\NormalTok{ college[(college.Expend}\OperatorTok{\textless{}}\NormalTok{Lower\_fence) }\OperatorTok{|}\NormalTok{ (college.Expend}\OperatorTok{\textgreater{}}\NormalTok{Upper\_fence)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Data without outliers}
+\NormalTok{college\_data\_without\_outliers }\OperatorTok{=}\NormalTok{ college[((college.Expend}\OperatorTok{\textgreater{}=}\NormalTok{Lower\_fence) }\OperatorTok{\&}\NormalTok{ (college.Expend}\OperatorTok{\textless{}=}\NormalTok{Upper\_fence))]}
+\end{Highlighting}
+\end{Shaded}
+
+Earlier, the trend was distorted by outliers when we created bins of
+equal width. Let us see if we get the correct trend with the outliers
+removed from the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Binned\_data }\OperatorTok{=}\NormalTok{ pd.cut(college\_data\_without\_outliers[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Med expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}High expend\textquotesingle{}}\NormalTok{],retbins }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\NormalTok{college\_data\_without\_outliers.loc[:,}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ Binned\_data[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\2673864035.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  college_data_without_outliers.loc[:,'Expend_bin'] = Binned_data[0]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.barplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{, data }\OperatorTok{=}\NormalTok{ college\_data\_without\_outliers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Axes: xlabel='Expend_bin', ylabel='Grad.Rate'>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-46-output-2.png}
+
+}
+
+\end{figure}
+
+With the outliers removed, we obtain the correct overall trend, even in
+the case of equal-width bins. Note that these bins have unequal number
+of observations as shown below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.35}\NormalTok{)}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college\_data\_without\_outliers, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{):}
+\NormalTok{    plt.axvline(Binned\_data[}\DecValTok{1}\NormalTok{][i], }\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-47-output-1.png}
+
+}
+
+\end{figure}
+
+Note that the right tail of the histogram has disappered since we
+removed outliers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college\_data\_without\_outliers[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{].value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Expend_bin
+Med expend     327
+Low expend     314
+High expend     88
+Name: count, dtype: int64
+\end{verbatim}
+
+\hypertarget{data-binning}{%
+\section{Data binning}\label{data-binning}}
+
+Data binning is a method to group values of a continuous / categorical
+variable into bins (or categories). Binning may help with
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  Better intepretation of data\\
+\item
+  Making better recommendations\\
+\item
+  Smooth data, reduce noise
+\end{enumerate}
+
+Examples:
+
+\textbf{Binning to better interpret data}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The number of flu cases everyday may be binned to seasons such as
+  fall, spring, winter and summer, to understand the effect of season on
+  flu.
+\end{enumerate}
+
+\textbf{Binning to make recommendations:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  A doctor may like to group patient age into bins. Grouping patient
+  ages into categories such as Age \textless=12,
+  12\textless Age\textless=18, 18\textless Age\textless=65,
+  Age\textgreater65 may help recommend the kind/doses of covid vaccine a
+  patient needs.
+\item
+  A credit card company may want to bin customers based on their spend,
+  as ``High spenders'', ``Medium spenders'' and ``Low spenders''.
+  Binning will help them design customized marketing campaigns for each
+  bin, thereby increasing customer response (or revenue). On the other
+  hand, they use the same campaign for customers withing the same bin,
+  thus minimizng marketing costs.
+\end{enumerate}
+
+\textbf{Binning to smooth data, and reduce noise}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  A sales company may want to bin their total sales to a weekly /
+  monthly / yearly level to reduce the noise in day-to-day sales.
+\end{enumerate}
+
+\textbf{Example:} The dataset \emph{College.csv} contains information
+about US universities. The description of variables of the dataset can
+be found on page 54 of this
+\href{https://hastie.su.domains/ISLR2/ISLRv2_website.pdf}{book}. Let's
+see if we can apply binning to better interpret the association of
+instructional expenditure per student (\texttt{Expend}) with graduation
+rate (\texttt{Grad.Rate}) for US universities, and make recommendations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/College.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{college.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & Room.Board & Books & Personal &
+PhD & Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
+2885 & 537 & 7440 & 3300 & 450 & 2200 & 70 & 78 & 18.1 & 12 & 7041 &
+60 \\
+1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
+& 12280 & 6450 & 750 & 1500 & 29 & 30 & 12.2 & 16 & 10527 & 56 \\
+2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
+11250 & 3750 & 400 & 1165 & 53 & 66 & 12.9 & 30 & 8735 & 54 \\
+3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
+12960 & 5450 & 450 & 875 & 92 & 97 & 7.7 & 37 & 19016 & 59 \\
+4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
+869 & 7560 & 4120 & 800 & 1500 & 76 & 72 & 11.9 & 2 & 10922 & 15 \\
+\end{longtable}
+
+To visualize the association between two numeric variables, we typically
+make a scatterplot. Let us make a scatterplot of graduation rate with
+expenditure per student, with a trendline.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Let\textquotesingle{}s make a scatterplot of \textquotesingle{}Grad.Rate\textquotesingle{} vs \textquotesingle{}Expend\textquotesingle{} with a trendline, to visualize any trend(s).}
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.regplot(data }\OperatorTok{=}\NormalTok{ college, x }\OperatorTok{=} \StringTok{"Expend"}\NormalTok{, y }\OperatorTok{=} \StringTok{"Grad.Rate"}\NormalTok{,scatter\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"orange"}\NormalTok{\}, line\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"blue"}\NormalTok{\})}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0, 0.5, 'Graduation rate')
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-50-output-2.png}
+
+}
+
+\end{figure}
+
+The trendline indicates a positive correlation between \texttt{Expend}
+and \texttt{Grad.Rate}. However, there seems to be a lot of noise and
+presence of outliers in the data, which makes it hard to interpret the
+overall trend.
+
+We'll bin \texttt{Expend} to see if we can better analyze its
+association with \texttt{Grad.Rate}. However, let us first visualize the
+distribution of \texttt{Expend}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing the distribution of expend}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-51-output-1.png}
+
+}
+
+\end{figure}
+
+The distribution of \texttt{Extend} is right skewed with potentially
+some extremely high outlying values.
+
+\hypertarget{binning-with-equal-width-bins}{%
+\subsection{Binning with equal width
+bins}\label{binning-with-equal-width-bins}}
+
+We'll use the Pandas function
+\href{https://pandas.pydata.org/docs/reference/api/pandas.cut.html}{cut()}
+to bin \texttt{Expend}. This function creates bins such that all bins
+have the same width.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Using the cut() function in Pandas to bin "Expend"}
+\NormalTok{Binned\_expend }\OperatorTok{=}\NormalTok{ pd.cut(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,retbins }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\NormalTok{Binned\_expend}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(0      (3132.953, 20868.333]
+ 1      (3132.953, 20868.333]
+ 2      (3132.953, 20868.333]
+ 3      (3132.953, 20868.333]
+ 4      (3132.953, 20868.333]
+                ...          
+ 772    (3132.953, 20868.333]
+ 773    (3132.953, 20868.333]
+ 774    (3132.953, 20868.333]
+ 775     (38550.667, 56233.0]
+ 776    (3132.953, 20868.333]
+ Name: Expend, Length: 777, dtype: category
+ Categories (3, interval[float64, right]): [(3132.953, 20868.333] < (20868.333, 38550.667] < (38550.667, 56233.0]],
+ array([ 3132.953     , 20868.33333333, 38550.66666667, 56233.        ]))
+\end{verbatim}
+
+The
+\href{https://pandas.pydata.org/docs/reference/api/pandas.cut.html}{cut()}
+function returns a tuple of length 2. The first element of the tuple are
+the bins, while the second element is an array containing the cut-off
+values for the bins.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{type}\NormalTok{(Binned\_expend)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+tuple
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{len}\NormalTok{(Binned\_expend)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+Once the bins are obtained, we'll add a column in the dataset that
+indicates the bin for \texttt{Expend}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating a categorical variable to store the level of expenditure on a student}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ Binned\_expend[}\DecValTok{0}\NormalTok{]}
+\NormalTok{college.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & Room.Board & Books & Personal &
+PhD & Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate &
+Expend\_bin \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
+2885 & 537 & 7440 & 3300 & 450 & 2200 & 70 & 78 & 18.1 & 12 & 7041 & 60
+& (3132.953, 20868.333{]} \\
+1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
+& 12280 & 6450 & 750 & 1500 & 29 & 30 & 12.2 & 16 & 10527 & 56 &
+(3132.953, 20868.333{]} \\
+2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
+11250 & 3750 & 400 & 1165 & 53 & 66 & 12.9 & 30 & 8735 & 54 & (3132.953,
+20868.333{]} \\
+3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
+12960 & 5450 & 450 & 875 & 92 & 97 & 7.7 & 37 & 19016 & 59 & (3132.953,
+20868.333{]} \\
+4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
+869 & 7560 & 4120 & 800 & 1500 & 76 & 72 & 11.9 & 2 & 10922 & 15 &
+(3132.953, 20868.333{]} \\
+\end{longtable}
+
+See the variable \texttt{Expend\_bin} in the above dataset.
+
+Let us visualize the \texttt{Expend} bins over the distribution of the
+\texttt{Expend} variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing the bins for instructional expediture on a student}
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.25}\NormalTok{)}
+\NormalTok{plt.rcParams[}\StringTok{"figure.figsize"}\NormalTok{] }\OperatorTok{=}\NormalTok{ (}\DecValTok{9}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.vlines(Binned\_expend[}\DecValTok{1}\NormalTok{], }\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-56-output-1.png}
+
+}
+
+\end{figure}
+
+By default, the bins created have equal width. They are created by
+dividing the range between the maximum and minimum value of
+\texttt{Expend} into the desired number of equal-width intervals. We can
+label the bins as well as follows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.cut(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Med expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}High expend\textquotesingle{}}\NormalTok{])}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0       Low expend
+1       Low expend
+2       Low expend
+3       Low expend
+4       Low expend
+          ...     
+772     Low expend
+773     Low expend
+774     Low expend
+775    High expend
+776     Low expend
+Name: Expend_bin, Length: 777, dtype: category
+Categories (3, object): ['Low expend' < 'Med expend' < 'High expend']
+\end{verbatim}
+
+Now that we have binned the variable \texttt{Expend}, let us see if we
+can better visualize the association of graduation rate with expenditure
+per student using \texttt{Expened\_bin}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing average graduation rate vs categories of instructional expenditure per student}
+\NormalTok{sns.barplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{, data }\OperatorTok{=}\NormalTok{ college)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Axes: xlabel='Expend_bin', ylabel='Grad.Rate'>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-58-output-2.png}
+
+}
+
+\end{figure}
+
+It seems that the graduation rate is the highest for universities with
+medium level of expenditure per student. This is different from the
+trend we saw earlier in the scatter plot. Let us investigate.
+
+Let us find the number of universities in each bin.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pd.value\_counts(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
+  pd.value_counts(college['Expend_bin'])
+\end{verbatim}
+
+\begin{verbatim}
+Expend_bin
+Low expend     751
+Med expend      21
+High expend      5
+Name: count, dtype: int64
+\end{verbatim}
+
+The bin \texttt{High\ expend} consists of only 5 universities, or 0.6\%
+of all the universities in the dataset. These universities may be
+outliers that are skewing the trend (as also evident in the histogram
+above).
+
+In such cases, we should bin observations such that all bins are of
+equal size, i.e., they have the same number of observations.
+
+\hypertarget{binning-with-equal-sized-bins}{%
+\subsection{Binning with equal sized
+bins}\label{binning-with-equal-sized-bins}}
+
+Let us bin the variable \texttt{Expend} such that each bin consists of
+the same number of observations.
+
+We'll use the Pandas function
+\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html}{qcut()}
+to make equal-sized bins (in contrast to equal-width bins in the
+previous section).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Using the Pandas function qcut() to create bins with the same number of observations}
+\NormalTok{Binned\_expend }\OperatorTok{=}\NormalTok{ pd.qcut(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,retbins }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ Binned\_expend[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Each bin has the same number of observations with \texttt{qcut()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pd.value\_counts(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
+  pd.value_counts(college['Expend_bin'])
+\end{verbatim}
+
+\begin{verbatim}
+Expend_bin
+(3185.999, 7334.333]    259
+(7334.333, 9682.333]    259
+(9682.333, 56233.0]     259
+Name: count, dtype: int64
+\end{verbatim}
+
+Let us visualize the \texttt{Expend} bins over the distribution of the
+\texttt{Expend} variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing the bins for instructional expediture on a student}
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.25}\NormalTok{)}
+\NormalTok{plt.rcParams[}\StringTok{"figure.figsize"}\NormalTok{] }\OperatorTok{=}\NormalTok{ (}\DecValTok{9}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.vlines(Binned\_expend[}\DecValTok{1}\NormalTok{], }\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-62-output-1.png}
+
+}
+
+\end{figure}
+
+Note that the bin-widths have been adjusted to have the same number of
+observations in each bin. The bins are narrower in domains of high
+density, and wider in domains of sparse density.
+
+Let us again make the barplot visualizing the average graduate rate with
+level of instructional expenditure per student.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.qcut(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Med expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}High expend\textquotesingle{}}\NormalTok{])}
+\NormalTok{a}\OperatorTok{=}\NormalTok{sns.barplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{, data }\OperatorTok{=}\NormalTok{ college)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-63-output-1.png}
+
+}
+
+\end{figure}
+
+Now we see the same trend that we saw in the scatterplot, but without
+the noise. We have smoothed the data. Note that making equal-sized bins
+helps reduce the effect of outliers in the overall trend.
+
+Suppose this analysis was done to provide recommendations to
+universities for increasing their graduation rate. With binning, we can
+can provide one recommendation to \emph{`Low expend'} universities, and
+another one to \emph{`Med expend'} universities. For example, the
+recommendations can be:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{`Low expend'} universities can expect an increase of 9
+  percentage points in \texttt{Grad.Rate}, if they migrate to the
+  \emph{`Med expend'} category.
+\item
+  \emph{`Med expend'} universities can expect an increase of 7
+  percentage points in \texttt{Grad.Rate}, if they migrate to the
+  \emph{`High expend'} category.
+\end{enumerate}
+
+The numbers in the above recommendations are based on the table below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{].groupby(college.Expend\_bin).mean()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\2173657746.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  college['Grad.Rate'].groupby(college.Expend_bin).mean()
+\end{verbatim}
+
+\begin{verbatim}
+Expend_bin
+Low expend     57.343629
+Med expend     66.057915
+High expend    72.988417
+Name: Grad.Rate, dtype: float64
+\end{verbatim}
+
+We can also make recommendations based on the confidence intervals of
+mean Grad.Rate. Confidence intervals are computed below. We are finding
+confidence intervals based on a method known as bootstrapping. Refer
+https://en.wikipedia.org/wiki/Bootstrapping\_(statistics) for a detailed
+description of Bootstrapping.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Bootstrapping to find 95\% confidence intervals of Graduation Rate of US universities based on average expenditure per student}
+\ControlFlowTok{for}\NormalTok{ expend\_bin }\KeywordTok{in}\NormalTok{ college.Expend\_bin.unique():}
+\NormalTok{    data\_sub }\OperatorTok{=}\NormalTok{ college.loc[college.Expend\_bin}\OperatorTok{==}\NormalTok{expend\_bin,:]}
+\NormalTok{    samples }\OperatorTok{=}\NormalTok{ np.random.choice(data\_sub[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{], size}\OperatorTok{=}\NormalTok{(}\DecValTok{10000}\NormalTok{,data\_sub.shape[}\DecValTok{0}\NormalTok{]))}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"95\% Confidence interval of Grad.Rate for "}\OperatorTok{+}\NormalTok{expend\_bin}\OperatorTok{+}\StringTok{" univeristies = ["}\OperatorTok{+}\BuiltInTok{str}\NormalTok{(np.}\BuiltInTok{round}\NormalTok{(np.percentile(samples.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{),}\FloatTok{2.5}\NormalTok{),}\DecValTok{2}\NormalTok{))}\OperatorTok{+}\StringTok{","}\OperatorTok{+}\BuiltInTok{str}\NormalTok{(np.}\BuiltInTok{round}\NormalTok{(np.percentile(samples.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{),}\FloatTok{97.5}\NormalTok{),}\DecValTok{2}\NormalTok{))}\OperatorTok{+}\StringTok{"]"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+95% Confidence interval of Grad.Rate for Low expend univeristies = [55.33,59.32]
+95% Confidence interval of Grad.Rate for High expend univeristies = [71.05,74.9]
+95% Confidence interval of Grad.Rate for Med expend univeristies = [64.19,67.93]
+\end{verbatim}
+
+Apart from equal-width and equal-sized bins, custom bins can be created
+using the \emph{bins} argument. Suppose, bins are to be created for
+\texttt{Expend} with cutoffs
+\(\$10,000, \$20,000, \$30,000... \$60,000\). Then, we can use the
+\emph{bins} argument as in the code below:
+
+\hypertarget{binning-with-custom-bins}{%
+\subsection{Binning with custom bins}\label{binning-with-custom-bins}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Binned\_expend }\OperatorTok{=}\NormalTok{ pd.cut(college.Expend,bins }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{70000}\NormalTok{,}\DecValTok{10000}\NormalTok{)),retbins}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Visualizing the bins for instructional expediture on a student}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.vlines(Binned\_expend[}\DecValTok{1}\NormalTok{], }\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-67-output-1.png}
+
+}
+
+\end{figure}
+
+As custom bin-cutoffs can be specified with the \texttt{cut()} function,
+custom bin quantiles can be specified with the \texttt{qcut()} function.
+
+\hypertarget{dummy-indicator-variables}{%
+\section{Dummy / Indicator variables}\label{dummy-indicator-variables}}
+
+Dummy variables (or indicator variables) take only the values of 0 and 1
+to indicate the presence or absence of a catagorical effect. They are
+particularly useful in regression modeling to help explain the dependent
+variable.
+
+If a column in a DataFrame has \(k\) distinct values, we will get a
+DataFrame with \(k\) columns containing 0s and 1s with the Pandas
+\href{https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html}{\texttt{get\_dummies()}}
+function.
+
+Let us make dummy variables with the equal-sized bins we created for the
+average instruction expenditure per student.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Using the Pandas function qcut() to create bins with the same number of observations}
+\NormalTok{Binned\_expend }\OperatorTok{=}\NormalTok{ pd.qcut(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,retbins }\OperatorTok{=} \VariableTok{True}\NormalTok{,labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low\_expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Med\_expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}High\_expend\textquotesingle{}}\NormalTok{])}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ Binned\_expend[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Making dummy variables based on the levels (categories) of the \textquotesingle{}Expend\_bin\textquotesingle{} variable}
+\NormalTok{dummy\_Expend }\OperatorTok{=}\NormalTok{ pd.get\_dummies(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+The dummy data \texttt{dummy\_Expend} has a value of \(1\) if the
+observation corresponds to the category referenced by the column name.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dummy\_Expend.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& Low\_expend & Med\_expend & High\_expend \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & True & False & False \\
+1 & False & False & True \\
+2 & False & True & False \\
+3 & False & False & True \\
+4 & False & False & True \\
+\end{longtable}
+
+We can find the correlation between the dummy variables and graduation
+rate to identify if any of the dummy variables will be useful to
+estimate graduation rate (\texttt{Grad.Rate}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Finding if dummy variables will be useful to estimate \textquotesingle{}Grad.Rate\textquotesingle{}}
+\NormalTok{dummy\_Expend.corrwith(college[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Low_expend    -0.334456
+Med_expend     0.024492
+High_expend    0.309964
+dtype: float64
+\end{verbatim}
+
+The dummy variables \texttt{Low\ expend} and \texttt{High\ expend} may
+contribute in explaining \texttt{Grad.Rate} in a regression model.
+
+\hypertarget{independent-study-2}{%
+\section{Independent Study}\label{independent-study-2}}
+
+\hypertarget{practice-exercise-1-4}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-4}}
+
+Read \emph{survey\_data\_clean.csv}. Split the columns of the dataset,
+such that all columns with categorical values transform into dummy
+variables with each category corresponding to a column of 0s and 1s.
+Leave the \emph{Timestamp} column.
+
+As all categorical columns are transformed to dummy variables, all
+columns have numeric values.
+
+What is the total number of columns in the transformed data? What is the
+total number of columns of the original data?
+
+Find the:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Top 5 variables having the highest positive correlation with
+  \texttt{NU\_GPA}.
+\item
+  Top 5 variables having the highest negative correlation with
+  \texttt{NU\_GPA}.
+\end{enumerate}
+
+\hypertarget{practice-exercise-2-4}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-4}}
+
+Consider the dataset \emph{survey\_data\_clean.csv} . Find the number of
+outliers in each column of the dataset based on the Tukey's fences
+criterion. Do not use a \texttt{for} loop.
+
+Which column(s) have the maximum number of outliers?
+
+Do you think the outlying observations identified with the Tukey's
+fences criterion for those columns(s) should be considered as outliers?
+If not, then which type of columns should be considered when finding
+outliers?
+
+Using Tukey's criterion, the variables
+\texttt{learning\_style\_Reading/Writing\ (learn\ best\ through\ words\ often\ note-taking\ or\ reading)}
+and \texttt{much\_effort\_is\_lack\_of\_talent} have the most number of
+outliers.
+
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{Appendices}
@@ -16316,8 +18360,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-51}{%
-\subsection{}\label{section-51}}
+\hypertarget{section-54}{%
+\subsection{}\label{section-54}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -16326,24 +18370,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-52}{%
-\subsection{}\label{section-52}}
+\hypertarget{section-55}{%
+\subsection{}\label{section-55}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-53}{%
-\subsection{}\label{section-53}}
+\hypertarget{section-56}{%
+\subsection{}\label{section-56}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-54}{%
-\subsection{}\label{section-54}}
+\hypertarget{section-57}{%
+\subsection{}\label{section-57}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -16354,8 +18398,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-55}{%
-\subsection{}\label{section-55}}
+\hypertarget{section-58}{%
+\subsection{}\label{section-58}}
 
 Use list comprehension to:
 
@@ -16404,16 +18448,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-56}{%
-\subsection{}\label{section-56}}
+\hypertarget{section-59}{%
+\subsection{}\label{section-59}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-57}{%
-\subsection{}\label{section-57}}
+\hypertarget{section-60}{%
+\subsection{}\label{section-60}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -16422,8 +18466,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-58}{%
-\subsection{}\label{section-58}}
+\hypertarget{section-61}{%
+\subsection{}\label{section-61}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -16432,8 +18476,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-59}{%
-\subsection{}\label{section-59}}
+\hypertarget{section-62}{%
+\subsection{}\label{section-62}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -16457,8 +18501,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-60}{%
-\subsection{}\label{section-60}}
+\hypertarget{section-63}{%
+\subsection{}\label{section-63}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -16467,8 +18511,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-61}{%
-\subsection{}\label{section-61}}
+\hypertarget{section-64}{%
+\subsection{}\label{section-64}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -16480,8 +18524,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-62}{%
-\subsection{}\label{section-62}}
+\hypertarget{section-65}{%
+\subsection{}\label{section-65}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -16489,23 +18533,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-63}{%
-\subsection{}\label{section-63}}
+\hypertarget{section-66}{%
+\subsection{}\label{section-66}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-64}{%
-\subsection{}\label{section-64}}
+\hypertarget{section-67}{%
+\subsection{}\label{section-67}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-65}{%
-\subsection{}\label{section-65}}
+\hypertarget{section-68}{%
+\subsection{}\label{section-68}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -16514,16 +18558,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-66}{%
-\subsection{}\label{section-66}}
+\hypertarget{section-69}{%
+\subsection{}\label{section-69}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-67}{%
-\subsection{}\label{section-67}}
+\hypertarget{section-70}{%
+\subsection{}\label{section-70}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -16533,16 +18577,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-68}{%
-\subsection{}\label{section-68}}
+\hypertarget{section-71}{%
+\subsection{}\label{section-71}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-69}{%
-\subsection{}\label{section-69}}
+\hypertarget{section-72}{%
+\subsection{}\label{section-72}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -16555,38 +18599,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-70}{%
-\subsection{}\label{section-70}}
+\hypertarget{section-73}{%
+\subsection{}\label{section-73}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-71}{%
-\subsection{}\label{section-71}}
+\hypertarget{section-74}{%
+\subsection{}\label{section-74}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-72}{%
-\subsection{}\label{section-72}}
+\hypertarget{section-75}{%
+\subsection{}\label{section-75}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-73}{%
-\subsection{}\label{section-73}}
+\hypertarget{section-76}{%
+\subsection{}\label{section-76}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-74}{%
-\subsection{}\label{section-74}}
+\hypertarget{section-77}{%
+\subsection{}\label{section-77}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -16595,16 +18639,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-75}{%
-\subsection{}\label{section-75}}
+\hypertarget{section-78}{%
+\subsection{}\label{section-78}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-76}{%
-\subsection{}\label{section-76}}
+\hypertarget{section-79}{%
+\subsection{}\label{section-79}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -17051,8 +19095,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-77}{%
-\subsection{}\label{section-77}}
+\hypertarget{section-80}{%
+\subsection{}\label{section-80}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -17063,8 +19107,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-78}{%
-\subsection{}\label{section-78}}
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -17073,8 +19117,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-79}{%
-\subsection{}\label{section-79}}
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -17098,8 +19142,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-80}{%
-\subsection{}\label{section-80}}
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -17131,8 +19175,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -17146,8 +19190,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -17164,8 +19208,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -17200,8 +19244,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -17212,8 +19256,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-88}{%
+\subsection{}\label{section-88}}
 
 Find the percentage of the total countries in each continent.
 
@@ -17222,22 +19266,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-86}{%
-\subsection{}\label{section-86}}
+\hypertarget{section-89}{%
+\subsection{}\label{section-89}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-87}{%
-\subsection{}\label{section-87}}
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-88}{%
-\subsubsection{}\label{section-88}}
+\hypertarget{section-91}{%
+\subsubsection{}\label{section-91}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -17259,8 +19303,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-89}{%
-\subsubsection{}\label{section-89}}
+\hypertarget{section-92}{%
+\subsubsection{}\label{section-92}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -17282,24 +19326,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-90}{%
-\subsubsection{}\label{section-90}}
+\hypertarget{section-93}{%
+\subsubsection{}\label{section-93}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-91}{%
-\subsection{}\label{section-91}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-92}{%
-\subsection{}\label{section-92}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -17317,15 +19361,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-93}{%
-\subsection{}\label{section-93}}
+\hypertarget{section-96}{%
+\subsection{}\label{section-96}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-94}{%
-\subsection{}\label{section-94}}
+\hypertarget{section-97}{%
+\subsection{}\label{section-97}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -17334,8 +19378,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-95}{%
-\subsection{}\label{section-95}}
+\hypertarget{section-98}{%
+\subsection{}\label{section-98}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -17511,8 +19555,8 @@ time of its release.
 \hypertarget{month-of-release}{%
 \subsection{Month of release}\label{month-of-release}}
 
-\hypertarget{section-96}{%
-\subsubsection{}\label{section-96}}
+\hypertarget{section-99}{%
+\subsubsection{}\label{section-99}}
 
 Make an appropriate plot to visualize the mean profit of movies released
 each month.
@@ -17533,8 +19577,8 @@ each month.
 
 \emph{(6 points)}
 
-\hypertarget{section-97}{%
-\subsubsection{}\label{section-97}}
+\hypertarget{section-100}{%
+\subsubsection{}\label{section-100}}
 
 Based on the plot, which seasons have been the most and least profitable
 (on an average) for a movie release. Don't worry about the exact start
@@ -17548,8 +19592,8 @@ summer, late spring} etc.
 \subsection{Month of release with number of movies in each
 genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
 
-\hypertarget{section-98}{%
-\subsubsection{}\label{section-98}}
+\hypertarget{section-101}{%
+\subsubsection{}\label{section-101}}
 
 Now that we know the most profitable season for releasing movies, let us
 visualize if some \texttt{genre}s are more popular during certain
@@ -17581,8 +19625,8 @@ each \texttt{genre} in each calendar month.
   Use the \emph{hue} argument
 \end{enumerate}
 
-\hypertarget{section-99}{%
-\subsubsection{}\label{section-99}}
+\hypertarget{section-102}{%
+\subsubsection{}\label{section-102}}
 
 Based on the above plot, which \texttt{genre} is the most popular during
 the most profitable season of release? And which genre is the most
@@ -17594,8 +19638,8 @@ popular during the least profitable season of release?
 \subsection{Month of release with proportion of movies in each
 genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
 
-\hypertarget{section-100}{%
-\subsubsection{}\label{section-100}}
+\hypertarget{section-103}{%
+\subsubsection{}\label{section-103}}
 
 Visualize the proportion of movies in each \texttt{genre} for each month
 of release.
@@ -17629,8 +19673,8 @@ the visualization
 
 \emph{(8 points)}
 
-\hypertarget{section-101}{%
-\subsubsection{}\label{section-101}}
+\hypertarget{section-104}{%
+\subsubsection{}\label{section-104}}
 
 Which \texttt{genre} is the most popular during the month of May, and
 which one is the most popular during December?
@@ -17641,8 +19685,8 @@ which one is the most popular during December?
 \subsection{Year of release with
 genre}\label{year-of-release-with-genre}}
 
-\hypertarget{section-102}{%
-\subsubsection{}\label{section-102}}
+\hypertarget{section-105}{%
+\subsubsection{}\label{section-105}}
 
 Make an appropriate figure to visualize the average profit of movies of
 each \texttt{genre} for each year. Consider only the movies released
@@ -17667,8 +19711,8 @@ profit.
 
 \emph{(6 points)}
 
-\hypertarget{section-103}{%
-\subsubsection{}\label{section-103}}
+\hypertarget{section-106}{%
+\subsubsection{}\label{section-106}}
 
 Based on the figure above, which \texttt{genre}'s profitability seems to
 be increasing over the years, and which \texttt{genre} has the least
@@ -17682,31 +19726,31 @@ uncertainty in profit for most of the years.
 \hypertarget{pairplot-heatmap}{%
 \subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
 
-\hypertarget{section-104}{%
-\subsubsection{}\label{section-104}}
+\hypertarget{section-107}{%
+\subsubsection{}\label{section-107}}
 
 Make a pairplot and heatmap of all the continuous variables in the data.
 
 \emph{(8 points)}
 
-\hypertarget{section-105}{%
-\subsubsection{}\label{section-105}}
+\hypertarget{section-108}{%
+\subsubsection{}\label{section-108}}
 
 Are there any trends that you can see in the pairplot, but not in the
 heatmap?
 
 \emph{(2 points)}
 
-\hypertarget{section-106}{%
-\subsubsection{}\label{section-106}}
+\hypertarget{section-109}{%
+\subsubsection{}\label{section-109}}
 
 Based on the plots in 2(a)(i), which variables are associated with
 profit?
 
 \emph{(2 points)}
 
-\hypertarget{section-107}{%
-\subsubsection{}\label{section-107}}
+\hypertarget{section-110}{%
+\subsubsection{}\label{section-110}}
 
 Among the variables listed in 2(a)(iii), select a subset of variables
 such that none of them are highly associated with each other. The rest
@@ -17718,8 +19762,8 @@ association with profit.
 \hypertarget{nested-associations}{%
 \subsection{Nested associations}\label{nested-associations}}
 
-\hypertarget{section-108}{%
-\subsubsection{}\label{section-108}}
+\hypertarget{section-111}{%
+\subsubsection{}\label{section-111}}
 
 Use the code below to create some new columns.
 
@@ -17737,8 +19781,8 @@ Which genre has the highest association between profit and IMDB votes?
 
 \emph{(8 points)}
 
-\hypertarget{section-109}{%
-\subsubsection{}\label{section-109}}
+\hypertarget{section-112}{%
+\subsubsection{}\label{section-112}}
 
 Make an appropriate figure to visualize the association between the
 number of IMDB votes and profit, for each combination of the fiction
@@ -17758,8 +19802,8 @@ object.
 \subsection{Profit based on movie
 director}\label{profit-based-on-movie-director}}
 
-\hypertarget{section-110}{%
-\subsubsection{}\label{section-110}}
+\hypertarget{section-113}{%
+\subsubsection{}\label{section-113}}
 
 Consider the directors who have directed more than 10 movies (based on
 the dataset). Make a horizontal barplot that shows the mean profit of
@@ -17781,8 +19825,8 @@ directors must appear in the barplot:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-111}{%
-\subsubsection{}\label{section-111}}
+\hypertarget{section-114}{%
+\subsubsection{}\label{section-114}}
 
 Based on the above plot, which director has the highest mean
 profitability, and which one has the highest variation in profitability?
@@ -17796,8 +19840,8 @@ profitability, and which one has the highest variation in profitability?
 \subsection{Distribution of profit based on genre
 (boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
 
-\hypertarget{section-112}{%
-\subsubsection{}\label{section-112}}
+\hypertarget{section-115}{%
+\subsubsection{}\label{section-115}}
 
 Make boxplots to visualize the distribution of \texttt{profit} based on
 \texttt{genre}. Based on the plot, which genre has the most profitable
@@ -17805,8 +19849,8 @@ movies?
 
 \emph{(6 points)}
 
-\hypertarget{section-113}{%
-\subsubsection{}\label{section-113}}
+\hypertarget{section-116}{%
+\subsubsection{}\label{section-116}}
 
 Which genre has the most variation in profit, and which one has the
 least?
@@ -17817,16 +19861,16 @@ least?
 \subsection{Distribution of profit based on genre (density
 plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
 
-\hypertarget{section-114}{%
-\subsubsection{}\label{section-114}}
+\hypertarget{section-117}{%
+\subsubsection{}\label{section-117}}
 
 Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
 the limit on the horizonal axis, so that the plots are clearly visible.
 
 \emph{(6 points)}
 
-\hypertarget{section-115}{%
-\subsubsection{}\label{section-115}}
+\hypertarget{section-118}{%
+\subsubsection{}\label{section-118}}
 
 What additional insight / trend can you seen in the above plot that you
 cannot see with the boxplots?
@@ -17963,18 +20007,18 @@ Suppose there is an investor who only holds the index for a single day
 
 Based on the data,
 
-\hypertarget{section-116}{%
-\subsubsection{}\label{section-116}}
+\hypertarget{section-119}{%
+\subsubsection{}\label{section-119}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-117}{%
-\subsubsection{}\label{section-117}}
+\hypertarget{section-120}{%
+\subsubsection{}\label{section-120}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-118}{%
-\subsubsection{}\label{section-118}}
+\hypertarget{section-121}{%
+\subsubsection{}\label{section-121}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -17993,18 +20037,18 @@ Suppose there is an investor who will hold the index for a year (suppose
 there are 250 trading days in a year). Do the same analysis as the
 above:
 
-\hypertarget{section-119}{%
-\subsubsection{}\label{section-119}}
+\hypertarget{section-122}{%
+\subsubsection{}\label{section-122}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-120}{%
-\subsubsection{}\label{section-120}}
+\hypertarget{section-123}{%
+\subsubsection{}\label{section-123}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-121}{%
-\subsubsection{}\label{section-121}}
+\hypertarget{section-124}{%
+\subsubsection{}\label{section-124}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -18019,20 +20063,20 @@ our holding period from 1 day to 1 year(250 days).
 
 Show/answer:
 
-\hypertarget{section-122}{%
-\subsubsection{}\label{section-122}}
+\hypertarget{section-125}{%
+\subsubsection{}\label{section-125}}
 
 At least how many days do you need to hold the index in order to make a
 significant positive return (threshold 0.01)?
 
-\hypertarget{section-123}{%
-\subsubsection{}\label{section-123}}
+\hypertarget{section-126}{%
+\subsubsection{}\label{section-126}}
 
 How are the returns associated with the risks for different investment
 strategies?
 
-\hypertarget{section-124}{%
-\subsubsection{}\label{section-124}}
+\hypertarget{section-127}{%
+\subsubsection{}\label{section-127}}
 
 Make a graph as shown below.
 
