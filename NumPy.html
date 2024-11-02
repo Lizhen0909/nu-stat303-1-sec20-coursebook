@@ -644,30 +644,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Example:</strong> This example shows that computations using NumPy arrays are typically much faster than computations with other data structures.</p>
 <p><strong>Q:</strong> Multiply whole numbers up to 1 million by an integer, say 2. Compare the time taken for the computation if the numbers are stored in a NumPy array vs a list.</p>
 <p>Use the numpy function <a href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html">arange()</a> to define a one-dimensional NumPy array.</p>
-<div class="cell" data-execution_count="12">
+<div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Examples showing NumPy arrays are more efficient for numerical computation</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time <span class="im">as</span> tm</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>list_ex <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1000000</span>)) <span class="co">#List containinig whole numbers upto 1 million</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>(list_ex<span class="op">*</span><span class="dv">2</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time take to multiply numbers in a list = "</span>, tm.time()<span class="op">-</span>start_time)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>tuple_ex <span class="op">=</span> <span class="bu">tuple</span>(<span class="bu">range</span>(<span class="dv">1000000</span>)) <span class="co">#Tuple containinig whole numbers upto 1 million</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>(tuple_ex<span class="op">*</span><span class="dv">2</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time take to multiply numbers in a tuple = "</span>, tm.time()<span class="op">-</span>start_time)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>numpy_ex <span class="op">=</span> np.arange(<span class="dv">1000000</span>) <span class="co">#NumPy array containinig whole numbers upto 1 million</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>(numpy_ex<span class="op">*</span><span class="dv">2</span>)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time take to multiply numbers in a NumPy array = "</span>, tm.time()<span class="op">-</span>start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List comprehension to multiply each element by 2</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>list_ex <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1000000</span>))  <span class="co"># List containing whole numbers up to 1 million</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> list_ex]    <span class="co"># Multiply each element by 2</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken to multiply numbers in a list = "</span>, tm.time() <span class="op">-</span> start_time)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuple - converting to list for multiplication, then back to tuple</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>tuple_ex <span class="op">=</span> <span class="bu">tuple</span>(<span class="bu">range</span>(<span class="dv">1000000</span>))  <span class="co"># Tuple containing whole numbers up to 1 million</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">tuple</span>(x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> tuple_ex)  <span class="co"># Multiply each element by 2</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken to multiply numbers in a tuple = "</span>, tm.time() <span class="op">-</span> start_time)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy array element-wise multiplication</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>numpy_ex <span class="op">=</span> np.arange(<span class="dv">1000000</span>)  <span class="co"># NumPy array containing whole numbers up to 1 million</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> numpy_ex <span class="op">*</span> <span class="dv">2</span>               <span class="co"># Multiply each element by 2</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken to multiply numbers in a NumPy array = "</span>, tm.time() <span class="op">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time take to multiply numbers in a list =  0.021925687789916992
-Time take to multiply numbers in a tuple =  0.028903484344482422
-Time take to multiply numbers in a NumPy array =  0.011997461318969727</code></pre>
+<pre><code>Time taken to multiply numbers in a list =  0.049832820892333984
+Time taken to multiply numbers in a tuple =  0.08172726631164551
+Time taken to multiply numbers in a NumPy array =  0.010966300964355469</code></pre>
 </div>
 </div>
 </section>
@@ -1372,7 +1376,7 @@ Array 2:
 </div>
 <p>Here’s a visual explanation of <code>np.concatenate</code> along <code>axis=1</code> (can you guess what <code>axis=0</code> results in?):</p>
 <p><img src="https://www.w3resource.com/w3r_images/python-numpy-image-exercise-58.png" width="300"></p>
-<p>Since the arrays need to have the same dimension only along the axis of concatenation, let us try concatenate the array below (<code>arr3</code>) with <code>arr1</code>, along axis = 0.</p>
+<p>Let us concatenate the array below (<code>arr3</code>) with <code>arr1</code>, along axis = 0.</p>
 <div class="cell" data-execution_count="51">
 <details open="">
 <summary>Code</summary>
