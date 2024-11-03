@@ -95,6 +95,7 @@
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -194,7 +195,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, sharp corners, frame hidden, interior hidden, breakable, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -7623,27 +7624,31 @@ to define a one-dimensional NumPy array.
 \begin{Highlighting}[]
 \CommentTok{\#Examples showing NumPy arrays are more efficient for numerical computation}
 \ImportTok{import}\NormalTok{ time }\ImportTok{as}\NormalTok{ tm}
-\NormalTok{start\_time }\OperatorTok{=}\NormalTok{ tm.time()}
-\NormalTok{list\_ex }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{1000000}\NormalTok{)) }\CommentTok{\#List containinig whole numbers upto 1 million}
-\NormalTok{a}\OperatorTok{=}\NormalTok{(list\_ex}\OperatorTok{*}\DecValTok{2}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Time take to multiply numbers in a list = "}\NormalTok{, tm.time()}\OperatorTok{{-}}\NormalTok{start\_time)}
 
+\CommentTok{\# List comprehension to multiply each element by 2}
 \NormalTok{start\_time }\OperatorTok{=}\NormalTok{ tm.time()}
-\NormalTok{tuple\_ex }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{1000000}\NormalTok{)) }\CommentTok{\#Tuple containinig whole numbers upto 1 million}
-\NormalTok{a}\OperatorTok{=}\NormalTok{(tuple\_ex}\OperatorTok{*}\DecValTok{2}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Time take to multiply numbers in a tuple = "}\NormalTok{, tm.time()}\OperatorTok{{-}}\NormalTok{start\_time)}
+\NormalTok{list\_ex }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{1000000}\NormalTok{))  }\CommentTok{\# List containing whole numbers up to 1 million}
+\NormalTok{a }\OperatorTok{=}\NormalTok{ [x }\OperatorTok{*} \DecValTok{2} \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ list\_ex]    }\CommentTok{\# Multiply each element by 2}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Time taken to multiply numbers in a list = "}\NormalTok{, tm.time() }\OperatorTok{{-}}\NormalTok{ start\_time)}
 
+\CommentTok{\# Tuple {-} converting to list for multiplication, then back to tuple}
 \NormalTok{start\_time }\OperatorTok{=}\NormalTok{ tm.time()}
-\NormalTok{numpy\_ex }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1000000}\NormalTok{) }\CommentTok{\#NumPy array containinig whole numbers upto 1 million}
-\NormalTok{a}\OperatorTok{=}\NormalTok{(numpy\_ex}\OperatorTok{*}\DecValTok{2}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Time take to multiply numbers in a NumPy array = "}\NormalTok{, tm.time()}\OperatorTok{{-}}\NormalTok{start\_time)}
+\NormalTok{tuple\_ex }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{1000000}\NormalTok{))  }\CommentTok{\# Tuple containing whole numbers up to 1 million}
+\NormalTok{a }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(x }\OperatorTok{*} \DecValTok{2} \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ tuple\_ex)  }\CommentTok{\# Multiply each element by 2}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Time taken to multiply numbers in a tuple = "}\NormalTok{, tm.time() }\OperatorTok{{-}}\NormalTok{ start\_time)}
+
+\CommentTok{\# NumPy array element{-}wise multiplication}
+\NormalTok{start\_time }\OperatorTok{=}\NormalTok{ tm.time()}
+\NormalTok{numpy\_ex }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{1000000}\NormalTok{)  }\CommentTok{\# NumPy array containing whole numbers up to 1 million}
+\NormalTok{a }\OperatorTok{=}\NormalTok{ numpy\_ex }\OperatorTok{*} \DecValTok{2}               \CommentTok{\# Multiply each element by 2}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Time taken to multiply numbers in a NumPy array = "}\NormalTok{, tm.time() }\OperatorTok{{-}}\NormalTok{ start\_time)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-Time take to multiply numbers in a list =  0.021925687789916992
-Time take to multiply numbers in a tuple =  0.028903484344482422
-Time take to multiply numbers in a NumPy array =  0.011997461318969727
+Time taken to multiply numbers in a list =  0.049832820892333984
+Time taken to multiply numbers in a tuple =  0.08172726631164551
+Time taken to multiply numbers in a NumPy array =  0.010966300964355469
 \end{verbatim}
 
 \hypertarget{basics-of-numpy-arrays}{%
@@ -8534,9 +8539,8 @@ array([[1, 2, 3, 2, 2, 3],
 Here's a visual explanation of \texttt{np.concatenate} along
 \texttt{axis=1} (can you guess what \texttt{axis=0} results in?):
 
-Since the arrays need to have the same dimension only along the axis of
-concatenation, let us try concatenate the array below (\texttt{arr3})
-with \texttt{arr1}, along axis = 0.
+Let us concatenate the array below (\texttt{arr3}) with \texttt{arr1},
+along axis = 0.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -15814,27 +15818,17 @@ information).
 \NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{))}
 
 \CommentTok{\# Plot your GeoDataFrame}
-\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(}\StringTok{\textquotesingle{}datasets/chicago\_boundaries\textbackslash{}geo\_export\_26bce2f2{-}c163{-}42a9{-}9329{-}9ca6e082c5e9.shp\textquotesingle{}}\NormalTok{)}
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(}\VerbatimStringTok{r\textquotesingle{}datasets/chicago\_boundaries\textbackslash{}geo\_export\_26bce2f2{-}c163{-}42a9{-}9329{-}9ca6e082c5e9.shp\textquotesingle{}}\NormalTok{)}
 \NormalTok{chicago.plot(column}\OperatorTok{=}\StringTok{\textquotesingle{}community\textquotesingle{}}\NormalTok{, ax}\OperatorTok{=}\NormalTok{ax, legend}\OperatorTok{=}\VariableTok{True}\NormalTok{, legend\_kwds}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}ncol\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{\textquotesingle{}bbox\_to\_anchor\textquotesingle{}}\NormalTok{: (}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)\})}
 
 \CommentTok{\# Add title (optional)}
-\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}
-
-\CommentTok{\# Show the plot}
-\NormalTok{plt.show()}\OperatorTok{;}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-<>:5: SyntaxWarning: invalid escape sequence '\g'
-<>:5: SyntaxWarning: invalid escape sequence '\g'
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_33016\2125888739.py:5: SyntaxWarning: invalid escape sequence '\g'
-  chicago = gpd.read_file('datasets/chicago_boundaries\geo_export_26bce2f2-c163-42a9-9329-9ca6e082c5e9.shp')
-\end{verbatim}
-
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-29-output-2.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-29-output-1.png}
 
 }
 
@@ -16004,14 +15998,10 @@ the Divvy stations.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# drop the duplicates in the column \textquotesingle{}to\_station\_id\textquotesingle{}, \textquotesingle{}to\_station\_name\textquotesingle{}, \textquotesingle{}latitude\_end\textquotesingle{}, \textquotesingle{}longitude\_end\textquotesingle{}}
-\NormalTok{data\_station\_same }\OperatorTok{=}\NormalTok{ data[[}\StringTok{\textquotesingle{}from\_station\_id\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}from\_station\_name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}to\_station\_id\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}to\_station\_name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}latitude\_end\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_end\textquotesingle{}}\NormalTok{]].drop\_duplicates()}
-\NormalTok{data\_station\_same.shape}
+\CommentTok{\# data\_station\_same = data[[\textquotesingle{}from\_station\_id\textquotesingle{}, \textquotesingle{}from\_station\_name\textquotesingle{}, \textquotesingle{}latitude\_start\textquotesingle{}, \textquotesingle{}longitude\_start\textquotesingle{}, \textquotesingle{}to\_station\_id\textquotesingle{}, \textquotesingle{}to\_station\_name\textquotesingle{}, \textquotesingle{}latitude\_end\textquotesingle{}, \textquotesingle{}longitude\_end\textquotesingle{}]].drop\_duplicates()}
+\CommentTok{\# data\_station\_same.shape}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-(1757, 8)
-\end{verbatim}
 
 \hypertarget{adding-the-divvy-station-to-the-plot}{%
 \subsection{Adding the divvy station to the
@@ -16025,33 +16015,23 @@ top of the Chicago shapefile
 \CommentTok{\# Adding the stations to the plot}
 \NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{))}
 
-\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(}\StringTok{\textquotesingle{}datasets/chicago\_boundaries\textbackslash{}geo\_export\_26bce2f2{-}c163{-}42a9{-}9329{-}9ca6e082c5e9.shp\textquotesingle{}}\NormalTok{)}
+\NormalTok{chicago }\OperatorTok{=}\NormalTok{ gpd.read\_file(}\VerbatimStringTok{r\textquotesingle{}datasets/chicago\_boundaries\textbackslash{}geo\_export\_26bce2f2{-}c163{-}42a9{-}9329{-}9ca6e082c5e9.shp\textquotesingle{}}\NormalTok{)}
 \NormalTok{chicago.plot(column}\OperatorTok{=}\StringTok{\textquotesingle{}community\textquotesingle{}}\NormalTok{, ax}\OperatorTok{=}\NormalTok{ax, legend}\OperatorTok{=}\VariableTok{True}\NormalTok{, legend\_kwds}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}ncol\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{\textquotesingle{}bbox\_to\_anchor\textquotesingle{}}\NormalTok{: (}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)\})}
 
 \CommentTok{\# Plot the stations}
 \NormalTok{longlat\_df }\OperatorTok{=}\NormalTok{ data[[ }\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{]].drop\_duplicates()}
 
 \NormalTok{plt.scatter(longlat\_df[}\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{], longlat\_df[}\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{], s}\OperatorTok{=}\DecValTok{10}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{)}
-\CommentTok{\# data[[\textquotesingle{}longitude\_start\textquotesingle{}, \textquotesingle{}latitude\_start\textquotesingle{}]].drop\_duplicates().plot(ax=ax, color=\textquotesingle{}red\textquotesingle{}, markersize=10, marker=\textquotesingle{}o\textquotesingle{})}
+
 
 \CommentTok{\# Add title (optional)}
-\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}
-
-\CommentTok{\# Show the plot}
-\NormalTok{plt.show()}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-<>:4: SyntaxWarning: invalid escape sequence '\g'
-<>:4: SyntaxWarning: invalid escape sequence '\g'
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_14232\1459074587.py:4: SyntaxWarning: invalid escape sequence '\g'
-  chicago = gpd.read_file('datasets/chicago_boundaries\geo_export_26bce2f2-c163-42a9-9329-9ca6e082c5e9.shp')
-\end{verbatim}
-
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-35-output-2.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-35-output-1.png}
 
 }
 
@@ -16072,17 +16052,13 @@ to observe how geographic boundaries or data details may vary
 \NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{10}\NormalTok{))}
 \NormalTok{chicago.boundary.plot(ax}\OperatorTok{=}\NormalTok{ax)}
 \NormalTok{plt.scatter(data[}\StringTok{\textquotesingle{}longitude\_start\textquotesingle{}}\NormalTok{], data[}\StringTok{\textquotesingle{}latitude\_start\textquotesingle{}}\NormalTok{], s}\OperatorTok{=}\DecValTok{10}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Chicago Community Areas\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-Text(0.5, 1.0, 'Chicago Community Areas')
-\end{verbatim}
-
 \begin{figure}[H]
 
-{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-36-output-2.png}
+{\centering \includegraphics{Advanced_Data_Visualization_files/figure-pdf/cell-36-output-1.png}
 
 }
 
@@ -16427,8 +16403,17 @@ our guess or estimate of missing values in
 \ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
 \ImportTok{import}\NormalTok{ sklearn }\ImportTok{as}\NormalTok{ sk}
 \ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
-\NormalTok{gdp\_missing\_values\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_missing\_data.csv\textquotesingle{}}\NormalTok{)}
-\NormalTok{gdp\_complete\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_complete\_data.csv\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+
+\OperatorTok{\%}\NormalTok{matplotlib inline}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_missing\_values\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Datasets/GDP\_missing\_data.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_complete\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Datasets/GDP\_complete\_data.csv\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -16670,24 +16655,24 @@ Understanding the type of missing data helps in selecting the right
 imputation method and mitigating potential biases in the analysis.
 
 \hypertarget{questions}{%
-\subsection{Questions}\label{questions}}
+\subsubsection{Questions}\label{questions}}
 
 \hypertarget{section-51}{%
-\subsubsection{}\label{section-51}}
+\paragraph{}\label{section-51}}
 
 Why can we ignore observations with missing values without risking
 skewing the analysis or trends in the case of \textbf{Missing Completely
 at Random (MCAR)}?
 
 \hypertarget{section-52}{%
-\subsubsection{}\label{section-52}}
+\paragraph{}\label{section-52}}
 
 Why could ignoring missing values lead to biased results for
 \textbf{Missing at Random (MAR)} and \textbf{Missing Not at Random
 (MNAR)} data?
 
 \hypertarget{section-53}{%
-\subsubsection{}\label{section-53}}
+\paragraph{}\label{section-53}}
 
 For the datset consisting of GDP per capita, think of hypothetical
 scenarios in which the missing values of GDP per capita can correspond
@@ -16865,11 +16850,12 @@ function
 \NormalTok{    z}\OperatorTok{=}\NormalTok{np.polyfit(x,y.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{],}\DecValTok{1}\NormalTok{)}
 \NormalTok{    p}\OperatorTok{=}\NormalTok{np.poly1d(z)}
 \NormalTok{    plt.plot(x,x,color}\OperatorTok{=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
-\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
-\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{15}\NormalTok{)}
+\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{15}\NormalTok{)}
 \NormalTok{    ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
 \NormalTok{    ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
-\NormalTok{    plt.title(}\StringTok{\textquotesingle{}Actual vs Imputed values for GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}axes\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{10}\NormalTok{)  }\CommentTok{\# Set all axis labels to fontsize 10}
+    \CommentTok{\# plt.title(\textquotesingle{}Actual vs Imputed values for GDP per capita\textquotesingle{},fontsize=20)}
 \NormalTok{    rmse }\OperatorTok{=}\NormalTok{ np.sqrt(np.mean((y.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}\OperatorTok{{-}}\NormalTok{x)}\OperatorTok{**}\DecValTok{2}\NormalTok{))}
 \NormalTok{    plt.text(}\DecValTok{10000}\NormalTok{, }\DecValTok{50000}\NormalTok{, }\StringTok{\textquotesingle{}RMSE = }\SpecialCharTok{\%.2f}\StringTok{\textquotesingle{}}\OperatorTok{\%}\NormalTok{rmse, fontsize}\OperatorTok{=}\DecValTok{15}\NormalTok{)}
 \end{Highlighting}
@@ -16930,7 +16916,7 @@ MCAR (Missing completely at random).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-14-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-15-output-1.png}
 
 }
 
@@ -16949,13 +16935,11 @@ in categorical columns.
 predict missing
 values}\label{conditional-imputation-use-other-related-variables-to-predict-missing-values}}
 
+There are three approaches within this category; please see the details
+below.
+
 \begin{itemize}
-\item
-  Based on correlated variables
-\item
-  KNN
-\item
-  Linear Regression
+\tightlist
 \item
   \textbf{Imputing missing values based on correlated variables in the
   data}
@@ -16977,7 +16961,7 @@ continents.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-15-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-16-output-1.png}
 
 }
 
@@ -17029,7 +17013,7 @@ Name: gdpPerCapita, dtype: float64
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-18-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-19-output-1.png}
 
 }
 
@@ -17102,7 +17086,7 @@ dtype: float64
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-22-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-23-output-1.png}
 
 }
 
@@ -17311,7 +17295,7 @@ standardized data.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-33-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-34-output-1.png}
 
 }
 
@@ -17341,19 +17325,40 @@ simply replace \texttt{ffill} with \texttt{bfill}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Filling missing values: Method 1{-} Naive way}
-\NormalTok{gdp\_imputed\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.fillna(method }\OperatorTok{=} \StringTok{\textquotesingle{}ffill\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_imputed\_data\_ffill }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.fillna(method }\OperatorTok{=} \StringTok{\textquotesingle{}ffill\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\1555899051.py:2: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
-  gdp_imputed_data = gdp_missing_values_data.fillna(method = 'ffill')
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\1702047886.py:2: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  gdp_imputed_data_ffill = gdp_missing_values_data.fillna(method = 'ffill')
 \end{verbatim}
+
+Let us next check how good is this method in imputing missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_actual\_vs\_predicted(gdp\_imputed\_data\_ffill)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-36-output-1.png}
+
+}
+
+\end{figure}
+
+We observe that the accuracy of imputation is poor as GDP per capita can
+vary a lot across countries, and the data is not sorted by GDP per
+capita. There is no reason why the GDP per capita of a country should be
+close to the GDP per capita of the country in the observation above it.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Checking if any missing values are remaining}
-\NormalTok{gdp\_imputed\_data.isnull().}\BuiltInTok{sum}\NormalTok{()}
+\NormalTok{gdp\_imputed\_data\_ffill.isnull().}\BuiltInTok{sum}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -17375,80 +17380,53 @@ dtype: int64
 After imputing missing values, note there is still one missing value for
 \emph{illiteracyMale}. Can you guess why one missing value remained?
 
-Let us check how good is this method in imputing missing values. We'll
-compare the imputed values of \texttt{gdpPerCapita} with the actual
-values. Recall that we had randomly put some missing values in
-\texttt{gdp\_missing\_values\_data}, and we have the actual values in
-\texttt{gdp\_complete\_data}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Index of rows with missing values for GDP per capita}
-\NormalTok{null\_ind\_gdpPC }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.index[gdp\_missing\_values\_data.gdpPerCapita.isnull()]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Defining a function to plot the imputed values vs actual values }
-\KeywordTok{def}\NormalTok{ plot\_actual\_vs\_predicted():}
-\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{))}
-\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}xtick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
-\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}ytick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
-\NormalTok{    x }\OperatorTok{=}\NormalTok{ gdp\_complete\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
-\NormalTok{    y }\OperatorTok{=}\NormalTok{ gdp\_imputed\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
-\NormalTok{    plt.scatter(x,y)}
-\NormalTok{    z}\OperatorTok{=}\NormalTok{np.polyfit(x,y,}\DecValTok{1}\NormalTok{)}
-\NormalTok{    p}\OperatorTok{=}\NormalTok{np.poly1d(z)}
-\NormalTok{    plt.plot(x,x,color}\OperatorTok{=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
-\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
-\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
-\NormalTok{    ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
-\NormalTok{    ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
-\NormalTok{    rmse }\OperatorTok{=}\NormalTok{ np.sqrt(((x}\OperatorTok{{-}}\NormalTok{y).}\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{)).mean())}
-    \BuiltInTok{print}\NormalTok{(}\StringTok{"RMSE="}\NormalTok{,rmse)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Plot comparing imputed values with actual values, and computing the Root mean square error (RMSE) of the imputed values}
-\NormalTok{plot\_actual\_vs\_predicted()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-RMSE= 34843.91091137732
-\end{verbatim}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-38-output-2.png}
-
-}
-
-\end{figure}
-
-We observe that the accuracy of imputation is poor as GDP per capita can
-vary a lot across countries, and the data is not sorted by GDP per
-capita. There is no reason why the GDP per capita of a country should be
-close to the GDP per capita of the country in the observation above it.
-
-\hypertarget{outlier-detection}{%
-\section{Outlier detection}\label{outlier-detection}}
+\hypertarget{outlier-detection-and-handling}{%
+\section{Outlier detection and
+handling}\label{outlier-detection-and-handling}}
 
 An outlier is an observation that is significantly different from the
-rest of the data. Detection of outliers is important as they may distort
-the general trends in data.
+rest of the data. Outlier detection and handling are important in data
+science because outliers can significantly impact the quality, accuracy,
+and interpretability of data analysis and model performance. Here are
+the main reasons why it's crucial to address outliers:
 
-The dataset \emph{College.csv} contains information about US
-universities. The description of variables of the dataset can be found
-on page 54 of this
-\href{https://hastie.su.domains/ISLR2/ISLRv2_website.pdf}{book}.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Preventing Skewed Results:} Outliers can distort statistical
+  measures, such as the mean and standard deviation, leading to
+  misleading interpretations of the data. For example, a few extreme
+  values can inflate the mean, making the data seem larger than it is in
+  reality.
+\item
+  \textbf{Improving Model Accuracy:} Many machine learning algorithms
+  are sensitive to outliers and can perform poorly if outliers are
+  present. For instance, in linear regression, outliers can
+  disproportionately affect the model by pulling the line of best fit
+  toward them, reducing predictive accuracy.
+\item
+  \textbf{Enhancing Robustness of Models:} Identifying and handling
+  outliers can make models more robust and stable. By minimizing the
+  influence of extreme values, models become less sensitive to noise,
+  which improves generalization and reduces overfitting.
+\end{itemize}
+
+\hypertarget{outlier-detection}{%
+\subsection{Outlier detection}\label{outlier-detection}}
+
+Outlier detection is crucial for identifying unusual values in your data
+that may need to be investigated, removed, or transformed. Here are
+several popular methods for detecting outliers:
+
+We will use \emph{College.csv} that contains information about US
+universities as our dataset in this section. The description of
+variables of the dataset can be found on page 65 of this
+\href{https://www.statlearning.com/resources-python}{book}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/College.csv\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# Load the College dataset}
+\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Datasets/College.csv\textquotesingle{}}\NormalTok{)}
 \NormalTok{college.head()}
 \end{Highlighting}
 \end{Shaded}
@@ -17475,6 +17453,17 @@ PhD & Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate \\
 869 & 7560 & 4120 & 800 & 1500 & 76 & 72 & 11.9 & 2 & 10922 & 15 \\
 \end{longtable}
 
+\hypertarget{visualization-methods}{%
+\subsubsection{Visualization Methods}\label{visualization-methods}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Box Plot}: A box plot is a quick and visual way to detect
+  outliers, where points outside the ``whiskers'' are considered
+  outliers.
+\end{itemize}
+
 Let us visualize outliers in average instructional expenditure per
 student given by the variable \texttt{Expend}.
 
@@ -17487,7 +17476,7 @@ student given by the variable \texttt{Expend}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-40-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-39-output-1.png}
 
 }
 
@@ -17495,129 +17484,367 @@ student given by the variable \texttt{Expend}.
 
 There are several outliers (shown as circles in the above boxplot),
 which correspond to high values of average instructional expenditure per
-student. Boxplot identifies outliers based on the
+student.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Histogram}: Histograms can reveal unusual values as isolated
+  bars, helping to identify outliers in a single feature.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a histogram of expend}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{].plot(kind}\OperatorTok{=}\StringTok{\textquotesingle{}hist\textquotesingle{}}\NormalTok{, edgecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, bins}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Histogram of Expenditure\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-40-output-1.png}
+
+}
+
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Scatter Plot}: A scatter plot can reveal outliers, especially
+  in two-dimensional data. Outliers will often appear as points
+  separated from the main cluster.
+\end{itemize}
+
+Let's make a scatterplot of `Grad.Rate' vs `Expend' with a trendline, to
+visualize potential outliers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.regplot(data }\OperatorTok{=}\NormalTok{ college, x }\OperatorTok{=} \StringTok{"Expend"}\NormalTok{, y }\OperatorTok{=} \StringTok{"Grad.Rate"}\NormalTok{,scatter\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"orange"}\NormalTok{\}, line\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"blue"}\NormalTok{\})}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-41-output-1.png}
+
+}
+
+\end{figure}
+
+The trendline indicates a positive correlation between \texttt{Expend}
+and \texttt{Grad.Rate}. However, there seems to be a lot of noise and
+presence of outliers in the data.
+
+\hypertarget{statistical-methods}{%
+\subsubsection{Statistical Methods}\label{statistical-methods}}
+
+Visualization helps us identify potential outliers. To address them
+effectively, we need to extract these outlier instances using a defined
+threshold. Two commonly used statistical methods for this purpose are
+the Z-Score method and the Interquartile Range (IQR) (Tukey's fences).
+
+\hypertarget{z-score-standard-score}{%
+\paragraph{Z-Score (Standard Score)}\label{z-score-standard-score}}
+
+Calculates how many standard deviations a data point is from the mean.
+Commonly, data points with a Z-score greater than 3 (or less than -3)
+are considered outliers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ scipy }\ImportTok{import}\NormalTok{ stats}
+
+\CommentTok{\# Calculate Z{-}scores and identify outliers}
+\NormalTok{college[}\StringTok{\textquotesingle{}z\_score\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ stats.zscore(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{])}
+\NormalTok{college[}\StringTok{\textquotesingle{}is\_z\_score\_outlier\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ college[}\StringTok{\textquotesingle{}z\_score\textquotesingle{}}\NormalTok{].}\BuiltInTok{abs}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{3}
+
+\CommentTok{\# Filter to show only the outliers}
+\NormalTok{z\_score\_outliers }\OperatorTok{=}\NormalTok{ college[college[}\StringTok{\textquotesingle{}is\_z\_score\_outlier\textquotesingle{}}\NormalTok{]]}
+\BuiltInTok{print}\NormalTok{(z\_score\_outliers.shape)}
+\NormalTok{z\_score\_outliers.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(16, 21)
+\end{verbatim}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & ... & Books & Personal & PhD &
+Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate & z\_score &
+is\_z\_score\_outlier \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+20 & Antioch University & Yes & 713 & 661 & 252 & 25 & 44 & 712 & 23 &
+15476 & ... & 400 & 1100 & 69 & 82 & 11.3 & 35 & 42926 & 48 & 6.374709 &
+True \\
+144 & Columbia University & Yes & 6756 & 1930 & 871 & 78 & 96 & 3376 &
+55 & 18624 & ... & 550 & 300 & 97 & 98 & 5.9 & 21 & 30639 & 99 &
+4.020159 & True \\
+158 & Dartmouth College & Yes & 8587 & 2273 & 1087 & 87 & 99 & 3918 & 32
+& 19545 & ... & 550 & 1100 & 95 & 99 & 4.7 & 49 & 29619 & 98 & 3.824698
+& True \\
+174 & Duke University & Yes & 13789 & 3893 & 1583 & 90 & 98 & 6188 & 53
+& 18590 & ... & 625 & 1162 & 95 & 96 & 5.0 & 44 & 27206 & 97 & 3.362296
+& True \\
+191 & Emory University & Yes & 8506 & 4168 & 1236 & 76 & 97 & 5544 & 192
+& 17600 & ... & 600 & 870 & 97 & 98 & 5.0 & 28 & 28457 & 96 & 3.602024 &
+True \\
+\end{longtable}
+
+Boxplot identifies outliers based on the
 \href{https://en.wikipedia.org/wiki/Outlier}{Tukey's fences} criterion:
 
-\textbf{Tukey's fences:} John Tukey proposed that observations outside
-the range \([Q1 - 1.5(Q3-Q1), Q3+1.5(Q3-Q1)]\) are outliers, where
-\(Q1\) and \(Q3\) are the lower \((25\%)\) and upper \((75\%)\)
-quartiles respectively. Let us detect outliers based on Tukey's fences.
+\hypertarget{iqr-method-tukeys-fences}{%
+\paragraph{IQR method (Tukey's fences)}\label{iqr-method-tukeys-fences}}
+
+John Tukey proposed that observations outside the range
+\([Q1 - 1.5(Q3-Q1), Q3+1.5(Q3-Q1)]\) are outliers, where \(Q1\) and
+\(Q3\) are the lower \((25\%)\) and upper \((75\%)\) quartiles
+respectively. Let us detect outliers based on this threshold.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#Finding upper and lower quartiles and interquartile range}
-\NormalTok{q1 }\OperatorTok{=}\NormalTok{ np.percentile(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{25}\NormalTok{)}
-\NormalTok{q3 }\OperatorTok{=}\NormalTok{ np.percentile(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{75}\NormalTok{)}
-\NormalTok{intQ\_range }\OperatorTok{=}\NormalTok{ q3}\OperatorTok{{-}}\NormalTok{q1}
-\end{Highlighting}
-\end{Shaded}
+\CommentTok{\# Calculate the first and third quartiles, and the IQR}
+\NormalTok{Q1 }\OperatorTok{=}\NormalTok{ np.percentile(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{], }\DecValTok{25}\NormalTok{)}
+\NormalTok{Q3 }\OperatorTok{=}\NormalTok{ np.percentile(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{], }\DecValTok{75}\NormalTok{)}
+\NormalTok{IQR }\OperatorTok{=}\NormalTok{ Q3 }\OperatorTok{{-}}\NormalTok{ Q1}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Tukey\textquotesingle{}s fences}
-\NormalTok{Lower\_fence }\OperatorTok{=}\NormalTok{ q1 }\OperatorTok{{-}} \FloatTok{1.5}\OperatorTok{*}\NormalTok{intQ\_range}
-\NormalTok{Upper\_fence }\OperatorTok{=}\NormalTok{ q3 }\OperatorTok{+} \FloatTok{1.5}\OperatorTok{*}\NormalTok{intQ\_range}
-\end{Highlighting}
-\end{Shaded}
+\CommentTok{\# Define the lower and upper bounds for outliers}
+\NormalTok{lower\_bound }\OperatorTok{=}\NormalTok{ Q1 }\OperatorTok{{-}} \FloatTok{1.5} \OperatorTok{*}\NormalTok{ IQR}
+\NormalTok{upper\_bound }\OperatorTok{=}\NormalTok{ Q3 }\OperatorTok{+} \FloatTok{1.5} \OperatorTok{*}\NormalTok{ IQR}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#These are the outlying observations {-} those outside of Tukey\textquotesingle{}s fences}
-\NormalTok{Outlying\_obs }\OperatorTok{=}\NormalTok{ college[(college.Expend}\OperatorTok{\textless{}}\NormalTok{Lower\_fence) }\OperatorTok{|}\NormalTok{ (college.Expend}\OperatorTok{\textgreater{}}\NormalTok{Upper\_fence)]}
-\end{Highlighting}
-\end{Shaded}
+\CommentTok{\# Add a new column to indicate IQR outliers}
+\NormalTok{college[}\StringTok{\textquotesingle{}is\_IQR\_outlier\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ (college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}}\NormalTok{ lower\_bound) }\OperatorTok{|}\NormalTok{ (college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ upper\_bound)}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Data without outliers}
-\NormalTok{college\_data\_without\_outliers }\OperatorTok{=}\NormalTok{ college[((college.Expend}\OperatorTok{\textgreater{}=}\NormalTok{Lower\_fence) }\OperatorTok{\&}\NormalTok{ (college.Expend}\OperatorTok{\textless{}=}\NormalTok{Upper\_fence))]}
-\end{Highlighting}
-\end{Shaded}
-
-Earlier, the trend was distorted by outliers when we created bins of
-equal width. Let us see if we get the correct trend with the outliers
-removed from the data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Binned\_data }\OperatorTok{=}\NormalTok{ pd.cut(college\_data\_without\_outliers[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Med expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}High expend\textquotesingle{}}\NormalTok{],retbins }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
-\NormalTok{college\_data\_without\_outliers.loc[:,}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ Binned\_data[}\DecValTok{0}\NormalTok{]}
+\CommentTok{\# Filter to show only the IQR outliers}
+\NormalTok{iqr\_outliers }\OperatorTok{=}\NormalTok{ college[college[}\StringTok{\textquotesingle{}is\_IQR\_outlier\textquotesingle{}}\NormalTok{]]}
+\BuiltInTok{print}\NormalTok{(iqr\_outliers.shape)}
+\NormalTok{iqr\_outliers.head()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\2673864035.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  college_data_without_outliers.loc[:,'Expend_bin'] = Binned_data[0]
+(48, 22)
 \end{verbatim}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & ... & Personal & PhD & Terminal
+& S.F.Ratio & perc.alumni & Expend & Grad.Rate & z\_score &
+is\_z\_score\_outlier & is\_IQR\_outlier \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
+12960 & ... & 875 & 92 & 97 & 7.7 & 37 & 19016 & 59 & 1.792851 & False &
+True \\
+16 & Amherst College & Yes & 4302 & 992 & 418 & 83 & 96 & 1593 & 5 &
+19760 & ... & 1598 & 93 & 98 & 8.4 & 63 & 21424 & 100 & 2.254295 & False
+& True \\
+20 & Antioch University & Yes & 713 & 661 & 252 & 25 & 44 & 712 & 23 &
+15476 & ... & 1100 & 69 & 82 & 11.3 & 35 & 42926 & 48 & 6.374709 & True
+& True \\
+60 & Bowdoin College & Yes & 3356 & 1019 & 418 & 76 & 100 & 1490 & 8 &
+19030 & ... & 875 & 93 & 96 & 11.2 & 52 & 20447 & 96 & 2.067073 & False
+& True \\
+64 & Brandeis University & Yes & 4186 & 2743 & 740 & 48 & 77 & 2819 & 62
+& 19380 & ... & 1000 & 90 & 97 & 9.8 & 24 & 17150 & 84 & 1.435271 &
+False & True \\
+\end{longtable}
+
+Using the IQR method, more instances in the college dataset are marked
+as outliers.
+
+\hypertarget{when-to-use-each}{%
+\paragraph{When to use each:}\label{when-to-use-each}}
+
+\begin{itemize}
+\item
+  Use IQR when:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Data is skewed
+  \item
+    You don't want to assume any distribution
+  \item
+    You want a more sensitive detector
+  \end{itemize}
+\item
+  Use Z-score when:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Data is approximately normal
+  \item
+    You want a more conservative approach
+  \item
+    You need a method that's easily interpretable
+  \end{itemize}
+\end{itemize}
+
+The actual number of outliers marked by each method will depend on your
+specific dataset's distribution and characteristics.
+
+\hypertarget{common-methods-for-handling-outliers}{%
+\subsection{Common Methods for Handling
+outliers}\label{common-methods-for-handling-outliers}}
+
+Once we identify outlier instances using statistical methods, the next
+step is to handle them. Below are some commonly used approaches:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Removing Outliers}: Discarding extreme values if they are
+  likely due to errors or are irrelevant for the analysis.
+\item
+  \textbf{Winsorizing}: Capping/flooring outliers to a specific
+  percentile to reduce their influence without removing them completely.
+\item
+  \textbf{Replacing with the median}: Replacing outlier values with the
+  median of the remaining data. The median is less affected by extreme
+  values than the mean, making it an ideal choice for imputation when
+  dealing with outliers
+\item
+  \textbf{Transforming Data}: Applying transformations (e.g., log,
+  square root) to reduce the impact of outliers.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sns.barplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{, data }\OperatorTok{=}\NormalTok{ college\_data\_without\_outliers)}
+\KeywordTok{def}\NormalTok{ method\_removal():}
+    \CommentTok{"""Method 1: Remove outliers"""}
+\NormalTok{    data\_cleaned }\OperatorTok{=}\NormalTok{ college[}\OperatorTok{\textasciitilde{}}\NormalTok{college[}\StringTok{\textquotesingle{}is\_outlier\textquotesingle{}}\NormalTok{]][}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{]}
+    \ControlFlowTok{return}\NormalTok{ data\_cleaned}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-<Axes: xlabel='Expend_bin', ylabel='Grad.Rate'>
-\end{verbatim}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-46-output-2.png}
-
-}
-
-\end{figure}
-
-With the outliers removed, we obtain the correct overall trend, even in
-the case of equal-width bins. Note that these bins have unequal number
-of observations as shown below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.35}\NormalTok{)}
-\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college\_data\_without\_outliers, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
-\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{):}
-\NormalTok{    plt.axvline(Binned\_data[}\DecValTok{1}\NormalTok{][i], }\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
-\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ method\_capping():}
+    \CommentTok{"""Method 2: Capping (Winsorization)"""}
+\NormalTok{    data\_capped }\OperatorTok{=}\NormalTok{ college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{].copy()}
+\NormalTok{    data\_capped[data\_capped }\OperatorTok{\textless{}}\NormalTok{ lower\_bound] }\OperatorTok{=}\NormalTok{ lower\_bound}
+\NormalTok{    data\_capped[data\_capped }\OperatorTok{\textgreater{}}\NormalTok{ upper\_bound] }\OperatorTok{=}\NormalTok{ upper\_bound}
+    \ControlFlowTok{return}\NormalTok{ data\_capped}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-47-output-1.png}
-
-}
-
-\end{figure}
-
-Note that the right tail of the histogram has disappered since we
-removed outliers.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{college\_data\_without\_outliers[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{].value\_counts()}
+\KeywordTok{def}\NormalTok{ method\_mean\_replacement():}
+    \CommentTok{"""Method 3: Replace with median"""}
+\NormalTok{    data\_median }\OperatorTok{=}\NormalTok{ college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{].copy()}
+\NormalTok{    median\_value }\OperatorTok{=}\NormalTok{ college[}\OperatorTok{\textasciitilde{}}\NormalTok{college[}\StringTok{\textquotesingle{}is\_outlier\textquotesingle{}}\NormalTok{]][}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{].median()}
+\NormalTok{    data\_median[college[}\StringTok{\textquotesingle{}is\_outlier\textquotesingle{}}\NormalTok{]] }\OperatorTok{=}\NormalTok{ median\_value}
+    \ControlFlowTok{return}\NormalTok{ data\_median}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-Expend_bin
-Med expend     327
-Low expend     314
-High expend     88
-Name: count, dtype: int64
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ method\_log\_transformation():}
+    \CommentTok{"""Method 4: Log transformation"""}
+\NormalTok{    data\_log }\OperatorTok{=}\NormalTok{ np.log1p(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{])}
+    \ControlFlowTok{return}\NormalTok{ data\_log}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Your Practice:} Try each method and compare their results to see
+how they differ in handling outliers.
+
+In real-world applications, handling outliers should be approached on a
+case-by-case basis. However, here are some general recommendations:
+
+\textbf{Recommendations for Different Scenarios:}
+
+\begin{itemize}
+\item
+  Data Removal:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use when: You have a large dataset and can afford to lose data
+  \item
+    Pros: Simple, removes all outlier influence
+  \item
+    Cons: Loss of data, potential loss of important information
+  \end{itemize}
+\item
+  Capping (Winsorization):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use when: You want to preserve data count while limiting extreme
+    values
+  \item
+    Pros: Preserves data size, reduces impact of outliers
+  \item
+    Cons: Artificial boundary creation, potential loss of genuine
+    extreme events
+  \end{itemize}
+\item
+  Median Replacement:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use when: The data is normally distributed, and outliers are
+    verified as errors or anomalies not representing true values
+  \item
+    Pros: Maintains data size, simple to implement
+  \item
+    Cons: Reduces variance, may not represent the true distribution
+  \end{itemize}
+\item
+  Log Transformation:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use when: Data has a right-skewed distribution, and you want to
+    reduce the impact of large outliers.
+  \item
+    Pros: Reduces skewness, minimizes the effect of extreme values, can
+    make data more normal-like.
+  \item
+    Cons: Only applicable to positive values, may not be effective for
+    extremely high outliers.
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{data-binning}{%
 \section{Data binning}\label{data-binning}}
 
-Data binning is a method to group values of a continuous / categorical
-variable into bins (or categories). Binning may help with
+Data binning is a technique where continuous numerical data is grouped
+into discrete intervals or ``bins.'' Think of it like sorting items into
+different buckets based on their values.
+
+\hypertarget{key-reasons-for-binning}{%
+\subsection{Key reasons for binning:}\label{key-reasons-for-binning}}
 
 \begin{enumerate}
 \def\labelenumi{(\roman{enumi})}
@@ -17674,65 +17901,28 @@ Examples:
   monthly / yearly level to reduce the noise in day-to-day sales.
 \end{enumerate}
 
-\textbf{Example:} The dataset \emph{College.csv} contains information
-about US universities. The description of variables of the dataset can
-be found on page 54 of this
-\href{https://hastie.su.domains/ISLR2/ISLRv2_website.pdf}{book}. Let's
-see if we can apply binning to better interpret the association of
-instructional expenditure per student (\texttt{Expend}) with graduation
-rate (\texttt{Grad.Rate}) for US universities, and make recommendations.
+Using our college dataset, let's apply binning to better interpret the
+relationship between instructional expenditure per student
+(\texttt{Expend}) and graduation rate (\texttt{Grad.Rate}) for U.S.
+universities, and make relevant recommendations
+
+Here is the previous scatterplot of `Grad.Rate' vs `Expend' with a
+trendline.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/College.csv\textquotesingle{}}\NormalTok{)}
-\NormalTok{college.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllllllllllllllllll@{}}
-\toprule\noalign{}
-& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
-& F.Undergrad & P.Undergrad & Outstate & Room.Board & Books & Personal &
-PhD & Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
-2885 & 537 & 7440 & 3300 & 450 & 2200 & 70 & 78 & 18.1 & 12 & 7041 &
-60 \\
-1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
-& 12280 & 6450 & 750 & 1500 & 29 & 30 & 12.2 & 16 & 10527 & 56 \\
-2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
-11250 & 3750 & 400 & 1165 & 53 & 66 & 12.9 & 30 & 8735 & 54 \\
-3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
-12960 & 5450 & 450 & 875 & 92 & 97 & 7.7 & 37 & 19016 & 59 \\
-4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
-869 & 7560 & 4120 & 800 & 1500 & 76 & 72 & 11.9 & 2 & 10922 & 15 \\
-\end{longtable}
-
-To visualize the association between two numeric variables, we typically
-make a scatterplot. Let us make a scatterplot of graduation rate with
-expenditure per student, with a trendline.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Let\textquotesingle{}s make a scatterplot of \textquotesingle{}Grad.Rate\textquotesingle{} vs \textquotesingle{}Expend\textquotesingle{} with a trendline, to visualize any trend(s).}
-\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\CommentTok{\# scatter plot of Expend vs Grad.Rate}
 \NormalTok{ax}\OperatorTok{=}\NormalTok{sns.regplot(data }\OperatorTok{=}\NormalTok{ college, x }\OperatorTok{=} \StringTok{"Expend"}\NormalTok{, y }\OperatorTok{=} \StringTok{"Grad.Rate"}\NormalTok{,scatter\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"orange"}\NormalTok{\}, line\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{"color"}\NormalTok{: }\StringTok{"blue"}\NormalTok{\})}
 \NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
 \NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}
 \NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.show()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-Text(0, 0.5, 'Graduation rate')
-\end{verbatim}
-
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-50-output-2.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-48-output-1.png}
 
 }
 
@@ -17742,6 +17932,19 @@ The trendline indicates a positive correlation between \texttt{Expend}
 and \texttt{Grad.Rate}. However, there seems to be a lot of noise and
 presence of outliers in the data, which makes it hard to interpret the
 overall trend.
+
+\hypertarget{common-binning-methods}{%
+\subsection{Common binning methods:}\label{common-binning-methods}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Equal-width:} Divides range into equal-sized intervals
+\item
+  \textbf{Equal-size:} Places equal number of observations in each bin
+\item
+  \textbf{Custom:} Based on domain knowledge (like age groups above)
+\end{itemize}
 
 We'll bin \texttt{Expend} to see if we can better analyze its
 association with \texttt{Grad.Rate}. However, let us first visualize the
@@ -17757,7 +17960,7 @@ distribution of \texttt{Expend}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-51-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-49-output-1.png}
 
 }
 
@@ -17767,7 +17970,7 @@ The distribution of \texttt{Extend} is right skewed with potentially
 some extremely high outlying values.
 
 \hypertarget{binning-with-equal-width-bins}{%
-\subsection{Binning with equal width
+\subsubsection{Binning with equal width
 bins}\label{binning-with-equal-width-bins}}
 
 We'll use the Pandas function
@@ -17837,31 +18040,31 @@ indicates the bin for \texttt{Expend}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[]{@{}lllllllllllllllllllll@{}}
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
 \toprule\noalign{}
 & Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
-& F.Undergrad & P.Undergrad & Outstate & Room.Board & Books & Personal &
-PhD & Terminal & S.F.Ratio & perc.alumni & Expend & Grad.Rate &
-Expend\_bin \\
+& F.Undergrad & P.Undergrad & Outstate & ... & PhD & Terminal &
+S.F.Ratio & perc.alumni & Expend & Grad.Rate & z\_score &
+is\_z\_score\_outlier & is\_IQR\_outlier & Expend\_bin \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
-2885 & 537 & 7440 & 3300 & 450 & 2200 & 70 & 78 & 18.1 & 12 & 7041 & 60
-& (3132.953, 20868.333{]} \\
+2885 & 537 & 7440 & ... & 70 & 78 & 18.1 & 12 & 7041 & 60 & -0.501910 &
+False & False & (3132.953, 20868.333{]} \\
 1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
-& 12280 & 6450 & 750 & 1500 & 29 & 30 & 12.2 & 16 & 10527 & 56 &
-(3132.953, 20868.333{]} \\
+& 12280 & ... & 29 & 30 & 12.2 & 16 & 10527 & 56 & 0.166110 & False &
+False & (3132.953, 20868.333{]} \\
 2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
-11250 & 3750 & 400 & 1165 & 53 & 66 & 12.9 & 30 & 8735 & 54 & (3132.953,
-20868.333{]} \\
+11250 & ... & 53 & 66 & 12.9 & 30 & 8735 & 54 & -0.177290 & False &
+False & (3132.953, 20868.333{]} \\
 3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
-12960 & 5450 & 450 & 875 & 92 & 97 & 7.7 & 37 & 19016 & 59 & (3132.953,
-20868.333{]} \\
+12960 & ... & 92 & 97 & 7.7 & 37 & 19016 & 59 & 1.792851 & False & True
+& (3132.953, 20868.333{]} \\
 4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
-869 & 7560 & 4120 & 800 & 1500 & 76 & 72 & 11.9 & 2 & 10922 & 15 &
-(3132.953, 20868.333{]} \\
+869 & 7560 & ... & 76 & 72 & 11.9 & 2 & 10922 & 15 & 0.241803 & False &
+False & (3132.953, 20868.333{]} \\
 \end{longtable}
 
 See the variable \texttt{Expend\_bin} in the above dataset.
@@ -17884,7 +18087,7 @@ Let us visualize the \texttt{Expend} bins over the distribution of the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-56-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-54-output-1.png}
 
 }
 
@@ -17935,7 +18138,7 @@ per student using \texttt{Expened\_bin}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-58-output-2.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-56-output-2.png}
 
 }
 
@@ -17954,7 +18157,7 @@ Let us find the number of universities in each bin.
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
   pd.value_counts(college['Expend_bin'])
 \end{verbatim}
 
@@ -17971,11 +18174,87 @@ of all the universities in the dataset. These universities may be
 outliers that are skewing the trend (as also evident in the histogram
 above).
 
-In such cases, we should bin observations such that all bins are of
-equal size, i.e., they have the same number of observations.
+Let us see if we get the correct trend with the outliers removed from
+the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Data without outliers}
+\NormalTok{college\_data\_without\_outliers }\OperatorTok{=}\NormalTok{ college[((college.Expend}\OperatorTok{\textgreater{}=}\NormalTok{lower\_bound) }\OperatorTok{\&}\NormalTok{ (college.Expend}\OperatorTok{\textless{}=}\NormalTok{upper\_bound))]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Binned\_data }\OperatorTok{=}\NormalTok{ pd.cut(college\_data\_without\_outliers[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{],}\DecValTok{3}\NormalTok{,labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Med expend\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}High expend\textquotesingle{}}\NormalTok{],retbins }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\NormalTok{college\_data\_without\_outliers.loc[:,}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ Binned\_data[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.barplot(x }\OperatorTok{=} \StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{, y }\OperatorTok{=} \StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{, data }\OperatorTok{=}\NormalTok{ college\_data\_without\_outliers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<Axes: xlabel='Expend_bin', ylabel='Grad.Rate'>
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-60-output-2.png}
+
+}
+
+\end{figure}
+
+With the outliers removed, we obtain the correct overall trend, even in
+the case of equal-width bins. Note that these bins have unequal number
+of observations as shown below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ax}\OperatorTok{=}\NormalTok{sns.histplot(data }\OperatorTok{=}\NormalTok{ college\_data\_without\_outliers, x}\OperatorTok{=} \StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{):}
+\NormalTok{    plt.axvline(Binned\_data[}\DecValTok{1}\NormalTok{][i], }\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Graduation rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-61-output-1.png}
+
+}
+
+\end{figure}
+
+Note that the right tail of the histogram has disappered since we
+removed outliers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college\_data\_without\_outliers[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{].value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Expend_bin
+Med expend     327
+Low expend     314
+High expend     88
+Name: count, dtype: int64
+\end{verbatim}
+
+Instead of removing outliers, we can address the issue by binning
+observations into equal-sized bins, ensuring each bin has the same
+number of observations. Let's explore this approach next.
 
 \hypertarget{binning-with-equal-sized-bins}{%
-\subsection{Binning with equal sized
+\subsubsection{Binning with equal sized
 bins}\label{binning-with-equal-sized-bins}}
 
 Let us bin the variable \texttt{Expend} such that each bin consists of
@@ -18003,7 +18282,7 @@ Each bin has the same number of observations with \texttt{qcut()}:
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
   pd.value_counts(college['Expend_bin'])
 \end{verbatim}
 
@@ -18033,7 +18312,7 @@ Let us visualize the \texttt{Expend} bins over the distribution of the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-62-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-65-output-1.png}
 
 }
 
@@ -18055,7 +18334,7 @@ level of instructional expenditure per student.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-63-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-66-output-1.png}
 
 }
 
@@ -18093,7 +18372,7 @@ The numbers in the above recommendations are based on the table below.
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_12848\2173657746.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\2173657746.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   college['Grad.Rate'].groupby(college.Expend_bin).mean()
 \end{verbatim}
 
@@ -18105,11 +18384,12 @@ High expend    72.988417
 Name: Grad.Rate, dtype: float64
 \end{verbatim}
 
-We can also make recommendations based on the confidence intervals of
-mean Grad.Rate. Confidence intervals are computed below. We are finding
-confidence intervals based on a method known as bootstrapping. Refer
-https://en.wikipedia.org/wiki/Bootstrapping\_(statistics) for a detailed
-description of Bootstrapping.
+We can also provide recommendations based on the confidence intervals of
+the mean graduation rate (\texttt{Grad.Rate}). The confidence intervals,
+calculated below, are derived using a method known as bootstrapping. For
+a detailed explanation of bootstrapping, please refer to
+\href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{this
+article on Wikipedia}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -18122,9 +18402,9 @@ description of Bootstrapping.
 \end{Shaded}
 
 \begin{verbatim}
-95% Confidence interval of Grad.Rate for Low expend univeristies = [55.33,59.32]
-95% Confidence interval of Grad.Rate for High expend univeristies = [71.05,74.9]
-95% Confidence interval of Grad.Rate for Med expend univeristies = [64.19,67.93]
+95% Confidence interval of Grad.Rate for Low expend univeristies = [55.39,59.4]
+95% Confidence interval of Grad.Rate for High expend univeristies = [70.99,74.91]
+95% Confidence interval of Grad.Rate for Med expend univeristies = [64.22,67.93]
 \end{verbatim}
 
 Apart from equal-width and equal-sized bins, custom bins can be created
@@ -18134,7 +18414,8 @@ using the \emph{bins} argument. Suppose, bins are to be created for
 \emph{bins} argument as in the code below:
 
 \hypertarget{binning-with-custom-bins}{%
-\subsection{Binning with custom bins}\label{binning-with-custom-bins}}
+\subsubsection{Binning with custom
+bins}\label{binning-with-custom-bins}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -18155,7 +18436,7 @@ using the \emph{bins} argument. Suppose, bins are to be created for
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-67-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-70-output-1.png}
 
 }
 
@@ -18167,15 +18448,52 @@ custom bin quantiles can be specified with the \texttt{qcut()} function.
 \hypertarget{dummy-indicator-variables}{%
 \section{Dummy / Indicator variables}\label{dummy-indicator-variables}}
 
-Dummy variables (or indicator variables) take only the values of 0 and 1
-to indicate the presence or absence of a catagorical effect. They are
-particularly useful in regression modeling to help explain the dependent
-variable.
+Dummy or indicator variables are binary variables created to represent
+categorical data in numerical form, typically used in regression and
+machine learning models. Each category is represented by a separate
+dummy variable with values of 0 or 1.
 
-If a column in a DataFrame has \(k\) distinct values, we will get a
-DataFrame with \(k\) columns containing 0s and 1s with the Pandas
-\href{https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html}{\texttt{get\_dummies()}}
-function.
+\hypertarget{purpose}{%
+\subsection{Purpose:}\label{purpose}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Enables categorical data} to be used in quantitative analysis:
+  Models like linear regression and many machine learning algorithms
+  require numerical input, making dummy variables essential for handling
+  categorical data.
+\item
+  \textbf{Preserves information}: Converts categorical information into
+  a format that models can interpret without losing meaning.
+\end{itemize}
+
+\hypertarget{when-to-use-dummy-variables}{%
+\subsection{When to use dummy
+variables}\label{when-to-use-dummy-variables}}
+
+Dummy variables are especially useful in:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Regression models:} For categorical predictors, such as
+  region, gender, or type of product.
+\item
+  \textbf{Machine learning algorithms:} Many models, including
+  tree-based methods, can benefit from dummy variables for categorical
+  features.
+\end{itemize}
+
+\hypertarget{how-to-create-dummy-variables}{%
+\subsection{How to Create Dummy
+variables}\label{how-to-create-dummy-variables}}
+
+The pandas library in Python has a built-in function,
+\href{https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html}{\texttt{pd.get\_dummies()}},
+to generate dummy variables. If a column in a DataFrame has \(k\)
+distinct values, we will get a DataFrame with \(k\) columns containing
+0s and 1s
 
 Let us make dummy variables with the equal-sized bins we created for the
 average instruction expenditure per student.
@@ -18239,6 +18557,52 @@ dtype: float64
 The dummy variables \texttt{Low\ expend} and \texttt{High\ expend} may
 contribute in explaining \texttt{Grad.Rate} in a regression model.
 
+\hypertarget{using-drop_first-to-avoid-multicollinearity}{%
+\subsection{\texorpdfstring{Using \texttt{drop\_first} to Avoid
+Multicollinearity}{Using drop\_first to Avoid Multicollinearity}}\label{using-drop_first-to-avoid-multicollinearity}}
+
+In cases like linear regression, you may want to drop one dummy variable
+to avoid multicollinearity (perfect correlation between variables).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create dummy variables, dropping the first to avoid multicollinearity}
+\NormalTok{dummy\_Expend }\OperatorTok{=}\NormalTok{ pd.get\_dummies(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{], drop\_first}\OperatorTok{=}\VariableTok{True}\NormalTok{).astype(}\BuiltInTok{int}\NormalTok{)}
+
+\CommentTok{\# add the dummy variables to the original dataset}
+\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.concat([college, dummy\_Expend], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{college.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & ... & Expend & Grad.Rate &
+z\_score & is\_z\_score\_outlier & is\_IQR\_outlier & Expend\_bin &
+Med\_expend & High\_expend & Med\_expend & High\_expend \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
+2885 & 537 & 7440 & ... & 7041 & 60 & -0.501910 & False & False &
+Low\_expend & False & False & 0 & 0 \\
+1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
+& 12280 & ... & 10527 & 56 & 0.166110 & False & False & High\_expend &
+False & True & 0 & 1 \\
+2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
+11250 & ... & 8735 & 54 & -0.177290 & False & False & Med\_expend & True
+& False & 1 & 0 \\
+3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
+12960 & ... & 19016 & 59 & 1.792851 & False & True & High\_expend &
+False & True & 0 & 1 \\
+4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
+869 & 7560 & ... & 10922 & 15 & 0.241803 & False & False & High\_expend
+& False & True & 0 & 1 \\
+\end{longtable}
+
 \hypertarget{independent-study-2}{%
 \section{Independent Study}\label{independent-study-2}}
 
@@ -18286,6 +18650,1903 @@ Using Tukey's criterion, the variables
 \texttt{learning\_style\_Reading/Writing\ (learn\ best\ through\ words\ often\ note-taking\ or\ reading)}
 and \texttt{much\_effort\_is\_lack\_of\_talent} have the most number of
 outliers.
+
+\hypertarget{data-grouping-and-aggregation}{%
+\chapter{Data Grouping and
+Aggregation}\label{data-grouping-and-aggregation}}
+
+Grouping and aggregation are essential in data science because they
+enable meaningful analysis and insights from complex and large-scale
+datasets. Here are key reasons why they are important:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Data Summarization:} Grouping allows you to condense large
+  amounts of data into concise summaries. Aggregation provides
+  statistical summaries (e.g., mean, sum, count), making it easier to
+  understand data trends and characteristics without needing to examine
+  every detail.
+\item
+  \textbf{Insights Across Categories:} Grouping by categories, like
+  regions, demographics, or time periods, lets you analyze patterns
+  within each group. For example, aggregating sales data by region can
+  reveal which areas are performing better, or grouping customer data by
+  age group can highlight consumer trends.
+\item
+  \textbf{Time Series Analysis:} In time-series data, grouping by time
+  intervals (e.g., day, month, quarter) allows you to observe trends
+  over time, which can be crucial for forecasting, seasonal analysis,
+  and trend detection.
+\item
+  \textbf{Reducing Data Complexity:} By summarizing data at a higher
+  level, you reduce complexity, making it easier to visualize and
+  interpret, especially in large datasets where working with raw data
+  could be overwhelming.
+\end{itemize}
+
+In this chapter, we are going to see grouping and aggregating using
+pandas. Grouping and aggregating will help to achieve data analysis
+easily using various functions. These methods will help us to the group
+and summarize our data and make complex analysis comparatively easy.
+
+Througout this chapter, we will use \emph{gdp\_lifeExpectancy.csv},
+let's read the csv file to pandas dataframe first
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\OperatorTok{\%}\NormalTok{matplotlib inline}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the data}
+\NormalTok{gdp\_lifeExp\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/gdp\_lifeExpectancy.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_lifeExp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& country & continent & year & lifeExp & pop & gdpPercap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.445314 \\
+1 & Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.853030 \\
+2 & Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.100710 \\
+3 & Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.197138 \\
+4 & Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.981106 \\
+\end{longtable}
+
+\hypertarget{basic-grouping-with-groupby}{%
+\section{\texorpdfstring{Basic Grouping with
+\texttt{groupby()}}{Basic Grouping with groupby()}}\label{basic-grouping-with-groupby}}
+
+\texttt{groupby()} allows you to split a DataFrame based on the values
+in one or more columns.
+
+\hypertarget{basic-syntax-of-groupby}{%
+\subsection{\texorpdfstring{Basic Syntax of
+\texttt{groupby()}}{Basic Syntax of groupby()}}\label{basic-syntax-of-groupby}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{DataFrame.groupby(by="column\_name")} -- Groups data by the
+  specified column.
+\item
+  \texttt{DataFrame.groupby(by={[}"col1",\ "col2"{]})} -- Groups data by
+  multiple columns.
+\end{itemize}
+
+Consider the life expectancy dataset. suppose we want to group by the
+observations by \texttt{continent} by passing it as an argument to the
+\texttt{groupby()} method.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating a GroupBy object}
+\NormalTok{grouped }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)}
+\CommentTok{\#This will split the data into groups that correspond to values of the column \textquotesingle{}continent\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{groupby()} method returns a GroupBy object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#A \textquotesingle{}GroupBy\textquotesingle{} objects is created with the \textasciigrave{}groupby()\textasciigrave{} function}
+\BuiltInTok{type}\NormalTok{(grouped)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+pandas.core.groupby.generic.DataFrameGroupBy
+\end{verbatim}
+
+The GroupBy object \texttt{grouped} contains the information of the
+groups in which the data is distributed. Each observation has been
+assigned to a specific group of the column(s) used to group the data.
+However, note that the dataset is not physically split into different
+DataFrames. For example, in the above case, each observation is assigned
+to a particular group depending on the value of the \texttt{continent}
+for that observation. However, all the observations are still in the
+same DataFrame \texttt{data}.
+
+\hypertarget{attributes-and-methods-of-the-groupby-object}{%
+\subsection{\texorpdfstring{Attributes and methods of the \emph{GroupBy}
+object}{Attributes and methods of the GroupBy object}}\label{attributes-and-methods-of-the-groupby-object}}
+
+\hypertarget{keys}{%
+\subsubsection{\texorpdfstring{\texttt{keys}}{keys}}\label{keys}}
+
+The object(s) grouping the data are called \emph{key(s)}. Here
+\texttt{continent} is the group key. The keys of the \emph{GroupBy}
+object can be seen using Its \texttt{keys} attribute.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Key(s) of the GroupBy object}
+\NormalTok{grouped.keys}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+'continent'
+\end{verbatim}
+
+\hypertarget{ngroups}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.ngroup.html}{\texttt{ngroups}}}{ngroups}}\label{ngroups}}
+
+The number of groups in which the data is distributed based on the keys
+can be seen with the \texttt{ngroups} attribute.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The number of groups based on the key(s)}
+\NormalTok{grouped.ngroups}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+5
+\end{verbatim}
+
+\hypertarget{groups}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.groups.html}{\texttt{groups}}}{groups}}\label{groups}}
+
+The \texttt{groups} attribute of the \emph{GroupBy} object contains the
+group labels (or names) and the row labels of the observations in each
+group, as a dictionary.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The groups (in the dictionary format)}
+\NormalTok{grouped.groups}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+{'Africa': [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, ...], 'Americas': [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 432, 433, 434, 435, ...], 'Asia': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, ...], 'Europe': [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 516, 517, 518, 519, ...], 'Oceania': [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103]}
+\end{verbatim}
+
+The group names are the \emph{keys} of the dictionary, while the row
+labels are the corresponding \emph{values}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Group names}
+\NormalTok{grouped.groups.keys()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+dict_keys(['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'])
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Group values are the row labels corresponding to a particular group}
+\NormalTok{grouped.groups.values()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+dict_values([Index([  24,   25,   26,   27,   28,   29,   30,   31,   32,   33,
+       ...
+       1694, 1695, 1696, 1697, 1698, 1699, 1700, 1701, 1702, 1703],
+      dtype='int64', length=624), Index([  48,   49,   50,   51,   52,   53,   54,   55,   56,   57,
+       ...
+       1634, 1635, 1636, 1637, 1638, 1639, 1640, 1641, 1642, 1643],
+      dtype='int64', length=300), Index([   0,    1,    2,    3,    4,    5,    6,    7,    8,    9,
+       ...
+       1670, 1671, 1672, 1673, 1674, 1675, 1676, 1677, 1678, 1679],
+      dtype='int64', length=396), Index([  12,   13,   14,   15,   16,   17,   18,   19,   20,   21,
+       ...
+       1598, 1599, 1600, 1601, 1602, 1603, 1604, 1605, 1606, 1607],
+      dtype='int64', length=360), Index([  60,   61,   62,   63,   64,   65,   66,   67,   68,   69,   70,   71,
+       1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103],
+      dtype='int64')])
+\end{verbatim}
+
+\hypertarget{size-2}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.size.html}{\texttt{size()}}}{size()}}\label{size-2}}
+
+The \texttt{size()} method of the \emph{GroupBy} object returns the
+number of observations in each group.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Number of observations in each group}
+\NormalTok{grouped.size()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+continent
+Africa      624
+Americas    300
+Asia        396
+Europe      360
+Oceania      24
+dtype: int64
+\end{verbatim}
+
+\hypertarget{first}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.first.html}{\texttt{first()}}}{first()}}\label{first}}
+
+The first non missing element of each group is returned with the
+\texttt{first()} method of the \emph{GroupBy} object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The first element of the group can be printed using the first() method}
+\NormalTok{grouped.first()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& country & year & lifeExp & pop & gdpPercap \\
+continent & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Africa & Algeria & 1952 & 43.077 & 9279525 & 2449.008185 \\
+Americas & Argentina & 1952 & 62.485 & 17876956 & 5911.315053 \\
+Asia & Afghanistan & 1952 & 28.801 & 8425333 & 779.445314 \\
+Europe & Albania & 1952 & 55.230 & 1282697 & 1601.056136 \\
+Oceania & Australia & 1952 & 69.120 & 8691212 & 10039.595640 \\
+\end{longtable}
+
+\hypertarget{get_group}{%
+\subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.get_group.html}{\texttt{get\_group()}}}{get\_group()}}\label{get_group}}
+
+This method returns the observations for a particular group of the
+\emph{GroupBy} object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Observations for individual groups can be obtained using the get\_group() function}
+\NormalTok{grouped.get\_group(}\StringTok{\textquotesingle{}Asia\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& country & continent & year & lifeExp & pop & gdpPercap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.445314 \\
+1 & Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.853030 \\
+2 & Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.100710 \\
+3 & Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.197138 \\
+4 & Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.981106 \\
+... & ... & ... & ... & ... & ... & ... \\
+1675 & Yemen, Rep. & Asia & 1987 & 52.922 & 11219340 & 1971.741538 \\
+1676 & Yemen, Rep. & Asia & 1992 & 55.599 & 13367997 & 1879.496673 \\
+1677 & Yemen, Rep. & Asia & 1997 & 58.020 & 15826497 & 2117.484526 \\
+1678 & Yemen, Rep. & Asia & 2002 & 60.308 & 18701257 & 2234.820827 \\
+1679 & Yemen, Rep. & Asia & 2007 & 62.698 & 22211743 & 2280.769906 \\
+\end{longtable}
+
+\hypertarget{common-aggregation-functions}{%
+\section{Common Aggregation
+Functions}\label{common-aggregation-functions}}
+
+Aggregation functions are essential for summarizing and analyzing data
+in pandas. These functions allow you to compute summary statistics for
+your data, making it easier to identify trends and patterns.
+
+Below are some of the most commonly used aggregation functions when
+working with grouped data in pandas:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{mean()}} -- Calculates the \textbf{average} value of
+  the group.
+\item
+  \textbf{\texttt{sum()}} -- Computes the \textbf{total} value by
+  summing all elements in the group.
+\item
+  \textbf{\texttt{min()}} -- Finds the \textbf{minimum} value in the
+  group.
+\item
+  \textbf{\texttt{max()}} -- Finds the \textbf{maximum} value in the
+  group.
+\item
+  \textbf{\texttt{count()}} -- Returns the \textbf{number of
+  occurrences} or entries in the group.
+\item
+  \textbf{\texttt{median()}} -- Finds the \textbf{middle value} in the
+  sorted group.
+\item
+  \textbf{\texttt{std()}} -- Calculates the \textbf{standard deviation},
+  measuring the spread or variation in the values of the group.
+\end{itemize}
+
+Each of these functions can help summarize and provide insights into
+different aspects of the grouped data.
+
+Consider the life expectancy dataset, let's find the mean life
+expectancy, population and GDP per capita for each country during the
+period of 1952 -2007.
+
+Next, we'll find the mean statistics for each group with the
+\texttt{mean()} method. The method will be applied on all columns of the
+DataFrame and all groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Grouping the observations by \textquotesingle{}country\textquotesingle{}}
+\NormalTok{grouped\_country }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.drop ([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{], axis }\OperatorTok{=} \DecValTok{1}\NormalTok{).groupby(}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#Finding the mean stastistic of all columns of the DataFrame and all groups}
+\NormalTok{grouped\_country.mean()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& lifeExp & pop & gdpPercap \\
+country & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 37.478833 & 1.582372e+07 & 802.674598 \\
+Albania & 68.432917 & 2.580249e+06 & 3255.366633 \\
+Algeria & 59.030167 & 1.987541e+07 & 4426.025973 \\
+Angola & 37.883500 & 7.309390e+06 & 3607.100529 \\
+Argentina & 69.060417 & 2.860224e+07 & 8955.553783 \\
+... & ... & ... & ... \\
+Vietnam & 57.479500 & 5.456857e+07 & 1017.712615 \\
+West Bank and Gaza & 60.328667 & 1.848606e+06 & 3759.996781 \\
+Yemen, Rep. & 46.780417 & 1.084319e+07 & 1569.274672 \\
+Zambia & 45.996333 & 6.353805e+06 & 1358.199409 \\
+Zimbabwe & 52.663167 & 7.641966e+06 & 635.858042 \\
+\end{longtable}
+
+Next, we'll find the standard deviation statistics for each group with
+the \texttt{std()} method.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_country.std()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& lifeExp & pop & gdpPercap \\
+country & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 5.098646 & 7.114583e+06 & 108.202929 \\
+Albania & 6.322911 & 8.285855e+05 & 1192.351513 \\
+Algeria & 10.340069 & 8.613355e+06 & 1310.337656 \\
+Angola & 4.005276 & 2.672281e+06 & 1165.900251 \\
+Argentina & 4.186470 & 7.546609e+06 & 1862.583151 \\
+... & ... & ... & ... \\
+Vietnam & 12.172331 & 2.052585e+07 & 567.482251 \\
+West Bank and Gaza & 11.000069 & 1.023057e+06 & 1716.840614 \\
+Yemen, Rep. & 11.019302 & 5.590408e+06 & 609.939160 \\
+Zambia & 4.453246 & 3.096949e+06 & 247.494984 \\
+Zimbabwe & 7.071816 & 3.376895e+06 & 133.689213 \\
+\end{longtable}
+
+Alternatively, you can compute other statistical metrics.
+
+\hypertarget{multiple-aggregations-and-custom-aggregation-using-agg}{%
+\subsection{\texorpdfstring{Multiple aggregations and Custom aggregation
+using
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html}{\texttt{agg()}}}{Multiple aggregations and Custom aggregation using agg()}}\label{multiple-aggregations-and-custom-aggregation-using-agg}}
+
+\hypertarget{multiple-aggregations}{%
+\subsubsection{Multiple aggregations}\label{multiple-aggregations}}
+
+Directly applying the aggregate methods of the \emph{GroupBy} object
+such as mean, count, etc., lets us apply only one function at a time.
+Also, we may wish to apply an aggregate function of our own, which is
+not there in the set of methods of the \emph{GroupBy} object, such as
+the range of values of a column.
+
+The \texttt{agg()} function of a \emph{GroupBy} object lets us aggregate
+data using:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Multiple aggregation functions
+\item
+  Custom aggregate functions (in addition to in-built functions like
+  mean, std, count etc.)
+\end{enumerate}
+
+Consider the life expectancy dataset, Let us use the agg() method of the
+GroupBy object to simultaneously find the mean and standard deviation of
+the \emph{gdpPercap} for each country.
+
+For aggregating by multiple functions, we pass a list of strings to
+agg(), where the strings are the function names.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_country[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{]).sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& mean & std \\
+country & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Kuwait & 65332.910472 & 33882.139536 \\
+Switzerland & 27074.334405 & 6886.463308 \\
+Norway & 26747.306554 & 13421.947245 \\
+United States & 26261.151347 & 9695.058103 \\
+Canada & 22410.746340 & 8210.112789 \\
+... & ... & ... \\
+Mozambique & 542.278332 & 128.875416 \\
+Eritrea & 541.002507 & 170.035148 \\
+Ethiopia & 509.115155 & 96.427627 \\
+Burundi & 471.662990 & 99.329720 \\
+Myanmar & 439.333333 & 175.401531 \\
+\end{longtable}
+
+We can use a list to apply multiple aggregation functions to a single
+column, and a dictionary to specify different functions for multiple
+columns
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use string names for the aggregation functions}
+\NormalTok{grouped\_country.agg(\{}\StringTok{"gdpPercap"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{], }\StringTok{"lifeExp"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{], }\StringTok{"pop"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{]\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+gdpPercap} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+pop} \\
+& mean & std & mean & std & mean & std \\
+country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 802.674598 & 108.202929 & 37.478833 & 5.098646 &
+1.582372e+07 & 7.114583e+06 \\
+Albania & 3255.366633 & 1192.351513 & 68.432917 & 6.322911 &
+2.580249e+06 & 8.285855e+05 \\
+Algeria & 4426.025973 & 1310.337656 & 59.030167 & 10.340069 &
+1.987541e+07 & 8.613355e+06 \\
+Angola & 3607.100529 & 1165.900251 & 37.883500 & 4.005276 & 7.309390e+06
+& 2.672281e+06 \\
+Argentina & 8955.553783 & 1862.583151 & 69.060417 & 4.186470 &
+2.860224e+07 & 7.546609e+06 \\
+... & ... & ... & ... & ... & ... & ... \\
+Vietnam & 1017.712615 & 567.482251 & 57.479500 & 12.172331 &
+5.456857e+07 & 2.052585e+07 \\
+West Bank and Gaza & 3759.996781 & 1716.840614 & 60.328667 & 11.000069 &
+1.848606e+06 & 1.023057e+06 \\
+Yemen, Rep. & 1569.274672 & 609.939160 & 46.780417 & 11.019302 &
+1.084319e+07 & 5.590408e+06 \\
+Zambia & 1358.199409 & 247.494984 & 45.996333 & 4.453246 & 6.353805e+06
+& 3.096949e+06 \\
+Zimbabwe & 635.858042 & 133.689213 & 52.663167 & 7.071816 & 7.641966e+06
+& 3.376895e+06 \\
+\end{longtable}
+
+\hypertarget{custom-aggregation}{%
+\subsection{Custom aggregation}\label{custom-aggregation}}
+
+In addition to the mean and standard deviation of the gdpPercap of each
+country, let us also include the range of gdpPercap in the table above
+using lambda function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_country[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{].agg(}\KeywordTok{lambda}\NormalTok{ x: x.}\BuiltInTok{max}\NormalTok{() }\OperatorTok{{-}}\NormalTok{ x.}\BuiltInTok{min}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+country
+Afghanistan            342.670088
+Albania               4335.973390
+Algeria               3774.359280
+Angola                3245.635491
+Argentina             6868.064587
+                         ...     
+Vietnam               1836.509912
+West Bank and Gaza    5595.075290
+Yemen, Rep.           1499.052330
+Zambia                 705.723500
+Zimbabwe               392.478061
+Name: gdpPercap, Length: 142, dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# define a function that calculates the range}
+\KeywordTok{def}\NormalTok{ range\_func(x):}
+    \ControlFlowTok{return}\NormalTok{ x.}\BuiltInTok{max}\NormalTok{() }\OperatorTok{{-}}\NormalTok{ x.}\BuiltInTok{min}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# apply the range function to the \textquotesingle{}gdpPercap\textquotesingle{} column besides the mean and standard deviation}
+\NormalTok{grouped\_country[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{, range\_func]).sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}range\_func\textquotesingle{}}\NormalTok{, ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& mean & std & range\_func \\
+country & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Kuwait & 65332.910472 & 33882.139536 & 85404.702920 \\
+Singapore & 17425.382267 & 14926.147774 & 44828.041413 \\
+Norway & 26747.306554 & 13421.947245 & 39261.768450 \\
+Hong Kong, China & 16228.700865 & 12207.329731 & 36670.557461 \\
+Ireland & 15758.606238 & 11573.311022 & 35465.716022 \\
+... & ... & ... & ... \\
+Rwanda & 675.669043 & 142.229906 & 388.246772 \\
+Senegal & 1533.121694 & 105.399353 & 344.572767 \\
+Afghanistan & 802.674598 & 108.202929 & 342.670088 \\
+Ethiopia & 509.115155 & 96.427627 & 328.659296 \\
+Burundi & 471.662990 & 99.329720 & 292.403419 \\
+\end{longtable}
+
+For aggregating by multiple functions \& changing the column names
+resulting from those functions, we pass a list of tuples to
+\texttt{agg()}, where each tuple is of length two, and contains the new
+column name \& the function to be applied.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Simultaneous renaming of columns while grouping}
+\NormalTok{grouped\_country[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{].agg([(}\StringTok{\textquotesingle{}Average\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{),(}\StringTok{\textquotesingle{}Standard Deviation\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{),(}\StringTok{\textquotesingle{}90th Percentile\textquotesingle{}}\NormalTok{,}\KeywordTok{lambda}\NormalTok{ x:x.quantile(}\FloatTok{0.9}\NormalTok{))]).sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}90th Percentile\textquotesingle{}}\NormalTok{,ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& Average & Standard Deviation & 90th Percentile \\
+country & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Kuwait & 65332.910472 & 33882.139536 & 109251.315590 \\
+Norway & 26747.306554 & 13421.947245 & 44343.894158 \\
+United States & 26261.151347 & 9695.058103 & 38764.132898 \\
+Singapore & 17425.382267 & 14926.147774 & 35772.742520 \\
+Switzerland & 27074.334405 & 6886.463308 & 34246.394240 \\
+... & ... & ... & ... \\
+Liberia & 604.814141 & 98.988329 & 706.275527 \\
+Malawi & 575.447212 & 122.999953 & 689.590541 \\
+Burundi & 471.662990 & 99.329720 & 615.597260 \\
+Myanmar & 439.333333 & 175.401531 & 592.300000 \\
+Ethiopia & 509.115155 & 96.427627 & 577.448804 \\
+\end{longtable}
+
+\hypertarget{multiple-aggregate-functions-on-multiple-columns}{%
+\subsection{Multiple aggregate functions on multiple
+columns}\label{multiple-aggregate-functions-on-multiple-columns}}
+
+Let us find the mean and standard deviation of lifeExp and pop for each
+country
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# find the meand and standard deviation of the \textquotesingle{}lifeExp\textquotesingle{} and \textquotesingle{}pop\textquotesingle{} column for each country}
+\NormalTok{grouped\_country[[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}pop\textquotesingle{}}\NormalTok{]].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{]).sort\_values(by }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{), ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+pop} \\
+& mean & std & mean & std \\
+country & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Iceland & 76.511417 & 3.026593 & 2.269781e+05 & 4.854168e+04 \\
+Sweden & 76.177000 & 3.003990 & 8.220029e+06 & 6.365660e+05 \\
+Norway & 75.843000 & 2.423994 & 4.031441e+06 & 4.107955e+05 \\
+Netherlands & 75.648500 & 2.486363 & 1.378680e+07 & 2.005631e+06 \\
+Switzerland & 75.565083 & 4.011572 & 6.384293e+06 & 8.582009e+05 \\
+... & ... & ... & ... & ... \\
+Mozambique & 40.379500 & 4.599184 & 1.204670e+07 & 4.457509e+06 \\
+Guinea-Bissau & 39.210250 & 4.937369 & 8.820084e+05 & 3.132917e+05 \\
+Angola & 37.883500 & 4.005276 & 7.309390e+06 & 2.672281e+06 \\
+Afghanistan & 37.478833 & 5.098646 & 1.582372e+07 & 7.114583e+06 \\
+Sierra Leone & 36.769167 & 3.937828 & 3.605425e+06 & 1.270945e+06 \\
+\end{longtable}
+
+\hypertarget{distinct-aggregate-functions-on-multiple-columns}{%
+\subsection{Distinct aggregate functions on multiple
+columns}\label{distinct-aggregate-functions-on-multiple-columns}}
+
+For aggregating by multiple functions, we pass a list of strings to
+\texttt{agg()}, where the strings are the function names.
+
+For aggregating by multiple functions \& changing the column names
+resulting from those functions, we pass a list of tuples to
+\texttt{agg()}, where each tuple is of length two, and contains the new
+column name as the first object and the function to be applied as the
+second object of the tuple.
+
+For aggregating by multiple functions such that a distinct set of
+functions is applied to each column, we pass a dictionary to
+\texttt{agg()}, where the keys are the column names on which the
+function is to be applied, and the values are the list of strings that
+are the function names, or a list of tuples if we also wish to name the
+aggregated columns.
+
+\textbf{Example:} For each country, find the mean and standard deviation
+of the \texttt{lifeExp}, and the minimum and maximum values of
+gdpPercap.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Specifying arguments to the function as a dictionary if distinct functions are to be applied on distinct columns}
+\NormalTok{grouped\_country.agg(\{}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{:[(}\StringTok{\textquotesingle{}Average\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{),(}\StringTok{\textquotesingle{}Standard deviation\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{)],}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{:[}\StringTok{\textquotesingle{}min\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}max\textquotesingle{}}\NormalTok{]\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+gdpPercap} \\
+& Average & Standard deviation & min & max \\
+country & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 37.478833 & 5.098646 & 635.341351 & 978.011439 \\
+Albania & 68.432917 & 6.322911 & 1601.056136 & 5937.029526 \\
+Algeria & 59.030167 & 10.340069 & 2449.008185 & 6223.367465 \\
+Angola & 37.883500 & 4.005276 & 2277.140884 & 5522.776375 \\
+Argentina & 69.060417 & 4.186470 & 5911.315053 & 12779.379640 \\
+... & ... & ... & ... & ... \\
+Vietnam & 57.479500 & 12.172331 & 605.066492 & 2441.576404 \\
+West Bank and Gaza & 60.328667 & 11.000069 & 1515.592329 &
+7110.667619 \\
+Yemen, Rep. & 46.780417 & 11.019302 & 781.717576 & 2280.769906 \\
+Zambia & 45.996333 & 4.453246 & 1071.353818 & 1777.077318 \\
+Zimbabwe & 52.663167 & 7.071816 & 406.884115 & 799.362176 \\
+\end{longtable}
+
+\hypertarget{grouping-by-multiple-columns}{%
+\section{Grouping by Multiple
+Columns}\label{grouping-by-multiple-columns}}
+
+Above, we demonstrated grouping by a single column, which is useful for
+summarizing data based on one categorical variable. However, in many
+cases, we need to group by multiple columns. Grouping by multiple
+columns allows us to create more detailed summaries by accounting for
+multiple categorical variables. This approach enables us to analyze data
+at a finer granularity, revealing insights that might be missed with
+single-column grouping alone.
+
+Consider the life expectancy dataset, we can group by both country and
+continent to analyze \texttt{gdpPercap}, \texttt{lifeExp}, and
+\texttt{pop} trends for each country within each continent, providing a
+more comprehensive view of the data.
+
+\hypertarget{basic-syntax-for-grouping-by-multiple-columns}{%
+\subsection{Basic Syntax for Grouping by Multiple
+Columns}\label{basic-syntax-for-grouping-by-multiple-columns}}
+
+Use \texttt{groupby()} with a list of column names to group data by
+multiple columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Grouping by multiple columns}
+\NormalTok{grouped\_continent\_contry }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{])[ }\StringTok{"lifeExp"}\NormalTok{].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}max\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}min\textquotesingle{}}\NormalTok{]).sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_continent\_contry}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& & mean & std & max & min \\
+continent & country & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Europe} & Iceland & 76.511417 & 3.026593 & 81.757 &
+72.490 \\
+& Sweden & 76.177000 & 3.003990 & 80.884 & 71.860 \\
+& Norway & 75.843000 & 2.423994 & 80.196 & 72.670 \\
+& Netherlands & 75.648500 & 2.486363 & 79.762 & 72.130 \\
+& Switzerland & 75.565083 & 4.011572 & 81.701 & 69.620 \\
+... & ... & ... & ... & ... & ... \\
+\multirow{3}{*}{Africa} & Mozambique & 40.379500 & 4.599184 & 46.344 &
+31.286 \\
+& Guinea-Bissau & 39.210250 & 4.937369 & 46.388 & 32.500 \\
+& Angola & 37.883500 & 4.005276 & 42.731 & 30.015 \\
+Asia & Afghanistan & 37.478833 & 5.098646 & 43.828 & 28.801 \\
+Africa & Sierra Leone & 36.769167 & 3.937828 & 42.568 & 30.331 \\
+\end{longtable}
+
+\hypertarget{understanding-hierarchical-multi-level-indexing}{%
+\subsection{Understanding Hierarchical (Multi-Level)
+Indexing}\label{understanding-hierarchical-multi-level-indexing}}
+
+\begin{itemize}
+\tightlist
+\item
+  Grouping by multiple columns creates a hierarchical index (also called
+  a multi-level index).
+\item
+  This index allows each level (e.g., continent, country) to act as an
+  independent category that can be accessed individually.
+\end{itemize}
+
+In the above output, \texttt{continent} and \texttt{country} form a
+two-level hierarchical index, allowing us to drill down from
+continent-level to country-level summaries.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_continent\_contry.index.nlevels}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the first level of the index}
+\NormalTok{grouped\_continent\_contry.index.levels[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'], dtype='object', name='continent')
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the second level of the index}
+\NormalTok{grouped\_continent\_contry.index.levels[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['Afghanistan', 'Albania', 'Algeria', 'Angola', 'Argentina', 'Australia',
+       'Austria', 'Bahrain', 'Bangladesh', 'Belgium',
+       ...
+       'Uganda', 'United Kingdom', 'United States', 'Uruguay', 'Venezuela',
+       'Vietnam', 'West Bank and Gaza', 'Yemen, Rep.', 'Zambia', 'Zimbabwe'],
+      dtype='object', name='country', length=142)
+\end{verbatim}
+
+\hypertarget{subsetting-data-in-a-hierarchical-index}{%
+\subsection{Subsetting Data in a Hierarchical
+Index}\label{subsetting-data-in-a-hierarchical-index}}
+
+\texttt{grouped\_continent\_country} is still a DataFrame with
+hierarchical indexing. You can use \texttt{.loc{[}{]}} for subsetting,
+just as you would with a single-level index.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the observations for the \textquotesingle{}Americas\textquotesingle{} continent}
+\NormalTok{grouped\_continent\_contry.loc[}\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& mean & std & max & min \\
+country & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Canada & 74.902750 & 3.952871 & 80.653 & 68.750 \\
+United States & 73.478500 & 3.343781 & 78.242 & 68.440 \\
+Puerto Rico & 72.739333 & 3.984267 & 78.746 & 64.280 \\
+Cuba & 71.045083 & 6.022798 & 78.273 & 59.421 \\
+Uruguay & 70.781583 & 3.342937 & 76.384 & 66.071 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the mean life expectancy for the \textquotesingle{}Americas\textquotesingle{} continent}
+\NormalTok{grouped\_continent\_contry.loc[}\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{][}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+country
+Canada           74.902750
+United States    73.478500
+Puerto Rico      72.739333
+Cuba             71.045083
+Uruguay          70.781583
+Name: mean, dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# another way to get the mean life expectancy for the \textquotesingle{}Americas\textquotesingle{} continent}
+\NormalTok{grouped\_continent\_contry.loc[}\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+country
+Canada           74.902750
+United States    73.478500
+Puerto Rico      72.739333
+Cuba             71.045083
+Uruguay          70.781583
+Name: mean, dtype: float64
+\end{verbatim}
+
+You can use a tuple to access data for specific levels in a multi-level
+index.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the observations for the \textquotesingle{}United States\textquotesingle{} country}
+\NormalTok{grouped\_continent\_contry.loc[( }\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+mean    73.478500
+std      3.343781
+max     78.242000
+min     68.440000
+Name: (Americas, United States), dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_continent\_contry.loc[( }\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{), [}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+mean    73.478500
+std      3.343781
+Name: (Americas, United States), dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data.columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['country', 'continent', 'year', 'lifeExp', 'pop', 'gdpPercap'], dtype='object')
+\end{verbatim}
+
+\hypertarget{grouping-by-multiple-columns-and-aggregating-multiple-variables}{%
+\subsection{Grouping by multiple columns and aggregating multiple
+variables}\label{grouping-by-multiple-columns-and-aggregating-multiple-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Grouping by multiple columns}
+\NormalTok{grouped\_continent\_contry\_multi }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{])[ [}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}pop\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}max\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}min\textquotesingle{}}\NormalTok{])}
+\NormalTok{grouped\_continent\_contry\_multi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& & &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0000} + 4\tabcolsep}}{%
+lifeExp} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0000} + 4\tabcolsep}}{%
+pop} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0000} + 4\tabcolsep}@{}}{%
+gdpPercap} \\
+& & & mean & max & min & mean & max & min & mean & max & min \\
+continent & country & year & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & \multirow{5}{*}{Algeria} & 1952 & 43.077 &
+43.077 & 43.077 & 9279525.0 & 9279525 & 9279525 & 2449.008185 &
+2449.008185 & 2449.008185 \\
+& & 1957 & 45.685 & 45.685 & 45.685 & 10270856.0 & 10270856 & 10270856 &
+3013.976023 & 3013.976023 & 3013.976023 \\
+& & 1962 & 48.303 & 48.303 & 48.303 & 11000948.0 & 11000948 & 11000948 &
+2550.816880 & 2550.816880 & 2550.816880 \\
+& & 1967 & 51.407 & 51.407 & 51.407 & 12760499.0 & 12760499 & 12760499 &
+3246.991771 & 3246.991771 & 3246.991771 \\
+& & 1972 & 54.518 & 54.518 & 54.518 & 14760787.0 & 14760787 & 14760787 &
+4182.663766 & 4182.663766 & 4182.663766 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+\multirow{5}{*}{Oceania} & \multirow{5}{*}{New Zealand} & 1987 & 74.320
+& 74.320 & 74.320 & 3317166.0 & 3317166 & 3317166 & 19007.191290 &
+19007.191290 & 19007.191290 \\
+& & 1992 & 76.330 & 76.330 & 76.330 & 3437674.0 & 3437674 & 3437674 &
+18363.324940 & 18363.324940 & 18363.324940 \\
+& & 1997 & 77.550 & 77.550 & 77.550 & 3676187.0 & 3676187 & 3676187 &
+21050.413770 & 21050.413770 & 21050.413770 \\
+& & 2002 & 79.110 & 79.110 & 79.110 & 3908037.0 & 3908037 & 3908037 &
+23189.801350 & 23189.801350 & 23189.801350 \\
+& & 2007 & 80.204 & 80.204 & 80.204 & 4115771.0 & 4115771 & 4115771 &
+25185.009110 & 25185.009110 & 25185.009110 \\
+\end{longtable}
+
+Breaking Down Grouping and Aggregation
+
+\begin{itemize}
+\item
+  \textbf{Grouping by Multiple Columns}:\\
+  In this example, we are grouping the data by three columns:
+  \texttt{continent}, \texttt{country}, and \texttt{year}. This creates
+  groups based on unique combinations of these columns.
+\item
+  \textbf{Aggregating Multiple Variables}:\\
+  We apply multiple aggregation functions (\texttt{mean}, \texttt{std},
+  \texttt{max}, and \texttt{min}) to multiple variables
+  (\texttt{lifeExp}, \texttt{pop}, and \texttt{gdpPercap}).
+\end{itemize}
+
+This type of operation is commonly referred to as \textbf{``multi-column
+grouping with multiple aggregations''} in pandas. It's a powerful
+approach because it allows us to obtain a detailed statistical summary
+for each combination of grouping columns across several variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# its columns are MultiIndex}
+\NormalTok{grouped\_continent\_contry\_multi.columns.nlevels}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the population mean for the \textquotesingle{}\textquotesingle{}Americas\textquotesingle{} continent and \textquotesingle{}United States\textquotesingle{} country}
+\NormalTok{grouped\_continent\_contry\_multi.loc[(}\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{), (}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+year
+1952    68.440
+1957    69.490
+1962    70.210
+1967    70.760
+1972    71.340
+1977    73.380
+1982    74.650
+1987    75.020
+1992    76.090
+1997    76.810
+2002    77.310
+2007    78.242
+Name: (lifeExp, mean), dtype: float64
+\end{verbatim}
+
+\hypertarget{apply-data-aggregation-filtering-transformation}{%
+\section{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.apply.html}{\texttt{apply()}}:
+Data aggregation, filtering \&
+transformation}{apply(): Data aggregation, filtering \& transformation}}\label{apply-data-aggregation-filtering-transformation}}
+
+With the \texttt{apply()} method of the \emph{GroupBy} object, we can
+perform several operations on groups, other than data aggregation.
+
+\hypertarget{filtering-data-by-group}{%
+\subsection{Filtering data by group}\label{filtering-data-by-group}}
+
+\textbf{Example}: Consider the life expectancy dataset, find the top 3
+life expectancy values for each continent
+
+We'll first define a function that sorts a dataset by decreasing life
+expectancy and returns the top 3 rows. Then, we'll apply this function
+on each group using the \texttt{apply()} method of the \emph{GroupBy}
+object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define a function to get the top 3 rows based on life expectancy for each group}
+\KeywordTok{def}\NormalTok{ top\_3\_life\_expectancy(group):}
+    \ControlFlowTok{return}\NormalTok{ group.nlargest(}\DecValTok{3}\NormalTok{, }\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Defining the groups in the data}
+\NormalTok{grouped\_gdpcapital\_data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now we'll use the \texttt{apply()} method to apply the
+\texttt{top\_3\_life\_expectancy()} function on each group of the object
+\texttt{grouped\_gdpcapital\_data}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Apply the function to each continent group}
+\NormalTok{top\_life\_expectancy }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)[[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]].}\BuiltInTok{apply}\NormalTok{(top\_3\_life\_expectancy).reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# Display the result}
+\NormalTok{top\_life\_expectancy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& continent & country & year & lifeExp & gdpPercap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Africa & Reunion & 2007 & 76.442 & 7670.122558 \\
+1 & Africa & Reunion & 2002 & 75.744 & 6316.165200 \\
+2 & Africa & Reunion & 1997 & 74.772 & 6071.941411 \\
+3 & Americas & Canada & 2007 & 80.653 & 36319.235010 \\
+4 & Americas & Canada & 2002 & 79.770 & 33328.965070 \\
+5 & Americas & Costa Rica & 2007 & 78.782 & 9645.061420 \\
+6 & Asia & Japan & 2007 & 82.603 & 31656.068060 \\
+7 & Asia & Hong Kong, China & 2007 & 82.208 & 39724.978670 \\
+8 & Asia & Japan & 2002 & 82.000 & 28604.591900 \\
+9 & Europe & Iceland & 2007 & 81.757 & 36180.789190 \\
+10 & Europe & Switzerland & 2007 & 81.701 & 37506.419070 \\
+11 & Europe & Spain & 2007 & 80.941 & 28821.063700 \\
+12 & Oceania & Australia & 2007 & 81.235 & 34435.367440 \\
+13 & Oceania & Australia & 2002 & 80.370 & 30687.754730 \\
+14 & Oceania & New Zealand & 2007 & 80.204 & 25185.009110 \\
+\end{longtable}
+
+The \texttt{top\_3\_life\_expectancy()} function is applied to each
+group, and the results are concatenated internally with the
+\texttt{concat()} function. The output therefore has a hierarchical
+index whose outer level indices are the group keys.
+
+We can also use a lambda function instead of separately defining the
+function \texttt{top\_3\_life\_expectancy()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# Use a lambda function to get the top 3 life expectancy values for each continent}
+\NormalTok{top\_life\_expectancy }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    gdp\_lifeExp\_data}
+\NormalTok{    .groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)[[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]]  }\CommentTok{\# Avoid adding group labels in the index}
+\NormalTok{    .}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x.nlargest(}\DecValTok{3}\NormalTok{, }\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{))}
+\NormalTok{    .reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Display the result}
+\NormalTok{top\_life\_expectancy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& continent & country & year & lifeExp & gdpPercap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Africa & Reunion & 2007 & 76.442 & 7670.122558 \\
+1 & Africa & Reunion & 2002 & 75.744 & 6316.165200 \\
+2 & Africa & Reunion & 1997 & 74.772 & 6071.941411 \\
+3 & Americas & Canada & 2007 & 80.653 & 36319.235010 \\
+4 & Americas & Canada & 2002 & 79.770 & 33328.965070 \\
+5 & Americas & Costa Rica & 2007 & 78.782 & 9645.061420 \\
+6 & Asia & Japan & 2007 & 82.603 & 31656.068060 \\
+7 & Asia & Hong Kong, China & 2007 & 82.208 & 39724.978670 \\
+8 & Asia & Japan & 2002 & 82.000 & 28604.591900 \\
+9 & Europe & Iceland & 2007 & 81.757 & 36180.789190 \\
+10 & Europe & Switzerland & 2007 & 81.701 & 37506.419070 \\
+11 & Europe & Spain & 2007 & 80.941 & 28821.063700 \\
+12 & Oceania & Australia & 2007 & 81.235 & 34435.367440 \\
+13 & Oceania & Australia & 2002 & 80.370 & 30687.754730 \\
+14 & Oceania & New Zealand & 2007 & 80.204 & 25185.009110 \\
+\end{longtable}
+
+\hypertarget{transforming-data-by-group-using-transform}{%
+\subsection{\texorpdfstring{Transforming data by group using
+\texttt{transform()}}{Transforming data by group using transform()}}\label{transforming-data-by-group-using-transform}}
+
+Recall that in the data cleaning and preparation chapter, we imputed
+missing values based on correlated variables in the dataset.
+
+In the example provided, some countries had missing values for GDP per
+capita. To handle this, we imputed the missing GDP per capita for each
+country using the average GDP per capita of its corresponding continent.
+
+Now, we'll compare that approach with a method that uses
+\texttt{groupby()} and \texttt{transform()}.
+
+Let us read the datasets and the function that makes a visualization to
+compare the imputed values with the actual values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Importing data with missing values}
+\NormalTok{gdp\_missing\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_missing\_data.csv\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#Importing data with all values}
+\NormalTok{gdp\_complete\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_complete\_data.csv\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Index of rows with missing values for GDP per capita}
+\NormalTok{null\_ind\_gdpPC }\OperatorTok{=}\NormalTok{ gdp\_missing\_data.index[gdp\_missing\_data.gdpPerCapita.isnull()]}
+
+\CommentTok{\#Defining a function to plot the imputed values vs actual values }
+\KeywordTok{def}\NormalTok{ plot\_actual\_vs\_predicted():}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}xtick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}ytick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ gdp\_complete\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
+\NormalTok{    y }\OperatorTok{=}\NormalTok{ gdp\_imputed\_data.loc[null\_ind\_gdpPC,}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}
+\NormalTok{    plt.scatter(x,y)}
+\NormalTok{    z}\OperatorTok{=}\NormalTok{np.polyfit(x,y,}\DecValTok{1}\NormalTok{)}
+\NormalTok{    p}\OperatorTok{=}\NormalTok{np.poly1d(z)}
+\NormalTok{    plt.plot(x,x,color}\OperatorTok{=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed GDP per capita\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    rmse }\OperatorTok{=}\NormalTok{ np.sqrt(((x}\OperatorTok{{-}}\NormalTok{y).}\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{)).mean())}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"RMSE="}\NormalTok{,rmse)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Approach 1:} Using the approach we used in the previous chapter
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Finding the mean GDP per capita of the continent}
+\NormalTok{avg\_gdpPerCapita }\OperatorTok{=}\NormalTok{ gdp\_missing\_data[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{].groupby(gdp\_missing\_data[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{]).mean()}
+
+\CommentTok{\#Creating a copy of missing data to impute missing values}
+\NormalTok{gdp\_imputed\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_data.copy()}
+
+\CommentTok{\#Replacing missing GDP per capita with the mean GDP per capita for the corresponding continent}
+\ControlFlowTok{for}\NormalTok{ cont }\KeywordTok{in}\NormalTok{ avg\_gdpPerCapita.index:}
+\NormalTok{    gdp\_imputed\_data.loc[(gdp\_imputed\_data.continent}\OperatorTok{==}\NormalTok{cont) }\OperatorTok{\&}\NormalTok{ (gdp\_imputed\_data.gdpPerCapita.isnull()),}
+                     \StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{]}\OperatorTok{=}\NormalTok{avg\_gdpPerCapita[cont]}
+\NormalTok{plot\_actual\_vs\_predicted()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RMSE= 25473.20645170116
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data aggregation_files/figure-pdf/cell-44-output-2.png}
+
+}
+
+\end{figure}
+
+\textbf{Approach 2:} Using the \texttt{groupby()} and
+\texttt{transform()} methods.
+
+The \texttt{transform()} function is a powerful tool for filling missing
+values in grouped data. It allows us to apply a function across each
+group and align the result back to the original DataFrame, making it
+perfect for filling missing values based on group statistics.
+
+In this example, we use \texttt{transform()} to impute missing values in
+the \texttt{gdpPerCapita} column by filling them with the mean
+\texttt{gdpPerCapita} of each continent:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating a copy of missing data to impute missing values}
+\NormalTok{gdp\_imputed\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_data.copy()}
+
+\CommentTok{\#Grouping data by continent}
+\NormalTok{grouped }\OperatorTok{=}\NormalTok{ gdp\_missing\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#Imputing missing values with the mean GDP per capita of the continent}
+\NormalTok{gdp\_imputed\_data[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ grouped[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{].transform(}\KeywordTok{lambda}\NormalTok{ x: x.fillna(x.mean()))}
+
+\NormalTok{plot\_actual\_vs\_predicted()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RMSE= 25473.20645170116
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data aggregation_files/figure-pdf/cell-45-output-2.png}
+
+}
+
+\end{figure}
+
+Using the \texttt{transform()} function, missing values in gdpPerCapita
+for each group are filled with the group's mean \texttt{gdpPerCapita}.
+This approach is not only more convenient to write but also faster
+compared to using for loops. While a for loop imputes missing values one
+group at a time, \texttt{transform()} performs built-in operations (like
+mean, sum, etc.) in a way that is optimized internally, making it more
+efficient.
+
+Let's use \texttt{apply()} instead of \texttt{transform()} with
+\texttt{groupby()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating a copy of missing data to impute missing values}
+\NormalTok{gdp\_imputed\_data }\OperatorTok{=}\NormalTok{ gdp\_missing\_data.copy()}
+
+\CommentTok{\#Grouping data by continent}
+\NormalTok{grouped }\OperatorTok{=}\NormalTok{ gdp\_missing\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#Applying the lambda function on the \textquotesingle{}gdpPerCapita\textquotesingle{} column of the groups}
+\NormalTok{gdp\_imputed\_data[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ grouped[}\StringTok{\textquotesingle{}gdpPerCapita\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x.fillna(x.mean()))}
+
+\NormalTok{plot\_actual\_vs\_predicted()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+TypeError: incompatible index of inserted column with frame index
+\end{verbatim}
+
+Why we ran into this error? and \texttt{apply()} doesn't work?
+
+Here's a deeper look at why \texttt{apply()} doesn't work as expected
+here:
+
+\hypertarget{behavior-of-groupby.apply-vs.-groupby.transform}{%
+\subsubsection{\texorpdfstring{Behavior of \texttt{groupby().apply()}
+vs.~\texttt{groupby().transform()}}{Behavior of groupby().apply() vs.~groupby().transform()}}\label{behavior-of-groupby.apply-vs.-groupby.transform}}
+
+\begin{itemize}
+\item
+  \textbf{\texttt{groupby().apply()}}: This method applies a function to
+  each group and returns the result with a hierarchical (multi-level)
+  index by default. This hierarchical index can make it difficult to
+  align the result back to a single column in the original DataFrame.
+\item
+  \textbf{\texttt{groupby().transform()}}: In contrast,
+  \texttt{transform()} is specifically designed to apply a function to
+  each group and return a Series that is aligned with the original
+  DataFrame's index. This alignment makes it directly compatible for
+  assignment to a new or existing column in the original DataFrame.
+\end{itemize}
+
+\hypertarget{why-transform-works-for-imputation}{%
+\subsubsection{\texorpdfstring{Why \texttt{transform()} Works for
+Imputation}{Why transform() Works for Imputation}}\label{why-transform-works-for-imputation}}
+
+When using \texttt{transform()} to fill missing values, it applies the
+function (e.g., \texttt{fillna(x.mean())}) based on each group's
+statistics, such as the mean, while keeping the result aligned with the
+original DataFrame's index. This allows for smooth assignment to a
+column in the DataFrame without any index mismatch issues.
+
+Additionally, \texttt{transform()} applies the function to each element
+in a group independently and returns a result that has the same shape as
+the original data, making it ideal for adding or modifying columns.
+
+\hypertarget{sampling-data-by-group}{%
+\subsection{Sampling data by group}\label{sampling-data-by-group}}
+
+The \texttt{groupby()} and \texttt{apply()} method can be used to for
+stratified random sampling from a large dataset.
+
+The spotify dataset has more than 200k observations. It may be expensive
+to operate with so many observations. Suppose, we wish to take a random
+sample of 650 observations to analyze spotify data, such that all genres
+are equally represented.
+
+Before taking the random sample, let us find the number of tracks in
+each genre.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data.columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['country', 'continent', 'year', 'lifeExp', 'pop', 'gdpPercap'], dtype='object')
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data.continent.value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+continent
+Africa      624
+Asia        396
+Europe      360
+Americas    300
+Oceania      24
+Name: count, dtype: int64
+\end{verbatim}
+
+Let us take a random sample of 100 observations from the entire dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample\_lifeExp\_data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.sample(}\DecValTok{650}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now, let us see the number of track of each genre in our sample.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample\_lifeExp\_data.continent.value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+continent
+Africa      223
+Asia        154
+Europe      149
+Americas    116
+Oceania       8
+Name: count, dtype: int64
+\end{verbatim}
+
+Some of the continent have a very low representation in the data. To
+rectify this, we can take a random sample of 20 observations from each
+of the 5 continents. In other words, we can take a random sample from
+each of the continent-based groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evenly\_sampled\_lifeExp\_data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{).}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:x.sample(}\DecValTok{20}\NormalTok{))}
+\NormalTok{evenly\_sampled\_lifeExp\_data.continent.value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_27236\739424435.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  evenly_sampled_lifeExp_data = gdp_lifeExp_data.groupby('continent').apply(lambda x:x.sample(20))
+\end{verbatim}
+
+\begin{verbatim}
+continent
+Africa      20
+Americas    20
+Asia        20
+Europe      20
+Oceania     20
+Name: count, dtype: int64
+\end{verbatim}
+
+The above stratified random sample equally represents all the continent.
+
+\hypertarget{corr-correlation-by-group}{%
+\section{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.DataFrameGroupBy.corr.html}{\texttt{corr()}}:
+Correlation by
+group}{corr(): Correlation by group}}\label{corr-correlation-by-group}}
+
+The
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html}{\texttt{corr()}}
+method of the \emph{GroupBy} object returns the correlation between all
+pairs of columns within each group.
+
+\textbf{Example:} Find the correlation between \texttt{lifeExp} and
+\texttt{lifeExp} for each continent-country level combination.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data.groupby([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{]).}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:x[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{].corr(x[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_27236\2286543289.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  gdp_lifeExp_data.groupby(['continent','country']).apply(lambda x:x['lifeExp'].corr(x['gdpPercap']))
+\end{verbatim}
+
+\begin{verbatim}
+continent  country       
+Africa     Algeria           0.904471
+           Angola           -0.301079
+           Benin             0.843949
+           Botswana          0.005597
+           Burkina Faso      0.881677
+                               ...   
+Europe     Switzerland       0.980715
+           Turkey            0.954455
+           United Kingdom    0.989893
+Oceania    Australia         0.986446
+           New Zealand       0.974493
+Length: 142, dtype: float64
+\end{verbatim}
+
+Life expectancy is closely associated with GDP per capita across most
+continent-country combinations.
+
+\hypertarget{pivot_table}{%
+\section{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot_table.html}{\texttt{pivot\_table()}}}{pivot\_table()}}\label{pivot_table}}
+
+The \texttt{pivot\_table()} function in pandas is a powerful tool for
+performing groupwise aggregation in a structured format, similar to
+Excel's pivot tables. It allows you to create a summary of data by
+grouping and aggregating it based on specified columns. Here's an
+overview of how \texttt{pivot\_table()} works for groupwise aggregation:
+
+Note that \texttt{pivot\_table()} is the same as \texttt{pivot()} except
+that \texttt{pivot\_table()} aggregates the data as well in addition to
+re-arranging it.
+
+\textbf{Example:} Consider the life expectancy dataset, calculate the
+average life expectancy for each country and year combination
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pd.pivot\_table(data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data, values }\OperatorTok{=} \StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{,index }\OperatorTok{=} \StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{, columns }\OperatorTok{=}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{,aggfunc }\OperatorTok{=} \StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,margins }\OperatorTok{=} \VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 & All \\
+country & & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 28.80100 & 30.332000 & 31.997000 & 34.02000 & 36.088000 &
+38.438000 & 39.854000 & 40.822000 & 41.674000 & 41.763000 & 42.129000 &
+43.828000 & 37.478833 \\
+Albania & 55.23000 & 59.280000 & 64.820000 & 66.22000 & 67.690000 &
+68.930000 & 70.420000 & 72.000000 & 71.581000 & 72.950000 & 75.651000 &
+76.423000 & 68.432917 \\
+Algeria & 43.07700 & 45.685000 & 48.303000 & 51.40700 & 54.518000 &
+58.014000 & 61.368000 & 65.799000 & 67.744000 & 69.152000 & 70.994000 &
+72.301000 & 59.030167 \\
+Angola & 30.01500 & 31.999000 & 34.000000 & 35.98500 & 37.928000 &
+39.483000 & 39.942000 & 39.906000 & 40.647000 & 40.963000 & 41.003000 &
+42.731000 & 37.883500 \\
+Argentina & 62.48500 & 64.399000 & 65.142000 & 65.63400 & 67.065000 &
+68.481000 & 69.942000 & 70.774000 & 71.868000 & 73.275000 & 74.340000 &
+75.320000 & 69.060417 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
+... & ... \\
+West Bank and Gaza & 43.16000 & 45.671000 & 48.127000 & 51.63100 &
+56.532000 & 60.765000 & 64.406000 & 67.046000 & 69.718000 & 71.096000 &
+72.370000 & 73.422000 & 60.328667 \\
+Yemen, Rep. & 32.54800 & 33.970000 & 35.180000 & 36.98400 & 39.848000 &
+44.175000 & 49.113000 & 52.922000 & 55.599000 & 58.020000 & 60.308000 &
+62.698000 & 46.780417 \\
+Zambia & 42.03800 & 44.077000 & 46.023000 & 47.76800 & 50.107000 &
+51.386000 & 51.821000 & 50.821000 & 46.100000 & 40.238000 & 39.193000 &
+42.384000 & 45.996333 \\
+Zimbabwe & 48.45100 & 50.469000 & 52.358000 & 53.99500 & 55.635000 &
+57.674000 & 60.363000 & 62.351000 & 60.377000 & 46.809000 & 39.989000 &
+43.487000 & 52.663167 \\
+All & 49.05762 & 51.507401 & 53.609249 & 55.67829 & 57.647386 &
+59.570157 & 61.533197 & 63.212613 & 64.160338 & 65.014676 & 65.694923 &
+67.007423 & 59.474439 \\
+\end{longtable}
+
+\textbf{Explanation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{values}: Specifies the column to aggregate (e.g.,
+  \texttt{lifeExp} in our example).
+\item
+  \textbf{index}: Groups by the rows based on the \texttt{country}
+  column.
+\item
+  \textbf{columns}: Groups by the columns based on the \texttt{year}
+  column.
+\item
+  \textbf{aggfunc}: Uses \texttt{mean} to calculate the average life
+  expectancy.
+\end{itemize}
+
+\textbf{Common Aggregation Functions in \texttt{pivot\_table()}}
+
+You can use various aggregation functions within \texttt{pivot\_table()}
+to summarize data:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{mean}} -- Calculates the average of values within each
+  group.
+\item
+  \textbf{\texttt{sum}} -- Computes the total of values within each
+  group.
+\item
+  \textbf{\texttt{count}} -- Counts the number of non-null entries
+  within each group.
+\item
+  \textbf{\texttt{min}} and \textbf{\texttt{max}} -- Finds the minimum
+  and maximum values within each group.
+\end{itemize}
+
+We can use also use custom \emph{GroupBy} aggregate functions with
+\texttt{pivot\_table()}.
+
+\textbf{Example}: Find the \(90^{th}\) percentile of life expectancy for
+each country and year combination
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pd.pivot\_table(data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data, values }\OperatorTok{=} \StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{,index }\OperatorTok{=} \StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{, columns }\OperatorTok{=}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{,aggfunc }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ x:np.percentile(x,}\DecValTok{90}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 \\
+country & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 28.801 & 30.332 & 31.997 & 34.020 & 36.088 & 38.438 &
+39.854 & 40.822 & 41.674 & 41.763 & 42.129 & 43.828 \\
+Albania & 55.230 & 59.280 & 64.820 & 66.220 & 67.690 & 68.930 & 70.420 &
+72.000 & 71.581 & 72.950 & 75.651 & 76.423 \\
+Algeria & 43.077 & 45.685 & 48.303 & 51.407 & 54.518 & 58.014 & 61.368 &
+65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
+Angola & 30.015 & 31.999 & 34.000 & 35.985 & 37.928 & 39.483 & 39.942 &
+39.906 & 40.647 & 40.963 & 41.003 & 42.731 \\
+Argentina & 62.485 & 64.399 & 65.142 & 65.634 & 67.065 & 68.481 & 69.942
+& 70.774 & 71.868 & 73.275 & 74.340 & 75.320 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
+... \\
+Vietnam & 40.412 & 42.887 & 45.363 & 47.838 & 50.254 & 55.764 & 58.816 &
+62.820 & 67.662 & 70.672 & 73.017 & 74.249 \\
+West Bank and Gaza & 43.160 & 45.671 & 48.127 & 51.631 & 56.532 & 60.765
+& 64.406 & 67.046 & 69.718 & 71.096 & 72.370 & 73.422 \\
+Yemen, Rep. & 32.548 & 33.970 & 35.180 & 36.984 & 39.848 & 44.175 &
+49.113 & 52.922 & 55.599 & 58.020 & 60.308 & 62.698 \\
+Zambia & 42.038 & 44.077 & 46.023 & 47.768 & 50.107 & 51.386 & 51.821 &
+50.821 & 46.100 & 40.238 & 39.193 & 42.384 \\
+Zimbabwe & 48.451 & 50.469 & 52.358 & 53.995 & 55.635 & 57.674 & 60.363
+& 62.351 & 60.377 & 46.809 & 39.989 & 43.487 \\
+\end{longtable}
+
+\hypertarget{crosstab}{%
+\section{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html}{\texttt{crosstab()}}}{crosstab()}}\label{crosstab}}
+
+\hypertarget{basic-usage-of-crosstab}{%
+\subsection{\texorpdfstring{Basic Usage of
+\texttt{crosstab()}}{Basic Usage of crosstab()}}\label{basic-usage-of-crosstab}}
+
+The \texttt{crosstab()} method is a special case of a pivot table for
+computing group frequncies (or size of each group).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a basic crosstab to see counts of countries in each continent}
+\NormalTok{pd.crosstab(gdp\_lifeExp\_data[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{], columns}\OperatorTok{=}\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+col\_0 & count \\
+continent & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Africa & 624 \\
+Americas & 300 \\
+Asia & 396 \\
+Europe & 360 \\
+Oceania & 24 \\
+\end{longtable}
+
+Use the \texttt{margins=True} argument to add totals (row and column
+margins) to the table. The \texttt{All} row and column provide totals
+for each age group and gender category.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a crosstab to see counts of countries in each continent and year}
+\NormalTok{pd.crosstab(gdp\_lifeExp\_data[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{], gdp\_lifeExp\_data[}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{], margins}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 & All \\
+continent & & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Africa & 52 & 52 & 52 & 52 & 52 & 52 & 52 & 52 & 52 & 52 & 52 & 52 &
+624 \\
+Americas & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 &
+300 \\
+Asia & 33 & 33 & 33 & 33 & 33 & 33 & 33 & 33 & 33 & 33 & 33 & 33 &
+396 \\
+Europe & 30 & 30 & 30 & 30 & 30 & 30 & 30 & 30 & 30 & 30 & 30 & 30 &
+360 \\
+Oceania & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 24 \\
+All & 142 & 142 & 142 & 142 & 142 & 142 & 142 & 142 & 142 & 142 & 142 &
+142 & 1704 \\
+\end{longtable}
+
+This table shows the count of each year in each continent group, helping
+us understand the year distribution across different continent groups.
+We may often use it to check if the data is representative of all groups
+that are of interest to us.
+
+\hypertarget{using-crosstab-with-aggregation-functions}{%
+\subsection{\texorpdfstring{Using \texttt{crosstab()} with Aggregation
+Functions}{Using crosstab() with Aggregation Functions}}\label{using-crosstab-with-aggregation-functions}}
+
+You can specify a \texttt{values} column and an aggregation function
+(\texttt{aggfunc}) to summarize numerical data for each combination of
+categorical variables.
+
+\textbf{Example:} find the mean life expectancy for each continent and
+year
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# find the mean life expectancy for each country in each continent and year}
+\NormalTok{pd.crosstab(gdp\_lifeExp\_data[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{], gdp\_lifeExp\_data[}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{], values}\OperatorTok{=}\NormalTok{gdp\_lifeExp\_data[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{], aggfunc}\OperatorTok{=}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 \\
+continent & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Africa & 39.135500 & 41.266346 & 43.319442 & 45.334538 & 47.450942 &
+49.580423 & 51.592865 & 53.344788 & 53.629577 & 53.598269 & 53.325231 &
+54.806038 \\
+Americas & 53.279840 & 55.960280 & 58.398760 & 60.410920 & 62.394920 &
+64.391560 & 66.228840 & 68.090720 & 69.568360 & 71.150480 & 72.422040 &
+73.608120 \\
+Asia & 46.314394 & 49.318544 & 51.563223 & 54.663640 & 57.319269 &
+59.610556 & 62.617939 & 64.851182 & 66.537212 & 68.020515 & 69.233879 &
+70.728485 \\
+Europe & 64.408500 & 66.703067 & 68.539233 & 69.737600 & 70.775033 &
+71.937767 & 72.806400 & 73.642167 & 74.440100 & 75.505167 & 76.700600 &
+77.648600 \\
+Oceania & 69.255000 & 70.295000 & 71.085000 & 71.310000 & 71.910000 &
+72.855000 & 74.290000 & 75.320000 & 76.945000 & 78.190000 & 79.740000 &
+80.719500 \\
+\end{longtable}
+
+\hypertarget{independent-study-3}{%
+\section{Independent Study}\label{independent-study-3}}
+
+\hypertarget{practice-exercise-1-5}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-5}}
+
+Read the table consisting of GDP per capita of countries from the
+webpage:
+https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita
+.
+
+To only read the relevant table, read the tables that contain the word
+\emph{`Country'}.
+
+Estimate the GDP per capita of each country as the average of the
+estimates of the three agencies - IMF, United Nations and World Bank.
+
+We need to do a bit of data cleaning before we could directly use the
+\texttt{groupby()} function. Follow the steps below to answer this
+question:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Set the first 2 columns containing country, and UN region as
+  hierarchical row labels.
+\item
+  Apply the following function on all the columns to convert them to
+  numeric:
+  \texttt{f\ =\ lambda\ x:pd.to\_numeric(x,errors\ =\ \textquotesingle{}coerce\textquotesingle{})}
+\item
+  Now use \texttt{groupby()} to find estimate the GDP per capita for
+  each country.
+\end{enumerate}
+
+\hypertarget{practice-exercise-2-5}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-5}}
+
+Read the spotify dataset from \texttt{spotify\_data.csv} that contains
+information about tracks and artists
+
+\hypertarget{section-54}{%
+\subsubsection{}\label{section-54}}
+
+Find the mean and standard deviation of the track popularity for each
+genre.
+
+\hypertarget{section-55}{%
+\subsubsection{}\label{section-55}}
+
+Create a new categorical column, \texttt{energy\_lvl}, with two levels
+-- `Low energy' and `High energy' -- using equal-sized bins based on the
+track's energy level. Then, calculate the mean, standard deviation, and
+90th percentile of track popularity for each genre and energy level
+combination
+
+\hypertarget{section-56}{%
+\subsubsection{}\label{section-56}}
+
+Find the mean and standard deviation of track popularity and
+danceability for each genre and energy level. What insights you can gain
+from the generated table
+
+\hypertarget{section-57}{%
+\subsubsection{}\label{section-57}}
+
+For each genre and energy level, find the mean and standard deviation of
+the track popularity, and the minimum and maximum values of loudness.
+
+\hypertarget{section-58}{%
+\subsubsection{}\label{section-58}}
+
+Find the most popular artist from each genre.
+
+\hypertarget{section-59}{%
+\subsubsection{}\label{section-59}}
+
+Filter the first 4 columns of the spotify dataset. Drop duplicate
+observartions in the resulting dataset using the Pandas DataFrame method
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html}{\texttt{drop\_duplicates()}}.
+Find the top 3 most popular artists for each genre.
+
+\hypertarget{section-60}{%
+\subsubsection{}\label{section-60}}
+
+The spotify dataset has more than 200k observations. It may be expensive
+to operate with so many observations. Take a random sample of 650
+observations to analyze spotify data, such that all genres are equally
+represented.
+
+\hypertarget{section-61}{%
+\subsubsection{}\label{section-61}}
+
+Find the correlation between \texttt{danceability} and
+\texttt{track\ popularity} for each genre-energy level combination.
+
+\hypertarget{section-62}{%
+\subsubsection{}\label{section-62}}
+
+Find the mean of track popularity for each genre-energy lvl combination
+such that each row corresponds to a genre, and the energy levels
+correspond to columns.
+
+Hints: using \texttt{pivot\_table()}
+
+\hypertarget{section-63}{%
+\subsubsection{}\label{section-63}}
+
+Find the \(90^{th}\) percentile of track popularity for each
+genre-energy lvl combination such that each row corresponds to a genre,
+and the energy levels correspond to columns.
+
+Hints: using \texttt{pivot\_table()}
+
+\hypertarget{section-64}{%
+\subsubsection{}\label{section-64}}
+
+Find the number of observations in each group, where each groups
+corresponds to a distinct genre-energy lvl combination
+
+\hypertarget{section-65}{%
+\subsubsection{}\label{section-65}}
+
+Find the percentage of observations in each group of the above table.
+
+\hypertarget{section-66}{%
+\subsubsection{}\label{section-66}}
+
+What percentage of unique tracks are contributed by the top 5 artists of
+each genre?
+
+\textbf{Hint:} Find the top 5 artists based on
+\texttt{artist\_popularity} for each genre. Count the total number of
+unique tracks (\texttt{track\_name}) contributed by these artists.
+Divide this number by the total number of unique tracks in the data. The
+\texttt{nunique()} function will be useful.
 
 \cleardoublepage
 \phantomsection
@@ -18360,8 +20621,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-54}{%
-\subsection{}\label{section-54}}
+\hypertarget{section-67}{%
+\subsection{}\label{section-67}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -18370,24 +20631,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-55}{%
-\subsection{}\label{section-55}}
+\hypertarget{section-68}{%
+\subsection{}\label{section-68}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-56}{%
-\subsection{}\label{section-56}}
+\hypertarget{section-69}{%
+\subsection{}\label{section-69}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-57}{%
-\subsection{}\label{section-57}}
+\hypertarget{section-70}{%
+\subsection{}\label{section-70}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -18398,8 +20659,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-58}{%
-\subsection{}\label{section-58}}
+\hypertarget{section-71}{%
+\subsection{}\label{section-71}}
 
 Use list comprehension to:
 
@@ -18448,16 +20709,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-59}{%
-\subsection{}\label{section-59}}
+\hypertarget{section-72}{%
+\subsection{}\label{section-72}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-60}{%
-\subsection{}\label{section-60}}
+\hypertarget{section-73}{%
+\subsection{}\label{section-73}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -18466,8 +20727,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-61}{%
-\subsection{}\label{section-61}}
+\hypertarget{section-74}{%
+\subsection{}\label{section-74}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -18476,8 +20737,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-62}{%
-\subsection{}\label{section-62}}
+\hypertarget{section-75}{%
+\subsection{}\label{section-75}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -18501,8 +20762,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-63}{%
-\subsection{}\label{section-63}}
+\hypertarget{section-76}{%
+\subsection{}\label{section-76}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -18511,8 +20772,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-64}{%
-\subsection{}\label{section-64}}
+\hypertarget{section-77}{%
+\subsection{}\label{section-77}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -18524,8 +20785,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-65}{%
-\subsection{}\label{section-65}}
+\hypertarget{section-78}{%
+\subsection{}\label{section-78}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -18533,23 +20794,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-66}{%
-\subsection{}\label{section-66}}
+\hypertarget{section-79}{%
+\subsection{}\label{section-79}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-67}{%
-\subsection{}\label{section-67}}
+\hypertarget{section-80}{%
+\subsection{}\label{section-80}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-68}{%
-\subsection{}\label{section-68}}
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -18558,16 +20819,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-69}{%
-\subsection{}\label{section-69}}
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-70}{%
-\subsection{}\label{section-70}}
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -18577,16 +20838,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-71}{%
-\subsection{}\label{section-71}}
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-72}{%
-\subsection{}\label{section-72}}
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -18599,38 +20860,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-73}{%
-\subsection{}\label{section-73}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-74}{%
-\subsection{}\label{section-74}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-75}{%
-\subsection{}\label{section-75}}
+\hypertarget{section-88}{%
+\subsection{}\label{section-88}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-76}{%
-\subsection{}\label{section-76}}
+\hypertarget{section-89}{%
+\subsection{}\label{section-89}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-77}{%
-\subsection{}\label{section-77}}
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -18639,16 +20900,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-78}{%
-\subsection{}\label{section-78}}
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-79}{%
-\subsection{}\label{section-79}}
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -19095,8 +21356,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-80}{%
-\subsection{}\label{section-80}}
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -19107,8 +21368,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -19117,8 +21378,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -19142,8 +21403,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-96}{%
+\subsection{}\label{section-96}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -19175,8 +21436,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-97}{%
+\subsection{}\label{section-97}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -19190,8 +21451,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-98}{%
+\subsection{}\label{section-98}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -19208,8 +21469,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-86}{%
-\subsection{}\label{section-86}}
+\hypertarget{section-99}{%
+\subsection{}\label{section-99}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -19244,8 +21505,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-87}{%
-\subsection{}\label{section-87}}
+\hypertarget{section-100}{%
+\subsection{}\label{section-100}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -19256,8 +21517,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-88}{%
-\subsection{}\label{section-88}}
+\hypertarget{section-101}{%
+\subsection{}\label{section-101}}
 
 Find the percentage of the total countries in each continent.
 
@@ -19266,22 +21527,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-89}{%
-\subsection{}\label{section-89}}
+\hypertarget{section-102}{%
+\subsection{}\label{section-102}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-90}{%
-\subsection{}\label{section-90}}
+\hypertarget{section-103}{%
+\subsection{}\label{section-103}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-91}{%
-\subsubsection{}\label{section-91}}
+\hypertarget{section-104}{%
+\subsubsection{}\label{section-104}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -19303,8 +21564,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-92}{%
-\subsubsection{}\label{section-92}}
+\hypertarget{section-105}{%
+\subsubsection{}\label{section-105}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -19326,24 +21587,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-93}{%
-\subsubsection{}\label{section-93}}
+\hypertarget{section-106}{%
+\subsubsection{}\label{section-106}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-94}{%
-\subsection{}\label{section-94}}
+\hypertarget{section-107}{%
+\subsection{}\label{section-107}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-95}{%
-\subsection{}\label{section-95}}
+\hypertarget{section-108}{%
+\subsection{}\label{section-108}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -19361,15 +21622,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-96}{%
-\subsection{}\label{section-96}}
+\hypertarget{section-109}{%
+\subsection{}\label{section-109}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-97}{%
-\subsection{}\label{section-97}}
+\hypertarget{section-110}{%
+\subsection{}\label{section-110}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -19378,8 +21639,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-98}{%
-\subsection{}\label{section-98}}
+\hypertarget{section-111}{%
+\subsection{}\label{section-111}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -19555,8 +21816,8 @@ time of its release.
 \hypertarget{month-of-release}{%
 \subsection{Month of release}\label{month-of-release}}
 
-\hypertarget{section-99}{%
-\subsubsection{}\label{section-99}}
+\hypertarget{section-112}{%
+\subsubsection{}\label{section-112}}
 
 Make an appropriate plot to visualize the mean profit of movies released
 each month.
@@ -19577,8 +21838,8 @@ each month.
 
 \emph{(6 points)}
 
-\hypertarget{section-100}{%
-\subsubsection{}\label{section-100}}
+\hypertarget{section-113}{%
+\subsubsection{}\label{section-113}}
 
 Based on the plot, which seasons have been the most and least profitable
 (on an average) for a movie release. Don't worry about the exact start
@@ -19592,8 +21853,8 @@ summer, late spring} etc.
 \subsection{Month of release with number of movies in each
 genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
 
-\hypertarget{section-101}{%
-\subsubsection{}\label{section-101}}
+\hypertarget{section-114}{%
+\subsubsection{}\label{section-114}}
 
 Now that we know the most profitable season for releasing movies, let us
 visualize if some \texttt{genre}s are more popular during certain
@@ -19625,8 +21886,8 @@ each \texttt{genre} in each calendar month.
   Use the \emph{hue} argument
 \end{enumerate}
 
-\hypertarget{section-102}{%
-\subsubsection{}\label{section-102}}
+\hypertarget{section-115}{%
+\subsubsection{}\label{section-115}}
 
 Based on the above plot, which \texttt{genre} is the most popular during
 the most profitable season of release? And which genre is the most
@@ -19638,8 +21899,8 @@ popular during the least profitable season of release?
 \subsection{Month of release with proportion of movies in each
 genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
 
-\hypertarget{section-103}{%
-\subsubsection{}\label{section-103}}
+\hypertarget{section-116}{%
+\subsubsection{}\label{section-116}}
 
 Visualize the proportion of movies in each \texttt{genre} for each month
 of release.
@@ -19673,8 +21934,8 @@ the visualization
 
 \emph{(8 points)}
 
-\hypertarget{section-104}{%
-\subsubsection{}\label{section-104}}
+\hypertarget{section-117}{%
+\subsubsection{}\label{section-117}}
 
 Which \texttt{genre} is the most popular during the month of May, and
 which one is the most popular during December?
@@ -19685,8 +21946,8 @@ which one is the most popular during December?
 \subsection{Year of release with
 genre}\label{year-of-release-with-genre}}
 
-\hypertarget{section-105}{%
-\subsubsection{}\label{section-105}}
+\hypertarget{section-118}{%
+\subsubsection{}\label{section-118}}
 
 Make an appropriate figure to visualize the average profit of movies of
 each \texttt{genre} for each year. Consider only the movies released
@@ -19711,8 +21972,8 @@ profit.
 
 \emph{(6 points)}
 
-\hypertarget{section-106}{%
-\subsubsection{}\label{section-106}}
+\hypertarget{section-119}{%
+\subsubsection{}\label{section-119}}
 
 Based on the figure above, which \texttt{genre}'s profitability seems to
 be increasing over the years, and which \texttt{genre} has the least
@@ -19726,31 +21987,31 @@ uncertainty in profit for most of the years.
 \hypertarget{pairplot-heatmap}{%
 \subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
 
-\hypertarget{section-107}{%
-\subsubsection{}\label{section-107}}
+\hypertarget{section-120}{%
+\subsubsection{}\label{section-120}}
 
 Make a pairplot and heatmap of all the continuous variables in the data.
 
 \emph{(8 points)}
 
-\hypertarget{section-108}{%
-\subsubsection{}\label{section-108}}
+\hypertarget{section-121}{%
+\subsubsection{}\label{section-121}}
 
 Are there any trends that you can see in the pairplot, but not in the
 heatmap?
 
 \emph{(2 points)}
 
-\hypertarget{section-109}{%
-\subsubsection{}\label{section-109}}
+\hypertarget{section-122}{%
+\subsubsection{}\label{section-122}}
 
 Based on the plots in 2(a)(i), which variables are associated with
 profit?
 
 \emph{(2 points)}
 
-\hypertarget{section-110}{%
-\subsubsection{}\label{section-110}}
+\hypertarget{section-123}{%
+\subsubsection{}\label{section-123}}
 
 Among the variables listed in 2(a)(iii), select a subset of variables
 such that none of them are highly associated with each other. The rest
@@ -19762,8 +22023,8 @@ association with profit.
 \hypertarget{nested-associations}{%
 \subsection{Nested associations}\label{nested-associations}}
 
-\hypertarget{section-111}{%
-\subsubsection{}\label{section-111}}
+\hypertarget{section-124}{%
+\subsubsection{}\label{section-124}}
 
 Use the code below to create some new columns.
 
@@ -19781,8 +22042,8 @@ Which genre has the highest association between profit and IMDB votes?
 
 \emph{(8 points)}
 
-\hypertarget{section-112}{%
-\subsubsection{}\label{section-112}}
+\hypertarget{section-125}{%
+\subsubsection{}\label{section-125}}
 
 Make an appropriate figure to visualize the association between the
 number of IMDB votes and profit, for each combination of the fiction
@@ -19802,8 +22063,8 @@ object.
 \subsection{Profit based on movie
 director}\label{profit-based-on-movie-director}}
 
-\hypertarget{section-113}{%
-\subsubsection{}\label{section-113}}
+\hypertarget{section-126}{%
+\subsubsection{}\label{section-126}}
 
 Consider the directors who have directed more than 10 movies (based on
 the dataset). Make a horizontal barplot that shows the mean profit of
@@ -19825,8 +22086,8 @@ directors must appear in the barplot:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-114}{%
-\subsubsection{}\label{section-114}}
+\hypertarget{section-127}{%
+\subsubsection{}\label{section-127}}
 
 Based on the above plot, which director has the highest mean
 profitability, and which one has the highest variation in profitability?
@@ -19840,8 +22101,8 @@ profitability, and which one has the highest variation in profitability?
 \subsection{Distribution of profit based on genre
 (boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
 
-\hypertarget{section-115}{%
-\subsubsection{}\label{section-115}}
+\hypertarget{section-128}{%
+\subsubsection{}\label{section-128}}
 
 Make boxplots to visualize the distribution of \texttt{profit} based on
 \texttt{genre}. Based on the plot, which genre has the most profitable
@@ -19849,8 +22110,8 @@ movies?
 
 \emph{(6 points)}
 
-\hypertarget{section-116}{%
-\subsubsection{}\label{section-116}}
+\hypertarget{section-129}{%
+\subsubsection{}\label{section-129}}
 
 Which genre has the most variation in profit, and which one has the
 least?
@@ -19861,16 +22122,16 @@ least?
 \subsection{Distribution of profit based on genre (density
 plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
 
-\hypertarget{section-117}{%
-\subsubsection{}\label{section-117}}
+\hypertarget{section-130}{%
+\subsubsection{}\label{section-130}}
 
 Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
 the limit on the horizonal axis, so that the plots are clearly visible.
 
 \emph{(6 points)}
 
-\hypertarget{section-118}{%
-\subsubsection{}\label{section-118}}
+\hypertarget{section-131}{%
+\subsubsection{}\label{section-131}}
 
 What additional insight / trend can you seen in the above plot that you
 cannot see with the boxplots?
@@ -20007,18 +22268,18 @@ Suppose there is an investor who only holds the index for a single day
 
 Based on the data,
 
-\hypertarget{section-119}{%
-\subsubsection{}\label{section-119}}
+\hypertarget{section-132}{%
+\subsubsection{}\label{section-132}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-120}{%
-\subsubsection{}\label{section-120}}
+\hypertarget{section-133}{%
+\subsubsection{}\label{section-133}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-121}{%
-\subsubsection{}\label{section-121}}
+\hypertarget{section-134}{%
+\subsubsection{}\label{section-134}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -20037,18 +22298,18 @@ Suppose there is an investor who will hold the index for a year (suppose
 there are 250 trading days in a year). Do the same analysis as the
 above:
 
-\hypertarget{section-122}{%
-\subsubsection{}\label{section-122}}
+\hypertarget{section-135}{%
+\subsubsection{}\label{section-135}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-123}{%
-\subsubsection{}\label{section-123}}
+\hypertarget{section-136}{%
+\subsubsection{}\label{section-136}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-124}{%
-\subsubsection{}\label{section-124}}
+\hypertarget{section-137}{%
+\subsubsection{}\label{section-137}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -20063,20 +22324,20 @@ our holding period from 1 day to 1 year(250 days).
 
 Show/answer:
 
-\hypertarget{section-125}{%
-\subsubsection{}\label{section-125}}
+\hypertarget{section-138}{%
+\subsubsection{}\label{section-138}}
 
 At least how many days do you need to hold the index in order to make a
 significant positive return (threshold 0.01)?
 
-\hypertarget{section-126}{%
-\subsubsection{}\label{section-126}}
+\hypertarget{section-139}{%
+\subsubsection{}\label{section-139}}
 
 How are the returns associated with the risks for different investment
 strategies?
 
-\hypertarget{section-127}{%
-\subsubsection{}\label{section-127}}
+\hypertarget{section-140}{%
+\subsubsection{}\label{section-140}}
 
 Make a graph as shown below.
 

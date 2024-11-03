@@ -29,8 +29,9 @@ book:
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
         - Data cleaning and preparation.ipynb
+        - Data aggregation.ipynb
         # - Data wrangling.ipynb
-        # - Data aggregation.ipynb
+        
         # - student_solutions.ipynb
   appendices: 
     - Assignment A.ipynb
