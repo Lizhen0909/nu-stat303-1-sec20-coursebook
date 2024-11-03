@@ -304,17 +304,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#missing-completely-at-random-mcar" id="toc-missing-completely-at-random-mcar" class="nav-link" data-scroll-target="#missing-completely-at-random-mcar"><span class="header-section-number">10.1.2.1</span> Missing Completely at Random (MCAR)</a></li>
   <li><a href="#missing-at-random-mar" id="toc-missing-at-random-mar" class="nav-link" data-scroll-target="#missing-at-random-mar"><span class="header-section-number">10.1.2.2</span> Missing at Random (MAR)</a></li>
   <li><a href="#missing-not-at-random-mnar" id="toc-missing-not-at-random-mnar" class="nav-link" data-scroll-target="#missing-not-at-random-mnar"><span class="header-section-number">10.1.2.3</span> Missing Not at Random (MNAR)</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.1.2.4</span> Questions</a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.1.3</span> Questions</a>
+  <li><a href="#methods-for-handling-missing-values" id="toc-methods-for-handling-missing-values" class="nav-link" data-scroll-target="#methods-for-handling-missing-values"><span class="header-section-number">10.1.3</span> Methods for Handling missing values</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">10.1.3.1</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">10.1.3.2</span> </a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">10.1.3.3</span> </a></li>
-  </ul></li>
-  <li><a href="#methods-for-handling-missing-values" id="toc-methods-for-handling-missing-values" class="nav-link" data-scroll-target="#methods-for-handling-missing-values"><span class="header-section-number">10.1.4</span> Methods for Handling missing values</a>
-  <ul class="collapse">
-  <li><a href="#removing-missing-values" id="toc-removing-missing-values" class="nav-link" data-scroll-target="#removing-missing-values"><span class="header-section-number">10.1.4.1</span> Removing Missing values</a></li>
-  <li><a href="#imputing-missing-values" id="toc-imputing-missing-values" class="nav-link" data-scroll-target="#imputing-missing-values"><span class="header-section-number">10.1.4.2</span> Imputing Missing values</a></li>
+  <li><a href="#removing-missing-values" id="toc-removing-missing-values" class="nav-link" data-scroll-target="#removing-missing-values"><span class="header-section-number">10.1.3.1</span> Removing Missing values</a></li>
+  <li><a href="#imputing-missing-values" id="toc-imputing-missing-values" class="nav-link" data-scroll-target="#imputing-missing-values"><span class="header-section-number">10.1.3.2</span> Imputing Missing values</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#outlier-detection-and-handling" id="toc-outlier-detection-and-handling" class="nav-link" data-scroll-target="#outlier-detection-and-handling"><span class="header-section-number">10.2</span> Outlier detection and handling</a>
@@ -720,26 +715,26 @@ dtype: int64</code></pre>
 </ul>
 <p>Understanding the type of missing data helps in selecting the right imputation method and mitigating potential biases in the analysis.</p>
 </section>
-</section>
-<section id="questions" class="level3" data-number="10.1.3">
-<h3 data-number="10.1.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.1.3</span> Questions</h3>
-<section id="section" class="level4" data-number="10.1.3.1">
-<h4 data-number="10.1.3.1" class="anchored" data-anchor-id="section"><span class="header-section-number">10.1.3.1</span> </h4>
+<section id="questions" class="level4" data-number="10.1.2.4">
+<h4 data-number="10.1.2.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.1.2.4</span> Questions</h4>
+<section id="section" class="level5" data-number="10.1.2.4.1">
+<h5 data-number="10.1.2.4.1" class="anchored" data-anchor-id="section"><span class="header-section-number">10.1.2.4.1</span> </h5>
 <p>Why can we ignore observations with missing values without risking skewing the analysis or trends in the case of <strong>Missing Completely at Random (MCAR)</strong>?</p>
 </section>
-<section id="section-1" class="level4" data-number="10.1.3.2">
-<h4 data-number="10.1.3.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">10.1.3.2</span> </h4>
+<section id="section-1" class="level5" data-number="10.1.2.4.2">
+<h5 data-number="10.1.2.4.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">10.1.2.4.2</span> </h5>
 <p>Why could ignoring missing values lead to biased results for <strong>Missing at Random (MAR)</strong> and <strong>Missing Not at Random (MNAR)</strong> data?</p>
 </section>
-<section id="section-2" class="level4" data-number="10.1.3.3">
-<h4 data-number="10.1.3.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">10.1.3.3</span> </h4>
+<section id="section-2" class="level5" data-number="10.1.2.4.3">
+<h5 data-number="10.1.2.4.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">10.1.2.4.3</span> </h5>
 <p>For the datset consisting of GDP per capita, think of hypothetical scenarios in which the missing values of GDP per capita can correspond to <strong>MCAR / MAR / MNAR</strong>.</p>
 </section>
 </section>
-<section id="methods-for-handling-missing-values" class="level3" data-number="10.1.4">
-<h3 data-number="10.1.4" class="anchored" data-anchor-id="methods-for-handling-missing-values"><span class="header-section-number">10.1.4</span> Methods for Handling missing values</h3>
-<section id="removing-missing-values" class="level4" data-number="10.1.4.1">
-<h4 data-number="10.1.4.1" class="anchored" data-anchor-id="removing-missing-values"><span class="header-section-number">10.1.4.1</span> Removing Missing values</h4>
+</section>
+<section id="methods-for-handling-missing-values" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="methods-for-handling-missing-values"><span class="header-section-number">10.1.3</span> Methods for Handling missing values</h3>
+<section id="removing-missing-values" class="level4" data-number="10.1.3.1">
+<h4 data-number="10.1.3.1" class="anchored" data-anchor-id="removing-missing-values"><span class="header-section-number">10.1.3.1</span> Removing Missing values</h4>
 <ul>
 <li><strong>Row/Column Removal</strong>: Use [<code>df.dropna()</code>] (https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html)
 <ul>
@@ -789,8 +784,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="imputing-missing-values" class="level4" data-number="10.1.4.2">
-<h4 data-number="10.1.4.2" class="anchored" data-anchor-id="imputing-missing-values"><span class="header-section-number">10.1.4.2</span> Imputing Missing values</h4>
+<section id="imputing-missing-values" class="level4" data-number="10.1.3.2">
+<h4 data-number="10.1.3.2" class="anchored" data-anchor-id="imputing-missing-values"><span class="header-section-number">10.1.3.2</span> Imputing Missing values</h4>
 <p>There are an unlimited number of ways to impute missing values. Some imputation methods are provided in the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html">Pandas documentation</a>.</p>
 <p>The best way to impute them will depend on the problem:</p>
 <ul>
@@ -825,8 +820,8 @@ dtype: int64</code></pre>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    rmse <span class="op">=</span> np.sqrt(np.mean((y.loc[null_ind_gdpPC,<span class="st">'gdpPerCapita'</span>]<span class="op">-</span>x)<span class="op">**</span><span class="dv">2</span>))</span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="dv">10000</span>, <span class="dv">50000</span>, <span class="st">'RMSE = </span><span class="sc">%.2f</span><span class="st">'</span><span class="op">%</span>rmse, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="meanmedianmode-imputation" class="level5" data-number="10.1.4.2.1">
-<h5 data-number="10.1.4.2.1" class="anchored" data-anchor-id="meanmedianmode-imputation"><span class="header-section-number">10.1.4.2.1</span> Mean/Median/Mode Imputation</h5>
+<section id="meanmedianmode-imputation" class="level5" data-number="10.1.3.2.1">
+<h5 data-number="10.1.3.2.1" class="anchored" data-anchor-id="meanmedianmode-imputation"><span class="header-section-number">10.1.3.2.1</span> Mean/Median/Mode Imputation</h5>
 <p>This approach replaces missing values with the mean or median of the column.</p>
 <p>Let’s impute missing values in the column by substituting them with the average of the non-missing values. Imputing with the mean tends to minimize the sum of squared differences between actual values and imputed values, especially in cases where data is Missing Completely at Random (MCAR). However, this might not hold true for other types of missing data, such as Missing at Random (MAR) or Missing Not at Random (MNAR).</p>
 <p>Let us impute missing values in the column as the average of the non-missing values of the column. The sum of squared differences between actual values and the imputed values is likely to be smaller if we impute using the mean. However, this may not be true in cases other than MCAR (Missing completely at random).</p>
@@ -857,8 +852,8 @@ dtype: int64</code></pre>
 </div>
 <p>Here, since all columns with missing values are numerical, we could use the mean to impute these values. Using the mean is generally suitable only for numerical data, as it represents a central tendency specific to numbers. For categorical data, however, mean imputation would be inappropriate. Instead, the mode, which identifies the most frequently occurring value, is a more suitable choice for imputing missing values in categorical columns.</p>
 </section>
-<section id="conditional-imputation-use-other-related-variables-to-predict-missing-values" class="level5" data-number="10.1.4.2.2">
-<h5 data-number="10.1.4.2.2" class="anchored" data-anchor-id="conditional-imputation-use-other-related-variables-to-predict-missing-values"><span class="header-section-number">10.1.4.2.2</span> Conditional Imputation: Use other related variables to predict missing values</h5>
+<section id="conditional-imputation-use-other-related-variables-to-predict-missing-values" class="level5" data-number="10.1.3.2.2">
+<h5 data-number="10.1.3.2.2" class="anchored" data-anchor-id="conditional-imputation-use-other-related-variables-to-predict-missing-values"><span class="header-section-number">10.1.3.2.2</span> Conditional Imputation: Use other related variables to predict missing values</h5>
 <p>There are three approaches within this category; please see the details below.</p>
 <ul>
 <li><strong>Imputing missing values based on correlated variables in the data</strong></li>
@@ -1059,8 +1054,8 @@ dtype: float64</code></pre>
 <p>Note that the RMSE is the lowest in this method. It is because this method imputes missing values as the average of the values of “similar” observations, which is smarter and more robust than the previous methods.</p>
 <p>We chose <span class="math inline">\(K=3\)</span> in the missing value imputation for GDP per capita. However, the value of <span class="math inline">\(K\)</span> is typically chosen using a method known as cross validation. We’ll learn about cross-validation in the next course of the sequence.</p>
 </section>
-<section id="forward-fillbackward-fill" class="level5" data-number="10.1.4.2.3">
-<h5 data-number="10.1.4.2.3" class="anchored" data-anchor-id="forward-fillbackward-fill"><span class="header-section-number">10.1.4.2.3</span> Forward Fill/Backward Fill</h5>
+<section id="forward-fillbackward-fill" class="level5" data-number="10.1.3.2.3">
+<h5 data-number="10.1.3.2.3" class="anchored" data-anchor-id="forward-fillbackward-fill"><span class="header-section-number">10.1.3.2.3</span> Forward Fill/Backward Fill</h5>
 <p>To fill missing values in a column by copying the value of the previous or next non-missing observation, we can use forward fill (propagating the last valid observation forward) or backward fill (propagating the next valid observation backward).</p>
 <p>Below, we demonstrate forward fill. To perform backward fill instead, simply replace <code>ffill</code> with <code>bfill</code></p>
 <div class="cell" data-execution_count="185">
@@ -1699,9 +1694,9 @@ dtype: int64</code></pre>
 <p>Once we identify outlier instances using statistical methods, the next step is to handle them. Below are some commonly used approaches:</p>
 <ul>
 <li><strong>Removing Outliers</strong>: Discarding extreme values if they are likely due to errors or are irrelevant for the analysis.</li>
+<li><strong>Winsorizing</strong>: Capping/flooring outliers to a specific percentile to reduce their influence without removing them completely.</li>
+<li><strong>Replacing with the median</strong>: Replacing outlier values with the median of the remaining data. The median is less affected by extreme values than the mean, making it an ideal choice for imputation when dealing with outliers</li>
 <li><strong>Transforming Data</strong>: Applying transformations (e.g., log, square root) to reduce the impact of outliers.</li>
-<li><strong>Using Robust Methods</strong>: Applying algorithms or statistical methods that are less sensitive to outliers (e.g., median instead of mean).</li>
-<li><strong>Winsorizing</strong>: Capping outliers to a specific percentile to reduce their influence without removing them completely.</li>
 </ul>
 <div class="cell" data-execution_count="194">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> method_removal():</span>
@@ -1717,13 +1712,13 @@ dtype: int64</code></pre>
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    data_capped[data_capped <span class="op">&gt;</span> upper_bound] <span class="op">=</span> upper_bound</span>
 <span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_capped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="196">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> method_mean_replacement():</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Method 3: Replace with mean/median"""</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    data_mean <span class="op">=</span> college[<span class="st">'Expend'</span>].copy()</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    mean_value <span class="op">=</span> college[<span class="op">~</span>college[<span class="st">'is_outlier'</span>]][<span class="st">'Expend'</span>].mean()</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    data_mean[college[<span class="st">'is_outlier'</span>]] <span class="op">=</span> mean_value</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Method 3: Replace with median"""</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    data_median <span class="op">=</span> college[<span class="st">'Expend'</span>].copy()</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    median_value <span class="op">=</span> college[<span class="op">~</span>college[<span class="st">'is_outlier'</span>]][<span class="st">'Expend'</span>].median()</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    data_median[college[<span class="st">'is_outlier'</span>]] <span class="op">=</span> median_value</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_median</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="197">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> method_log_transformation():</span>
@@ -1731,7 +1726,8 @@ dtype: int64</code></pre>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    data_log <span class="op">=</span> np.log1p(college[<span class="st">'Expend'</span>])</span>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Practice: Feel free to try each method and compare their results to see how they differ in handling outliers.</p>
+<p><strong>Your Practice:</strong> Try each method and compare their results to see how they differ in handling outliers.</p>
+<p>In real-world applications, handling outliers should be approached on a case-by-case basis. However, here are some general recommendations:</p>
 <p>#### Recommendations for Different Scenarios:</p>
 <ol type="1">
 <li><p>Data Removal:</p>
@@ -1746,11 +1742,11 @@ dtype: int64</code></pre>
 <li>Pros: Preserves data size, reduces impact of outliers</li>
 <li>Cons: Artificial boundary creation, potential loss of genuine extreme events</li>
 </ul></li>
-<li><p>Mean Replacement:</p>
+<li><p>Median Replacement:</p>
 <ul>
-<li>Use when: Data is normally distributed and outliers are clearly errors</li>
+<li>Use when: The data is normally distributed, and outliers are verified as errors or anomalies not representing true values</li>
 <li>Pros: Maintains data size, simple to implement</li>
-<li>Cons: Reduces variance, may not represent true distribution</li>
+<li>Cons: Reduces variance, may not represent the true distribution</li>
 </ul></li>
 <li><p>Log Transformation:</p>
 <ul>
