@@ -195,7 +195,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, sharp corners, frame hidden, interior hidden, breakable, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, sharp corners, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, frame hidden, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -16376,8 +16376,8 @@ Make a density plot showing the distributions of total bills on each
 day.
 
 \hypertarget{data-cleaning-and-preparation}{%
-\chapter{Data cleaning and
-preparation}\label{data-cleaning-and-preparation}}
+\chapter{Data Cleaning and
+Preparation}\label{data-cleaning-and-preparation}}
 
 \hypertarget{handling-missing-data}{%
 \section{Handling missing data}\label{handling-missing-data}}
@@ -18726,25 +18726,23 @@ let's read the csv file to pandas dataframe first
 4 & Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.981106 \\
 \end{longtable}
 
-\hypertarget{basic-grouping-with-groupby}{%
-\section{\texorpdfstring{Basic Grouping with
-\texttt{groupby()}}{Basic Grouping with groupby()}}\label{basic-grouping-with-groupby}}
+\hypertarget{grouping-by-a-single-column}{%
+\section{Grouping by a single
+column}\label{grouping-by-a-single-column}}
 
 \texttt{groupby()} allows you to split a DataFrame based on the values
-in one or more columns.
+in one or more columns. First, we'll explore grouping by a single
+column.
 
-\hypertarget{basic-syntax-of-groupby}{%
-\subsection{\texorpdfstring{Basic Syntax of
-\texttt{groupby()}}{Basic Syntax of groupby()}}\label{basic-syntax-of-groupby}}
+\hypertarget{syntax-of-groupby}{%
+\subsection{\texorpdfstring{Syntax of
+\texttt{groupby()}}{Syntax of groupby()}}\label{syntax-of-groupby}}
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{DataFrame.groupby(by="column\_name")} -- Groups data by the
   specified column.
-\item
-  \texttt{DataFrame.groupby(by={[}"col1",\ "col2"{]})} -- Groups data by
-  multiple columns.
 \end{itemize}
 
 Consider the life expectancy dataset. suppose we want to group by the
@@ -18961,8 +18959,12 @@ This method returns the observations for a particular group of the
 1679 & Yemen, Rep. & Asia & 2007 & 62.698 & 22211743 & 2280.769906 \\
 \end{longtable}
 
+\hypertarget{data-aggregation-within-groups}{%
+\section{Data aggregation within
+groups}\label{data-aggregation-within-groups}}
+
 \hypertarget{common-aggregation-functions}{%
-\section{Common Aggregation
+\subsection{Common Aggregation
 Functions}\label{common-aggregation-functions}}
 
 Aggregation functions are essential for summarizing and analyzing data
@@ -19181,7 +19183,7 @@ Zimbabwe & 635.858042 & 133.689213 & 52.663167 & 7.071816 & 7.641966e+06
 \end{longtable}
 
 \hypertarget{custom-aggregation}{%
-\subsection{Custom aggregation}\label{custom-aggregation}}
+\subsubsection{Custom aggregation}\label{custom-aggregation}}
 
 In addition to the mean and standard deviation of the gdpPercap of each
 country, let us also include the range of gdpPercap in the table above
@@ -19388,17 +19390,23 @@ multiple categorical variables. This approach enables us to analyze data
 at a finer granularity, revealing insights that might be missed with
 single-column grouping alone.
 
-Consider the life expectancy dataset, we can group by both country and
-continent to analyze \texttt{gdpPercap}, \texttt{lifeExp}, and
-\texttt{pop} trends for each country within each continent, providing a
-more comprehensive view of the data.
-
 \hypertarget{basic-syntax-for-grouping-by-multiple-columns}{%
 \subsection{Basic Syntax for Grouping by Multiple
 Columns}\label{basic-syntax-for-grouping-by-multiple-columns}}
 
 Use \texttt{groupby()} with a list of column names to group data by
 multiple columns.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{DataFrame.groupby(by={[}"col1",\ "col2"{]})}
+\end{itemize}
+
+Consider the life expectancy dataset, we can group by both country and
+continent to analyze \texttt{gdpPercap}, \texttt{lifeExp}, and
+\texttt{pop} trends for each country within each continent, providing a
+more comprehensive view of the data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19595,6 +19603,30 @@ Name: (Americas, United States), dtype: float64
 Index(['country', 'continent', 'year', 'lifeExp', 'pop', 'gdpPercap'], dtype='object')
 \end{verbatim}
 
+Finally, you can use \texttt{reset\_index()} to convert the hierarchical
+index into a regular index, allowing you to apply the standard
+subsetting and filtering methods covered in previous chapters
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped\_continent\_contry.reset\_index().head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& continent & country & mean & std & max & min \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Europe & Iceland & 76.511417 & 3.026593 & 81.757 & 72.49 \\
+1 & Europe & Sweden & 76.177000 & 3.003990 & 80.884 & 71.86 \\
+2 & Europe & Norway & 75.843000 & 2.423994 & 80.196 & 72.67 \\
+3 & Europe & Netherlands & 75.648500 & 2.486363 & 79.762 & 72.13 \\
+4 & Europe & Switzerland & 75.565083 & 4.011572 & 81.701 & 69.62 \\
+\end{longtable}
+
 \hypertarget{grouping-by-multiple-columns-and-aggregating-multiple-variables}{%
 \subsection{Grouping by multiple columns and aggregating multiple
 variables}\label{grouping-by-multiple-columns-and-aggregating-multiple-variables}}
@@ -19702,16 +19734,19 @@ year
 Name: (lifeExp, mean), dtype: float64
 \end{verbatim}
 
-\hypertarget{apply-data-aggregation-filtering-transformation}{%
-\section{\texorpdfstring{\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.apply.html}{\texttt{apply()}}:
-Data aggregation, filtering \&
-transformation}{apply(): Data aggregation, filtering \& transformation}}\label{apply-data-aggregation-filtering-transformation}}
+\hypertarget{advanced-operations-within-groups-apply-transform-and-filter}{%
+\section{\texorpdfstring{Advanced Operations within groups:
+\texttt{apply()}, \texttt{transform()}, and
+\texttt{filter()}}{Advanced Operations within groups: apply(), transform(), and filter()}}\label{advanced-operations-within-groups-apply-transform-and-filter}}
 
-With the \texttt{apply()} method of the \emph{GroupBy} object, we can
-perform several operations on groups, other than data aggregation.
+\hypertarget{using-apply-on-groups}{%
+\subsection{\texorpdfstring{Using
+\href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.apply.html}{\texttt{apply()}}
+on groups}{Using apply() on groups}}\label{using-apply-on-groups}}
 
-\hypertarget{filtering-data-by-group}{%
-\subsection{Filtering data by group}\label{filtering-data-by-group}}
+The \texttt{apply()} function applies a custom function to each group,
+allowing for flexible operations. The function can return either a
+scalar, Series, or DataFrame.
 
 \textbf{Example}: Consider the life expectancy dataset, find the top 3
 life expectancy values for each continent
@@ -19794,7 +19829,7 @@ function \texttt{top\_3\_life\_expectancy()}:
 \NormalTok{)}
 
 \CommentTok{\# Display the result}
-\NormalTok{top\_life\_expectancy}
+\NormalTok{top\_life\_expectancy.head()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -19810,21 +19845,18 @@ function \texttt{top\_3\_life\_expectancy()}:
 2 & Africa & Reunion & 1997 & 74.772 & 6071.941411 \\
 3 & Americas & Canada & 2007 & 80.653 & 36319.235010 \\
 4 & Americas & Canada & 2002 & 79.770 & 33328.965070 \\
-5 & Americas & Costa Rica & 2007 & 78.782 & 9645.061420 \\
-6 & Asia & Japan & 2007 & 82.603 & 31656.068060 \\
-7 & Asia & Hong Kong, China & 2007 & 82.208 & 39724.978670 \\
-8 & Asia & Japan & 2002 & 82.000 & 28604.591900 \\
-9 & Europe & Iceland & 2007 & 81.757 & 36180.789190 \\
-10 & Europe & Switzerland & 2007 & 81.701 & 37506.419070 \\
-11 & Europe & Spain & 2007 & 80.941 & 28821.063700 \\
-12 & Oceania & Australia & 2007 & 81.235 & 34435.367440 \\
-13 & Oceania & Australia & 2002 & 80.370 & 30687.754730 \\
-14 & Oceania & New Zealand & 2007 & 80.204 & 25185.009110 \\
 \end{longtable}
 
-\hypertarget{transforming-data-by-group-using-transform}{%
-\subsection{\texorpdfstring{Transforming data by group using
-\texttt{transform()}}{Transforming data by group using transform()}}\label{transforming-data-by-group-using-transform}}
+\hypertarget{using-transform-on-groups}{%
+\subsection{\texorpdfstring{Using
+\href{https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.transform.html}{\texttt{transform()}}
+on
+Groups}{Using transform() on Groups}}\label{using-transform-on-groups}}
+
+The \texttt{transform()} function applies a function to each group and
+returns a Series aligned with the original DataFrame's index. This makes
+it suitable for adding or modifying columns based on group-level
+calculations.
 
 Recall that in the data cleaning and preparation chapter, we imputed
 missing values based on correlated variables in the dataset.
@@ -19833,8 +19865,8 @@ In the example provided, some countries had missing values for GDP per
 capita. To handle this, we imputed the missing GDP per capita for each
 country using the average GDP per capita of its corresponding continent.
 
-Now, we'll compare that approach with a method that uses
-\texttt{groupby()} and \texttt{transform()}.
+Now, we'll explore an alternative approach using \texttt{groupby()} and
+\texttt{transform()} to perform this imputation.
 
 Let us read the datasets and the function that makes a visualization to
 compare the imputed values with the actual values.
@@ -19898,7 +19930,7 @@ RMSE= 25473.20645170116
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data aggregation_files/figure-pdf/cell-44-output-2.png}
+{\centering \includegraphics{Data aggregation_files/figure-pdf/cell-45-output-2.png}
 
 }
 
@@ -19937,7 +19969,7 @@ RMSE= 25473.20645170116
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data aggregation_files/figure-pdf/cell-45-output-2.png}
+{\centering \includegraphics{Data aggregation_files/figure-pdf/cell-46-output-2.png}
 
 }
 
@@ -20010,8 +20042,57 @@ Additionally, \texttt{transform()} applies the function to each element
 in a group independently and returns a result that has the same shape as
 the original data, making it ideal for adding or modifying columns.
 
+\hypertarget{using-filter-on-groups}{%
+\subsection{\texorpdfstring{Using
+\href{https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.filter.html}{\texttt{filter()}}
+on Groups}{Using filter() on Groups}}\label{using-filter-on-groups}}
+
+The \texttt{filter()} function filters entire groups based on a
+condition. It evaluates each group and keeps only those that meet the
+specified criteria.
+
+Example: Keep only the countries where the mean life expectancy is
+greater than 70
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# keep only the continent where the mean life expectancy is greater than 74}
+\NormalTok{gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{).}\BuiltInTok{filter}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{].mean() }\OperatorTok{\textgreater{}} \DecValTok{74}\NormalTok{)[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{].unique()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array(['Oceania'], dtype=object)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# keep only the country where the mean life expectancy is greater than 74}
+\NormalTok{gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{).}\BuiltInTok{filter}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{].mean() }\OperatorTok{\textgreater{}} \DecValTok{74}\NormalTok{)[}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{].unique()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array(['Australia', 'Canada', 'Denmark', 'France', 'Iceland', 'Italy',
+       'Japan', 'Netherlands', 'Norway', 'Spain', 'Sweden', 'Switzerland'],
+      dtype=object)
+\end{verbatim}
+
+Using \texttt{.nunique()} get the number of countries that satisfy this
+condition
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{).}\BuiltInTok{filter}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{].mean() }\OperatorTok{\textgreater{}} \DecValTok{74}\NormalTok{)[}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{].nunique()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+12
+\end{verbatim}
+
 \hypertarget{sampling-data-by-group}{%
-\subsection{Sampling data by group}\label{sampling-data-by-group}}
+\section{Sampling data by group}\label{sampling-data-by-group}}
 
 The \texttt{groupby()} and \texttt{apply()} method can be used to for
 stratified random sampling from a large dataset.
@@ -22346,6 +22427,470 @@ Make a graph as shown below.
 \begin{verbatim}
 <IPython.core.display.Image object>
 \end{verbatim}
+
+\hypertarget{assignment-e}{%
+\chapter{Assignment E}\label{assignment-e}}
+
+Data cleaning \& preparation
+
+\hfill\break
+
+\hypertarget{instructions-6}{%
+\section*{Instructions}\label{instructions-6}}
+\addcontentsline{toc}{section}{Instructions}
+
+\markright{Instructions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You may talk to a friend, discuss the questions and potential
+  directions for solving them. However, you need to write your own
+  solutions and code separately, and not as a group activity.
+\item
+  Do not write your name on the assignment.
+\item
+  Write your code in the \emph{Code} cells and your answer in the
+  \emph{Markdown} cells of the Jupyter notebook. Ensure that the
+  solution is written neatly enough to understand and grade.
+\item
+  Use
+  \href{https://quarto.org/docs/output-formats/html-basics.html}{Quarto}
+  to print the \emph{.ipynb} file as HTML. You will need to open the
+  command prompt, navigate to the directory containing the file, and use
+  the command: \texttt{quarto\ render\ filename.ipynb\ -\/-to\ html}.
+  Submit the HTML file.
+\item
+  The assignment is worth 100 points, and is due on \textbf{11th
+  November 2024 at 11:59 pm}.
+\item
+  There is a bonus question worth 20 points, and an ultra bonus question
+  worth 30 points. However, there is no partial credit for these
+  questions. You will get 20 or 0 for the bonus question, and 30 or 0
+  for the ultra-bonus question. If everything is correct, you can score
+  150 out of 100 in the assignment.
+\end{enumerate}
+
+\hypertarget{missing-value-imputation}{%
+\section{Missing value imputation}\label{missing-value-imputation}}
+
+Read \emph{Housing\_missing\_price.csv} as
+\texttt{housing\_missing\_price} and \emph{Housing\_complete.csv} as
+\texttt{housing\_complete}. The datasets consist of housing features,
+like number of bedrooms, bathrooms, etc., and the price. Both datasets
+are exactly the same, except that \emph{Housing\_missing\_price.csv} has
+some missing values of price. In this question, you will try different
+methods to impute the missing values of house price in the file
+\emph{Housing\_missing\_price.csv}. You will use the prices in
+\emph{Housing\_complete.csv} to check the accuracy of your imputation.
+
+Note that you \textbf{cannot} use \emph{Housing\_complete.csv} to impute
+missing \texttt{price} in any of the questions.
+\emph{Housing\_complete.csv} is just to check the accuracy of your
+imputation, after you have done the imputation. Before imputing the
+missing \texttt{price}, assume you do not have
+\emph{Housing\_complete.csv}.
+
+\hypertarget{number-of-missing-values}{%
+\subsection{Number of missing values}\label{number-of-missing-values}}
+
+How many values of \texttt{price} are missing in
+\emph{Housing\_missing\_price.csv}?
+
+\emph{(3 points)}
+
+\hypertarget{indices-of-missing-values}{%
+\subsection{Indices of missing values}\label{indices-of-missing-values}}
+
+Find the row labels, where the \texttt{price} is missing. Assign those
+row labels as an array or a list to \texttt{index\_null\_price}.
+
+\emph{(4 points)}
+
+\hypertarget{correlation-of-continuous-variables-with-price}{%
+\subsection{\texorpdfstring{Correlation of continuous variables with
+\texttt{price}}{Correlation of continuous variables with price}}\label{correlation-of-continuous-variables-with-price}}
+
+Find the continuous variable having the highest correlation with
+\texttt{price}. Let the variable be \(A_{cont}\).
+
+\emph{(2 points)}
+
+\hypertarget{missing-value-imputation-using-correlated-continuous-variable}{%
+\subsection{Missing value imputation using correlated continuous
+variable}\label{missing-value-imputation-using-correlated-continuous-variable}}
+
+Make a scatterplot of \texttt{price} against \(A_{cont}\), with a
+trendline. Using the trendline, impute the missing values of
+\texttt{price}.
+
+Plot the imputed \texttt{price} vs true \texttt{price} (from
+\emph{Housing\_complete.csv}) and print the RMSE (\emph{Root mean
+squared error}). This is to be done only for the imputed values of
+\texttt{price}.
+
+\emph{(10 points)}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Make the trendline using non-missing values of \texttt{price} and
+  \(A_{cont}\).
+\item
+  Impute the missing values of \texttt{price} only where they are
+  missing, i.e., at row indices \texttt{index\_null\_price}.
+\item
+  You may use the function below to plot the imputed price vs true price
+  (\emph{from Housing\_complete.csv}) and print the RMSE. The function
+  assumes that \texttt{housing\_imputed\_price} is the
+  \emph{Housing\_missing\_price.csv} dataset, with imputed values of
+  \texttt{price}.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Defining a function to plot the imputed values vs actual values }
+\KeywordTok{def}\NormalTok{ plot\_actual\_vs\_predicted():}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{9}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}xtick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    plt.rc(}\StringTok{\textquotesingle{}ytick\textquotesingle{}}\NormalTok{, labelsize}\OperatorTok{=}\DecValTok{15}\NormalTok{) }
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ housing\_complete.loc[index\_null\_price,}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{]}\OperatorTok{/}\FloatTok{1e3}
+\NormalTok{    y }\OperatorTok{=}\NormalTok{ housing\_imputed\_price.loc[index\_null\_price,}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{]}\OperatorTok{/}\FloatTok{1e3}
+\NormalTok{    plt.scatter(x,y)}
+\NormalTok{    z}\OperatorTok{=}\NormalTok{np.polyfit(x,y,}\DecValTok{1}\NormalTok{)}
+\NormalTok{    p}\OperatorTok{=}\NormalTok{np.poly1d(z)}
+\NormalTok{    plt.plot(x,x,color}\OperatorTok{=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\NormalTok{    plt.xlabel(}\StringTok{\textquotesingle{}Actual price\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    plt.ylabel(}\StringTok{\textquotesingle{}Imputed price\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{20}\NormalTok{)}
+\NormalTok{    ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.yaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{    rmse }\OperatorTok{=}\NormalTok{ np.sqrt(((x}\OperatorTok{{-}}\NormalTok{y).}\BuiltInTok{pow}\NormalTok{(}\DecValTok{2}\NormalTok{)).mean())}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"RMSE= $"}\OperatorTok{+}\BuiltInTok{str}\NormalTok{(np.}\BuiltInTok{round}\NormalTok{(rmse,}\DecValTok{2}\NormalTok{))}\OperatorTok{+}\StringTok{"k"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{correlation-of-categorical-variables-with-price}{%
+\subsection{\texorpdfstring{Correlation of categorical variables with
+\texttt{price}}{Correlation of categorical variables with price}}\label{correlation-of-categorical-variables-with-price}}
+
+Split the categorical columns of the \emph{Housing\_missing\_price.csv},
+such that they transform into dummy variables with each category
+corresponding to a column of 0s and 1s. The continuous variables remain
+as they were in the original dataset. Name this dataset as
+\texttt{housing\_dummy}.
+
+Which categorical variable is the most highly correlated with
+\texttt{price}? Let that variable be \(V_{cat}\).
+
+\emph{(3 + 2 points)}
+
+\textbf{Hint:} \texttt{pd.get\_dummies()}
+
+\hypertarget{missing-value-imputation-using-correlated-categorical-variable}{%
+\subsection{Missing value imputation using correlated categorical
+variable}\label{missing-value-imputation-using-correlated-categorical-variable}}
+
+Impute the missing value of the \texttt{price} of a house as the average
+price of all the houses that have the same value of \(V_{cat}\). For
+example, if \(V_{cat}\) is \texttt{basement}, the missing price of a
+house that has a basement must be imputed as the average price of all
+the houses that have a basement, and the missing price of a house that
+lacks a basement must be imputed as the average price of all the houses
+that lack a basement.
+
+Plot the imputed \texttt{price} vs true \texttt{price} (from
+\emph{Housing\_complete.csv}) and print the RMSE (Root mean squared
+error). This is to be done only for the imputed values of
+\texttt{price}.
+
+\emph{(10 points)}
+
+\textbf{Hint:} You may use the following code to get the mean house
+price for each level of the variable \(V_{cat}\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Replace \textquotesingle{}Vcat\textquotesingle{} by the variable that you found to be the most correlated with \textquotesingle{}price\textquotesingle{}}
+\NormalTok{price\_Vcat }\OperatorTok{=}\NormalTok{ housing\_missing\_price[}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{].groupby(housing\_missing\_price[Vcat]).mean()}
+\NormalTok{price\_Vcat}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable}{%
+\subsection{Missing value imputation using correlated continuous
+variable within the categories of correlated categorical
+variable}\label{missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable}}
+
+Execute the following code. Note that the trendlines of \texttt{price}
+against \texttt{area} are different based on \texttt{airconditioning}.
+
+For each house, select the appropriate trendline to impute the missing
+\texttt{price}.
+
+Plot the imputed price vs true price (from \emph{Housing\_complete.csv})
+and print the RMSE (Root mean squared error). This is to be done only
+for the imputed values of \texttt{price}.
+
+\emph{(15 points)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sns.}\BuiltInTok{set}\NormalTok{(font\_scale}\OperatorTok{=}\FloatTok{1.25}\NormalTok{)}
+\NormalTok{a }\OperatorTok{=}\NormalTok{ sns.FacetGrid(housing\_missing\_price, hue }\OperatorTok{=} \StringTok{\textquotesingle{}airconditioning\textquotesingle{}}\NormalTok{,height}\OperatorTok{=}\DecValTok{6}\NormalTok{, aspect}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{a.}\BuiltInTok{map}\NormalTok{(sns.regplot,}\StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{)}
+\NormalTok{a.add\_legend()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\hypertarget{bonus-question-missing-value-imputation-with-knn}{%
+\subsection{\texorpdfstring{\textbf{Bonus} question: Missing value
+imputation with
+KNN}{Bonus question: Missing value imputation with KNN}}\label{bonus-question-missing-value-imputation-with-knn}}
+
+\emph{(20 points)}
+
+\hypertarget{identifying-optimal-k-by-k-fold-cross-validation}{%
+\subsubsection{\texorpdfstring{Identifying optimal \(K\) by \(k\)-fold
+cross
+validation}{Identifying optimal K by k-fold cross validation}}\label{identifying-optimal-k-by-k-fold-cross-validation}}
+
+You need to impute the missing \texttt{price} using the KNN
+(\(K\)-nearest neighbor) algorithm. However, before implementing the
+algorithm, find the optimal value of \(K\), using \(k\)-fold
+cross-validation. Use all the variables in \texttt{housing\_dummy}.
+
+Note that you \textbf{cannot} use \emph{Housing\_complete.csv} to find
+the optimal \(K\).
+
+Follow the \(k\)-fold cross validation procedure below to find the
+optimal \(K\), i.e., the optimal number of nearest neighbors to consider
+when imputing missing values:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Remove observations with missing \texttt{price} from
+  \texttt{housing\_dummy}. Let us call the resulting DataFrame as
+  \texttt{housing\_missing\_removed}.
+\item
+  Split \texttt{housing\_missing\_removed} into \(k\)-folds. Take
+  \(k=10\). Each fold will have one-tenth of the observations of
+  \texttt{housing\_missing\_removed}.
+\item
+  Iterate over the \(K^{th}\) potential value of \(K\), where
+  \(K \in \{1,2,...,50\}\).
+
+  A. Iterate over the \(i^{th}\) fold, where \(i \in \{1,2,...,10\}\)
+
+  I. Assume that the all the \texttt{price} values of the \(i^{th}\)
+  fold are missing. Impute the value of \texttt{price} for an
+  observation in the \(i^{th}\) fold as the mean \texttt{price} of the
+  \(K\)-nearest neighbors to the observation, where the neighbors are
+  from among the observations in the remaining 9 folds.
+
+  \begin{enumerate}
+  \def\labelenumii{\Roman{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    Compute the RMSE (Root mean squared error) for the \(i^{th}\) fold.
+    Let us denote the RMSE for \(i^{th}\) fold, and considering \(K\)
+    nearest neighbors as \(RMSE_{iK}\).
+  \end{enumerate}
+
+  B. Find the average of the 10 RMSEs obtained in 3(A). Let us denote it
+  as \(RMSE_K\), i.e., RMSE for a given value of \(K\). Then,
+  \[RMSE_K = \frac{1}{10} \sum_{i=1}^{i=10} RMSE_{iK}\]
+\item
+  The optimal value of \(K\) is the one for which \(RMSE_K\) is the
+  minimum, i.e.,
+  \[K_{optimal}=\underset{K \in \{1,...,50\}}{\operatorname{\ argmin}} RMSE_K\]
+\end{enumerate}
+
+\textbf{Assumption to make it a bit simpler:} Ideally you should split
+the dataset randomly into \(k\)-folds. However, to make it simpler, you
+may assume that the data is already shuffled, and you may take the first
+\(1/10^{th}\) observations to be in the \(1^{st}\) fold, the next
+\(1/10^{th}\) to be in the \(2^{nd}\) fold and so on.
+
+\textbf{More explanation} about \(k\)-fold cross validation and the
+optimal \(K\):
+
+You need to impute the missing price using the KNN (K-nearest neighbor)
+algorithm. However, before implementing the algorithm, find the optimal
+value of \(K\), using \(k\)-fold cross-validation. This is an
+optimization method used for more advanced Machine Learning methods,
+such as KNN. In KNN, the number of neighbors, \(K\), is called a
+hyperparameter, which cannot be optimized with a mathematical method.
+Therefore, it needs a more coding-based optimization method called
+cross-validation.
+
+The idea of cross-validation is to split the dataset into subsets,
+called folds. After that a range of \(K\) values is picked. For each
+\(K\) value in the range, the KNN imputer is created and evaluated on
+each fold separately, returning an RMSE value for each fold. The average
+value of these RMSE values is the cross-validation RMSE value of that
+\(K\) value. Cross-validation is a robust method to find the best \(K\)
+in the KNN algorithm for the data at hand because it evaluates different
+parts of the data separately and takes the average of all results. It is
+called \(k\)-fold cross-validation, with \(k\) as the number of folds we
+want to use, usually 3, 5 or 10. In this problem, we will use 10-fold
+cross-validation. Note that you need nested for loops to iterate over
+both each \(K\) value and each fold for this algorithm.
+
+\hypertarget{implementing-knn-with-optimal-k}{%
+\subsubsection{\texorpdfstring{Implementing KNN with optimal
+\(K\)}{Implementing KNN with optimal K}}\label{implementing-knn-with-optimal-k}}
+
+Using the optimal value of \(K = K_{optimal}\) obtained in the previous
+question, impute the missing values of \texttt{price} in
+\texttt{housing\_missing\_price}. Use all the variables in
+\texttt{housing\_dummy} for implementing the KNN algorithm. Plot the
+imputed price vs true price (from \emph{Housing\_complete.csv}) and
+print the RMSE (Root mean squared error). This is to be done only for
+the imputed values of \texttt{price}.
+
+Answer check: The RMSE obtained with KNN should be lower than that
+obtained with any of the earlier methods. If not, then there may be some
+mistake in your KNN implementation.
+
+\hypertarget{ultra-bonus-question}{%
+\subsection{\texorpdfstring{\textbf{Ultra-bonus}
+question}{Ultra-bonus question}}\label{ultra-bonus-question}}
+
+\emph{(30 points)}
+
+Develop an algorithm to impute the missing \texttt{price}, such that it
+reduces the imputation RMSE to below \$650k. Plot the imputed price vs
+true price (from \emph{Housing\_complete.csv}) and print the RMSE (Root
+mean squared error). This is to be done only for the imputed values of
+\texttt{price}.
+
+\emph{Note that we have not attempted to solve this question yet. We are
+not sure if a solution exists. However, if you find a solution, you will
+get 30 points.}
+
+\textbf{Hint:} In the bonus question, all variables were given equal
+weights when imputing missing values with KNN. However, shouldn't some
+variables be given higher weight than others?
+
+\emph{If you think you are successful, email your solution to
+krish@northwestern.edu for grading.}
+
+\hypertarget{binning}{%
+\section{Binning}\label{binning}}
+
+Read \emph{house\_features\_and\_price.csv}. We will bin a couple of
+variables to better analyze the trend of \texttt{house\_price} with
+those variables.
+
+\hypertarget{trend-with-house_age}{%
+\subsection{\texorpdfstring{Trend with
+\texttt{house\_age}}{Trend with house\_age}}\label{trend-with-house_age}}
+
+Make a scatterplot of \texttt{house\_price} against \texttt{house\_age},
+along with the trendline. What is the trend indicated by the trendline?
+
+\emph{(4 points)}
+
+\hypertarget{trend-with-bins-of-house_age}{%
+\subsection{\texorpdfstring{Trend with bins of
+\texttt{house\_age}}{Trend with bins of house\_age}}\label{trend-with-bins-of-house_age}}
+
+\hypertarget{section-141}{%
+\subsubsection{}\label{section-141}}
+
+Bin \texttt{house\_age} into 5 approximately equal-sized bins.
+
+\emph{(3 points)}
+
+\hypertarget{section-142}{%
+\subsubsection{}\label{section-142}}
+
+After binning, plot the mean \texttt{house\_price} against the house age
+bins.
+
+\emph{(3 points)}
+
+\hypertarget{section-143}{%
+\subsubsection{}\label{section-143}}
+
+Is the trend seen with this plot different from that seen with the
+trendline in the previous question? If yes, then is one of the trends
+incorrect? Why or why not?
+
+\emph{(4 points)}
+
+\hypertarget{section-144}{%
+\subsubsection{}\label{section-144}}
+
+Is one of the trends more informative? If yes, then which one and how?
+
+\emph{(4 points)}
+
+\hypertarget{trend-with-number_convenience_stores}{%
+\subsection{\texorpdfstring{Trend with
+\texttt{number\_convenience\_stores}}{Trend with number\_convenience\_stores}}\label{trend-with-number_convenience_stores}}
+
+Make a barplot to visualize the mean \texttt{house\_price} against
+\texttt{number\_convenience\_stores}.
+
+\emph{(3 points)}
+
+\hypertarget{trend-with-bins-of-number_convenience_stores}{%
+\subsection{\texorpdfstring{Trend with bins of
+\texttt{number\_convenience\_stores}}{Trend with bins of number\_convenience\_stores}}\label{trend-with-bins-of-number_convenience_stores}}
+
+Bin \texttt{number\_convenience\_stores} into an appropriate number of
+bins such that the non-linear trend of the variation of
+\texttt{house\_price} with the bins of
+\texttt{number\_convenience\_stores} is retained, while minimizing the
+number of bins.
+
+After binning, plot the mean \texttt{house\_price} against the
+\texttt{number\_convenience\_stores} bins.
+
+\emph{(8 points)}
+
+\hypertarget{size-of-number_convenience_stores-bins}{%
+\subsection{\texorpdfstring{Size of \texttt{number\_convenience\_stores}
+bins}{Size of number\_convenience\_stores bins}}\label{size-of-number_convenience_stores-bins}}
+
+Print the size of bins obtained in the previous question. Are the bins
+of approximately equal size? If not, is it reasonable to have bins of
+unequal sizes to visualize the trend of \texttt{house\_price} with
+\texttt{number\_convenience\_stores}.?
+
+\emph{(2 + 4 points)}
+
+\hypertarget{outliers}{%
+\section{Outliers}\label{outliers}}
+
+\hypertarget{identifying-outlying-prices}{%
+\subsection{Identifying outlying
+prices}\label{identifying-outlying-prices}}
+
+Continue working with \texttt{house\_features\_and\_price.csv}.
+Determine how many houses have outlying values in \texttt{house\_price}
+using both the Z-score method and the IQR method. - \textbf{Question}:
+Which method is more conservative for this dataset? \emph{(6 + 2
+points)}
+
+\hypertarget{quick-eda}{%
+\subsection{Quick EDA}\label{quick-eda}}
+
+How are these houses (identified in the previous question as outliers)
+different from the houses in the rest of the dataset, which might be
+making them extremely expensive / extremely cheap? Explore the data and
+mention your hypothesis.
+
+\emph{(8 points)}
 
 \hypertarget{datasets-templates}{%
 \chapter{Datasets \& Templates}\label{datasets-templates}}
