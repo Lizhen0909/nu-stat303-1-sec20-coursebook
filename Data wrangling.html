@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Data Science with Python - 12&nbsp; Data Reshaping and Enriching</title>
+<title>Introduction to Data Science with Python - 12&nbsp; Data Reshaping and Enrichment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading data.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="./Data wrangling.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading data.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="./Data wrangling.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span></a>
   </div>
 </li>
       </ul>
@@ -309,35 +309,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-reshaping" id="toc-data-reshaping" class="nav-link active" data-scroll-target="#data-reshaping"><span class="header-section-number">12.0.1</span> Data Reshaping</a>
+  <li><a href="#data-reshaping" id="toc-data-reshaping" class="nav-link active" data-scroll-target="#data-reshaping"><span class="header-section-number">12.1</span> Data Reshaping</a>
   <ul>
-  <li><a href="#why-data-reshaping-is-important" id="toc-why-data-reshaping-is-important" class="nav-link" data-scroll-target="#why-data-reshaping-is-important"><span class="header-section-number">12.0.1.1</span> Why Data Reshaping is Important:</a></li>
-  <li><a href="#wide-vs.-long-data-format-in-data-reshaping" id="toc-wide-vs.-long-data-format-in-data-reshaping" class="nav-link" data-scroll-target="#wide-vs.-long-data-format-in-data-reshaping"><span class="header-section-number">12.0.1.2</span> Wide vs.&nbsp;Long Data Format in Data Reshaping</a></li>
-  <li><a href="#pivoting-long-to-wide-using-pivot_table" id="toc-pivoting-long-to-wide-using-pivot_table" class="nav-link" data-scroll-target="#pivoting-long-to-wide-using-pivot_table"><span class="header-section-number">12.0.1.3</span> Pivoting “long” to “wide” using <code>pivot_table()</code></a></li>
-  <li><a href="#melting-wide-to-long-using-melt" id="toc-melting-wide-to-long-using-melt" class="nav-link" data-scroll-target="#melting-wide-to-long-using-melt"><span class="header-section-number">12.0.1.4</span> Melting “wide” to “long” using <code>melt()</code></a></li>
-  <li><a href="#stacking-and-unstacking-using-stack-and-unstack" id="toc-stacking-and-unstacking-using-stack-and-unstack" class="nav-link" data-scroll-target="#stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">12.0.1.5</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></a></li>
-  <li><a href="#stacking-columns-to-rows-stack" id="toc-stacking-columns-to-rows-stack" class="nav-link" data-scroll-target="#stacking-columns-to-rows-stack"><span class="header-section-number">12.0.1.6</span> Stacking (Columns to Rows ): <code>stack()</code></a></li>
-  <li><a href="#unstacking-rows-to-columns-unstack" id="toc-unstacking-rows-to-columns-unstack" class="nav-link" data-scroll-target="#unstacking-rows-to-columns-unstack"><span class="header-section-number">12.0.1.7</span> Unstacking (Rows to Columns) : <code>unstack()</code></a></li>
-  <li><a href="#transpose" id="toc-transpose" class="nav-link" data-scroll-target="#transpose"><span class="header-section-number">12.0.1.8</span> Transpose</a></li>
-  <li><a href="#summary-of-common-reshaping-functions" id="toc-summary-of-common-reshaping-functions" class="nav-link" data-scroll-target="#summary-of-common-reshaping-functions"><span class="header-section-number">12.0.1.9</span> Summary of Common Reshaping Functions:</a></li>
-  <li><a href="#practical-use-cases" id="toc-practical-use-cases" class="nav-link" data-scroll-target="#practical-use-cases"><span class="header-section-number">12.0.1.10</span> Practical Use Cases:</a></li>
-  <li><a href="#converting-from-multi-level-index-to-single-level-index-dataframe" id="toc-converting-from-multi-level-index-to-single-level-index-dataframe" class="nav-link" data-scroll-target="#converting-from-multi-level-index-to-single-level-index-dataframe"><span class="header-section-number">12.0.1.11</span> Converting from Multi-Level Index to Single-Level Index DataFrame</a></li>
-  </ul></li>
-  <li><a href="#data-enriching" id="toc-data-enriching" class="nav-link" data-scroll-target="#data-enriching"><span class="header-section-number">12.1</span> Data Enriching</a>
-  <ul>
-  <li><a href="#common-methods-for-data-enriching" id="toc-common-methods-for-data-enriching" class="nav-link" data-scroll-target="#common-methods-for-data-enriching"><span class="header-section-number">12.1.1</span> Common Methods for Data Enriching</a></li>
-  <li><a href="#combining-based-on-common-keys-merge" id="toc-combining-based-on-common-keys-merge" class="nav-link" data-scroll-target="#combining-based-on-common-keys-merge"><span class="header-section-number">12.1.2</span> Combining based on common keys: <code>merge()</code></a>
+  <li><a href="#why-data-reshaping-is-important" id="toc-why-data-reshaping-is-important" class="nav-link" data-scroll-target="#why-data-reshaping-is-important"><span class="header-section-number">12.1.1</span> Why Data Reshaping is Important:</a></li>
+  <li><a href="#wide-vs.-long-data-format-in-data-reshaping" id="toc-wide-vs.-long-data-format-in-data-reshaping" class="nav-link" data-scroll-target="#wide-vs.-long-data-format-in-data-reshaping"><span class="header-section-number">12.1.2</span> Wide vs.&nbsp;Long Data Format in Data Reshaping</a></li>
+  <li><a href="#pivoting-long-to-wide-using-pivot_table" id="toc-pivoting-long-to-wide-using-pivot_table" class="nav-link" data-scroll-target="#pivoting-long-to-wide-using-pivot_table"><span class="header-section-number">12.1.3</span> Pivoting “long” to “wide” using <code>pivot_table()</code></a>
   <ul class="collapse">
-  <li><a href="#outer-join" id="toc-outer-join" class="nav-link" data-scroll-target="#outer-join"><span class="header-section-number">12.1.2.1</span> outer join</a></li>
+  <li><a href="#pivoting-a-single-column" id="toc-pivoting-a-single-column" class="nav-link" data-scroll-target="#pivoting-a-single-column"><span class="header-section-number">12.1.3.1</span> Pivoting a single column</a></li>
+  <li><a href="#pivoting-multiple-columns" id="toc-pivoting-multiple-columns" class="nav-link" data-scroll-target="#pivoting-multiple-columns"><span class="header-section-number">12.1.3.2</span> Pivoting multiple columns</a></li>
   </ul></li>
-  <li><a href="#combining-based-on-indices-join" id="toc-combining-based-on-indices-join" class="nav-link" data-scroll-target="#combining-based-on-indices-join"><span class="header-section-number">12.1.3</span> <strong>Combining Based on Indices: <code>join()</code></strong></a></li>
-  <li><a href="#stacking-dataframes-vertically-or-horizontally-concat" id="toc-stacking-dataframes-vertically-or-horizontally-concat" class="nav-link" data-scroll-target="#stacking-dataframes-vertically-or-horizontally-concat"><span class="header-section-number">12.1.4</span> Stacking DataFrames vertically or horizontally: <code>concat()</code></a></li>
-  <li><a href="#missing-values-after-data-enriching" id="toc-missing-values-after-data-enriching" class="nav-link" data-scroll-target="#missing-values-after-data-enriching"><span class="header-section-number">12.1.5</span> Missing values after data enriching</a></li>
+  <li><a href="#melting-wide-to-long-using-melt" id="toc-melting-wide-to-long-using-melt" class="nav-link" data-scroll-target="#melting-wide-to-long-using-melt"><span class="header-section-number">12.1.4</span> Melting “wide” to “long” using <code>melt()</code></a></li>
+  <li><a href="#stacking-and-unstacking-using-stack-and-unstack" id="toc-stacking-and-unstacking-using-stack-and-unstack" class="nav-link" data-scroll-target="#stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">12.1.5</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></a>
+  <ul class="collapse">
+  <li><a href="#understanding-the-level-in-multi-level-index-and-columns" id="toc-understanding-the-level-in-multi-level-index-and-columns" class="nav-link" data-scroll-target="#understanding-the-level-in-multi-level-index-and-columns"><span class="header-section-number">12.1.5.1</span> Understanding the <code>level</code> in multi-level index and columns</a></li>
+  <li><a href="#stacking-columns-to-rows-stack" id="toc-stacking-columns-to-rows-stack" class="nav-link" data-scroll-target="#stacking-columns-to-rows-stack"><span class="header-section-number">12.1.5.2</span> Stacking (Columns to Rows ): <code>stack()</code></a></li>
+  <li><a href="#unstacking-rows-to-columns-unstack" id="toc-unstacking-rows-to-columns-unstack" class="nav-link" data-scroll-target="#unstacking-rows-to-columns-unstack"><span class="header-section-number">12.1.5.3</span> Unstacking (Rows to Columns) : <code>unstack()</code></a></li>
   </ul></li>
-  <li><a href="#independent-practice-1" id="toc-independent-practice-1" class="nav-link" data-scroll-target="#independent-practice-1"><span class="header-section-number">12.2</span> Independent Practice 1</a>
+  <li><a href="#transposing-using-.t-attribute" id="toc-transposing-using-.t-attribute" class="nav-link" data-scroll-target="#transposing-using-.t-attribute"><span class="header-section-number">12.1.6</span> Transposing using <code>.T</code> attribute</a></li>
+  <li><a href="#summary-of-common-reshaping-functions" id="toc-summary-of-common-reshaping-functions" class="nav-link" data-scroll-target="#summary-of-common-reshaping-functions"><span class="header-section-number">12.1.7</span> Summary of Common Reshaping Functions:</a></li>
+  <li><a href="#converting-from-multi-level-index-to-single-level-index-dataframe" id="toc-converting-from-multi-level-index-to-single-level-index-dataframe" class="nav-link" data-scroll-target="#converting-from-multi-level-index-to-single-level-index-dataframe"><span class="header-section-number">12.1.8</span> Converting from Multi-Level Index to Single-Level Index DataFrame</a></li>
+  </ul></li>
+  <li><a href="#data-enriching" id="toc-data-enriching" class="nav-link" data-scroll-target="#data-enriching"><span class="header-section-number">12.2</span> Data Enriching</a>
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">12.2.1</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">12.2.2</span> </a></li>
+  <li><a href="#combining-based-on-common-keys-merge" id="toc-combining-based-on-common-keys-merge" class="nav-link" data-scroll-target="#combining-based-on-common-keys-merge"><span class="header-section-number">12.2.1</span> Combining based on common keys: <code>merge()</code></a>
+  <ul class="collapse">
+  <li><a href="#outer-join" id="toc-outer-join" class="nav-link" data-scroll-target="#outer-join"><span class="header-section-number">12.2.1.1</span> outer join</a></li>
+  </ul></li>
+  <li><a href="#combining-based-on-indices-join" id="toc-combining-based-on-indices-join" class="nav-link" data-scroll-target="#combining-based-on-indices-join"><span class="header-section-number">12.2.2</span> Combining based on Indices: <code>join()</code></a></li>
+  <li><a href="#stacking-vertically-or-horizontally-concat" id="toc-stacking-vertically-or-horizontally-concat" class="nav-link" data-scroll-target="#stacking-vertically-or-horizontally-concat"><span class="header-section-number">12.2.3</span> Stacking vertically or horizontally: <code>concat()</code></a></li>
+  <li><a href="#missing-values-after-data-enriching" id="toc-missing-values-after-data-enriching" class="nav-link" data-scroll-target="#missing-values-after-data-enriching"><span class="header-section-number">12.2.4</span> Missing values after data enriching</a></li>
+  </ul></li>
+  <li><a href="#independent-practice-1" id="toc-independent-practice-1" class="nav-link" data-scroll-target="#independent-practice-1"><span class="header-section-number">12.3</span> Independent Practice 1</a>
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">12.3.1</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">12.3.2</span> </a></li>
   </ul></li>
   </ul>
 </nav>
@@ -347,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></h1>
 </div>
 
 
@@ -372,11 +377,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="data-reshaping" class="level3" data-number="12.0.1">
-<h3 data-number="12.0.1" class="anchored" data-anchor-id="data-reshaping"><span class="header-section-number">12.0.1</span> Data Reshaping</h3>
+<section id="data-reshaping" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="data-reshaping"><span class="header-section-number">12.1</span> Data Reshaping</h2>
 <p>Data reshaping involves altering the structure of the data to suit the requirements of the analysis or modeling process. This is often needed when the data is in a format that is difficult to analyze or when it needs to be organized in a specific way.</p>
-<section id="why-data-reshaping-is-important" class="level4" data-number="12.0.1.1">
-<h4 data-number="12.0.1.1" class="anchored" data-anchor-id="why-data-reshaping-is-important"><span class="header-section-number">12.0.1.1</span> Why Data Reshaping is Important:</h4>
+<section id="why-data-reshaping-is-important" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="why-data-reshaping-is-important"><span class="header-section-number">12.1.1</span> Why Data Reshaping is Important:</h3>
 <ul>
 <li><p><strong>Improves Data Organization</strong>: Raw data may be in a long format, where each observation is recorded on a separate row, or it may be in a wide format, where the same variable is spread across multiple columns. Reshaping allows you to reorganize the data into a format that is more suitable for analysis, such as turning multiple columns into a single column (melting) or aggregating rows into summary statistics (pivoting).</p></li>
 <li><p><strong>Facilitates Analysis</strong>: Some analysis techniques require specific data formats. For example, many machine learning algorithms require data in a matrix form, where each row represents a sample and each column represents a feature. Reshaping helps to convert data into this format.</p></li>
@@ -384,18 +389,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Efficient Grouping and Aggregation</strong>: In some cases, you may want to group data by certain categories or time periods, and reshaping can help aggregate data effectively for summarization.</p></li>
 </ul>
 </section>
-<section id="wide-vs.-long-data-format-in-data-reshaping" class="level4" data-number="12.0.1.2">
-<h4 data-number="12.0.1.2" class="anchored" data-anchor-id="wide-vs.-long-data-format-in-data-reshaping"><span class="header-section-number">12.0.1.2</span> Wide vs.&nbsp;Long Data Format in Data Reshaping</h4>
+<section id="wide-vs.-long-data-format-in-data-reshaping" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="wide-vs.-long-data-format-in-data-reshaping"><span class="header-section-number">12.1.2</span> Wide vs.&nbsp;Long Data Format in Data Reshaping</h3>
 <ul>
 <li><strong>Wide Format</strong>: Each variable in its own column; each row represents a unit, and data for multiple variables is spread across columns.</li>
 <li><strong>Long Format</strong>: Variables are stacked into one column per variable, with additional columns used to indicate time, categories, or other distinctions, leading to a greater number of rows.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://ucarecdn.com/fe16e27c-a341-4551-9b84-e0e56bb2d329/-/stretch/off/-/resize/1100x/-/format/webp/.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Alt text</figcaption>
-</figure>
-</div>
+<p><img src="https://ucarecdn.com/fe16e27c-a341-4551-9b84-e0e56bb2d329/-/stretch/off/-/resize/1100x/-/format/webp/.png" class="img-fluid"></p>
 <p>To reshape between these two formats, you can use pandas functions such as <code>pivot_table()</code>, <code>melt()</code>, <code>stack()</code>, and <code>unstack()</code>. Let’s next take a look at each of these methods one by one.</p>
 <p>Throughout this section, we will continue using the <em>gdp_lifeExpectancy.csv</em> dataset. Let’s start by reading the CSV file into a pandas DataFrame.</p>
 <div class="cell">
@@ -479,11 +479,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="pivoting-long-to-wide-using-pivot_table" class="level4" data-number="12.0.1.3">
-<h4 data-number="12.0.1.3" class="anchored" data-anchor-id="pivoting-long-to-wide-using-pivot_table"><span class="header-section-number">12.0.1.3</span> Pivoting “long” to “wide” using <code>pivot_table()</code></h4>
+<section id="pivoting-long-to-wide-using-pivot_table" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="pivoting-long-to-wide-using-pivot_table"><span class="header-section-number">12.1.3</span> Pivoting “long” to “wide” using <code>pivot_table()</code></h3>
 <p>In the last chapter, we learned that <code>pivot_table()</code> is a powerful tool for performing groupwise aggregation in a structured format. The <code>pivot_table()</code> function is used to reshape data by specifying columns for the index, columns, and values.</p>
-<section id="pivoting-a-single-column" class="level5" data-number="12.0.1.3.1">
-<h5 data-number="12.0.1.3.1" class="anchored" data-anchor-id="pivoting-a-single-column"><span class="header-section-number">12.0.1.3.1</span> Pivoting a single column</h5>
+<section id="pivoting-a-single-column" class="level4" data-number="12.1.3.1">
+<h4 data-number="12.1.3.1" class="anchored" data-anchor-id="pivoting-a-single-column"><span class="header-section-number">12.1.3.1</span> Pivoting a single column</h4>
 <p>Consider the life expectancy dataset. Let’s calculate the average life expectancy for each combination of country and year.</p>
 <div class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data_pivot <span class="op">=</span> gdp_lifeExp_data.pivot_table(index<span class="op">=</span>[<span class="st">'continent'</span>,<span class="st">'country'</span>], columns<span class="op">=</span><span class="st">'year'</span>, values<span class="op">=</span><span class="st">'lifeExp'</span>, aggfunc<span class="op">=</span><span class="st">'mean'</span>)</span>
@@ -628,8 +628,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Observe that for some African countries, the life expectancy has decreased after 50 years. It is worth investigating these countries to identify factors associated with the decrease.</p>
 </section>
-<section id="pivoting-multiple-columns" class="level5" data-number="12.0.1.3.2">
-<h5 data-number="12.0.1.3.2" class="anchored" data-anchor-id="pivoting-multiple-columns"><span class="header-section-number">12.0.1.3.2</span> Pivoting multiple columns</h5>
+<section id="pivoting-multiple-columns" class="level4" data-number="12.1.3.2">
+<h4 data-number="12.1.3.2" class="anchored" data-anchor-id="pivoting-multiple-columns"><span class="header-section-number">12.1.3.2</span> Pivoting multiple columns</h4>
 <p>In the above transformation, we retained only <code>lifeExp</code> in the <em>‘wide’</em> dataset. Suppose, we are also interested in visualizing GDP per capita of countries in one year against another year. In that case, we must have <code>gdpPercap</code> in the <em>’wide</em>’-form data as well.</p>
 <p>Let us create a dataset named as <code>data_wide_lifeExp_gdpPercap</code> that will contain both <code>lifeExp</code> and <code>gdpPercap</code> for each year in a separate column. We will specify the columns to pivot in the <em>values</em> argument of the <code>pivot()</code> function.</p>
 <div class="cell" data-execution_count="65">
@@ -1053,8 +1053,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="melting-wide-to-long-using-melt" class="level4" data-number="12.0.1.4">
-<h4 data-number="12.0.1.4" class="anchored" data-anchor-id="melting-wide-to-long-using-melt"><span class="header-section-number">12.0.1.4</span> Melting “wide” to “long” using <code>melt()</code></h4>
+<section id="melting-wide-to-long-using-melt" class="level3" data-number="12.1.4">
+<h3 data-number="12.1.4" class="anchored" data-anchor-id="melting-wide-to-long-using-melt"><span class="header-section-number">12.1.4</span> Melting “wide” to “long” using <code>melt()</code></h3>
 <p>Melting is the <strong>inverse</strong> of pivoting. It transforms columns into rows. The <code>melt()</code> function is used when you want to unpivot a DataFrame, turning multiple columns into rows.</p>
 <p>Let’s first consider <em>gdp_lifeExp_data_pivot</em> created in the previous section</p>
 <div class="cell" data-execution_count="66">
@@ -1620,8 +1620,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="stacking-and-unstacking-using-stack-and-unstack" class="level4" data-number="12.0.1.5">
-<h4 data-number="12.0.1.5" class="anchored" data-anchor-id="stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">12.0.1.5</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></h4>
+<section id="stacking-and-unstacking-using-stack-and-unstack" class="level3" data-number="12.1.5">
+<h3 data-number="12.1.5" class="anchored" data-anchor-id="stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">12.1.5</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></h3>
 <p>Stacking and unstacking are powerful techniques used to reshape DataFrames by moving data between rows and columns. These operations are particularly useful when working with <strong>multi-level index</strong> or <strong>multi-level columns</strong>, where the data is structured in a hierarchical format.</p>
 <ul>
 <li><code>stack()</code>: Converts columns into rows, which means it “stacks” the data into a long format.</li>
@@ -1847,8 +1847,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       dtype=object)</code></pre>
 </div>
 </div>
-<section id="understanding-the-level-in-multi-level-index-and-columns" class="level5" data-number="12.0.1.5.1">
-<h5 data-number="12.0.1.5.1" class="anchored" data-anchor-id="understanding-the-level-in-multi-level-index-and-columns"><span class="header-section-number">12.0.1.5.1</span> Understanding the <code>level</code> in multi-level index and columns</h5>
+<section id="understanding-the-level-in-multi-level-index-and-columns" class="level4" data-number="12.1.5.1">
+<h4 data-number="12.1.5.1" class="anchored" data-anchor-id="understanding-the-level-in-multi-level-index-and-columns"><span class="header-section-number">12.1.5.1</span> Understanding the <code>level</code> in multi-level index and columns</h4>
 <p>The <code>gdp_lifeExp_multilevel_data</code> dataframe have two levels of index and two level of columns, You can reference these levels in various operations, such as grouping, subsetting, or performing aggregations. The <code>level</code> parameter helps identify which part of the multi-level structure you’re working with.</p>
 <div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.get_level_values(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2168,9 +2168,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-</section>
-<section id="stacking-columns-to-rows-stack" class="level4" data-number="12.0.1.6">
-<h4 data-number="12.0.1.6" class="anchored" data-anchor-id="stacking-columns-to-rows-stack"><span class="header-section-number">12.0.1.6</span> Stacking (Columns to Rows ): <code>stack()</code></h4>
+<section id="stacking-columns-to-rows-stack" class="level4" data-number="12.1.5.2">
+<h4 data-number="12.1.5.2" class="anchored" data-anchor-id="stacking-columns-to-rows-stack"><span class="header-section-number">12.1.5.2</span> Stacking (Columns to Rows ): <code>stack()</code></h4>
 <p>The <code>stack()</code> function pivots the columns into rows. You can specify which level you want to stack using the <code>level</code> parameter. By default, it will stack the innermost level of the columns.</p>
 <div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(future_stack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2378,8 +2377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="unstacking-rows-to-columns-unstack" class="level4" data-number="12.0.1.7">
-<h4 data-number="12.0.1.7" class="anchored" data-anchor-id="unstacking-rows-to-columns-unstack"><span class="header-section-number">12.0.1.7</span> Unstacking (Rows to Columns) : <code>unstack()</code></h4>
+<section id="unstacking-rows-to-columns-unstack" class="level4" data-number="12.1.5.3">
+<h4 data-number="12.1.5.3" class="anchored" data-anchor-id="unstacking-rows-to-columns-unstack"><span class="header-section-number">12.1.5.3</span> Unstacking (Rows to Columns) : <code>unstack()</code></h4>
 <p>The <code>unstack()</code> function pivots the rows back into columns. By default, it will unstack the innermost level of the index.</p>
 <p>Let’s reverse the prevous dataframe to its original shape using <code>unstack()</code>.</p>
 <div class="cell" data-execution_count="44">
@@ -2529,8 +2528,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="transpose" class="level4" data-number="12.0.1.8">
-<h4 data-number="12.0.1.8" class="anchored" data-anchor-id="transpose"><span class="header-section-number">12.0.1.8</span> Transpose</h4>
+</section>
+<section id="transposing-using-.t-attribute" class="level3" data-number="12.1.6">
+<h3 data-number="12.1.6" class="anchored" data-anchor-id="transposing-using-.t-attribute"><span class="header-section-number">12.1.6</span> Transposing using <code>.T</code> attribute</h3>
 <p>If you simply want to swap rows and columns, you can use the <code>.T</code> attribute.</p>
 <div class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2730,8 +2730,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="summary-of-common-reshaping-functions" class="level4" data-number="12.0.1.9">
-<h4 data-number="12.0.1.9" class="anchored" data-anchor-id="summary-of-common-reshaping-functions"><span class="header-section-number">12.0.1.9</span> Summary of Common Reshaping Functions:</h4>
+<section id="summary-of-common-reshaping-functions" class="level3" data-number="12.1.7">
+<h3 data-number="12.1.7" class="anchored" data-anchor-id="summary-of-common-reshaping-functions"><span class="header-section-number">12.1.7</span> Summary of Common Reshaping Functions:</h3>
 <table class="table">
 <colgroup>
 <col style="width: 13%">
@@ -2773,9 +2773,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="practical-use-cases" class="level4" data-number="12.0.1.10">
-<h4 data-number="12.0.1.10" class="anchored" data-anchor-id="practical-use-cases"><span class="header-section-number">12.0.1.10</span> Practical Use Cases:</h4>
+<p><strong>Practical Use Cases:</strong></p>
 <ul>
 <li><strong>Pivoting:</strong> Useful for time series analysis or when you want to group and summarize data by specific categories.</li>
 <li><strong>Melting:</strong> Helpful when you need to reshape wide data for easier analysis or when preparing data for machine learning algorithms.</li>
@@ -2783,8 +2781,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Transpose:</strong> Helpful for reorienting data for analysis or visualization.</li>
 </ul>
 </section>
-<section id="converting-from-multi-level-index-to-single-level-index-dataframe" class="level4" data-number="12.0.1.11">
-<h4 data-number="12.0.1.11" class="anchored" data-anchor-id="converting-from-multi-level-index-to-single-level-index-dataframe"><span class="header-section-number">12.0.1.11</span> Converting from Multi-Level Index to Single-Level Index DataFrame</h4>
+<section id="converting-from-multi-level-index-to-single-level-index-dataframe" class="level3" data-number="12.1.8">
+<h3 data-number="12.1.8" class="anchored" data-anchor-id="converting-from-multi-level-index-to-single-level-index-dataframe"><span class="header-section-number">12.1.8</span> Converting from Multi-Level Index to Single-Level Index DataFrame</h3>
 <p>If you’re uncomfortable working with DataFrames that have multi-level indexes and columns, you can convert them into single-level DataFrames using the methods you learned in the previous chapter:</p>
 <ul>
 <li><code>reset_index()</code></li>
@@ -3092,11 +3090,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="data-enriching" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="data-enriching"><span class="header-section-number">12.1</span> Data Enriching</h2>
+<section id="data-enriching" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="data-enriching"><span class="header-section-number">12.2</span> Data Enriching</h2>
 <p>Data enriching involves enhancing your existing dataset by adding additional data, often from external sources, to make your dataset more insightful.</p>
-<section id="common-methods-for-data-enriching" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="common-methods-for-data-enriching"><span class="header-section-number">12.1.1</span> Common Methods for Data Enriching</h3>
+<p>There are 3 common methods for data enriching:</p>
 <ul>
 <li><strong>Merging using <code>merge()</code></strong>: Combining datasets based on a common key.</li>
 <li><strong>Joining using <code>join()</code></strong>: Using indices to combine data.</li>
@@ -3212,9 +3209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="combining-based-on-common-keys-merge" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="combining-based-on-common-keys-merge"><span class="header-section-number">12.1.2</span> Combining based on common keys: <code>merge()</code></h3>
+<section id="combining-based-on-common-keys-merge" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="combining-based-on-common-keys-merge"><span class="header-section-number">12.2.1</span> Combining based on common keys: <code>merge()</code></h3>
 <div class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> pd.merge(df_existing, df_external)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
@@ -3486,8 +3482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>When you may use right join?</strong> You can always use a left join instead of a right join. Their purpose is the same.</p>
-<section id="outer-join" class="level4" data-number="12.1.2.1">
-<h4 data-number="12.1.2.1" class="anchored" data-anchor-id="outer-join"><span class="header-section-number">12.1.2.1</span> outer join</h4>
+<section id="outer-join" class="level4" data-number="12.2.1.1">
+<h4 data-number="12.2.1.1" class="anchored" data-anchor-id="outer-join"><span class="header-section-number">12.2.1.1</span> outer join</h4>
 <ul>
 <li>Returns all rows from both DataFrames, with <code>NaN</code> values where no match is found.</li>
 </ul>
@@ -3572,8 +3568,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Example:</strong> Suppose I took two course surveys for this course. If I need to analyze student sentiment during the course, I will take an outer join of both the surveys. Assume that each survey is a dataset, where each row corresponds to a unique student. Even if a student has answered one of the two surverys, it will be indicative of the sentiment, and will be useful to keep in the merged dataset.</p>
 </section>
 </section>
-<section id="combining-based-on-indices-join" class="level3" data-number="12.1.3">
-<h3 data-number="12.1.3" class="anchored" data-anchor-id="combining-based-on-indices-join"><span class="header-section-number">12.1.3</span> <strong>Combining Based on Indices: <code>join()</code></strong></h3>
+<section id="combining-based-on-indices-join" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="combining-based-on-indices-join"><span class="header-section-number">12.2.2</span> Combining based on Indices: <code>join()</code></h3>
 <p>Unlike <code>merge()</code>, <code>join()</code> in pandas combines data based on the <strong>index</strong>. When using <code>join()</code>, you must specify the <code>suffixes</code> parameter if there are overlapping column names, as it does not have default values. You can refer to the official function definition here: <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html">pandas.DataFrame.join</a>.</p>
 <div class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external)</span>
@@ -3724,8 +3720,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this case, <code>df_enriched_join</code> will contain all rows from <code>df_existing</code> and the corresponding matching rows from <code>df_external</code>, with <code>NaN</code> values for non-matching entries.</p>
 <p>Similar to <code>merge()</code>, you can change the type of join in <code>join()</code> by explicitly specifying the <code>how</code> parameter. However, this explanation will be skipped here, as the different join types have already been covered in the <code>merge()</code> section above.</p>
 </section>
-<section id="stacking-dataframes-vertically-or-horizontally-concat" class="level3" data-number="12.1.4">
-<h3 data-number="12.1.4" class="anchored" data-anchor-id="stacking-dataframes-vertically-or-horizontally-concat"><span class="header-section-number">12.1.4</span> Stacking DataFrames vertically or horizontally: <code>concat()</code></h3>
+<section id="stacking-vertically-or-horizontally-concat" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="stacking-vertically-or-horizontally-concat"><span class="header-section-number">12.2.3</span> Stacking vertically or horizontally: <code>concat()</code></h3>
 <p><code>concat()</code> is used in pandas to concatenate DataFrames along a specified axis, either rows or columns. Similar to <code>concat()</code> in NumPy, it defaults to concatenating along the rows.</p>
 <div class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's concatenate the two dataframes using default setting</span></span>
@@ -3901,8 +3897,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="missing-values-after-data-enriching" class="level3" data-number="12.1.5">
-<h3 data-number="12.1.5" class="anchored" data-anchor-id="missing-values-after-data-enriching"><span class="header-section-number">12.1.5</span> Missing values after data enriching</h3>
+<section id="missing-values-after-data-enriching" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="missing-values-after-data-enriching"><span class="header-section-number">12.2.4</span> Missing values after data enriching</h3>
 <p>Using either of the approaches mentioned above may introduce missing values for unmatched entries. Handling these missing values is crucial for maintaining the quality and integrity of your dataset after merging or joining DataFrames. It is important to choose a method that best fits your data and analysis goals, and to document your decisions regarding missing value handling for transparency in your analysis.</p>
 <p><strong>Question</strong>: Read the documentations of the Pandas DataFrame methods <code>merge()</code> and <code>concat()</code>, and identify the differences. Mention examples when you can use (i) either, (ii) only <code>concat()</code>, (iii) only <code>merge()</code></p>
 <p><strong>Solution:</strong></p>
@@ -3913,15 +3909,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 </section>
-<section id="independent-practice-1" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="independent-practice-1"><span class="header-section-number">12.2</span> Independent Practice 1</h2>
+<section id="independent-practice-1" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="independent-practice-1"><span class="header-section-number">12.3</span> Independent Practice 1</h2>
 <p>You are given the life expectancy data of each continent as a separate *.csv file.</p>
-<section id="section" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">12.2.1</span> </h3>
+<section id="section" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="section"><span class="header-section-number">12.3.1</span> </h3>
 <p>Visualize the change of life expectancy over time for different continents.</p>
 </section>
-<section id="section-1" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">12.2.2</span> </h3>
+<section id="section-1" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">12.3.2</span> </h3>
 <p>Appending all the data files, i.e., stacking them on top of each other to form a combined datasets called “data_all_continents”</p>
 
 
