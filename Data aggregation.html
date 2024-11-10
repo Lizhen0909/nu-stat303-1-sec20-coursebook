@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Assignment A.html" rel="next">
+<link href="./Data wrangling.html" rel="next">
 <link href="./Data cleaning and preparation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,6 +242,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></span></a>
   </div>
 </li>
       </ul>
@@ -2906,7 +2912,7 @@ Length: 142, dtype: float64</code></pre>
 <li><strong><code>count</code></strong> – Counts the number of non-null entries within each group.</li>
 <li><strong><code>min</code></strong> and <strong><code>max</code></strong> – Finds the minimum and maximum values within each group.</li>
 </ul>
-<p>We can use also use custom <em>GroupBy</em> aggregate functions with <code>pivot_table()</code>.</p>
+<p>We can also use custom <em>GroupBy</em> aggregate functions with <code>pivot_table()</code>.</p>
 <p><strong>Example</strong>: Find the <span class="math inline">\(90^{th}\)</span> percentile of life expectancy for each country and year combination</p>
 <div class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>pd.pivot_table(data <span class="op">=</span> gdp_lifeExp_data, values <span class="op">=</span> <span class="st">'lifeExp'</span>,index <span class="op">=</span> <span class="st">'country'</span>, columns <span class="op">=</span><span class="st">'year'</span>,aggfunc <span class="op">=</span> <span class="kw">lambda</span> x:np.percentile(x,<span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3765,8 +3771,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Assignment A.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Data wrangling.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

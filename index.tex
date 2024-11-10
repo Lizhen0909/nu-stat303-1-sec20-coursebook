@@ -195,7 +195,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, sharp corners, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, frame hidden, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, enhanced, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -16412,8 +16412,8 @@ our guess or estimate of missing values in
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{gdp\_missing\_values\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Datasets/GDP\_missing\_data.csv\textquotesingle{}}\NormalTok{)}
-\NormalTok{gdp\_complete\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Datasets/GDP\_complete\_data.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_missing\_values\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_missing\_data.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_complete\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/GDP\_complete\_data.csv\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -17325,14 +17325,9 @@ simply replace \texttt{ffill} with \texttt{bfill}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Filling missing values: Method 1{-} Naive way}
-\NormalTok{gdp\_imputed\_data\_ffill }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.fillna(method }\OperatorTok{=} \StringTok{\textquotesingle{}ffill\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_imputed\_data\_ffill }\OperatorTok{=}\NormalTok{ gdp\_missing\_values\_data.ffill()}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\1702047886.py:2: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
-  gdp_imputed_data_ffill = gdp_missing_values_data.fillna(method = 'ffill')
-\end{verbatim}
 
 Let us next check how good is this method in imputing missing values.
 
@@ -17426,7 +17421,7 @@ variables of the dataset can be found on page 65 of this
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Load the College dataset}
-\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Datasets/College.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/College.csv\textquotesingle{}}\NormalTok{)}
 \NormalTok{college.head()}
 \end{Highlighting}
 \end{Shaded}
@@ -17839,9 +17834,25 @@ case-by-case basis. However, here are some general recommendations:
 \hypertarget{data-binning}{%
 \section{Data binning}\label{data-binning}}
 
-Data binning is a technique where continuous numerical data is grouped
-into discrete intervals or ``bins.'' Think of it like sorting items into
-different buckets based on their values.
+Data binning is a powerful technique in data analysis where continuous
+numerical data is grouped into discrete intervals or ``bins.'' Imagine
+it as sorting items into distinct categories or ``buckets'' based on
+their values, making it easier to observe trends, patterns, and
+groupings within large datasets. We encounter binning in everyday life
+without even realizing it.
+
+For example, consider age groups: instead of listing every individual
+age, we often refer to broader categories like ``under 20,'' ``20-30,''
+``30-40,'' or ``40 and over.'' This binning approach helps simplify data
+interpretation and comparison across different age groups. Another
+common example is tax brackets. Tax rates are often applied to ranges of
+income, like ``up to \$11,000,'' ``\$11,001 to \$44,725,'' and so forth.
+Here, income values are grouped into bins to determine applicable tax
+rates, making complex tax data easier to manage and understand.
+
+\begin{verbatim}
+<IPython.core.display.HTML object>
+\end{verbatim}
 
 \hypertarget{key-reasons-for-binning}{%
 \subsection{Key reasons for binning:}\label{key-reasons-for-binning}}
@@ -17922,7 +17933,7 @@ trendline.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-48-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-49-output-1.png}
 
 }
 
@@ -17960,7 +17971,7 @@ distribution of \texttt{Expend}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-49-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-50-output-1.png}
 
 }
 
@@ -18087,7 +18098,7 @@ Let us visualize the \texttt{Expend} bins over the distribution of the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-54-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-55-output-1.png}
 
 }
 
@@ -18138,7 +18149,7 @@ per student using \texttt{Expened\_bin}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-56-output-2.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-57-output-2.png}
 
 }
 
@@ -18152,14 +18163,9 @@ Let us find the number of universities in each bin.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{pd.value\_counts(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{])}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{].value\_counts()}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
-  pd.value_counts(college['Expend_bin'])
-\end{verbatim}
 
 \begin{verbatim}
 Expend_bin
@@ -18203,7 +18209,7 @@ the data.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-60-output-2.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-61-output-2.png}
 
 }
 
@@ -18226,7 +18232,7 @@ of observations as shown below.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-61-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-62-output-1.png}
 
 }
 
@@ -18277,14 +18283,9 @@ Each bin has the same number of observations with \texttt{qcut()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{pd.value\_counts(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{])}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{].value\_counts()}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\90039880.py:1: FutureWarning: pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
-  pd.value_counts(college['Expend_bin'])
-\end{verbatim}
 
 \begin{verbatim}
 Expend_bin
@@ -18312,7 +18313,7 @@ Let us visualize the \texttt{Expend} bins over the distribution of the
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-65-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-66-output-1.png}
 
 }
 
@@ -18334,7 +18335,7 @@ level of instructional expenditure per student.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-66-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-67-output-1.png}
 
 }
 
@@ -18367,14 +18368,9 @@ The numbers in the above recommendations are based on the table below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{college[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{].groupby(college.Expend\_bin).mean()}
+\NormalTok{college.groupby(college.Expend\_bin, observed}\OperatorTok{=}\VariableTok{False}\NormalTok{)[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{].mean()}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_24908\2173657746.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
-  college['Grad.Rate'].groupby(college.Expend_bin).mean()
-\end{verbatim}
 
 \begin{verbatim}
 Expend_bin
@@ -18393,18 +18389,34 @@ article on Wikipedia}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#Bootstrapping to find 95\% confidence intervals of Graduation Rate of US universities based on average expenditure per student}
-\ControlFlowTok{for}\NormalTok{ expend\_bin }\KeywordTok{in}\NormalTok{ college.Expend\_bin.unique():}
-\NormalTok{    data\_sub }\OperatorTok{=}\NormalTok{ college.loc[college.Expend\_bin}\OperatorTok{==}\NormalTok{expend\_bin,:]}
-\NormalTok{    samples }\OperatorTok{=}\NormalTok{ np.random.choice(data\_sub[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{], size}\OperatorTok{=}\NormalTok{(}\DecValTok{10000}\NormalTok{,data\_sub.shape[}\DecValTok{0}\NormalTok{]))}
-    \BuiltInTok{print}\NormalTok{(}\StringTok{"95\% Confidence interval of Grad.Rate for "}\OperatorTok{+}\NormalTok{expend\_bin}\OperatorTok{+}\StringTok{" univeristies = ["}\OperatorTok{+}\BuiltInTok{str}\NormalTok{(np.}\BuiltInTok{round}\NormalTok{(np.percentile(samples.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{),}\FloatTok{2.5}\NormalTok{),}\DecValTok{2}\NormalTok{))}\OperatorTok{+}\StringTok{","}\OperatorTok{+}\BuiltInTok{str}\NormalTok{(np.}\BuiltInTok{round}\NormalTok{(np.percentile(samples.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{),}\FloatTok{97.5}\NormalTok{),}\DecValTok{2}\NormalTok{))}\OperatorTok{+}\StringTok{"]"}\NormalTok{)}
+\CommentTok{\# Bootstrapping to find 95\% confidence intervals of Graduation Rate of US universities based on average expenditure per student}
+\NormalTok{confidence\_intervals }\OperatorTok{=}\NormalTok{ \{\}}
+
+\CommentTok{\# Loop through each expenditure bin}
+\ControlFlowTok{for}\NormalTok{ expend\_bin, data\_sub }\KeywordTok{in}\NormalTok{ college.groupby(}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{, observed}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+    \CommentTok{\# Generate bootstrap samples for the graduation rate}
+\NormalTok{    samples }\OperatorTok{=}\NormalTok{ np.random.choice(data\_sub[}\StringTok{\textquotesingle{}Grad.Rate\textquotesingle{}}\NormalTok{], size}\OperatorTok{=}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\BuiltInTok{len}\NormalTok{(data\_sub)), replace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    
+    \CommentTok{\# Calculate the mean of each sample}
+\NormalTok{    sample\_means }\OperatorTok{=}\NormalTok{ samples.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+    
+    \CommentTok{\# Calculate the 95\% confidence interval}
+\NormalTok{    lower\_bound }\OperatorTok{=}\NormalTok{ np.percentile(sample\_means, }\FloatTok{2.5}\NormalTok{)}
+\NormalTok{    upper\_bound }\OperatorTok{=}\NormalTok{ np.percentile(sample\_means, }\FloatTok{97.5}\NormalTok{)}
+    
+    \CommentTok{\# Store the result in the dictionary}
+\NormalTok{    confidence\_intervals[expend\_bin] }\OperatorTok{=}\NormalTok{ (}\BuiltInTok{round}\NormalTok{(lower\_bound, }\DecValTok{2}\NormalTok{), }\BuiltInTok{round}\NormalTok{(upper\_bound, }\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\# Print the results}
+\ControlFlowTok{for}\NormalTok{ expend\_bin, ci }\KeywordTok{in}\NormalTok{ confidence\_intervals.items():}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"95\% Confidence interval of Grad.Rate for }\SpecialCharTok{\{}\NormalTok{expend\_bin}\SpecialCharTok{\}}\SpecialStringTok{ universities = [}\SpecialCharTok{\{}\NormalTok{ci[}\DecValTok{0}\NormalTok{]}\SpecialCharTok{\}}\SpecialStringTok{, }\SpecialCharTok{\{}\NormalTok{ci[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{\}}\SpecialStringTok{]"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-95% Confidence interval of Grad.Rate for Low expend univeristies = [55.39,59.4]
-95% Confidence interval of Grad.Rate for High expend univeristies = [70.99,74.91]
-95% Confidence interval of Grad.Rate for Med expend univeristies = [64.22,67.93]
+95% Confidence interval of Grad.Rate for Low expend universities = [55.36, 59.36]
+95% Confidence interval of Grad.Rate for Med expend universities = [64.15, 67.95]
+95% Confidence interval of Grad.Rate for High expend universities = [71.03, 74.92]
 \end{verbatim}
 
 Apart from equal-width and equal-sized bins, custom bins can be created
@@ -18436,7 +18448,43 @@ bins}\label{binning-with-custom-bins}}
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-70-output-1.png}
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-71-output-1.png}
+
+}
+
+\end{figure}
+
+Next, let's create a custom bin with unequal sizes and widths.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create bins and labels}
+\NormalTok{bins }\OperatorTok{=}\NormalTok{ [college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{].}\BuiltInTok{min}\NormalTok{(), }\DecValTok{10000}\NormalTok{, }\DecValTok{40000}\NormalTok{, college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{].}\BuiltInTok{max}\NormalTok{()]}
+\NormalTok{labels }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Low Expenditure\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Medium Expenditure\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}High Expenditure\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\# Binning the \textquotesingle{}Expend\textquotesingle{} column}
+\NormalTok{college[}\StringTok{\textquotesingle{}Expend\_Binned\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.cut(college[}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{], bins}\OperatorTok{=}\NormalTok{bins, labels}\OperatorTok{=}\NormalTok{labels)}
+
+\CommentTok{\# Visualizing the bins using a histogram}
+\NormalTok{ax }\OperatorTok{=}\NormalTok{ sns.histplot(data}\OperatorTok{=}\NormalTok{college, x}\OperatorTok{=}\StringTok{\textquotesingle{}Expend\textquotesingle{}}\NormalTok{, kde}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+
+\CommentTok{\# Add vertical lines for the bin edges (the bin edges are the values in \textquotesingle{}bins\textquotesingle{})}
+\ControlFlowTok{for}\NormalTok{ bin\_edge }\KeywordTok{in}\NormalTok{ bins[}\DecValTok{1}\NormalTok{:}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]:  }\CommentTok{\# skip the first and last bins since they are the edges}
+\NormalTok{    plt.vlines(bin\_edge, }\DecValTok{0}\NormalTok{, ax.get\_ylim()[}\DecValTok{1}\NormalTok{], color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Add labels and formatting}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Expenditure per student\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.xaxis.set\_major\_formatter(}\StringTok{\textquotesingle{}$\{x:,.0f\}\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Display the plot}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data cleaning and preparation_files/figure-pdf/cell-72-output-1.png}
 
 }
 
@@ -18509,7 +18557,7 @@ average instruction expenditure per student.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Making dummy variables based on the levels (categories) of the \textquotesingle{}Expend\_bin\textquotesingle{} variable}
-\NormalTok{dummy\_Expend }\OperatorTok{=}\NormalTok{ pd.get\_dummies(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{])}
+\NormalTok{dummy\_Expend }\OperatorTok{=}\NormalTok{ pd.get\_dummies(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{], dtype}\OperatorTok{=}\BuiltInTok{int}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -18529,11 +18577,53 @@ observation corresponds to the category referenced by the column name.
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & True & False & False \\
-1 & False & False & True \\
-2 & False & True & False \\
-3 & False & False & True \\
-4 & False & False & True \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 \\
+2 & 0 & 1 & 0 \\
+3 & 0 & 0 & 1 \\
+4 & 0 & 0 & 1 \\
+\end{longtable}
+
+Adding the dummy columns back to the original dataframe
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Concatenating the dummy variables to the original data}
+\NormalTok{college }\OperatorTok{=}\NormalTok{ pd.concat([college,dummy\_Expend],axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(college.shape)}
+\NormalTok{college.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(777, 26)
+\end{verbatim}
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
+& F.Undergrad & P.Undergrad & Outstate & ... & perc.alumni & Expend &
+Grad.Rate & z\_score & is\_z\_score\_outlier & is\_IQR\_outlier &
+Expend\_bin & Low\_expend & Med\_expend & High\_expend \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
+2885 & 537 & 7440 & ... & 12 & 7041 & 60 & -0.501910 & False & False &
+Low\_expend & 1 & 0 & 0 \\
+1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
+& 12280 & ... & 16 & 10527 & 56 & 0.166110 & False & False &
+High\_expend & 0 & 0 & 1 \\
+2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
+11250 & ... & 30 & 8735 & 54 & -0.177290 & False & False & Med\_expend &
+0 & 1 & 0 \\
+3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
+12960 & ... & 37 & 19016 & 59 & 1.792851 & False & True & High\_expend &
+0 & 0 & 1 \\
+4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
+869 & 7560 & ... & 2 & 10922 & 15 & 0.241803 & False & False &
+High\_expend & 0 & 0 & 1 \\
 \end{longtable}
 
 We can find the correlation between the dummy variables and graduation
@@ -18567,7 +18657,7 @@ to avoid multicollinearity (perfect correlation between variables).
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# create dummy variables, dropping the first to avoid multicollinearity}
-\NormalTok{dummy\_Expend }\OperatorTok{=}\NormalTok{ pd.get\_dummies(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{], drop\_first}\OperatorTok{=}\VariableTok{True}\NormalTok{).astype(}\BuiltInTok{int}\NormalTok{)}
+\NormalTok{dummy\_Expend }\OperatorTok{=}\NormalTok{ pd.get\_dummies(college[}\StringTok{\textquotesingle{}Expend\_bin\textquotesingle{}}\NormalTok{], dtype}\OperatorTok{=}\BuiltInTok{int}\NormalTok{, drop\_first}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 
 \CommentTok{\# add the dummy variables to the original dataset}
 \NormalTok{college }\OperatorTok{=}\NormalTok{ pd.concat([college, dummy\_Expend], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
@@ -18579,28 +18669,28 @@ to avoid multicollinearity (perfect correlation between variables).
 \begin{longtable}[]{@{}llllllllllllllllllllll@{}}
 \toprule\noalign{}
 & Unnamed: 0 & Private & Apps & Accept & Enroll & Top10perc & Top25perc
-& F.Undergrad & P.Undergrad & Outstate & ... & Expend & Grad.Rate &
-z\_score & is\_z\_score\_outlier & is\_IQR\_outlier & Expend\_bin &
+& F.Undergrad & P.Undergrad & Outstate & ... & Grad.Rate & z\_score &
+is\_z\_score\_outlier & is\_IQR\_outlier & Expend\_bin & Low\_expend &
 Med\_expend & High\_expend & Med\_expend & High\_expend \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 0 & Abilene Christian University & Yes & 1660 & 1232 & 721 & 23 & 52 &
-2885 & 537 & 7440 & ... & 7041 & 60 & -0.501910 & False & False &
-Low\_expend & False & False & 0 & 0 \\
+2885 & 537 & 7440 & ... & 60 & -0.501910 & False & False & Low\_expend &
+1 & 0 & 0 & 0 & 0 \\
 1 & Adelphi University & Yes & 2186 & 1924 & 512 & 16 & 29 & 2683 & 1227
-& 12280 & ... & 10527 & 56 & 0.166110 & False & False & High\_expend &
-False & True & 0 & 1 \\
+& 12280 & ... & 56 & 0.166110 & False & False & High\_expend & 0 & 0 & 1
+& 0 & 1 \\
 2 & Adrian College & Yes & 1428 & 1097 & 336 & 22 & 50 & 1036 & 99 &
-11250 & ... & 8735 & 54 & -0.177290 & False & False & Med\_expend & True
-& False & 1 & 0 \\
+11250 & ... & 54 & -0.177290 & False & False & Med\_expend & 0 & 1 & 0 &
+1 & 0 \\
 3 & Agnes Scott College & Yes & 417 & 349 & 137 & 60 & 89 & 510 & 63 &
-12960 & ... & 19016 & 59 & 1.792851 & False & True & High\_expend &
-False & True & 0 & 1 \\
+12960 & ... & 59 & 1.792851 & False & True & High\_expend & 0 & 0 & 1 &
+0 & 1 \\
 4 & Alaska Pacific University & Yes & 193 & 146 & 55 & 16 & 44 & 249 &
-869 & 7560 & ... & 10922 & 15 & 0.241803 & False & False & High\_expend
-& False & True & 0 & 1 \\
+869 & 7560 & ... & 15 & 0.241803 & False & False & High\_expend & 0 & 0
+& 1 & 0 & 1 \\
 \end{longtable}
 
 \hypertarget{independent-study-2}{%
@@ -18636,20 +18726,16 @@ Find the:
 \subsection{Practice exercise 2}\label{practice-exercise-2-4}}
 
 Consider the dataset \emph{survey\_data\_clean.csv} . Find the number of
-outliers in each column of the dataset based on the Tukey's fences
-criterion. Do not use a \texttt{for} loop.
+outliers in each column of the dataset based on both the Z-score and IQR
+criteria. Do not use a \texttt{for} loop.
 
-Which column(s) have the maximum number of outliers?
+Which column(s) have the maximum number of outliers using Z-score?
 
-Do you think the outlying observations identified with the Tukey's
-fences criterion for those columns(s) should be considered as outliers?
-If not, then which type of columns should be considered when finding
-outliers?
+Which column(s) have the maximum number of outliers using IQR?
 
-Using Tukey's criterion, the variables
-\texttt{learning\_style\_Reading/Writing\ (learn\ best\ through\ words\ often\ note-taking\ or\ reading)}
-and \texttt{much\_effort\_is\_lack\_of\_talent} have the most number of
-outliers.
+Do you think the outlying observations identified for those columns(s)
+should be considered as outliers? If not, then which type of columns
+should be considered when finding outliers?
 
 \hypertarget{data-grouping-and-aggregation}{%
 \chapter{Data Grouping and
@@ -18780,7 +18866,8 @@ for that observation. However, all the observations are still in the
 same DataFrame \texttt{data}.
 
 \hypertarget{attributes-and-methods-of-the-groupby-object}{%
-\subsection{\texorpdfstring{Attributes and methods of the \emph{GroupBy}
+\subsection{\texorpdfstring{Attributes and methods of the
+\href{https://pandas.pydata.org/docs/reference/groupby.html}{\emph{GroupBy}}
 object}{Attributes and methods of the GroupBy object}}\label{attributes-and-methods-of-the-groupby-object}}
 
 \hypertarget{keys}{%
@@ -18818,6 +18905,20 @@ can be seen with the \texttt{ngroups} attribute.
 5
 \end{verbatim}
 
+The group names are the \emph{keys} of the dictionary, while the row
+labels are the corresponding \emph{values}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Group names}
+\NormalTok{grouped.groups.keys()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+dict_keys(['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'])
+\end{verbatim}
+
 \hypertarget{groups}{%
 \subsubsection{\texorpdfstring{\href{https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.groups.html}{\texttt{groups}}}{groups}}\label{groups}}
 
@@ -18836,19 +18937,12 @@ group, as a dictionary.
 {'Africa': [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, ...], 'Americas': [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 432, 433, 434, 435, ...], 'Asia': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, ...], 'Europe': [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 516, 517, 518, 519, ...], 'Oceania': [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103]}
 \end{verbatim}
 
-The group names are the \emph{keys} of the dictionary, while the row
-labels are the corresponding \emph{values}
+\hypertarget{groups.values}{%
+\subsubsection{\texorpdfstring{\texttt{groups.values}}{groups.values}}\label{groups.values}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Group names}
-\NormalTok{grouped.groups.keys()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-dict_keys(['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'])
-\end{verbatim}
+The \texttt{groups.values} attribute of the \emph{GroupBy} object
+contains the row labels of the observations in each group, as a
+dictionary.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19108,7 +19202,7 @@ agg(), where the strings are the function names.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{grouped\_country[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{]).sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+\NormalTok{grouped\_country[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{]).sort\_values(by }\OperatorTok{=} \StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{,ascending }\OperatorTok{=} \VariableTok{False}\NormalTok{).head()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -19125,61 +19219,6 @@ Switzerland & 27074.334405 & 6886.463308 \\
 Norway & 26747.306554 & 13421.947245 \\
 United States & 26261.151347 & 9695.058103 \\
 Canada & 22410.746340 & 8210.112789 \\
-... & ... & ... \\
-Mozambique & 542.278332 & 128.875416 \\
-Eritrea & 541.002507 & 170.035148 \\
-Ethiopia & 509.115155 & 96.427627 \\
-Burundi & 471.662990 & 99.329720 \\
-Myanmar & 439.333333 & 175.401531 \\
-\end{longtable}
-
-We can use a list to apply multiple aggregation functions to a single
-column, and a dictionary to specify different functions for multiple
-columns
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Use string names for the aggregation functions}
-\NormalTok{grouped\_country.agg(\{}\StringTok{"gdpPercap"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{], }\StringTok{"lifeExp"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{], }\StringTok{"pop"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{]\})}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lllllll@{}}
-\toprule\noalign{}
-&
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
-gdpPercap} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
-lifeExp} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
-pop} \\
-& mean & std & mean & std & mean & std \\
-country & & & & & & \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Afghanistan & 802.674598 & 108.202929 & 37.478833 & 5.098646 &
-1.582372e+07 & 7.114583e+06 \\
-Albania & 3255.366633 & 1192.351513 & 68.432917 & 6.322911 &
-2.580249e+06 & 8.285855e+05 \\
-Algeria & 4426.025973 & 1310.337656 & 59.030167 & 10.340069 &
-1.987541e+07 & 8.613355e+06 \\
-Angola & 3607.100529 & 1165.900251 & 37.883500 & 4.005276 & 7.309390e+06
-& 2.672281e+06 \\
-Argentina & 8955.553783 & 1862.583151 & 69.060417 & 4.186470 &
-2.860224e+07 & 7.546609e+06 \\
-... & ... & ... & ... & ... & ... & ... \\
-Vietnam & 1017.712615 & 567.482251 & 57.479500 & 12.172331 &
-5.456857e+07 & 2.052585e+07 \\
-West Bank and Gaza & 3759.996781 & 1716.840614 & 60.328667 & 11.000069 &
-1.848606e+06 & 1.023057e+06 \\
-Yemen, Rep. & 1569.274672 & 609.939160 & 46.780417 & 11.019302 &
-1.084319e+07 & 5.590408e+06 \\
-Zambia & 1358.199409 & 247.494984 & 45.996333 & 4.453246 & 6.353805e+06
-& 3.096949e+06 \\
-Zimbabwe & 635.858042 & 133.689213 & 52.663167 & 7.071816 & 7.641966e+06
-& 3.376895e+06 \\
 \end{longtable}
 
 \hypertarget{custom-aggregation}{%
@@ -19340,9 +19379,54 @@ function is to be applied, and the values are the list of strings that
 are the function names, or a list of tuples if we also wish to name the
 aggregated columns.
 
-\textbf{Example:} For each country, find the mean and standard deviation
-of the \texttt{lifeExp}, and the minimum and maximum values of
-gdpPercap.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We can use a list to apply multiple aggregation functions to a single column, and a dictionary to specify different functions for multiple columns}
+\CommentTok{\# Use string names for the aggregation functions}
+\NormalTok{grouped\_country.agg(\{}\StringTok{"gdpPercap"}\NormalTok{: [}\StringTok{"mean"}\NormalTok{, }\StringTok{"std"}\NormalTok{], }\StringTok{"lifeExp"}\NormalTok{: [}\StringTok{"median"}\NormalTok{, }\StringTok{"std"}\NormalTok{], }\StringTok{"pop"}\NormalTok{: [}\StringTok{"max"}\NormalTok{, }\StringTok{"min"}\NormalTok{]\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+gdpPercap} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+pop} \\
+& mean & std & median & std & max & min \\
+country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 802.674598 & 108.202929 & 39.1460 & 5.098646 & 31889923 &
+8425333 \\
+Albania & 3255.366633 & 1192.351513 & 69.6750 & 6.322911 & 3600523 &
+1282697 \\
+Algeria & 4426.025973 & 1310.337656 & 59.6910 & 10.340069 & 33333216 &
+9279525 \\
+Angola & 3607.100529 & 1165.900251 & 39.6945 & 4.005276 & 12420476 &
+4232095 \\
+Argentina & 8955.553783 & 1862.583151 & 69.2115 & 4.186470 & 40301927 &
+17876956 \\
+... & ... & ... & ... & ... & ... & ... \\
+Vietnam & 1017.712615 & 567.482251 & 57.2900 & 12.172331 & 85262356 &
+26246839 \\
+West Bank and Gaza & 3759.996781 & 1716.840614 & 62.5855 & 11.000069 &
+4018332 & 1030585 \\
+Yemen, Rep. & 1569.274672 & 609.939160 & 46.6440 & 11.019302 & 22211743
+& 4963829 \\
+Zambia & 1358.199409 & 247.494984 & 46.0615 & 4.453246 & 11746035 &
+2672000 \\
+Zimbabwe & 635.858042 & 133.689213 & 53.1765 & 7.071816 & 12311143 &
+3080907 \\
+\end{longtable}
+
+Next, for each country, find the mean and standard deviation of the
+\texttt{lifeExp}, and the minimum and maximum values of gdpPercap.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19701,7 +19785,7 @@ for each combination of grouping columns across several variables.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# its columns are MultiIndex}
+\CommentTok{\# its columns are also two levels deep}
 \NormalTok{grouped\_continent\_contry\_multi.columns.nlevels}
 \end{Highlighting}
 \end{Shaded}
@@ -19712,7 +19796,7 @@ for each combination of grouping columns across several variables.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# get the population mean for the \textquotesingle{}\textquotesingle{}Americas\textquotesingle{} continent and \textquotesingle{}United States\textquotesingle{} country}
+\CommentTok{\# pass a tuple to the loc() method to access the values of the multi{-}level columns with a multi{-}level index}
 \NormalTok{grouped\_continent\_contry\_multi.loc[(}\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{), (}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
@@ -19781,7 +19865,7 @@ Now we'll use the \texttt{apply()} method to apply the
 \NormalTok{top\_life\_expectancy }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)[[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]].}\BuiltInTok{apply}\NormalTok{(top\_3\_life\_expectancy).reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 
 \CommentTok{\# Display the result}
-\NormalTok{top\_life\_expectancy}
+\NormalTok{top\_life\_expectancy.head()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -19797,16 +19881,6 @@ Now we'll use the \texttt{apply()} method to apply the
 2 & Africa & Reunion & 1997 & 74.772 & 6071.941411 \\
 3 & Americas & Canada & 2007 & 80.653 & 36319.235010 \\
 4 & Americas & Canada & 2002 & 79.770 & 33328.965070 \\
-5 & Americas & Costa Rica & 2007 & 78.782 & 9645.061420 \\
-6 & Asia & Japan & 2007 & 82.603 & 31656.068060 \\
-7 & Asia & Hong Kong, China & 2007 & 82.208 & 39724.978670 \\
-8 & Asia & Japan & 2002 & 82.000 & 28604.591900 \\
-9 & Europe & Iceland & 2007 & 81.757 & 36180.789190 \\
-10 & Europe & Switzerland & 2007 & 81.701 & 37506.419070 \\
-11 & Europe & Spain & 2007 & 80.941 & 28821.063700 \\
-12 & Oceania & Australia & 2007 & 81.235 & 34435.367440 \\
-13 & Oceania & Australia & 2002 & 80.370 & 30687.754730 \\
-14 & Oceania & New Zealand & 2007 & 80.204 & 25185.009110 \\
 \end{longtable}
 
 The \texttt{top\_3\_life\_expectancy()} function is applied to each
@@ -20149,11 +20223,11 @@ Now, let us see the number of track of each genre in our sample.
 
 \begin{verbatim}
 continent
-Africa      223
-Asia        154
-Europe      149
-Americas    116
-Oceania       8
+Africa      227
+Asia        148
+Europe      133
+Americas    130
+Oceania      12
 Name: count, dtype: int64
 \end{verbatim}
 
@@ -20170,7 +20244,7 @@ each of the continent-based groups.
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_27236\739424435.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+C:\Users\lsi8012\AppData\Local\Temp\ipykernel_22244\739424435.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   evenly_sampled_lifeExp_data = gdp_lifeExp_data.groupby('continent').apply(lambda x:x.sample(20))
 \end{verbatim}
 
@@ -20333,7 +20407,7 @@ to summarize data:
   and maximum values within each group.
 \end{itemize}
 
-We can use also use custom \emph{GroupBy} aggregate functions with
+We can also use custom \emph{GroupBy} aggregate functions with
 \texttt{pivot\_table()}.
 
 \textbf{Example}: Find the \(90^{th}\) percentile of life expectancy for
@@ -20629,6 +20703,1718 @@ unique tracks (\texttt{track\_name}) contributed by these artists.
 Divide this number by the total number of unique tracks in the data. The
 \texttt{nunique()} function will be useful.
 
+\hypertarget{data-reshaping-and-enriching}{%
+\chapter{Data Reshaping and
+Enriching}\label{data-reshaping-and-enriching}}
+
+In this chapter, we will explore how to reshape and enrich data using
+pandas. Data reshaping and enriching are essential steps in data
+preprocessing because they help transform raw data into a more
+structured, useful, and meaningful format that can be effectively used
+for analysis or modeling.
+
+\begin{verbatim}
+<IPython.core.display.HTML object>
+\end{verbatim}
+
+\hypertarget{data-reshaping}{%
+\subsection{Data Reshaping}\label{data-reshaping}}
+
+Data reshaping involves altering the structure of the data to suit the
+requirements of the analysis or modeling process. This is often needed
+when the data is in a format that is difficult to analyze or when it
+needs to be organized in a specific way.
+
+\hypertarget{why-data-reshaping-is-important}{%
+\subsubsection{Why Data Reshaping is
+Important:}\label{why-data-reshaping-is-important}}
+
+\begin{itemize}
+\item
+  \textbf{Improves Data Organization}: Raw data may be in a long format,
+  where each observation is recorded on a separate row, or it may be in
+  a wide format, where the same variable is spread across multiple
+  columns. Reshaping allows you to reorganize the data into a format
+  that is more suitable for analysis, such as turning multiple columns
+  into a single column (melting) or aggregating rows into summary
+  statistics (pivoting).
+\item
+  \textbf{Facilitates Analysis}: Some analysis techniques require
+  specific data formats. For example, many machine learning algorithms
+  require data in a matrix form, where each row represents a sample and
+  each column represents a feature. Reshaping helps to convert data into
+  this format.
+\item
+  \textbf{Simplifies Visualization}: Visualizing data is easier when it
+  is in the right shape. For instance, plotting categorical data across
+  time is easier when the data is in a tidy format, rather than having
+  multiple variables spread across columns.
+\item
+  \textbf{Efficient Grouping and Aggregation}: In some cases, you may
+  want to group data by certain categories or time periods, and
+  reshaping can help aggregate data effectively for summarization.
+\end{itemize}
+
+\hypertarget{wide-vs.-long-data-format-in-data-reshaping}{%
+\subsubsection{Wide vs.~Long Data Format in Data
+Reshaping}\label{wide-vs.-long-data-format-in-data-reshaping}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Wide Format}: Each variable in its own column; each row
+  represents a unit, and data for multiple variables is spread across
+  columns.
+\item
+  \textbf{Long Format}: Variables are stacked into one column per
+  variable, with additional columns used to indicate time, categories,
+  or other distinctions, leading to a greater number of rows.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{index_files/mediabag/.webp}
+
+}
+
+\caption{Alt text}
+
+\end{figure}
+
+To reshape between these two formats, you can use pandas functions such
+as \texttt{pivot\_table()}, \texttt{melt()}, \texttt{stack()}, and
+\texttt{unstack()}. Let's next take a look at each of these methods one
+by one.
+
+Throughout this section, we will continue using the
+\emph{gdp\_lifeExpectancy.csv} dataset. Let's start by reading the CSV
+file into a pandas DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\OperatorTok{\%}\NormalTok{matplotlib inline}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the data}
+\NormalTok{gdp\_lifeExp\_data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/gdp\_lifeExpectancy.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_lifeExp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& country & continent & year & lifeExp & pop & gdpPercap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.445314 \\
+1 & Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.853030 \\
+2 & Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.100710 \\
+3 & Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.197138 \\
+4 & Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.981106 \\
+\end{longtable}
+
+\hypertarget{pivoting-long-to-wide-using-pivot_table}{%
+\subsubsection{\texorpdfstring{Pivoting ``long'' to ``wide'' using
+\texttt{pivot\_table()}}{Pivoting ``long'' to ``wide'' using pivot\_table()}}\label{pivoting-long-to-wide-using-pivot_table}}
+
+In the last chapter, we learned that \texttt{pivot\_table()} is a
+powerful tool for performing groupwise aggregation in a structured
+format. The \texttt{pivot\_table()} function is used to reshape data by
+specifying columns for the index, columns, and values.
+
+\hypertarget{pivoting-a-single-column}{%
+\paragraph{Pivoting a single column}\label{pivoting-a-single-column}}
+
+Consider the life expectancy dataset. Let's calculate the average life
+expectancy for each combination of country and year.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data\_pivot }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.pivot\_table(index}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{], columns}\OperatorTok{=}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{, values}\OperatorTok{=}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, aggfunc}\OperatorTok{=}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_lifeExp\_data\_pivot.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+& year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 \\
+continent & country & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 43.077 & 45.685 & 48.303 & 51.407 &
+54.518 & 58.014 & 61.368 & 65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
+& Angola & 30.015 & 31.999 & 34.000 & 35.985 & 37.928 & 39.483 & 39.942
+& 39.906 & 40.647 & 40.963 & 41.003 & 42.731 \\
+& Benin & 38.223 & 40.358 & 42.618 & 44.885 & 47.014 & 49.190 & 50.904 &
+52.337 & 53.919 & 54.777 & 54.406 & 56.728 \\
+& Botswana & 47.622 & 49.618 & 51.520 & 53.298 & 56.024 & 59.319 &
+61.484 & 63.622 & 62.745 & 52.556 & 46.634 & 50.728 \\
+& Burkina Faso & 31.975 & 34.906 & 37.814 & 40.697 & 43.591 & 46.137 &
+48.122 & 49.557 & 50.260 & 50.324 & 50.650 & 52.295 \\
+\end{longtable}
+
+\textbf{Explanation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{values}: Specifies the column to aggregate (e.g.,
+  \texttt{lifeExp} in our example).
+\item
+  \textbf{index}: Groups by the rows based on the \texttt{continent} and
+  \texttt{country} column.
+\item
+  \textbf{columns}: Groups by the columns based on the \texttt{year}
+  column.
+\item
+  \textbf{aggfunc}: Uses \texttt{mean} to calculate the average life
+  expectancy.
+\end{itemize}
+
+With values of \texttt{year} as columns, it is easy to compare any
+metric for different years.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#visualizing the change in life expectancy of all countries in 2007 as compared to that in 1957, i.e., the overall change in life expectancy in 50 years. }
+\NormalTok{sns.scatterplot(data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data\_pivot, x }\OperatorTok{=} \DecValTok{1957}\NormalTok{,y}\OperatorTok{=}\DecValTok{2007}\NormalTok{,hue }\OperatorTok{=} \StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{)}
+\NormalTok{sns.lineplot(data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data\_pivot, x }\OperatorTok{=} \DecValTok{1957}\NormalTok{,y }\OperatorTok{=} \DecValTok{1957}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Data wrangling_files/figure-pdf/cell-6-output-1.png}
+
+}
+
+\end{figure}
+
+Observe that for some African countries, the life expectancy has
+decreased after 50 years. It is worth investigating these countries to
+identify factors associated with the decrease.
+
+\hypertarget{pivoting-multiple-columns}{%
+\paragraph{Pivoting multiple columns}\label{pivoting-multiple-columns}}
+
+In the above transformation, we retained only \texttt{lifeExp} in the
+\emph{`wide'} dataset. Suppose, we are also interested in visualizing
+GDP per capita of countries in one year against another year. In that
+case, we must have \texttt{gdpPercap} in the \emph{'wide}'-form data as
+well.
+
+Let us create a dataset named as \texttt{data\_wide\_lifeExp\_gdpPercap}
+that will contain both \texttt{lifeExp} and \texttt{gdpPercap} for each
+year in a separate column. We will specify the columns to pivot in the
+\emph{values} argument of the \texttt{pivot()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_wide\_lifeExp\_gdpPercap }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.pivot\_table(index }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{],columns }\OperatorTok{=} \StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{,values }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{])}
+\NormalTok{data\_wide\_lifeExp\_gdpPercap.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllllllllllllll@{}}
+\toprule\noalign{}
+& &
+\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}}{%
+gdpPercap} & ... &
+\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}@{}}{%
+lifeExp} \\
+& year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & ... & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 & 1997 &
+2002 & 2007 \\
+continent & country & & & & & & & & & & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 2449.008185 & 3013.976023 &
+2550.816880 & 3246.991771 & 4182.663766 & 4910.416756 & 5745.160213 &
+5681.358539 & 5023.216647 & 4797.295051 & ... & 48.303 & 51.407 & 54.518
+& 58.014 & 61.368 & 65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
+& Angola & 3520.610273 & 3827.940465 & 4269.276742 & 5522.776375 &
+5473.288005 & 3008.647355 & 2756.953672 & 2430.208311 & 2627.845685 &
+2277.140884 & ... & 34.000 & 35.985 & 37.928 & 39.483 & 39.942 & 39.906
+& 40.647 & 40.963 & 41.003 & 42.731 \\
+& Benin & 1062.752200 & 959.601080 & 949.499064 & 1035.831411 &
+1085.796879 & 1029.161251 & 1277.897616 & 1225.856010 & 1191.207681 &
+1232.975292 & ... & 42.618 & 44.885 & 47.014 & 49.190 & 50.904 & 52.337
+& 53.919 & 54.777 & 54.406 & 56.728 \\
+& Botswana & 851.241141 & 918.232535 & 983.653976 & 1214.709294 &
+2263.611114 & 3214.857818 & 4551.142150 & 6205.883850 & 7954.111645 &
+8647.142313 & ... & 51.520 & 53.298 & 56.024 & 59.319 & 61.484 & 63.622
+& 62.745 & 52.556 & 46.634 & 50.728 \\
+& Burkina Faso & 543.255241 & 617.183465 & 722.512021 & 794.826560 &
+854.735976 & 743.387037 & 807.198586 & 912.063142 & 931.752773 &
+946.294962 & ... & 37.814 & 40.697 & 43.591 & 46.137 & 48.122 & 49.557 &
+50.260 & 50.324 & 50.650 & 52.295 \\
+\end{longtable}
+
+The metric for each year is now in a separate column, and can be
+visualized directly. Note that re-arranging the dataset from the
+\emph{`long'}-form to \emph{`wide-form'} leads to hierarchical indexing
+of columns when multiple \emph{`values'} need to be re-arranged. In this
+case, the multiple \emph{`values'} that need to be re-arranged are
+\texttt{lifeExp} and \texttt{gdpPercap}.
+
+\textbf{Common Aggregation Functions in \texttt{pivot\_table()}}
+
+You can use various aggregation functions within \texttt{pivot\_table()}
+to summarize data:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{mean}} -- Calculates the average of values within each
+  group.
+\item
+  \textbf{\texttt{sum}} -- Computes the total of values within each
+  group.
+\item
+  \textbf{\texttt{count}} -- Counts the number of non-null entries
+  within each group.
+\item
+  \textbf{\texttt{min}} and \textbf{\texttt{max}} -- Finds the minimum
+  and maximum values within each group.
+\end{itemize}
+
+We can also define our own custom aggregation function and pass it to
+the \texttt{aggfunc} parameter of the \texttt{pivot\_table()} function
+
+\textbf{For Example:} Find the \(90^{th}\) percentile of life expectancy
+for each country and year combination
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pd.pivot\_table(data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data, values }\OperatorTok{=} \StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{,index }\OperatorTok{=} \StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{, columns }\OperatorTok{=}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{,aggfunc }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ x:np.percentile(x,}\DecValTok{90}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 \\
+country & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Afghanistan & 28.801 & 30.332 & 31.997 & 34.020 & 36.088 & 38.438 &
+39.854 & 40.822 & 41.674 & 41.763 & 42.129 & 43.828 \\
+Albania & 55.230 & 59.280 & 64.820 & 66.220 & 67.690 & 68.930 & 70.420 &
+72.000 & 71.581 & 72.950 & 75.651 & 76.423 \\
+Algeria & 43.077 & 45.685 & 48.303 & 51.407 & 54.518 & 58.014 & 61.368 &
+65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
+Angola & 30.015 & 31.999 & 34.000 & 35.985 & 37.928 & 39.483 & 39.942 &
+39.906 & 40.647 & 40.963 & 41.003 & 42.731 \\
+Argentina & 62.485 & 64.399 & 65.142 & 65.634 & 67.065 & 68.481 & 69.942
+& 70.774 & 71.868 & 73.275 & 74.340 & 75.320 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
+... \\
+Vietnam & 40.412 & 42.887 & 45.363 & 47.838 & 50.254 & 55.764 & 58.816 &
+62.820 & 67.662 & 70.672 & 73.017 & 74.249 \\
+West Bank and Gaza & 43.160 & 45.671 & 48.127 & 51.631 & 56.532 & 60.765
+& 64.406 & 67.046 & 69.718 & 71.096 & 72.370 & 73.422 \\
+Yemen, Rep. & 32.548 & 33.970 & 35.180 & 36.984 & 39.848 & 44.175 &
+49.113 & 52.922 & 55.599 & 58.020 & 60.308 & 62.698 \\
+Zambia & 42.038 & 44.077 & 46.023 & 47.768 & 50.107 & 51.386 & 51.821 &
+50.821 & 46.100 & 40.238 & 39.193 & 42.384 \\
+Zimbabwe & 48.451 & 50.469 & 52.358 & 53.995 & 55.635 & 57.674 & 60.363
+& 62.351 & 60.377 & 46.809 & 39.989 & 43.487 \\
+\end{longtable}
+
+\hypertarget{melting-wide-to-long-using-melt}{%
+\subsubsection{\texorpdfstring{Melting ``wide'' to ``long'' using
+\texttt{melt()}}{Melting ``wide'' to ``long'' using melt()}}\label{melting-wide-to-long-using-melt}}
+
+Melting is the \textbf{inverse} of pivoting. It transforms columns into
+rows. The \texttt{melt()} function is used when you want to unpivot a
+DataFrame, turning multiple columns into rows.
+
+Let's first consider \emph{gdp\_lifeExp\_data\_pivot} created in the
+previous section
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data\_pivot.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+& year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & 2002 & 2007 \\
+continent & country & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 43.077 & 45.685 & 48.303 & 51.407 &
+54.518 & 58.014 & 61.368 & 65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
+& Angola & 30.015 & 31.999 & 34.000 & 35.985 & 37.928 & 39.483 & 39.942
+& 39.906 & 40.647 & 40.963 & 41.003 & 42.731 \\
+& Benin & 38.223 & 40.358 & 42.618 & 44.885 & 47.014 & 49.190 & 50.904 &
+52.337 & 53.919 & 54.777 & 54.406 & 56.728 \\
+& Botswana & 47.622 & 49.618 & 51.520 & 53.298 & 56.024 & 59.319 &
+61.484 & 63.622 & 62.745 & 52.556 & 46.634 & 50.728 \\
+& Burkina Faso & 31.975 & 34.906 & 37.814 & 40.697 & 43.591 & 46.137 &
+48.122 & 49.557 & 50.260 & 50.324 & 50.650 & 52.295 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_data\_pivot.melt(value\_name}\OperatorTok{=}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, var\_name}\OperatorTok{=}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{, ignore\_index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& & year & lifeExp \\
+continent & country & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 1952 & 43.077 \\
+& Angola & 1952 & 30.015 \\
+& Benin & 1952 & 38.223 \\
+& Botswana & 1952 & 47.622 \\
+& Burkina Faso & 1952 & 31.975 \\
+... & ... & ... & ... \\
+\multirow{3}{*}{Europe} & Switzerland & 2007 & 81.701 \\
+& Turkey & 2007 & 71.777 \\
+& United Kingdom & 2007 & 79.425 \\
+\multirow{2}{*}{Oceania} & Australia & 2007 & 81.235 \\
+& New Zealand & 2007 & 80.204 \\
+\end{longtable}
+
+With the above DataFrame, we can visualize the mean life expectancy
+against year separately for each country in each continent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_wide\_lifeExp\_gdpPercap}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllllllllllllll@{}}
+\toprule\noalign{}
+& &
+\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}}{%
+gdpPercap} & ... &
+\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}@{}}{%
+lifeExp} \\
+& year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
+1997 & ... & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 & 1997 &
+2002 & 2007 \\
+continent & country & & & & & & & & & & & & & & & & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 2449.008185 & 3013.976023 &
+2550.816880 & 3246.991771 & 4182.663766 & 4910.416756 & 5745.160213 &
+5681.358539 & 5023.216647 & 4797.295051 & ... & 48.303 & 51.407 & 54.518
+& 58.014 & 61.368 & 65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
+& Angola & 3520.610273 & 3827.940465 & 4269.276742 & 5522.776375 &
+5473.288005 & 3008.647355 & 2756.953672 & 2430.208311 & 2627.845685 &
+2277.140884 & ... & 34.000 & 35.985 & 37.928 & 39.483 & 39.942 & 39.906
+& 40.647 & 40.963 & 41.003 & 42.731 \\
+& Benin & 1062.752200 & 959.601080 & 949.499064 & 1035.831411 &
+1085.796879 & 1029.161251 & 1277.897616 & 1225.856010 & 1191.207681 &
+1232.975292 & ... & 42.618 & 44.885 & 47.014 & 49.190 & 50.904 & 52.337
+& 53.919 & 54.777 & 54.406 & 56.728 \\
+& Botswana & 851.241141 & 918.232535 & 983.653976 & 1214.709294 &
+2263.611114 & 3214.857818 & 4551.142150 & 6205.883850 & 7954.111645 &
+8647.142313 & ... & 51.520 & 53.298 & 56.024 & 59.319 & 61.484 & 63.622
+& 62.745 & 52.556 & 46.634 & 50.728 \\
+& Burkina Faso & 543.255241 & 617.183465 & 722.512021 & 794.826560 &
+854.735976 & 743.387037 & 807.198586 & 912.063142 & 931.752773 &
+946.294962 & ... & 37.814 & 40.697 & 43.591 & 46.137 & 48.122 & 49.557 &
+50.260 & 50.324 & 50.650 & 52.295 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+\multirow{3}{*}{Europe} & Switzerland & 14734.232750 & 17909.489730 &
+20431.092700 & 22966.144320 & 27195.113040 & 26982.290520 & 28397.715120
+& 30281.704590 & 31871.530300 & 32135.323010 & ... & 71.320 & 72.770 &
+73.780 & 75.390 & 76.210 & 77.410 & 78.030 & 79.370 & 80.620 & 81.701 \\
+& Turkey & 1969.100980 & 2218.754257 & 2322.869908 & 2826.356387 &
+3450.696380 & 4269.122326 & 4241.356344 & 5089.043686 & 5678.348271 &
+6601.429915 & ... & 52.098 & 54.336 & 57.005 & 59.507 & 61.036 & 63.108
+& 66.146 & 68.835 & 70.845 & 71.777 \\
+& United Kingdom & 9979.508487 & 11283.177950 & 12477.177070 &
+14142.850890 & 15895.116410 & 17428.748460 & 18232.424520 & 21664.787670
+& 22705.092540 & 26074.531360 & ... & 70.760 & 71.360 & 72.010 & 72.760
+& 74.040 & 75.007 & 76.420 & 77.218 & 78.471 & 79.425 \\
+\multirow{2}{*}{Oceania} & Australia & 10039.595640 & 10949.649590 &
+12217.226860 & 14526.124650 & 16788.629480 & 18334.197510 & 19477.009280
+& 21888.889030 & 23424.766830 & 26997.936570 & ... & 70.930 & 71.100 &
+71.930 & 73.490 & 74.740 & 76.320 & 77.560 & 78.830 & 80.370 & 81.235 \\
+& New Zealand & 10556.575660 & 12247.395320 & 13175.678000 &
+14463.918930 & 16046.037280 & 16233.717700 & 17632.410400 & 19007.191290
+& 18363.324940 & 21050.413770 & ... & 71.240 & 71.520 & 71.890 & 72.220
+& 73.840 & 74.320 & 76.330 & 77.550 & 79.110 & 80.204 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_melt }\OperatorTok{=}\NormalTok{ pd.melt(data\_wide\_lifeExp\_gdpPercap.reset\_index(), id\_vars }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{], var\_name }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Metric\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{])}
+\NormalTok{data\_melt.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+KeyError: "The following id_vars or value_vars are not present in the DataFrame: ['continent', 'country']"
+\end{verbatim}
+
+\hypertarget{stacking-and-unstacking-using-stack-and-unstack}{%
+\subsubsection{\texorpdfstring{Stacking and Unstacking using
+\texttt{stack()} and
+\texttt{unstack()}}{Stacking and Unstacking using stack() and unstack()}}\label{stacking-and-unstacking-using-stack-and-unstack}}
+
+Stacking and unstacking are powerful techniques used to reshape
+DataFrames by moving data between rows and columns. These operations are
+particularly useful when working with \textbf{multi-level index} or
+\textbf{multi-level columns}, where the data is structured in a
+hierarchical format.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{stack()}: Converts columns into rows, which means it
+  ``stacks'' the data into a long format.
+\item
+  \texttt{unstack()}: Converts rows into columns, reversing the effect
+  of \texttt{stack()}.
+\end{itemize}
+
+Let's use the GDP per capita dataset and create a DataFrame with a
+multi-level index (e.g., continent, country) and multi-level columns
+(e.g., lifeExp , gdpPercap, and pop).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculate the average and standard deviation of life expectancy, population, and GDP per capita for countries across the years.}
+
+\NormalTok{gdp\_lifeExp\_multilevel\_data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{])[[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}pop\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]].agg([}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}std\textquotesingle{}}\NormalTok{])}
+\NormalTok{gdp\_lifeExp\_multilevel\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+pop} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+gdpPercap} \\
+& & mean & std & mean & std & mean & std \\
+continent & country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 59.030167 & 10.340069 & 1.987541e+07
+& 8.613355e+06 & 4426.025973 & 1310.337656 \\
+& Angola & 37.883500 & 4.005276 & 7.309390e+06 & 2.672281e+06 &
+3607.100529 & 1165.900251 \\
+& Benin & 48.779917 & 6.128681 & 4.017497e+06 & 2.105002e+06 &
+1155.395107 & 159.741306 \\
+& Botswana & 54.597500 & 5.929476 & 9.711862e+05 & 4.710965e+05 &
+5031.503557 & 4178.136987 \\
+& Burkina Faso & 44.694000 & 6.845792 & 7.548677e+06 & 3.247808e+06 &
+843.990665 & 183.430087 \\
+... & ... & ... & ... & ... & ... & ... & ... \\
+\multirow{3}{*}{Europe} & Switzerland & 75.565083 & 4.011572 &
+6.384293e+06 & 8.582009e+05 & 27074.334405 & 6886.463308 \\
+& Turkey & 59.696417 & 9.030591 & 4.590901e+07 & 1.667768e+07 &
+4469.453380 & 2049.665102 \\
+& United Kingdom & 73.922583 & 3.378943 & 5.608780e+07 & 3.174339e+06 &
+19380.472986 & 7388.189399 \\
+\multirow{2}{*}{Oceania} & Australia & 74.662917 & 4.147774 &
+1.464931e+07 & 3.915203e+06 & 19980.595634 & 7815.405220 \\
+& New Zealand & 73.989500 & 3.559724 & 3.100032e+06 & 6.547108e+05 &
+17262.622813 & 4409.009167 \\
+\end{longtable}
+
+The resulting DataFrame has two levels of index and two levels of
+columns, as shown below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# check the level of row and column index}
+\NormalTok{gdp\_lifeExp\_multilevel\_data.index.nlevels}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns.nlevels}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+if you want to see the data along with the index and columns (in a more
+accessible way), you can directly print the \texttt{.index} and
+\texttt{.columns} attributes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+MultiIndex([( 'Africa',                  'Algeria'),
+            ( 'Africa',                   'Angola'),
+            ( 'Africa',                    'Benin'),
+            ( 'Africa',                 'Botswana'),
+            ( 'Africa',             'Burkina Faso'),
+            ( 'Africa',                  'Burundi'),
+            ( 'Africa',                 'Cameroon'),
+            ( 'Africa', 'Central African Republic'),
+            ( 'Africa',                     'Chad'),
+            ( 'Africa',                  'Comoros'),
+            ...
+            ( 'Europe',                   'Serbia'),
+            ( 'Europe',          'Slovak Republic'),
+            ( 'Europe',                 'Slovenia'),
+            ( 'Europe',                    'Spain'),
+            ( 'Europe',                   'Sweden'),
+            ( 'Europe',              'Switzerland'),
+            ( 'Europe',                   'Turkey'),
+            ( 'Europe',           'United Kingdom'),
+            ('Oceania',                'Australia'),
+            ('Oceania',              'New Zealand')],
+           names=['continent', 'country'], length=142)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+MultiIndex([(  'lifeExp', 'mean'),
+            (  'lifeExp',  'std'),
+            (      'pop', 'mean'),
+            (      'pop',  'std'),
+            ('gdpPercap', 'mean'),
+            ('gdpPercap',  'std')],
+           )
+\end{verbatim}
+
+As seen, \textbf{the index and columns each contain tuples}. This is the
+reason that when performing data subsetting on a DataFrame with
+multi-level index and columns, you need to supply a tuple to specify the
+exact location of the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.loc[(}\StringTok{\textquotesingle{}Americas\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{), (}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+73.4785
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns.values}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([('lifeExp', 'mean'), ('lifeExp', 'std'), ('pop', 'mean'),
+       ('pop', 'std'), ('gdpPercap', 'mean'), ('gdpPercap', 'std')],
+      dtype=object)
+\end{verbatim}
+
+\hypertarget{understanding-the-level-in-multi-level-index-and-columns}{%
+\paragraph{\texorpdfstring{Understanding the \texttt{level} in
+multi-level index and
+columns}{Understanding the level in multi-level index and columns}}\label{understanding-the-level-in-multi-level-index-and-columns}}
+
+The \texttt{gdp\_lifeExp\_multilevel\_data} dataframe have two levels of
+index and two level of columns, You can reference these levels in
+various operations, such as grouping, subsetting, or performing
+aggregations. The \texttt{level} parameter helps identify which part of
+the multi-level structure you're working with.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.index.get\_level\_values(}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['Africa', 'Africa', 'Africa', 'Africa', 'Africa', 'Africa', 'Africa',
+       'Africa', 'Africa', 'Africa',
+       ...
+       'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe',
+       'Europe', 'Oceania', 'Oceania'],
+      dtype='object', name='continent', length=142)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.index.get\_level\_values(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns.get\_level\_values(}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['lifeExp', 'lifeExp', 'pop', 'pop', 'gdpPercap', 'gdpPercap'], dtype='object')
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns.get\_level\_values(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['mean', 'std', 'mean', 'std', 'mean', 'std'], dtype='object')
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns.get\_level\_values(}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Index(['mean', 'std', 'mean', 'std', 'mean', 'std'], dtype='object')
+\end{verbatim}
+
+As seen above, the outermost level corresponds to \texttt{level=0}, and
+it increases as we move inward to the inner levels. The innermost level
+can be referred to as \texttt{-1}.
+
+Now, let's use the level number in the \texttt{droplevel()} method to
+see how it works. The syntax for this method is as follows:
+
+\texttt{DataFrame.droplevel(level,\ axis=0)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# drop the first level of row index}
+\NormalTok{gdp\_lifeExp\_multilevel\_data.droplevel(}\DecValTok{0}\NormalTok{, axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+pop} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+gdpPercap} \\
+& mean & std & mean & std & mean & std \\
+country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Algeria & 59.030167 & 10.340069 & 1.987541e+07 & 8.613355e+06 &
+4426.025973 & 1310.337656 \\
+Angola & 37.883500 & 4.005276 & 7.309390e+06 & 2.672281e+06 &
+3607.100529 & 1165.900251 \\
+Benin & 48.779917 & 6.128681 & 4.017497e+06 & 2.105002e+06 & 1155.395107
+& 159.741306 \\
+Botswana & 54.597500 & 5.929476 & 9.711862e+05 & 4.710965e+05 &
+5031.503557 & 4178.136987 \\
+Burkina Faso & 44.694000 & 6.845792 & 7.548677e+06 & 3.247808e+06 &
+843.990665 & 183.430087 \\
+... & ... & ... & ... & ... & ... & ... \\
+Switzerland & 75.565083 & 4.011572 & 6.384293e+06 & 8.582009e+05 &
+27074.334405 & 6886.463308 \\
+Turkey & 59.696417 & 9.030591 & 4.590901e+07 & 1.667768e+07 &
+4469.453380 & 2049.665102 \\
+United Kingdom & 73.922583 & 3.378943 & 5.608780e+07 & 3.174339e+06 &
+19380.472986 & 7388.189399 \\
+Australia & 74.662917 & 4.147774 & 1.464931e+07 & 3.915203e+06 &
+19980.595634 & 7815.405220 \\
+New Zealand & 73.989500 & 3.559724 & 3.100032e+06 & 6.547108e+05 &
+17262.622813 & 4409.009167 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# drop the first level of column index}
+\NormalTok{gdp\_lifeExp\_multilevel\_data.droplevel(}\DecValTok{0}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& & mean & std & mean & std & mean & std \\
+continent & country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 59.030167 & 10.340069 & 1.987541e+07
+& 8.613355e+06 & 4426.025973 & 1310.337656 \\
+& Angola & 37.883500 & 4.005276 & 7.309390e+06 & 2.672281e+06 &
+3607.100529 & 1165.900251 \\
+& Benin & 48.779917 & 6.128681 & 4.017497e+06 & 2.105002e+06 &
+1155.395107 & 159.741306 \\
+& Botswana & 54.597500 & 5.929476 & 9.711862e+05 & 4.710965e+05 &
+5031.503557 & 4178.136987 \\
+& Burkina Faso & 44.694000 & 6.845792 & 7.548677e+06 & 3.247808e+06 &
+843.990665 & 183.430087 \\
+... & ... & ... & ... & ... & ... & ... & ... \\
+\multirow{3}{*}{Europe} & Switzerland & 75.565083 & 4.011572 &
+6.384293e+06 & 8.582009e+05 & 27074.334405 & 6886.463308 \\
+& Turkey & 59.696417 & 9.030591 & 4.590901e+07 & 1.667768e+07 &
+4469.453380 & 2049.665102 \\
+& United Kingdom & 73.922583 & 3.378943 & 5.608780e+07 & 3.174339e+06 &
+19380.472986 & 7388.189399 \\
+\multirow{2}{*}{Oceania} & Australia & 74.662917 & 4.147774 &
+1.464931e+07 & 3.915203e+06 & 19980.595634 & 7815.405220 \\
+& New Zealand & 73.989500 & 3.559724 & 3.100032e+06 & 6.547108e+05 &
+17262.622813 & 4409.009167 \\
+\end{longtable}
+
+\hypertarget{stacking-columns-to-rows-stack}{%
+\subsubsection{\texorpdfstring{Stacking (Columns to Rows ):
+\texttt{stack()}}{Stacking (Columns to Rows ): stack()}}\label{stacking-columns-to-rows-stack}}
+
+The \texttt{stack()} function pivots the columns into rows. You can
+specify which level you want to stack using the \texttt{level}
+parameter. By default, it will stack the innermost level of the columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.stack(future\_stack}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& & & lifeExp & pop & gdpPercap \\
+continent & country & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & \multirow{2}{*}{Algeria} & mean & 59.030167 &
+1.987541e+07 & 4426.025973 \\
+& & std & 10.340069 & 8.613355e+06 & 1310.337656 \\
+& \multirow{2}{*}{Angola} & mean & 37.883500 & 7.309390e+06 &
+3607.100529 \\
+& & std & 4.005276 & 2.672281e+06 & 1165.900251 \\
+& Benin & mean & 48.779917 & 4.017497e+06 & 1155.395107 \\
+... & ... & ... & ... & ... & ... \\
+Europe & United Kingdom & std & 3.378943 & 3.174339e+06 & 7388.189399 \\
+\multirow{4}{*}{Oceania} & \multirow{2}{*}{Australia} & mean & 74.662917
+& 1.464931e+07 & 19980.595634 \\
+& & std & 4.147774 & 3.915203e+06 & 7815.405220 \\
+& \multirow{2}{*}{New Zealand} & mean & 73.989500 & 3.100032e+06 &
+17262.622813 \\
+& & std & 3.559724 & 6.547108e+05 & 4409.009167 \\
+\end{longtable}
+
+Let's change the default setting by specifying the \texttt{level=0}(the
+outmost level)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.stack(level}\OperatorTok{=}\DecValTok{0}\NormalTok{, future\_stack}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& & & mean & std \\
+continent & country & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & \multirow{3}{*}{Algeria} & lifeExp &
+5.903017e+01 & 1.034007e+01 \\
+& & pop & 1.987541e+07 & 8.613355e+06 \\
+& & gdpPercap & 4.426026e+03 & 1.310338e+03 \\
+& \multirow{2}{*}{Angola} & lifeExp & 3.788350e+01 & 4.005276e+00 \\
+& & pop & 7.309390e+06 & 2.672281e+06 \\
+... & ... & ... & ... & ... \\
+\multirow{5}{*}{Oceania} & \multirow{2}{*}{Australia} & pop &
+1.464931e+07 & 3.915203e+06 \\
+& & gdpPercap & 1.998060e+04 & 7.815405e+03 \\
+& \multirow{3}{*}{New Zealand} & lifeExp & 7.398950e+01 &
+3.559724e+00 \\
+& & pop & 3.100032e+06 & 6.547108e+05 \\
+& & gdpPercap & 1.726262e+04 & 4.409009e+03 \\
+\end{longtable}
+
+\hypertarget{unstacking-rows-to-columns-unstack}{%
+\subsubsection{\texorpdfstring{Unstacking (Rows to Columns) :
+\texttt{unstack()}}{Unstacking (Rows to Columns) : unstack()}}\label{unstacking-rows-to-columns-unstack}}
+
+The \texttt{unstack()} function pivots the rows back into columns. By
+default, it will unstack the innermost level of the index.
+
+Let's reverse the prevous dataframe to its original shape using
+\texttt{unstack()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.stack(level}\OperatorTok{=}\DecValTok{0}\NormalTok{, future\_stack}\OperatorTok{=}\VariableTok{True}\NormalTok{).unstack()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 4\tabcolsep}}{%
+mean} &
+\multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 4\tabcolsep}@{}}{%
+std} \\
+& & lifeExp & pop & gdpPercap & lifeExp & pop & gdpPercap \\
+continent & country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 59.030167 & 1.987541e+07 &
+4426.025973 & 10.340069 & 8.613355e+06 & 1310.337656 \\
+& Angola & 37.883500 & 7.309390e+06 & 3607.100529 & 4.005276 &
+2.672281e+06 & 1165.900251 \\
+& Benin & 48.779917 & 4.017497e+06 & 1155.395107 & 6.128681 &
+2.105002e+06 & 159.741306 \\
+& Botswana & 54.597500 & 9.711862e+05 & 5031.503557 & 5.929476 &
+4.710965e+05 & 4178.136987 \\
+& Burkina Faso & 44.694000 & 7.548677e+06 & 843.990665 & 6.845792 &
+3.247808e+06 & 183.430087 \\
+... & ... & ... & ... & ... & ... & ... & ... \\
+\multirow{3}{*}{Europe} & Switzerland & 75.565083 & 6.384293e+06 &
+27074.334405 & 4.011572 & 8.582009e+05 & 6886.463308 \\
+& Turkey & 59.696417 & 4.590901e+07 & 4469.453380 & 9.030591 &
+1.667768e+07 & 2049.665102 \\
+& United Kingdom & 73.922583 & 5.608780e+07 & 19380.472986 & 3.378943 &
+3.174339e+06 & 7388.189399 \\
+\multirow{2}{*}{Oceania} & Australia & 74.662917 & 1.464931e+07 &
+19980.595634 & 4.147774 & 3.915203e+06 & 7815.405220 \\
+& New Zealand & 73.989500 & 3.100032e+06 & 17262.622813 & 3.559724 &
+6.547108e+05 & 4409.009167 \\
+\end{longtable}
+
+\hypertarget{transpose}{%
+\subsubsection{Transpose}\label{transpose}}
+
+If you simply want to swap rows and columns, you can use the \texttt{.T}
+attribute.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gdp\_lifeExp\_multilevel\_data.T}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllllllllllllll@{}}
+\toprule\noalign{}
+& continent &
+\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}}{%
+Africa} & ... &
+\multicolumn{8}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 14\tabcolsep}}{%
+Europe} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+Oceania} \\
+& country & Algeria & Angola & Benin & Botswana & Burkina Faso & Burundi
+& Cameroon & Central African Republic & Chad & Comoros & ... & Serbia &
+Slovak Republic & Slovenia & Spain & Sweden & Switzerland & Turkey &
+United Kingdom & Australia & New Zealand \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{2}{*}{lifeExp} & mean & 5.903017e+01 & 3.788350e+01 &
+4.877992e+01 & 54.597500 & 4.469400e+01 & 4.481733e+01 & 4.812850e+01 &
+4.386692e+01 & 4.677358e+01 & 52.381750 & ... & 6.855100e+01 &
+7.069608e+01 & 7.160075e+01 & 7.420342e+01 & 7.617700e+01 & 7.556508e+01
+& 5.969642e+01 & 7.392258e+01 & 7.466292e+01 & 7.398950e+01 \\
+& std & 1.034007e+01 & 4.005276e+00 & 6.128681e+00 & 5.929476 &
+6.845792e+00 & 3.174882e+00 & 5.467960e+00 & 4.720690e+00 & 4.887978e+00
+& 8.132353 & ... & 4.906736e+00 & 2.715787e+00 & 3.677979e+00 &
+5.155859e+00 & 3.003990e+00 & 4.011572e+00 & 9.030591e+00 & 3.378943e+00
+& 4.147774e+00 & 3.559724e+00 \\
+\multirow{2}{*}{pop} & mean & 1.987541e+07 & 7.309390e+06 & 4.017497e+06
+& 971186.166667 & 7.548677e+06 & 4.651608e+06 & 9.816648e+06 &
+2.560963e+06 & 5.329256e+06 & 361683.916667 & ... & 8.783887e+06 &
+4.774507e+06 & 1.794381e+06 & 3.585180e+07 & 8.220029e+06 & 6.384293e+06
+& 4.590901e+07 & 5.608780e+07 & 1.464931e+07 & 3.100032e+06 \\
+& std & 8.613355e+06 & 2.672281e+06 & 2.105002e+06 & 471096.527435 &
+3.247808e+06 & 1.874538e+06 & 4.363640e+06 & 1.072158e+06 & 2.464304e+06
+& 182998.737990 & ... & 1.192153e+06 & 6.425096e+05 & 2.022077e+05 &
+4.323928e+06 & 6.365660e+05 & 8.582009e+05 & 1.667768e+07 & 3.174339e+06
+& 3.915203e+06 & 6.547108e+05 \\
+\multirow{2}{*}{gdpPercap} & mean & 4.426026e+03 & 3.607101e+03 &
+1.155395e+03 & 5031.503557 & 8.439907e+02 & 4.716630e+02 & 1.774634e+03
+& 9.587847e+02 & 1.165454e+03 & 1314.380339 & ... & 9.305049e+03 &
+1.041553e+04 & 1.407458e+04 & 1.402983e+04 & 1.994313e+04 & 2.707433e+04
+& 4.469453e+03 & 1.938047e+04 & 1.998060e+04 & 1.726262e+04 \\
+& std & 1.310338e+03 & 1.165900e+03 & 1.597413e+02 & 4178.136987 &
+1.834301e+02 & 9.932972e+01 & 4.195899e+02 & 1.919529e+02 & 2.305481e+02
+& 298.334389 & ... & 3.829907e+03 & 3.650231e+03 & 6.470288e+03 &
+8.046635e+03 & 7.723248e+03 & 6.886463e+03 & 2.049665e+03 & 7.388189e+03
+& 7.815405e+03 & 4.409009e+03 \\
+\end{longtable}
+
+\hypertarget{summary-of-common-reshaping-functions}{%
+\subsubsection{Summary of Common Reshaping
+Functions:}\label{summary-of-common-reshaping-functions}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1364}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5364}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3273}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Function
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{pivot()} & Reshape data by creating new columns from existing
+ones. & Pivot data on index/columns. \\
+\texttt{melt()} & Unpivot data, turning columns into rows. & Convert
+wide format to long. \\
+\texttt{stack()} & Convert columns to rows. & Move column data to
+rows. \\
+\texttt{unstack()} & Convert rows back to columns. & Move row data to
+columns. \\
+\texttt{.T} & Transpose the DataFrame (swap rows and columns). &
+Transpose the entire DataFrame. \\
+\end{longtable}
+
+\hypertarget{practical-use-cases}{%
+\subsubsection{Practical Use Cases:}\label{practical-use-cases}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pivoting:} Useful for time series analysis or when you want to
+  group and summarize data by specific categories.
+\item
+  \textbf{Melting:} Helpful when you need to reshape wide data for
+  easier analysis or when preparing data for machine learning
+  algorithms.
+\item
+  \textbf{Stacking/Unstacking:} Useful when you are working with
+  hierarchical index DataFrames.
+\item
+  \textbf{Transpose:} Helpful for reorienting data for analysis or
+  visualization.
+\end{itemize}
+
+\hypertarget{converting-from-multi-level-index-to-single-level-index-dataframe}{%
+\subsubsection{Converting from Multi-Level Index to Single-Level Index
+DataFrame}\label{converting-from-multi-level-index-to-single-level-index-dataframe}}
+
+If you're uncomfortable working with DataFrames that have multi-level
+indexes and columns, you can convert them into single-level DataFrames
+using the methods you learned in the previous chapter:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{reset\_index()}
+\item
+  Flattening the multi-level columns
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# reset the index to convert the multi{-}level index to a single{-}level index}
+\NormalTok{gdp\_lifeExp\_multilevel\_data.reset\_index()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& continent & country &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+lifeExp} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+pop} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+gdpPercap} \\
+& & & mean & std & mean & std & mean & std \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Africa & Algeria & 59.030167 & 10.340069 & 1.987541e+07 &
+8.613355e+06 & 4426.025973 & 1310.337656 \\
+1 & Africa & Angola & 37.883500 & 4.005276 & 7.309390e+06 & 2.672281e+06
+& 3607.100529 & 1165.900251 \\
+2 & Africa & Benin & 48.779917 & 6.128681 & 4.017497e+06 & 2.105002e+06
+& 1155.395107 & 159.741306 \\
+3 & Africa & Botswana & 54.597500 & 5.929476 & 9.711862e+05 &
+4.710965e+05 & 5031.503557 & 4178.136987 \\
+4 & Africa & Burkina Faso & 44.694000 & 6.845792 & 7.548677e+06 &
+3.247808e+06 & 843.990665 & 183.430087 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... \\
+137 & Europe & Switzerland & 75.565083 & 4.011572 & 6.384293e+06 &
+8.582009e+05 & 27074.334405 & 6886.463308 \\
+138 & Europe & Turkey & 59.696417 & 9.030591 & 4.590901e+07 &
+1.667768e+07 & 4469.453380 & 2049.665102 \\
+139 & Europe & United Kingdom & 73.922583 & 3.378943 & 5.608780e+07 &
+3.174339e+06 & 19380.472986 & 7388.189399 \\
+140 & Oceania & Australia & 74.662917 & 4.147774 & 1.464931e+07 &
+3.915203e+06 & 19980.595634 & 7815.405220 \\
+141 & Oceania & New Zealand & 73.989500 & 3.559724 & 3.100032e+06 &
+6.547108e+05 & 17262.622813 & 4409.009167 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# flatten the multi{-}level column}
+\NormalTok{gdp\_lifeExp\_multilevel\_data.columns }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}\_\textquotesingle{}}\NormalTok{.join(col).strip() }\ControlFlowTok{for}\NormalTok{ col }\KeywordTok{in}\NormalTok{ gdp\_lifeExp\_multilevel\_data.columns.values]}
+\NormalTok{gdp\_lifeExp\_multilevel\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& & lifeExp\_mean & lifeExp\_std & pop\_mean & pop\_std &
+gdpPercap\_mean & gdpPercap\_std \\
+continent & country & & & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{5}{*}{Africa} & Algeria & 59.030167 & 10.340069 & 1.987541e+07
+& 8.613355e+06 & 4426.025973 & 1310.337656 \\
+& Angola & 37.883500 & 4.005276 & 7.309390e+06 & 2.672281e+06 &
+3607.100529 & 1165.900251 \\
+& Benin & 48.779917 & 6.128681 & 4.017497e+06 & 2.105002e+06 &
+1155.395107 & 159.741306 \\
+& Botswana & 54.597500 & 5.929476 & 9.711862e+05 & 4.710965e+05 &
+5031.503557 & 4178.136987 \\
+& Burkina Faso & 44.694000 & 6.845792 & 7.548677e+06 & 3.247808e+06 &
+843.990665 & 183.430087 \\
+... & ... & ... & ... & ... & ... & ... & ... \\
+\multirow{3}{*}{Europe} & Switzerland & 75.565083 & 4.011572 &
+6.384293e+06 & 8.582009e+05 & 27074.334405 & 6886.463308 \\
+& Turkey & 59.696417 & 9.030591 & 4.590901e+07 & 1.667768e+07 &
+4469.453380 & 2049.665102 \\
+& United Kingdom & 73.922583 & 3.378943 & 5.608780e+07 & 3.174339e+06 &
+19380.472986 & 7388.189399 \\
+\multirow{2}{*}{Oceania} & Australia & 74.662917 & 4.147774 &
+1.464931e+07 & 3.915203e+06 & 19980.595634 & 7815.405220 \\
+& New Zealand & 73.989500 & 3.559724 & 3.100032e+06 & 6.547108e+05 &
+17262.622813 & 4409.009167 \\
+\end{longtable}
+
+\hypertarget{data-enriching}{%
+\section{Data Enriching}\label{data-enriching}}
+
+Data enriching involves enhancing your existing dataset by adding
+additional data, often from external sources, to make your dataset more
+insightful.
+
+\hypertarget{common-methods-for-data-enriching}{%
+\subsection{Common Methods for Data
+Enriching}\label{common-methods-for-data-enriching}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Merging using \texttt{merge()}}: Combining datasets based on a
+  common key.
+\item
+  \textbf{Joining using \texttt{join()}}: Using indices to combine data.
+\item
+  \textbf{Concatenation using \texttt{concat()}}: Stacking DataFrames
+  vertically or horizontally.
+\end{itemize}
+
+Let's first load the existing data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_existing }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./datasets/LOTR.csv\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_existing.shape)}
+\NormalTok{df\_existing.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(4, 3)
+\end{verbatim}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding \\
+1 & 1002 & Samwise & Gardening \\
+2 & 1003 & Gandalf & Spells \\
+3 & 1004 & Pippin & Fireworks \\
+\end{longtable}
+
+Let's next load the external data we want to combine to the existing
+data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_external }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"./datasets/LOTR 2.csv"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_external.shape)}
+\NormalTok{df\_external.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(5, 3)
+\end{verbatim}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & 50 \\
+1 & 1002 & Samwise & 39 \\
+2 & 1006 & Legolas & 2931 \\
+3 & 1007 & Elrond & 6520 \\
+4 & 1008 & Barromir & 51 \\
+\end{longtable}
+
+\hypertarget{combining-based-on-common-keys-merge}{%
+\subsection{\texorpdfstring{Combining based on common keys:
+\texttt{merge()}}{Combining based on common keys: merge()}}\label{combining-based-on-common-keys-merge}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_enriched\_merge }\OperatorTok{=}\NormalTok{ pd.merge(df\_existing, df\_external)}
+\BuiltInTok{print}\NormalTok{(df\_enriched\_merge.shape)}
+\NormalTok{df\_enriched\_merge.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(2, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 50 \\
+1 & 1002 & Samwise & Gardening & 39 \\
+\end{longtable}
+
+You can also do this way
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_enriched\_merge }\OperatorTok{=}\NormalTok{ df\_existing.merge(df\_external)}
+\BuiltInTok{print}\NormalTok{(df\_enriched\_merge.shape)}
+\NormalTok{df\_enriched\_merge.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(2, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 50 \\
+1 & 1002 & Samwise & Gardening & 39 \\
+\end{longtable}
+
+By default, the \texttt{merge()} function in pandas performs an
+\textbf{inner join}, which combines two DataFrames based on the
+\textbf{common keys shared by both}. Only the rows with matching keys in
+both DataFrames are retained in the result.
+
+This behavior can be observed in the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_enriched\_merge }\OperatorTok{=}\NormalTok{ pd.merge(df\_existing, df\_external, how}\OperatorTok{=}\StringTok{\textquotesingle{}inner\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_enriched\_merge.shape)}
+\NormalTok{df\_enriched\_merge.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(2, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 50 \\
+1 & 1002 & Samwise & Gardening & 39 \\
+\end{longtable}
+
+\textbf{When you may use inner join?} You should use inner join when you
+cannot carry out the analysis unless the observation corresponding to
+the \emph{key column(s)} is present in both the tables.
+
+\textbf{Example:} Suppose you wish to analyze the association between
+vaccinations and covid infection rate based on country-level data. In
+one of the datasets, you have the infection rate for each country, while
+in the other one you have the number of vaccinations in each country.
+The countries which have either the vaccination or the infection rate
+missing, cannot help analyze the association. In such as case you may be
+interested only in countries that have values for both the variables.
+Thus, you will use inner join to discard the countries with either value
+missing.
+
+In \texttt{merge()}, the \texttt{how} parameter specifies the type of
+merge to be performed, the default option is \texttt{inner}, it could
+also be \texttt{left}, \texttt{right}, and \texttt{outer}.
+
+These join types give you flexibility in how you want to merge and
+combine data from different sources.
+
+Let's see how each of these works using our dataframes defined above
+
+\textbf{Left Join}
+
+\begin{itemize}
+\tightlist
+\item
+  Returns all rows from the left DataFrame and the matching rows from
+  the right DataFrame.
+\item
+  Missing values (\texttt{NaN}) are introduced for non-matching keys
+  from the right DataFrame.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_merge\_lft }\OperatorTok{=}\NormalTok{ pd.merge(df\_existing, df\_external, how}\OperatorTok{=}\StringTok{\textquotesingle{}left\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_merge\_lft.shape)}
+\NormalTok{df\_merge\_lft.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(4, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 50.0 \\
+1 & 1002 & Samwise & Gardening & 39.0 \\
+2 & 1003 & Gandalf & Spells & NaN \\
+3 & 1004 & Pippin & Fireworks & NaN \\
+\end{longtable}
+
+\textbf{When you may use left join?} You should use left join when the
+primary variable(s) of interest are present in the one of the datasets,
+and whose missing values cannot be imputed. The variable(s) in the other
+dataset may not be as important or it may be possible to reasonably
+impute their values, if missing corresponding to the observation in the
+primary dataset.
+
+\textbf{Examples:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Suppose you wish to analyze the association between the covid
+  infection rate and the government effectiveness score (a metric used
+  to determine the effectiveness of the government in implementing
+  policies, upholding law and order etc.) based on the data of all
+  countries. Let us say that one of the datasets contains the covid
+  infection rate, while the other one contains the government
+  effectiveness score for each country. If the infection rate for a
+  country is missing, it might be hard to impute. However, the
+  government effectiveness score may be easier to impute based on GDP
+  per capita, crime rate etc. - information that is easily available
+  online. In such a case, you may wish to use a left join where you keep
+  all the countries for which the infection rate is known.
+\item
+  Suppose you wish to analyze the association between demographics such
+  as age, income etc. and the amount of credit card spend. Let us say
+  one of the datasets contains the demographic information of each
+  customer, while the other one contains the credit card spend for the
+  customers who made at least one purchase. In such as case, you may
+  want to do a left join as customers not making any purchase might be
+  absent in the card spend data. Their spend can be imputed as zero
+  after merging the datasets.
+\end{enumerate}
+
+\textbf{Right join}
+
+\begin{itemize}
+\tightlist
+\item
+  Returns all rows from the right DataFrame and the matching rows from
+  the left DataFrame.
+\item
+  Missing values (\texttt{NaN}) are introduced for non-matching keys
+  from the left DataFrame.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_merge\_right }\OperatorTok{=}\NormalTok{ pd.merge(df\_existing, df\_external, how}\OperatorTok{=}\StringTok{\textquotesingle{}right\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_merge\_right.shape)}
+\NormalTok{df\_merge\_right.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(5, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 50 \\
+1 & 1002 & Samwise & Gardening & 39 \\
+2 & 1006 & Legolas & NaN & 2931 \\
+3 & 1007 & Elrond & NaN & 6520 \\
+4 & 1008 & Barromir & NaN & 51 \\
+\end{longtable}
+
+\textbf{When you may use right join?} You can always use a left join
+instead of a right join. Their purpose is the same.
+
+\hypertarget{outer-join}{%
+\subsubsection{outer join}\label{outer-join}}
+
+\begin{itemize}
+\tightlist
+\item
+  Returns all rows from both DataFrames, with \texttt{NaN} values where
+  no match is found.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_merge\_outer }\OperatorTok{=}\NormalTok{ pd.merge(df\_existing, df\_external, how}\OperatorTok{=}\StringTok{\textquotesingle{}outer\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_merge\_outer.shape)}
+\NormalTok{df\_merge\_outer}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(7, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FellowshipID & FirstName & Skills & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 50.0 \\
+1 & 1002 & Samwise & Gardening & 39.0 \\
+2 & 1003 & Gandalf & Spells & NaN \\
+3 & 1004 & Pippin & Fireworks & NaN \\
+4 & 1006 & Legolas & NaN & 2931.0 \\
+5 & 1007 & Elrond & NaN & 6520.0 \\
+6 & 1008 & Barromir & NaN & 51.0 \\
+\end{longtable}
+
+\textbf{When you may use outer join?} You should use an outer join when
+you cannot afford to lose data present in either of the tables. All the
+other joins may result in loss of data.
+
+\textbf{Example:} Suppose I took two course surveys for this course. If
+I need to analyze student sentiment during the course, I will take an
+outer join of both the surveys. Assume that each survey is a dataset,
+where each row corresponds to a unique student. Even if a student has
+answered one of the two surverys, it will be indicative of the
+sentiment, and will be useful to keep in the merged dataset.
+
+\hypertarget{combining-based-on-indices-join}{%
+\subsection{\texorpdfstring{\textbf{Combining Based on Indices:
+\texttt{join()}}}{Combining Based on Indices: join()}}\label{combining-based-on-indices-join}}
+
+Unlike \texttt{merge()}, \texttt{join()} in pandas combines data based
+on the \textbf{index}. When using \texttt{join()}, you must specify the
+\texttt{suffixes} parameter if there are overlapping column names, as it
+does not have default values. You can refer to the official function
+definition here:
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html}{pandas.DataFrame.join}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_enriched\_join }\OperatorTok{=}\NormalTok{ df\_existing.join(df\_external)}
+\BuiltInTok{print}\NormalTok{(df\_enriched\_join.shape)}
+\NormalTok{df\_enriched\_join.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: columns overlap but no suffix specified: Index(['FellowshipID', 'FirstName'], dtype='object')
+\end{verbatim}
+
+Let's set the suffix to fix this issue
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_enriched\_join }\OperatorTok{=}\NormalTok{ df\_existing.join(df\_external, lsuffix }\OperatorTok{=} \StringTok{\textquotesingle{}\_existing\textquotesingle{}}\NormalTok{,rsuffix }\OperatorTok{=} \StringTok{\textquotesingle{}\_external\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_enriched\_join.shape)}
+\NormalTok{df\_enriched\_join.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(4, 6)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& FellowshipID\_existing & FirstName\_existing & Skills &
+FellowshipID\_external & FirstName\_external & Age \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1001 & Frodo & Hiding & 1001 & Frodo & 50 \\
+1 & 1002 & Samwise & Gardening & 1002 & Samwise & 39 \\
+2 & 1003 & Gandalf & Spells & 1006 & Legolas & 2931 \\
+3 & 1004 & Pippin & Fireworks & 1007 & Elrond & 6520 \\
+\end{longtable}
+
+As can be observed, \textbf{\texttt{join()} merges DataFrames using
+their index and performs a left join}.
+
+Now, let's set the ``FellowshipID'' column as the index in both
+DataFrames and see what happens.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set the index of the dataframes as the "FellowshipID" column}
+\NormalTok{df\_existing.set\_index(}\StringTok{\textquotesingle{}FellowshipID\textquotesingle{}}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{df\_external.set\_index(}\StringTok{\textquotesingle{}FellowshipID\textquotesingle{}}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# join the two dataframes}
+\NormalTok{df\_enriched\_join }\OperatorTok{=}\NormalTok{ df\_existing.join(df\_external, lsuffix }\OperatorTok{=} \StringTok{\textquotesingle{}\_existing\textquotesingle{}}\NormalTok{,rsuffix }\OperatorTok{=} \StringTok{\textquotesingle{}\_external\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_enriched\_join.shape)}
+\NormalTok{df\_enriched\_join}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(4, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FirstName\_existing & Skills & FirstName\_external & Age \\
+FellowshipID & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1001 & Frodo & Hiding & Frodo & 50.0 \\
+1002 & Samwise & Gardening & Samwise & 39.0 \\
+1003 & Gandalf & Spells & NaN & NaN \\
+1004 & Pippin & Fireworks & NaN & NaN \\
+\end{longtable}
+
+In this case, \texttt{df\_enriched\_join} will contain all rows from
+\texttt{df\_existing} and the corresponding matching rows from
+\texttt{df\_external}, with \texttt{NaN} values for non-matching
+entries.
+
+Similar to \texttt{merge()}, you can change the type of join in
+\texttt{join()} by explicitly specifying the \texttt{how} parameter.
+However, this explanation will be skipped here, as the different join
+types have already been covered in the \texttt{merge()} section above.
+
+\hypertarget{stacking-dataframes-vertically-or-horizontally-concat}{%
+\subsection{\texorpdfstring{Stacking DataFrames vertically or
+horizontally:
+\texttt{concat()}}{Stacking DataFrames vertically or horizontally: concat()}}\label{stacking-dataframes-vertically-or-horizontally-concat}}
+
+\texttt{concat()} is used in pandas to concatenate DataFrames along a
+specified axis, either rows or columns. Similar to \texttt{concat()} in
+NumPy, it defaults to concatenating along the rows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# let\textquotesingle{}s concatenate the two dataframes using default setting}
+\NormalTok{df\_concat }\OperatorTok{=}\NormalTok{ pd.concat([df\_existing, df\_external])}
+\BuiltInTok{print}\NormalTok{(df\_concat.shape)}
+\NormalTok{df\_concat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(9, 3)
+\end{verbatim}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& FirstName & Skills & Age \\
+FellowshipID & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1001 & Frodo & Hiding & NaN \\
+1002 & Samwise & Gardening & NaN \\
+1003 & Gandalf & Spells & NaN \\
+1004 & Pippin & Fireworks & NaN \\
+1001 & Frodo & NaN & 50.0 \\
+1002 & Samwise & NaN & 39.0 \\
+1006 & Legolas & NaN & 2931.0 \\
+1007 & Elrond & NaN & 6520.0 \\
+1008 & Barromir & NaN & 51.0 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Concatenating along columns (horizontal)}
+\NormalTok{df\_concat\_columns }\OperatorTok{=}\NormalTok{ pd.concat([df\_existing, df\_external], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df\_concat\_columns.shape)}
+\NormalTok{df\_concat\_columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(7, 4)
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& FirstName & Skills & FirstName & Age \\
+FellowshipID & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1001 & Frodo & Hiding & Frodo & 50.0 \\
+1002 & Samwise & Gardening & Samwise & 39.0 \\
+1003 & Gandalf & Spells & NaN & NaN \\
+1004 & Pippin & Fireworks & NaN & NaN \\
+1006 & NaN & NaN & Legolas & 2931.0 \\
+1007 & NaN & NaN & Elrond & 6520.0 \\
+1008 & NaN & NaN & Barromir & 51.0 \\
+\end{longtable}
+
+\hypertarget{missing-values-after-data-enriching}{%
+\subsection{Missing values after data
+enriching}\label{missing-values-after-data-enriching}}
+
+Using either of the approaches mentioned above may introduce missing
+values for unmatched entries. Handling these missing values is crucial
+for maintaining the quality and integrity of your dataset after merging
+or joining DataFrames. It is important to choose a method that best fits
+your data and analysis goals, and to document your decisions regarding
+missing value handling for transparency in your analysis.
+
+\textbf{Question}: Read the documentations of the Pandas DataFrame
+methods \texttt{merge()} and \texttt{concat()}, and identify the
+differences. Mention examples when you can use (i) either, (ii) only
+\texttt{concat()}, (iii) only \texttt{merge()}
+
+\textbf{Solution:}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  If we need to merge datasets using row indices, we can use either
+  function.
+\item
+  If we need to stack datasets one on top of the other, we can only use
+  \texttt{concat()}
+\item
+  If we need to merge datasets using overlapping columns we can only use
+  \texttt{merge()}
+\end{enumerate}
+
+\hypertarget{independent-practice-1-1}{%
+\section{Independent Practice 1}\label{independent-practice-1-1}}
+
+You are given the life expectancy data of each continent as a separate
+*.csv file.
+
+\hypertarget{section-67}{%
+\subsection{}\label{section-67}}
+
+Visualize the change of life expectancy over time for different
+continents.
+
+\hypertarget{section-68}{%
+\subsection{}\label{section-68}}
+
+Appending all the data files, i.e., stacking them on top of each other
+to form a combined datasets called ``data\_all\_continents''
+
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{Appendices}
@@ -20702,8 +22488,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-67}{%
-\subsection{}\label{section-67}}
+\hypertarget{section-69}{%
+\subsection{}\label{section-69}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -20712,24 +22498,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-68}{%
-\subsection{}\label{section-68}}
+\hypertarget{section-70}{%
+\subsection{}\label{section-70}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-69}{%
-\subsection{}\label{section-69}}
+\hypertarget{section-71}{%
+\subsection{}\label{section-71}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-70}{%
-\subsection{}\label{section-70}}
+\hypertarget{section-72}{%
+\subsection{}\label{section-72}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -20740,8 +22526,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-71}{%
-\subsection{}\label{section-71}}
+\hypertarget{section-73}{%
+\subsection{}\label{section-73}}
 
 Use list comprehension to:
 
@@ -20790,16 +22576,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-72}{%
-\subsection{}\label{section-72}}
+\hypertarget{section-74}{%
+\subsection{}\label{section-74}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-73}{%
-\subsection{}\label{section-73}}
+\hypertarget{section-75}{%
+\subsection{}\label{section-75}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -20808,8 +22594,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-74}{%
-\subsection{}\label{section-74}}
+\hypertarget{section-76}{%
+\subsection{}\label{section-76}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -20818,8 +22604,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-75}{%
-\subsection{}\label{section-75}}
+\hypertarget{section-77}{%
+\subsection{}\label{section-77}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -20843,8 +22629,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-76}{%
-\subsection{}\label{section-76}}
+\hypertarget{section-78}{%
+\subsection{}\label{section-78}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -20853,8 +22639,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-77}{%
-\subsection{}\label{section-77}}
+\hypertarget{section-79}{%
+\subsection{}\label{section-79}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -20866,8 +22652,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-78}{%
-\subsection{}\label{section-78}}
+\hypertarget{section-80}{%
+\subsection{}\label{section-80}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -20875,23 +22661,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-79}{%
-\subsection{}\label{section-79}}
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-80}{%
-\subsection{}\label{section-80}}
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -20900,16 +22686,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -20919,16 +22705,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -20941,38 +22727,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-86}{%
-\subsection{}\label{section-86}}
-
-Download the data set ``univ.txt''. Read it with python.
-
-\emph{(1 point)}
-
-\hypertarget{section-87}{%
-\subsection{}\label{section-87}}
-
-Find summary statistics of the data. Based on the statistics, answer the
-next four questions.
-
-\emph{(1 point)}
-
 \hypertarget{section-88}{%
 \subsection{}\label{section-88}}
 
-How many universities are there in the data set?
+Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
 \hypertarget{section-89}{%
 \subsection{}\label{section-89}}
 
+Find summary statistics of the data. Based on the statistics, answer the
+next four questions.
+
+\emph{(1 point)}
+
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
+
+How many universities are there in the data set?
+
+\emph{(1 point)}
+
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
+
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-90}{%
-\subsection{}\label{section-90}}
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -20981,16 +22767,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-91}{%
-\subsection{}\label{section-91}}
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-92}{%
-\subsection{}\label{section-92}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -21437,8 +23223,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-93}{%
-\subsection{}\label{section-93}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -21449,8 +23235,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-94}{%
-\subsection{}\label{section-94}}
+\hypertarget{section-96}{%
+\subsection{}\label{section-96}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -21459,8 +23245,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-95}{%
-\subsection{}\label{section-95}}
+\hypertarget{section-97}{%
+\subsection{}\label{section-97}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -21484,8 +23270,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-96}{%
-\subsection{}\label{section-96}}
+\hypertarget{section-98}{%
+\subsection{}\label{section-98}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -21517,8 +23303,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-97}{%
-\subsection{}\label{section-97}}
+\hypertarget{section-99}{%
+\subsection{}\label{section-99}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -21532,8 +23318,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-98}{%
-\subsection{}\label{section-98}}
+\hypertarget{section-100}{%
+\subsection{}\label{section-100}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -21550,8 +23336,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-99}{%
-\subsection{}\label{section-99}}
+\hypertarget{section-101}{%
+\subsection{}\label{section-101}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -21586,8 +23372,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-100}{%
-\subsection{}\label{section-100}}
+\hypertarget{section-102}{%
+\subsection{}\label{section-102}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -21598,8 +23384,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-101}{%
-\subsection{}\label{section-101}}
+\hypertarget{section-103}{%
+\subsection{}\label{section-103}}
 
 Find the percentage of the total countries in each continent.
 
@@ -21608,22 +23394,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-102}{%
-\subsection{}\label{section-102}}
+\hypertarget{section-104}{%
+\subsection{}\label{section-104}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-103}{%
-\subsection{}\label{section-103}}
+\hypertarget{section-105}{%
+\subsection{}\label{section-105}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-104}{%
-\subsubsection{}\label{section-104}}
+\hypertarget{section-106}{%
+\subsubsection{}\label{section-106}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -21645,8 +23431,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-105}{%
-\subsubsection{}\label{section-105}}
+\hypertarget{section-107}{%
+\subsubsection{}\label{section-107}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -21668,24 +23454,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-106}{%
-\subsubsection{}\label{section-106}}
+\hypertarget{section-108}{%
+\subsubsection{}\label{section-108}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-107}{%
-\subsection{}\label{section-107}}
+\hypertarget{section-109}{%
+\subsection{}\label{section-109}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-108}{%
-\subsection{}\label{section-108}}
+\hypertarget{section-110}{%
+\subsection{}\label{section-110}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -21703,15 +23489,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-109}{%
-\subsection{}\label{section-109}}
+\hypertarget{section-111}{%
+\subsection{}\label{section-111}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-110}{%
-\subsection{}\label{section-110}}
+\hypertarget{section-112}{%
+\subsection{}\label{section-112}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -21720,8 +23506,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-111}{%
-\subsection{}\label{section-111}}
+\hypertarget{section-113}{%
+\subsection{}\label{section-113}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -21897,8 +23683,8 @@ time of its release.
 \hypertarget{month-of-release}{%
 \subsection{Month of release}\label{month-of-release}}
 
-\hypertarget{section-112}{%
-\subsubsection{}\label{section-112}}
+\hypertarget{section-114}{%
+\subsubsection{}\label{section-114}}
 
 Make an appropriate plot to visualize the mean profit of movies released
 each month.
@@ -21919,8 +23705,8 @@ each month.
 
 \emph{(6 points)}
 
-\hypertarget{section-113}{%
-\subsubsection{}\label{section-113}}
+\hypertarget{section-115}{%
+\subsubsection{}\label{section-115}}
 
 Based on the plot, which seasons have been the most and least profitable
 (on an average) for a movie release. Don't worry about the exact start
@@ -21934,8 +23720,8 @@ summer, late spring} etc.
 \subsection{Month of release with number of movies in each
 genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
 
-\hypertarget{section-114}{%
-\subsubsection{}\label{section-114}}
+\hypertarget{section-116}{%
+\subsubsection{}\label{section-116}}
 
 Now that we know the most profitable season for releasing movies, let us
 visualize if some \texttt{genre}s are more popular during certain
@@ -21967,8 +23753,8 @@ each \texttt{genre} in each calendar month.
   Use the \emph{hue} argument
 \end{enumerate}
 
-\hypertarget{section-115}{%
-\subsubsection{}\label{section-115}}
+\hypertarget{section-117}{%
+\subsubsection{}\label{section-117}}
 
 Based on the above plot, which \texttt{genre} is the most popular during
 the most profitable season of release? And which genre is the most
@@ -21980,8 +23766,8 @@ popular during the least profitable season of release?
 \subsection{Month of release with proportion of movies in each
 genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
 
-\hypertarget{section-116}{%
-\subsubsection{}\label{section-116}}
+\hypertarget{section-118}{%
+\subsubsection{}\label{section-118}}
 
 Visualize the proportion of movies in each \texttt{genre} for each month
 of release.
@@ -22015,8 +23801,8 @@ the visualization
 
 \emph{(8 points)}
 
-\hypertarget{section-117}{%
-\subsubsection{}\label{section-117}}
+\hypertarget{section-119}{%
+\subsubsection{}\label{section-119}}
 
 Which \texttt{genre} is the most popular during the month of May, and
 which one is the most popular during December?
@@ -22027,8 +23813,8 @@ which one is the most popular during December?
 \subsection{Year of release with
 genre}\label{year-of-release-with-genre}}
 
-\hypertarget{section-118}{%
-\subsubsection{}\label{section-118}}
+\hypertarget{section-120}{%
+\subsubsection{}\label{section-120}}
 
 Make an appropriate figure to visualize the average profit of movies of
 each \texttt{genre} for each year. Consider only the movies released
@@ -22053,8 +23839,8 @@ profit.
 
 \emph{(6 points)}
 
-\hypertarget{section-119}{%
-\subsubsection{}\label{section-119}}
+\hypertarget{section-121}{%
+\subsubsection{}\label{section-121}}
 
 Based on the figure above, which \texttt{genre}'s profitability seems to
 be increasing over the years, and which \texttt{genre} has the least
@@ -22068,31 +23854,31 @@ uncertainty in profit for most of the years.
 \hypertarget{pairplot-heatmap}{%
 \subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
 
-\hypertarget{section-120}{%
-\subsubsection{}\label{section-120}}
+\hypertarget{section-122}{%
+\subsubsection{}\label{section-122}}
 
 Make a pairplot and heatmap of all the continuous variables in the data.
 
 \emph{(8 points)}
 
-\hypertarget{section-121}{%
-\subsubsection{}\label{section-121}}
+\hypertarget{section-123}{%
+\subsubsection{}\label{section-123}}
 
 Are there any trends that you can see in the pairplot, but not in the
 heatmap?
 
 \emph{(2 points)}
 
-\hypertarget{section-122}{%
-\subsubsection{}\label{section-122}}
+\hypertarget{section-124}{%
+\subsubsection{}\label{section-124}}
 
 Based on the plots in 2(a)(i), which variables are associated with
 profit?
 
 \emph{(2 points)}
 
-\hypertarget{section-123}{%
-\subsubsection{}\label{section-123}}
+\hypertarget{section-125}{%
+\subsubsection{}\label{section-125}}
 
 Among the variables listed in 2(a)(iii), select a subset of variables
 such that none of them are highly associated with each other. The rest
@@ -22104,8 +23890,8 @@ association with profit.
 \hypertarget{nested-associations}{%
 \subsection{Nested associations}\label{nested-associations}}
 
-\hypertarget{section-124}{%
-\subsubsection{}\label{section-124}}
+\hypertarget{section-126}{%
+\subsubsection{}\label{section-126}}
 
 Use the code below to create some new columns.
 
@@ -22123,8 +23909,8 @@ Which genre has the highest association between profit and IMDB votes?
 
 \emph{(8 points)}
 
-\hypertarget{section-125}{%
-\subsubsection{}\label{section-125}}
+\hypertarget{section-127}{%
+\subsubsection{}\label{section-127}}
 
 Make an appropriate figure to visualize the association between the
 number of IMDB votes and profit, for each combination of the fiction
@@ -22144,8 +23930,8 @@ object.
 \subsection{Profit based on movie
 director}\label{profit-based-on-movie-director}}
 
-\hypertarget{section-126}{%
-\subsubsection{}\label{section-126}}
+\hypertarget{section-128}{%
+\subsubsection{}\label{section-128}}
 
 Consider the directors who have directed more than 10 movies (based on
 the dataset). Make a horizontal barplot that shows the mean profit of
@@ -22167,8 +23953,8 @@ directors must appear in the barplot:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-127}{%
-\subsubsection{}\label{section-127}}
+\hypertarget{section-129}{%
+\subsubsection{}\label{section-129}}
 
 Based on the above plot, which director has the highest mean
 profitability, and which one has the highest variation in profitability?
@@ -22182,8 +23968,8 @@ profitability, and which one has the highest variation in profitability?
 \subsection{Distribution of profit based on genre
 (boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
 
-\hypertarget{section-128}{%
-\subsubsection{}\label{section-128}}
+\hypertarget{section-130}{%
+\subsubsection{}\label{section-130}}
 
 Make boxplots to visualize the distribution of \texttt{profit} based on
 \texttt{genre}. Based on the plot, which genre has the most profitable
@@ -22191,8 +23977,8 @@ movies?
 
 \emph{(6 points)}
 
-\hypertarget{section-129}{%
-\subsubsection{}\label{section-129}}
+\hypertarget{section-131}{%
+\subsubsection{}\label{section-131}}
 
 Which genre has the most variation in profit, and which one has the
 least?
@@ -22203,16 +23989,16 @@ least?
 \subsection{Distribution of profit based on genre (density
 plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
 
-\hypertarget{section-130}{%
-\subsubsection{}\label{section-130}}
+\hypertarget{section-132}{%
+\subsubsection{}\label{section-132}}
 
 Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
 the limit on the horizonal axis, so that the plots are clearly visible.
 
 \emph{(6 points)}
 
-\hypertarget{section-131}{%
-\subsubsection{}\label{section-131}}
+\hypertarget{section-133}{%
+\subsubsection{}\label{section-133}}
 
 What additional insight / trend can you seen in the above plot that you
 cannot see with the boxplots?
@@ -22349,18 +24135,18 @@ Suppose there is an investor who only holds the index for a single day
 
 Based on the data,
 
-\hypertarget{section-132}{%
-\subsubsection{}\label{section-132}}
+\hypertarget{section-134}{%
+\subsubsection{}\label{section-134}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-133}{%
-\subsubsection{}\label{section-133}}
+\hypertarget{section-135}{%
+\subsubsection{}\label{section-135}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-134}{%
-\subsubsection{}\label{section-134}}
+\hypertarget{section-136}{%
+\subsubsection{}\label{section-136}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -22379,18 +24165,18 @@ Suppose there is an investor who will hold the index for a year (suppose
 there are 250 trading days in a year). Do the same analysis as the
 above:
 
-\hypertarget{section-135}{%
-\subsubsection{}\label{section-135}}
+\hypertarget{section-137}{%
+\subsubsection{}\label{section-137}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-136}{%
-\subsubsection{}\label{section-136}}
+\hypertarget{section-138}{%
+\subsubsection{}\label{section-138}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-137}{%
-\subsubsection{}\label{section-137}}
+\hypertarget{section-139}{%
+\subsubsection{}\label{section-139}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -22405,20 +24191,20 @@ our holding period from 1 day to 1 year(250 days).
 
 Show/answer:
 
-\hypertarget{section-138}{%
-\subsubsection{}\label{section-138}}
+\hypertarget{section-140}{%
+\subsubsection{}\label{section-140}}
 
 At least how many days do you need to hold the index in order to make a
 significant positive return (threshold 0.01)?
 
-\hypertarget{section-139}{%
-\subsubsection{}\label{section-139}}
+\hypertarget{section-141}{%
+\subsubsection{}\label{section-141}}
 
 How are the returns associated with the risks for different investment
 strategies?
 
-\hypertarget{section-140}{%
-\subsubsection{}\label{section-140}}
+\hypertarget{section-142}{%
+\subsubsection{}\label{section-142}}
 
 Make a graph as shown below.
 
@@ -22803,23 +24589,23 @@ along with the trendline. What is the trend indicated by the trendline?
 \subsection{\texorpdfstring{Trend with bins of
 \texttt{house\_age}}{Trend with bins of house\_age}}\label{trend-with-bins-of-house_age}}
 
-\hypertarget{section-141}{%
-\subsubsection{}\label{section-141}}
+\hypertarget{section-143}{%
+\subsubsection{}\label{section-143}}
 
 Bin \texttt{house\_age} into 5 approximately equal-sized bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-142}{%
-\subsubsection{}\label{section-142}}
+\hypertarget{section-144}{%
+\subsubsection{}\label{section-144}}
 
 After binning, plot the mean \texttt{house\_price} against the house age
 bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-143}{%
-\subsubsection{}\label{section-143}}
+\hypertarget{section-145}{%
+\subsubsection{}\label{section-145}}
 
 Is the trend seen with this plot different from that seen with the
 trendline in the previous question? If yes, then is one of the trends
@@ -22827,8 +24613,8 @@ incorrect? Why or why not?
 
 \emph{(4 points)}
 
-\hypertarget{section-144}{%
-\subsubsection{}\label{section-144}}
+\hypertarget{section-146}{%
+\subsubsection{}\label{section-146}}
 
 Is one of the trends more informative? If yes, then which one and how?
 
@@ -22878,9 +24664,14 @@ prices}\label{identifying-outlying-prices}}
 
 Continue working with \texttt{house\_features\_and\_price.csv}.
 Determine how many houses have outlying values in \texttt{house\_price}
-using both the Z-score method and the IQR method. - \textbf{Question}:
-Which method is more conservative for this dataset? \emph{(6 + 2
-points)}
+using both the Z-score method and the IQR method.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Question}: Which method is more conservative for this dataset?
+  \emph{(6 + 2 points)}
+\end{itemize}
 
 \hypertarget{quick-eda}{%
 \subsection{Quick EDA}\label{quick-eda}}
