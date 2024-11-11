@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span></a>
   </div>
 </li>
       </ul>
@@ -3462,8 +3462,7 @@ Length: 142, dtype: float64</code></pre>
 <p>Estimate the GDP per capita of each country as the average of the estimates of the three agencies - IMF, United Nations and World Bank.</p>
 <p>We need to do a bit of data cleaning before we could directly use the <code>groupby()</code> function. Follow the steps below to answer this question:</p>
 <ol type="1">
-<li><p>Set the first 2 columns containing country, and UN region as hierarchical row labels.</p></li>
-<li><p>Apply the following function on all the columns to convert them to numeric: <code>f = lambda x:pd.to_numeric(x,errors = 'coerce')</code></p></li>
+<li><p>Apply the following function on all the columns of the “Estimate” to convert them to numeric: <code>f = lambda x:pd.to_numeric(x,errors = 'coerce')</code></p></li>
 <li><p>Now use <code>groupby()</code> to find estimate the GDP per capita for each country.</p></li>
 </ol>
 </section>
@@ -3772,7 +3771,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Data wrangling.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enriching</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
