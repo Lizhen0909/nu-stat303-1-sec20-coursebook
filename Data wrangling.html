@@ -322,7 +322,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pivoting-long-to-wide-using-pivot_table" id="toc-pivoting-long-to-wide-using-pivot_table" class="nav-link" data-scroll-target="#pivoting-long-to-wide-using-pivot_table"><span class="header-section-number">12.1.3</span> Pivoting “long” to “wide” using <code>pivot_table()</code></a>
   <ul class="collapse">
   <li><a href="#pivoting-a-single-column" id="toc-pivoting-a-single-column" class="nav-link" data-scroll-target="#pivoting-a-single-column"><span class="header-section-number">12.1.3.1</span> Pivoting a single column</a></li>
-  <li><a href="#pivoting-multiple-columns" id="toc-pivoting-multiple-columns" class="nav-link" data-scroll-target="#pivoting-multiple-columns"><span class="header-section-number">12.1.3.2</span> Pivoting multiple columns</a></li>
   </ul></li>
   <li><a href="#melting-wide-to-long-using-melt" id="toc-melting-wide-to-long-using-melt" class="nav-link" data-scroll-target="#melting-wide-to-long-using-melt"><span class="header-section-number">12.1.4</span> Melting “wide” to “long” using <code>melt()</code></a></li>
   <li><a href="#stacking-and-unstacking-using-stack-and-unstack" id="toc-stacking-and-unstacking-using-stack-and-unstack" class="nav-link" data-scroll-target="#stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">12.1.5</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></a>
@@ -397,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>In this chapter, we will explore how to reshape and enrich data using pandas. Data reshaping and enriching are essential steps in data preprocessing because they help transform raw data into a more structured, useful, and meaningful format that can be effectively used for analysis or modeling.</p>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 
 <div style="display: flex; gap: 20px;">
@@ -427,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://ucarecdn.com/fe16e27c-a341-4551-9b84-e0e56bb2d329/-/stretch/off/-/resize/1100x/-/format/webp/.png" class="img-fluid"></p>
 <p>To reshape between these two formats, you can use pandas functions such as <code>pivot_table()</code>, <code>melt()</code>, <code>stack()</code>, and <code>unstack()</code>. Let’s next take a look at each of these methods one by one.</p>
 <p>Throughout this section, we will continue using the <em>gdp_lifeExpectancy.csv</em> dataset. Let’s start by reading the CSV file into a pandas DataFrame.</p>
-<div class="cell">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -435,11 +434,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/gdp_lifeExpectancy.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -514,10 +513,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pivoting-a-single-column" class="level4" data-number="12.1.3.1">
 <h4 data-number="12.1.3.1" class="anchored" data-anchor-id="pivoting-a-single-column"><span class="header-section-number">12.1.3.1</span> Pivoting a single column</h4>
 <p>Consider the life expectancy dataset. Let’s calculate the average life expectancy for each combination of country and year.</p>
-<div class="cell" data-execution_count="60">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data_pivot <span class="op">=</span> gdp_lifeExp_data.pivot_table(index<span class="op">=</span>[<span class="st">'continent'</span>,<span class="st">'country'</span>], columns<span class="op">=</span><span class="st">'year'</span>, values<span class="op">=</span><span class="st">'lifeExp'</span>, aggfunc<span class="op">=</span><span class="st">'mean'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data_pivot.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -647,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>aggfunc</strong>: Uses <code>mean</code> to calculate the average life expectancy.</li>
 </ul>
 <p>With values of <code>year</code> as columns, it is easy to compare any metric for different years.</p>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#visualizing the change in life expectancy of all countries in 2007 as compared to that in 1957, i.e., the overall change in life expectancy in 50 years. </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data <span class="op">=</span> gdp_lifeExp_data_pivot, x <span class="op">=</span> <span class="dv">1957</span>,y<span class="op">=</span><span class="dv">2007</span>,hue <span class="op">=</span> <span class="st">'continent'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> gdp_lifeExp_data_pivot, x <span class="op">=</span> <span class="dv">1957</span>,y <span class="op">=</span> <span class="dv">1957</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -656,208 +655,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Observe that for some African countries, the life expectancy has decreased after 50 years. It is worth investigating these countries to identify factors associated with the decrease.</p>
-</section>
-<section id="pivoting-multiple-columns" class="level4" data-number="12.1.3.2">
-<h4 data-number="12.1.3.2" class="anchored" data-anchor-id="pivoting-multiple-columns"><span class="header-section-number">12.1.3.2</span> Pivoting multiple columns</h4>
-<p>In the above transformation, we retained only <code>lifeExp</code> in the <em>‘wide’</em> dataset. Suppose, we are also interested in visualizing GDP per capita of countries in one year against another year. In that case, we must have <code>gdpPercap</code> in the <em>’wide</em>’-form data as well.</p>
-<p>Let us create a dataset named as <code>data_wide_lifeExp_gdpPercap</code> that will contain both <code>lifeExp</code> and <code>gdpPercap</code> for each year in a separate column. We will specify the columns to pivot in the <em>values</em> argument of the <code>pivot()</code> function.</p>
-<div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_wide_lifeExp_gdpPercap <span class="op">=</span> gdp_lifeExp_data.pivot_table(index <span class="op">=</span> [<span class="st">'continent'</span>,<span class="st">'country'</span>],columns <span class="op">=</span> <span class="st">'year'</span>,values <span class="op">=</span> [<span class="st">'lifeExp'</span>,<span class="st">'gdpPercap'</span>])</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data_wide_lifeExp_gdpPercap.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th colspan="10" data-quarto-table-cell-role="th" data-halign="left">gdpPercap</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th colspan="10" data-quarto-table-cell-role="th" data-halign="left">lifeExp</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">1952</th>
-<th data-quarto-table-cell-role="th">1957</th>
-<th data-quarto-table-cell-role="th">1962</th>
-<th data-quarto-table-cell-role="th">1967</th>
-<th data-quarto-table-cell-role="th">1972</th>
-<th data-quarto-table-cell-role="th">1977</th>
-<th data-quarto-table-cell-role="th">1982</th>
-<th data-quarto-table-cell-role="th">1987</th>
-<th data-quarto-table-cell-role="th">1992</th>
-<th data-quarto-table-cell-role="th">1997</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">1962</th>
-<th data-quarto-table-cell-role="th">1967</th>
-<th data-quarto-table-cell-role="th">1972</th>
-<th data-quarto-table-cell-role="th">1977</th>
-<th data-quarto-table-cell-role="th">1982</th>
-<th data-quarto-table-cell-role="th">1987</th>
-<th data-quarto-table-cell-role="th">1992</th>
-<th data-quarto-table-cell-role="th">1997</th>
-<th data-quarto-table-cell-role="th">2002</th>
-<th data-quarto-table-cell-role="th">2007</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th">continent</th>
-<th data-quarto-table-cell-role="th">country</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">Africa</td>
-<td data-quarto-table-cell-role="th">Algeria</td>
-<td>2449.008185</td>
-<td>3013.976023</td>
-<td>2550.816880</td>
-<td>3246.991771</td>
-<td>4182.663766</td>
-<td>4910.416756</td>
-<td>5745.160213</td>
-<td>5681.358539</td>
-<td>5023.216647</td>
-<td>4797.295051</td>
-<td>...</td>
-<td>48.303</td>
-<td>51.407</td>
-<td>54.518</td>
-<td>58.014</td>
-<td>61.368</td>
-<td>65.799</td>
-<td>67.744</td>
-<td>69.152</td>
-<td>70.994</td>
-<td>72.301</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Angola</td>
-<td>3520.610273</td>
-<td>3827.940465</td>
-<td>4269.276742</td>
-<td>5522.776375</td>
-<td>5473.288005</td>
-<td>3008.647355</td>
-<td>2756.953672</td>
-<td>2430.208311</td>
-<td>2627.845685</td>
-<td>2277.140884</td>
-<td>...</td>
-<td>34.000</td>
-<td>35.985</td>
-<td>37.928</td>
-<td>39.483</td>
-<td>39.942</td>
-<td>39.906</td>
-<td>40.647</td>
-<td>40.963</td>
-<td>41.003</td>
-<td>42.731</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Benin</td>
-<td>1062.752200</td>
-<td>959.601080</td>
-<td>949.499064</td>
-<td>1035.831411</td>
-<td>1085.796879</td>
-<td>1029.161251</td>
-<td>1277.897616</td>
-<td>1225.856010</td>
-<td>1191.207681</td>
-<td>1232.975292</td>
-<td>...</td>
-<td>42.618</td>
-<td>44.885</td>
-<td>47.014</td>
-<td>49.190</td>
-<td>50.904</td>
-<td>52.337</td>
-<td>53.919</td>
-<td>54.777</td>
-<td>54.406</td>
-<td>56.728</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Botswana</td>
-<td>851.241141</td>
-<td>918.232535</td>
-<td>983.653976</td>
-<td>1214.709294</td>
-<td>2263.611114</td>
-<td>3214.857818</td>
-<td>4551.142150</td>
-<td>6205.883850</td>
-<td>7954.111645</td>
-<td>8647.142313</td>
-<td>...</td>
-<td>51.520</td>
-<td>53.298</td>
-<td>56.024</td>
-<td>59.319</td>
-<td>61.484</td>
-<td>63.622</td>
-<td>62.745</td>
-<td>52.556</td>
-<td>46.634</td>
-<td>50.728</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Burkina Faso</td>
-<td>543.255241</td>
-<td>617.183465</td>
-<td>722.512021</td>
-<td>794.826560</td>
-<td>854.735976</td>
-<td>743.387037</td>
-<td>807.198586</td>
-<td>912.063142</td>
-<td>931.752773</td>
-<td>946.294962</td>
-<td>...</td>
-<td>37.814</td>
-<td>40.697</td>
-<td>43.591</td>
-<td>46.137</td>
-<td>48.122</td>
-<td>49.557</td>
-<td>50.260</td>
-<td>50.324</td>
-<td>50.650</td>
-<td>52.295</td>
-</tr>
-</tbody>
-</table>
-
-<p>5 rows × 24 columns</p>
+<p>Another way to visualize a pivot table is by using a heatmap, which represents the 2D table as a matrix of colors, making it easier to interpret patterns and trends.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting a heatmap to visualize the life expectancy of all countries in all years, figure size is set to 15x10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Life expectancy of all countries in all years"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>sns.heatmap(gdp_lifeExp_data_pivot)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Data wrangling_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<p>The metric for each year is now in a separate column, and can be visualized directly. Note that re-arranging the dataset from the <em>‘long’</em>-form to <em>‘wide-form’</em> leads to hierarchical indexing of columns when multiple <em>‘values’</em> need to be re-arranged. In this case, the multiple <em>‘values’</em> that need to be re-arranged are <code>lifeExp</code> and <code>gdpPercap</code>.</p>
 <p><strong>Common Aggregation Functions in <code>pivot_table()</code></strong></p>
 <p>You can use various aggregation functions within <code>pivot_table()</code> to summarize data:</p>
 <ul>
@@ -868,9 +675,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>We can also define our own custom aggregation function and pass it to the <code>aggfunc</code> parameter of the <code>pivot_table()</code> function</p>
 <p><strong>For Example:</strong> Find the <span class="math inline">\(90^{th}\)</span> percentile of life expectancy for each country and year combination</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pd.pivot_table(data <span class="op">=</span> gdp_lifeExp_data, values <span class="op">=</span> <span class="st">'lifeExp'</span>,index <span class="op">=</span> <span class="st">'country'</span>, columns <span class="op">=</span><span class="st">'year'</span>,aggfunc <span class="op">=</span> <span class="kw">lambda</span> x:np.percentile(x,<span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -1086,9 +893,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="12.1.4" class="anchored" data-anchor-id="melting-wide-to-long-using-melt"><span class="header-section-number">12.1.4</span> Melting “wide” to “long” using <code>melt()</code></h3>
 <p>Melting is the <strong>inverse</strong> of pivoting. It transforms columns into rows. The <code>melt()</code> function is used when you want to unpivot a DataFrame, turning multiple columns into rows.</p>
 <p>Let’s first consider <em>gdp_lifeExp_data_pivot</em> created in the previous section</p>
-<div class="cell" data-execution_count="66">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data_pivot.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="66">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -1210,9 +1017,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="67">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data_pivot.melt(value_name<span class="op">=</span><span class="st">'lifeExp'</span>, var_name<span class="op">=</span><span class="st">'year'</span>, ignore_index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -1299,355 +1106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>With the above DataFrame, we can visualize the mean life expectancy against year separately for each country in each continent.</p>
-<div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_wide_lifeExp_gdpPercap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th colspan="10" data-quarto-table-cell-role="th" data-halign="left">gdpPercap</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th colspan="10" data-quarto-table-cell-role="th" data-halign="left">lifeExp</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">1952</th>
-<th data-quarto-table-cell-role="th">1957</th>
-<th data-quarto-table-cell-role="th">1962</th>
-<th data-quarto-table-cell-role="th">1967</th>
-<th data-quarto-table-cell-role="th">1972</th>
-<th data-quarto-table-cell-role="th">1977</th>
-<th data-quarto-table-cell-role="th">1982</th>
-<th data-quarto-table-cell-role="th">1987</th>
-<th data-quarto-table-cell-role="th">1992</th>
-<th data-quarto-table-cell-role="th">1997</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">1962</th>
-<th data-quarto-table-cell-role="th">1967</th>
-<th data-quarto-table-cell-role="th">1972</th>
-<th data-quarto-table-cell-role="th">1977</th>
-<th data-quarto-table-cell-role="th">1982</th>
-<th data-quarto-table-cell-role="th">1987</th>
-<th data-quarto-table-cell-role="th">1992</th>
-<th data-quarto-table-cell-role="th">1997</th>
-<th data-quarto-table-cell-role="th">2002</th>
-<th data-quarto-table-cell-role="th">2007</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th">continent</th>
-<th data-quarto-table-cell-role="th">country</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">Africa</td>
-<td data-quarto-table-cell-role="th">Algeria</td>
-<td>2449.008185</td>
-<td>3013.976023</td>
-<td>2550.816880</td>
-<td>3246.991771</td>
-<td>4182.663766</td>
-<td>4910.416756</td>
-<td>5745.160213</td>
-<td>5681.358539</td>
-<td>5023.216647</td>
-<td>4797.295051</td>
-<td>...</td>
-<td>48.303</td>
-<td>51.407</td>
-<td>54.518</td>
-<td>58.014</td>
-<td>61.368</td>
-<td>65.799</td>
-<td>67.744</td>
-<td>69.152</td>
-<td>70.994</td>
-<td>72.301</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Angola</td>
-<td>3520.610273</td>
-<td>3827.940465</td>
-<td>4269.276742</td>
-<td>5522.776375</td>
-<td>5473.288005</td>
-<td>3008.647355</td>
-<td>2756.953672</td>
-<td>2430.208311</td>
-<td>2627.845685</td>
-<td>2277.140884</td>
-<td>...</td>
-<td>34.000</td>
-<td>35.985</td>
-<td>37.928</td>
-<td>39.483</td>
-<td>39.942</td>
-<td>39.906</td>
-<td>40.647</td>
-<td>40.963</td>
-<td>41.003</td>
-<td>42.731</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Benin</td>
-<td>1062.752200</td>
-<td>959.601080</td>
-<td>949.499064</td>
-<td>1035.831411</td>
-<td>1085.796879</td>
-<td>1029.161251</td>
-<td>1277.897616</td>
-<td>1225.856010</td>
-<td>1191.207681</td>
-<td>1232.975292</td>
-<td>...</td>
-<td>42.618</td>
-<td>44.885</td>
-<td>47.014</td>
-<td>49.190</td>
-<td>50.904</td>
-<td>52.337</td>
-<td>53.919</td>
-<td>54.777</td>
-<td>54.406</td>
-<td>56.728</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Botswana</td>
-<td>851.241141</td>
-<td>918.232535</td>
-<td>983.653976</td>
-<td>1214.709294</td>
-<td>2263.611114</td>
-<td>3214.857818</td>
-<td>4551.142150</td>
-<td>6205.883850</td>
-<td>7954.111645</td>
-<td>8647.142313</td>
-<td>...</td>
-<td>51.520</td>
-<td>53.298</td>
-<td>56.024</td>
-<td>59.319</td>
-<td>61.484</td>
-<td>63.622</td>
-<td>62.745</td>
-<td>52.556</td>
-<td>46.634</td>
-<td>50.728</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Burkina Faso</td>
-<td>543.255241</td>
-<td>617.183465</td>
-<td>722.512021</td>
-<td>794.826560</td>
-<td>854.735976</td>
-<td>743.387037</td>
-<td>807.198586</td>
-<td>912.063142</td>
-<td>931.752773</td>
-<td>946.294962</td>
-<td>...</td>
-<td>37.814</td>
-<td>40.697</td>
-<td>43.591</td>
-<td>46.137</td>
-<td>48.122</td>
-<td>49.557</td>
-<td>50.260</td>
-<td>50.324</td>
-<td>50.650</td>
-<td>52.295</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td rowspan="3" data-quarto-table-cell-role="th" data-valign="top">Europe</td>
-<td data-quarto-table-cell-role="th">Switzerland</td>
-<td>14734.232750</td>
-<td>17909.489730</td>
-<td>20431.092700</td>
-<td>22966.144320</td>
-<td>27195.113040</td>
-<td>26982.290520</td>
-<td>28397.715120</td>
-<td>30281.704590</td>
-<td>31871.530300</td>
-<td>32135.323010</td>
-<td>...</td>
-<td>71.320</td>
-<td>72.770</td>
-<td>73.780</td>
-<td>75.390</td>
-<td>76.210</td>
-<td>77.410</td>
-<td>78.030</td>
-<td>79.370</td>
-<td>80.620</td>
-<td>81.701</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Turkey</td>
-<td>1969.100980</td>
-<td>2218.754257</td>
-<td>2322.869908</td>
-<td>2826.356387</td>
-<td>3450.696380</td>
-<td>4269.122326</td>
-<td>4241.356344</td>
-<td>5089.043686</td>
-<td>5678.348271</td>
-<td>6601.429915</td>
-<td>...</td>
-<td>52.098</td>
-<td>54.336</td>
-<td>57.005</td>
-<td>59.507</td>
-<td>61.036</td>
-<td>63.108</td>
-<td>66.146</td>
-<td>68.835</td>
-<td>70.845</td>
-<td>71.777</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">United Kingdom</td>
-<td>9979.508487</td>
-<td>11283.177950</td>
-<td>12477.177070</td>
-<td>14142.850890</td>
-<td>15895.116410</td>
-<td>17428.748460</td>
-<td>18232.424520</td>
-<td>21664.787670</td>
-<td>22705.092540</td>
-<td>26074.531360</td>
-<td>...</td>
-<td>70.760</td>
-<td>71.360</td>
-<td>72.010</td>
-<td>72.760</td>
-<td>74.040</td>
-<td>75.007</td>
-<td>76.420</td>
-<td>77.218</td>
-<td>78.471</td>
-<td>79.425</td>
-</tr>
-<tr class="even">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">Oceania</td>
-<td data-quarto-table-cell-role="th">Australia</td>
-<td>10039.595640</td>
-<td>10949.649590</td>
-<td>12217.226860</td>
-<td>14526.124650</td>
-<td>16788.629480</td>
-<td>18334.197510</td>
-<td>19477.009280</td>
-<td>21888.889030</td>
-<td>23424.766830</td>
-<td>26997.936570</td>
-<td>...</td>
-<td>70.930</td>
-<td>71.100</td>
-<td>71.930</td>
-<td>73.490</td>
-<td>74.740</td>
-<td>76.320</td>
-<td>77.560</td>
-<td>78.830</td>
-<td>80.370</td>
-<td>81.235</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">New Zealand</td>
-<td>10556.575660</td>
-<td>12247.395320</td>
-<td>13175.678000</td>
-<td>14463.918930</td>
-<td>16046.037280</td>
-<td>16233.717700</td>
-<td>17632.410400</td>
-<td>19007.191290</td>
-<td>18363.324940</td>
-<td>21050.413770</td>
-<td>...</td>
-<td>71.240</td>
-<td>71.520</td>
-<td>71.890</td>
-<td>72.220</td>
-<td>73.840</td>
-<td>74.320</td>
-<td>76.330</td>
-<td>77.550</td>
-<td>79.110</td>
-<td>80.204</td>
-</tr>
-</tbody>
-</table>
-
-<p>142 rows × 24 columns</p>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_melt <span class="op">=</span> pd.melt(data_wide_lifeExp_gdpPercap.reset_index(), id_vars <span class="op">=</span> [<span class="st">'continent'</span>,<span class="st">'country'</span>], var_name <span class="op">=</span> [<span class="st">'Metric'</span>,<span class="st">'year'</span>])</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_melt.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>KeyError: "The following id_vars or value_vars are not present in the DataFrame: ['continent', 'country']"</code></pre>
-</div>
-</div>
 </section>
 <section id="stacking-and-unstacking-using-stack-and-unstack" class="level3" data-number="12.1.5">
 <h3 data-number="12.1.5" class="anchored" data-anchor-id="stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">12.1.5</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></h3>
@@ -1657,11 +1115,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>unstack()</code>: Converts rows into columns, reversing the effect of <code>stack()</code>.</li>
 </ul>
 <p>Let’s use the GDP per capita dataset and create a DataFrame with a multi-level index (e.g., continent, country) and multi-level columns (e.g., lifeExp , gdpPercap, and pop).</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the average and standard deviation of life expectancy, population, and GDP per capita for countries across the years.</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data <span class="op">=</span> gdp_lifeExp_data.groupby([<span class="st">'continent'</span>, <span class="st">'country'</span>])[[<span class="st">'lifeExp'</span>, <span class="st">'pop'</span>, <span class="st">'gdpPercap'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>])</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the average and standard deviation of life expectancy, population, and GDP per capita for countries across the years.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data <span class="op">=</span> gdp_lifeExp_data.groupby([<span class="st">'continent'</span>, <span class="st">'country'</span>])[[<span class="st">'lifeExp'</span>, <span class="st">'pop'</span>, <span class="st">'gdpPercap'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
@@ -1808,22 +1266,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The resulting DataFrame has two levels of index and two levels of columns, as shown below:</p>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the level of row and column index</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the level of row and column index</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>2</code></pre>
 </div>
 </div>
 <p>if you want to see the data along with the index and columns (in a more accessible way), you can directly print the <code>.index</code> and <code>.columns</code> attributes.</p>
-<div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>MultiIndex([( 'Africa',                  'Algeria'),
             ( 'Africa',                   'Angola'),
@@ -1849,8 +1307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
            names=['continent', 'country'], length=142)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>MultiIndex([(  'lifeExp', 'mean'),
             (  'lifeExp',  'std'),
@@ -1862,14 +1320,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>As seen, <strong>the index and columns each contain tuples</strong>. This is the reason that when performing data subsetting on a DataFrame with multi-level index and columns, you need to supply a tuple to specify the exact location of the data.</p>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.loc[(<span class="st">'Americas'</span>, <span class="st">'United States'</span>), (<span class="st">'lifeExp'</span>, <span class="st">'mean'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.loc[(<span class="st">'Americas'</span>, <span class="st">'United States'</span>), (<span class="st">'lifeExp'</span>, <span class="st">'mean'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>73.4785</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>array([('lifeExp', 'mean'), ('lifeExp', 'std'), ('pop', 'mean'),
        ('pop', 'std'), ('gdpPercap', 'mean'), ('gdpPercap', 'std')],
@@ -1879,8 +1337,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="understanding-the-level-in-multi-level-index-and-columns" class="level4" data-number="12.1.5.1">
 <h4 data-number="12.1.5.1" class="anchored" data-anchor-id="understanding-the-level-in-multi-level-index-and-columns"><span class="header-section-number">12.1.5.1</span> Understanding the <code>level</code> in multi-level index and columns</h4>
 <p>The <code>gdp_lifeExp_multilevel_data</code> dataframe have two levels of index and two level of columns, You can reference these levels in various operations, such as grouping, subsetting, or performing aggregations. The <code>level</code> parameter helps identify which part of the multi-level structure you’re working with.</p>
-<div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.get_level_values(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.get_level_values(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>Index(['Africa', 'Africa', 'Africa', 'Africa', 'Africa', 'Africa', 'Africa',
        'Africa', 'Africa', 'Africa',
@@ -1891,22 +1349,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.get_level_values(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.index.get_level_values(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.get_level_values(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.get_level_values(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>Index(['lifeExp', 'lifeExp', 'pop', 'pop', 'gdpPercap', 'gdpPercap'], dtype='object')</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.get_level_values(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.get_level_values(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Index(['mean', 'std', 'mean', 'std', 'mean', 'std'], dtype='object')</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.get_level_values(<span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns.get_level_values(<span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Index(['mean', 'std', 'mean', 'std', 'mean', 'std'], dtype='object')</code></pre>
 </div>
@@ -1915,8 +1373,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now, let’s use the level number in the <code>droplevel()</code> method to see how it works. The syntax for this method is as follows:</p>
 <p><code>DataFrame.droplevel(level, axis=0)</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the first level of row index</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.droplevel(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the first level of row index</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.droplevel(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
@@ -2055,9 +1513,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the first level of column index</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.droplevel(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the first level of column index</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.droplevel(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
@@ -2200,8 +1658,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="stacking-columns-to-rows-stack" class="level4" data-number="12.1.5.2">
 <h4 data-number="12.1.5.2" class="anchored" data-anchor-id="stacking-columns-to-rows-stack"><span class="header-section-number">12.1.5.2</span> Stacking (Columns to Rows ): <code>stack()</code></h4>
 <p>The <code>stack()</code> function pivots the columns into rows. You can specify which level you want to stack using the <code>level</code> parameter. By default, it will stack the innermost level of the columns.</p>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(future_stack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(future_stack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
@@ -2311,8 +1769,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s change the default setting by specifying the <code>level=0</code>(the outmost level)</p>
-<div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(level<span class="op">=</span><span class="dv">0</span>, future_stack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(level<span class="op">=</span><span class="dv">0</span>, future_stack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
@@ -2410,8 +1868,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="12.1.5.3" class="anchored" data-anchor-id="unstacking-rows-to-columns-unstack"><span class="header-section-number">12.1.5.3</span> Unstacking (Rows to Columns) : <code>unstack()</code></h4>
 <p>The <code>unstack()</code> function pivots the rows back into columns. By default, it will unstack the innermost level of the index.</p>
 <p>Let’s reverse the prevous dataframe to its original shape using <code>unstack()</code>.</p>
-<div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(level<span class="op">=</span><span class="dv">0</span>, future_stack<span class="op">=</span><span class="va">True</span>).unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.stack(level<span class="op">=</span><span class="dv">0</span>, future_stack<span class="op">=</span><span class="va">True</span>).unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <div>
 
@@ -2561,8 +2019,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="transposing-using-.t-attribute" class="level3" data-number="12.1.6">
 <h3 data-number="12.1.6" class="anchored" data-anchor-id="transposing-using-.t-attribute"><span class="header-section-number">12.1.6</span> Transposing using <code>.T</code> attribute</h3>
 <p>If you simply want to swap rows and columns, you can use the <code>.T</code> attribute.</p>
-<div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 
@@ -2818,8 +2276,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Flattening the multi-level columns</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reset the index to convert the multi-level index to a single-level index</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reset the index to convert the multi-level index to a single-level index</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <div>
 
@@ -2975,10 +2433,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># flatten the multi-level column</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns <span class="op">=</span> [<span class="st">'_'</span>.join(col).strip() <span class="cf">for</span> col <span class="kw">in</span> gdp_lifeExp_multilevel_data.columns.values]</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># flatten the multi-level column</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data.columns <span class="op">=</span> [<span class="st">'_'</span>.join(col).strip() <span class="cf">for</span> col <span class="kw">in</span> gdp_lifeExp_multilevel_data.columns.values]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_multilevel_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <div>
 
@@ -3129,10 +2587,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Concatenation using <code>concat()</code></strong>: Stacking DataFrames vertically or horizontally.</li>
 </ul>
 <p>Let’s first load the existing data</p>
-<div class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_existing <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/LOTR.csv'</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_existing.shape)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>df_existing.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_existing <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/LOTR.csv'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_existing.shape)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>df_existing.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(4, 3)</code></pre>
 </div>
@@ -3181,10 +2639,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s next load the external data we want to combine to the existing data</p>
-<div class="cell" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_external <span class="op">=</span> pd.read_csv(<span class="st">"./datasets/LOTR 2.csv"</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_external.shape)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df_external.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_external <span class="op">=</span> pd.read_csv(<span class="st">"./datasets/LOTR 2.csv"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_external.shape)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>df_external.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(5, 3)</code></pre>
 </div>
@@ -3240,10 +2698,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="combining-based-on-common-keys-merge" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="combining-based-on-common-keys-merge"><span class="header-section-number">12.2.1</span> Combining based on common keys: <code>merge()</code></h3>
-<div class="cell" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> pd.merge(df_existing, df_external)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>df_enriched_merge.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> pd.merge(df_existing, df_external)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df_enriched_merge.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(2, 4)</code></pre>
 </div>
@@ -3283,10 +2741,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can also do this way</p>
-<div class="cell" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> df_existing.merge(df_external)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>df_enriched_merge.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> df_existing.merge(df_external)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>df_enriched_merge.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(2, 4)</code></pre>
 </div>
@@ -3327,10 +2785,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>By default, the <code>merge()</code> function in pandas performs an <strong>inner join</strong>, which combines two DataFrames based on the <strong>common keys shared by both</strong>. Only the rows with matching keys in both DataFrames are retained in the result.</p>
 <p>This behavior can be observed in the following code:</p>
-<div class="cell" data-execution_count="91">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'inner'</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>df_enriched_merge.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_enriched_merge <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_merge.shape)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>df_enriched_merge.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(2, 4)</code></pre>
 </div>
@@ -3380,10 +2838,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Returns all rows from the left DataFrame and the matching rows from the right DataFrame.</li>
 <li>Missing values (<code>NaN</code>) are introduced for non-matching keys from the right DataFrame.</li>
 </ul>
-<div class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df_merge_lft <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'left'</span>)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merge_lft.shape)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>df_merge_lft.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_merge_lft <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merge_lft.shape)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>df_merge_lft.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(4, 4)</code></pre>
 </div>
@@ -3447,10 +2905,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Returns all rows from the right DataFrame and the matching rows from the left DataFrame.</li>
 <li>Missing values (<code>NaN</code>) are introduced for non-matching keys from the left DataFrame.</li>
 </ul>
-<div class="cell" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df_merge_right <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merge_right.shape)</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>df_merge_right.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df_merge_right <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merge_right.shape)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>df_merge_right.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(5, 4)</code></pre>
 </div>
@@ -3516,10 +2974,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Returns all rows from both DataFrames, with <code>NaN</code> values where no match is found.</li>
 </ul>
-<div class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df_merge_outer <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'outer'</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merge_outer.shape)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>df_merge_outer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df_merge_outer <span class="op">=</span> pd.merge(df_existing, df_external, how<span class="op">=</span><span class="st">'outer'</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_merge_outer.shape)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>df_merge_outer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(7, 4)</code></pre>
 </div>
@@ -3600,19 +3058,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="combining-based-on-indices-join" class="level3" data-number="12.2.2">
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="combining-based-on-indices-join"><span class="header-section-number">12.2.2</span> Combining based on Indices: <code>join()</code></h3>
 <p>Unlike <code>merge()</code>, <code>join()</code> in pandas combines data based on the <strong>index</strong>. When using <code>join()</code>, you must specify the <code>suffixes</code> parameter if there are overlapping column names, as it does not have default values. You can refer to the official function definition here: <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html">pandas.DataFrame.join</a>.</p>
-<div class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_join.shape)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>df_enriched_join.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_join.shape)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>df_enriched_join.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ValueError: columns overlap but no suffix specified: Index(['FellowshipID', 'FirstName'], dtype='object')</code></pre>
 </div>
 </div>
 <p>Let’s set the suffix to fix this issue</p>
-<div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external, lsuffix <span class="op">=</span> <span class="st">'_existing'</span>,rsuffix <span class="op">=</span> <span class="st">'_external'</span>)</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_join.shape)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>df_enriched_join.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external, lsuffix <span class="op">=</span> <span class="st">'_existing'</span>,rsuffix <span class="op">=</span> <span class="st">'_external'</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_join.shape)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>df_enriched_join.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(4, 6)</code></pre>
 </div>
@@ -3677,16 +3135,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>As can be observed, <strong><code>join()</code> merges DataFrames using their index and performs a left join</strong>.</p>
 <p>Now, let’s set the “FellowshipID” column as the index in both DataFrames and see what happens.</p>
-<div class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the index of the dataframes as the "FellowshipID" column</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>df_existing.set_index(<span class="st">'FellowshipID'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>df_external.set_index(<span class="st">'FellowshipID'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the index of the dataframes as the "FellowshipID" column</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>df_existing.set_index(<span class="st">'FellowshipID'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>df_external.set_index(<span class="st">'FellowshipID'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># join the two dataframes</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external, lsuffix <span class="op">=</span> <span class="st">'_existing'</span>,rsuffix <span class="op">=</span> <span class="st">'_external'</span>)</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_join.shape)</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>df_enriched_join</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># join the two dataframes</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>df_enriched_join <span class="op">=</span> df_existing.join(df_external, lsuffix <span class="op">=</span> <span class="st">'_existing'</span>,rsuffix <span class="op">=</span> <span class="st">'_external'</span>)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_enriched_join.shape)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>df_enriched_join</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(4, 4)</code></pre>
 </div>
@@ -3752,11 +3210,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="stacking-vertically-or-horizontally-concat" class="level3" data-number="12.2.3">
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="stacking-vertically-or-horizontally-concat"><span class="header-section-number">12.2.3</span> Stacking vertically or horizontally: <code>concat()</code></h3>
 <p><code>concat()</code> is used in pandas to concatenate DataFrames along a specified axis, either rows or columns. Similar to <code>concat()</code> in NumPy, it defaults to concatenating along the rows.</p>
-<div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's concatenate the two dataframes using default setting</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>df_concat <span class="op">=</span> pd.concat([df_existing, df_external])</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_concat.shape)</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>df_concat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's concatenate the two dataframes using default setting</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>df_concat <span class="op">=</span> pd.concat([df_existing, df_external])</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_concat.shape)</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>df_concat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(9, 3)</code></pre>
 </div>
@@ -3840,11 +3298,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenating along columns (horizontal)</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>df_concat_columns <span class="op">=</span> pd.concat([df_existing, df_external], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_concat_columns.shape)</span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>df_concat_columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenating along columns (horizontal)</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>df_concat_columns <span class="op">=</span> pd.concat([df_existing, df_external], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_concat_columns.shape)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>df_concat_columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(7, 4)</code></pre>
 </div>
