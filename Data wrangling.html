@@ -353,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">12.3.1.2</span> </a></li>
   </ul></li>
   <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">12.3.2</span> </a></li>
-  <li><a href="#practice-exercise-2-gdp-per-capita-and-population" id="toc-practice-exercise-2-gdp-per-capita-and-population" class="nav-link" data-scroll-target="#practice-exercise-2-gdp-per-capita-and-population"><span class="header-section-number">12.3.3</span> Practice exercise 2: GDP per capita and population</a>
+  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">12.3.3</span> Practice exercise 2</a>
   <ul class="collapse">
   <li><a href="#preparing-gdp-per-capita-data" id="toc-preparing-gdp-per-capita-data" class="nav-link" data-scroll-target="#preparing-gdp-per-capita-data"><span class="header-section-number">12.3.3.1</span> Preparing GDP per capita data</a></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">12.3.3.2</span> </a></li>
@@ -3956,11 +3956,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="section-2" class="level3" data-number="12.3.2">
 <h3 data-number="12.3.2" class="anchored" data-anchor-id="section-2"><span class="header-section-number">12.3.2</span> </h3>
 </section>
-<section id="practice-exercise-2-gdp-per-capita-and-population" class="level3" data-number="12.3.3">
-<h3 data-number="12.3.3" class="anchored" data-anchor-id="practice-exercise-2-gdp-per-capita-and-population"><span class="header-section-number">12.3.3</span> Practice exercise 2: GDP per capita and population</h3>
-<p>Read the GDP per capita data from https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita</p>
+<section id="practice-exercise-2" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">12.3.3</span> Practice exercise 2</h3>
 <section id="preparing-gdp-per-capita-data" class="level4" data-number="12.3.3.1">
 <h4 data-number="12.3.3.1" class="anchored" data-anchor-id="preparing-gdp-per-capita-data"><span class="header-section-number">12.3.3.1</span> Preparing GDP per capita data</h4>
+<p>Read the GDP per capita data from https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita</p>
 <p>Drop all the <code>Year</code> columns. Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html"><code>drop()</code></a> method with the <code>columns</code>, <code>level</code> and <code>inplace</code> arguments. Print the first 2 rows of the updated DataFrame. If the first row of the DataFrame has missing values for all columns, drop that row as well.</p>
 </section>
 <section id="section-3" class="level4" data-number="12.3.3.2">
@@ -4048,7 +4048,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Use the function below to compute the similarity score between the <code>Country</code> names of the two datasets:</p>
 <p><code>from difflib import SequenceMatcher</code></p>
 <p><code>similar = lambda a,b: SequenceMatcher(None, a, b).ratio()</code></p>
-<p><strong>Note: You may use one <code>for</code> loop only for this particular question. However, if don’t use a <code>for</code> loop, you will get 10 bonus points.</strong></p>
+<p><strong>Note: You may use one <code>for</code> loop only for this particular question. However, it would be perfect if don’t use a <code>for</code> loop</strong></p>
 <p><strong>Hint:</strong></p>
 <ol type="1">
 <li><p>Define a function that computes the index of the observation having the most <em>‘similar’</em> country name in <code>population_data</code> for an observation in <code>gdp_per_capita_data</code>. The function returns a Series consisting of the most <em>‘similar’</em> country name, its population, and its similarity score <em>(This function can be written with only one line in its body, excluding the return statement and the definition statement. However, you may use as many lines as you wish)</em>.</p></li>
