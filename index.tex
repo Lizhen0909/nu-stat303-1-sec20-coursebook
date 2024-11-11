@@ -195,7 +195,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, enhanced, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -20590,11 +20590,8 @@ question:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Set the first 2 columns containing country, and UN region as
-  hierarchical row labels.
-\item
-  Apply the following function on all the columns to convert them to
-  numeric:
+  Apply the following function on all the columns of the ``Estimate'' to
+  convert them to numeric:
   \texttt{f\ =\ lambda\ x:pd.to\_numeric(x,errors\ =\ \textquotesingle{}coerce\textquotesingle{})}
 \item
   Now use \texttt{groupby()} to find estimate the GDP per capita for
@@ -20703,9 +20700,9 @@ unique tracks (\texttt{track\_name}) contributed by these artists.
 Divide this number by the total number of unique tracks in the data. The
 \texttt{nunique()} function will be useful.
 
-\hypertarget{data-reshaping-and-enriching}{%
+\hypertarget{data-reshaping-and-enrichment}{%
 \chapter{Data Reshaping and
-Enriching}\label{data-reshaping-and-enriching}}
+Enrichment}\label{data-reshaping-and-enrichment}}
 
 In this chapter, we will explore how to reshape and enrich data using
 pandas. Data reshaping and enriching are essential steps in data
@@ -20718,7 +20715,7 @@ for analysis or modeling.
 \end{verbatim}
 
 \hypertarget{data-reshaping}{%
-\subsection{Data Reshaping}\label{data-reshaping}}
+\section{Data Reshaping}\label{data-reshaping}}
 
 Data reshaping involves altering the structure of the data to suit the
 requirements of the analysis or modeling process. This is often needed
@@ -20726,7 +20723,7 @@ when the data is in a format that is difficult to analyze or when it
 needs to be organized in a specific way.
 
 \hypertarget{why-data-reshaping-is-important}{%
-\subsubsection{Why Data Reshaping is
+\subsection{Why Data Reshaping is
 Important:}\label{why-data-reshaping-is-important}}
 
 \begin{itemize}
@@ -20756,7 +20753,7 @@ Important:}\label{why-data-reshaping-is-important}}
 \end{itemize}
 
 \hypertarget{wide-vs.-long-data-format-in-data-reshaping}{%
-\subsubsection{Wide vs.~Long Data Format in Data
+\subsection{Wide vs.~Long Data Format in Data
 Reshaping}\label{wide-vs.-long-data-format-in-data-reshaping}}
 
 \begin{itemize}
@@ -20771,15 +20768,7 @@ Reshaping}\label{wide-vs.-long-data-format-in-data-reshaping}}
   or other distinctions, leading to a greater number of rows.
 \end{itemize}
 
-\begin{figure}
-
-{\centering \includegraphics{index_files/mediabag/.webp}
-
-}
-
-\caption{Alt text}
-
-\end{figure}
+\includegraphics{index_files/mediabag/.webp}
 
 To reshape between these two formats, you can use pandas functions such
 as \texttt{pivot\_table()}, \texttt{melt()}, \texttt{stack()}, and
@@ -20824,7 +20813,7 @@ file into a pandas DataFrame.
 \end{longtable}
 
 \hypertarget{pivoting-long-to-wide-using-pivot_table}{%
-\subsubsection{\texorpdfstring{Pivoting ``long'' to ``wide'' using
+\subsection{\texorpdfstring{Pivoting ``long'' to ``wide'' using
 \texttt{pivot\_table()}}{Pivoting ``long'' to ``wide'' using pivot\_table()}}\label{pivoting-long-to-wide-using-pivot_table}}
 
 In the last chapter, we learned that \texttt{pivot\_table()} is a
@@ -20833,7 +20822,8 @@ format. The \texttt{pivot\_table()} function is used to reshape data by
 specifying columns for the index, columns, and values.
 
 \hypertarget{pivoting-a-single-column}{%
-\paragraph{Pivoting a single column}\label{pivoting-a-single-column}}
+\subsubsection{Pivoting a single
+column}\label{pivoting-a-single-column}}
 
 Consider the life expectancy dataset. Let's calculate the average life
 expectancy for each combination of country and year.
@@ -20908,7 +20898,8 @@ decreased after 50 years. It is worth investigating these countries to
 identify factors associated with the decrease.
 
 \hypertarget{pivoting-multiple-columns}{%
-\paragraph{Pivoting multiple columns}\label{pivoting-multiple-columns}}
+\subsubsection{Pivoting multiple
+columns}\label{pivoting-multiple-columns}}
 
 In the above transformation, we retained only \texttt{lifeExp} in the
 \emph{`wide'} dataset. Suppose, we are also interested in visualizing
@@ -21039,7 +21030,7 @@ Zimbabwe & 48.451 & 50.469 & 52.358 & 53.995 & 55.635 & 57.674 & 60.363
 \end{longtable}
 
 \hypertarget{melting-wide-to-long-using-melt}{%
-\subsubsection{\texorpdfstring{Melting ``wide'' to ``long'' using
+\subsection{\texorpdfstring{Melting ``wide'' to ``long'' using
 \texttt{melt()}}{Melting ``wide'' to ``long'' using melt()}}\label{melting-wide-to-long-using-melt}}
 
 Melting is the \textbf{inverse} of pivoting. It transforms columns into
@@ -21183,7 +21174,7 @@ KeyError: "The following id_vars or value_vars are not present in the DataFrame:
 \end{verbatim}
 
 \hypertarget{stacking-and-unstacking-using-stack-and-unstack}{%
-\subsubsection{\texorpdfstring{Stacking and Unstacking using
+\subsection{\texorpdfstring{Stacking and Unstacking using
 \texttt{stack()} and
 \texttt{unstack()}}{Stacking and Unstacking using stack() and unstack()}}\label{stacking-and-unstacking-using-stack-and-unstack}}
 
@@ -21357,7 +21348,7 @@ array([('lifeExp', 'mean'), ('lifeExp', 'std'), ('pop', 'mean'),
 \end{verbatim}
 
 \hypertarget{understanding-the-level-in-multi-level-index-and-columns}{%
-\paragraph{\texorpdfstring{Understanding the \texttt{level} in
+\subsubsection{\texorpdfstring{Understanding the \texttt{level} in
 multi-level index and
 columns}{Understanding the level in multi-level index and columns}}\label{understanding-the-level-in-multi-level-index-and-columns}}
 
@@ -21634,8 +21625,9 @@ continent & country & & & & & & \\
 6.547108e+05 & 4409.009167 \\
 \end{longtable}
 
-\hypertarget{transpose}{%
-\subsubsection{Transpose}\label{transpose}}
+\hypertarget{transposing-using-.t-attribute}{%
+\subsection{\texorpdfstring{Transposing using \texttt{.T}
+attribute}{Transposing using .T attribute}}\label{transposing-using-.t-attribute}}
 
 If you simply want to swap rows and columns, you can use the \texttt{.T}
 attribute.
@@ -21696,8 +21688,8 @@ United Kingdom & Australia & New Zealand \\
 \end{longtable}
 
 \hypertarget{summary-of-common-reshaping-functions}{%
-\subsubsection{Summary of Common Reshaping
-Functions:}\label{summary-of-common-reshaping-functions}}
+\subsection{Summary of Common Reshaping
+Functions}\label{summary-of-common-reshaping-functions}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1364}}
@@ -21727,8 +21719,7 @@ columns. \\
 Transpose the entire DataFrame. \\
 \end{longtable}
 
-\hypertarget{practical-use-cases}{%
-\subsubsection{Practical Use Cases:}\label{practical-use-cases}}
+\textbf{Practical Use Cases:}
 
 \begin{itemize}
 \tightlist
@@ -21748,7 +21739,7 @@ Transpose the entire DataFrame. \\
 \end{itemize}
 
 \hypertarget{converting-from-multi-level-index-to-single-level-index-dataframe}{%
-\subsubsection{Converting from Multi-Level Index to Single-Level Index
+\subsection{Converting from Multi-Level Index to Single-Level Index
 DataFrame}\label{converting-from-multi-level-index-to-single-level-index-dataframe}}
 
 If you're uncomfortable working with DataFrames that have multi-level
@@ -21854,9 +21845,7 @@ Data enriching involves enhancing your existing dataset by adding
 additional data, often from external sources, to make your dataset more
 insightful.
 
-\hypertarget{common-methods-for-data-enriching}{%
-\subsection{Common Methods for Data
-Enriching}\label{common-methods-for-data-enriching}}
+There are 3 common methods for data enriching:
 
 \begin{itemize}
 \tightlist
@@ -22194,8 +22183,8 @@ answered one of the two surverys, it will be indicative of the
 sentiment, and will be useful to keep in the merged dataset.
 
 \hypertarget{combining-based-on-indices-join}{%
-\subsection{\texorpdfstring{\textbf{Combining Based on Indices:
-\texttt{join()}}}{Combining Based on Indices: join()}}\label{combining-based-on-indices-join}}
+\subsection{\texorpdfstring{Combining based on Indices:
+\texttt{join()}}{Combining based on Indices: join()}}\label{combining-based-on-indices-join}}
 
 Unlike \texttt{merge()}, \texttt{join()} in pandas combines data based
 on the \textbf{index}. When using \texttt{join()}, you must specify the
@@ -22295,10 +22284,9 @@ Similar to \texttt{merge()}, you can change the type of join in
 However, this explanation will be skipped here, as the different join
 types have already been covered in the \texttt{merge()} section above.
 
-\hypertarget{stacking-dataframes-vertically-or-horizontally-concat}{%
-\subsection{\texorpdfstring{Stacking DataFrames vertically or
-horizontally:
-\texttt{concat()}}{Stacking DataFrames vertically or horizontally: concat()}}\label{stacking-dataframes-vertically-or-horizontally-concat}}
+\hypertarget{stacking-vertically-or-horizontally-concat}{%
+\subsection{\texorpdfstring{Stacking vertically or horizontally:
+\texttt{concat()}}{Stacking vertically or horizontally: concat()}}\label{stacking-vertically-or-horizontally-concat}}
 
 \texttt{concat()} is used in pandas to concatenate DataFrames along a
 specified axis, either rows or columns. Similar to \texttt{concat()} in
@@ -22397,23 +22385,281 @@ differences. Mention examples when you can use (i) either, (ii) only
   \texttt{merge()}
 \end{enumerate}
 
-\hypertarget{independent-practice-1-1}{%
-\section{Independent Practice 1}\label{independent-practice-1-1}}
+\hypertarget{independent-study-4}{%
+\section{Independent Study}\label{independent-study-4}}
+
+\hypertarget{practice-exercise-1-6}{%
+\subsection{Practice exercise 1}\label{practice-exercise-1-6}}
 
 You are given the life expectancy data of each continent as a separate
 *.csv file.
 
 \hypertarget{section-67}{%
-\subsection{}\label{section-67}}
+\subsubsection{}\label{section-67}}
 
 Visualize the change of life expectancy over time for different
 continents.
 
 \hypertarget{section-68}{%
-\subsection{}\label{section-68}}
+\subsubsection{}\label{section-68}}
 
 Appending all the data files, i.e., stacking them on top of each other
 to form a combined datasets called ``data\_all\_continents''
+
+\hypertarget{section-69}{%
+\subsection{}\label{section-69}}
+
+\hypertarget{practice-exercise-2-gdp-per-capita-and-population}{%
+\subsection{Practice exercise 2: GDP per capita and
+population}\label{practice-exercise-2-gdp-per-capita-and-population}}
+
+Read the GDP per capita data from
+https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita
+
+\hypertarget{preparing-gdp-per-capita-data}{%
+\subsubsection{Preparing GDP per capita
+data}\label{preparing-gdp-per-capita-data}}
+
+Drop all the \texttt{Year} columns. Use the
+\href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html}{\texttt{drop()}}
+method with the \texttt{columns}, \texttt{level} and \texttt{inplace}
+arguments. Print the first 2 rows of the updated DataFrame. If the first
+row of the DataFrame has missing values for all columns, drop that row
+as well.
+
+\hypertarget{section-70}{%
+\subsubsection{}\label{section-70}}
+
+Drop the inner level of column labels. Use the \texttt{droplevel()}
+method. Print the first 2 rows of the updated DataFrame.
+
+\hypertarget{section-71}{%
+\subsubsection{}\label{section-71}}
+
+Convert the columns consisting of GDP per capita by \emph{IMF, World
+Bank}, and the \emph{United Nations} to numeric. Apply a lambda function
+on these columns to convert them to numeric. Print the number of missing
+values in each column of the updated DataFrame.
+
+Note: \emph{Do not apply the function 3 times. Apply it once on a
+DataFrame consisting of these 3 columns.}
+
+\hypertarget{section-72}{%
+\subsubsection{}\label{section-72}}
+
+Apply the lambda function below on all the column names of the dataset
+obtained in the previous question to clean the column names.
+
+\texttt{import\ re}
+
+\texttt{column\_name\_cleaner\ =\ lambda\ x:re.split(r\textquotesingle{}\textbackslash{}{[}\textbar{}/\textquotesingle{},\ x){[}0{]}}
+
+\emph{Note: You will need to edit the parameter of the function, i.e.,
+\texttt{x} in the above function to make sure it is applied on column
+names and not columns.}
+
+Print the first 2 rows of the updated DataFrame.
+
+\hypertarget{section-73}{%
+\subsubsection{}\label{section-73}}
+
+Create a new column \texttt{GDP\_per\_capita} that copies the GDP per
+capita values of the \texttt{United\ Nations}. If the GDP per capita is
+missing in the \texttt{United\ Nations} column, then copy it from the
+\texttt{World\ Bank} column. If the GDP per capita is missing both in
+the \texttt{United\ Nations} and the \texttt{World\ Bank} columns, then
+copy it from the \texttt{IMF} column.
+
+Print the number of missing values in the \texttt{GDP\_per\_capita}
+column.
+
+\hypertarget{section-74}{%
+\subsubsection{}\label{section-74}}
+
+Drop all the columns except \texttt{Country} and
+\texttt{GDP\_per\_capita}. Print the first 2 rows of the updated
+DataFrame.
+
+\hypertarget{section-75}{%
+\subsubsection{}\label{section-75}}
+
+The country names contain some special characters \emph{(characters
+other than letters)} and need to be cleaned. The following function can
+help clean country names:
+
+\texttt{import\ re}
+
+\texttt{country\_names\_clean\_gdp\_data\ =\ lambda\ x:\ re.sub(r\textquotesingle{}{[}\^{}\textbackslash{}w\textbackslash{}s{]}\textquotesingle{},\ \textquotesingle{}\textquotesingle{},\ x).strip()}
+
+Apply the above lambda function on the country column to clean country
+names. Save the cleaned dataset as \texttt{gdp\_per\_capita\_data}.
+Print the first 2 rows of the updated DataFrame.
+
+\hypertarget{preparing-population-data}{%
+\subsubsection{Preparing population
+data}\label{preparing-population-data}}
+
+Read the population data from
+https://en.wikipedia.org/wiki/List\_of\_countries\_by\_population\_(United\_Nations).
+
+\begin{itemize}
+\tightlist
+\item
+  Drop all columns except \texttt{Country} and
+  \texttt{Population\ (1\ July\ 2023)}.
+\item
+  Drop the first row since it is the total population in the world
+\end{itemize}
+
+\hypertarget{section-76}{%
+\subsubsection{}\label{section-76}}
+
+Apply the lambda function below on all the column names of the dataset
+obtained in the previous question to clean the column names.
+
+\texttt{import\ re}
+
+\texttt{column\_name\_cleaner\ =\ lambda\ x:re.split(r\textquotesingle{}\textbackslash{}{[}\textbar{}/\textbar{}\textbackslash{}(\textbar{}\ \textquotesingle{},\ x.name){[}0{]}}
+
+\emph{Note: You will need to edit the parameter of the function, i.e.,
+\texttt{x} in the above function to make sure it is applied on column
+names and not columns.}
+
+Print the first 2 rows of the updated DataFrame.
+
+\hypertarget{section-77}{%
+\subsubsection{}\label{section-77}}
+
+The country names contain some special characters \emph{(characters
+other than letters)} and need to be cleaned. The following function can
+help clean country names:
+
+\texttt{import\ re}
+
+\texttt{country\_names\_clean\_population\_data\ =\ lambda\ x:\ re.sub("{[}\textbackslash{}(\textbackslash{}{[}{]}.*?{[}\textbackslash{})\textbackslash{}{]}{]}",\ "",\ x).strip()}
+
+Apply the above lambda function on the country column to clean country
+names. Save the cleaned dataset as \texttt{population\_data}.
+
+\hypertarget{merging-gdp-per-capita-and-population-datasets}{%
+\subsubsection{Merging GDP per capita and population
+datasets}\label{merging-gdp-per-capita-and-population-datasets}}
+
+Merge \texttt{gdp\_per\_capita\_data} with \texttt{population\_data} to
+get the population and GDP per capita of countries in a single dataset.
+Print the first two rows of the merged DataFrame.
+
+Assume that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We want to keep the GDP per capita of all countries in the merged
+  dataset, even if their population in unavailable in the population
+  dataset. For countries whose population in unavailable, their
+  \texttt{Population} column will show \texttt{NA}.
+\item
+  We want to discard an observation of a country if its GDP per capita
+  is unavailable.
+\end{enumerate}
+
+\hypertarget{section-78}{%
+\subsubsection{}\label{section-78}}
+
+For how many countries in \texttt{gdp\_per\_capita\_data} does the
+population seem to be unavailable in \texttt{population\_data}? Note
+that you don't need to clean country names any further than cleaned by
+the functions provided.
+
+Print the observations of \texttt{gdp\_per\_capita\_data} with missing
+\texttt{Population}.
+
+\hypertarget{merging-datasets-with-similar-values-in-the-key-column}{%
+\subsection{\texorpdfstring{Merging datasets with \emph{similar} values
+in the \emph{key}
+column}{Merging datasets with similar values in the key column}}\label{merging-datasets-with-similar-values-in-the-key-column}}
+
+We suspect that population of more countries may be available in
+\texttt{population\_data}. However, due to unclean country names, the
+observations could not merge. For example, the country \emph{Guinea
+Bissau} is mentioned as \emph{GuineaBissau} in
+\texttt{gdp\_per\_capita\_data} and \emph{Guinea-Bissau} in
+\texttt{population\_data}. To resolve this issue, we'll use a different
+approach to merge datasts. We'll merge the population of a country to an
+observation in the GDP per capita dataset, whose name in
+\texttt{population\_data} is the most \emph{`similar'} to the name of
+the country in \texttt{gdp\_per\_capita\_data}.
+
+\hypertarget{section-79}{%
+\subsubsection{}\label{section-79}}
+
+Proceed as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For each country in \texttt{gdp\_per\_capita\_data}, find the
+  \texttt{country} with the most \emph{`similar'} name in
+  \texttt{population\_data}, based on the similarity score. Use the
+  lambda function provided below to compute the similarity score between
+  two strings \emph{(The higher the score, the more similar are the
+  strings. The similarity score is \(1.0\) if two strings are exactly
+  the same).}
+\item
+  Merge the population of the most \emph{`similar'} country to the
+  country in \texttt{gdp\_per\_capita\_data}. The merged dataset must
+  include 5 columns - the country name as it appears in
+  \texttt{gdp\_per\_capita\_data}, the GDP per capita, the country name
+  of the most \emph{`similar'} country as it appears in
+  \texttt{population\_data}, the population of that country, and the
+  similarity score between the country names.
+\item
+  After creating the merged dataset, \textbf{print} the rows of the
+  dataset that have similarity scores less than 1.
+\end{enumerate}
+
+Use the function below to compute the similarity score between the
+\texttt{Country} names of the two datasets:
+
+\texttt{from\ difflib\ import\ SequenceMatcher}
+
+\texttt{similar\ =\ lambda\ a,b:\ SequenceMatcher(None,\ a,\ b).ratio()}
+
+\textbf{Note: You may use one \texttt{for} loop only for this particular
+question. However, if don't use a \texttt{for} loop, you will get 10
+bonus points.}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Define a function that computes the index of the observation having
+  the most \emph{`similar'} country name in \texttt{population\_data}
+  for an observation in \texttt{gdp\_per\_capita\_data}. The function
+  returns a Series consisting of the most \emph{`similar'} country name,
+  its population, and its similarity score \emph{(This function can be
+  written with only one line in its body, excluding the return statement
+  and the definition statement. However, you may use as many lines as
+  you wish)}.
+\item
+  Apply the function on the \texttt{Country} column of
+  \texttt{gdp\_per\_capita\_data}. A DataFrame will be obtained.
+\item
+  Concatenate the DataFrame obtained in (2) with
+  \texttt{gdp\_per\_capita\_data} with the pandas \texttt{concat()}
+  function.
+\end{enumerate}
+
+\hypertarget{section-80}{%
+\subsubsection{}\label{section-80}}
+
+In the dataset obtained in the previous question, for all observations
+where similarity score is less than 0.8, replace the population with
+\texttt{Nan}.
+
+Print the observations of the dataset having missing values of
+population.
 
 \cleardoublepage
 \phantomsection
@@ -22488,8 +22734,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-69}{%
-\subsection{}\label{section-69}}
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -22498,24 +22744,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-70}{%
-\subsection{}\label{section-70}}
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-71}{%
-\subsection{}\label{section-71}}
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-72}{%
-\subsection{}\label{section-72}}
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -22526,8 +22772,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-73}{%
-\subsection{}\label{section-73}}
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
 
 Use list comprehension to:
 
@@ -22576,16 +22822,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-74}{%
-\subsection{}\label{section-74}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-75}{%
-\subsection{}\label{section-75}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -22594,8 +22840,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-76}{%
-\subsection{}\label{section-76}}
+\hypertarget{section-88}{%
+\subsection{}\label{section-88}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -22604,8 +22850,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-77}{%
-\subsection{}\label{section-77}}
+\hypertarget{section-89}{%
+\subsection{}\label{section-89}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -22629,8 +22875,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-78}{%
-\subsection{}\label{section-78}}
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -22639,8 +22885,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-79}{%
-\subsection{}\label{section-79}}
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -22652,8 +22898,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-80}{%
-\subsection{}\label{section-80}}
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -22661,23 +22907,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -22686,16 +22932,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-96}{%
+\subsection{}\label{section-96}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-97}{%
+\subsection{}\label{section-97}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -22705,16 +22951,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-86}{%
-\subsection{}\label{section-86}}
+\hypertarget{section-98}{%
+\subsection{}\label{section-98}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-87}{%
-\subsection{}\label{section-87}}
+\hypertarget{section-99}{%
+\subsection{}\label{section-99}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -22727,38 +22973,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-88}{%
-\subsection{}\label{section-88}}
+\hypertarget{section-100}{%
+\subsection{}\label{section-100}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-89}{%
-\subsection{}\label{section-89}}
+\hypertarget{section-101}{%
+\subsection{}\label{section-101}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-90}{%
-\subsection{}\label{section-90}}
+\hypertarget{section-102}{%
+\subsection{}\label{section-102}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-91}{%
-\subsection{}\label{section-91}}
+\hypertarget{section-103}{%
+\subsection{}\label{section-103}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-92}{%
-\subsection{}\label{section-92}}
+\hypertarget{section-104}{%
+\subsection{}\label{section-104}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -22767,16 +23013,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-93}{%
-\subsection{}\label{section-93}}
+\hypertarget{section-105}{%
+\subsection{}\label{section-105}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-94}{%
-\subsection{}\label{section-94}}
+\hypertarget{section-106}{%
+\subsection{}\label{section-106}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -23223,8 +23469,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-95}{%
-\subsection{}\label{section-95}}
+\hypertarget{section-107}{%
+\subsection{}\label{section-107}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -23235,8 +23481,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-96}{%
-\subsection{}\label{section-96}}
+\hypertarget{section-108}{%
+\subsection{}\label{section-108}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -23245,8 +23491,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-97}{%
-\subsection{}\label{section-97}}
+\hypertarget{section-109}{%
+\subsection{}\label{section-109}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -23270,8 +23516,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-98}{%
-\subsection{}\label{section-98}}
+\hypertarget{section-110}{%
+\subsection{}\label{section-110}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -23303,8 +23549,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-99}{%
-\subsection{}\label{section-99}}
+\hypertarget{section-111}{%
+\subsection{}\label{section-111}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -23318,8 +23564,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-100}{%
-\subsection{}\label{section-100}}
+\hypertarget{section-112}{%
+\subsection{}\label{section-112}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -23336,8 +23582,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-101}{%
-\subsection{}\label{section-101}}
+\hypertarget{section-113}{%
+\subsection{}\label{section-113}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -23372,8 +23618,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-102}{%
-\subsection{}\label{section-102}}
+\hypertarget{section-114}{%
+\subsection{}\label{section-114}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -23384,8 +23630,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-103}{%
-\subsection{}\label{section-103}}
+\hypertarget{section-115}{%
+\subsection{}\label{section-115}}
 
 Find the percentage of the total countries in each continent.
 
@@ -23394,22 +23640,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-104}{%
-\subsection{}\label{section-104}}
+\hypertarget{section-116}{%
+\subsection{}\label{section-116}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-105}{%
-\subsection{}\label{section-105}}
+\hypertarget{section-117}{%
+\subsection{}\label{section-117}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-106}{%
-\subsubsection{}\label{section-106}}
+\hypertarget{section-118}{%
+\subsubsection{}\label{section-118}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -23431,8 +23677,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-107}{%
-\subsubsection{}\label{section-107}}
+\hypertarget{section-119}{%
+\subsubsection{}\label{section-119}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -23454,24 +23700,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-108}{%
-\subsubsection{}\label{section-108}}
+\hypertarget{section-120}{%
+\subsubsection{}\label{section-120}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-109}{%
-\subsection{}\label{section-109}}
+\hypertarget{section-121}{%
+\subsection{}\label{section-121}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-110}{%
-\subsection{}\label{section-110}}
+\hypertarget{section-122}{%
+\subsection{}\label{section-122}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -23489,15 +23735,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-111}{%
-\subsection{}\label{section-111}}
+\hypertarget{section-123}{%
+\subsection{}\label{section-123}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-112}{%
-\subsection{}\label{section-112}}
+\hypertarget{section-124}{%
+\subsection{}\label{section-124}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -23506,8 +23752,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-113}{%
-\subsection{}\label{section-113}}
+\hypertarget{section-125}{%
+\subsection{}\label{section-125}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -23683,8 +23929,8 @@ time of its release.
 \hypertarget{month-of-release}{%
 \subsection{Month of release}\label{month-of-release}}
 
-\hypertarget{section-114}{%
-\subsubsection{}\label{section-114}}
+\hypertarget{section-126}{%
+\subsubsection{}\label{section-126}}
 
 Make an appropriate plot to visualize the mean profit of movies released
 each month.
@@ -23705,8 +23951,8 @@ each month.
 
 \emph{(6 points)}
 
-\hypertarget{section-115}{%
-\subsubsection{}\label{section-115}}
+\hypertarget{section-127}{%
+\subsubsection{}\label{section-127}}
 
 Based on the plot, which seasons have been the most and least profitable
 (on an average) for a movie release. Don't worry about the exact start
@@ -23720,8 +23966,8 @@ summer, late spring} etc.
 \subsection{Month of release with number of movies in each
 genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
 
-\hypertarget{section-116}{%
-\subsubsection{}\label{section-116}}
+\hypertarget{section-128}{%
+\subsubsection{}\label{section-128}}
 
 Now that we know the most profitable season for releasing movies, let us
 visualize if some \texttt{genre}s are more popular during certain
@@ -23753,8 +23999,8 @@ each \texttt{genre} in each calendar month.
   Use the \emph{hue} argument
 \end{enumerate}
 
-\hypertarget{section-117}{%
-\subsubsection{}\label{section-117}}
+\hypertarget{section-129}{%
+\subsubsection{}\label{section-129}}
 
 Based on the above plot, which \texttt{genre} is the most popular during
 the most profitable season of release? And which genre is the most
@@ -23766,8 +24012,8 @@ popular during the least profitable season of release?
 \subsection{Month of release with proportion of movies in each
 genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
 
-\hypertarget{section-118}{%
-\subsubsection{}\label{section-118}}
+\hypertarget{section-130}{%
+\subsubsection{}\label{section-130}}
 
 Visualize the proportion of movies in each \texttt{genre} for each month
 of release.
@@ -23801,8 +24047,8 @@ the visualization
 
 \emph{(8 points)}
 
-\hypertarget{section-119}{%
-\subsubsection{}\label{section-119}}
+\hypertarget{section-131}{%
+\subsubsection{}\label{section-131}}
 
 Which \texttt{genre} is the most popular during the month of May, and
 which one is the most popular during December?
@@ -23813,8 +24059,8 @@ which one is the most popular during December?
 \subsection{Year of release with
 genre}\label{year-of-release-with-genre}}
 
-\hypertarget{section-120}{%
-\subsubsection{}\label{section-120}}
+\hypertarget{section-132}{%
+\subsubsection{}\label{section-132}}
 
 Make an appropriate figure to visualize the average profit of movies of
 each \texttt{genre} for each year. Consider only the movies released
@@ -23839,8 +24085,8 @@ profit.
 
 \emph{(6 points)}
 
-\hypertarget{section-121}{%
-\subsubsection{}\label{section-121}}
+\hypertarget{section-133}{%
+\subsubsection{}\label{section-133}}
 
 Based on the figure above, which \texttt{genre}'s profitability seems to
 be increasing over the years, and which \texttt{genre} has the least
@@ -23854,31 +24100,31 @@ uncertainty in profit for most of the years.
 \hypertarget{pairplot-heatmap}{%
 \subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
 
-\hypertarget{section-122}{%
-\subsubsection{}\label{section-122}}
+\hypertarget{section-134}{%
+\subsubsection{}\label{section-134}}
 
 Make a pairplot and heatmap of all the continuous variables in the data.
 
 \emph{(8 points)}
 
-\hypertarget{section-123}{%
-\subsubsection{}\label{section-123}}
+\hypertarget{section-135}{%
+\subsubsection{}\label{section-135}}
 
 Are there any trends that you can see in the pairplot, but not in the
 heatmap?
 
 \emph{(2 points)}
 
-\hypertarget{section-124}{%
-\subsubsection{}\label{section-124}}
+\hypertarget{section-136}{%
+\subsubsection{}\label{section-136}}
 
 Based on the plots in 2(a)(i), which variables are associated with
 profit?
 
 \emph{(2 points)}
 
-\hypertarget{section-125}{%
-\subsubsection{}\label{section-125}}
+\hypertarget{section-137}{%
+\subsubsection{}\label{section-137}}
 
 Among the variables listed in 2(a)(iii), select a subset of variables
 such that none of them are highly associated with each other. The rest
@@ -23890,8 +24136,8 @@ association with profit.
 \hypertarget{nested-associations}{%
 \subsection{Nested associations}\label{nested-associations}}
 
-\hypertarget{section-126}{%
-\subsubsection{}\label{section-126}}
+\hypertarget{section-138}{%
+\subsubsection{}\label{section-138}}
 
 Use the code below to create some new columns.
 
@@ -23909,8 +24155,8 @@ Which genre has the highest association between profit and IMDB votes?
 
 \emph{(8 points)}
 
-\hypertarget{section-127}{%
-\subsubsection{}\label{section-127}}
+\hypertarget{section-139}{%
+\subsubsection{}\label{section-139}}
 
 Make an appropriate figure to visualize the association between the
 number of IMDB votes and profit, for each combination of the fiction
@@ -23930,8 +24176,8 @@ object.
 \subsection{Profit based on movie
 director}\label{profit-based-on-movie-director}}
 
-\hypertarget{section-128}{%
-\subsubsection{}\label{section-128}}
+\hypertarget{section-140}{%
+\subsubsection{}\label{section-140}}
 
 Consider the directors who have directed more than 10 movies (based on
 the dataset). Make a horizontal barplot that shows the mean profit of
@@ -23953,8 +24199,8 @@ directors must appear in the barplot:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-129}{%
-\subsubsection{}\label{section-129}}
+\hypertarget{section-141}{%
+\subsubsection{}\label{section-141}}
 
 Based on the above plot, which director has the highest mean
 profitability, and which one has the highest variation in profitability?
@@ -23968,8 +24214,8 @@ profitability, and which one has the highest variation in profitability?
 \subsection{Distribution of profit based on genre
 (boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
 
-\hypertarget{section-130}{%
-\subsubsection{}\label{section-130}}
+\hypertarget{section-142}{%
+\subsubsection{}\label{section-142}}
 
 Make boxplots to visualize the distribution of \texttt{profit} based on
 \texttt{genre}. Based on the plot, which genre has the most profitable
@@ -23977,8 +24223,8 @@ movies?
 
 \emph{(6 points)}
 
-\hypertarget{section-131}{%
-\subsubsection{}\label{section-131}}
+\hypertarget{section-143}{%
+\subsubsection{}\label{section-143}}
 
 Which genre has the most variation in profit, and which one has the
 least?
@@ -23989,16 +24235,16 @@ least?
 \subsection{Distribution of profit based on genre (density
 plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
 
-\hypertarget{section-132}{%
-\subsubsection{}\label{section-132}}
+\hypertarget{section-144}{%
+\subsubsection{}\label{section-144}}
 
 Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
 the limit on the horizonal axis, so that the plots are clearly visible.
 
 \emph{(6 points)}
 
-\hypertarget{section-133}{%
-\subsubsection{}\label{section-133}}
+\hypertarget{section-145}{%
+\subsubsection{}\label{section-145}}
 
 What additional insight / trend can you seen in the above plot that you
 cannot see with the boxplots?
@@ -24135,18 +24381,18 @@ Suppose there is an investor who only holds the index for a single day
 
 Based on the data,
 
-\hypertarget{section-134}{%
-\subsubsection{}\label{section-134}}
+\hypertarget{section-146}{%
+\subsubsection{}\label{section-146}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-135}{%
-\subsubsection{}\label{section-135}}
+\hypertarget{section-147}{%
+\subsubsection{}\label{section-147}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-136}{%
-\subsubsection{}\label{section-136}}
+\hypertarget{section-148}{%
+\subsubsection{}\label{section-148}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -24165,18 +24411,18 @@ Suppose there is an investor who will hold the index for a year (suppose
 there are 250 trading days in a year). Do the same analysis as the
 above:
 
-\hypertarget{section-137}{%
-\subsubsection{}\label{section-137}}
+\hypertarget{section-149}{%
+\subsubsection{}\label{section-149}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-138}{%
-\subsubsection{}\label{section-138}}
+\hypertarget{section-150}{%
+\subsubsection{}\label{section-150}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-139}{%
-\subsubsection{}\label{section-139}}
+\hypertarget{section-151}{%
+\subsubsection{}\label{section-151}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -24191,20 +24437,20 @@ our holding period from 1 day to 1 year(250 days).
 
 Show/answer:
 
-\hypertarget{section-140}{%
-\subsubsection{}\label{section-140}}
+\hypertarget{section-152}{%
+\subsubsection{}\label{section-152}}
 
 At least how many days do you need to hold the index in order to make a
 significant positive return (threshold 0.01)?
 
-\hypertarget{section-141}{%
-\subsubsection{}\label{section-141}}
+\hypertarget{section-153}{%
+\subsubsection{}\label{section-153}}
 
 How are the returns associated with the risks for different investment
 strategies?
 
-\hypertarget{section-142}{%
-\subsubsection{}\label{section-142}}
+\hypertarget{section-154}{%
+\subsubsection{}\label{section-154}}
 
 Make a graph as shown below.
 
@@ -24566,8 +24812,8 @@ get 30 points.}
 weights when imputing missing values with KNN. However, shouldn't some
 variables be given higher weight than others?
 
-\emph{If you think you are successful, email your solution to
-krish@northwestern.edu for grading.}
+\emph{If you think you are successful, email your solution to your
+instructor for grading.}
 
 \hypertarget{binning}{%
 \section{Binning}\label{binning}}
@@ -24589,23 +24835,23 @@ along with the trendline. What is the trend indicated by the trendline?
 \subsection{\texorpdfstring{Trend with bins of
 \texttt{house\_age}}{Trend with bins of house\_age}}\label{trend-with-bins-of-house_age}}
 
-\hypertarget{section-143}{%
-\subsubsection{}\label{section-143}}
+\hypertarget{section-155}{%
+\subsubsection{}\label{section-155}}
 
 Bin \texttt{house\_age} into 5 approximately equal-sized bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-144}{%
-\subsubsection{}\label{section-144}}
+\hypertarget{section-156}{%
+\subsubsection{}\label{section-156}}
 
 After binning, plot the mean \texttt{house\_price} against the house age
 bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-145}{%
-\subsubsection{}\label{section-145}}
+\hypertarget{section-157}{%
+\subsubsection{}\label{section-157}}
 
 Is the trend seen with this plot different from that seen with the
 trendline in the previous question? If yes, then is one of the trends
@@ -24613,8 +24859,8 @@ incorrect? Why or why not?
 
 \emph{(4 points)}
 
-\hypertarget{section-146}{%
-\subsubsection{}\label{section-146}}
+\hypertarget{section-158}{%
+\subsubsection{}\label{section-158}}
 
 Is one of the trends more informative? If yes, then which one and how?
 
@@ -24682,6 +24928,351 @@ making them extremely expensive / extremely cheap? Explore the data and
 mention your hypothesis.
 
 \emph{(8 points)}
+
+\hypertarget{assignment-f}{%
+\chapter{Assignment F}\label{assignment-f}}
+
+Data Wrangling
+
+\hfill\break
+
+\hypertarget{instructions-7}{%
+\section*{Instructions}\label{instructions-7}}
+\addcontentsline{toc}{section}{Instructions}
+
+\markright{Instructions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You may talk to a friend, discuss the questions and potential
+  directions for solving them. However, you need to write your own
+  solutions and code separately, and not as a group activity.
+\item
+  Write your code in the \emph{Code} cells and your answer in the
+  \emph{Markdown} cells of the Jupyter notebook. Ensure that the
+  solution is written neatly enough to understand and grade.
+\item
+  Use
+  \href{https://quarto.org/docs/output-formats/html-basics.html}{Quarto}
+  to print the \emph{.ipynb} file as HTML. You will need to open the
+  command prompt, navigate to the directory containing the file, and use
+  the command: \texttt{quarto\ render\ filename.ipynb\ -\/-to\ html}.
+  Submit the HTML file.
+\item
+  The assignment is worth 100 points, and is due on \textbf{18th Nov
+  2024 at 11:59 pm}. No extension is possible on this assignment due to
+  tight grading deadlines.
+\item
+  You are \textbf{not allowed to use a \texttt{for} loop in this
+  assignment}.
+\item
+  If you are updating a dataset (imputing missing values / creating new
+  variables), then use the updated dataset in a subsequent question.
+\item
+  \textbf{Five points are properly formatting the assignment}. The
+  breakdown is as follows:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Must be an HTML file rendered using Quarto (2 pts).
+\item
+  There aren't excessively long outputs of extraneous information
+  (e.g.~no printouts of entire data frames without good reason, there
+  aren't long printouts of which iteration a loop is on, there aren't
+  long sections of commented-out code, etc.) (1 pt)
+\item
+  Final answers of each question are written in Markdown cells (1 pt).
+\item
+  There is no piece of unnecessary / redundant code, and no unnecessary
+  / redundant text (1 pt)
+\end{itemize}
+
+\hypertarget{canadian-fish-biodiversity}{%
+\section{Canadian Fish Biodiversity}\label{canadian-fish-biodiversity}}
+
+Read data from the file \emph{Canadian\_Fish\_Biodiversity.csv} on
+Canvas. Each row records a unique fishing event from a 2013 sample of
+fish populations in Ontario, Canada. To analyze the results of these
+fishing surveys, we need to understand the dynamics of projects, sites,
+and geographic locations.
+
+\hypertarget{top-3-projects}{%
+\subsection{Top 3 projects}\label{top-3-projects}}
+
+Each site (identified by the column \texttt{SITEID}) represents a time
+and place at which fishing events occurred. Sites are grouped into
+broader projects (identified by the column \texttt{Project\ Name}). We
+want to understand the scope of these projects.
+
+Using \texttt{groupby()}, find the top three projects by number of
+unique sites.
+
+\emph{(4 points)}
+
+\hypertarget{missing-value-imputation-with-groupby}{%
+\subsection{\texorpdfstring{Missing value imputation with
+\texttt{groupby()}}{Missing value imputation with groupby()}}\label{missing-value-imputation-with-groupby}}
+
+\hypertarget{number-of-missing-values-1}{%
+\subsubsection{Number of missing
+values}\label{number-of-missing-values-1}}
+
+How many values are missing for the air temperature column
+(\texttt{Air\ Temperature\ (C)})?
+
+\emph{(1 point)}
+
+\hypertarget{missing-value-imputation-attempt-1}{%
+\subsubsection{Missing value imputation: attempt
+1}\label{missing-value-imputation-attempt-1}}
+
+Using \texttt{groupby()}, impute the missing values of air temperature
+with the median air temperature of the corresponding water body
+(\texttt{Waterbody\ Name}) and \texttt{Month}.
+
+\emph{(4 points)}
+
+\hypertarget{missing-values-remaining-after-attempt-1}{%
+\subsubsection{Missing values remaining after attempt
+1}\label{missing-values-remaining-after-attempt-1}}
+
+How many missing values still remain for the air temperature column
+after the imputation in the previous question?
+
+\emph{(1 point)}
+
+\hypertarget{missing-value-imputation-attempt-2}{%
+\subsubsection{Missing value imputation: attempt
+2}\label{missing-value-imputation-attempt-2}}
+
+We will try to impute the remaining missing values for air temperature.
+Try to impute the remaining missing values of air temperature with the
+median air temperature of the corresponding project
+(\texttt{Project\ Name}) and \texttt{Month}.
+
+\emph{(4 points)}
+
+\hypertarget{missing-values-remaining-after-attempt-2}{%
+\subsubsection{Missing values remaining after attempt
+2}\label{missing-values-remaining-after-attempt-2}}
+
+How many missing values still remain for the air temperature column
+after the imputation in the previous question?
+
+\emph{(1 point)}
+
+\hypertarget{air-water-temperatures-correlation}{%
+\subsubsection{Air-water temperatures
+correlation}\label{air-water-temperatures-correlation}}
+
+Find the correlation between air temperature and water temperature.
+
+\emph{(1 point)}
+
+\hypertarget{missing-values-remaning-after-hypothetical-attempt-3}{%
+\subsubsection{Missing values remaning after hypothetical attempt
+3}\label{missing-values-remaning-after-hypothetical-attempt-3}}
+
+As you found a high correlation between air temperature and water
+temperature, you can use water temperature to estimate the air
+temperature \emph{(using the trendline, like you did in assignment 5)}.
+Assuming you already did that, how many missing values will still remain
+for the air temperature column?
+
+\textbf{Note:} Do not impute the missing values using the trendline,
+just assume you already did that.
+
+\emph{(3 points)}
+
+\hypertarget{visualizing-missing-value-imputation}{%
+\subsubsection{Visualizing missing value
+imputation}\label{visualizing-missing-value-imputation}}
+
+Make a scatterplot of air temperature against water temperature.
+Highlight the points for which the air temperature was imputed in
+attempts 1 and 2 with a different color.
+
+\emph{(8 points)}
+
+\hypertarget{living-conditions}{%
+\subsection{Living conditions}\label{living-conditions}}
+
+This section begins to investigate the living conditions of fish at
+different locations and time periods. Continue using the updated dataset
+with the imputed missing values in attempts 1 and 2 of the previous
+section.
+
+\hypertarget{air-water-temperatures-summary-statistics}{%
+\subsubsection{Air-water temperatures: Summary
+statistics}\label{air-water-temperatures-summary-statistics}}
+
+Use a single \texttt{groupby} statement to view the minimum, mean,
+standard deviation, and maximum air temperature and water temperature
+for each project during the month of August (use the \texttt{Month}
+column).
+
+\emph{(5 points)}
+
+\hypertarget{air-water-temperatures-visualizing-yearly-trend}{%
+\subsubsection{Air-water temperatures: visualizing yearly
+trend}\label{air-water-temperatures-visualizing-yearly-trend}}
+
+Make lineplots showing maximum air temperature and water temperature by
+\texttt{Month} and \texttt{Region}. To construct \texttt{Region}, use
+the Pandas function \texttt{cut()} to satisfy the following conditions:
+
+\begin{itemize}
+\tightlist
+\item
+  Rows with a latitude lower than 42.4 should have \emph{Southern} in
+  the \texttt{Region} column
+\item
+  Rows with a latitude between 42.4 and 42.8 should have \emph{Central}
+  in the \texttt{Region} column
+\item
+  Rows with a latitude higher than 42.8 should have \emph{Northern} in
+  the \texttt{Region} column
+\end{itemize}
+
+You can have the month on the horizontal axis, the temperature on the
+vertical axis, different colors for different regions, and different
+styles (solid line / dotted line) to indicate air/water temperature.
+
+Does anything in the visualization surprise you? Why or why not?
+
+\emph{(14 points)}
+
+\hypertarget{fish-diversity}{%
+\subsection{Fish diversity}\label{fish-diversity}}
+
+Finally let's focus on the stars of this survey---the fish, of course.
+
+\hypertarget{top-3-species-by-region}{%
+\subsubsection{\texorpdfstring{Top 3 species by
+\texttt{Region}}{Top 3 species by Region}}\label{top-3-species-by-region}}
+
+Let's continue using our \texttt{Region} categorization. Find the top
+three fish \texttt{Species} in each region by \texttt{Number\ Captured}.
+
+\emph{(10 points)}
+
+\hypertarget{species-spread-across-region}{%
+\subsubsection{\texorpdfstring{Species spread across
+\texttt{Region}}{Species spread across Region}}\label{species-spread-across-region}}
+
+Are certain fish only found in some regions? Visualize how many species
+are in all three regions, how many are in two of three, and how many
+were only captured in one region.
+
+\emph{(10 points)}
+
+\hypertarget{exclusive-fishes-by-region}{%
+\subsubsection{Exclusive fishes by
+region}\label{exclusive-fishes-by-region}}
+
+What percentage of all species are exclusively captured in the Southern
+region? How about the Northern Region? And the Central region?
+
+\emph{(10 points)}
+
+\textbf{Hint:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find the number of distinct regions in which each species is found.
+\item
+  Filter the species that are found only in one region.
+\item
+  Group the data, containing only the species found in (2), by region,
+  count the number of unique species in each group, and divide by the
+  total number of distinct species.
+\end{enumerate}
+
+\hypertarget{turbidity}{%
+\subsubsection{Turbidity}\label{turbidity}}
+
+Turbidity (\texttt{Turbidity\ (ntu)}) quantifies the level of cloudiness
+in liquid. For fish in each of the three regions, is there a linear
+association between turbidity and number of fish caught? You may
+consider a correlation higher than 50\% in magnitude as presence of a
+linear association.
+
+\emph{(5 points)}
+
+\hypertarget{fish-dimensions}{%
+\subsubsection{Fish dimensions}\label{fish-dimensions}}
+
+Now let's turn to the length of fish captured, given by
+\texttt{Maximum\ (mm)} and \texttt{Minimum\ (mm)}. Find the overall
+maximum and minimum lengths of all fish in each region. Which region has
+the largest range in captured fish length?
+
+\emph{(4 points)}
+
+\hypertarget{gdp-surplus-and-compensation}{%
+\section{GDP, surplus, and
+compensation}\label{gdp-surplus-and-compensation}}
+
+The dataset \emph{Real GDP.csv} contains the GDP of each US State for
+all years starting from 1997 until 2020. The data is at \emph{State}
+level, i.e., each observation corresponds to a unique State.
+
+The dataset \emph{Surplus.csv} contains the surplus of each US State for
+all years starting from 1997 until 2020. The data is at \emph{year}
+level, i.e., each observation corresponds to a unique year.
+
+The dataset \emph{Compensation.csv} contains \emph{Compensation} and
+\emph{Chain-type quantity indexes for real GDP} for each US State and
+year starting from 1997 to 2020. The dataset is at
+\emph{Year-State-Description} level, i.e., each observation corresponds
+to a unique \texttt{Year}-\texttt{State}-\texttt{Description}
+combination where \texttt{Description} refers to either
+\emph{Compensation} or \emph{Chain-type quantity indexes for real GDP}.
+
+\hypertarget{combining-datasets}{%
+\subsection{Combining datasets}\label{combining-datasets}}
+
+Combine all these datasets to obtain a dataset at \emph{State-Year}
+level, i.e., each observation corresponds to a unique
+\texttt{State}-\texttt{Year} combination. The combined dataset must
+contain the GDP, surplus, \emph{Compensation}, and \emph{Chain-type
+quantity indexes for real GDP} for each US State and all years starting
+from 1997 until 2020. \emph{Note that each observation must contain the
+name of the US State, year, and the four values (GDP, surplus,
+compensation, and Chain-type quantity indexes for real GDP).}
+
+\textbf{Hint}: Here is one way to do it:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Melt the GDP dataset to year-State level
+\item
+  Melt the Surplus dataset to year-State level
+\item
+  Pivot the compensation dataset to year-State level
+\item
+  Now that all the datasets are at the year-State level, merge them!
+\end{enumerate}
+
+\emph{(3 + 3 + 3 + 1 = 10 points)}
+
+\hypertarget{time-trend-gdp-with-region}{%
+\subsection{Time trend: GDP with
+region}\label{time-trend-gdp-with-region}}
+
+Merge the file \emph{State\_region\_mapping.csv} with the dataset
+obtained in the previous question. Make a lineplot showing the mean GDP
+for each of the five regions with year. Do not display the confidence
+interval. Which two regions seems to have the least growth in GDP over
+the past 24 years?
+
+\emph{(5 points)}
 
 \hypertarget{datasets-templates}{%
 \chapter{Datasets \& Templates}\label{datasets-templates}}
