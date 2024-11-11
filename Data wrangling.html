@@ -396,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>In this chapter, we will explore how to reshape and enrich data using pandas. Data reshaping and enriching are essential steps in data preprocessing because they help transform raw data into a more structured, useful, and meaningful format that can be effectively used for analysis or modeling.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="28">
 <div class="cell-output cell-output-display">
 
 <div style="display: flex; gap: 20px;">
@@ -2579,7 +2579,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-enriching" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="data-enriching"><span class="header-section-number">12.2</span> Data Enriching</h2>
-<p>Data enriching involves enhancing your existing dataset by adding additional data, often from external sources, to make your dataset more insightful.</p>
+<p><a href="https://pandas.pydata.org/docs/user_guide/merging.html">Data enriching</a> involves enhancing your existing dataset by adding additional data, often from external sources, to make your dataset more insightful.</p>
+<p><img src="https://pandas.pydata.org/docs/_images/merging_join_multi_df.png" class="img-fluid"></p>
 <p>There are 3 common methods for data enriching:</p>
 <ul>
 <li><strong>Merging using <code>merge()</code></strong>: Combining datasets based on a common key.</li>
@@ -3394,6 +3395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>If we need to stack datasets one on top of the other, we can only use <code>concat()</code></p></li>
 <li><p>If we need to merge datasets using overlapping columns we can only use <code>merge()</code></p></li>
 </ol>
+<p>For a comprehensive user guide, please refer to the <a href="https://pandas.pydata.org/docs/user_guide/merging.html">official documentation</a>.</p>
 </section>
 </section>
 <section id="independent-study" class="level2" data-number="12.3">
