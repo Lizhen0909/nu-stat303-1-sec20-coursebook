@@ -338,11 +338,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installing-required-packages-within-your-notebook" id="toc-installing-required-packages-within-your-notebook" class="nav-link" data-scroll-target="#installing-required-packages-within-your-notebook"><span class="header-section-number">4.3</span> Installing required packages within your notebook</a></li>
   <li><a href="#specifying-your-file-path" id="toc-specifying-your-file-path" class="nav-link" data-scroll-target="#specifying-your-file-path"><span class="header-section-number">4.4</span> Specifying Your File Path</a>
   <ul>
-  <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path"><span class="header-section-number">4.4.0.1</span> Absolute Path</a></li>
-  <li><a href="#example-of-an-absolute-path-windows" id="toc-example-of-an-absolute-path-windows" class="nav-link" data-scroll-target="#example-of-an-absolute-path-windows"><span class="header-section-number">4.4.0.2</span> Example of an Absolute Path (Windows):</a></li>
-  <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path"><span class="header-section-number">4.4.0.3</span> Relative Path</a></li>
-  <li><a href="#methods-to-specify-file-path-in-windows" id="toc-methods-to-specify-file-path-in-windows" class="nav-link" data-scroll-target="#methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.0.4</span> Methods to Specify file path in Windows</a></li>
-  <li><a href="#best-practices-for-file-paths-in-data-science" id="toc-best-practices-for-file-paths-in-data-science" class="nav-link" data-scroll-target="#best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.0.5</span> Best Practices for File Paths in Data Science</a></li>
+  <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path"><span class="header-section-number">4.4.1</span> Absolute Path</a></li>
+  <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path"><span class="header-section-number">4.4.2</span> Relative Path</a></li>
+  <li><a href="#methods-to-specify-file-path-in-windows" id="toc-methods-to-specify-file-path-in-windows" class="nav-link" data-scroll-target="#methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.3</span> Methods to Specify file path in Windows</a>
+  <ul class="collapse">
+  <li><a href="#method-1-using-escaped-backslashes" id="toc-method-1-using-escaped-backslashes" class="nav-link" data-scroll-target="#method-1-using-escaped-backslashes"><span class="header-section-number">4.4.3.1</span> Method 1: <strong>Using escaped backslashes</strong></a></li>
+  <li><a href="#method-2-using-raw-strings" id="toc-method-2-using-raw-strings" class="nav-link" data-scroll-target="#method-2-using-raw-strings"><span class="header-section-number">4.4.3.2</span> Method 2: <strong>Using Raw Strings</strong></a></li>
+  <li><a href="#method-3-using-forward-slashes" id="toc-method-3-using-forward-slashes" class="nav-link" data-scroll-target="#method-3-using-forward-slashes"><span class="header-section-number">4.4.3.3</span> Method 3: <strong>Using forward slashes (<code>/</code>)</strong></a></li>
+  <li><a href="#method-4-using-os.path.join" id="toc-method-4-using-os.path.join" class="nav-link" data-scroll-target="#method-4-using-os.path.join"><span class="header-section-number">4.4.3.4</span> Method 4: <strong>Using <code>os.path.join</code></strong></a></li>
+  <li><a href="#best-practices-for-file-paths-in-data-science" id="toc-best-practices-for-file-paths-in-data-science" class="nav-link" data-scroll-target="#best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.3.5</span> Best Practices for File Paths in Data Science</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#interacting-with-the-os-and-filesystem" id="toc-interacting-with-the-os-and-filesystem" class="nav-link" data-scroll-target="#interacting-with-the-os-and-filesystem"><span class="header-section-number">4.5</span> Interacting with the OS and filesystem</a></li>
   </ul>
@@ -744,12 +749,10 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <section id="specifying-your-file-path" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="specifying-your-file-path"><span class="header-section-number">4.4</span> Specifying Your File Path</h2>
 <p>Next, we will discuss how to specify file paths in Python for loading and saving data, with an emphasis on <strong>absolute</strong> and <strong>relative</strong> paths. File paths are crucial when working with files in Python, such as reading datasets and writing results to files. Let’s explore the difference between <strong>absolute paths</strong> and <strong>relative paths</strong>.</p>
-<section id="absolute-path" class="level4" data-number="4.4.0.1">
-<h4 data-number="4.4.0.1" class="anchored" data-anchor-id="absolute-path"><span class="header-section-number">4.4.0.1</span> Absolute Path</h4>
+<section id="absolute-path" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="absolute-path"><span class="header-section-number">4.4.1</span> Absolute Path</h3>
 <p>An <strong>absolute path</strong> provides the complete location of a file or directory from the root directory of your file system. It is independent of the current working directory.</p>
-</section>
-<section id="example-of-an-absolute-path-windows" class="level4" data-number="4.4.0.2">
-<h4 data-number="4.4.0.2" class="anchored" data-anchor-id="example-of-an-absolute-path-windows"><span class="header-section-number">4.4.0.2</span> Example of an Absolute Path (Windows):</h4>
+<p>Example of an Absolute Path (Windows):</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute path example (Windows)</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -766,8 +769,8 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <p>:::</p>
 <p>The path associated with each conda env is absolute path.</p>
 </section>
-<section id="relative-path" class="level4" data-number="4.4.0.3">
-<h4 data-number="4.4.0.3" class="anchored" data-anchor-id="relative-path"><span class="header-section-number">4.4.0.3</span> Relative Path</h4>
+<section id="relative-path" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="relative-path"><span class="header-section-number">4.4.2</span> Relative Path</h3>
 <p>A <strong>relative path</strong> specifies the file location in relation to the current working directory. It is shorter and more flexible since it doesn’t require the full path from the root.</p>
 <p>To find the current working directory in Python, you can use either a magic command or a shell command, as shown below:</p>
 <div class="cell" data-execution_count="27">
@@ -800,11 +803,11 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </div>
 <p>The relative path <code>sample.txt</code> means that there is a file in the current working directory.</p>
 </section>
-<section id="methods-to-specify-file-path-in-windows" class="level4" data-number="4.4.0.4">
-<h4 data-number="4.4.0.4" class="anchored" data-anchor-id="methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.0.4</span> Methods to Specify file path in Windows</h4>
+<section id="methods-to-specify-file-path-in-windows" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="methods-to-specify-file-path-in-windows"><span class="header-section-number">4.4.3</span> Methods to Specify file path in Windows</h3>
 <p>Windows uses backslashes (<code>\</code>) to separate directories in file paths. However, in Python, the backslash is an escape character, so you need to either: * Escape backslashes by using a double backslash (<code>\\</code>), or * Use raw strings by prefixing the path with <code>r</code>.</p>
-<section id="method-1-using-escaped-backslashes" class="level5" data-number="4.4.0.4.1">
-<h5 data-number="4.4.0.4.1" class="anchored" data-anchor-id="method-1-using-escaped-backslashes"><span class="header-section-number">4.4.0.4.1</span> Method 1: <strong>Using escaped backslashes</strong></h5>
+<section id="method-1-using-escaped-backslashes" class="level4" data-number="4.4.3.1">
+<h4 data-number="4.4.3.1" class="anchored" data-anchor-id="method-1-using-escaped-backslashes"><span class="header-section-number">4.4.3.1</span> Method 1: <strong>Using escaped backslashes</strong></h4>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -812,8 +815,8 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </details>
 </div>
 </section>
-<section id="method-2-using-raw-strings" class="level5" data-number="4.4.0.4.2">
-<h5 data-number="4.4.0.4.2" class="anchored" data-anchor-id="method-2-using-raw-strings"><span class="header-section-number">4.4.0.4.2</span> Method 2: <strong>Using Raw Strings</strong></h5>
+<section id="method-2-using-raw-strings" class="level4" data-number="4.4.3.2">
+<h4 data-number="4.4.3.2" class="anchored" data-anchor-id="method-2-using-raw-strings"><span class="header-section-number">4.4.3.2</span> Method 2: <strong>Using Raw Strings</strong></h4>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -821,8 +824,8 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </details>
 </div>
 </section>
-<section id="method-3-using-forward-slashes" class="level5" data-number="4.4.0.4.3">
-<h5 data-number="4.4.0.4.3" class="anchored" data-anchor-id="method-3-using-forward-slashes"><span class="header-section-number">4.4.0.4.3</span> Method 3: <strong>Using forward slashes (<code>/</code>)</strong></h5>
+<section id="method-3-using-forward-slashes" class="level4" data-number="4.4.3.3">
+<h4 data-number="4.4.3.3" class="anchored" data-anchor-id="method-3-using-forward-slashes"><span class="header-section-number">4.4.3.3</span> Method 3: <strong>Using forward slashes (<code>/</code>)</strong></h4>
 <div class="cell" data-execution_count="48">
 <details open="">
 <summary>Code</summary>
@@ -830,8 +833,8 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </details>
 </div>
 </section>
-<section id="method-4-using-os.path.join" class="level5" data-number="4.4.0.4.4">
-<h5 data-number="4.4.0.4.4" class="anchored" data-anchor-id="method-4-using-os.path.join"><span class="header-section-number">4.4.0.4.4</span> Method 4: <strong>Using <code>os.path.join</code></strong></h5>
+<section id="method-4-using-os.path.join" class="level4" data-number="4.4.3.4">
+<h4 data-number="4.4.3.4" class="anchored" data-anchor-id="method-4-using-os.path.join"><span class="header-section-number">4.4.3.4</span> Method 4: <strong>Using <code>os.path.join</code></strong></h4>
 <div class="cell" data-execution_count="29">
 <details open="">
 <summary>Code</summary>
@@ -842,9 +845,8 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <p>This method works across different operating systems because <code>os.path.join</code> automatically uses the correct path separator (<code>\</code> for Windows and <code>/</code>for Linux/Mac).</p>
 <p>macOS does not have the same issue as Windows when specifying file paths because macOS (like Linux) uses forward slashes (<code>/</code>) as the path separator, which is consistent with Python’s expectations.</p>
 </section>
-</section>
-<section id="best-practices-for-file-paths-in-data-science" class="level4" data-number="4.4.0.5">
-<h4 data-number="4.4.0.5" class="anchored" data-anchor-id="best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.0.5</span> Best Practices for File Paths in Data Science</h4>
+<section id="best-practices-for-file-paths-in-data-science" class="level4" data-number="4.4.3.5">
+<h4 data-number="4.4.3.5" class="anchored" data-anchor-id="best-practices-for-file-paths-in-data-science"><span class="header-section-number">4.4.3.5</span> Best Practices for File Paths in Data Science</h4>
 <ul>
 <li>Use relative paths when working in a project structure, as it allows the project to be portable.</li>
 <li>Use absolute paths when working with external or shared files that aren’t part of your project.</li>
@@ -852,6 +854,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <li>Avoid hardcoding file paths directly in the code to make your code reusable on different machines.</li>
 <li>Use the forward slash (<code>/</code>) as a path separator or <code>os.path.join</code> to specify file path if your code will work across different operating systems</li>
 </ul>
+</section>
 </section>
 </section>
 <section id="interacting-with-the-os-and-filesystem" class="level2" data-number="4.5">
