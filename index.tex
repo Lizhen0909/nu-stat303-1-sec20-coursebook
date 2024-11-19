@@ -195,7 +195,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -3483,7 +3483,7 @@ languages} and frameworks. Here's an overview of its key features and
 functionalities:
 
 \hypertarget{core-features}{%
-\subsubsection{Core Features}\label{core-features}}
+\subsection{Core Features}\label{core-features}}
 
 \begin{itemize}
 \tightlist
@@ -3515,7 +3515,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{user-interface}{%
-\subsubsection{User Interface}\label{user-interface}}
+\subsection{User Interface}\label{user-interface}}
 
 \begin{itemize}
 \tightlist
@@ -3540,7 +3540,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{extensions}{%
-\subsubsection{Extensions}\label{extensions}}
+\subsection{Extensions}\label{extensions}}
 
 \begin{itemize}
 \tightlist
@@ -3559,7 +3559,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{use-cases}{%
-\subsubsection{Use Cases}\label{use-cases}}
+\subsection{Use Cases}\label{use-cases}}
 
 \begin{itemize}
 \tightlist
@@ -3581,7 +3581,7 @@ functionalities:
 \end{itemize}
 
 \hypertarget{cross-platform}{%
-\subsubsection{Cross-Platform}\label{cross-platform}}
+\subsection{Cross-Platform}\label{cross-platform}}
 
 \begin{itemize}
 \tightlist
@@ -3598,35 +3598,34 @@ projects.
 \section{Installing Visual Studio
 Code}\label{installing-visual-studio-code}}
 
-\hypertarget{step-1-download-vs-code}{%
-\subsubsection{\texorpdfstring{Step 1: \textbf{Download VS
-Code:}}{Step 1: Download VS Code:}}\label{step-1-download-vs-code}}
-
 \begin{itemize}
 \tightlist
 \item
-  Go to the \href{https://code.visualstudio.com/}{official VS Code
-  website} and download the installer for your operating system.
-\end{itemize}
+  Step 1: \textbf{Download VS Code:}
 
-\hypertarget{step-2-install-vs-code}{%
-\subsubsection{\texorpdfstring{Step 2: \textbf{Install VS
-Code:}}{Step 2: Install VS Code:}}\label{step-2-install-vs-code}}
-
-\begin{itemize}
-\tightlist
+  \begin{itemize}
+  \tightlist
+  \item
+    Go to the \href{https://code.visualstudio.com/}{official VS Code
+    website} and download the installer for your operating system.
+  \end{itemize}
 \item
-  Run the installer and follow the prompts to complete the installation.
-\end{itemize}
+  Step 2: \textbf{Install VS Code:}
 
-\hypertarget{step-3-launch-vs-code}{%
-\subsubsection{\texorpdfstring{Step 3: \textbf{Launch VS
-Code:}}{Step 3: Launch VS Code:}}\label{step-3-launch-vs-code}}
-
-\begin{itemize}
-\tightlist
+  \begin{itemize}
+  \tightlist
+  \item
+    Run the installer and follow the prompts to complete the
+    installation.
+  \end{itemize}
 \item
-  Open VS Code after installation to ensure it's working correctly.
+  Step 3: \textbf{Launch VS Code:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Open VS Code after installation to ensure it's working correctly.
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{setting-up-python-development-environment-in-vs-code-using-python-venv}{%
@@ -3645,7 +3644,7 @@ you will be tasked with creating and managing virtual environments using
 \texttt{conda}.
 
 \hypertarget{step-1-install-python}{%
-\subsubsection{Step 1: Install Python}\label{step-1-install-python}}
+\subsection{Step 1: Install Python}\label{step-1-install-python}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3682,7 +3681,7 @@ you will be tasked with creating and managing virtual environments using
 \end{enumerate}
 
 \hypertarget{step-2-install-visual-studio-code-extensions}{%
-\subsubsection{Step 2: Install Visual Studio Code
+\subsection{Step 2: Install Visual Studio Code
 Extensions}\label{step-2-install-visual-studio-code-extensions}}
 
 \begin{enumerate}
@@ -3718,7 +3717,7 @@ Extensions}\label{step-2-install-visual-studio-code-extensions}}
 \end{enumerate}
 
 \hypertarget{step-3-set-up-a-python-workspace-for-this-course}{%
-\subsubsection{Step 3: Set Up a Python Workspace for this
+\subsection{Step 3: Set Up a Python Workspace for this
 course}\label{step-3-set-up-a-python-workspace-for-this-course}}
 
 \begin{enumerate}
@@ -3745,7 +3744,7 @@ course}\label{step-3-set-up-a-python-workspace-for-this-course}}
 \end{enumerate}
 
 \hypertarget{step-4-create-a-notebook-for-your-work}{%
-\subsubsection{Step 4: Create a Notebook for your
+\subsection{Step 4: Create a Notebook for your
 work}\label{step-4-create-a-notebook-for-your-work}}
 
 \begin{itemize}
@@ -3756,7 +3755,7 @@ work}\label{step-4-create-a-notebook-for-your-work}}
 \end{itemize}
 
 \hypertarget{step-5-create-a-python-environment-for-your-work---gui-method}{%
-\subsubsection{Step 5: Create a Python environment for your work - GUI
+\subsection{Step 5: Create a Python environment for your work - GUI
 method}\label{step-5-create-a-python-environment-for-your-work---gui-method}}
 
 \begin{itemize}
@@ -3900,10 +3899,10 @@ method}\label{step-5-create-a-python-environment-for-your-work---gui-method}}
 Congratulations! A virtual environment named \texttt{.venv} has been
 successfully created in your project folder.
 
-\hypertarget{step-5-create-a-python-environment-for-your-work---command-line-method}{%
-\subsubsection{Step 5: Create a Python environment for your work -
-Command Line
-Method}\label{step-5-create-a-python-environment-for-your-work---command-line-method}}
+\hypertarget{step-6-create-a-python-environment-for-your-work---command-line-method}{%
+\subsection{Step 6: Create a Python environment for your work - Command
+Line
+Method}\label{step-6-create-a-python-environment-for-your-work---command-line-method}}
 
 Instead of using the VSCode GUI, we can also create a \texttt{venv}
 environment with command line commands.
@@ -3950,18 +3949,18 @@ environment with command line commands.
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}{%
-\subsubsection{\texorpdfstring{Step 6: Choose the \texttt{.venv}
+\hypertarget{step-7-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}{%
+\subsection{\texorpdfstring{Step 7: Choose the \texttt{.venv}
 environment as the kernel to run the
-notebook}{Step 6: Choose the .venv environment as the kernel to run the notebook}}\label{step-6-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}}
+notebook}{Step 7: Choose the .venv environment as the kernel to run the notebook}}\label{step-7-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}}
 
 For all your upcoming work in this project, you can select this
 environment to ensure a consistent setup.
 
-\hypertarget{step-7-installing-ipykernel-for-your-notebook}{%
-\subsubsection{\texorpdfstring{Step 7: Installing \texttt{ipykernel} for
+\hypertarget{step-8-installing-ipykernel-for-your-notebook}{%
+\subsection{\texorpdfstring{Step 8: Installing \texttt{ipykernel} for
 your
-notebook}{Step 7: Installing ipykernel for your notebook}}\label{step-7-installing-ipykernel-for-your-notebook}}
+notebook}{Step 8: Installing ipykernel for your notebook}}\label{step-8-installing-ipykernel-for-your-notebook}}
 
 Create a code cell in the notebook and run it. The first time you run a
 code cell, you will run into
@@ -4004,9 +4003,9 @@ you don't, you may encounter errors when trying to use these libraries.
 ModuleNotFoundError: No module named 'nummpy'
 \end{verbatim}
 
-\hypertarget{step-8-install-data-science-packages-within-the-created-environment}{%
-\subsubsection{Step 8: Install Data Science packages within the created
-Environment}\label{step-8-install-data-science-packages-within-the-created-environment}}
+\hypertarget{step-9-install-data-science-packages-within-the-created-environment}{%
+\subsection{Step 9: Install Data Science packages within the created
+Environment}\label{step-9-install-data-science-packages-within-the-created-environment}}
 
 Packages are collections of pre-written code that provide specific
 functionality such as scientific computing, linear algegra,
@@ -4015,11 +4014,18 @@ everything from scratch. You will come across lots of packages in this
 sequence course, so make sure that you know how to install required
 packages when you see a \texttt{ModuleNotFoundError}.
 
-You have two primary ways to install DS packages 1. Installing from the
-Terminal 2. Installing from the Notebook
+You have two primary ways to install DS packages:
+
+\begin{itemize}
+\tightlist
+\item
+  Installing from the Terminal
+\item
+  Installing from the Notebook
+\end{itemize}
 
 \hypertarget{installing-from-the-terminal}{%
-\paragraph{Installing from the
+\subsubsection{Installing from the
 terminal}\label{installing-from-the-terminal}}
 
 \begin{enumerate}
@@ -4066,7 +4072,7 @@ to issues where the notebook cannot access the installed packages.
 \texttt{pip\ install\ numpy\ pandas\ matplotlib}
 
 \hypertarget{installing-from-the-notebook}{%
-\paragraph{Installing from the
+\subsubsection{Installing from the
 Notebook}\label{installing-from-the-notebook}}
 
 You can also install packages directly from a Jupyter Notebook cell
@@ -4096,10 +4102,10 @@ workflow. Installing from the terminal is common for batch installations
 or when setting up a new environment, while installing from the notebook
 can be handy for quick additions during your data analysis work.
 
-\hypertarget{step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}{%
-\subsubsection{\texorpdfstring{Step 9: Create a \texttt{requirement.txt}
+\hypertarget{step-10-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}{%
+\subsection{\texorpdfstring{Step 10: Create a \texttt{requirement.txt}
 to back up your environment or share with your
-collaborator}{Step 9: Create a requirement.txt to back up your environment or share with your collaborator}}\label{step-9-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}}
+collaborator}{Step 10: Create a requirement.txt to back up your environment or share with your collaborator}}\label{step-10-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}}
 
 \texttt{pip\ freeze} outputs the packages and their versions installed
 in the current environment in a format that can be used as
@@ -4260,10 +4266,11 @@ After setting up your environment, follow this
 to become familiar with the native support for Jupyter Notebooks in VS
 Code
 
-\hypertarget{exercise-setting-up-your-python-data-science-environment-using-pip-and-conda}{%
-\section{\texorpdfstring{Exercise: Setting Up Your Python Data Science
-Environment using \texttt{pip} and
-\texttt{conda}}{Exercise: Setting Up Your Python Data Science Environment using pip and conda}}\label{exercise-setting-up-your-python-data-science-environment-using-pip-and-conda}}
+\hypertarget{independent-study}{%
+\section{Independent Study}\label{independent-study}}
+
+Setting Up Your Python Data Science Environment using \texttt{pip} and
+\texttt{conda}
 
 \textbf{Objective}: Practice creating and managing Python packages and
 environments using \texttt{pip} and \texttt{conda}, and verifying your
@@ -5026,8 +5033,8 @@ Requirement already satisfied: numpy in c:\users\lsi8012\appdata\local\anaconda3
 Note: you may need to restart the kernel to use updated packages.
 \end{verbatim}
 
-\hypertarget{file-path-in-data-science}{%
-\section{File Path in Data Science}\label{file-path-in-data-science}}
+\hypertarget{specifying-your-file-path}{%
+\section{Specifying Your File Path}\label{specifying-your-file-path}}
 
 Next, we will discuss how to specify file paths in Python for loading
 and saving data, with an emphasis on \textbf{absolute} and
@@ -5370,7 +5377,7 @@ processing data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{movie\_ratings }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/movie\_ratings.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{movie\_ratings }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./datasets/movie\_ratings.csv\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5570,9 +5577,8 @@ Functions \& Methods we've looked so far
 \section{Data Selection and
 Filtering}\label{data-selection-and-filtering}}
 
-\hypertarget{extracting-columns-from-pandas}{%
-\subsection{Extracting Column(s) from
-pandas}\label{extracting-columns-from-pandas}}
+\hypertarget{extracting-columns}{%
+\subsection{Extracting Column(s)}\label{extracting-columns}}
 
 The first step when working with a DataFrame is often to extract one or
 more columns. To do this effectively, it's helpful to understand the
@@ -5685,10 +5691,192 @@ inside a list.
 2227 & Spiceworld & 29342592 & 56042592 \\
 \end{longtable}
 
-\hypertarget{extracting-a-sub-set-of-data-loc-and-iloc}{%
-\subsection{\texorpdfstring{Extracting a sub-set of data: \texttt{loc}
-and
-\texttt{iloc}}{Extracting a sub-set of data: loc and iloc}}\label{extracting-a-sub-set-of-data-loc-and-iloc}}
+\hypertarget{extracting-rows}{%
+\subsection{Extracting Row(s)}\label{extracting-rows}}
+
+\hypertarget{extracting-based-on-a-single-condition-or-multiple-conditions}{%
+\subsubsection{Extracting based on a Single Condition or Multiple
+Conditions}\label{extracting-based-on-a-single-condition-or-multiple-conditions}}
+
+In many cases, we need to filter rows based on specific conditions or a
+combination of multiple conditions. Next, let's explore how to use these
+conditions effectively to extract rows that meet our criteria, whether
+it's a single condition or multiple conditions combined
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# extracting the rows that have IMDB Rating greater than 8}
+\NormalTok{movie\_ratings[movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+21 & Gandhi, My Father & 240425 & 1375194 & 5000000 & Aug 03 2007 &
+Other & Adapted screenplay & Drama & Non-Fiction & 8.1 & 50881 \\
+56 & Ed Wood & 5828466 & 5828466 & 18000000 & Sep 30 1994 & R & Adapted
+screenplay & Comedy & Non-Fiction & 8.1 & 74171 \\
+67 & Requiem for a Dream & 3635482 & 7390108 & 4500000 & Oct 06 2000 &
+Other & Adapted screenplay & Drama & Fiction & 8.5 & 185226 \\
+164 & Trainspotting & 16501785 & 24000785 & 3100000 & Jul 19 1996 & R &
+Adapted screenplay & Drama & Fiction & 8.2 & 150483 \\
+181 & The Wizard of Oz & 28202232 & 28202232 & 2777000 & Aug 25 2039 & G
+& Adapted screenplay & Western/Musical & Fiction & 8.3 & 102795 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+2090 & Finding Nemo & 339714978 & 867894287 & 94000000 & May 30 2003 & G
+& Original Screenplay & Action/Adventure & Fiction & 8.2 & 165006 \\
+2092 & Toy Story 3 & 410640665 & 1046340665 & 200000000 & Jun 18 2010 &
+G & Original Screenplay & Action/Adventure & Fiction & 8.9 & 67380 \\
+2094 & Avatar & 760167650 & 2767891499 & 237000000 & Dec 18 2009 &
+PG/PG-13 & Original Screenplay & Action/Adventure & Fiction & 8.3 &
+261439 \\
+2130 & Scarface & 44942821 & 44942821 & 25000000 & Dec 09 1983 & Other &
+Adapted screenplay & Drama & Fiction & 8.2 & 152262 \\
+2194 & The Departed & 133311000 & 290539042 & 90000000 & Oct 06 2006 & R
+& Adapted screenplay & Drama & Fiction & 8.5 & 264148 \\
+\end{longtable}
+
+To combine multiple conditions in pandas, you need to use the
+\texttt{\&} (AND) and \texttt{\textbar{}} (OR) operators. Make sure to
+enclose each condition in parentheses () for clarity and to ensure
+proper evaluation order.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# extracting the rows that have IMDB Rating greater than 8 and US Gross less than 1000000}
+\NormalTok{movie\_ratings[(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (movie\_ratings[}\StringTok{\textquotesingle{}US Gross\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{1000000}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+21 & Gandhi, My Father & 240425 & 1375194 & 5000000 & Aug 03 2007 &
+Other & Adapted screenplay & Drama & Non-Fiction & 8.1 & 50881 \\
+636 & Lake of Fire & 25317 & 25317 & 6000000 & Oct 03 2007 & Other &
+Adapted screenplay & Documentary & Non-Fiction & 8.4 & 1027 \\
+\end{longtable}
+
+\hypertarget{negating-conditions-with-the-operator}{%
+\subsubsection{\texorpdfstring{Negating Conditions with the
+\texttt{\textasciitilde{}}
+Operator}{Negating Conditions with the \textasciitilde{} Operator}}\label{negating-conditions-with-the-operator}}
+
+The tilde (\texttt{\textasciitilde{}}) is used for negating boolean
+conditions in pandas, making it a useful tool for excluding specific
+values or rows.
+
+In some cases, we may want to extract rows that do not meet a specific
+condition. To accomplish this, we can use the \texttt{\textasciitilde{}}
+operator, which negates a condition. This operator allows us to filter
+data by excluding rows that satisfy a particular condition, making it a
+powerful tool for refining our queries. Let's explore how to use the
+\texttt{\textasciitilde{}} operator to negate conditions and select rows
+that do not meet our criteria
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Excluding the rows that have IMDB Rating that equals 8 using the tilde \textasciitilde{}}
+\NormalTok{movie\_ratings[}\OperatorTok{\textasciitilde{}}\NormalTok{(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \DecValTok{8}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Opal Dreams & 14443 & 14443 & 9000000 & Nov 22 2006 & PG/PG-13 &
+Adapted screenplay & Drama & Fiction & 6.5 & 468 \\
+1 & Major Dundee & 14873 & 14873 & 3800000 & Apr 07 1965 & PG/PG-13 &
+Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 \\
+2 & The Informers & 315000 & 315000 & 18000000 & Apr 24 2009 & R &
+Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 \\
+3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & Jul 25 2003 & R &
+Adapted screenplay & Comedy & Fiction & 6.9 & 13510 \\
+4 & The Last Sin Eater & 388390 & 388390 & 2200000 & Feb 09 2007 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+2223 & King Arthur & 51877963 & 203877963 & 90000000 & Jul 07 2004 &
+PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 6.2 &
+53106 \\
+2224 & Mulan & 120620254 & 303500000 & 90000000 & Jun 19 1998 & G &
+Adapted screenplay & Action/Adventure & Non-Fiction & 7.2 & 34256 \\
+2225 & Robin Hood & 105269730 & 310885538 & 210000000 & May 14 2010 &
+PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 6.9 &
+34501 \\
+2226 & Robin Hood: Prince of Thieves & 165493908 & 390500000 & 50000000
+& Jun 14 1991 & PG/PG-13 & Adapted screenplay & Action/Adventure &
+Fiction & 6.7 & 54480 \\
+2227 & Spiceworld & 29342592 & 56042592 & 25000000 & Jan 23 1998 &
+PG/PG-13 & Adapted screenplay & Comedy & Fiction & 2.9 & 18010 \\
+\end{longtable}
+
+Another way to exclude rows where a column equals a certain value, you
+can use \texttt{!=} to create the condition.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# using the != operator}
+\NormalTok{movie\_ratings[movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{!=} \DecValTok{8}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Opal Dreams & 14443 & 14443 & 9000000 & Nov 22 2006 & PG/PG-13 &
+Adapted screenplay & Drama & Fiction & 6.5 & 468 \\
+1 & Major Dundee & 14873 & 14873 & 3800000 & Apr 07 1965 & PG/PG-13 &
+Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 \\
+2 & The Informers & 315000 & 315000 & 18000000 & Apr 24 2009 & R &
+Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 \\
+3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & Jul 25 2003 & R &
+Adapted screenplay & Comedy & Fiction & 6.9 & 13510 \\
+4 & The Last Sin Eater & 388390 & 388390 & 2200000 & Feb 09 2007 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+2223 & King Arthur & 51877963 & 203877963 & 90000000 & Jul 07 2004 &
+PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 6.2 &
+53106 \\
+2224 & Mulan & 120620254 & 303500000 & 90000000 & Jun 19 1998 & G &
+Adapted screenplay & Action/Adventure & Non-Fiction & 7.2 & 34256 \\
+2225 & Robin Hood & 105269730 & 310885538 & 210000000 & May 14 2010 &
+PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 6.9 &
+34501 \\
+2226 & Robin Hood: Prince of Thieves & 165493908 & 390500000 & 50000000
+& Jun 14 1991 & PG/PG-13 & Adapted screenplay & Action/Adventure &
+Fiction & 6.7 & 54480 \\
+2227 & Spiceworld & 29342592 & 56042592 & 25000000 & Jan 23 1998 &
+PG/PG-13 & Adapted screenplay & Comedy & Fiction & 2.9 & 18010 \\
+\end{longtable}
+
+\hypertarget{extracting-subsets-of-rows-and-columns}{%
+\subsection{Extracting Subsets of Rows and
+Columns}\label{extracting-subsets-of-rows-and-columns}}
 
 Sometimes we may be interested in working with a subset of rows and
 columns of the data, instead of working with the entire dataset. The
@@ -5765,11 +5953,10 @@ Budget \\
 2092 & Toy Story 3 & 8.9 & 410640665 & 1046340665 & 200000000 \\
 \end{longtable}
 
-The \texttt{:} symbol in \texttt{.loc} and \texttt{.iloc} is a slicing
-operator that represents a range or all elements in the specified
-dimension (rows or columns). Use \texttt{:} alone to select all
-rows/columns, or with start/end points to slice specific parts of the
-DataFrame.
+The \texttt{:} symbol in \texttt{.loc} is a slicing operator that
+represents a range or all elements in the specified dimension (rows or
+columns). Use \texttt{:} alone to select all rows/columns, or with
+start/end points to slice specific parts of the DataFrame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5820,6 +6007,30 @@ DataFrame.
 1962 & Pulp Fiction & 212928762 & 8000000 & 8.9 \\
 790 & Schindler\textquotesingle s List & 321200000 & 25000000 & 8.9 \\
 561 & The Dark Knight & 1022345358 & 185000000 & 8.9 \\
+\end{longtable}
+
+\textbf{Combining \texttt{.loc} with condition(s)} to extract specific
+rows and columns based on criteria
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# extracting the rows that have IMDB Rating greater than 8 or US Gross less than 1000000, only extract the Title and IMDB Rating columns}
+\NormalTok{movie\_ratings[(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (movie\_ratings[}\StringTok{\textquotesingle{}US Gross\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{1000000}\NormalTok{)][[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{]]}
+
+\CommentTok{\#using loc to extract the rows that have IMDB Rating greater than 8 or US Gross less than 1000000, only extract the Title and IMDB Rating columns}
+\NormalTok{movie\_ratings.loc[(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (movie\_ratings[}\StringTok{\textquotesingle{}US Gross\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{1000000}\NormalTok{),[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& Title & IMDB Rating \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+21 & Gandhi, My Father & 8.1 \\
+636 & Lake of Fire & 8.4 \\
 \end{longtable}
 
 \hypertarget{subsetting-the-dataframe-by-iloc}{%
@@ -5941,6 +6152,8 @@ Why \texttt{iloc} returns different rows?
 8.8 \\
 \end{longtable}
 
+Can you use \texttt{.iloc} for conditional filtering, why or why not?
+
 \hypertarget{key-differences-betweenloc-and-iloc-in-pandas}{%
 \subsubsection{\texorpdfstring{Key differences between\texttt{loc} and
 \texttt{iloc} in
@@ -5969,12 +6182,11 @@ pandas}{Key differences betweenloc and iloc in pandas}}\label{key-differences-be
   \end{itemize}
 \end{itemize}
 
-Example:
+The following simple example demonstrates their differences:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Assuming you have a DataFrame like this:}
-\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
 
 \NormalTok{data }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{],}
         \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{],}
@@ -6031,116 +6243,6 @@ Name: B, dtype: int64
 Note that in the \texttt{loc} example, both `row2' and `row4' are
 included in the result, whereas in the \texttt{iloc} example, the row at
 position 4 is excluded.
-
-\hypertarget{extracting-rows-based-on-a-single-condition-or-multiple-conditions}{%
-\subsection{Extracting rows based on a Single Condition or Multiple
-Conditions}\label{extracting-rows-based-on-a-single-condition-or-multiple-conditions}}
-
-In many cases, we need to filter data based on specific conditions or a
-combination of multiple conditions. Next, let's explore how to use these
-conditions effectively to extract rows that meet our criteria, whether
-it's a single condition or multiple conditions combined
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# extracting the rows that have IMDB Rating greater than 8}
-\NormalTok{movie\_ratings[movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lllllllllllll@{}}
-\toprule\noalign{}
-& Title & US Gross & Worldwide Gross & Production Budget & Release Date
-& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
-IMDB Votes & ratio\_wgross\_by\_budget \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-21 & Gandhi, My Father & 240425 & 1375194 & 5000000 & Aug 03 2007 &
-Other & Adapted screenplay & Drama & Non-Fiction & 8.1 & 50881 &
-0.275039 \\
-56 & Ed Wood & 5828466 & 5828466 & 18000000 & Sep 30 1994 & R & Adapted
-screenplay & Comedy & Non-Fiction & 8.1 & 74171 & 0.323804 \\
-67 & Requiem for a Dream & 3635482 & 7390108 & 4500000 & Oct 06 2000 &
-Other & Adapted screenplay & Drama & Fiction & 8.5 & 185226 &
-1.642246 \\
-164 & Trainspotting & 16501785 & 24000785 & 3100000 & Jul 19 1996 & R &
-Adapted screenplay & Drama & Fiction & 8.2 & 150483 & 7.742189 \\
-181 & The Wizard of Oz & 28202232 & 28202232 & 2777000 & Aug 25 2039 & G
-& Adapted screenplay & Western/Musical & Fiction & 8.3 & 102795 &
-10.155647 \\
-... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
-... \\
-2090 & Finding Nemo & 339714978 & 867894287 & 94000000 & May 30 2003 & G
-& Original Screenplay & Action/Adventure & Fiction & 8.2 & 165006 &
-9.232918 \\
-2092 & Toy Story 3 & 410640665 & 1046340665 & 200000000 & Jun 18 2010 &
-G & Original Screenplay & Action/Adventure & Fiction & 8.9 & 67380 &
-5.231703 \\
-2094 & Avatar & 760167650 & 2767891499 & 237000000 & Dec 18 2009 &
-PG/PG-13 & Original Screenplay & Action/Adventure & Fiction & 8.3 &
-261439 & 11.678867 \\
-2130 & Scarface & 44942821 & 44942821 & 25000000 & Dec 09 1983 & Other &
-Adapted screenplay & Drama & Fiction & 8.2 & 152262 & 1.797713 \\
-2194 & The Departed & 133311000 & 290539042 & 90000000 & Oct 06 2006 & R
-& Adapted screenplay & Drama & Fiction & 8.5 & 264148 & 3.228212 \\
-\end{longtable}
-
-To combine multiple conditions in pandas, you need to use the
-\texttt{\&} (AND) and \texttt{\textbar{}} (OR) operators. Make sure to
-enclose each condition in parentheses () for clarity and to ensure
-proper evaluation order.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# extracting the rows that have IMDB Rating greater than 8 and US Gross less than 1000000}
-\NormalTok{movie\_ratings[(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (movie\_ratings[}\StringTok{\textquotesingle{}US Gross\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{1000000}\NormalTok{)]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lllllllllllll@{}}
-\toprule\noalign{}
-& Title & US Gross & Worldwide Gross & Production Budget & Release Date
-& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
-IMDB Votes & ratio\_wgross\_by\_budget \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-21 & Gandhi, My Father & 240425 & 1375194 & 5000000 & Aug 03 2007 &
-Other & Adapted screenplay & Drama & Non-Fiction & 8.1 & 50881 &
-0.275039 \\
-636 & Lake of Fire & 25317 & 25317 & 6000000 & Oct 03 2007 & Other &
-Adapted screenplay & Documentary & Non-Fiction & 8.4 & 1027 &
-0.004220 \\
-\end{longtable}
-
-\textbf{Combining \texttt{.loc} with condition(s)} to extract specific
-rows and columns based on criteria
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# extracting the rows that have IMDB Rating greater than 8 or US Gross less than 1000000, only extract the Title and IMDB Rating columns}
-\NormalTok{movie\_ratings[(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (movie\_ratings[}\StringTok{\textquotesingle{}US Gross\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{1000000}\NormalTok{)][[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{]]}
-
-\CommentTok{\#using loc to extract the rows that have IMDB Rating greater than 8 or US Gross less than 1000000, only extract the Title and IMDB Rating columns}
-\NormalTok{movie\_ratings.loc[(movie\_ratings[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (movie\_ratings[}\StringTok{\textquotesingle{}US Gross\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{1000000}\NormalTok{),[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{]]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule\noalign{}
-& Title & IMDB Rating \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-21 & Gandhi, My Father & 8.1 \\
-636 & Lake of Fire & 8.4 \\
-\end{longtable}
-
-Can you use \texttt{.iloc} for conditional filtering, why or why not?
 
 \hypertarget{finding-minimummaximum-of-a-column}{%
 \subsection{Finding minimum/maximum of a
@@ -14735,8 +14837,8 @@ From the above map, we can see that:
   \texttt{NU\_GPA}
 \end{itemize}
 
-\hypertarget{independent-study}{%
-\section{Independent Study}\label{independent-study}}
+\hypertarget{independent-study-1}{%
+\section{Independent Study}\label{independent-study-1}}
 
 \hypertarget{practice-exercise-1-3}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-3}}
@@ -16343,8 +16445,8 @@ c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\sklearn\cluster\_kmea
 <folium.folium.Map at 0x1f6a369ddf0>
 \end{verbatim}
 
-\hypertarget{independent-study-1}{%
-\section{Independent Study}\label{independent-study-1}}
+\hypertarget{independent-study-2}{%
+\section{Independent Study}\label{independent-study-2}}
 
 \hypertarget{multiple-plots-in-a-single-figure-using-seaborn}{%
 \subsection{Multiple plots in a single figure using
@@ -18693,8 +18795,8 @@ Med\_expend & High\_expend & Med\_expend & High\_expend \\
 & 1 & 0 & 1 \\
 \end{longtable}
 
-\hypertarget{independent-study-2}{%
-\section{Independent Study}\label{independent-study-2}}
+\hypertarget{independent-study-3}{%
+\section{Independent Study}\label{independent-study-3}}
 
 \hypertarget{practice-exercise-1-4}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-4}}
@@ -20566,8 +20668,8 @@ Oceania & 69.255000 & 70.295000 & 71.085000 & 71.310000 & 71.910000 &
 80.719500 \\
 \end{longtable}
 
-\hypertarget{independent-study-3}{%
-\section{Independent Study}\label{independent-study-3}}
+\hypertarget{independent-study-4}{%
+\section{Independent Study}\label{independent-study-4}}
 
 \hypertarget{practice-exercise-1-5}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-5}}
@@ -20897,71 +20999,26 @@ Observe that for some African countries, the life expectancy has
 decreased after 50 years. It is worth investigating these countries to
 identify factors associated with the decrease.
 
-\hypertarget{pivoting-multiple-columns}{%
-\subsubsection{Pivoting multiple
-columns}\label{pivoting-multiple-columns}}
-
-In the above transformation, we retained only \texttt{lifeExp} in the
-\emph{`wide'} dataset. Suppose, we are also interested in visualizing
-GDP per capita of countries in one year against another year. In that
-case, we must have \texttt{gdpPercap} in the \emph{'wide}'-form data as
-well.
-
-Let us create a dataset named as \texttt{data\_wide\_lifeExp\_gdpPercap}
-that will contain both \texttt{lifeExp} and \texttt{gdpPercap} for each
-year in a separate column. We will specify the columns to pivot in the
-\emph{values} argument of the \texttt{pivot()} function.
+Another way to visualize a pivot table is by using a heatmap, which
+represents the 2D table as a matrix of colors, making it easier to
+interpret patterns and trends.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_wide\_lifeExp\_gdpPercap }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.pivot\_table(index }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{],columns }\OperatorTok{=} \StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{,values }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{])}
-\NormalTok{data\_wide\_lifeExp\_gdpPercap.head()}
+\CommentTok{\# Plotting a heatmap to visualize the life expectancy of all countries in all years, figure size is set to 15x10}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{))}
+\NormalTok{plt.title(}\StringTok{"Life expectancy of all countries in all years"}\NormalTok{)}
+\NormalTok{sns.heatmap(gdp\_lifeExp\_data\_pivot)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[]{@{}lllllllllllllllllllllll@{}}
-\toprule\noalign{}
-& &
-\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}}{%
-gdpPercap} & ... &
-\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}@{}}{%
-lifeExp} \\
-& year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
-1997 & ... & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 & 1997 &
-2002 & 2007 \\
-continent & country & & & & & & & & & & & & & & & & & & & & & \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\multirow{5}{*}{Africa} & Algeria & 2449.008185 & 3013.976023 &
-2550.816880 & 3246.991771 & 4182.663766 & 4910.416756 & 5745.160213 &
-5681.358539 & 5023.216647 & 4797.295051 & ... & 48.303 & 51.407 & 54.518
-& 58.014 & 61.368 & 65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
-& Angola & 3520.610273 & 3827.940465 & 4269.276742 & 5522.776375 &
-5473.288005 & 3008.647355 & 2756.953672 & 2430.208311 & 2627.845685 &
-2277.140884 & ... & 34.000 & 35.985 & 37.928 & 39.483 & 39.942 & 39.906
-& 40.647 & 40.963 & 41.003 & 42.731 \\
-& Benin & 1062.752200 & 959.601080 & 949.499064 & 1035.831411 &
-1085.796879 & 1029.161251 & 1277.897616 & 1225.856010 & 1191.207681 &
-1232.975292 & ... & 42.618 & 44.885 & 47.014 & 49.190 & 50.904 & 52.337
-& 53.919 & 54.777 & 54.406 & 56.728 \\
-& Botswana & 851.241141 & 918.232535 & 983.653976 & 1214.709294 &
-2263.611114 & 3214.857818 & 4551.142150 & 6205.883850 & 7954.111645 &
-8647.142313 & ... & 51.520 & 53.298 & 56.024 & 59.319 & 61.484 & 63.622
-& 62.745 & 52.556 & 46.634 & 50.728 \\
-& Burkina Faso & 543.255241 & 617.183465 & 722.512021 & 794.826560 &
-854.735976 & 743.387037 & 807.198586 & 912.063142 & 931.752773 &
-946.294962 & ... & 37.814 & 40.697 & 43.591 & 46.137 & 48.122 & 49.557 &
-50.260 & 50.324 & 50.650 & 52.295 \\
-\end{longtable}
+\begin{figure}[H]
 
-The metric for each year is now in a separate column, and can be
-visualized directly. Note that re-arranging the dataset from the
-\emph{`long'}-form to \emph{`wide-form'} leads to hierarchical indexing
-of columns when multiple \emph{`values'} need to be re-arranged. In this
-case, the multiple \emph{`values'} that need to be re-arranged are
-\texttt{lifeExp} and \texttt{gdpPercap}.
+{\centering \includegraphics{Data wrangling_files/figure-pdf/cell-7-output-1.png}
+
+}
+
+\end{figure}
 
 \textbf{Common Aggregation Functions in \texttt{pivot\_table()}}
 
@@ -21096,82 +21153,6 @@ continent & country & & \\
 
 With the above DataFrame, we can visualize the mean life expectancy
 against year separately for each country in each continent.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{data\_wide\_lifeExp\_gdpPercap}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lllllllllllllllllllllll@{}}
-\toprule\noalign{}
-& &
-\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}}{%
-gdpPercap} & ... &
-\multicolumn{10}{>{\raggedright\arraybackslash}p{(\columnwidth - 44\tabcolsep) * \real{0.0000} + 18\tabcolsep}@{}}{%
-lifeExp} \\
-& year & 1952 & 1957 & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 &
-1997 & ... & 1962 & 1967 & 1972 & 1977 & 1982 & 1987 & 1992 & 1997 &
-2002 & 2007 \\
-continent & country & & & & & & & & & & & & & & & & & & & & & \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\multirow{5}{*}{Africa} & Algeria & 2449.008185 & 3013.976023 &
-2550.816880 & 3246.991771 & 4182.663766 & 4910.416756 & 5745.160213 &
-5681.358539 & 5023.216647 & 4797.295051 & ... & 48.303 & 51.407 & 54.518
-& 58.014 & 61.368 & 65.799 & 67.744 & 69.152 & 70.994 & 72.301 \\
-& Angola & 3520.610273 & 3827.940465 & 4269.276742 & 5522.776375 &
-5473.288005 & 3008.647355 & 2756.953672 & 2430.208311 & 2627.845685 &
-2277.140884 & ... & 34.000 & 35.985 & 37.928 & 39.483 & 39.942 & 39.906
-& 40.647 & 40.963 & 41.003 & 42.731 \\
-& Benin & 1062.752200 & 959.601080 & 949.499064 & 1035.831411 &
-1085.796879 & 1029.161251 & 1277.897616 & 1225.856010 & 1191.207681 &
-1232.975292 & ... & 42.618 & 44.885 & 47.014 & 49.190 & 50.904 & 52.337
-& 53.919 & 54.777 & 54.406 & 56.728 \\
-& Botswana & 851.241141 & 918.232535 & 983.653976 & 1214.709294 &
-2263.611114 & 3214.857818 & 4551.142150 & 6205.883850 & 7954.111645 &
-8647.142313 & ... & 51.520 & 53.298 & 56.024 & 59.319 & 61.484 & 63.622
-& 62.745 & 52.556 & 46.634 & 50.728 \\
-& Burkina Faso & 543.255241 & 617.183465 & 722.512021 & 794.826560 &
-854.735976 & 743.387037 & 807.198586 & 912.063142 & 931.752773 &
-946.294962 & ... & 37.814 & 40.697 & 43.591 & 46.137 & 48.122 & 49.557 &
-50.260 & 50.324 & 50.650 & 52.295 \\
-... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
-... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
-\multirow{3}{*}{Europe} & Switzerland & 14734.232750 & 17909.489730 &
-20431.092700 & 22966.144320 & 27195.113040 & 26982.290520 & 28397.715120
-& 30281.704590 & 31871.530300 & 32135.323010 & ... & 71.320 & 72.770 &
-73.780 & 75.390 & 76.210 & 77.410 & 78.030 & 79.370 & 80.620 & 81.701 \\
-& Turkey & 1969.100980 & 2218.754257 & 2322.869908 & 2826.356387 &
-3450.696380 & 4269.122326 & 4241.356344 & 5089.043686 & 5678.348271 &
-6601.429915 & ... & 52.098 & 54.336 & 57.005 & 59.507 & 61.036 & 63.108
-& 66.146 & 68.835 & 70.845 & 71.777 \\
-& United Kingdom & 9979.508487 & 11283.177950 & 12477.177070 &
-14142.850890 & 15895.116410 & 17428.748460 & 18232.424520 & 21664.787670
-& 22705.092540 & 26074.531360 & ... & 70.760 & 71.360 & 72.010 & 72.760
-& 74.040 & 75.007 & 76.420 & 77.218 & 78.471 & 79.425 \\
-\multirow{2}{*}{Oceania} & Australia & 10039.595640 & 10949.649590 &
-12217.226860 & 14526.124650 & 16788.629480 & 18334.197510 & 19477.009280
-& 21888.889030 & 23424.766830 & 26997.936570 & ... & 70.930 & 71.100 &
-71.930 & 73.490 & 74.740 & 76.320 & 77.560 & 78.830 & 80.370 & 81.235 \\
-& New Zealand & 10556.575660 & 12247.395320 & 13175.678000 &
-14463.918930 & 16046.037280 & 16233.717700 & 17632.410400 & 19007.191290
-& 18363.324940 & 21050.413770 & ... & 71.240 & 71.520 & 71.890 & 72.220
-& 73.840 & 74.320 & 76.330 & 77.550 & 79.110 & 80.204 \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{data\_melt }\OperatorTok{=}\NormalTok{ pd.melt(data\_wide\_lifeExp\_gdpPercap.reset\_index(), id\_vars }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{], var\_name }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}Metric\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{])}
-\NormalTok{data\_melt.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-KeyError: "The following id_vars or value_vars are not present in the DataFrame: ['continent', 'country']"
-\end{verbatim}
 
 \hypertarget{stacking-and-unstacking-using-stack-and-unstack}{%
 \subsection{\texorpdfstring{Stacking and Unstacking using
@@ -21841,9 +21822,11 @@ continent & country & & & & & & \\
 \hypertarget{data-enriching}{%
 \section{Data Enriching}\label{data-enriching}}
 
-Data enriching involves enhancing your existing dataset by adding
-additional data, often from external sources, to make your dataset more
-insightful.
+\href{https://pandas.pydata.org/docs/user_guide/merging.html}{Data
+enriching} involves enhancing your existing dataset by adding additional
+data, often from external sources, to make your dataset more insightful.
+
+\includegraphics{index_files/mediabag/merging_join_multi_d.png}
 
 There are 3 common methods for data enriching:
 
@@ -22385,8 +22368,12 @@ differences. Mention examples when you can use (i) either, (ii) only
   \texttt{merge()}
 \end{enumerate}
 
-\hypertarget{independent-study-4}{%
-\section{Independent Study}\label{independent-study-4}}
+For a comprehensive user guide, please refer to the
+\href{https://pandas.pydata.org/docs/user_guide/merging.html}{official
+documentation}.
+
+\hypertarget{independent-study-5}{%
+\section{Independent Study}\label{independent-study-5}}
 
 \hypertarget{practice-exercise-1-6}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-6}}
@@ -22406,19 +22393,15 @@ continents.
 Appending all the data files, i.e., stacking them on top of each other
 to form a combined datasets called ``data\_all\_continents''
 
-\hypertarget{section-69}{%
-\subsection{}\label{section-69}}
-
-\hypertarget{practice-exercise-2-gdp-per-capita-and-population}{%
-\subsection{Practice exercise 2: GDP per capita and
-population}\label{practice-exercise-2-gdp-per-capita-and-population}}
-
-Read the GDP per capita data from
-https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita
+\hypertarget{practice-exercise-2-6}{%
+\subsection{Practice exercise 2}\label{practice-exercise-2-6}}
 
 \hypertarget{preparing-gdp-per-capita-data}{%
 \subsubsection{Preparing GDP per capita
 data}\label{preparing-gdp-per-capita-data}}
+
+Read the GDP per capita data from
+https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita
 
 Drop all the \texttt{Year} columns. Use the
 \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html}{\texttt{drop()}}
@@ -22427,14 +22410,14 @@ arguments. Print the first 2 rows of the updated DataFrame. If the first
 row of the DataFrame has missing values for all columns, drop that row
 as well.
 
-\hypertarget{section-70}{%
-\subsubsection{}\label{section-70}}
+\hypertarget{section-69}{%
+\subsubsection{}\label{section-69}}
 
 Drop the inner level of column labels. Use the \texttt{droplevel()}
 method. Print the first 2 rows of the updated DataFrame.
 
-\hypertarget{section-71}{%
-\subsubsection{}\label{section-71}}
+\hypertarget{section-70}{%
+\subsubsection{}\label{section-70}}
 
 Convert the columns consisting of GDP per capita by \emph{IMF, World
 Bank}, and the \emph{United Nations} to numeric. Apply a lambda function
@@ -22444,8 +22427,8 @@ values in each column of the updated DataFrame.
 Note: \emph{Do not apply the function 3 times. Apply it once on a
 DataFrame consisting of these 3 columns.}
 
-\hypertarget{section-72}{%
-\subsubsection{}\label{section-72}}
+\hypertarget{section-71}{%
+\subsubsection{}\label{section-71}}
 
 Apply the lambda function below on all the column names of the dataset
 obtained in the previous question to clean the column names.
@@ -22460,8 +22443,8 @@ names and not columns.}
 
 Print the first 2 rows of the updated DataFrame.
 
-\hypertarget{section-73}{%
-\subsubsection{}\label{section-73}}
+\hypertarget{section-72}{%
+\subsubsection{}\label{section-72}}
 
 Create a new column \texttt{GDP\_per\_capita} that copies the GDP per
 capita values of the \texttt{United\ Nations}. If the GDP per capita is
@@ -22473,15 +22456,15 @@ copy it from the \texttt{IMF} column.
 Print the number of missing values in the \texttt{GDP\_per\_capita}
 column.
 
-\hypertarget{section-74}{%
-\subsubsection{}\label{section-74}}
+\hypertarget{section-73}{%
+\subsubsection{}\label{section-73}}
 
 Drop all the columns except \texttt{Country} and
 \texttt{GDP\_per\_capita}. Print the first 2 rows of the updated
 DataFrame.
 
-\hypertarget{section-75}{%
-\subsubsection{}\label{section-75}}
+\hypertarget{section-74}{%
+\subsubsection{}\label{section-74}}
 
 The country names contain some special characters \emph{(characters
 other than letters)} and need to be cleaned. The following function can
@@ -22505,14 +22488,15 @@ https://en.wikipedia.org/wiki/List\_of\_countries\_by\_population\_(United\_Nati
 \begin{itemize}
 \tightlist
 \item
-  Drop all columns except \texttt{Country} and
+  Drop all columns except \texttt{Country},
+  \texttt{UN\ Continental\ Region{[}1{]}}, and
   \texttt{Population\ (1\ July\ 2023)}.
 \item
   Drop the first row since it is the total population in the world
 \end{itemize}
 
-\hypertarget{section-76}{%
-\subsubsection{}\label{section-76}}
+\hypertarget{section-75}{%
+\subsubsection{}\label{section-75}}
 
 Apply the lambda function below on all the column names of the dataset
 obtained in the previous question to clean the column names.
@@ -22527,8 +22511,8 @@ names and not columns.}
 
 Print the first 2 rows of the updated DataFrame.
 
-\hypertarget{section-77}{%
-\subsubsection{}\label{section-77}}
+\hypertarget{section-76}{%
+\subsubsection{}\label{section-76}}
 
 The country names contain some special characters \emph{(characters
 other than letters)} and need to be cleaned. The following function can
@@ -22563,8 +22547,8 @@ Assume that:
   is unavailable.
 \end{enumerate}
 
-\hypertarget{section-78}{%
-\subsubsection{}\label{section-78}}
+\hypertarget{section-77}{%
+\subsubsection{}\label{section-77}}
 
 For how many countries in \texttt{gdp\_per\_capita\_data} does the
 population seem to be unavailable in \texttt{population\_data}? Note
@@ -22590,8 +22574,8 @@ observation in the GDP per capita dataset, whose name in
 \texttt{population\_data} is the most \emph{`similar'} to the name of
 the country in \texttt{gdp\_per\_capita\_data}.
 
-\hypertarget{section-79}{%
-\subsubsection{}\label{section-79}}
+\hypertarget{section-78}{%
+\subsubsection{}\label{section-78}}
 
 Proceed as follows:
 
@@ -22626,8 +22610,7 @@ Use the function below to compute the similarity score between the
 \texttt{similar\ =\ lambda\ a,b:\ SequenceMatcher(None,\ a,\ b).ratio()}
 
 \textbf{Note: You may use one \texttt{for} loop only for this particular
-question. However, if don't use a \texttt{for} loop, you will get 10
-bonus points.}
+question. However, it would be perfect if don't use a \texttt{for} loop}
 
 \textbf{Hint:}
 
@@ -22651,8 +22634,8 @@ bonus points.}
   function.
 \end{enumerate}
 
-\hypertarget{section-80}{%
-\subsubsection{}\label{section-80}}
+\hypertarget{section-79}{%
+\subsubsection{}\label{section-79}}
 
 In the dataset obtained in the previous question, for all observations
 where similarity score is less than 0.8, replace the population with
@@ -22734,8 +22717,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-80}{%
+\subsection{}\label{section-80}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -22744,24 +22727,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-81}{%
+\subsection{}\label{section-81}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-82}{%
+\subsection{}\label{section-82}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-83}{%
+\subsection{}\label{section-83}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -22772,8 +22755,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-84}{%
+\subsection{}\label{section-84}}
 
 Use list comprehension to:
 
@@ -22822,16 +22805,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-86}{%
-\subsection{}\label{section-86}}
+\hypertarget{section-85}{%
+\subsection{}\label{section-85}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-87}{%
-\subsection{}\label{section-87}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -22840,8 +22823,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-88}{%
-\subsection{}\label{section-88}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -22850,8 +22833,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-89}{%
-\subsection{}\label{section-89}}
+\hypertarget{section-88}{%
+\subsection{}\label{section-88}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -22875,8 +22858,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-90}{%
-\subsection{}\label{section-90}}
+\hypertarget{section-89}{%
+\subsection{}\label{section-89}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -22885,8 +22868,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-91}{%
-\subsection{}\label{section-91}}
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -22898,8 +22881,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-92}{%
-\subsection{}\label{section-92}}
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -22907,23 +22890,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-93}{%
-\subsection{}\label{section-93}}
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-94}{%
-\subsection{}\label{section-94}}
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-95}{%
-\subsection{}\label{section-95}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -22932,16 +22915,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-96}{%
-\subsection{}\label{section-96}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-97}{%
-\subsection{}\label{section-97}}
+\hypertarget{section-96}{%
+\subsection{}\label{section-96}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -22951,16 +22934,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-98}{%
-\subsection{}\label{section-98}}
+\hypertarget{section-97}{%
+\subsection{}\label{section-97}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-99}{%
-\subsection{}\label{section-99}}
+\hypertarget{section-98}{%
+\subsection{}\label{section-98}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -22973,38 +22956,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-100}{%
-\subsection{}\label{section-100}}
+\hypertarget{section-99}{%
+\subsection{}\label{section-99}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-101}{%
-\subsection{}\label{section-101}}
+\hypertarget{section-100}{%
+\subsection{}\label{section-100}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-102}{%
-\subsection{}\label{section-102}}
+\hypertarget{section-101}{%
+\subsection{}\label{section-101}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-103}{%
-\subsection{}\label{section-103}}
+\hypertarget{section-102}{%
+\subsection{}\label{section-102}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-104}{%
-\subsection{}\label{section-104}}
+\hypertarget{section-103}{%
+\subsection{}\label{section-103}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -23013,16 +22996,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-105}{%
-\subsection{}\label{section-105}}
+\hypertarget{section-104}{%
+\subsection{}\label{section-104}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-106}{%
-\subsection{}\label{section-106}}
+\hypertarget{section-105}{%
+\subsection{}\label{section-105}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -23469,8 +23452,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-107}{%
-\subsection{}\label{section-107}}
+\hypertarget{section-106}{%
+\subsection{}\label{section-106}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -23481,8 +23464,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-108}{%
-\subsection{}\label{section-108}}
+\hypertarget{section-107}{%
+\subsection{}\label{section-107}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -23491,8 +23474,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-109}{%
-\subsection{}\label{section-109}}
+\hypertarget{section-108}{%
+\subsection{}\label{section-108}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -23516,8 +23499,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-110}{%
-\subsection{}\label{section-110}}
+\hypertarget{section-109}{%
+\subsection{}\label{section-109}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -23549,8 +23532,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-111}{%
-\subsection{}\label{section-111}}
+\hypertarget{section-110}{%
+\subsection{}\label{section-110}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -23564,8 +23547,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-112}{%
-\subsection{}\label{section-112}}
+\hypertarget{section-111}{%
+\subsection{}\label{section-111}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -23582,8 +23565,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-113}{%
-\subsection{}\label{section-113}}
+\hypertarget{section-112}{%
+\subsection{}\label{section-112}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -23618,8 +23601,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-114}{%
-\subsection{}\label{section-114}}
+\hypertarget{section-113}{%
+\subsection{}\label{section-113}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -23630,8 +23613,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-115}{%
-\subsection{}\label{section-115}}
+\hypertarget{section-114}{%
+\subsection{}\label{section-114}}
 
 Find the percentage of the total countries in each continent.
 
@@ -23640,22 +23623,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-116}{%
-\subsection{}\label{section-116}}
+\hypertarget{section-115}{%
+\subsection{}\label{section-115}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-117}{%
-\subsection{}\label{section-117}}
+\hypertarget{section-116}{%
+\subsection{}\label{section-116}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-118}{%
-\subsubsection{}\label{section-118}}
+\hypertarget{section-117}{%
+\subsubsection{}\label{section-117}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -23677,8 +23660,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-119}{%
-\subsubsection{}\label{section-119}}
+\hypertarget{section-118}{%
+\subsubsection{}\label{section-118}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -23700,24 +23683,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-120}{%
-\subsubsection{}\label{section-120}}
+\hypertarget{section-119}{%
+\subsubsection{}\label{section-119}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-121}{%
-\subsection{}\label{section-121}}
+\hypertarget{section-120}{%
+\subsection{}\label{section-120}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-122}{%
-\subsection{}\label{section-122}}
+\hypertarget{section-121}{%
+\subsection{}\label{section-121}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -23735,15 +23718,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-123}{%
-\subsection{}\label{section-123}}
+\hypertarget{section-122}{%
+\subsection{}\label{section-122}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-124}{%
-\subsection{}\label{section-124}}
+\hypertarget{section-123}{%
+\subsection{}\label{section-123}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -23752,8 +23735,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-125}{%
-\subsection{}\label{section-125}}
+\hypertarget{section-124}{%
+\subsection{}\label{section-124}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -23929,8 +23912,8 @@ time of its release.
 \hypertarget{month-of-release}{%
 \subsection{Month of release}\label{month-of-release}}
 
-\hypertarget{section-126}{%
-\subsubsection{}\label{section-126}}
+\hypertarget{section-125}{%
+\subsubsection{}\label{section-125}}
 
 Make an appropriate plot to visualize the mean profit of movies released
 each month.
@@ -23951,8 +23934,8 @@ each month.
 
 \emph{(6 points)}
 
-\hypertarget{section-127}{%
-\subsubsection{}\label{section-127}}
+\hypertarget{section-126}{%
+\subsubsection{}\label{section-126}}
 
 Based on the plot, which seasons have been the most and least profitable
 (on an average) for a movie release. Don't worry about the exact start
@@ -23966,8 +23949,8 @@ summer, late spring} etc.
 \subsection{Month of release with number of movies in each
 genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
 
-\hypertarget{section-128}{%
-\subsubsection{}\label{section-128}}
+\hypertarget{section-127}{%
+\subsubsection{}\label{section-127}}
 
 Now that we know the most profitable season for releasing movies, let us
 visualize if some \texttt{genre}s are more popular during certain
@@ -23999,8 +23982,8 @@ each \texttt{genre} in each calendar month.
   Use the \emph{hue} argument
 \end{enumerate}
 
-\hypertarget{section-129}{%
-\subsubsection{}\label{section-129}}
+\hypertarget{section-128}{%
+\subsubsection{}\label{section-128}}
 
 Based on the above plot, which \texttt{genre} is the most popular during
 the most profitable season of release? And which genre is the most
@@ -24012,8 +23995,8 @@ popular during the least profitable season of release?
 \subsection{Month of release with proportion of movies in each
 genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
 
-\hypertarget{section-130}{%
-\subsubsection{}\label{section-130}}
+\hypertarget{section-129}{%
+\subsubsection{}\label{section-129}}
 
 Visualize the proportion of movies in each \texttt{genre} for each month
 of release.
@@ -24047,8 +24030,8 @@ the visualization
 
 \emph{(8 points)}
 
-\hypertarget{section-131}{%
-\subsubsection{}\label{section-131}}
+\hypertarget{section-130}{%
+\subsubsection{}\label{section-130}}
 
 Which \texttt{genre} is the most popular during the month of May, and
 which one is the most popular during December?
@@ -24059,8 +24042,8 @@ which one is the most popular during December?
 \subsection{Year of release with
 genre}\label{year-of-release-with-genre}}
 
-\hypertarget{section-132}{%
-\subsubsection{}\label{section-132}}
+\hypertarget{section-131}{%
+\subsubsection{}\label{section-131}}
 
 Make an appropriate figure to visualize the average profit of movies of
 each \texttt{genre} for each year. Consider only the movies released
@@ -24085,8 +24068,8 @@ profit.
 
 \emph{(6 points)}
 
-\hypertarget{section-133}{%
-\subsubsection{}\label{section-133}}
+\hypertarget{section-132}{%
+\subsubsection{}\label{section-132}}
 
 Based on the figure above, which \texttt{genre}'s profitability seems to
 be increasing over the years, and which \texttt{genre} has the least
@@ -24100,31 +24083,31 @@ uncertainty in profit for most of the years.
 \hypertarget{pairplot-heatmap}{%
 \subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
 
-\hypertarget{section-134}{%
-\subsubsection{}\label{section-134}}
+\hypertarget{section-133}{%
+\subsubsection{}\label{section-133}}
 
 Make a pairplot and heatmap of all the continuous variables in the data.
 
 \emph{(8 points)}
 
-\hypertarget{section-135}{%
-\subsubsection{}\label{section-135}}
+\hypertarget{section-134}{%
+\subsubsection{}\label{section-134}}
 
 Are there any trends that you can see in the pairplot, but not in the
 heatmap?
 
 \emph{(2 points)}
 
-\hypertarget{section-136}{%
-\subsubsection{}\label{section-136}}
+\hypertarget{section-135}{%
+\subsubsection{}\label{section-135}}
 
 Based on the plots in 2(a)(i), which variables are associated with
 profit?
 
 \emph{(2 points)}
 
-\hypertarget{section-137}{%
-\subsubsection{}\label{section-137}}
+\hypertarget{section-136}{%
+\subsubsection{}\label{section-136}}
 
 Among the variables listed in 2(a)(iii), select a subset of variables
 such that none of them are highly associated with each other. The rest
@@ -24136,8 +24119,8 @@ association with profit.
 \hypertarget{nested-associations}{%
 \subsection{Nested associations}\label{nested-associations}}
 
-\hypertarget{section-138}{%
-\subsubsection{}\label{section-138}}
+\hypertarget{section-137}{%
+\subsubsection{}\label{section-137}}
 
 Use the code below to create some new columns.
 
@@ -24155,8 +24138,8 @@ Which genre has the highest association between profit and IMDB votes?
 
 \emph{(8 points)}
 
-\hypertarget{section-139}{%
-\subsubsection{}\label{section-139}}
+\hypertarget{section-138}{%
+\subsubsection{}\label{section-138}}
 
 Make an appropriate figure to visualize the association between the
 number of IMDB votes and profit, for each combination of the fiction
@@ -24176,8 +24159,8 @@ object.
 \subsection{Profit based on movie
 director}\label{profit-based-on-movie-director}}
 
-\hypertarget{section-140}{%
-\subsubsection{}\label{section-140}}
+\hypertarget{section-139}{%
+\subsubsection{}\label{section-139}}
 
 Consider the directors who have directed more than 10 movies (based on
 the dataset). Make a horizontal barplot that shows the mean profit of
@@ -24199,8 +24182,8 @@ directors must appear in the barplot:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-141}{%
-\subsubsection{}\label{section-141}}
+\hypertarget{section-140}{%
+\subsubsection{}\label{section-140}}
 
 Based on the above plot, which director has the highest mean
 profitability, and which one has the highest variation in profitability?
@@ -24214,8 +24197,8 @@ profitability, and which one has the highest variation in profitability?
 \subsection{Distribution of profit based on genre
 (boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
 
-\hypertarget{section-142}{%
-\subsubsection{}\label{section-142}}
+\hypertarget{section-141}{%
+\subsubsection{}\label{section-141}}
 
 Make boxplots to visualize the distribution of \texttt{profit} based on
 \texttt{genre}. Based on the plot, which genre has the most profitable
@@ -24223,8 +24206,8 @@ movies?
 
 \emph{(6 points)}
 
-\hypertarget{section-143}{%
-\subsubsection{}\label{section-143}}
+\hypertarget{section-142}{%
+\subsubsection{}\label{section-142}}
 
 Which genre has the most variation in profit, and which one has the
 least?
@@ -24235,16 +24218,16 @@ least?
 \subsection{Distribution of profit based on genre (density
 plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
 
-\hypertarget{section-144}{%
-\subsubsection{}\label{section-144}}
+\hypertarget{section-143}{%
+\subsubsection{}\label{section-143}}
 
 Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
 the limit on the horizonal axis, so that the plots are clearly visible.
 
 \emph{(6 points)}
 
-\hypertarget{section-145}{%
-\subsubsection{}\label{section-145}}
+\hypertarget{section-144}{%
+\subsubsection{}\label{section-144}}
 
 What additional insight / trend can you seen in the above plot that you
 cannot see with the boxplots?
@@ -24381,18 +24364,18 @@ Suppose there is an investor who only holds the index for a single day
 
 Based on the data,
 
-\hypertarget{section-146}{%
-\subsubsection{}\label{section-146}}
+\hypertarget{section-145}{%
+\subsubsection{}\label{section-145}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-147}{%
-\subsubsection{}\label{section-147}}
+\hypertarget{section-146}{%
+\subsubsection{}\label{section-146}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-148}{%
-\subsubsection{}\label{section-148}}
+\hypertarget{section-147}{%
+\subsubsection{}\label{section-147}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -24411,18 +24394,18 @@ Suppose there is an investor who will hold the index for a year (suppose
 there are 250 trading days in a year). Do the same analysis as the
 above:
 
-\hypertarget{section-149}{%
-\subsubsection{}\label{section-149}}
+\hypertarget{section-148}{%
+\subsubsection{}\label{section-148}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-150}{%
-\subsubsection{}\label{section-150}}
+\hypertarget{section-149}{%
+\subsubsection{}\label{section-149}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-151}{%
-\subsubsection{}\label{section-151}}
+\hypertarget{section-150}{%
+\subsubsection{}\label{section-150}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -24437,20 +24420,20 @@ our holding period from 1 day to 1 year(250 days).
 
 Show/answer:
 
-\hypertarget{section-152}{%
-\subsubsection{}\label{section-152}}
+\hypertarget{section-151}{%
+\subsubsection{}\label{section-151}}
 
 At least how many days do you need to hold the index in order to make a
 significant positive return (threshold 0.01)?
 
-\hypertarget{section-153}{%
-\subsubsection{}\label{section-153}}
+\hypertarget{section-152}{%
+\subsubsection{}\label{section-152}}
 
 How are the returns associated with the risks for different investment
 strategies?
 
-\hypertarget{section-154}{%
-\subsubsection{}\label{section-154}}
+\hypertarget{section-153}{%
+\subsubsection{}\label{section-153}}
 
 Make a graph as shown below.
 
@@ -24835,23 +24818,23 @@ along with the trendline. What is the trend indicated by the trendline?
 \subsection{\texorpdfstring{Trend with bins of
 \texttt{house\_age}}{Trend with bins of house\_age}}\label{trend-with-bins-of-house_age}}
 
-\hypertarget{section-155}{%
-\subsubsection{}\label{section-155}}
+\hypertarget{section-154}{%
+\subsubsection{}\label{section-154}}
 
 Bin \texttt{house\_age} into 5 approximately equal-sized bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-156}{%
-\subsubsection{}\label{section-156}}
+\hypertarget{section-155}{%
+\subsubsection{}\label{section-155}}
 
 After binning, plot the mean \texttt{house\_price} against the house age
 bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-157}{%
-\subsubsection{}\label{section-157}}
+\hypertarget{section-156}{%
+\subsubsection{}\label{section-156}}
 
 Is the trend seen with this plot different from that seen with the
 trendline in the previous question? If yes, then is one of the trends
@@ -24859,8 +24842,8 @@ incorrect? Why or why not?
 
 \emph{(4 points)}
 
-\hypertarget{section-158}{%
-\subsubsection{}\label{section-158}}
+\hypertarget{section-157}{%
+\subsubsection{}\label{section-157}}
 
 Is one of the trends more informative? If yes, then which one and how?
 
