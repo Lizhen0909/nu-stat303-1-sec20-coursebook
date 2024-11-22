@@ -350,6 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   <li><a href="#interacting-with-the-os-and-filesystem" id="toc-interacting-with-the-os-and-filesystem" class="nav-link" data-scroll-target="#interacting-with-the-os-and-filesystem"><span class="header-section-number">4.5</span> Interacting with the OS and filesystem</a></li>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">4.6</span> Independent Study</a></li>
   </ul>
 </nav>
     </div>
@@ -373,13 +374,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>In this lecture, we’ll explore how to optimize your workflow in Jupyter notebooks by leveraging <strong>magic commands</strong>, <strong>shell commands</strong>, and understanding <strong>file paths</strong>. These powerful tools allow you to:</p>
-<ul>
-<li>Seamlessly interact with the underlying operating system.</li>
-<li>Streamline file management and navigation.</li>
-<li>Control notebook behavior and enhance productivity directly within your code cells.</li>
-<li>Interact with the <code>os</code> module to manage files and directories programmatically, enabling you to automate tasks such as navigating directories, checking file existence, and executing system commands.</li>
-</ul>
+<p>In this lecture, we’ll explore how to optimize your workflow in Jupyter notebooks by leveraging <strong>magic commands</strong> and <strong>shell commands</strong>, understanding <strong>file paths</strong>, and interacting with the <strong>filesystem</strong> using the <code>os</code> module.</p>
+<p>These powerful tools will enable you to:<br>
+- Run shell commands directly within a notebook.<br>
+- Navigate and manipulate files and directories efficiently.<br>
+- Integrate external tools and scripts seamlessly into your workflow.</p>
 <p>By mastering these techniques, you’ll be able to work more efficiently and handle complex data science tasks with ease.</p>
 <section id="magic-commands" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="magic-commands"><span class="header-section-number">4.1</span> Magic Commands</h2>
@@ -937,6 +936,111 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <pre><code>False</code></pre>
 </div>
 </div>
+</section>
+<section id="independent-study" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">4.6</span> Independent Study</h2>
+<p>To reinforce the skills learned in this lecture, complete the following tasks:</p>
+<ol type="1">
+<li><strong>Set Up Your Workspace</strong>
+<ul>
+<li>Create a folder named <code>STAT303-1</code> for putting the course materials.</li>
+<li>Create a <code>pip</code> environment for the upcoming coursework.<br>
+</li>
+<li>Organize your files into separate directories for datasets, assignments, projects, quizzes, lectures, and exams.<br>
+</li>
+<li>Use the <code>os</code> module or shell commands to create these directories programmatically in your Jupyter notebook.</li>
+</ul></li>
+<li><strong>Practice Magic Commands</strong>
+<ul>
+<li>Use <code>%timeit</code> to measure the execution time of a simple Python function in your notebook.<br>
+</li>
+<li>Experiment with <code>%lsmagic</code> to explore all available magic commands.</li>
+</ul></li>
+<li><strong>Run Shell Commands</strong>
+<ul>
+<li>Use <code>!ls</code> (or <code>!dir</code> on Windows) to list the contents of the directories you created.<br>
+</li>
+<li>Use <code>!pwd</code> to print the current working directory.</li>
+</ul></li>
+<li><strong>Explore File Paths</strong>
+<ul>
+<li>Write a Python script to navigate between directories using relative and absolute paths.</li>
+<li>Use the <code>os</code> module to programmatically check the existence of a directory or file before creating it.</li>
+</ul></li>
+</ol>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate between directories and understand . and .. in paths</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the current directory</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Current Directory:"</span>, os.getcwd())  <span class="co"># Get the current working directory</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use '.' to refer to the current directory</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">"."</span>)  <span class="co"># Absolute path of the current directory</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using '.': Current Directory Path:"</span>, current_dir)</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use '..' to refer to the parent directory</span></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>parent_dir <span class="op">=</span> os.path.abspath(<span class="st">".."</span>)  <span class="co"># Absolute path of the parent directory</span></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using '..': Parent Directory Path:"</span>, parent_dir)</span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new folder in the current directory and navigate into it</span></span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a>os.mkdir(<span class="st">"test_folder"</span>)  <span class="co"># Create a new folder</span></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Created 'test_folder' in:"</span>, os.path.abspath(<span class="st">"."</span>))</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">"test_folder"</span>)  <span class="co"># Change to the new folder</span></span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After Changing Directory (Relative to '.'): "</span>, os.getcwd())</span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate back to the parent directory using '..'</span></span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">".."</span>)</span>
+<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After Navigating Back to Parent Directory (Relative to '..'):"</span>, os.getcwd())</span>
+<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to the parent directory directly using an absolute path</span></span>
+<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a>os.chdir(parent_dir)</span>
+<span id="cb61-28"><a href="#cb61-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using Absolute Path to Navigate to Parent Directory:"</span>, os.getcwd())</span>
+<span id="cb61-29"><a href="#cb61-29" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Current Directory: c:\Users\lsi8012\Documents\Courses\FA24\DataScience_Intro_python_fa24_Sec20_21
+Using '.': Current Directory Path: c:\Users\lsi8012\Documents\Courses\FA24\DataScience_Intro_python_fa24_Sec20_21
+Using '..': Parent Directory Path: c:\Users\lsi8012\Documents\Courses\FA24
+Created 'test_folder' in: c:\Users\lsi8012\Documents\Courses\FA24\DataScience_Intro_python_fa24_Sec20_21
+After Changing Directory (Relative to '.'):  c:\Users\lsi8012\Documents\Courses\FA24\DataScience_Intro_python_fa24_Sec20_21\test_folder
+After Navigating Back to Parent Directory (Relative to '..'): c:\Users\lsi8012\Documents\Courses\FA24\DataScience_Intro_python_fa24_Sec20_21
+Using Absolute Path to Navigate to Parent Directory: c:\Users\lsi8012\Documents\Courses\FA24</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the existence of a directory or file before creating it</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define directory and file paths</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>dir_path <span class="op">=</span> <span class="st">"example_directory"</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> os.path.join(dir_path, <span class="st">"example_file.txt"</span>)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and create directory</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(dir_path):</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(dir_path)</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Directory '</span><span class="sc">{</span>dir_path<span class="sc">}</span><span class="ss">' created."</span>)</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Directory '</span><span class="sc">{</span>dir_path<span class="sc">}</span><span class="ss">' already exists."</span>)</span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and create file</span></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(file_path):</span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="st">"This is a test file."</span>)  <span class="co"># Write some content to the file</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"File '</span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss">' created."</span>)</span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"File '</span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss">' already exists."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Directory 'example_directory' created.
+File 'example_directory\example_file.txt' created.</code></pre>
+</div>
+</div>
+<p>By completing these exercises, you’ll gain practical experience with magic commands, shell commands, file paths, and the <code>os</code> module, enhancing your ability to interact with the filesystem in Jupyter notebooks effectively.</p>
 
 
 </section>
