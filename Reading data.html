@@ -313,8 +313,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link active" data-scroll-target="#types-of-data"><span class="header-section-number">5.1</span> Types of data</a></li>
-  <li><a href="#using-pandas-to-read-csvs" id="toc-using-pandas-to-read-csvs" class="nav-link" data-scroll-target="#using-pandas-to-read-csvs"><span class="header-section-number">5.2</span> Using Pandas to Read CSVs</a>
+  <li><a href="#types-of-data---structured-and-unstructured" id="toc-types-of-data---structured-and-unstructured" class="nav-link active" data-scroll-target="#types-of-data---structured-and-unstructured"><span class="header-section-number">5.1</span> Types of data - structured and unstructured</a></li>
+  <li><a href="#reading-a-csv-file-with-pandas" id="toc-reading-a-csv-file-with-pandas" class="nav-link" data-scroll-target="#reading-a-csv-file-with-pandas"><span class="header-section-number">5.2</span> Reading a <em>csv</em> file with <em>Pandas</em></a>
   <ul>
   <li><a href="#using-the-read_csv-function" id="toc-using-the-read_csv-function" class="nav-link" data-scroll-target="#using-the-read_csv-function"><span class="header-section-number">5.2.1</span> Using the <code>read_csv</code> function</a></li>
   <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview"><span class="header-section-number">5.2.2</span> Data Overview</a></li>
@@ -369,15 +369,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="types-of-data" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="types-of-data"><span class="header-section-number">5.1</span> Types of data</h2>
-<p><img src="https://lawtomated.com/wp-content/uploads/2019/04/structuredVsUnstructuredIgneos.png" width="500"></p>
+<div class="cell" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="44">
+<img src="./images/Reading_data.png" width="675">
+</div>
+</div>
+<section id="types-of-data---structured-and-unstructured" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="types-of-data---structured-and-unstructured"><span class="header-section-number">5.1</span> Types of data - structured and unstructured</h2>
+<p>Reading data is the first step to extract information from it. Data can exist broadly in two formats:</p>
+<ol type="1">
+<li>Structured data, and</li>
+<li>Unstructured data.</li>
+</ol>
+<p>Structured data is typically stored in a tabular form, where rows in the data correspond to “observations” and columns correspond to “variables”. For example, the following dataset contains 5 observations, where each observation (or row) consists of information about a movie. The variables (or columns) contain different pieces of information about a given movie. As all variables for a given row are related to the same movie, the data below is also called relational data.</p>
+<div class="cell" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="45">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">US Gross</th>
+<th data-quarto-table-cell-role="th">Production Budget</th>
+<th data-quarto-table-cell-role="th">Release Date</th>
+<th data-quarto-table-cell-role="th">Major Genre</th>
+<th data-quarto-table-cell-role="th">Creative Type</th>
+<th data-quarto-table-cell-role="th">Rotten Tomatoes Rating</th>
+<th data-quarto-table-cell-role="th">IMDB Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>The Shawshank Redemption</td>
+<td>28241469</td>
+<td>25000000</td>
+<td>Sep 23 1994</td>
+<td>Drama</td>
+<td>Fiction</td>
+<td>88</td>
+<td>9.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Inception</td>
+<td>285630280</td>
+<td>160000000</td>
+<td>Jul 16 2010</td>
+<td>Horror/Thriller</td>
+<td>Fiction</td>
+<td>87</td>
+<td>9.1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>108981275</td>
+<td>4400000</td>
+<td>Nov 19 1975</td>
+<td>Comedy</td>
+<td>Fiction</td>
+<td>96</td>
+<td>8.9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>The Dark Knight</td>
+<td>533345358</td>
+<td>185000000</td>
+<td>Jul 18 2008</td>
+<td>Action/Adventure</td>
+<td>Fiction</td>
+<td>93</td>
+<td>8.9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Schindler's List</td>
+<td>96067179</td>
+<td>25000000</td>
+<td>Dec 15 1993</td>
+<td>Drama</td>
+<td>Non-Fiction</td>
+<td>97</td>
+<td>8.9</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Unstructured data is data that is not organized in any pre-defined manner. Examples of unstructured data can be text files, audio/video files, images, Internet of Things (IoT) data, etc. Unstructured data is relatively harder to analyze as most of the analytical methods and tools are oriented towards structured data. However, an unstructured data can be used to obtain structured data, which in turn can be analyzed. For example, an image can be converted to an array of pixels - which will be structured data. Machine learning algorithms can then be used on the array to classify the image as that of a dog or a cat.</p>
 <p>In this course, we will focus on analyzing structured data.</p>
-</section>
-<section id="using-pandas-to-read-csvs" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="using-pandas-to-read-csvs"><span class="header-section-number">5.2</span> Using Pandas to Read CSVs</h2>
 <p><a href="https://pandas.pydata.org/">Pandas</a> is a popular Python library used for working in tabular data (similar to the data stored in a spreadsheet). Pandas provides helper functions to read data from various file formats like CSV, Excel spreadsheets, HTML tables, JSON, SQL, and more.</p>
-<p>The below format of storing data is known as <em>comma-separated values</em> or CSV. It contains day-wise Covid-19 data for Italy:</p>
+</section>
+<section id="reading-a-csv-file-with-pandas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="reading-a-csv-file-with-pandas"><span class="header-section-number">5.2</span> Reading a <em>csv</em> file with <em>Pandas</em></h2>
+<p>Structured data can be stored in a variety of formats. The most popular format is <em>data_file_name.csv</em>, where the extension <em>csv</em> stands for comma separated values. The variable values of each observation are separated by a comma in a <em>.csv</em> file. In other words, the <strong>delimiter</strong> is a comma in a <em>csv</em> file. However, the comma is not visible when a <em>.csv</em> file is opened with Microsoft Excel.</p>
+<p>The below csv file contains day-wise Covid-19 data for Italy:</p>
 <pre><code>date,new_cases,new_deaths,new_tests
 2020-04-21,2256.0,454.0,28095.0
 2020-04-22,2729.0,534.0,44248.0
@@ -2319,7 +2412,12 @@ min position: 2149
 884</code></pre>
 </div>
 </div>
-<p><strong>Additional Tips:</strong> * If you are dealing with non-unique or non-default indices, prefer using <code>idxmax()/idxmin()</code> to get the index labels, as <code>argmax()</code> might be less intuitive in such cases. * For DataFrames, consider using <code>.idxmax(axis=1)</code> or <code>.idxmin(axis=1)</code> to find the max/min index labels along rows instead of columns.</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>When working with non-unique or custom indices, it is recommended to use <code>idxmax()</code> and <code>idxmin()</code> to retrieve index labels, as <code>argmax()</code> may be less intuitive in such scenarios.<br>
+</li>
+<li>For DataFrames, use <code>.idxmax(axis=1)</code> or <code>.idxmin(axis=1)</code> to find the index labels corresponding to the maximum or minimum values across rows, rather than columns.</li>
+</ul>
 </section>
 <section id="finding-the-top-n-minimummaximum-values-of-a-column" class="level3" data-number="5.3.5">
 <h3 data-number="5.3.5" class="anchored" data-anchor-id="finding-the-top-n-minimummaximum-values-of-a-column"><span class="header-section-number">5.3.5</span> Finding the top <em>n</em> minimum/maximum values of a column</h3>
