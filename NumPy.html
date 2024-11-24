@@ -383,22 +383,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#method-2-matrix-multiplication-using-np.matmul-pr" id="toc-method-2-matrix-multiplication-using-np.matmul-pr" class="nav-link" data-scroll-target="#method-2-matrix-multiplication-using-np.matmul-pr"><span class="header-section-number">6.10.5.2</span> Method 2: Matrix Multiplication using <code>np.matmul()</code> pr <code>@</code></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#random-number-generation-in-numpy" id="toc-random-number-generation-in-numpy" class="nav-link" data-scroll-target="#random-number-generation-in-numpy"><span class="header-section-number">6.11</span> Random Number Generation in NumPy</a>
+  <li><a href="#converting-between-numpy-arrays-and-pandas-dataframes" id="toc-converting-between-numpy-arrays-and-pandas-dataframes" class="nav-link" data-scroll-target="#converting-between-numpy-arrays-and-pandas-dataframes"><span class="header-section-number">6.11</span> Converting Between NumPy Arrays and pandas DataFrames</a>
   <ul>
-  <li><a href="#key-functions-for-random-number-generation-in-numpy" id="toc-key-functions-for-random-number-generation-in-numpy" class="nav-link" data-scroll-target="#key-functions-for-random-number-generation-in-numpy"><span class="header-section-number">6.11.1</span> Key Functions for Random Number Generation in NumPy</a></li>
+  <li><a href="#why-conversion-matters" id="toc-why-conversion-matters" class="nav-link" data-scroll-target="#why-conversion-matters"><span class="header-section-number">6.11.1</span> Why Conversion Matters</a></li>
+  <li><a href="#converting-a-numpy-array-to-a-pandas-dataframe" id="toc-converting-a-numpy-array-to-a-pandas-dataframe" class="nav-link" data-scroll-target="#converting-a-numpy-array-to-a-pandas-dataframe"><span class="header-section-number">6.11.2</span> Converting a NumPy Array to a pandas DataFrame</a></li>
+  <li><a href="#converting-a-pandas-dataframe-to-a-numpy-array" id="toc-converting-a-pandas-dataframe-to-a-numpy-array" class="nav-link" data-scroll-target="#converting-a-pandas-dataframe-to-a-numpy-array"><span class="header-section-number">6.11.3</span> Converting a pandas DataFrame to a NumPy Array</a></li>
+  <li><a href="#preserving-index-and-column-information" id="toc-preserving-index-and-column-information" class="nav-link" data-scroll-target="#preserving-index-and-column-information"><span class="header-section-number">6.11.4</span> Preserving Index and Column Information</a></li>
+  <li><a href="#practice-user-cases" id="toc-practice-user-cases" class="nav-link" data-scroll-target="#practice-user-cases"><span class="header-section-number">6.11.5</span> Practice User Cases</a>
+  <ul class="collapse">
+  <li><a href="#case-1-adding-labels-to-a-numpy-array" id="toc-case-1-adding-labels-to-a-numpy-array" class="nav-link" data-scroll-target="#case-1-adding-labels-to-a-numpy-array"><span class="header-section-number">6.11.5.1</span> Case 1: Adding labels to a NumPy Array</a></li>
+  <li><a href="#case-2-perform-numerical-computations" id="toc-case-2-perform-numerical-computations" class="nav-link" data-scroll-target="#case-2-perform-numerical-computations"><span class="header-section-number">6.11.5.2</span> Case 2: Perform Numerical Computations</a></li>
   </ul></li>
-  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">6.12</span> Independent Practice:</a>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices"><span class="header-section-number">6.11.6</span> Best Practices</a></li>
+  <li><a href="#comparison-table" id="toc-comparison-table" class="nav-link" data-scroll-target="#comparison-table"><span class="header-section-number">6.11.7</span> Comparison Table</a></li>
+  </ul></li>
+  <li><a href="#random-number-generation-in-numpy" id="toc-random-number-generation-in-numpy" class="nav-link" data-scroll-target="#random-number-generation-in-numpy"><span class="header-section-number">6.12</span> Random Number Generation in NumPy</a>
   <ul>
-  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">6.12.1</span> Practice exercise 1</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">6.12.1.1</span> </a></li>
+  <li><a href="#key-functions-for-random-number-generation-in-numpy" id="toc-key-functions-for-random-number-generation-in-numpy" class="nav-link" data-scroll-target="#key-functions-for-random-number-generation-in-numpy"><span class="header-section-number">6.12.1</span> Key Functions for Random Number Generation in NumPy</a></li>
   </ul></li>
-  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">6.12.2</span> Practice exercise 2:</a></li>
-  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">6.12.3</span> Practice exercise 3</a>
+  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">6.13</span> Independent Practice:</a>
+  <ul>
+  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">6.13.1</span> Practice exercise 1</a>
   <ul class="collapse">
-  <li><a href="#practice-exercise-4-random-number-generation-using-numpy" id="toc-practice-exercise-4-random-number-generation-using-numpy" class="nav-link" data-scroll-target="#practice-exercise-4-random-number-generation-using-numpy"><span class="header-section-number">6.12.3.1</span> Practice exercise 4: Random number generation using NumPy</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">6.13.1.1</span> </a></li>
   </ul></li>
-  <li><a href="#practice-exercise-5" id="toc-practice-exercise-5" class="nav-link" data-scroll-target="#practice-exercise-5"><span class="header-section-number">6.12.4</span> Practice exercise 5</a></li>
+  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">6.13.2</span> Practice exercise 2:</a></li>
+  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">6.13.3</span> Practice exercise 3</a></li>
+  <li><a href="#practice-exercise-4" id="toc-practice-exercise-4" class="nav-link" data-scroll-target="#practice-exercise-4"><span class="header-section-number">6.13.4</span> Practice exercise 4:</a></li>
+  <li><a href="#practice-exercise-5" id="toc-practice-exercise-5" class="nav-link" data-scroll-target="#practice-exercise-5"><span class="header-section-number">6.13.5</span> Practice exercise 5</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1694,20 +1706,241 @@ Element-wise Multiplication after reshaping:
 </section>
 </section>
 </section>
-<section id="random-number-generation-in-numpy" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="random-number-generation-in-numpy"><span class="header-section-number">6.11</span> Random Number Generation in NumPy</h2>
+<section id="converting-between-numpy-arrays-and-pandas-dataframes" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="converting-between-numpy-arrays-and-pandas-dataframes"><span class="header-section-number">6.11</span> Converting Between NumPy Arrays and pandas DataFrames</h2>
+<section id="why-conversion-matters" class="level3" data-number="6.11.1">
+<h3 data-number="6.11.1" class="anchored" data-anchor-id="why-conversion-matters"><span class="header-section-number">6.11.1</span> Why Conversion Matters</h3>
+<p>While both pandas and NumPy are integral to data science, they serve different purposes:</p>
+<ol type="1">
+<li>pandas:
+<ul>
+<li>Foucses on <strong>data manipulation</strong> and analysis</li>
+<li>Provided intuitive tools to work with <strong>tabular data</strong>(e.g., labeled rows and columns).</li>
+</ul></li>
+<li>NumPy:
+<ul>
+<li>Optimized for <strong>numerical computations</strong>.</li>
+<li>Offers mathematical functions like matrix multiplication, matrix decomposition, and eigenvalue computations, which pandas does not directly support.</li>
+</ul></li>
+</ol>
+</section>
+<section id="converting-a-numpy-array-to-a-pandas-dataframe" class="level3" data-number="6.11.2">
+<h3 data-number="6.11.2" class="anchored" data-anchor-id="converting-a-numpy-array-to-a-pandas-dataframe"><span class="header-section-number">6.11.2</span> Converting a NumPy Array to a pandas DataFrame</h3>
+<p>You have numerical data stored in a NumPy array and want to apply pandas functionalities like labeling rows/columns or analyzing tabular data.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a NumPy array</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], [<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>], [<span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>]])</span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a DataFrame</span></span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>])</span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-7"><a href="#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the DataFrame</span></span>
+<span id="cb124-8"><a href="#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    A   B   C
+0  10  20  30
+1  40  50  60
+2  70  80  90</code></pre>
+</div>
+</div>
+<p><strong>Key Points</strong></p>
+<ul>
+<li>Use the <code>pd.DataFrame()</code> constructor to create a DataFrame from a NumPy array.</li>
+<li>You can specify:
+<ul>
+<li><strong>Column names</strong> using the <code>columns</code> parameter.</li>
+<li><strong>Row labels</strong> using the <code>index</code> parameter.</li>
+</ul></li>
+<li>If <code>columns</code> or <code>index</code> are not specified, pandas assigns default labels:
+<ul>
+<li>Columns: <code>0, 1, 2, ...</code></li>
+<li>Rows: <code>0, 1, 2, ...</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="converting-a-pandas-dataframe-to-a-numpy-array" class="level3" data-number="6.11.3">
+<h3 data-number="6.11.3" class="anchored" data-anchor-id="converting-a-pandas-dataframe-to-a-numpy-array"><span class="header-section-number">6.11.3</span> Converting a pandas DataFrame to a NumPy Array</h3>
+<p>You have a pandas DataFrame and want to perform NumPy operations for optimized numerical processing.</p>
+<div class="cell" data-execution_count="2">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert DataFrame to NumPy array</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> df.to_numpy()</span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the NumPy array</span></span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[10 20 30]
+ [40 50 60]
+ [70 80 90]]</code></pre>
+</div>
+</div>
+<p><strong>Key Points</strong> * Use <code>.to_numpy()</code> for conversion. * <code>.values</code> is an older method but still works (not recommended for newer code).</p>
+</section>
+<section id="preserving-index-and-column-information" class="level3" data-number="6.11.4">
+<h3 data-number="6.11.4" class="anchored" data-anchor-id="preserving-index-and-column-information"><span class="header-section-number">6.11.4</span> Preserving Index and Column Information</h3>
+<p>When converting a DataFrame to an array and back, ensure row/column labels are retained.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert DataFrame to NumPy array</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>array_with_labels <span class="op">=</span> df.to_numpy()</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert back to a DataFrame</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>df_restored <span class="op">=</span> pd.DataFrame(array_with_labels, columns<span class="op">=</span>df.columns, index<span class="op">=</span>df.index)</span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the restored DataFrame</span></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_restored)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    A   B   C
+0  10  20  30
+1  40  50  60
+2  70  80  90</code></pre>
+</div>
+</div>
+<p>Note that you need to manually pass <code>columns</code> and <code>index</code> back when re-creating the DataFrame.</p>
+</section>
+<section id="practice-user-cases" class="level3" data-number="6.11.5">
+<h3 data-number="6.11.5" class="anchored" data-anchor-id="practice-user-cases"><span class="header-section-number">6.11.5</span> Practice User Cases</h3>
+<section id="case-1-adding-labels-to-a-numpy-array" class="level4" data-number="6.11.5.1">
+<h4 data-number="6.11.5.1" class="anchored" data-anchor-id="case-1-adding-labels-to-a-numpy-array"><span class="header-section-number">6.11.5.1</span> Case 1: Adding labels to a NumPy Array</h4>
+<div class="cell" data-execution_count="4">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy array without labels</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.rand(<span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels by converting to a DataFrame</span></span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a>df_with_labels <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'Feature1'</span>, <span class="st">'Feature2'</span>, <span class="st">'Feature3'</span>])</span>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_with_labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Feature1  Feature2  Feature3
+0  0.867644  0.478449  0.684584
+1  0.378309  0.860889  0.096055
+2  0.168311  0.981326  0.685720
+3  0.459235  0.340368  0.396904</code></pre>
+</div>
+</div>
+</section>
+<section id="case-2-perform-numerical-computations" class="level4" data-number="6.11.5.2">
+<h4 data-number="6.11.5.2" class="anchored" data-anchor-id="case-2-perform-numerical-computations"><span class="header-section-number">6.11.5.2</span> Case 2: Perform Numerical Computations</h4>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrame for tabular manipulation</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to NumPy for computations</span></span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> df.to_numpy()</span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a NumPy operation</span></span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>array_squared <span class="op">=</span> np.square(array)</span>
+<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert back to a DataFrame</span></span>
+<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>df_squared <span class="op">=</span> pd.DataFrame(array_squared, columns<span class="op">=</span>df.columns)</span>
+<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   A   B
+0  1  16
+1  4  25
+2  9  36</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="best-practices" class="level3" data-number="6.11.6">
+<h3 data-number="6.11.6" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">6.11.6</span> Best Practices</h3>
+<ul>
+<li><strong>Check Data Types</strong>: Ensure the data in your DataFrame is numerical before converting to NumPy for computations.</li>
+</ul>
+<div class="cell" data-execution_count="7">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>A    int64
+B    int64
+dtype: object</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Handle Missing Values</strong>: Fill or drop missing values (NaN) in DataFrames before conversion to avoid errors in NumPy.</li>
+</ul>
+<div class="cell" data-execution_count="8">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.fillna(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li><p><strong>Optimize for Performance</strong>: Use NumPy for heavy numerical computations and pandas for data manipulation.</p></li>
+<li><p><strong>Convert Back to pandas for Analysis</strong>: After computations, convert the NumPy array back to pandas if you need labeled data for further analysis or visualization.</p></li>
+</ul>
+</section>
+<section id="comparison-table" class="level3" data-number="6.11.7">
+<h3 data-number="6.11.7" class="anchored" data-anchor-id="comparison-table"><span class="header-section-number">6.11.7</span> Comparison Table</h3>
+<table class="table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 38%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Operation</strong></th>
+<th><strong>pandas DataFrame</strong></th>
+<th><strong>NumPy Array</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Row/Column Labels</strong></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><strong>Indexing</strong></td>
+<td>Label-based (<code>loc</code>, <code>iloc</code>)</td>
+<td>Integer-based only</td>
+</tr>
+<tr class="odd">
+<td><strong>Mathematical Ops</strong></td>
+<td>Slower (handles metadata)</td>
+<td>Faster</td>
+</tr>
+<tr class="even">
+<td><strong>Missing Data</strong></td>
+<td>Supports (<code>NaN</code>)</td>
+<td>Does not support (<code>NaN</code>)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="random-number-generation-in-numpy" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="random-number-generation-in-numpy"><span class="header-section-number">6.12</span> Random Number Generation in NumPy</h2>
 <p>NumPy provides a variety of functions for generating random numbers through its numpy.random module. These functions can generate random numbers for different distributions and array shapes, making them essential for simulations, statistical sampling, and machine learning applications.</p>
-<section id="key-functions-for-random-number-generation-in-numpy" class="level3" data-number="6.11.1">
-<h3 data-number="6.11.1" class="anchored" data-anchor-id="key-functions-for-random-number-generation-in-numpy"><span class="header-section-number">6.11.1</span> Key Functions for Random Number Generation in NumPy</h3>
+<section id="key-functions-for-random-number-generation-in-numpy" class="level3" data-number="6.12.1">
+<h3 data-number="6.12.1" class="anchored" data-anchor-id="key-functions-for-random-number-generation-in-numpy"><span class="header-section-number">6.12.1</span> Key Functions for Random Number Generation in NumPy</h3>
 <ol type="1">
 <li><code>np.random.rand()</code>: Generates random numbers from a uniform distribution between 0 and 1.</li>
 </ol>
 <div class="cell" data-execution_count="67">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 2x3 array of random values between 0 and 1</span></span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>rand_array <span class="op">=</span> np.random.rand(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rand_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 2x3 array of random values between 0 and 1</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>rand_array <span class="op">=</span> np.random.rand(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rand_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.59160333 0.1864713  0.70446818]
@@ -1720,8 +1953,8 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="68">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>normal_array <span class="op">=</span> np.random.randn(<span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(normal_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>normal_array <span class="op">=</span> np.random.randn(<span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(normal_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 0.96287539 -0.57932461 -0.25728454]
@@ -1736,9 +1969,9 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="69">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 4x4 matrix of random integers between 10 and 20</span></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>int_array <span class="op">=</span> np.random.randint(<span class="dv">10</span>, <span class="dv">20</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
-<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(int_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 4x4 matrix of random integers between 10 and 20</span></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>int_array <span class="op">=</span> np.random.randint(<span class="dv">10</span>, <span class="dv">20</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(int_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[13 17 15 18]
@@ -1753,9 +1986,9 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="70">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 5 random elements from the array [1, 2, 3, 4, 5] with replacement</span></span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>choice_array <span class="op">=</span> np.random.choice([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], size<span class="op">=</span><span class="dv">5</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(choice_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 5 random elements from the array [1, 2, 3, 4, 5] with replacement</span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>choice_array <span class="op">=</span> np.random.choice([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], size<span class="op">=</span><span class="dv">5</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(choice_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[4 3 5 2 2]</code></pre>
@@ -1767,9 +2000,9 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="71">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 6 random numbers from a normal distribution with mean=10 and std=2</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>custom_normal <span class="op">=</span> np.random.normal(<span class="dv">10</span>, <span class="dv">2</span>, size<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(custom_normal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 6 random numbers from a normal distribution with mean=10 and std=2</span></span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>custom_normal <span class="op">=</span> np.random.normal(<span class="dv">10</span>, <span class="dv">2</span>, size<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(custom_normal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 8.96337061  9.80411528  7.1623284   9.58883996 11.82330829 10.53508984]</code></pre>
@@ -1778,9 +2011,9 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="72">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 1D array of 5 random numbers between -5 and 5</span></span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>uniform_array <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, size<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(uniform_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 1D array of 5 random numbers between -5 and 5</span></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>uniform_array <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, size<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(uniform_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[-4.76424391 -2.90776829  4.56871733  2.3230159  -4.72083461]</code></pre>
@@ -1792,7 +2025,7 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="73">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>np.random.uniform(size <span class="op">=</span> (<span class="dv">3</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>np.random.uniform(size <span class="op">=</span> (<span class="dv">3</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>array([[0.66198756, 0.76365694, 0.79924355, 0.80723229, 0.0661366 ],
@@ -1804,12 +2037,12 @@ Element-wise Multiplication after reshaping:
 <p>Random numbers can also be generated by Python’s built-in <a href="https://docs.python.org/3/library/random.html">random</a> module. However, it generates one random number at a time, which makes it much slower than NumPy’s random module.</p>
 </section>
 </section>
-<section id="independent-practice" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">6.12</span> Independent Practice:</h2>
-<section id="practice-exercise-1" class="level3" data-number="6.12.1">
-<h3 data-number="6.12.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">6.12.1</span> Practice exercise 1</h3>
-<section id="section" class="level4" data-number="6.12.1.1">
-<h4 data-number="6.12.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">6.12.1.1</span> </h4>
+<section id="independent-practice" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">6.13</span> Independent Practice:</h2>
+<section id="practice-exercise-1" class="level3" data-number="6.13.1">
+<h3 data-number="6.13.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">6.13.1</span> Practice exercise 1</h3>
+<section id="section" class="level4" data-number="6.13.1.1">
+<h4 data-number="6.13.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">6.13.1.1</span> </h4>
 <p>Read the coordinates of the capital cities of the world from https://gist.github.com/ofou/df09a6834a8421b4f376c875194915c9 .</p>
 <p>Task 1: Use NumPy to print the name and coordinates of the capital city closest to the US capital - Washington DC.</p>
 <p>Note that:</p>
@@ -1828,19 +2061,19 @@ Element-wise Multiplication after reshaping:
 <div class="cell" data-execution_count="77">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>capital_cities <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/country-capital-lat-long-population.csv'</span>)</span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>coordinates_capital_cities <span class="op">=</span> capital_cities[[<span class="st">'Latitude'</span>, <span class="st">'Longitude'</span>]].to_numpy()</span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>us_coordinates <span class="op">=</span> capital_cities.loc[capital_cities[<span class="st">'Country'</span>]<span class="op">==</span><span class="st">'United States of America'</span>,[<span class="st">'Latitude'</span>,<span class="st">'Longitude'</span>]].to_numpy()</span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Broadcasting</span></span>
-<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>distance_from_DC <span class="op">=</span> np.sqrt(np.<span class="bu">sum</span>((us_coordinates<span class="op">-</span>coordinates_capital_cities)<span class="op">**</span><span class="dv">2</span>,axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-9"><a href="#cb138-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Assigning a high value of distance to DC, otherwise it will itself be selected as being closest to DC</span></span>
-<span id="cb138-10"><a href="#cb138-10" aria-hidden="true" tabindex="-1"></a>distance_from_DC[distance_from_DC<span class="op">==</span><span class="dv">0</span>]<span class="op">=</span><span class="dv">9999</span></span>
-<span id="cb138-11"><a href="#cb138-11" aria-hidden="true" tabindex="-1"></a>closest_capital_index <span class="op">=</span> np.argmin(distance_from_DC)</span>
-<span id="cb138-12"><a href="#cb138-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Closest capital city is:"</span> ,capital_cities.loc[closest_capital_index,<span class="st">'Capital City'</span>])</span>
-<span id="cb138-13"><a href="#cb138-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coordinates of the closest capital city are:"</span>,coordinates_capital_cities[closest_capital_index,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>capital_cities <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/country-capital-lat-long-population.csv'</span>)</span>
+<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a>coordinates_capital_cities <span class="op">=</span> capital_cities[[<span class="st">'Latitude'</span>, <span class="st">'Longitude'</span>]].to_numpy()</span>
+<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a>us_coordinates <span class="op">=</span> capital_cities.loc[capital_cities[<span class="st">'Country'</span>]<span class="op">==</span><span class="st">'United States of America'</span>,[<span class="st">'Latitude'</span>,<span class="st">'Longitude'</span>]].to_numpy()</span>
+<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Broadcasting</span></span>
+<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a>distance_from_DC <span class="op">=</span> np.sqrt(np.<span class="bu">sum</span>((us_coordinates<span class="op">-</span>coordinates_capital_cities)<span class="op">**</span><span class="dv">2</span>,axis<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-9"><a href="#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Assigning a high value of distance to DC, otherwise it will itself be selected as being closest to DC</span></span>
+<span id="cb151-10"><a href="#cb151-10" aria-hidden="true" tabindex="-1"></a>distance_from_DC[distance_from_DC<span class="op">==</span><span class="dv">0</span>]<span class="op">=</span><span class="dv">9999</span></span>
+<span id="cb151-11"><a href="#cb151-11" aria-hidden="true" tabindex="-1"></a>closest_capital_index <span class="op">=</span> np.argmin(distance_from_DC)</span>
+<span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Closest capital city is:"</span> ,capital_cities.loc[closest_capital_index,<span class="st">'Capital City'</span>])</span>
+<span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coordinates of the closest capital city are:"</span>,coordinates_capital_cities[closest_capital_index,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Closest capital city is: Ottawa-Gatineau
@@ -1856,14 +2089,14 @@ Coordinates of the closest capital city are: [ 45.4166 -75.698 ]</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>top10_cities_coordinates <span class="op">=</span> coordinates_capital_cities[closest_capital_index,:].reshape(<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 10 countries closest to Washington DC are:</span><span class="ch">\n</span><span class="st"> Canada"</span>)</span>
-<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>    distance_from_DC[closest_capital_index]<span class="op">=</span><span class="dv">9999</span></span>
-<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>    closest_capital_index <span class="op">=</span> np.argmin(distance_from_DC)</span>
-<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(capital_cities.loc[closest_capital_index,<span class="st">'Country'</span>])</span>
-<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>    top10_cities_coordinates<span class="op">=</span>np.concatenate((top10_cities_coordinates,coordinates_capital_cities[closest_capital_index,:].reshape(<span class="dv">1</span>,<span class="dv">2</span>)))</span>
-<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coordinates of the top 10 cities closest to US are: </span><span class="ch">\n</span><span class="st">"</span>,top10_cities_coordinates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>top10_cities_coordinates <span class="op">=</span> coordinates_capital_cities[closest_capital_index,:].reshape(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 10 countries closest to Washington DC are:</span><span class="ch">\n</span><span class="st"> Canada"</span>)</span>
+<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a>    distance_from_DC[closest_capital_index]<span class="op">=</span><span class="dv">9999</span></span>
+<span id="cb153-5"><a href="#cb153-5" aria-hidden="true" tabindex="-1"></a>    closest_capital_index <span class="op">=</span> np.argmin(distance_from_DC)</span>
+<span id="cb153-6"><a href="#cb153-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(capital_cities.loc[closest_capital_index,<span class="st">'Country'</span>])</span>
+<span id="cb153-7"><a href="#cb153-7" aria-hidden="true" tabindex="-1"></a>    top10_cities_coordinates<span class="op">=</span>np.concatenate((top10_cities_coordinates,coordinates_capital_cities[closest_capital_index,:].reshape(<span class="dv">1</span>,<span class="dv">2</span>)))</span>
+<span id="cb153-8"><a href="#cb153-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coordinates of the top 10 cities closest to US are: </span><span class="ch">\n</span><span class="st">"</span>,top10_cities_coordinates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Top 10 countries closest to Washington DC are:
@@ -1892,23 +2125,23 @@ Coordinates of the top 10 cities closest to US are:
 </div>
 </section>
 </section>
-<section id="practice-exercise-2" class="level3" data-number="6.12.2">
-<h3 data-number="6.12.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">6.12.2</span> Practice exercise 2:</h3>
+<section id="practice-exercise-2" class="level3" data-number="6.13.2">
+<h3 data-number="6.13.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">6.13.2</span> Practice exercise 2:</h3>
 <p>This exercise will show vectorized computations with NumPy. Vectorized computations help perform computations more efficiently, and also make the code concise.</p>
 <p><strong>Q:</strong> Read the (1) quantities of roll, bun, cake and bread required by 3 people - Ben, Barbara &amp; Beth, from <em>food_quantity.csv</em>, (2) price of these food items in two shops - Target and Kroger, from <em>price.csv</em>. Find out which shop should each person go to minimize their expenses.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading the datasets on food quantity and price</span></span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a>food_qty <span class="op">=</span> pd.read_csv(<span class="st">'../data/food_quantity.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> pd.read_csv(<span class="st">'../data/price.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading the datasets on food quantity and price</span></span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a>food_qty <span class="op">=</span> pd.read_csv(<span class="st">'../data/food_quantity.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> pd.read_csv(<span class="st">'../data/price.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>food_qty</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>food_qty</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1962,7 +2195,7 @@ Coordinates of the top 10 cities closest to US are:
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>price</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>price</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -2012,13 +2245,13 @@ Coordinates of the top 10 cities closest to US are:
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="co"># write a for loop to calculate the total cost of Ben's food if he shops at the Target store</span></span>
-<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
-<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a>    total_cost <span class="op">+=</span> food_qty.loc[<span class="st">'Ben'</span>,food]<span class="op">*</span>price.loc[food,<span class="st">'Target'</span>]</span>
-<span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="co"># write a for loop to calculate the total cost of Ben's food if he shops at the Target store</span></span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
+<span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a>    total_cost <span class="op">+=</span> food_qty.loc[<span class="st">'Ben'</span>,food]<span class="op">*</span>price.loc[food,<span class="st">'Target'</span>]</span>
+<span id="cb158-7"><a href="#cb158-7" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
@@ -2031,10 +2264,10 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using numpy </span></span>
-<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> np.<span class="bu">sum</span>(food_qty.loc[<span class="st">'Ben'</span>,]<span class="op">*</span>price.loc[:,<span class="st">'Target'</span>])</span>
-<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using numpy </span></span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> np.<span class="bu">sum</span>(food_qty.loc[<span class="st">'Ben'</span>,]<span class="op">*</span>price.loc[:,<span class="st">'Target'</span>])</span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
@@ -2049,14 +2282,14 @@ Wall time: 1 ms</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using loops to calculate the total cost of food for Ben for all stores</span></span>
-<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> {}</span>
-<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> store <span class="kw">in</span> price.columns:</span>
-<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a>    total_cost[store] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
-<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a>        total_cost[store] <span class="op">+=</span> food_qty.loc[<span class="st">'Ben'</span>,food]<span class="op">*</span>price.loc[food,store]</span>
-<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using loops to calculate the total cost of food for Ben for all stores</span></span>
+<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> {}</span>
+<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> store <span class="kw">in</span> price.columns:</span>
+<span id="cb164-5"><a href="#cb164-5" aria-hidden="true" tabindex="-1"></a>    total_cost[store] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb164-6"><a href="#cb164-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
+<span id="cb164-7"><a href="#cb164-7" aria-hidden="true" tabindex="-1"></a>        total_cost[store] <span class="op">+=</span> food_qty.loc[<span class="st">'Ben'</span>,food]<span class="op">*</span>price.loc[food,store]</span>
+<span id="cb164-8"><a href="#cb164-8" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
@@ -2069,10 +2302,10 @@ Wall time: 1 ms</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using numpy</span></span>
-<span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> np.dot(food_qty.loc[<span class="st">'Ben'</span>,],price.loc[:,:])</span>
-<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using numpy</span></span>
+<span id="cb167-3"><a href="#cb167-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> np.dot(food_qty.loc[<span class="st">'Ben'</span>,],price.loc[:,:])</span>
+<span id="cb167-4"><a href="#cb167-4" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
@@ -2087,14 +2320,14 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a>store_expense <span class="op">=</span> pd.DataFrame(<span class="fl">0.0</span>, columns<span class="op">=</span>price.columns, index <span class="op">=</span> food_qty.index)</span>
-<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> store_expense.index:</span>
-<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> store <span class="kw">in</span> store_expense.columns:</span>
-<span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
-<span id="cb157-6"><a href="#cb157-6" aria-hidden="true" tabindex="-1"></a>            store_expense.loc[person, store] <span class="op">+=</span> food_qty.loc[person, food]<span class="op">*</span>price.loc[food, store]</span>
-<span id="cb157-7"><a href="#cb157-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-8"><a href="#cb157-8" aria-hidden="true" tabindex="-1"></a>store_expense</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>store_expense <span class="op">=</span> pd.DataFrame(<span class="fl">0.0</span>, columns<span class="op">=</span>price.columns, index <span class="op">=</span> food_qty.index)</span>
+<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> store_expense.index:</span>
+<span id="cb170-4"><a href="#cb170-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> store <span class="kw">in</span> store_expense.columns:</span>
+<span id="cb170-5"><a href="#cb170-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> food <span class="kw">in</span> food_qty.columns:</span>
+<span id="cb170-6"><a href="#cb170-6" aria-hidden="true" tabindex="-1"></a>            store_expense.loc[person, store] <span class="op">+=</span> food_qty.loc[person, food]<span class="op">*</span>price.loc[food, store]</span>
+<span id="cb170-7"><a href="#cb170-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-8"><a href="#cb170-8" aria-hidden="true" tabindex="-1"></a>store_expense</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>1.51 ms ± 15.3 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
@@ -2103,9 +2336,9 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using matrix multiplication in numpy</span></span>
-<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.dot(food_qty.values, price.values), columns<span class="op">=</span>price.columns, index<span class="op">=</span>food_qty.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using matrix multiplication in numpy</span></span>
+<span id="cb172-3"><a href="#cb172-3" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.dot(food_qty.values, price.values), columns<span class="op">=</span>price.columns, index<span class="op">=</span>food_qty.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>11 μs ± 102 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)</code></pre>
@@ -2114,8 +2347,8 @@ Wall time: 0 ns</code></pre>
 <p>Based on the above table, Ben should go to Kroger, Barbara to Target and Beth can go to either store.</p>
 <p>As the complexity of operations increases, the number of nested for-loops also grows, making the code more cumbersome and harder to manage. In contrast, the approach using NumPy arrays remains concise and straightforward, regardless of complexity. Vectorized computations are not only cleaner but also significantly faster, providing a more efficient solution.</p>
 </section>
-<section id="practice-exercise-3" class="level3" data-number="6.12.3">
-<h3 data-number="6.12.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">6.12.3</span> Practice exercise 3</h3>
+<section id="practice-exercise-3" class="level3" data-number="6.13.3">
+<h3 data-number="6.13.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">6.13.3</span> Practice exercise 3</h3>
 <p>Use matrix multiplication to find the average IMDB rating and average Rotten tomatoes rating for each genre - comedy, action, drama and horror. Use the data: <em>movies_cleaned.csv</em>. Which is the most preferred genre for IMDB users, and which is the least preferred genre for Rotten Tomatoes users?</p>
 <p><strong>Hint:</strong> 1. Create two matrices - one containing the IMDB and Rotten Tomatoes ratings, and the other containing the genre flags (comedy/action/drama/horror).</p>
 <ol start="2" type="1">
@@ -2126,8 +2359,8 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/movies_cleaned.csv'</span>)</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/movies_cleaned.csv'</span>)</span>
+<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -2236,10 +2469,10 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting ratings of all movies</span></span>
-<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a>drating <span class="op">=</span> data[[<span class="st">'IMDB Rating'</span>,<span class="st">'Rotten Tomatoes Rating'</span>]]</span>
-<span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a>drating_num <span class="op">=</span> drating.to_numpy() <span class="co">#Converting the data to NumPy array</span></span>
-<span id="cb162-4"><a href="#cb162-4" aria-hidden="true" tabindex="-1"></a>drating_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting ratings of all movies</span></span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>drating <span class="op">=</span> data[[<span class="st">'IMDB Rating'</span>,<span class="st">'Rotten Tomatoes Rating'</span>]]</span>
+<span id="cb175-3"><a href="#cb175-3" aria-hidden="true" tabindex="-1"></a>drating_num <span class="op">=</span> drating.to_numpy() <span class="co">#Converting the data to NumPy array</span></span>
+<span id="cb175-4"><a href="#cb175-4" aria-hidden="true" tabindex="-1"></a>drating_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>array([[ 5.8, 55. ],
@@ -2254,10 +2487,10 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the matrix indicating the genre of all movies</span></span>
-<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a>dgenre <span class="op">=</span> data.iloc[:,<span class="dv">8</span>:<span class="dv">12</span>]</span>
-<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a>dgenre_num <span class="op">=</span> dgenre.to_numpy() <span class="co">#Converting the data to NumPy array</span></span>
-<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a>dgenre_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the matrix indicating the genre of all movies</span></span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>dgenre <span class="op">=</span> data.iloc[:,<span class="dv">8</span>:<span class="dv">12</span>]</span>
+<span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a>dgenre_num <span class="op">=</span> dgenre.to_numpy() <span class="co">#Converting the data to NumPy array</span></span>
+<span id="cb177-4"><a href="#cb177-4" aria-hidden="true" tabindex="-1"></a>dgenre_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>array([[0, 1, 0, 0],
@@ -2274,8 +2507,8 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shape of drating_num</span></span>
-<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>drating_num.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shape of drating_num</span></span>
+<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a>drating_num.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>(980, 2)</code></pre>
@@ -2284,8 +2517,8 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shape of dgenre_num</span></span>
-<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>dgenre_num.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shape of dgenre_num</span></span>
+<span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>dgenre_num.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>(980, 4)</code></pre>
@@ -2295,9 +2528,9 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Total IMDB and Rotten tomatoes ratings for each genre</span></span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>ratings_sum_genre <span class="op">=</span> drating_num.T.dot(dgenre_num)</span>
-<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a>ratings_sum_genre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Total IMDB and Rotten tomatoes ratings for each genre</span></span>
+<span id="cb183-2"><a href="#cb183-2" aria-hidden="true" tabindex="-1"></a>ratings_sum_genre <span class="op">=</span> drating_num.T.dot(dgenre_num)</span>
+<span id="cb183-3"><a href="#cb183-3" aria-hidden="true" tabindex="-1"></a>ratings_sum_genre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>array([[ 1785.6,  1673.1,  1630.3,   946.2],
@@ -2307,16 +2540,16 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Number of movies in the data will be stored in 'rows', and number of columns stored in 'cols'</span></span>
-<span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a>rows, cols <span class="op">=</span> data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Number of movies in the data will be stored in 'rows', and number of columns stored in 'cols'</span></span>
+<span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>rows, cols <span class="op">=</span> data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Getting number of movies in each genre</span></span>
-<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a>movies_count_genre <span class="op">=</span> dgenre_num.T.dot(np.ones(rows))</span>
-<span id="cb173-3"><a href="#cb173-3" aria-hidden="true" tabindex="-1"></a>movies_count_genre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Getting number of movies in each genre</span></span>
+<span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a>movies_count_genre <span class="op">=</span> dgenre_num.T.dot(np.ones(rows))</span>
+<span id="cb186-3"><a href="#cb186-3" aria-hidden="true" tabindex="-1"></a>movies_count_genre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>array([302., 264., 239., 154.])</code></pre>
@@ -2325,8 +2558,8 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Finding the average IMDB and average Rotten tomatoes ratings for each genre</span></span>
-<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>ratings_sum_genre<span class="op">/</span>movies_count_genre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Finding the average IMDB and average Rotten tomatoes ratings for each genre</span></span>
+<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>ratings_sum_genre<span class="op">/</span>movies_count_genre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>array([[ 5.91258278,  6.3375    ,  6.82133891,  6.14415584],
@@ -2336,8 +2569,8 @@ Wall time: 0 ns</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(ratings_sum_genre<span class="op">/</span>movies_count_genre,columns <span class="op">=</span> [<span class="st">'comedy'</span>,<span class="st">'Action'</span>,<span class="st">'drama'</span>,<span class="st">'horror'</span>],</span>
-<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>             index <span class="op">=</span> [<span class="st">'IMDB Rating'</span>,<span class="st">'Rotten Tomatoes Rating'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(ratings_sum_genre<span class="op">/</span>movies_count_genre,columns <span class="op">=</span> [<span class="st">'comedy'</span>,<span class="st">'Action'</span>,<span class="st">'drama'</span>,<span class="st">'horror'</span>],</span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>             index <span class="op">=</span> [<span class="st">'IMDB Rating'</span>,<span class="st">'Rotten Tomatoes Rating'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -2375,8 +2608,10 @@ Wall time: 0 ns</code></pre>
 </div>
 </div>
 <p>IMDB users prefer <em>drama</em>, and are amused the least by <em>comedy</em> movies, on an average. However, Rotten tomatoes critics would rather watch <em>comedy</em> than <em>horror</em> movies, on an average.</p>
-<section id="practice-exercise-4-random-number-generation-using-numpy" class="level4" data-number="6.12.3.1">
-<h4 data-number="6.12.3.1" class="anchored" data-anchor-id="practice-exercise-4-random-number-generation-using-numpy"><span class="header-section-number">6.12.3.1</span> Practice exercise 4: Random number generation using NumPy</h4>
+</section>
+<section id="practice-exercise-4" class="level3" data-number="6.13.4">
+<h3 data-number="6.13.4" class="anchored" data-anchor-id="practice-exercise-4"><span class="header-section-number">6.13.4</span> Practice exercise 4:</h3>
+<p><strong>Random number generation using NumPy</strong></p>
 <p>Suppose 500 people eat at Food cart 1, and another 500 eat at Food cart 2, everyday.</p>
 <p>The waiting time at Food cart 2 has a normal distribution with mean 8 minutes and standard deviation 3 minutes, while the waiting time at Food cart 1 has a uniform distribution with minimum 5 minutes and maximum 25 minutes.</p>
 <p>Simulate a dataset containing waiting times for 500 ppl for 30 days in each of the food joints. Assume that the waiting times are measured simultaneously at a certain time in both places, i.e., the observations are paired.</p>
@@ -2386,29 +2621,29 @@ Wall time: 0 ns</code></pre>
 <div class="cell" data-execution_count="49">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time <span class="im">as</span> tm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time <span class="im">as</span> tm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="52">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Method 1: Using loops</span></span>
-<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time() <span class="co">#Current system time</span></span>
-<span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-4"><a href="#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Initializing waiting times for 500 ppl over 30 days</span></span>
-<span id="cb179-5"><a href="#cb179-5" aria-hidden="true" tabindex="-1"></a>waiting_times_FoodCart1 <span class="op">=</span> pd.DataFrame(<span class="dv">0</span>,index<span class="op">=</span><span class="bu">range</span>(<span class="dv">500</span>),columns<span class="op">=</span><span class="bu">range</span>(<span class="dv">30</span>)) <span class="co">#FoodCart1</span></span>
-<span id="cb179-6"><a href="#cb179-6" aria-hidden="true" tabindex="-1"></a>waiting_times_FoodCart2 <span class="op">=</span> pd.DataFrame(<span class="dv">0</span>,index<span class="op">=</span><span class="bu">range</span>(<span class="dv">500</span>),columns<span class="op">=</span><span class="bu">range</span>(<span class="dv">30</span>)) <span class="co">#FoodCart2</span></span>
-<span id="cb179-7"><a href="#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> rm</span>
-<span id="cb179-8"><a href="#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):  <span class="co">#Iterating over 500 ppl</span></span>
-<span id="cb179-9"><a href="#cb179-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>): <span class="co">#Iterating over 30 days</span></span>
-<span id="cb179-10"><a href="#cb179-10" aria-hidden="true" tabindex="-1"></a>        waiting_times_FoodCart2.iloc[i,j] <span class="op">=</span> rm.gauss(<span class="dv">8</span>,<span class="dv">3</span>) <span class="co">#Simulating waiting time in FoodCart2 for the ith person on jth day</span></span>
-<span id="cb179-11"><a href="#cb179-11" aria-hidden="true" tabindex="-1"></a>        waiting_times_FoodCart1.iloc[i,j] <span class="op">=</span> rm.uniform(<span class="dv">5</span>,<span class="dv">25</span>) <span class="co">#Simulating waiting time in FoodCart1 for the ith person on jth day</span></span>
-<span id="cb179-12"><a href="#cb179-12" aria-hidden="true" tabindex="-1"></a>time_diff <span class="op">=</span> waiting_times_FoodCart2<span class="op">-</span>waiting_times_FoodCart1</span>
-<span id="cb179-13"><a href="#cb179-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-14"><a href="#cb179-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"On "</span>,<span class="bu">sum</span>(time_diff.mean()<span class="op">&gt;</span><span class="dv">0</span>),<span class="st">" days, the average waiting time at FoodCart2 higher than that at FoodCart1"</span>)</span>
-<span id="cb179-15"><a href="#cb179-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percentage of times waiting time at FoodCart2 was greater than that at FoodCart1 = "</span>,<span class="dv">100</span><span class="op">*</span>(time_diff<span class="op">&gt;</span><span class="dv">0</span>).<span class="bu">sum</span>().<span class="bu">sum</span>()<span class="op">/</span>(<span class="dv">30</span><span class="op">*</span><span class="dv">500</span>),<span class="st">"%"</span>)</span>
-<span id="cb179-16"><a href="#cb179-16" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> tm.time() <span class="co">#Current system time</span></span>
-<span id="cb179-17"><a href="#cb179-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken = "</span>, end_time<span class="op">-</span>start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb192"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Method 1: Using loops</span></span>
+<span id="cb192-2"><a href="#cb192-2" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time() <span class="co">#Current system time</span></span>
+<span id="cb192-3"><a href="#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Initializing waiting times for 500 ppl over 30 days</span></span>
+<span id="cb192-5"><a href="#cb192-5" aria-hidden="true" tabindex="-1"></a>waiting_times_FoodCart1 <span class="op">=</span> pd.DataFrame(<span class="dv">0</span>,index<span class="op">=</span><span class="bu">range</span>(<span class="dv">500</span>),columns<span class="op">=</span><span class="bu">range</span>(<span class="dv">30</span>)) <span class="co">#FoodCart1</span></span>
+<span id="cb192-6"><a href="#cb192-6" aria-hidden="true" tabindex="-1"></a>waiting_times_FoodCart2 <span class="op">=</span> pd.DataFrame(<span class="dv">0</span>,index<span class="op">=</span><span class="bu">range</span>(<span class="dv">500</span>),columns<span class="op">=</span><span class="bu">range</span>(<span class="dv">30</span>)) <span class="co">#FoodCart2</span></span>
+<span id="cb192-7"><a href="#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> rm</span>
+<span id="cb192-8"><a href="#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):  <span class="co">#Iterating over 500 ppl</span></span>
+<span id="cb192-9"><a href="#cb192-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>): <span class="co">#Iterating over 30 days</span></span>
+<span id="cb192-10"><a href="#cb192-10" aria-hidden="true" tabindex="-1"></a>        waiting_times_FoodCart2.iloc[i,j] <span class="op">=</span> rm.gauss(<span class="dv">8</span>,<span class="dv">3</span>) <span class="co">#Simulating waiting time in FoodCart2 for the ith person on jth day</span></span>
+<span id="cb192-11"><a href="#cb192-11" aria-hidden="true" tabindex="-1"></a>        waiting_times_FoodCart1.iloc[i,j] <span class="op">=</span> rm.uniform(<span class="dv">5</span>,<span class="dv">25</span>) <span class="co">#Simulating waiting time in FoodCart1 for the ith person on jth day</span></span>
+<span id="cb192-12"><a href="#cb192-12" aria-hidden="true" tabindex="-1"></a>time_diff <span class="op">=</span> waiting_times_FoodCart2<span class="op">-</span>waiting_times_FoodCart1</span>
+<span id="cb192-13"><a href="#cb192-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-14"><a href="#cb192-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"On "</span>,<span class="bu">sum</span>(time_diff.mean()<span class="op">&gt;</span><span class="dv">0</span>),<span class="st">" days, the average waiting time at FoodCart2 higher than that at FoodCart1"</span>)</span>
+<span id="cb192-15"><a href="#cb192-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percentage of times waiting time at FoodCart2 was greater than that at FoodCart1 = "</span>,<span class="dv">100</span><span class="op">*</span>(time_diff<span class="op">&gt;</span><span class="dv">0</span>).<span class="bu">sum</span>().<span class="bu">sum</span>()<span class="op">/</span>(<span class="dv">30</span><span class="op">*</span><span class="dv">500</span>),<span class="st">"%"</span>)</span>
+<span id="cb192-16"><a href="#cb192-16" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> tm.time() <span class="co">#Current system time</span></span>
+<span id="cb192-17"><a href="#cb192-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken = "</span>, end_time<span class="op">-</span>start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>On  0  days, the average waiting time at FoodCart2 higher than that at FoodCart1
@@ -2419,15 +2654,15 @@ Time taken =  4.521248817443848</code></pre>
 <div class="cell" data-execution_count="53">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Method 2: Using NumPy arrays</span></span>
-<span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
-<span id="cb181-3"><a href="#cb181-3" aria-hidden="true" tabindex="-1"></a>waiting_time_FoodCart2 <span class="op">=</span> np.random.normal(<span class="dv">8</span>,<span class="dv">3</span>,size <span class="op">=</span> (<span class="dv">500</span>,<span class="dv">30</span>)) <span class="co">#Simultaneously generating the waiting times of 500 ppl over 30 days in FoodCart2</span></span>
-<span id="cb181-4"><a href="#cb181-4" aria-hidden="true" tabindex="-1"></a>waiting_time_FoodCart1 <span class="op">=</span> np.random.uniform(<span class="dv">5</span>,<span class="dv">25</span>,size <span class="op">=</span> (<span class="dv">500</span>,<span class="dv">30</span>)) <span class="co">#Simultaneously generating the waiting times of 500 ppl over 30 days in FoodCart1</span></span>
-<span id="cb181-5"><a href="#cb181-5" aria-hidden="true" tabindex="-1"></a>time_diff <span class="op">=</span> waiting_time_FoodCart2<span class="op">-</span>waiting_time_FoodCart1</span>
-<span id="cb181-6"><a href="#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"On "</span>,(time_diff.mean()<span class="op">&gt;</span><span class="dv">0</span>).<span class="bu">sum</span>(),<span class="st">" days, the average waiting time at FoodCart2 higher than that at FoodCart1"</span>)</span>
-<span id="cb181-7"><a href="#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percentage of times waiting time at FoodCart2 was greater than that at FoodCart1 = "</span>,<span class="dv">100</span><span class="op">*</span>(time_diff<span class="op">&gt;</span><span class="dv">0</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">15000</span>,<span class="st">"%"</span>)</span>
-<span id="cb181-8"><a href="#cb181-8" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> tm.time()</span>
-<span id="cb181-9"><a href="#cb181-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken = "</span>, end_time<span class="op">-</span>start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Method 2: Using NumPy arrays</span></span>
+<span id="cb194-2"><a href="#cb194-2" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> tm.time()</span>
+<span id="cb194-3"><a href="#cb194-3" aria-hidden="true" tabindex="-1"></a>waiting_time_FoodCart2 <span class="op">=</span> np.random.normal(<span class="dv">8</span>,<span class="dv">3</span>,size <span class="op">=</span> (<span class="dv">500</span>,<span class="dv">30</span>)) <span class="co">#Simultaneously generating the waiting times of 500 ppl over 30 days in FoodCart2</span></span>
+<span id="cb194-4"><a href="#cb194-4" aria-hidden="true" tabindex="-1"></a>waiting_time_FoodCart1 <span class="op">=</span> np.random.uniform(<span class="dv">5</span>,<span class="dv">25</span>,size <span class="op">=</span> (<span class="dv">500</span>,<span class="dv">30</span>)) <span class="co">#Simultaneously generating the waiting times of 500 ppl over 30 days in FoodCart1</span></span>
+<span id="cb194-5"><a href="#cb194-5" aria-hidden="true" tabindex="-1"></a>time_diff <span class="op">=</span> waiting_time_FoodCart2<span class="op">-</span>waiting_time_FoodCart1</span>
+<span id="cb194-6"><a href="#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"On "</span>,(time_diff.mean()<span class="op">&gt;</span><span class="dv">0</span>).<span class="bu">sum</span>(),<span class="st">" days, the average waiting time at FoodCart2 higher than that at FoodCart1"</span>)</span>
+<span id="cb194-7"><a href="#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percentage of times waiting time at FoodCart2 was greater than that at FoodCart1 = "</span>,<span class="dv">100</span><span class="op">*</span>(time_diff<span class="op">&gt;</span><span class="dv">0</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">15000</span>,<span class="st">"%"</span>)</span>
+<span id="cb194-8"><a href="#cb194-8" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> tm.time()</span>
+<span id="cb194-9"><a href="#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken = "</span>, end_time<span class="op">-</span>start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>On  0  days, the average waiting time at FoodCart2 higher than that at FoodCart1
@@ -2437,9 +2672,8 @@ Time taken =  0.008000850677490234</code></pre>
 </div>
 <p>The approach with NumPy is much faster than the one with loops.</p>
 </section>
-</section>
-<section id="practice-exercise-5" class="level3" data-number="6.12.4">
-<h3 data-number="6.12.4" class="anchored" data-anchor-id="practice-exercise-5"><span class="header-section-number">6.12.4</span> Practice exercise 5</h3>
+<section id="practice-exercise-5" class="level3" data-number="6.13.5">
+<h3 data-number="6.13.5" class="anchored" data-anchor-id="practice-exercise-5"><span class="header-section-number">6.13.5</span> Practice exercise 5</h3>
 <p><strong>Bootstrapping:</strong> Find the 95% confidence interval of mean profit for ‘Action’ movies, using Bootstrapping.</p>
 <p>Bootstrapping is a non-parametric method for obtaining confidence interval. Use the algorithm below to find the confidence interval:</p>
 <ol type="1">
@@ -2458,26 +2692,26 @@ Use the <em>movies_cleaned.csv</em> dataset.</li>
 <div class="cell" data-execution_count="44">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading data</span></span>
-<span id="cb183-2"><a href="#cb183-2" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/movies_cleaned.csv'</span>)</span>
-<span id="cb183-3"><a href="#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-4"><a href="#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtering action movies</span></span>
-<span id="cb183-5"><a href="#cb183-5" aria-hidden="true" tabindex="-1"></a>movies_action <span class="op">=</span> movies.loc[movies[<span class="st">'Action'</span>]<span class="op">==</span><span class="dv">1</span>,:]</span>
-<span id="cb183-6"><a href="#cb183-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-7"><a href="#cb183-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Computing profit of movies</span></span>
-<span id="cb183-8"><a href="#cb183-8" aria-hidden="true" tabindex="-1"></a>movies_action.loc[:,<span class="st">'Profit'</span>] <span class="op">=</span> movies_action.loc[:,<span class="st">'Worldwide Gross'</span>] <span class="op">-</span> movies_action.loc[:,<span class="st">'Production Budget'</span>]</span>
-<span id="cb183-9"><a href="#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-10"><a href="#cb183-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Subsetting the profit column</span></span>
-<span id="cb183-11"><a href="#cb183-11" aria-hidden="true" tabindex="-1"></a>profit_vec <span class="op">=</span> movies_action[<span class="st">'Profit'</span>]</span>
-<span id="cb183-12"><a href="#cb183-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-13"><a href="#cb183-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a matrix of 1000 samples with replacement from the profit column</span></span>
-<span id="cb183-14"><a href="#cb183-14" aria-hidden="true" tabindex="-1"></a>bootstrap_samples<span class="op">=</span>np.random.choice(profit_vec,size <span class="op">=</span> (<span class="dv">1000</span>,<span class="bu">len</span>(profit_vec)))</span>
-<span id="cb183-15"><a href="#cb183-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-16"><a href="#cb183-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Computing the mean of each of the 1000 samples</span></span>
-<span id="cb183-17"><a href="#cb183-17" aria-hidden="true" tabindex="-1"></a>bootstrap_sample_means <span class="op">=</span> bootstrap_samples.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb183-18"><a href="#cb183-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-19"><a href="#cb183-19" aria-hidden="true" tabindex="-1"></a><span class="co">#The confidence interval is the 2.5th and 97.5th percentile of the mean of the 1000 samples</span></span>
-<span id="cb183-20"><a href="#cb183-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Confidence interval = [$"</span><span class="op">+</span><span class="bu">str</span>(np.<span class="bu">round</span>(np.percentile(bootstrap_sample_means,<span class="fl">2.5</span>)<span class="op">/</span><span class="fl">1e6</span>,<span class="dv">2</span>))<span class="op">+</span><span class="st">" million, $"</span><span class="op">+</span><span class="bu">str</span>(np.<span class="bu">round</span>(np.percentile(bootstrap_sample_means,<span class="fl">97.5</span>)<span class="op">/</span><span class="fl">1e6</span>,<span class="dv">2</span>))<span class="op">+</span><span class="st">" million]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading data</span></span>
+<span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/movies_cleaned.csv'</span>)</span>
+<span id="cb196-3"><a href="#cb196-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-4"><a href="#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtering action movies</span></span>
+<span id="cb196-5"><a href="#cb196-5" aria-hidden="true" tabindex="-1"></a>movies_action <span class="op">=</span> movies.loc[movies[<span class="st">'Action'</span>]<span class="op">==</span><span class="dv">1</span>,:]</span>
+<span id="cb196-6"><a href="#cb196-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-7"><a href="#cb196-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Computing profit of movies</span></span>
+<span id="cb196-8"><a href="#cb196-8" aria-hidden="true" tabindex="-1"></a>movies_action.loc[:,<span class="st">'Profit'</span>] <span class="op">=</span> movies_action.loc[:,<span class="st">'Worldwide Gross'</span>] <span class="op">-</span> movies_action.loc[:,<span class="st">'Production Budget'</span>]</span>
+<span id="cb196-9"><a href="#cb196-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-10"><a href="#cb196-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Subsetting the profit column</span></span>
+<span id="cb196-11"><a href="#cb196-11" aria-hidden="true" tabindex="-1"></a>profit_vec <span class="op">=</span> movies_action[<span class="st">'Profit'</span>]</span>
+<span id="cb196-12"><a href="#cb196-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-13"><a href="#cb196-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a matrix of 1000 samples with replacement from the profit column</span></span>
+<span id="cb196-14"><a href="#cb196-14" aria-hidden="true" tabindex="-1"></a>bootstrap_samples<span class="op">=</span>np.random.choice(profit_vec,size <span class="op">=</span> (<span class="dv">1000</span>,<span class="bu">len</span>(profit_vec)))</span>
+<span id="cb196-15"><a href="#cb196-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-16"><a href="#cb196-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Computing the mean of each of the 1000 samples</span></span>
+<span id="cb196-17"><a href="#cb196-17" aria-hidden="true" tabindex="-1"></a>bootstrap_sample_means <span class="op">=</span> bootstrap_samples.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb196-18"><a href="#cb196-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-19"><a href="#cb196-19" aria-hidden="true" tabindex="-1"></a><span class="co">#The confidence interval is the 2.5th and 97.5th percentile of the mean of the 1000 samples</span></span>
+<span id="cb196-20"><a href="#cb196-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Confidence interval = [$"</span><span class="op">+</span><span class="bu">str</span>(np.<span class="bu">round</span>(np.percentile(bootstrap_sample_means,<span class="fl">2.5</span>)<span class="op">/</span><span class="fl">1e6</span>,<span class="dv">2</span>))<span class="op">+</span><span class="st">" million, $"</span><span class="op">+</span><span class="bu">str</span>(np.<span class="bu">round</span>(np.percentile(bootstrap_sample_means,<span class="fl">97.5</span>)<span class="op">/</span><span class="fl">1e6</span>,<span class="dv">2</span>))<span class="op">+</span><span class="st">" million]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confidence interval = [$132.53 million, $182.69 million]</code></pre>
