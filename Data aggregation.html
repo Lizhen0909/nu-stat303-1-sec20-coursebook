@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Data Science with Python - 11&nbsp; Data Grouping and Aggregation</title>
+<title>Introduction to Data Science with Python - 12&nbsp; Data Grouping and Aggregation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading data.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="./Data aggregation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading data.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="./Data aggregation.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -222,32 +222,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./data_types_in_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">More on Pandas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Data visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Advanced_Data_Visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Advanced Data Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Advanced Data Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data cleaning and preparation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning and Preparation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Cleaning and Preparation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span></a>
   </div>
 </li>
       </ul>
@@ -315,74 +321,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#grouping-by-a-single-column" id="toc-grouping-by-a-single-column" class="nav-link active" data-scroll-target="#grouping-by-a-single-column"><span class="header-section-number">11.1</span> Grouping by a single column</a>
+  <li><a href="#grouping-by-a-single-column" id="toc-grouping-by-a-single-column" class="nav-link active" data-scroll-target="#grouping-by-a-single-column"><span class="header-section-number">12.1</span> Grouping by a single column</a>
   <ul>
-  <li><a href="#syntax-of-groupby" id="toc-syntax-of-groupby" class="nav-link" data-scroll-target="#syntax-of-groupby"><span class="header-section-number">11.1.1</span> Syntax of <code>groupby()</code></a></li>
-  <li><a href="#attributes-and-methods-of-the-groupby-object" id="toc-attributes-and-methods-of-the-groupby-object" class="nav-link" data-scroll-target="#attributes-and-methods-of-the-groupby-object"><span class="header-section-number">11.1.2</span> Attributes and methods of the <em>GroupBy</em> object</a>
+  <li><a href="#syntax-of-groupby" id="toc-syntax-of-groupby" class="nav-link" data-scroll-target="#syntax-of-groupby"><span class="header-section-number">12.1.1</span> Syntax of <code>groupby()</code></a></li>
+  <li><a href="#attributes-and-methods-of-the-groupby-object" id="toc-attributes-and-methods-of-the-groupby-object" class="nav-link" data-scroll-target="#attributes-and-methods-of-the-groupby-object"><span class="header-section-number">12.1.2</span> Attributes and methods of the <em>GroupBy</em> object</a>
   <ul class="collapse">
-  <li><a href="#keys" id="toc-keys" class="nav-link" data-scroll-target="#keys"><span class="header-section-number">11.1.2.1</span> <code>keys</code></a></li>
-  <li><a href="#ngroups" id="toc-ngroups" class="nav-link" data-scroll-target="#ngroups"><span class="header-section-number">11.1.2.2</span> <code>ngroups</code></a></li>
-  <li><a href="#groups" id="toc-groups" class="nav-link" data-scroll-target="#groups"><span class="header-section-number">11.1.2.3</span> <code>groups</code></a></li>
-  <li><a href="#groups.values" id="toc-groups.values" class="nav-link" data-scroll-target="#groups.values"><span class="header-section-number">11.1.2.4</span> <code>groups.values</code></a></li>
-  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="header-section-number">11.1.2.5</span> <code>size()</code></a></li>
-  <li><a href="#first" id="toc-first" class="nav-link" data-scroll-target="#first"><span class="header-section-number">11.1.2.6</span> <code>first()</code></a></li>
-  <li><a href="#get_group" id="toc-get_group" class="nav-link" data-scroll-target="#get_group"><span class="header-section-number">11.1.2.7</span> <code>get_group()</code></a></li>
+  <li><a href="#keys" id="toc-keys" class="nav-link" data-scroll-target="#keys"><span class="header-section-number">12.1.2.1</span> <code>keys</code></a></li>
+  <li><a href="#ngroups" id="toc-ngroups" class="nav-link" data-scroll-target="#ngroups"><span class="header-section-number">12.1.2.2</span> <code>ngroups</code></a></li>
+  <li><a href="#groups" id="toc-groups" class="nav-link" data-scroll-target="#groups"><span class="header-section-number">12.1.2.3</span> <code>groups</code></a></li>
+  <li><a href="#groups.values" id="toc-groups.values" class="nav-link" data-scroll-target="#groups.values"><span class="header-section-number">12.1.2.4</span> <code>groups.values</code></a></li>
+  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="header-section-number">12.1.2.5</span> <code>size()</code></a></li>
+  <li><a href="#first" id="toc-first" class="nav-link" data-scroll-target="#first"><span class="header-section-number">12.1.2.6</span> <code>first()</code></a></li>
+  <li><a href="#get_group" id="toc-get_group" class="nav-link" data-scroll-target="#get_group"><span class="header-section-number">12.1.2.7</span> <code>get_group()</code></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#data-aggregation-within-groups" id="toc-data-aggregation-within-groups" class="nav-link" data-scroll-target="#data-aggregation-within-groups"><span class="header-section-number">11.2</span> Data aggregation within groups</a>
+  <li><a href="#data-aggregation-within-groups" id="toc-data-aggregation-within-groups" class="nav-link" data-scroll-target="#data-aggregation-within-groups"><span class="header-section-number">12.2</span> Data aggregation within groups</a>
   <ul>
-  <li><a href="#common-aggregation-functions" id="toc-common-aggregation-functions" class="nav-link" data-scroll-target="#common-aggregation-functions"><span class="header-section-number">11.2.1</span> Common Aggregation Functions</a></li>
-  <li><a href="#multiple-aggregations-and-custom-aggregation-using-agg" id="toc-multiple-aggregations-and-custom-aggregation-using-agg" class="nav-link" data-scroll-target="#multiple-aggregations-and-custom-aggregation-using-agg"><span class="header-section-number">11.2.2</span> Multiple aggregations and Custom aggregation using <code>agg()</code></a>
+  <li><a href="#common-aggregation-functions" id="toc-common-aggregation-functions" class="nav-link" data-scroll-target="#common-aggregation-functions"><span class="header-section-number">12.2.1</span> Common Aggregation Functions</a></li>
+  <li><a href="#multiple-aggregations-and-custom-aggregation-using-agg" id="toc-multiple-aggregations-and-custom-aggregation-using-agg" class="nav-link" data-scroll-target="#multiple-aggregations-and-custom-aggregation-using-agg"><span class="header-section-number">12.2.2</span> Multiple aggregations and Custom aggregation using <code>agg()</code></a>
   <ul class="collapse">
-  <li><a href="#multiple-aggregations" id="toc-multiple-aggregations" class="nav-link" data-scroll-target="#multiple-aggregations"><span class="header-section-number">11.2.2.1</span> Multiple aggregations</a></li>
-  <li><a href="#custom-aggregation" id="toc-custom-aggregation" class="nav-link" data-scroll-target="#custom-aggregation"><span class="header-section-number">11.2.2.2</span> Custom aggregation</a></li>
+  <li><a href="#multiple-aggregations" id="toc-multiple-aggregations" class="nav-link" data-scroll-target="#multiple-aggregations"><span class="header-section-number">12.2.2.1</span> Multiple aggregations</a></li>
+  <li><a href="#custom-aggregation" id="toc-custom-aggregation" class="nav-link" data-scroll-target="#custom-aggregation"><span class="header-section-number">12.2.2.2</span> Custom aggregation</a></li>
   </ul></li>
-  <li><a href="#multiple-aggregate-functions-on-multiple-columns" id="toc-multiple-aggregate-functions-on-multiple-columns" class="nav-link" data-scroll-target="#multiple-aggregate-functions-on-multiple-columns"><span class="header-section-number">11.2.3</span> Multiple aggregate functions on multiple columns</a></li>
-  <li><a href="#distinct-aggregate-functions-on-multiple-columns" id="toc-distinct-aggregate-functions-on-multiple-columns" class="nav-link" data-scroll-target="#distinct-aggregate-functions-on-multiple-columns"><span class="header-section-number">11.2.4</span> Distinct aggregate functions on multiple columns</a></li>
+  <li><a href="#multiple-aggregate-functions-on-multiple-columns" id="toc-multiple-aggregate-functions-on-multiple-columns" class="nav-link" data-scroll-target="#multiple-aggregate-functions-on-multiple-columns"><span class="header-section-number">12.2.3</span> Multiple aggregate functions on multiple columns</a></li>
+  <li><a href="#distinct-aggregate-functions-on-multiple-columns" id="toc-distinct-aggregate-functions-on-multiple-columns" class="nav-link" data-scroll-target="#distinct-aggregate-functions-on-multiple-columns"><span class="header-section-number">12.2.4</span> Distinct aggregate functions on multiple columns</a></li>
   </ul></li>
-  <li><a href="#grouping-by-multiple-columns" id="toc-grouping-by-multiple-columns" class="nav-link" data-scroll-target="#grouping-by-multiple-columns"><span class="header-section-number">11.3</span> Grouping by Multiple Columns</a>
+  <li><a href="#grouping-by-multiple-columns" id="toc-grouping-by-multiple-columns" class="nav-link" data-scroll-target="#grouping-by-multiple-columns"><span class="header-section-number">12.3</span> Grouping by Multiple Columns</a>
   <ul>
-  <li><a href="#basic-syntax-for-grouping-by-multiple-columns" id="toc-basic-syntax-for-grouping-by-multiple-columns" class="nav-link" data-scroll-target="#basic-syntax-for-grouping-by-multiple-columns"><span class="header-section-number">11.3.1</span> Basic Syntax for Grouping by Multiple Columns</a></li>
-  <li><a href="#understanding-hierarchical-multi-level-indexing" id="toc-understanding-hierarchical-multi-level-indexing" class="nav-link" data-scroll-target="#understanding-hierarchical-multi-level-indexing"><span class="header-section-number">11.3.2</span> Understanding Hierarchical (Multi-Level) Indexing</a></li>
-  <li><a href="#subsetting-data-in-a-hierarchical-index" id="toc-subsetting-data-in-a-hierarchical-index" class="nav-link" data-scroll-target="#subsetting-data-in-a-hierarchical-index"><span class="header-section-number">11.3.3</span> Subsetting Data in a Hierarchical Index</a></li>
-  <li><a href="#grouping-by-multiple-columns-and-aggregating-multiple-variables" id="toc-grouping-by-multiple-columns-and-aggregating-multiple-variables" class="nav-link" data-scroll-target="#grouping-by-multiple-columns-and-aggregating-multiple-variables"><span class="header-section-number">11.3.4</span> Grouping by multiple columns and aggregating multiple variables</a></li>
+  <li><a href="#basic-syntax-for-grouping-by-multiple-columns" id="toc-basic-syntax-for-grouping-by-multiple-columns" class="nav-link" data-scroll-target="#basic-syntax-for-grouping-by-multiple-columns"><span class="header-section-number">12.3.1</span> Basic Syntax for Grouping by Multiple Columns</a></li>
+  <li><a href="#understanding-hierarchical-multi-level-indexing" id="toc-understanding-hierarchical-multi-level-indexing" class="nav-link" data-scroll-target="#understanding-hierarchical-multi-level-indexing"><span class="header-section-number">12.3.2</span> Understanding Hierarchical (Multi-Level) Indexing</a></li>
+  <li><a href="#subsetting-data-in-a-hierarchical-index" id="toc-subsetting-data-in-a-hierarchical-index" class="nav-link" data-scroll-target="#subsetting-data-in-a-hierarchical-index"><span class="header-section-number">12.3.3</span> Subsetting Data in a Hierarchical Index</a></li>
+  <li><a href="#grouping-by-multiple-columns-and-aggregating-multiple-variables" id="toc-grouping-by-multiple-columns-and-aggregating-multiple-variables" class="nav-link" data-scroll-target="#grouping-by-multiple-columns-and-aggregating-multiple-variables"><span class="header-section-number">12.3.4</span> Grouping by multiple columns and aggregating multiple variables</a></li>
   </ul></li>
-  <li><a href="#advanced-operations-within-groups-apply-transform-and-filter" id="toc-advanced-operations-within-groups-apply-transform-and-filter" class="nav-link" data-scroll-target="#advanced-operations-within-groups-apply-transform-and-filter"><span class="header-section-number">11.4</span> Advanced Operations within groups: <code>apply()</code>, <code>transform()</code>, and <code>filter()</code></a>
+  <li><a href="#advanced-operations-within-groups-apply-transform-and-filter" id="toc-advanced-operations-within-groups-apply-transform-and-filter" class="nav-link" data-scroll-target="#advanced-operations-within-groups-apply-transform-and-filter"><span class="header-section-number">12.4</span> Advanced Operations within groups: <code>apply()</code>, <code>transform()</code>, and <code>filter()</code></a>
   <ul>
-  <li><a href="#using-apply-on-groups" id="toc-using-apply-on-groups" class="nav-link" data-scroll-target="#using-apply-on-groups"><span class="header-section-number">11.4.1</span> Using <code>apply()</code> on groups</a></li>
-  <li><a href="#using-transform-on-groups" id="toc-using-transform-on-groups" class="nav-link" data-scroll-target="#using-transform-on-groups"><span class="header-section-number">11.4.2</span> Using <code>transform()</code> on Groups</a>
+  <li><a href="#using-apply-on-groups" id="toc-using-apply-on-groups" class="nav-link" data-scroll-target="#using-apply-on-groups"><span class="header-section-number">12.4.1</span> Using <code>apply()</code> on groups</a></li>
+  <li><a href="#using-transform-on-groups" id="toc-using-transform-on-groups" class="nav-link" data-scroll-target="#using-transform-on-groups"><span class="header-section-number">12.4.2</span> Using <code>transform()</code> on Groups</a>
   <ul class="collapse">
-  <li><a href="#behavior-of-groupby.apply-vs.-groupby.transform" id="toc-behavior-of-groupby.apply-vs.-groupby.transform" class="nav-link" data-scroll-target="#behavior-of-groupby.apply-vs.-groupby.transform"><span class="header-section-number">11.4.2.1</span> Behavior of <code>groupby().apply()</code> vs.&nbsp;<code>groupby().transform()</code></a></li>
-  <li><a href="#why-transform-works-for-imputation" id="toc-why-transform-works-for-imputation" class="nav-link" data-scroll-target="#why-transform-works-for-imputation"><span class="header-section-number">11.4.2.2</span> Why <code>transform()</code> Works for Imputation</a></li>
+  <li><a href="#behavior-of-groupby.apply-vs.-groupby.transform" id="toc-behavior-of-groupby.apply-vs.-groupby.transform" class="nav-link" data-scroll-target="#behavior-of-groupby.apply-vs.-groupby.transform"><span class="header-section-number">12.4.2.1</span> Behavior of <code>groupby().apply()</code> vs.&nbsp;<code>groupby().transform()</code></a></li>
+  <li><a href="#why-transform-works-for-imputation" id="toc-why-transform-works-for-imputation" class="nav-link" data-scroll-target="#why-transform-works-for-imputation"><span class="header-section-number">12.4.2.2</span> Why <code>transform()</code> Works for Imputation</a></li>
   </ul></li>
-  <li><a href="#using-filter-on-groups" id="toc-using-filter-on-groups" class="nav-link" data-scroll-target="#using-filter-on-groups"><span class="header-section-number">11.4.3</span> Using <code>filter()</code> on Groups</a></li>
+  <li><a href="#using-filter-on-groups" id="toc-using-filter-on-groups" class="nav-link" data-scroll-target="#using-filter-on-groups"><span class="header-section-number">12.4.3</span> Using <code>filter()</code> on Groups</a></li>
   </ul></li>
-  <li><a href="#sampling-data-by-group" id="toc-sampling-data-by-group" class="nav-link" data-scroll-target="#sampling-data-by-group"><span class="header-section-number">11.5</span> Sampling data by group</a></li>
-  <li><a href="#corr-correlation-by-group" id="toc-corr-correlation-by-group" class="nav-link" data-scroll-target="#corr-correlation-by-group"><span class="header-section-number">11.6</span> <code>corr()</code>: Correlation by group</a></li>
-  <li><a href="#pivot_table" id="toc-pivot_table" class="nav-link" data-scroll-target="#pivot_table"><span class="header-section-number">11.7</span> <code>pivot_table()</code></a></li>
-  <li><a href="#crosstab" id="toc-crosstab" class="nav-link" data-scroll-target="#crosstab"><span class="header-section-number">11.8</span> <code>crosstab()</code></a>
+  <li><a href="#sampling-data-by-group" id="toc-sampling-data-by-group" class="nav-link" data-scroll-target="#sampling-data-by-group"><span class="header-section-number">12.5</span> Sampling data by group</a></li>
+  <li><a href="#corr-correlation-by-group" id="toc-corr-correlation-by-group" class="nav-link" data-scroll-target="#corr-correlation-by-group"><span class="header-section-number">12.6</span> <code>corr()</code>: Correlation by group</a></li>
+  <li><a href="#pivot_table" id="toc-pivot_table" class="nav-link" data-scroll-target="#pivot_table"><span class="header-section-number">12.7</span> <code>pivot_table()</code></a></li>
+  <li><a href="#crosstab" id="toc-crosstab" class="nav-link" data-scroll-target="#crosstab"><span class="header-section-number">12.8</span> <code>crosstab()</code></a>
   <ul>
-  <li><a href="#basic-usage-of-crosstab" id="toc-basic-usage-of-crosstab" class="nav-link" data-scroll-target="#basic-usage-of-crosstab"><span class="header-section-number">11.8.1</span> Basic Usage of <code>crosstab()</code></a></li>
-  <li><a href="#using-crosstab-with-aggregation-functions" id="toc-using-crosstab-with-aggregation-functions" class="nav-link" data-scroll-target="#using-crosstab-with-aggregation-functions"><span class="header-section-number">11.8.2</span> Using <code>crosstab()</code> with Aggregation Functions</a></li>
+  <li><a href="#basic-usage-of-crosstab" id="toc-basic-usage-of-crosstab" class="nav-link" data-scroll-target="#basic-usage-of-crosstab"><span class="header-section-number">12.8.1</span> Basic Usage of <code>crosstab()</code></a></li>
+  <li><a href="#using-crosstab-with-aggregation-functions" id="toc-using-crosstab-with-aggregation-functions" class="nav-link" data-scroll-target="#using-crosstab-with-aggregation-functions"><span class="header-section-number">12.8.2</span> Using <code>crosstab()</code> with Aggregation Functions</a></li>
   </ul></li>
-  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">11.9</span> Independent Study</a>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">12.9</span> Independent Study</a>
   <ul>
-  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">11.9.1</span> Practice exercise 1</a></li>
-  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">11.9.2</span> Practice exercise 2</a>
+  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">12.9.1</span> Practice exercise 1</a></li>
+  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">12.9.2</span> Practice exercise 2</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">11.9.2.1</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">11.9.2.2</span> </a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">11.9.2.3</span> </a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">11.9.2.4</span> </a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">11.9.2.5</span> </a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">11.9.2.6</span> </a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">11.9.2.7</span> </a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">11.9.2.8</span> </a></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">11.9.2.9</span> </a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">11.9.2.10</span> </a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">11.9.2.11</span> </a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">11.9.2.12</span> </a></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">11.9.2.13</span> </a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">12.9.2.1</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">12.9.2.2</span> </a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">12.9.2.3</span> </a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">12.9.2.4</span> </a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">12.9.2.5</span> </a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">12.9.2.6</span> </a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">12.9.2.7</span> </a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">12.9.2.8</span> </a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">12.9.2.9</span> </a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">12.9.2.10</span> </a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">12.9.2.11</span> </a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">12.9.2.12</span> </a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">12.9.2.13</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -393,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></h1>
 </div>
 
 
@@ -497,11 +503,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="grouping-by-a-single-column" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="grouping-by-a-single-column"><span class="header-section-number">11.1</span> Grouping by a single column</h2>
+<section id="grouping-by-a-single-column" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="grouping-by-a-single-column"><span class="header-section-number">12.1</span> Grouping by a single column</h2>
 <p><code>groupby()</code> allows you to split a DataFrame based on the values in one or more columns. First, we’ll explore grouping by a single column.</p>
-<section id="syntax-of-groupby" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="syntax-of-groupby"><span class="header-section-number">11.1.1</span> Syntax of <code>groupby()</code></h3>
+<section id="syntax-of-groupby" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="syntax-of-groupby"><span class="header-section-number">12.1.1</span> Syntax of <code>groupby()</code></h3>
 <ul>
 <li><code>DataFrame.groupby(by="column_name")</code> – Groups data by the specified column.</li>
 </ul>
@@ -521,10 +527,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The GroupBy object <code>grouped</code> contains the information of the groups in which the data is distributed. Each observation has been assigned to a specific group of the column(s) used to group the data. However, note that the dataset is not physically split into different DataFrames. For example, in the above case, each observation is assigned to a particular group depending on the value of the <code>continent</code> for that observation. However, all the observations are still in the same DataFrame <code>data</code>.</p>
 </section>
-<section id="attributes-and-methods-of-the-groupby-object" class="level3" data-number="11.1.2">
-<h3 data-number="11.1.2" class="anchored" data-anchor-id="attributes-and-methods-of-the-groupby-object"><span class="header-section-number">11.1.2</span> Attributes and methods of the <a href="https://pandas.pydata.org/docs/reference/groupby.html"><em>GroupBy</em></a> object</h3>
-<section id="keys" class="level4" data-number="11.1.2.1">
-<h4 data-number="11.1.2.1" class="anchored" data-anchor-id="keys"><span class="header-section-number">11.1.2.1</span> <code>keys</code></h4>
+<section id="attributes-and-methods-of-the-groupby-object" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="attributes-and-methods-of-the-groupby-object"><span class="header-section-number">12.1.2</span> Attributes and methods of the <a href="https://pandas.pydata.org/docs/reference/groupby.html"><em>GroupBy</em></a> object</h3>
+<section id="keys" class="level4" data-number="12.1.2.1">
+<h4 data-number="12.1.2.1" class="anchored" data-anchor-id="keys"><span class="header-section-number">12.1.2.1</span> <code>keys</code></h4>
 <p>The object(s) grouping the data are called <em>key(s)</em>. Here <code>continent</code> is the group key. The keys of the <em>GroupBy</em> object can be seen using Its <code>keys</code> attribute.</p>
 <div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Key(s) of the GroupBy object</span></span>
@@ -534,8 +540,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="ngroups" class="level4" data-number="11.1.2.2">
-<h4 data-number="11.1.2.2" class="anchored" data-anchor-id="ngroups"><span class="header-section-number">11.1.2.2</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.ngroup.html"><code>ngroups</code></a></h4>
+<section id="ngroups" class="level4" data-number="12.1.2.2">
+<h4 data-number="12.1.2.2" class="anchored" data-anchor-id="ngroups"><span class="header-section-number">12.1.2.2</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.ngroup.html"><code>ngroups</code></a></h4>
 <p>The number of groups in which the data is distributed based on the keys can be seen with the <code>ngroups</code> attribute.</p>
 <div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The number of groups based on the key(s)</span></span>
@@ -553,8 +559,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="groups" class="level4" data-number="11.1.2.3">
-<h4 data-number="11.1.2.3" class="anchored" data-anchor-id="groups"><span class="header-section-number">11.1.2.3</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.groups.html"><code>groups</code></a></h4>
+<section id="groups" class="level4" data-number="12.1.2.3">
+<h4 data-number="12.1.2.3" class="anchored" data-anchor-id="groups"><span class="header-section-number">12.1.2.3</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.groups.html"><code>groups</code></a></h4>
 <p>The <code>groups</code> attribute of the <em>GroupBy</em> object contains the group labels (or names) and the row labels of the observations in each group, as a dictionary.</p>
 <div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The groups (in the dictionary format)</span></span>
@@ -564,8 +570,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="groups.values" class="level4" data-number="11.1.2.4">
-<h4 data-number="11.1.2.4" class="anchored" data-anchor-id="groups.values"><span class="header-section-number">11.1.2.4</span> <code>groups.values</code></h4>
+<section id="groups.values" class="level4" data-number="12.1.2.4">
+<h4 data-number="12.1.2.4" class="anchored" data-anchor-id="groups.values"><span class="header-section-number">12.1.2.4</span> <code>groups.values</code></h4>
 <p>The <code>groups.values</code> attribute of the <em>GroupBy</em> object contains the row labels of the observations in each group, as a dictionary.</p>
 <div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Group values are the row labels corresponding to a particular group</span></span>
@@ -589,8 +595,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="size" class="level4" data-number="11.1.2.5">
-<h4 data-number="11.1.2.5" class="anchored" data-anchor-id="size"><span class="header-section-number">11.1.2.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.size.html"><code>size()</code></a></h4>
+<section id="size" class="level4" data-number="12.1.2.5">
+<h4 data-number="12.1.2.5" class="anchored" data-anchor-id="size"><span class="header-section-number">12.1.2.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.size.html"><code>size()</code></a></h4>
 <p>The <code>size()</code> method of the <em>GroupBy</em> object returns the number of observations in each group.</p>
 <div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Number of observations in each group</span></span>
@@ -606,8 +612,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="first" class="level4" data-number="11.1.2.6">
-<h4 data-number="11.1.2.6" class="anchored" data-anchor-id="first"><span class="header-section-number">11.1.2.6</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.first.html"><code>first()</code></a></h4>
+<section id="first" class="level4" data-number="12.1.2.6">
+<h4 data-number="12.1.2.6" class="anchored" data-anchor-id="first"><span class="header-section-number">12.1.2.6</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.first.html"><code>first()</code></a></h4>
 <p>The first non missing element of each group is returned with the <code>first()</code> method of the <em>GroupBy</em> object.</p>
 <div class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The first element of the group can be printed using the first() method</span></span>
@@ -683,8 +689,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="get_group" class="level4" data-number="11.1.2.7">
-<h4 data-number="11.1.2.7" class="anchored" data-anchor-id="get_group"><span class="header-section-number">11.1.2.7</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.get_group.html"><code>get_group()</code></a></h4>
+<section id="get_group" class="level4" data-number="12.1.2.7">
+<h4 data-number="12.1.2.7" class="anchored" data-anchor-id="get_group"><span class="header-section-number">12.1.2.7</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.get_group.html"><code>get_group()</code></a></h4>
 <p>This method returns the observations for a particular group of the <em>GroupBy</em> object.</p>
 <div class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Observations for individual groups can be obtained using the get_group() function</span></span>
@@ -815,10 +821,10 @@ dtype: int64</code></pre>
 </section>
 </section>
 </section>
-<section id="data-aggregation-within-groups" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="data-aggregation-within-groups"><span class="header-section-number">11.2</span> Data aggregation within groups</h2>
-<section id="common-aggregation-functions" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="common-aggregation-functions"><span class="header-section-number">11.2.1</span> Common Aggregation Functions</h3>
+<section id="data-aggregation-within-groups" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="data-aggregation-within-groups"><span class="header-section-number">12.2</span> Data aggregation within groups</h2>
+<section id="common-aggregation-functions" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="common-aggregation-functions"><span class="header-section-number">12.2.1</span> Common Aggregation Functions</h3>
 <p>Aggregation functions are essential for summarizing and analyzing data in pandas. These functions allow you to compute summary statistics for your data, making it easier to identify trends and patterns.</p>
 <p>Below are some of the most commonly used aggregation functions when working with grouped data in pandas:</p>
 <ul>
@@ -1030,10 +1036,10 @@ dtype: int64</code></pre>
 </div>
 <p>Alternatively, you can compute other statistical metrics.</p>
 </section>
-<section id="multiple-aggregations-and-custom-aggregation-using-agg" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="multiple-aggregations-and-custom-aggregation-using-agg"><span class="header-section-number">11.2.2</span> Multiple aggregations and Custom aggregation using <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html"><code>agg()</code></a></h3>
-<section id="multiple-aggregations" class="level4" data-number="11.2.2.1">
-<h4 data-number="11.2.2.1" class="anchored" data-anchor-id="multiple-aggregations"><span class="header-section-number">11.2.2.1</span> Multiple aggregations</h4>
+<section id="multiple-aggregations-and-custom-aggregation-using-agg" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="multiple-aggregations-and-custom-aggregation-using-agg"><span class="header-section-number">12.2.2</span> Multiple aggregations and Custom aggregation using <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html"><code>agg()</code></a></h3>
+<section id="multiple-aggregations" class="level4" data-number="12.2.2.1">
+<h4 data-number="12.2.2.1" class="anchored" data-anchor-id="multiple-aggregations"><span class="header-section-number">12.2.2.1</span> Multiple aggregations</h4>
 <p>Directly applying the aggregate methods of the <em>GroupBy</em> object such as mean, count, etc., lets us apply only one function at a time. Also, we may wish to apply an aggregate function of our own, which is not there in the set of methods of the <em>GroupBy</em> object, such as the range of values of a column.</p>
 <p>The <code>agg()</code> function of a <em>GroupBy</em> object lets us aggregate data using:</p>
 <ol type="1">
@@ -1094,8 +1100,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="custom-aggregation" class="level4" data-number="11.2.2.2">
-<h4 data-number="11.2.2.2" class="anchored" data-anchor-id="custom-aggregation"><span class="header-section-number">11.2.2.2</span> Custom aggregation</h4>
+<section id="custom-aggregation" class="level4" data-number="12.2.2.2">
+<h4 data-number="12.2.2.2" class="anchored" data-anchor-id="custom-aggregation"><span class="header-section-number">12.2.2.2</span> Custom aggregation</h4>
 <p>In addition to the mean and standard deviation of the gdpPercap of each country, let us also include the range of gdpPercap in the table above using lambda function</p>
 <div class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>grouped_country[<span class="st">'gdpPercap'</span>].agg(<span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1315,8 +1321,8 @@ Name: gdpPercap, Length: 142, dtype: float64</code></pre>
 </div>
 </section>
 </section>
-<section id="multiple-aggregate-functions-on-multiple-columns" class="level3" data-number="11.2.3">
-<h3 data-number="11.2.3" class="anchored" data-anchor-id="multiple-aggregate-functions-on-multiple-columns"><span class="header-section-number">11.2.3</span> Multiple aggregate functions on multiple columns</h3>
+<section id="multiple-aggregate-functions-on-multiple-columns" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="multiple-aggregate-functions-on-multiple-columns"><span class="header-section-number">12.2.3</span> Multiple aggregate functions on multiple columns</h3>
 <p>Let us find the mean and standard deviation of lifeExp and pop for each country</p>
 <div class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the meand and standard deviation of the 'lifeExp' and 'pop' column for each country</span></span>
@@ -1433,8 +1439,8 @@ Name: gdpPercap, Length: 142, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="distinct-aggregate-functions-on-multiple-columns" class="level3" data-number="11.2.4">
-<h3 data-number="11.2.4" class="anchored" data-anchor-id="distinct-aggregate-functions-on-multiple-columns"><span class="header-section-number">11.2.4</span> Distinct aggregate functions on multiple columns</h3>
+<section id="distinct-aggregate-functions-on-multiple-columns" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="distinct-aggregate-functions-on-multiple-columns"><span class="header-section-number">12.2.4</span> Distinct aggregate functions on multiple columns</h3>
 <p>For aggregating by multiple functions, we pass a list of strings to <code>agg()</code>, where the strings are the function names.</p>
 <p>For aggregating by multiple functions &amp; changing the column names resulting from those functions, we pass a list of tuples to <code>agg()</code>, where each tuple is of length two, and contains the new column name as the first object and the function to be applied as the second object of the tuple.</p>
 <p>For aggregating by multiple functions such that a distinct set of functions is applied to each column, we pass a dictionary to <code>agg()</code>, where the keys are the column names on which the function is to be applied, and the values are the list of strings that are the function names, or a list of tuples if we also wish to name the aggregated columns.</p>
@@ -1697,11 +1703,11 @@ Name: gdpPercap, Length: 142, dtype: float64</code></pre>
 </div>
 </section>
 </section>
-<section id="grouping-by-multiple-columns" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="grouping-by-multiple-columns"><span class="header-section-number">11.3</span> Grouping by Multiple Columns</h2>
+<section id="grouping-by-multiple-columns" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="grouping-by-multiple-columns"><span class="header-section-number">12.3</span> Grouping by Multiple Columns</h2>
 <p>Above, we demonstrated grouping by a single column, which is useful for summarizing data based on one categorical variable. However, in many cases, we need to group by multiple columns. Grouping by multiple columns allows us to create more detailed summaries by accounting for multiple categorical variables. This approach enables us to analyze data at a finer granularity, revealing insights that might be missed with single-column grouping alone.</p>
-<section id="basic-syntax-for-grouping-by-multiple-columns" class="level3" data-number="11.3.1">
-<h3 data-number="11.3.1" class="anchored" data-anchor-id="basic-syntax-for-grouping-by-multiple-columns"><span class="header-section-number">11.3.1</span> Basic Syntax for Grouping by Multiple Columns</h3>
+<section id="basic-syntax-for-grouping-by-multiple-columns" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="basic-syntax-for-grouping-by-multiple-columns"><span class="header-section-number">12.3.1</span> Basic Syntax for Grouping by Multiple Columns</h3>
 <p>Use <code>groupby()</code> with a list of column names to group data by multiple columns.</p>
 <ul>
 <li><code>DataFrame.groupby(by=["col1", "col2"])</code></li>
@@ -1827,8 +1833,8 @@ Name: gdpPercap, Length: 142, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="understanding-hierarchical-multi-level-indexing" class="level3" data-number="11.3.2">
-<h3 data-number="11.3.2" class="anchored" data-anchor-id="understanding-hierarchical-multi-level-indexing"><span class="header-section-number">11.3.2</span> Understanding Hierarchical (Multi-Level) Indexing</h3>
+<section id="understanding-hierarchical-multi-level-indexing" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="understanding-hierarchical-multi-level-indexing"><span class="header-section-number">12.3.2</span> Understanding Hierarchical (Multi-Level) Indexing</h3>
 <ul>
 <li>Grouping by multiple columns creates a hierarchical index (also called a multi-level index).</li>
 <li>This index allows each level (e.g., continent, country) to act as an independent category that can be accessed individually.</li>
@@ -1860,8 +1866,8 @@ Name: gdpPercap, Length: 142, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="subsetting-data-in-a-hierarchical-index" class="level3" data-number="11.3.3">
-<h3 data-number="11.3.3" class="anchored" data-anchor-id="subsetting-data-in-a-hierarchical-index"><span class="header-section-number">11.3.3</span> Subsetting Data in a Hierarchical Index</h3>
+<section id="subsetting-data-in-a-hierarchical-index" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="subsetting-data-in-a-hierarchical-index"><span class="header-section-number">12.3.3</span> Subsetting Data in a Hierarchical Index</h3>
 <p><code>grouped_continent_country</code> is still a DataFrame with hierarchical indexing. You can use <code>.loc[]</code> for subsetting, just as you would with a single-level index.</p>
 <div class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the observations for the 'Americas' continent</span></span>
@@ -2053,8 +2059,8 @@ Name: (Americas, United States), dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="grouping-by-multiple-columns-and-aggregating-multiple-variables" class="level3" data-number="11.3.4">
-<h3 data-number="11.3.4" class="anchored" data-anchor-id="grouping-by-multiple-columns-and-aggregating-multiple-variables"><span class="header-section-number">11.3.4</span> Grouping by multiple columns and aggregating multiple variables</h3>
+<section id="grouping-by-multiple-columns-and-aggregating-multiple-variables" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="grouping-by-multiple-columns-and-aggregating-multiple-variables"><span class="header-section-number">12.3.4</span> Grouping by multiple columns and aggregating multiple variables</h3>
 <div class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Grouping by multiple columns</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry_multi <span class="op">=</span> gdp_lifeExp_data.groupby([<span class="st">'continent'</span>, <span class="st">'country'</span>,<span class="st">'year'</span>])[ [<span class="st">'lifeExp'</span>, <span class="st">'pop'</span>, <span class="st">'gdpPercap'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'max'</span>, <span class="st">'min'</span>])</span>
@@ -2285,10 +2291,10 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 </div>
 </section>
 </section>
-<section id="advanced-operations-within-groups-apply-transform-and-filter" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="advanced-operations-within-groups-apply-transform-and-filter"><span class="header-section-number">11.4</span> Advanced Operations within groups: <code>apply()</code>, <code>transform()</code>, and <code>filter()</code></h2>
-<section id="using-apply-on-groups" class="level3" data-number="11.4.1">
-<h3 data-number="11.4.1" class="anchored" data-anchor-id="using-apply-on-groups"><span class="header-section-number">11.4.1</span> Using <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.apply.html"><code>apply()</code></a> on groups</h3>
+<section id="advanced-operations-within-groups-apply-transform-and-filter" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="advanced-operations-within-groups-apply-transform-and-filter"><span class="header-section-number">12.4</span> Advanced Operations within groups: <code>apply()</code>, <code>transform()</code>, and <code>filter()</code></h2>
+<section id="using-apply-on-groups" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="using-apply-on-groups"><span class="header-section-number">12.4.1</span> Using <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.apply.html"><code>apply()</code></a> on groups</h3>
 <p>The <code>apply()</code> function applies a custom function to each group, allowing for flexible operations. The function can return either a scalar, Series, or DataFrame.</p>
 <p><strong>Example</strong>: Consider the life expectancy dataset, find the top 3 life expectancy values for each continent</p>
 <p>We’ll first define a function that sorts a dataset by decreasing life expectancy and returns the top 3 rows. Then, we’ll apply this function on each group using the <code>apply()</code> method of the <em>GroupBy</em> object.</p>
@@ -2447,8 +2453,8 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="using-transform-on-groups" class="level3" data-number="11.4.2">
-<h3 data-number="11.4.2" class="anchored" data-anchor-id="using-transform-on-groups"><span class="header-section-number">11.4.2</span> Using <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.transform.html"><code>transform()</code></a> on Groups</h3>
+<section id="using-transform-on-groups" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="using-transform-on-groups"><span class="header-section-number">12.4.2</span> Using <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.transform.html"><code>transform()</code></a> on Groups</h3>
 <p>The <code>transform()</code> function applies a function to each group and returns a Series aligned with the original DataFrame’s index. This makes it suitable for adding or modifying columns based on group-level calculations.</p>
 <p>Recall that in the data cleaning and preparation chapter, we imputed missing values based on correlated variables in the dataset.</p>
 <p>In the example provided, some countries had missing values for GDP per capita. To handle this, we imputed the missing GDP per capita for each country using the average GDP per capita of its corresponding continent.</p>
@@ -2543,21 +2549,21 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 </div>
 <p>Why we ran into this error? and <code>apply()</code> doesn’t work?</p>
 <p>Here’s a deeper look at why <code>apply()</code> doesn’t work as expected here:</p>
-<section id="behavior-of-groupby.apply-vs.-groupby.transform" class="level4" data-number="11.4.2.1">
-<h4 data-number="11.4.2.1" class="anchored" data-anchor-id="behavior-of-groupby.apply-vs.-groupby.transform"><span class="header-section-number">11.4.2.1</span> Behavior of <code>groupby().apply()</code> vs.&nbsp;<code>groupby().transform()</code></h4>
+<section id="behavior-of-groupby.apply-vs.-groupby.transform" class="level4" data-number="12.4.2.1">
+<h4 data-number="12.4.2.1" class="anchored" data-anchor-id="behavior-of-groupby.apply-vs.-groupby.transform"><span class="header-section-number">12.4.2.1</span> Behavior of <code>groupby().apply()</code> vs.&nbsp;<code>groupby().transform()</code></h4>
 <ul>
 <li><p><strong><code>groupby().apply()</code></strong>: This method applies a function to each group and returns the result with a hierarchical (multi-level) index by default. This hierarchical index can make it difficult to align the result back to a single column in the original DataFrame.</p></li>
 <li><p><strong><code>groupby().transform()</code></strong>: In contrast, <code>transform()</code> is specifically designed to apply a function to each group and return a Series that is aligned with the original DataFrame’s index. This alignment makes it directly compatible for assignment to a new or existing column in the original DataFrame.</p></li>
 </ul>
 </section>
-<section id="why-transform-works-for-imputation" class="level4" data-number="11.4.2.2">
-<h4 data-number="11.4.2.2" class="anchored" data-anchor-id="why-transform-works-for-imputation"><span class="header-section-number">11.4.2.2</span> Why <code>transform()</code> Works for Imputation</h4>
+<section id="why-transform-works-for-imputation" class="level4" data-number="12.4.2.2">
+<h4 data-number="12.4.2.2" class="anchored" data-anchor-id="why-transform-works-for-imputation"><span class="header-section-number">12.4.2.2</span> Why <code>transform()</code> Works for Imputation</h4>
 <p>When using <code>transform()</code> to fill missing values, it applies the function (e.g., <code>fillna(x.mean())</code>) based on each group’s statistics, such as the mean, while keeping the result aligned with the original DataFrame’s index. This allows for smooth assignment to a column in the DataFrame without any index mismatch issues.</p>
 <p>Additionally, <code>transform()</code> applies the function to each element in a group independently and returns a result that has the same shape as the original data, making it ideal for adding or modifying columns.</p>
 </section>
 </section>
-<section id="using-filter-on-groups" class="level3" data-number="11.4.3">
-<h3 data-number="11.4.3" class="anchored" data-anchor-id="using-filter-on-groups"><span class="header-section-number">11.4.3</span> Using <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.filter.html"><code>filter()</code></a> on Groups</h3>
+<section id="using-filter-on-groups" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="using-filter-on-groups"><span class="header-section-number">12.4.3</span> Using <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.filter.html"><code>filter()</code></a> on Groups</h3>
 <p>The <code>filter()</code> function filters entire groups based on a condition. It evaluates each group and keeps only those that meet the specified criteria.</p>
 <p>Example: Keep only the countries where the mean life expectancy is greater than 70</p>
 <div class="cell" data-execution_count="79">
@@ -2585,8 +2591,8 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 </div>
 </section>
 </section>
-<section id="sampling-data-by-group" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="sampling-data-by-group"><span class="header-section-number">11.5</span> Sampling data by group</h2>
+<section id="sampling-data-by-group" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sampling-data-by-group"><span class="header-section-number">12.5</span> Sampling data by group</h2>
 <p>The <code>groupby()</code> and <code>apply()</code> method can be used to for stratified random sampling from a large dataset.</p>
 <p>The spotify dataset has more than 200k observations. It may be expensive to operate with so many observations. Suppose, we wish to take a random sample of 650 observations to analyze spotify data, such that all genres are equally represented.</p>
 <p>Before taking the random sample, let us find the number of tracks in each genre.</p>
@@ -2645,8 +2651,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>The above stratified random sample equally represents all the continent.</p>
 </section>
-<section id="corr-correlation-by-group" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="corr-correlation-by-group"><span class="header-section-number">11.6</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.DataFrameGroupBy.corr.html"><code>corr()</code></a>: Correlation by group</h2>
+<section id="corr-correlation-by-group" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="corr-correlation-by-group"><span class="header-section-number">12.6</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.DataFrameGroupBy.corr.html"><code>corr()</code></a>: Correlation by group</h2>
 <p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html"><code>corr()</code></a> method of the <em>GroupBy</em> object returns the correlation between all pairs of columns within each group.</p>
 <p><strong>Example:</strong> Find the correlation between <code>lifeExp</code> and <code>lifeExp</code> for each continent-country level combination.</p>
 <div class="cell" data-execution_count="57">
@@ -2673,8 +2679,8 @@ Length: 142, dtype: float64</code></pre>
 </div>
 <p>Life expectancy is closely associated with GDP per capita across most continent-country combinations.</p>
 </section>
-<section id="pivot_table" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="pivot_table"><span class="header-section-number">11.7</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot_table.html"><code>pivot_table()</code></a></h2>
+<section id="pivot_table" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="pivot_table"><span class="header-section-number">12.7</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot_table.html"><code>pivot_table()</code></a></h2>
 <p>The <code>pivot_table()</code> function in pandas is a powerful tool for performing groupwise aggregation in a structured format, similar to Excel’s pivot tables. It allows you to create a summary of data by grouping and aggregating it based on specified columns. Here’s an overview of how <code>pivot_table()</code> works for groupwise aggregation:</p>
 <p>Note that <code>pivot_table()</code> is the same as <code>pivot()</code> except that <code>pivot_table()</code> aggregates the data as well in addition to re-arranging it.</p>
 <p><strong>Example:</strong> Consider the life expectancy dataset, calculate the average life expectancy for each country and year combination</p>
@@ -3133,10 +3139,10 @@ Length: 142, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="crosstab" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="crosstab"><span class="header-section-number">11.8</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html"><code>crosstab()</code></a></h2>
-<section id="basic-usage-of-crosstab" class="level3" data-number="11.8.1">
-<h3 data-number="11.8.1" class="anchored" data-anchor-id="basic-usage-of-crosstab"><span class="header-section-number">11.8.1</span> Basic Usage of <code>crosstab()</code></h3>
+<section id="crosstab" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="crosstab"><span class="header-section-number">12.8</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html"><code>crosstab()</code></a></h2>
+<section id="basic-usage-of-crosstab" class="level3" data-number="12.8.1">
+<h3 data-number="12.8.1" class="anchored" data-anchor-id="basic-usage-of-crosstab"><span class="header-section-number">12.8.1</span> Basic Usage of <code>crosstab()</code></h3>
 <p>The <code>crosstab()</code> method is a special case of a pivot table for computing group frequncies (or size of each group).</p>
 <div class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a basic crosstab to see counts of countries in each continent</span></span>
@@ -3331,8 +3337,8 @@ Length: 142, dtype: float64</code></pre>
 </div>
 <p>This table shows the count of each year in each continent group, helping us understand the year distribution across different continent groups. We may often use it to check if the data is representative of all groups that are of interest to us.</p>
 </section>
-<section id="using-crosstab-with-aggregation-functions" class="level3" data-number="11.8.2">
-<h3 data-number="11.8.2" class="anchored" data-anchor-id="using-crosstab-with-aggregation-functions"><span class="header-section-number">11.8.2</span> Using <code>crosstab()</code> with Aggregation Functions</h3>
+<section id="using-crosstab-with-aggregation-functions" class="level3" data-number="12.8.2">
+<h3 data-number="12.8.2" class="anchored" data-anchor-id="using-crosstab-with-aggregation-functions"><span class="header-section-number">12.8.2</span> Using <code>crosstab()</code> with Aggregation Functions</h3>
 <p>You can specify a <code>values</code> column and an aggregation function (<code>aggfunc</code>) to summarize numerical data for each combination of categorical variables.</p>
 <p><strong>Example:</strong> find the mean life expectancy for each continent and year</p>
 <div class="cell" data-execution_count="62">
@@ -3459,10 +3465,10 @@ Length: 142, dtype: float64</code></pre>
 </div>
 </section>
 </section>
-<section id="independent-study" class="level2" data-number="11.9">
-<h2 data-number="11.9" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">11.9</span> Independent Study</h2>
-<section id="practice-exercise-1" class="level3" data-number="11.9.1">
-<h3 data-number="11.9.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">11.9.1</span> Practice exercise 1</h3>
+<section id="independent-study" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">12.9</span> Independent Study</h2>
+<section id="practice-exercise-1" class="level3" data-number="12.9.1">
+<h3 data-number="12.9.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">12.9.1</span> Practice exercise 1</h3>
 <p>Read the table consisting of GDP per capita of countries from the webpage: https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita .</p>
 <p>To only read the relevant table, read the tables that contain the word <em>‘Country’</em>.</p>
 <p>Estimate the GDP per capita of each country as the average of the estimates of the three agencies - IMF, United Nations and World Bank.</p>
@@ -3472,61 +3478,61 @@ Length: 142, dtype: float64</code></pre>
 <li><p>Now use <code>groupby()</code> to find estimate the GDP per capita for each country.</p></li>
 </ol>
 </section>
-<section id="practice-exercise-2" class="level3" data-number="11.9.2">
-<h3 data-number="11.9.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">11.9.2</span> Practice exercise 2</h3>
+<section id="practice-exercise-2" class="level3" data-number="12.9.2">
+<h3 data-number="12.9.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">12.9.2</span> Practice exercise 2</h3>
 <p>Read the spotify dataset from <code>spotify_data.csv</code> that contains information about tracks and artists</p>
-<section id="section" class="level4" data-number="11.9.2.1">
-<h4 data-number="11.9.2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">11.9.2.1</span> </h4>
+<section id="section" class="level4" data-number="12.9.2.1">
+<h4 data-number="12.9.2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">12.9.2.1</span> </h4>
 <p>Find the mean and standard deviation of the track popularity for each genre.</p>
 </section>
-<section id="section-1" class="level4" data-number="11.9.2.2">
-<h4 data-number="11.9.2.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">11.9.2.2</span> </h4>
+<section id="section-1" class="level4" data-number="12.9.2.2">
+<h4 data-number="12.9.2.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">12.9.2.2</span> </h4>
 <p>Create a new categorical column, <code>energy_lvl</code>, with two levels – ‘Low energy’ and ‘High energy’ – using equal-sized bins based on the track’s energy level. Then, calculate the mean, standard deviation, and 90th percentile of track popularity for each genre and energy level combination</p>
 </section>
-<section id="section-2" class="level4" data-number="11.9.2.3">
-<h4 data-number="11.9.2.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">11.9.2.3</span> </h4>
+<section id="section-2" class="level4" data-number="12.9.2.3">
+<h4 data-number="12.9.2.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">12.9.2.3</span> </h4>
 <p>Find the mean and standard deviation of track popularity and danceability for each genre and energy level. What insights you can gain from the generated table</p>
 </section>
-<section id="section-3" class="level4" data-number="11.9.2.4">
-<h4 data-number="11.9.2.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">11.9.2.4</span> </h4>
+<section id="section-3" class="level4" data-number="12.9.2.4">
+<h4 data-number="12.9.2.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">12.9.2.4</span> </h4>
 <p>For each genre and energy level, find the mean and standard deviation of the track popularity, and the minimum and maximum values of loudness.</p>
 </section>
-<section id="section-4" class="level4" data-number="11.9.2.5">
-<h4 data-number="11.9.2.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">11.9.2.5</span> </h4>
+<section id="section-4" class="level4" data-number="12.9.2.5">
+<h4 data-number="12.9.2.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">12.9.2.5</span> </h4>
 <p>Find the most popular artist from each genre.</p>
 </section>
-<section id="section-5" class="level4" data-number="11.9.2.6">
-<h4 data-number="11.9.2.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">11.9.2.6</span> </h4>
+<section id="section-5" class="level4" data-number="12.9.2.6">
+<h4 data-number="12.9.2.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">12.9.2.6</span> </h4>
 <p>Filter the first 4 columns of the spotify dataset. Drop duplicate observartions in the resulting dataset using the Pandas DataFrame method <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html"><code>drop_duplicates()</code></a>. Find the top 3 most popular artists for each genre.</p>
 </section>
-<section id="section-6" class="level4" data-number="11.9.2.7">
-<h4 data-number="11.9.2.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">11.9.2.7</span> </h4>
+<section id="section-6" class="level4" data-number="12.9.2.7">
+<h4 data-number="12.9.2.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">12.9.2.7</span> </h4>
 <p>The spotify dataset has more than 200k observations. It may be expensive to operate with so many observations. Take a random sample of 650 observations to analyze spotify data, such that all genres are equally represented.</p>
 </section>
-<section id="section-7" class="level4" data-number="11.9.2.8">
-<h4 data-number="11.9.2.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">11.9.2.8</span> </h4>
+<section id="section-7" class="level4" data-number="12.9.2.8">
+<h4 data-number="12.9.2.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">12.9.2.8</span> </h4>
 <p>Find the correlation between <code>danceability</code> and <code>track popularity</code> for each genre-energy level combination.</p>
 </section>
-<section id="section-8" class="level4" data-number="11.9.2.9">
-<h4 data-number="11.9.2.9" class="anchored" data-anchor-id="section-8"><span class="header-section-number">11.9.2.9</span> </h4>
+<section id="section-8" class="level4" data-number="12.9.2.9">
+<h4 data-number="12.9.2.9" class="anchored" data-anchor-id="section-8"><span class="header-section-number">12.9.2.9</span> </h4>
 <p>Find the mean of track popularity for each genre-energy lvl combination such that each row corresponds to a genre, and the energy levels correspond to columns.</p>
 <p>Hints: using <code>pivot_table()</code></p>
 </section>
-<section id="section-9" class="level4" data-number="11.9.2.10">
-<h4 data-number="11.9.2.10" class="anchored" data-anchor-id="section-9"><span class="header-section-number">11.9.2.10</span> </h4>
+<section id="section-9" class="level4" data-number="12.9.2.10">
+<h4 data-number="12.9.2.10" class="anchored" data-anchor-id="section-9"><span class="header-section-number">12.9.2.10</span> </h4>
 <p>Find the <span class="math inline">\(90^{th}\)</span> percentile of track popularity for each genre-energy lvl combination such that each row corresponds to a genre, and the energy levels correspond to columns.</p>
 <p>Hints: using <code>pivot_table()</code></p>
 </section>
-<section id="section-10" class="level4" data-number="11.9.2.11">
-<h4 data-number="11.9.2.11" class="anchored" data-anchor-id="section-10"><span class="header-section-number">11.9.2.11</span> </h4>
+<section id="section-10" class="level4" data-number="12.9.2.11">
+<h4 data-number="12.9.2.11" class="anchored" data-anchor-id="section-10"><span class="header-section-number">12.9.2.11</span> </h4>
 <p>Find the number of observations in each group, where each groups corresponds to a distinct genre-energy lvl combination</p>
 </section>
-<section id="section-11" class="level4" data-number="11.9.2.12">
-<h4 data-number="11.9.2.12" class="anchored" data-anchor-id="section-11"><span class="header-section-number">11.9.2.12</span> </h4>
+<section id="section-11" class="level4" data-number="12.9.2.12">
+<h4 data-number="12.9.2.12" class="anchored" data-anchor-id="section-11"><span class="header-section-number">12.9.2.12</span> </h4>
 <p>Find the percentage of observations in each group of the above table.</p>
 </section>
-<section id="section-12" class="level4" data-number="11.9.2.13">
-<h4 data-number="11.9.2.13" class="anchored" data-anchor-id="section-12"><span class="header-section-number">11.9.2.13</span> </h4>
+<section id="section-12" class="level4" data-number="12.9.2.13">
+<h4 data-number="12.9.2.13" class="anchored" data-anchor-id="section-12"><span class="header-section-number">12.9.2.13</span> </h4>
 <p>What percentage of unique tracks are contributed by the top 5 artists of each genre?</p>
 <p><strong>Hint:</strong> Find the top 5 artists based on <code>artist_popularity</code> for each genre. Count the total number of unique tracks (<code>track_name</code>) contributed by these artists. Divide this number by the total number of unique tracks in the data. The <code>nunique()</code> function will be useful.</p>
 
@@ -3772,12 +3778,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Data cleaning and preparation.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning and Preparation</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Cleaning and Preparation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Data wrangling.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

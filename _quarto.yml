@@ -26,6 +26,7 @@ book:
         - Reading data.ipynb
         - NumPy.ipynb
         - Pandas.ipynb
+        - data_types_in_pandas.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
         - Data cleaning and preparation.ipynb
