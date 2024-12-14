@@ -195,7 +195,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, frame hidden, breakable, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, frame hidden, sharp corners, boxrule=0pt, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -3472,6 +3472,30 @@ using only dictionary comprehension.
 \chapter{Setting up your environment with VS
 Code}\label{setting-up-your-environment-with-vs-code}}
 
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\hypertarget{learning-objectives}{%
+\section{Learning Objectives}\label{learning-objectives}}
+
+By completing this lecture, you will be able to:
+
+\begin{itemize}
+\tightlist
+\item
+  Set up your Python coding environment with VS Code.\\
+\item
+  Create and manage Python virtual environments using both \texttt{pip}
+  and \texttt{conda}.\\
+\item
+  Install and verify packages within these environments.\\
+\item
+  Export and recreate environments using environment files.\\
+\item
+  Use Jupyter Notebook for data science tasks in VS Code.
+\end{itemize}
+
 \hypertarget{introduction-to-visual-studio-code-vs-code}{%
 \section{Introduction to Visual Studio Code (VS
 Code)}\label{introduction-to-visual-studio-code-vs-code}}
@@ -3520,24 +3544,50 @@ functionalities:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Explorer:} A file explorer on the left side that lets you
-  navigate your project files and folders.
+  \textbf{Editor:} The main area to edit your files. You can open as
+  many editors as you like side by side vertically and horizontally.
 \item
-  \textbf{Editor:} The central area where you write and edit your code.
-  You can open multiple files in separate tabs or split the editor to
-  view multiple files side-by-side.
+  \textbf{Primary Side Bar:} Contains different views like the Explorer
+  to assist you while working on your project.
 \item
-  \textbf{Sidebar:} Displays additional views like Search, Source
-  Control, Extensions, and more.
+  \textbf{Activity Bar:} Located on the far left-hand side. Lets you
+  switch between views and gives you additional context-specific
+  indicators, like the number of outgoing changes when Git is enabled.
+  You can change the position of the Activity Bar.
 \item
-  \textbf{Status Bar:} Shows information about the current file, like
-  the programming language mode, current branch (for version control),
-  and any active extensions or warnings.
+  \textbf{Panel:} An additional space for views below the editor region.
+  By default, it contains output, debug information, errors and
+  warnings, and an integrated terminal. The Panel can also be moved to
+  the left or right for more vertical space.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{images/vscode_interface.png}
+
+}
+
+\caption{Alt Text}
+
+\end{figure}
+
+\begin{itemize}
+\tightlist
 \item
   \textbf{Command Palette:} Accessed with \texttt{Ctrl+Shift+P} (or
   \texttt{Cmd+Shift+P} on macOS), it provides a quick way to execute
   commands, switch themes, change settings, and more.
 \end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{images/command-palette.png}
+
+}
+
+\caption{Alt Text}
+
+\end{figure}
 
 \hypertarget{extensions}{%
 \subsection{Extensions}\label{extensions}}
@@ -3557,6 +3607,16 @@ functionalities:
   \textbf{Productivity Tools:} Extensions for snippets, file explorers,
   and workflow enhancements.
 \end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{images/extensions.png}
+
+}
+
+\caption{Alt Text}
+
+\end{figure}
 
 \hypertarget{use-cases}{%
 \subsection{Use Cases}\label{use-cases}}
@@ -3638,13 +3698,11 @@ designed for Python development, VS Code is a versatile code editor with
 multi-language support. As a result, setting up the Python environment
 requires some additional configuration.
 
-This guide will walk you through setting up your Python environment in
-Visual Studio Code from scratch using \texttt{venv}. After the lecture,
-you will be tasked with creating and managing virtual environments using
-\texttt{conda}.
+This step-by-step guide will walk you through setting up your Python
+environment in Visual Studio Code from scratch using \texttt{venv}.
 
-\hypertarget{step-1-install-python}{%
-\subsection{Step 1: Install Python}\label{step-1-install-python}}
+\hypertarget{install-python}{%
+\subsection{Install Python}\label{install-python}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3680,9 +3738,9 @@ you will be tasked with creating and managing virtual environments using
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{step-2-install-visual-studio-code-extensions}{%
-\subsection{Step 2: Install Visual Studio Code
-Extensions}\label{step-2-install-visual-studio-code-extensions}}
+\hypertarget{install-visual-studio-code-extensions}{%
+\subsection{Install Visual Studio Code
+Extensions}\label{install-visual-studio-code-extensions}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3716,9 +3774,9 @@ Extensions}\label{step-2-install-visual-studio-code-extensions}}
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{step-3-set-up-a-python-workspace-for-this-course}{%
-\subsection{Step 3: Set Up a Python Workspace for this
-course}\label{step-3-set-up-a-python-workspace-for-this-course}}
+\hypertarget{set-up-a-python-workspace-for-this-course}{%
+\subsection{Set Up a Python Workspace for this
+course}\label{set-up-a-python-workspace-for-this-course}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3743,9 +3801,9 @@ course}\label{step-3-set-up-a-python-workspace-for-this-course}}
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{step-4-create-a-notebook-for-your-work}{%
-\subsection{Step 4: Create a Notebook for your
-work}\label{step-4-create-a-notebook-for-your-work}}
+\hypertarget{create-a-notebook-for-your-work}{%
+\subsection{Create a Notebook for your
+work}\label{create-a-notebook-for-your-work}}
 
 \begin{itemize}
 \tightlist
@@ -3754,9 +3812,9 @@ work}\label{step-4-create-a-notebook-for-your-work}}
   \texttt{Jupyter\ Notebook}.
 \end{itemize}
 
-\hypertarget{step-5-create-a-python-environment-for-your-work---gui-method}{%
-\subsection{Step 5: Create a Python environment for your work - GUI
-method}\label{step-5-create-a-python-environment-for-your-work---gui-method}}
+\hypertarget{create-a-python-environment-for-your-work---gui-method}{%
+\subsection{Create a Python environment for your work - GUI
+method}\label{create-a-python-environment-for-your-work---gui-method}}
 
 \begin{itemize}
 \item
@@ -3899,10 +3957,9 @@ method}\label{step-5-create-a-python-environment-for-your-work---gui-method}}
 Congratulations! A virtual environment named \texttt{.venv} has been
 successfully created in your project folder.
 
-\hypertarget{step-6-create-a-python-environment-for-your-work---command-line-method}{%
-\subsection{Step 6: Create a Python environment for your work - Command
-Line
-Method}\label{step-6-create-a-python-environment-for-your-work---command-line-method}}
+\hypertarget{create-a-python-environment-for-your-work---command-line-method}{%
+\subsection{Create a Python environment for your work - Command Line
+Method}\label{create-a-python-environment-for-your-work---command-line-method}}
 
 Instead of using the VSCode GUI, we can also create a \texttt{venv}
 environment with command line commands.
@@ -3949,18 +4006,17 @@ environment with command line commands.
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{step-7-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}{%
-\subsection{\texorpdfstring{Step 7: Choose the \texttt{.venv}
-environment as the kernel to run the
-notebook}{Step 7: Choose the .venv environment as the kernel to run the notebook}}\label{step-7-choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}}
+\hypertarget{choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}{%
+\subsection{\texorpdfstring{Choose the \texttt{.venv} environment as the
+kernel to run the
+notebook}{Choose the .venv environment as the kernel to run the notebook}}\label{choose-the-.venv-environment-as-the-kernel-to-run-the-notebook}}
 
 For all your upcoming work in this project, you can select this
 environment to ensure a consistent setup.
 
-\hypertarget{step-8-installing-ipykernel-for-your-notebook}{%
-\subsection{\texorpdfstring{Step 8: Installing \texttt{ipykernel} for
-your
-notebook}{Step 8: Installing ipykernel for your notebook}}\label{step-8-installing-ipykernel-for-your-notebook}}
+\hypertarget{installing-ipykernel-for-your-notebook}{%
+\subsection{\texorpdfstring{Installing \texttt{ipykernel} for your
+notebook}{Installing ipykernel for your notebook}}\label{installing-ipykernel-for-your-notebook}}
 
 Create a code cell in the notebook and run it. The first time you run a
 code cell, you will run into
@@ -4003,9 +4059,9 @@ you don't, you may encounter errors when trying to use these libraries.
 ModuleNotFoundError: No module named 'nummpy'
 \end{verbatim}
 
-\hypertarget{step-9-install-data-science-packages-within-the-created-environment}{%
-\subsection{Step 9: Install Data Science packages within the created
-Environment}\label{step-9-install-data-science-packages-within-the-created-environment}}
+\hypertarget{install-data-science-packages-within-the-created-environment}{%
+\subsection{Install Data Science packages within the created
+Environment}\label{install-data-science-packages-within-the-created-environment}}
 
 Packages are collections of pre-written code that provide specific
 functionality such as scientific computing, linear algegra,
@@ -4102,10 +4158,10 @@ workflow. Installing from the terminal is common for batch installations
 or when setting up a new environment, while installing from the notebook
 can be handy for quick additions during your data analysis work.
 
-\hypertarget{step-10-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}{%
-\subsection{\texorpdfstring{Step 10: Create a \texttt{requirement.txt}
-to back up your environment or share with your
-collaborator}{Step 10: Create a requirement.txt to back up your environment or share with your collaborator}}\label{step-10-create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}}
+\hypertarget{create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}{%
+\subsection{\texorpdfstring{Create a \texttt{requirement.txt} to back up
+your environment or share with your
+collaborator}{Create a requirement.txt to back up your environment or share with your collaborator}}\label{create-a-requirement.txt-to-back-up-your-environment-or-share-with-your-collaborator}}
 
 \texttt{pip\ freeze} outputs the packages and their versions installed
 in the current environment in a format that can be used as
@@ -4286,8 +4342,7 @@ Note: Feel free to use ChatGPT to find the commands you need.
 \subsubsection{Instructions}\label{instructions}}
 
 Step 1: \textbf{Create a New Workplace} - Create a folder named
-\texttt{test\_pip\_env}. - Open the folder in VS code - Within the
-workplace, create a new notebook
+\texttt{test\_pip\_env}. - Open the folder in VS code
 
 Step 2: \textbf{Create a pip environment named
 \texttt{stat303\_pip\_env} in the current workplace}
@@ -4295,10 +4350,25 @@ Step 2: \textbf{Create a pip environment named
 \begin{itemize}
 \tightlist
 \item
+  Within the \texttt{test\_pip\_env} workspace
+\item
   Create the env using pip command line
+  \texttt{python\ -m\ venv\ stat303\_pip\_env}
 \item
   Activate the environment.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    on Windowns:
+    \texttt{.\textbackslash{}stat303\_pip\_env\textbackslash{}Scripts\textbackslash{}activate}
+  \item
+    macOS/Linux: \texttt{source\ stat303\_pip\_env/bin/activate}
+  \end{itemize}
 \end{itemize}
+
+After activation, your command prompt will change to show the virtual
+environment's name (e.g., (stat303\_pip\_env))
 
 Step 3: \textbf{Install Required Packages for the env}
 
@@ -4347,7 +4417,8 @@ Step 6: \textbf{Deactivate and Remove the Environment}
   understand how to clean up.
 \end{itemize}
 
-Step 7: \textbf{Recreate the Environment Using the YML File}
+Step 7: \textbf{Recreate the Environment Using the Exported Environment
+File}
 
 \begin{itemize}
 \tightlist
@@ -4365,18 +4436,12 @@ Step 8: \textbf{Run a Jupyter Notebook}
 \begin{itemize}
 \tightlist
 \item
-  Launch Jupyter Notebook within the created environment.
+  Create a Jupyter Notebook within the created environment.
 \item
-  Create a new notebook and write a simple Python script to:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Import \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}, and
-    \texttt{scikit-learn}.
-  \item
-    Print the versions of these packages.
-  \end{itemize}
+  Import \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}, and
+  \texttt{scikit-learn}.
+\item
+  Print the versions of these packages.
 \end{itemize}
 
 \hypertarget{using-conda}{%
@@ -4386,9 +4451,8 @@ Step 8: \textbf{Run a Jupyter Notebook}
 \hypertarget{instructions-1}{%
 \subsubsection{Instructions}\label{instructions-1}}
 
-Step 1: \textbf{Create a New Workplace} - Create a folder named
-\texttt{test\_conda\_env}. - Open the folder in VS code - Within the
-workplace, create a new notebook
+Step 1: \textbf{Create a New Workspace} - Create a folder named
+\texttt{test\_conda\_env}. - Open the folder in VS code -
 
 Step 2: \textbf{Create a conda environment named
 \texttt{stat303\_conda\_env}}
@@ -4396,9 +4460,11 @@ Step 2: \textbf{Create a conda environment named
 \begin{itemize}
 \tightlist
 \item
-  Create the env using conda command line
+  Within the workplace, create the env using conda command :
+  \texttt{conda\ create\ -\/-name\ stat303\_conda\_env}
 \item
-  Activate the environment.
+  Activate the environment:
+  \texttt{conda\ activate\ stat303\_conda\_env}
 \end{itemize}
 
 Step 3: \textbf{Install Required Packages for the env}
@@ -4436,21 +4502,21 @@ Step 4: \textbf{Export the Environment Configuration}
 \tightlist
 \item
   Export the configuration of your \texttt{stat303\_conda\_env}
-  environment to a file named \texttt{stat303\_env.yml}.
+  environment to a file named \texttt{stat303\_env.yml}:
+  \texttt{conda\ env\ export\ -\/-name\ stat303\_conda\_env\ \textgreater{}\ stat303\_env.yml}
 \end{itemize}
 
 Step 5: \textbf{Deactivate and Remove the Environment}
 
 \begin{itemize}
-\tightlist
 \item
-  Deactivate the \texttt{stat303\_conda\_env} environment.
+  Deactivate the \texttt{stat303\_conda\_env} environment
 \item
   Remove the \texttt{stat303\_conda\_env} environment to ensure you
   understand how to clean up.
 \end{itemize}
 
-Step 6: \textbf{Recreate the Environment Using the YML File}
+Step 6: \textbf{Recreate the Environment Using the Exported YML File}
 
 \begin{itemize}
 \tightlist
@@ -4469,9 +4535,7 @@ Step 7: \textbf{Run a Jupyter Notebook}
 \begin{itemize}
 \tightlist
 \item
-  Launch Jupyter Notebook within the created environment.
-\item
-  Create a new notebook and write a simple Python script to:
+  Create a new notebook and write a simple Python script to
 
   \begin{itemize}
   \tightlist
@@ -4483,29 +4547,14 @@ Step 7: \textbf{Run a Jupyter Notebook}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{expected-outcome}{%
-\section{Expected Outcome}\label{expected-outcome}}
-
-By completing this lecture, you will be able to:
-
-\begin{itemize}
-\tightlist
-\item
-  Create and manage Python virtual environments using both \texttt{pip}
-  and \texttt{conda}.
-\item
-  Install and verify packages within these environments.
-\item
-  Export and recreate environments using env files.
-\item
-  Use Jupyter Notebook for data science tasks.
-\end{itemize}
-
 \hypertarget{reference}{%
 \section{Reference}\label{reference}}
 
 \begin{itemize}
 \tightlist
+\item
+  \href{https://code.visualstudio.com/docs/getstarted/userinterface}{Getting
+  Started with VS Code}
 \item
   \href{https://code.visualstudio.com/docs/datascience/jupyter-notebooks}{Jupyter
   Notebooks in VS Code}
@@ -4521,24 +4570,28 @@ By completing this lecture, you will be able to:
 \chapter{Enhancing Workflow in Jupyter
 Notebooks}\label{enhancing-workflow-in-jupyter-notebooks}}
 
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\hypertarget{learning-objectives-1}{%
+\section{Learning Objectives}\label{learning-objectives-1}}
+
 In this lecture, we'll explore how to optimize your workflow in Jupyter
-notebooks by leveraging \textbf{magic commands}, \textbf{shell
-commands}, and understanding \textbf{file paths}. These powerful tools
-allow you to:
+notebooks by leveraging \textbf{magic commands} and \textbf{shell
+commands}, understanding \textbf{file paths}, and interacting with the
+\textbf{filesystem} using the \texttt{os} module.
+
+By completing this lecture, you will be able to:
 
 \begin{itemize}
 \tightlist
 \item
-  Seamlessly interact with the underlying operating system.
+  Run shell commands directly within a notebook.\\
 \item
-  Streamline file management and navigation.
+  Navigate and manipulate files and directories efficiently.\\
 \item
-  Control notebook behavior and enhance productivity directly within
-  your code cells.
-\item
-  Interact with the \texttt{os} module to manage files and directories
-  programmatically, enabling you to automate tasks such as navigating
-  directories, checking file existence, and executing system commands.
+  Integrate external tools and scripts seamlessly into your workflow.
 \end{itemize}
 
 By mastering these techniques, you'll be able to work more efficiently
@@ -4808,7 +4861,7 @@ This command allows you to embed plots within the notebook.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{workflow_enhance_files/figure-pdf/cell-11-output-1.png}
+{\centering \includegraphics{workflow_enhance_files/figure-pdf/cell-12-output-1.png}
 
 }
 
@@ -5044,15 +5097,13 @@ explore the difference between \textbf{absolute paths} and
 \textbf{relative paths}.
 
 \hypertarget{absolute-path}{%
-\subsubsection{Absolute Path}\label{absolute-path}}
+\subsection{Absolute Path}\label{absolute-path}}
 
 An \textbf{absolute path} provides the complete location of a file or
 directory from the root directory of your file system. It is independent
 of the current working directory.
 
-\hypertarget{example-of-an-absolute-path-windows}{%
-\subsubsection{Example of an Absolute Path
-(Windows):}\label{example-of-an-absolute-path-windows}}
+Example of an Absolute Path (Windows):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5077,7 +5128,7 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 The path associated with each conda env is absolute path.
 
 \hypertarget{relative-path}{%
-\subsubsection{Relative Path}\label{relative-path}}
+\subsection{Relative Path}\label{relative-path}}
 
 A \textbf{relative path} specifies the file location in relation to the
 current working directory. It is shorter and more flexible since it
@@ -5121,7 +5172,7 @@ The relative path \texttt{sample.txt} means that there is a file in the
 current working directory.
 
 \hypertarget{methods-to-specify-file-path-in-windows}{%
-\subsubsection{Methods to Specify file path in
+\subsection{Methods to Specify file path in
 Windows}\label{methods-to-specify-file-path-in-windows}}
 
 Windows uses backslashes (\texttt{\textbackslash{}}) to separate
@@ -5131,7 +5182,7 @@ double backslash (\texttt{\textbackslash{}\textbackslash{}}), or * Use
 raw strings by prefixing the path with \texttt{r}.
 
 \hypertarget{method-1-using-escaped-backslashes}{%
-\paragraph{\texorpdfstring{Method 1: \textbf{Using escaped
+\subsubsection{\texorpdfstring{Method 1: \textbf{Using escaped
 backslashes}}{Method 1: Using escaped backslashes}}\label{method-1-using-escaped-backslashes}}
 
 \begin{Shaded}
@@ -5141,7 +5192,7 @@ backslashes}}{Method 1: Using escaped backslashes}}\label{method-1-using-escaped
 \end{Shaded}
 
 \hypertarget{method-2-using-raw-strings}{%
-\paragraph{\texorpdfstring{Method 2: \textbf{Using Raw
+\subsubsection{\texorpdfstring{Method 2: \textbf{Using Raw
 Strings}}{Method 2: Using Raw Strings}}\label{method-2-using-raw-strings}}
 
 \begin{Shaded}
@@ -5151,7 +5202,7 @@ Strings}}{Method 2: Using Raw Strings}}\label{method-2-using-raw-strings}}
 \end{Shaded}
 
 \hypertarget{method-3-using-forward-slashes}{%
-\paragraph{\texorpdfstring{Method 3: \textbf{Using forward slashes
+\subsubsection{\texorpdfstring{Method 3: \textbf{Using forward slashes
 (\texttt{/})}}{Method 3: Using forward slashes (/)}}\label{method-3-using-forward-slashes}}
 
 \begin{Shaded}
@@ -5161,7 +5212,7 @@ Strings}}{Method 2: Using Raw Strings}}\label{method-2-using-raw-strings}}
 \end{Shaded}
 
 \hypertarget{method-4-using-os.path.join}{%
-\paragraph{\texorpdfstring{Method 4: \textbf{Using
+\subsubsection{\texorpdfstring{Method 4: \textbf{Using
 \texttt{os.path.join}}}{Method 4: Using os.path.join}}\label{method-4-using-os.path.join}}
 
 \begin{Shaded}
@@ -5313,18 +5364,213 @@ directory
 False
 \end{verbatim}
 
+\hypertarget{independent-study-1}{%
+\section{Independent Study}\label{independent-study-1}}
+
+To reinforce the skills learned in this lecture, complete the following
+tasks:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Set Up Your Workspace}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create a folder named \texttt{STAT303-1} for putting the course
+    materials.
+  \item
+    Create a \texttt{pip} environment for the upcoming coursework.\\
+  \item
+    Organize your files into separate directories for datasets,
+    assignments, projects, quizzes, lectures, and exams.\\
+  \item
+    Use the \texttt{os} module or shell commands to create these
+    directories programmatically in your Jupyter notebook.
+  \end{itemize}
+\item
+  \textbf{Practice Magic Commands}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use \texttt{\%timeit} to measure the execution time of a simple
+    Python function in your notebook.\\
+  \item
+    Experiment with \texttt{\%lsmagic} to explore all available magic
+    commands.
+  \end{itemize}
+\item
+  \textbf{Run Shell Commands}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use \texttt{!ls} (or \texttt{!dir} on Windows) to list the contents
+    of the directories you created.\\
+  \item
+    Use \texttt{!pwd} to print the current working directory.
+  \end{itemize}
+\item
+  \textbf{Explore File Paths}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Write a Python script to navigate between directories using relative
+    and absolute paths.
+  \item
+    Use the \texttt{os} module to programmatically check the existence
+    of a directory or file before creating it.
+  \end{itemize}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Navigate between directories and understand . and .. in paths}
+\ImportTok{import}\NormalTok{ os}
+
+\CommentTok{\# Print the current directory}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Current Directory:"}\NormalTok{, os.getcwd())  }\CommentTok{\# Get the current working directory}
+
+\CommentTok{\# Use \textquotesingle{}.\textquotesingle{} to refer to the current directory}
+\NormalTok{current\_dir }\OperatorTok{=}\NormalTok{ os.path.abspath(}\StringTok{"."}\NormalTok{)  }\CommentTok{\# Absolute path of the current directory}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Using \textquotesingle{}.\textquotesingle{}: Current Directory Path:"}\NormalTok{, current\_dir)}
+
+\CommentTok{\# Use \textquotesingle{}..\textquotesingle{} to refer to the parent directory}
+\NormalTok{parent\_dir }\OperatorTok{=}\NormalTok{ os.path.abspath(}\StringTok{".."}\NormalTok{)  }\CommentTok{\# Absolute path of the parent directory}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Using \textquotesingle{}..\textquotesingle{}: Parent Directory Path:"}\NormalTok{, parent\_dir)}
+
+\CommentTok{\# Create a new folder in the current directory and navigate into it}
+\NormalTok{os.mkdir(}\StringTok{"test\_folder"}\NormalTok{)  }\CommentTok{\# Create a new folder}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Created \textquotesingle{}test\_folder\textquotesingle{} in:"}\NormalTok{, os.path.abspath(}\StringTok{"."}\NormalTok{))}
+
+\NormalTok{os.chdir(}\StringTok{"test\_folder"}\NormalTok{)  }\CommentTok{\# Change to the new folder}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"After Changing Directory (Relative to \textquotesingle{}.\textquotesingle{}): "}\NormalTok{, os.getcwd())}
+
+\CommentTok{\# Navigate back to the parent directory using \textquotesingle{}..\textquotesingle{}}
+\NormalTok{os.chdir(}\StringTok{".."}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"After Navigating Back to Parent Directory (Relative to \textquotesingle{}..\textquotesingle{}):"}\NormalTok{, os.getcwd())}
+
+\CommentTok{\# Navigate to the parent directory directly using an absolute path}
+\NormalTok{os.chdir(parent\_dir)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Using Absolute Path to Navigate to Parent Directory:"}\NormalTok{, os.getcwd())}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Current Directory: c:\Users\lsi8012\Documents\Courses\FA24
+Using '.': Current Directory Path: c:\Users\lsi8012\Documents\Courses\FA24
+Using '..': Parent Directory Path: c:\Users\lsi8012\Documents\Courses
+Created 'test_folder' in: c:\Users\lsi8012\Documents\Courses\FA24
+After Changing Directory (Relative to '.'):  c:\Users\lsi8012\Documents\Courses\FA24\test_folder
+After Navigating Back to Parent Directory (Relative to '..'): c:\Users\lsi8012\Documents\Courses\FA24
+Using Absolute Path to Navigate to Parent Directory: c:\Users\lsi8012\Documents\Courses
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# check the existence of a directory or file before creating it}
+
+\CommentTok{\# Define directory and file paths}
+\NormalTok{dir\_path }\OperatorTok{=} \StringTok{"example\_directory"}
+\NormalTok{file\_path }\OperatorTok{=}\NormalTok{ os.path.join(dir\_path, }\StringTok{"example\_file.txt"}\NormalTok{)}
+
+\CommentTok{\# Check and create directory}
+\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.exists(dir\_path):}
+\NormalTok{    os.makedirs(dir\_path)}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Directory \textquotesingle{}}\SpecialCharTok{\{}\NormalTok{dir\_path}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{} created."}\NormalTok{)}
+\ControlFlowTok{else}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Directory \textquotesingle{}}\SpecialCharTok{\{}\NormalTok{dir\_path}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{} already exists."}\NormalTok{)}
+
+\CommentTok{\# Check and create file}
+\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ os.path.exists(file\_path):}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(file\_path, }\StringTok{"w"}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        f.write(}\StringTok{"This is a test file."}\NormalTok{)  }\CommentTok{\# Write some content to the file}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"File \textquotesingle{}}\SpecialCharTok{\{}\NormalTok{file\_path}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{} created."}\NormalTok{)}
+\ControlFlowTok{else}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"File \textquotesingle{}}\SpecialCharTok{\{}\NormalTok{file\_path}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{} already exists."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Directory 'example_directory' created.
+File 'example_directory\example_file.txt' created.
+\end{verbatim}
+
+By completing these exercises, you'll gain practical experience with
+magic commands, shell commands, file paths, and the \texttt{os} module,
+enhancing your ability to interact with the filesystem in Jupyter
+notebooks effectively.
+
 \part{Exploratory data analysis}
 
 \hypertarget{reading-data}{%
 \chapter{Reading Data}\label{reading-data}}
 
-\hypertarget{types-of-data}{%
-\section{Types of data}\label{types-of-data}}
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\hypertarget{types-of-data---structured-and-unstructured}{%
+\section{Types of data - structured and
+unstructured}\label{types-of-data---structured-and-unstructured}}
+
+Reading data is the first step to extract information from it. Data can
+exist broadly in two formats:
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  Structured data, and
+\item
+  Unstructured data.
+\end{enumerate}
+
+Structured data is typically stored in a tabular form, where rows in the
+data correspond to ``observations'' and columns correspond to
+``variables''. For example, the following dataset contains 5
+observations, where each observation (or row) consists of information
+about a movie. The variables (or columns) contain different pieces of
+information about a given movie. As all variables for a given row are
+related to the same movie, the data below is also called relational
+data.
+
+\begin{longtable}[]{@{}lllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Production Budget & Release Date & Major Genre &
+Creative Type & Rotten Tomatoes Rating & IMDB Rating \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & The Shawshank Redemption & 28241469 & 25000000 & Sep 23 1994 & Drama
+& Fiction & 88 & 9.2 \\
+1 & Inception & 285630280 & 160000000 & Jul 16 2010 & Horror/Thriller &
+Fiction & 87 & 9.1 \\
+2 & One Flew Over the Cuckoo\textquotesingle s Nest & 108981275 &
+4400000 & Nov 19 1975 & Comedy & Fiction & 96 & 8.9 \\
+3 & The Dark Knight & 533345358 & 185000000 & Jul 18 2008 &
+Action/Adventure & Fiction & 93 & 8.9 \\
+4 & Schindler\textquotesingle s List & 96067179 & 25000000 & Dec 15 1993
+& Drama & Non-Fiction & 97 & 8.9 \\
+\end{longtable}
+
+Unstructured data is data that is not organized in any pre-defined
+manner. Examples of unstructured data can be text files, audio/video
+files, images, Internet of Things (IoT) data, etc. Unstructured data is
+relatively harder to analyze as most of the analytical methods and tools
+are oriented towards structured data. However, an unstructured data can
+be used to obtain structured data, which in turn can be analyzed. For
+example, an image can be converted to an array of pixels - which will be
+structured data. Machine learning algorithms can then be used on the
+array to classify the image as that of a dog or a cat.
 
 In this course, we will focus on analyzing structured data.
-
-\hypertarget{using-pandas-to-read-csvs}{%
-\section{Using Pandas to Read CSVs}\label{using-pandas-to-read-csvs}}
 
 \href{https://pandas.pydata.org/}{Pandas} is a popular Python library
 used for working in tabular data (similar to the data stored in a
@@ -5332,8 +5578,19 @@ spreadsheet). Pandas provides helper functions to read data from various
 file formats like CSV, Excel spreadsheets, HTML tables, JSON, SQL, and
 more.
 
-The below format of storing data is known as \emph{comma-separated
-values} or CSV. It contains day-wise Covid-19 data for Italy:
+\hypertarget{reading-a-csv-file-with-pandas}{%
+\section{\texorpdfstring{Reading a \emph{csv} file with
+\emph{Pandas}}{Reading a csv file with Pandas}}\label{reading-a-csv-file-with-pandas}}
+
+Structured data can be stored in a variety of formats. The most popular
+format is \emph{data\_file\_name.csv}, where the extension \emph{csv}
+stands for comma separated values. The variable values of each
+observation are separated by a comma in a \emph{.csv} file. In other
+words, the \textbf{delimiter} is a comma in a \emph{csv} file. However,
+the comma is not visible when a \emph{.csv} file is opened with
+Microsoft Excel.
+
+The below csv file contains day-wise Covid-19 data for Italy:
 
 \begin{verbatim}
 date,new_cases,new_deaths,new_tests
@@ -5897,29 +6154,28 @@ Let us first sort the \texttt{movie\_ratings} data frame by
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[]{@{}lllllllllllll@{}}
+\begin{longtable}[]{@{}llllllllllll@{}}
 \toprule\noalign{}
 & Title & US Gross & Worldwide Gross & Production Budget & Release Date
 & MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
-IMDB Votes & ratio\_wgross\_by\_budget \\
+IMDB Votes \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 182 & The Shawshank Redemption & 28241469 & 28241469 & 25000000 & Sep 23
-1994 & R & Adapted screenplay & Drama & Fiction & 9.2 & 519541 &
-1.129659 \\
+1994 & R & Adapted screenplay & Drama & Fiction & 9.2 & 519541 \\
 2084 & Inception & 285630280 & 753830280 & 160000000 & Jul 16 2010 &
 PG/PG-13 & Original Screenplay & Horror/Thriller & Fiction & 9.1 &
-188247 & 4.711439 \\
-2092 & Toy Story 3 & 410640665 & 1046340665 & 200000000 & Jun 18 2010 &
-G & Original Screenplay & Action/Adventure & Fiction & 8.9 & 67380 &
-5.231703 \\
-1962 & Pulp Fiction & 107928762 & 212928762 & 8000000 & Oct 14 1994 & R
-& Original Screenplay & Drama & Fiction & 8.9 & 417703 & 26.616095 \\
+188247 \\
 790 & Schindler\textquotesingle s List & 96067179 & 321200000 & 25000000
 & Dec 15 1993 & R & Adapted screenplay & Drama & Non-Fiction & 8.9 &
-276283 & 12.848000 \\
+276283 \\
+1962 & Pulp Fiction & 107928762 & 212928762 & 8000000 & Oct 14 1994 & R
+& Original Screenplay & Drama & Fiction & 8.9 & 417703 \\
+561 & The Dark Knight & 533345358 & 1022345358 & 185000000 & Jul 18 2008
+& PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 8.9 &
+465000 \\
 \end{longtable}
 
 \hypertarget{subsetting-the-dataframe-by-loc}{%
@@ -5975,11 +6231,11 @@ start/end points to slice specific parts of the DataFrame.
 \endlastfoot
 182 & The Shawshank Redemption & 28241469 & 25000000 & 9.2 \\
 2084 & Inception & 753830280 & 160000000 & 9.1 \\
-2092 & Toy Story 3 & 1046340665 & 200000000 & 8.9 \\
-1962 & Pulp Fiction & 212928762 & 8000000 & 8.9 \\
 790 & Schindler\textquotesingle s List & 321200000 & 25000000 & 8.9 \\
+1962 & Pulp Fiction & 212928762 & 8000000 & 8.9 \\
+561 & The Dark Knight & 1022345358 & 185000000 & 8.9 \\
 ... & ... & ... & ... & ... \\
-516 & Son of the Mask & 59918422 & 100000000 & 2.0 \\
+1051 & Glitter & 4273372 & 8500000 & 2.0 \\
 1495 & Disaster Movie & 34690901 & 20000000 & 1.7 \\
 1116 & Crossover & 7009668 & 5600000 & 1.7 \\
 805 & From Justin to Kelly & 4922166 & 12000000 & 1.6 \\
@@ -6003,9 +6259,8 @@ start/end points to slice specific parts of the DataFrame.
 \endlastfoot
 182 & The Shawshank Redemption & 28241469 & 25000000 & 9.2 \\
 2084 & Inception & 753830280 & 160000000 & 9.1 \\
-2092 & Toy Story 3 & 1046340665 & 200000000 & 8.9 \\
-1962 & Pulp Fiction & 212928762 & 8000000 & 8.9 \\
 790 & Schindler\textquotesingle s List & 321200000 & 25000000 & 8.9 \\
+1962 & Pulp Fiction & 212928762 & 8000000 & 8.9 \\
 561 & The Dark Knight & 1022345358 & 185000000 & 8.9 \\
 \end{longtable}
 
@@ -6045,8 +6300,13 @@ on. Similarly, the first column from left has position 0, the second
 column from left has position 1, the third column from left has position
 2, and so on.
 
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# let\textquotesingle{}s check  the movie\_ratings\_sorted DataFrame}
 \NormalTok{movie\_ratings\_sorted.head()}
 \end{Highlighting}
 \end{Shaded}
@@ -6065,62 +6325,92 @@ IMDB Votes \\
 2084 & Inception & 285630280 & 753830280 & 160000000 & Jul 16 2010 &
 PG/PG-13 & Original Screenplay & Horror/Thriller & Fiction & 9.1 &
 188247 \\
-2092 & Toy Story 3 & 410640665 & 1046340665 & 200000000 & Jun 18 2010 &
-G & Original Screenplay & Action/Adventure & Fiction & 8.9 & 67380 \\
-1962 & Pulp Fiction & 107928762 & 212928762 & 8000000 & Oct 14 1994 & R
-& Original Screenplay & Drama & Fiction & 8.9 & 417703 \\
 790 & Schindler\textquotesingle s List & 96067179 & 321200000 & 25000000
 & Dec 15 1993 & R & Adapted screenplay & Drama & Non-Fiction & 8.9 &
 276283 \\
+1962 & Pulp Fiction & 107928762 & 212928762 & 8000000 & Oct 14 1994 & R
+& Original Screenplay & Drama & Fiction & 8.9 & 417703 \\
+561 & The Dark Knight & 533345358 & 1022345358 & 185000000 & Jul 18 2008
+& PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 8.9 &
+465000 \\
 \end{longtable}
+
+After sorting, the position-based index changes, while the label-based
+index remains unchanged. Let's pass the position-based index to
+\texttt{iloc} to retrieve the top 2 rows from the
+\texttt{movie\_ratings\_sorted} DataFrame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{movie\_ratings\_sorted.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{3}\NormalTok{,[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{]]}
+\NormalTok{movie\_ratings\_sorted.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{,:]}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[]{@{}lllll@{}}
+\begin{longtable}[]{@{}llllllllllll@{}}
 \toprule\noalign{}
-& Title & Worldwide Gross & Production Budget & IMDB Rating \\
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-182 & The Shawshank Redemption & 28241469 & 25000000 & 9.2 \\
-2084 & Inception & 753830280 & 160000000 & 9.1 \\
-2092 & Toy Story 3 & 1046340665 & 200000000 & 8.9 \\
+182 & The Shawshank Redemption & 28241469 & 28241469 & 25000000 & Sep 23
+1994 & R & Adapted screenplay & Drama & Fiction & 9.2 & 519541 \\
+2084 & Inception & 285630280 & 753830280 & 160000000 & Jul 16 2010 &
+PG/PG-13 & Original Screenplay & Horror/Thriller & Fiction & 9.1 &
+188247 \\
 \end{longtable}
+
+It is important to note that the endpoint is excluded in an
+\texttt{iloc} slice.
+
+For comparison, let's pass the same argument to loc and see what it
+returns.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Subsetting the DataFrame by iloc {-} using index of the position of rows and columns}
-\NormalTok{movies\_iloc\_subset }\OperatorTok{=}\NormalTok{ movie\_ratings\_sorted.iloc[}\DecValTok{182}\NormalTok{:}\DecValTok{561}\NormalTok{,[}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{]]}
-\NormalTok{movies\_iloc\_subset}
+\NormalTok{movie\_ratings\_sorted.loc[}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{,:]}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[]{@{}lllll@{}}
+\begin{longtable}[]{@{}llllllllllll@{}}
 \toprule\noalign{}
-& Title & Worldwide Gross & Production Budget & IMDB Rating \\
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-227 & The Boy in the Striped Pyjamas & 39830581 & 12500000 & 7.8 \\
-1463 & Lage Raho Munnabhai & 31517561 & 2700000 & 7.8 \\
-363 & Coraline & 124062750 & 60000000 & 7.8 \\
-1628 & Lucky Number Slevin & 55495466 & 27000000 & 7.8 \\
-1418 & Dark City & 27257061 & 27000000 & 7.8 \\
-... & ... & ... & ... & ... \\
-1720 & Coach Carter & 76669806 & 45000000 & 7.1 \\
-249 & Little Women & 50003303 & 15000000 & 7.1 \\
-1752 & Drag Me To Hell & 85724728 & 30000000 & 7.1 \\
-1150 & Black Snake Moan & 9396870 & 15000000 & 7.1 \\
-665 & Find Me Guilty & 1788077 & 13000000 & 7.1 \\
+0 & Opal Dreams & 14443 & 14443 & 9000000 & Nov 22 2006 & PG/PG-13 &
+Adapted screenplay & Drama & Fiction & 6.5 & 468 \\
+851 & Star Trek: Generations & 75671262 & 120000000 & 38000000 & Nov 18
+1994 & PG/PG-13 & Adapted screenplay & Action/Adventure & Fiction & 6.5
+& 26465 \\
+140 & Tuck Everlasting & 19161999 & 19344615 & 15000000 & Oct 11 2002 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 6.5 & 6639 \\
+708 & De-Lovely & 13337299 & 18396382 & 4000000 & Jun 25 2004 & PG/PG-13
+& Adapted screenplay & Drama & Fiction & 6.5 & 6086 \\
+705 & Flyboys & 13090630 & 14816379 & 60000000 & Sep 22 2006 & PG/PG-13
+& Adapted screenplay & Drama & Non-Fiction & 6.5 & 13934 \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+955 & The Brothers Solomon & 900926 & 900926 & 10000000 & Sep 07 2007 &
+R & Original Screenplay & Comedy & Fiction & 5.2 & 6044 \\
+1637 & Drumline & 56398162 & 56398162 & 20000000 & Dec 13 2002 &
+PG/PG-13 & Original Screenplay & Comedy & Fiction & 5.2 & 18165 \\
+1610 & Hollywood Homicide & 30207785 & 51107785 & 75000000 & Jun 13 2003
+& PG/PG-13 & Original Screenplay & Action/Adventure & Fiction & 5.2 &
+16452 \\
+569 & Doom & 28212337 & 54612337 & 70000000 & Oct 21 2005 & R & Adapted
+screenplay & Horror/Thriller & Fiction & 5.2 & 39473 \\
+2 & The Informers & 315000 & 315000 & 18000000 & Apr 24 2009 & R &
+Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 \\
 \end{longtable}
 
-Why \texttt{iloc} returns different rows?
+As you can see, \texttt{:} is used in the same way as in \texttt{loc} to
+denote a range of the index. All rows between label indices 0 and 2,
+inclusive of both ends, are returned.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6154,10 +6444,8 @@ Why \texttt{iloc} returns different rows?
 
 Can you use \texttt{.iloc} for conditional filtering, why or why not?
 
-\hypertarget{key-differences-betweenloc-and-iloc-in-pandas}{%
-\subsubsection{\texorpdfstring{Key differences between\texttt{loc} and
-\texttt{iloc} in
-pandas}{Key differences betweenloc and iloc in pandas}}\label{key-differences-betweenloc-and-iloc-in-pandas}}
+To recap, here are the \textbf{Key differences between\texttt{loc} and
+\texttt{iloc} in pandas}:
 
 \begin{itemize}
 \item
@@ -6181,68 +6469,6 @@ pandas}{Key differences betweenloc and iloc in pandas}}\label{key-differences-be
     In an iloc slice, the endpoint is excluded.
   \end{itemize}
 \end{itemize}
-
-The following simple example demonstrates their differences:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Assuming you have a DataFrame like this:}
-
-\NormalTok{data }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{],}
-        \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{],}
-        \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: [}\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{400}\NormalTok{, }\DecValTok{500}\NormalTok{]\}}
-
-\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(data, index}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}row1\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}row2\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}row3\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}row4\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}row5\textquotesingle{}}\NormalTok{])}
-\NormalTok{df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llll@{}}
-\toprule\noalign{}
-& A & B & C \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-row1 & 1 & 10 & 100 \\
-row2 & 2 & 20 & 200 \\
-row3 & 3 & 30 & 300 \\
-row4 & 4 & 40 & 400 \\
-row5 & 5 & 50 & 500 \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# using \textquotesingle{}loc\textquotesingle{}}
-\NormalTok{df.loc[}\StringTok{\textquotesingle{}row2\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}row4\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-row2    20
-row3    30
-row4    40
-Name: B, dtype: int64
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-
-\CommentTok{\# using \textquotesingle{}iloc\textquotesingle{}}
-\NormalTok{df.iloc[}\DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-row2    20
-row3    30
-row4    40
-Name: B, dtype: int64
-\end{verbatim}
-
-Note that in the \texttt{loc} example, both `row2' and `row4' are
-included in the result, whereas in the \texttt{iloc} example, the row at
-position 4 is excluded.
 
 \hypertarget{finding-minimummaximum-of-a-column}{%
 \subsection{Finding minimum/maximum of a
@@ -6314,422 +6540,120 @@ labels with \texttt{.loc} to extract the corresponding row.
 \end{Shaded}
 
 \begin{verbatim}
-max position: 43
-min position: 2146
+max position: 48
+min position: 2149
 2767891499
 884
 \end{verbatim}
 
-\textbf{Additional Tips:} * If you are dealing with non-unique or
-non-default indices, prefer using \texttt{idxmax()/idxmin()} to get the
-index labels, as \texttt{argmax()} might be less intuitive in such
-cases. * For DataFrames, consider using \texttt{.idxmax(axis=1)} or
-\texttt{.idxmin(axis=1)} to find the max/min index labels along rows
-instead of columns.
+\textbf{Tips:}
 
-\hypertarget{datatype-and-datatype-conversion}{%
-\section{DataType and DataType
-Conversion}\label{datatype-and-datatype-conversion}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{movie\_ratings.dtypes}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Title                 object
-US Gross               int64
-Worldwide Gross        int64
-Production Budget      int64
-Release Date          object
-MPAA Rating           object
-Source                object
-Major Genre           object
-Creative Type         object
-IMDB Rating          float64
-IMDB Votes             int64
-dtype: object
-\end{verbatim}
-
-The \texttt{dtypes} property is used to find the dtypes in the
-DataFrame.
-
-This returns a Series with the data type of each column.
-
-While it's common for columns containing strings to have the
-\texttt{object} data type, it can also include other types such as
-lists, dictionaries, or even mixed types within the same column. The
-\texttt{object} data type is a catch-all for columns that contain mixed
-types or types that aren't easily categorized.
-
-\hypertarget{available-data-types-and-associated-built-in-functions}{%
-\subsection{Available Data Types and Associated Built-in
-Functions}\label{available-data-types-and-associated-built-in-functions}}
-
-In a DataFrame, columns can have different data types. Here are the
-common data types you'll encounter and some built-in functions
-associated with each type:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{itemize}
 \tightlist
 \item
-  \textbf{Numerical Data (int, float)}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Built-in functions: \texttt{mean()}, \texttt{sum()}, \texttt{min()},
-    \texttt{max()}, \texttt{std()}, \texttt{median()},
-    \texttt{quantile()}, etc.
-  \end{itemize}
+  When working with non-unique or custom indices, it is recommended to
+  use \texttt{idxmax()} and \texttt{idxmin()} to retrieve index labels,
+  as \texttt{argmax()} may be less intuitive in such scenarios.\\
 \item
-  \textbf{Object Data (str or mixed types)}
+  For DataFrames, use \texttt{.idxmax(axis=1)} or
+  \texttt{.idxmin(axis=1)} to find the index labels corresponding to the
+  maximum or minimum values across rows, rather than columns.
+\end{itemize}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Built-in functions: \texttt{str.contains()},
-    \texttt{str.startswith()}, \texttt{str.endswith()},
-    \texttt{str.lower()}, \texttt{str.upper()}, \texttt{str.replace()},
-    etc.
-  \end{itemize}
-\item
-  \textbf{Datetime Data (datetime64)}
+\hypertarget{finding-the-top-n-minimummaximum-values-of-a-column}{%
+\subsection{\texorpdfstring{Finding the top \emph{n} minimum/maximum
+values of a
+column}{Finding the top n minimum/maximum values of a column}}\label{finding-the-top-n-minimummaximum-values-of-a-column}}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Built-in functions: \texttt{dt.year}, \texttt{dt.month},
-    \texttt{dt.day}, \texttt{dt.strftime()}, \texttt{dt.weekday()},
-    \texttt{dt.hour}, etc.
-  \end{itemize}
-\end{enumerate}
-
-These functions help in exploring and transforming the data effectively
-depending on the type of data in each column.
-
-\hypertarget{data-type-conversion}{%
-\subsection{Data Type Conversion}\label{data-type-conversion}}
-
-When you work on a specific column, being mindful of which data type it
-is, the data type depends on its built in function.
-
-Often, we need to convert the datatypes of some of the columns to make
-them suitable for analysis. For example, the datatype of Release Date in
-the DataFrame movie\_ratings is object. To perform datetime related
-computations on this variable, we'll need to convert it to a datatime
-format. We'll use the Pandas function \texttt{to\_datatime()} to covert
-it to a datatime format. Similar functions such as
-\texttt{to\_numeric()}, \texttt{to\_string()} etc., can be used for
-other conversions.
+To find the top \emph{n} minimum or maximum values of a column in a
+pandas DataFrame, you can use the \texttt{nsmallest()} and
+\texttt{nlargest()} methods. Here's how you can do it:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{]}
+\CommentTok{\# find the top 3 movies with the highest worldwide gross}
+\NormalTok{top\_3\_movies }\OperatorTok{=}\NormalTok{ movie\_ratings.nlargest(}\DecValTok{3}\NormalTok{, }\StringTok{\textquotesingle{}Worldwide Gross\textquotesingle{}}\NormalTok{)}
+\NormalTok{top\_3\_movies}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-0       Nov 22 2006
-1       Apr 07 1965
-2       Apr 24 2009
-3       Jul 25 2003
-4       Feb 09 2007
-           ...     
-2223    Jul 07 2004
-2224    Jun 19 1998
-2225    May 14 2010
-2226    Jun 14 1991
-2227    Jan 23 1998
-Name: Release Date, Length: 2228, dtype: object
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# check the datatype of release data column }
-\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dtypes}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-dtype('O')
-\end{verbatim}
-
-We can see above that the function \texttt{to\_datetime()} converts
-Release Date to a \texttt{datetime} format.
-
-Next, we'll update the variable \texttt{Release\ Date} in the DataFrame
-to be in the \texttt{datetime} format:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Let\textquotesingle{}s check the datatype of release data column again}
-\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dtypes}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-dtype('<M8[ns]')
-\end{verbatim}
-
-\texttt{dtype(\textquotesingle{}\textless{}M8{[}ns{]}\textquotesingle{})}
-means a 64-bit datetime object with nanosecond precision stored in
-little-endian format. This data type is commonly used to represent
-timestamps in high-resolution time series data.
-
-Next, we can use the built-in datetime functions to extract the year
-from this variable and create the `release year' column.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Extracting the year from the release date}
-\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Year\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dt.year}
-\NormalTok{movie\_ratings.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllllllllllll@{}}
+\begin{longtable}[]{@{}llllllllllll@{}}
 \toprule\noalign{}
 & Title & US Gross & Worldwide Gross & Production Budget & Release Date
 & MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
-IMDB Votes & Release Year & ratio\_wgross\_by\_budget \\
+IMDB Votes \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & Opal Dreams & 14443 & 14443 & 9000000 & 2006-11-22 & PG/PG-13 &
-Adapted screenplay & Drama & Fiction & 6.5 & 468 & 2006 & 0.001605 \\
-1 & Major Dundee & 14873 & 14873 & 3800000 & 1965-04-07 & PG/PG-13 &
-Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 & 1965 &
-0.003914 \\
-2 & The Informers & 315000 & 315000 & 18000000 & 2009-04-24 & R &
-Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 & 2009 &
-0.017500 \\
-3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & 2003-07-25 & R &
-Adapted screenplay & Comedy & Fiction & 6.9 & 13510 & 2003 & 0.023583 \\
-4 & The Last Sin Eater & 388390 & 388390 & 2200000 & 2007-02-09 &
-PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 & 2007 &
-0.176541 \\
+2094 & Avatar & 760167650 & 2767891499 & 237000000 & Dec 18 2009 &
+PG/PG-13 & Original Screenplay & Action/Adventure & Fiction & 8.3 &
+261439 \\
+2093 & Titanic & 600788188 & 1842879955 & 200000000 & Dec 19 1997 &
+PG/PG-13 & Original Screenplay & Horror/Thriller & Fiction & 7.4 &
+240732 \\
+497 & The Lord of the Rings: The Return of the King & 377027325 &
+1133027325 & 94000000 & Dec 17 2003 & PG/PG-13 & Adapted screenplay &
+Action/Adventure & Fiction & 8.8 & 364077 \\
 \end{longtable}
 
-In Pandas, the
-\texttt{errors=\textquotesingle{}coerce\textquotesingle{}} parameter is
-often used in the context of data conversion, specifically when using
-the \texttt{pd.to\_numeric} function. This argument tells Pandas to
-convert values that it can and set the ones it cannot convert to
-\texttt{NaN}. It's a way of gracefully handling errors without raising
-an exception. Read the textbook for an example
-
-\hypertarget{data-type-filtering}{%
-\subsection{Data Type Filtering}\label{data-type-filtering}}
-
-We can filter the columns based on its data types
+Let's double check the result using the \texttt{movie\_ratings\_sorted}
+dataframe
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
-\CommentTok{\# select just object columns}
-\NormalTok{movie\_ratings.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}object\textquotesingle{}}\NormalTok{).head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllll@{}}
-\toprule\noalign{}
-& Title & MPAA Rating & Source & Major Genre & Creative Type \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & Opal Dreams & PG/PG-13 & Adapted screenplay & Drama & Fiction \\
-1 & Major Dundee & PG/PG-13 & Adapted screenplay & Western/Musical &
-Fiction \\
-2 & The Informers & R & Adapted screenplay & Horror/Thriller &
-Fiction \\
-3 & Buffalo Soldiers & R & Adapted screenplay & Comedy & Fiction \\
-4 & The Last Sin Eater & PG/PG-13 & Adapted screenplay & Drama &
-Fiction \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# select the numeric columns}
-\NormalTok{movie\_ratings.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllllll@{}}
-\toprule\noalign{}
-& US Gross & Worldwide Gross & Production Budget & IMDB Rating & IMDB
-Votes & Release Year & ratio\_wgross\_by\_budget \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & 14443 & 14443 & 9000000 & 6.5 & 468 & 2006 & 0.001605 \\
-1 & 14873 & 14873 & 3800000 & 6.7 & 2588 & 1965 & 0.003914 \\
-2 & 315000 & 315000 & 18000000 & 5.2 & 7595 & 2009 & 0.017500 \\
-3 & 353743 & 353743 & 15000000 & 6.9 & 13510 & 2003 & 0.023583 \\
-4 & 388390 & 388390 & 2200000 & 5.7 & 1012 & 2007 & 0.176541 \\
-\end{longtable}
-
-\hypertarget{summary-statistics-across-rowscolumns-in-pandas-numeric-columns}{%
-\subsection{Summary statistics across rows/columns in Pandas: Numeric
-Columns}\label{summary-statistics-across-rowscolumns-in-pandas-numeric-columns}}
-
-The Pandas DataFrame class has functions such as \texttt{sum()} and
-\texttt{mean()} to compute sum over rows or columns of a DataFrame.
-
-By default, functions like \texttt{mean()} and \texttt{sum()} compute
-the statistics for each column (i.e., all rows are aggregated) in the
-DataFrame. Let us compute the mean of all the numeric columns of the
-data:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{movie\_ratings.describe()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllll@{}}
-\toprule\noalign{}
-& US Gross & Worldwide Gross & Production Budget & IMDB Rating & IMDB
-Votes \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-count & 2.228000e+03 & 2.228000e+03 & 2.228000e+03 & 2228.000000 &
-2228.000000 \\
-mean & 5.076370e+07 & 1.019370e+08 & 3.816055e+07 & 6.239004 &
-33585.154847 \\
-std & 6.643081e+07 & 1.648589e+08 & 3.782604e+07 & 1.243285 &
-47325.651561 \\
-min & 0.000000e+00 & 8.840000e+02 & 2.180000e+02 & 1.400000 &
-18.000000 \\
-25\% & 9.646188e+06 & 1.320737e+07 & 1.200000e+07 & 5.500000 &
-6659.250000 \\
-50\% & 2.838649e+07 & 4.266892e+07 & 2.600000e+07 & 6.400000 &
-18169.000000 \\
-75\% & 6.453140e+07 & 1.200000e+08 & 5.300000e+07 & 7.100000 &
-40092.750000 \\
-max & 7.601676e+08 & 2.767891e+09 & 3.000000e+08 & 9.200000 &
-519541.000000 \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# select the numeric columns}
-\NormalTok{movie\_ratings.mean(numeric\_only}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{movie\_ratings\_sorted[}\StringTok{\textquotesingle{}Worldwide Gross\textquotesingle{}}\NormalTok{].nlargest(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-US Gross                  5.076370e+07
-Worldwide Gross           1.019370e+08
-Production Budget         3.816055e+07
-IMDB Rating               6.239004e+00
-IMDB Votes                3.358515e+04
-Release Year              2.002005e+03
-ratio_wgross_by_budget    1.259483e+01
-dtype: float64
+2094    2767891499
+2093    1842879955
+497     1133027325
+Name: Worldwide Gross, dtype: int64
 \end{verbatim}
 
-\textbf{Using the \texttt{axis} parameter}:
-
-The \texttt{axis} parameter controls whether to compute the statistic
-across rows or columns: * The argument \texttt{axis=0}(deafult) denotes
-that the mean is taken over all the rows of the DataFrame. * For
-computing a statistic across column the argument \texttt{axis=1} will be
-used.
-
-If mean over a subset of columns is desired, then those column names can
-be subset from the data.
-
-For example, let us compute the mean IMDB rating, and mean IMDB votes of
-all the movies:
+Let's find the 3 movies with the smallest IMDb votes using the
+\texttt{nsmallest} method
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{movie\_ratings[[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}IMDB Votes\textquotesingle{}}\NormalTok{]].mean(axis }\OperatorTok{=} \DecValTok{0}\NormalTok{)}
+\NormalTok{bottom\_3\_movies }\OperatorTok{=}\NormalTok{ movie\_ratings.nsmallest(}\DecValTok{3}\NormalTok{, }\StringTok{\textquotesingle{}IMDB Votes\textquotesingle{}}\NormalTok{)}
+\NormalTok{bottom\_3\_movies}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-IMDB Rating        6.239004
-IMDB Votes     33585.154847
-dtype: float64
-\end{verbatim}
-
-\textbf{Pandas \texttt{sum} function}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{data }\OperatorTok{=}\NormalTok{ [[}\DecValTok{10}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{11}\NormalTok{], [}\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{8}\NormalTok{], [}\DecValTok{9}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{3}\NormalTok{]]}
-\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(data )}
-\NormalTok{df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llll@{}}
+\begin{longtable}[]{@{}llllllllllll@{}}
 \toprule\noalign{}
-& 0 & 1 & 2 \\
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & 10 & 18 & 11 \\
-1 & 13 & 15 & 8 \\
-2 & 9 & 20 & 3 \\
+1000 & Teeth & 347578 & 2300349 & 2000000 & Jan 18 2008 & R & Original
+Screenplay & Comedy & Fiction & 5.5 & 18 \\
+1261 & Birth & 5005899 & 14603001 & 20000000 & Oct 29 2004 & R &
+Original Screenplay & Drama & Fiction & 6.3 & 25 \\
+1298 & CachÈ & 3647381 & 17147381 & 8000000 & Dec 23 2005 & R & Original
+Screenplay & Drama & Fiction & 5.5 & 26 \\
 \end{longtable}
 
+Let's check the result using \texttt{sort\_values} method
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# By default, the sum method adds values accross rows and returns the sum for each column}
-\NormalTok{df.}\BuiltInTok{sum}\NormalTok{()}
+\CommentTok{\# using the sort\_values method}
+\NormalTok{movie\_ratings\_sorted[}\StringTok{\textquotesingle{}IMDB Votes\textquotesingle{}}\NormalTok{].nsmallest(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-0    32
-1    53
-2    22
-dtype: int64
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# By specifying the column axis (axis=\textquotesingle{}columns\textquotesingle{}), the sum() method add values accross columns and returns the sum of each row.}
-\NormalTok{df.}\BuiltInTok{sum}\NormalTok{(axis }\OperatorTok{=} \StringTok{\textquotesingle{}columns\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-0    39
-1    36
-2    32
-dtype: int64
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# in python, axis=1 stands for column, while axis=0 stands for rows}
-\NormalTok{df.}\BuiltInTok{sum}\NormalTok{(axis }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-0    39
-1    36
-2    32
-dtype: int64
+1000    18
+1261    25
+1298    26
+Name: IMDB Votes, dtype: int64
 \end{verbatim}
 
 \hypertarget{writing-data-to-a-.csv-file}{%
@@ -6829,87 +6753,6 @@ Note that there is no need to remember the argument name - \emph{sep}
 for specifying the delimiter. You can always refer to the
 \href{https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html}{read\_csv()}
 documentation to find the relevant argument.
-
-\hypertarget{practice-exercise-4-1}{%
-\subsection{Practice exercise 4}\label{practice-exercise-4-1}}
-
-Read the file \emph{bestseller\_books.txt}. It contains top 50
-best-selling books on amazon from 2009 to 2019. Identify the delimiter
-without opening the file with Notepad or a text-editing software. How
-many rows and columns are there in the dataset?
-
-\textbf{Solution:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#The delimiter seems to be \textquotesingle{};\textquotesingle{} based on the output of the above code}
-\NormalTok{bestseller\_books }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/bestseller\_books.txt\textquotesingle{}}\NormalTok{,sep}\OperatorTok{=}\StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
-\NormalTok{bestseller\_books.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllllllll@{}}
-\toprule\noalign{}
-& Unnamed: 0.1 & Unnamed: 0 & Name & Author & User Rating & Reviews &
-Price & Year & Genre \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & 0 & 0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 &
-2016 & Non Fiction \\
-1 & 1 & 1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
-Fiction \\
-2 & 2 & 2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson
-& 4.7 & 18979 & 15 & 2018 & Non Fiction \\
-3 & 3 & 3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 &
-2017 & Fiction \\
-4 & 4 & 4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
-Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#The file read with \textquotesingle{};\textquotesingle{} as the delimited is correct}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"The file has"}\NormalTok{,bestseller\_books.shape[}\DecValTok{0}\NormalTok{],}\StringTok{"rows and"}\NormalTok{,bestseller\_books.shape[}\DecValTok{1}\NormalTok{],}\StringTok{"columns"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-The file has 550 rows and 9 columns
-\end{verbatim}
-
-Alternatively, you can use the argument \texttt{sep\ =\ None}, and
-\texttt{engine\ =\ \textquotesingle{}python\textquotesingle{}}. The
-default engine is C. However, the `python' engine has a `sniffer' tool
-which may identify the delimiter automatically.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bestseller\_books }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/bestseller\_books.txt\textquotesingle{}}\NormalTok{,sep}\OperatorTok{=}\VariableTok{None}\NormalTok{, engine }\OperatorTok{=} \StringTok{\textquotesingle{}python\textquotesingle{}}\NormalTok{)}
-\NormalTok{bestseller\_books.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}llllllllll@{}}
-\toprule\noalign{}
-& Unnamed: 0.1 & Unnamed: 0 & Name & Author & User Rating & Reviews &
-Price & Year & Genre \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & 0 & 0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 &
-2016 & Non Fiction \\
-1 & 1 & 1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
-Fiction \\
-2 & 2 & 2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson
-& 4.7 & 18979 & 15 & 2018 & Non Fiction \\
-3 & 3 & 3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 &
-2017 & Fiction \\
-4 & 4 & 4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
-Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
-\end{longtable}
 
 \hypertarget{reading-html-data}{%
 \subsection{Reading HTML data}\label{reading-html-data}}
@@ -7084,50 +6927,6 @@ Year \\
 The argument \emph{match} helps with a more focussed search, and helps
 us discard irrelevant tables.
 
-\hypertarget{practice-exercise-5-1}{%
-\subsection{Practice exercise 5}\label{practice-exercise-5-1}}
-
-Read the table(s) consisting of attendance of spectators in FIFA worlds
-cup from this \href{https://en.wikipedia.org/wiki/FIFA_World_Cup}{page}.
-Read only those table(s) that have the word \emph{`attendance'} in them.
-How many rows and columns are there in the table(s)?
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dfs }\OperatorTok{=}\NormalTok{ pd.read\_html(}\StringTok{\textquotesingle{}https://en.wikipedia.org/wiki/FIFA\_World\_Cup\textquotesingle{}}\NormalTok{,}
-\NormalTok{                       match}\OperatorTok{=}\StringTok{\textquotesingle{}reaching\textquotesingle{}}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(dfs))}
-\NormalTok{data }\OperatorTok{=}\NormalTok{ dfs[}\DecValTok{0}\NormalTok{]}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Number of rows ="}\NormalTok{,data.shape[}\DecValTok{0}\NormalTok{], }\StringTok{"and number of columns="}\NormalTok{,data.shape[}\DecValTok{1}\NormalTok{])}
-\NormalTok{data.head()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-1
-Number of rows = 25 and number of columns= 6
-\end{verbatim}
-
-\begin{longtable}[]{@{}lllllll@{}}
-\toprule\noalign{}
-& Team & Titles & Runners-up & Third place & Fourth place & Top 4
-total \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & Brazil & 5 (1958, 1962, 1970, 1994, 2002) & 2 (1950 *, 1998) & 2
-(1938, 1978) & 2 (1974, 2014 *) & 11 \\
-1 & Germany1 & 4 (1954, 1974 *, 1990, 2014) & 4 (1966, 1982, 1986, 2002)
-& 4 (1934, 1970, 2006 *, 2010) & 1 (1958) & 13 \\
-2 & Italy & 4 (1934 *, 1938, 1982, 2006) & 2 (1970, 1994) & 1 (1990 *) &
-1 (1978) & 8 \\
-3 & Argentina & 3 (1978 *, 1986, 2022) & 3 (1930, 1990, 2014) & NaN &
-NaN & 6 \\
-4 & France & 2 (1998 *, 2018) & 2 (2006, 2022) & 2 (1958, 1986) & 1
-(1982) & 7 \\
-\end{longtable}
-
 \hypertarget{reading-json-data}{%
 \subsection{Reading JSON data}\label{reading-json-data}}
 
@@ -7266,24 +7065,6 @@ https://www.ted.com/talks/chris\_bangle\_says\_gr... & 2004-05-07 &
 This JSON data contains nested structures, such as lists and
 dictionaries, which require a deeper understanding to effectively
 structure. We will address this in future lectures
-
-\hypertarget{practice-exercise-6-1}{%
-\subsection{Practice exercise 6}\label{practice-exercise-6-1}}
-
-Read the movies dataset from
-\href{https://raw.githubusercontent.com/vega/vega-datasets/master/data/movies.json}{here}.
-How many rows and columns are there in the data?
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{movies\_data }\OperatorTok{=}\NormalTok{ pd.read\_json(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/vega/vega{-}datasets/master/data/movies.json\textquotesingle{}}\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Number of rows ="}\NormalTok{,movies\_data.shape[}\DecValTok{0}\NormalTok{], }\StringTok{"and number of columns="}\NormalTok{,movies\_data.shape[}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Number of rows = 3201 and number of columns= 16
-\end{verbatim}
 
 \hypertarget{reading-data-from-a-url-in-python}{%
 \subsection{Reading data from a URL in
@@ -7434,8 +7215,211 @@ Coin: Klaytn, Price: $0.132756
 Coin: Aerodrome Finance, Price: $1.2
 \end{verbatim}
 
+\hypertarget{independent-study-2}{%
+\section{Independent Study}\label{independent-study-2}}
+
+\hypertarget{practice-exercise-1-reading-.csv-data}{%
+\subsection{\texorpdfstring{Practice exercise 1: Reading \texttt{.csv}
+data}{Practice exercise 1: Reading .csv data}}\label{practice-exercise-1-reading-.csv-data}}
+
+Read the file \emph{Top 10 Albums By Year.csv}. This file contains the
+top 10 albums for each year from 1990 to 2021. Each row corresponds to a
+unique album.
+
+\hypertarget{section-17}{%
+\subsubsection{}\label{section-17}}
+
+Print the first 5 rows of the data.
+
+\hypertarget{section-18}{%
+\subsubsection{}\label{section-18}}
+
+How many rows and columns are there in the data?
+
+\hypertarget{section-19}{%
+\subsubsection{}\label{section-19}}
+
+Print the summary statistics of the data, and answer the following
+questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What proportion of albums have 15 or lesser tracks? Mention a range
+  for the proportion.
+\item
+  What is the mean length of a track (in minutes)?
+\end{enumerate}
+
+\hypertarget{section-20}{%
+\subsubsection{}\label{section-20}}
+
+Find the album having the highest worldwide sales per year, and its
+artist.
+
+\hypertarget{section-21}{%
+\subsubsection{}\label{section-21}}
+
+Subset the data to include only Hip-Hop albums. How many Hip\_Hop albums
+are there?
+
+\hypertarget{section-22}{%
+\subsubsection{}\label{section-22}}
+
+Which album amongst hip-hop has the higest mean sales per year per
+track, and who is its artist?
+
+\hypertarget{practice-exercise-2-reading-.txt-data}{%
+\subsection{\texorpdfstring{Practice exercise 2: Reading \texttt{.txt}
+data}{Practice exercise 2: Reading .txt data}}\label{practice-exercise-2-reading-.txt-data}}
+
+Read the file \emph{bestseller\_books.txt}. It contains top 50
+best-selling books on amazon from 2009 to 2019. Identify the delimiter
+without opening the file with Notepad or a text-editing software. How
+many rows and columns are there in the dataset?
+
+\textbf{Solution:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The delimiter seems to be \textquotesingle{};\textquotesingle{} based on the output of the above code}
+\NormalTok{bestseller\_books }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../Data/bestseller\_books.txt\textquotesingle{}}\NormalTok{,sep}\OperatorTok{=}\StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_books.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0.1 & Unnamed: 0 & Name & Author & User Rating & Reviews &
+Price & Year & Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0 & 0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 &
+2016 & Non Fiction \\
+1 & 1 & 1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 2 & 2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson
+& 4.7 & 18979 & 15 & 2018 & Non Fiction \\
+3 & 3 & 3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 &
+2017 & Fiction \\
+4 & 4 & 4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The file read with \textquotesingle{};\textquotesingle{} as the delimited is correct}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"The file has"}\NormalTok{,bestseller\_books.shape[}\DecValTok{0}\NormalTok{],}\StringTok{"rows and"}\NormalTok{,bestseller\_books.shape[}\DecValTok{1}\NormalTok{],}\StringTok{"columns"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+The file has 550 rows and 9 columns
+\end{verbatim}
+
+Alternatively, you can use the argument \texttt{sep\ =\ None}, and
+\texttt{engine\ =\ \textquotesingle{}python\textquotesingle{}}. The
+default engine is C. However, the `python' engine has a `sniffer' tool
+which may identify the delimiter automatically.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bestseller\_books }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}../data/bestseller\_books.txt\textquotesingle{}}\NormalTok{,sep}\OperatorTok{=}\VariableTok{None}\NormalTok{, engine }\OperatorTok{=} \StringTok{\textquotesingle{}python\textquotesingle{}}\NormalTok{)}
+\NormalTok{bestseller\_books.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\toprule\noalign{}
+& Unnamed: 0.1 & Unnamed: 0 & Name & Author & User Rating & Reviews &
+Price & Year & Genre \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0 & 0 & 10-Day Green Smoothie Cleanse & JJ Smith & 4.7 & 17350 & 8 &
+2016 & Non Fiction \\
+1 & 1 & 1 & 11/22/63: A Novel & Stephen King & 4.6 & 2052 & 22 & 2011 &
+Fiction \\
+2 & 2 & 2 & 12 Rules for Life: An Antidote to Chaos & Jordan B. Peterson
+& 4.7 & 18979 & 15 & 2018 & Non Fiction \\
+3 & 3 & 3 & 1984 (Signet Classics) & George Orwell & 4.7 & 21424 & 6 &
+2017 & Fiction \\
+4 & 4 & 4 & 5,000 Awesome Facts (About Everything!) (Natio... & National
+Geographic Kids & 4.8 & 7665 & 12 & 2019 & Non Fiction \\
+\end{longtable}
+
+\hypertarget{practice-exercise-3-reading-html-data}{%
+\subsection{Practice exercise 3: Reading HTML
+data}\label{practice-exercise-3-reading-html-data}}
+
+Read the table(s) consisting of attendance of spectators in FIFA worlds
+cup from this \href{https://en.wikipedia.org/wiki/FIFA_World_Cup}{page}.
+Read only those table(s) that have the word \emph{`attendance'} in them.
+How many rows and columns are there in the table(s)?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfs }\OperatorTok{=}\NormalTok{ pd.read\_html(}\StringTok{\textquotesingle{}https://en.wikipedia.org/wiki/FIFA\_World\_Cup\textquotesingle{}}\NormalTok{,}
+\NormalTok{                       match}\OperatorTok{=}\StringTok{\textquotesingle{}reaching\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(dfs))}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ dfs[}\DecValTok{0}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Number of rows ="}\NormalTok{,data.shape[}\DecValTok{0}\NormalTok{], }\StringTok{"and number of columns="}\NormalTok{,data.shape[}\DecValTok{1}\NormalTok{])}
+\NormalTok{data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+1
+Number of rows = 25 and number of columns= 6
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& Team & Titles & Runners-up & Third place & Fourth place & Top 4
+total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Brazil & 5 (1958, 1962, 1970, 1994, 2002) & 2 (1950 *, 1998) & 2
+(1938, 1978) & 2 (1974, 2014 *) & 11 \\
+1 & Germany1 & 4 (1954, 1974 *, 1990, 2014) & 4 (1966, 1982, 1986, 2002)
+& 4 (1934, 1970, 2006 *, 2010) & 1 (1958) & 13 \\
+2 & Italy & 4 (1934 *, 1938, 1982, 2006) & 2 (1970, 1994) & 1 (1990 *) &
+1 (1978) & 8 \\
+3 & Argentina & 3 (1978 *, 1986, 2022) & 3 (1930, 1990, 2014) & NaN &
+NaN & 6 \\
+4 & France & 2 (1998 *, 2018) & 2 (2006, 2022) & 2 (1958, 1986) & 1
+(1982) & 7 \\
+\end{longtable}
+
+\hypertarget{practice-exercise-4-reading-json-data}{%
+\subsection{Practice exercise 4: Reading JSON
+data}\label{practice-exercise-4-reading-json-data}}
+
+Read the movies dataset from
+\href{https://raw.githubusercontent.com/vega/vega-datasets/master/data/movies.json}{here}.
+How many rows and columns are there in the data?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movies\_data }\OperatorTok{=}\NormalTok{ pd.read\_json(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/vega/vega{-}datasets/master/data/movies.json\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Number of rows ="}\NormalTok{,movies\_data.shape[}\DecValTok{0}\NormalTok{], }\StringTok{"and number of columns="}\NormalTok{,movies\_data.shape[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Number of rows = 3201 and number of columns= 16
+\end{verbatim}
+
 \hypertarget{numpy}{%
 \chapter{NumPy}\label{numpy}}
+
+\includegraphics{index_files/mediabag/mg8O3kd.png}
 
 \textbf{NumPy} is a foundational library in Python, providing support
 for large, multi-dimensional arrays and matrices, along with a variety
@@ -7448,10 +7432,8 @@ calculations quickly. Moreover, popular libraries like \texttt{Pandas},
 making it essential to understand for implementing and optimizing
 machine learning models.
 
-\includegraphics{index_files/mediabag/mg8O3kd.png}
-
-\hypertarget{learning-objectives}{%
-\section{Learning Objectives}\label{learning-objectives}}
+\hypertarget{learning-objectives-2}{%
+\section{Learning Objectives}\label{learning-objectives-2}}
 
 By the end of this lecture, students should be able to:
 
@@ -9021,6 +9003,286 @@ Element-wise Multiplication after reshaping:
  [40 55 72]]
 \end{verbatim}
 
+\hypertarget{converting-between-numpy-arrays-and-pandas-dataframes}{%
+\section{Converting Between NumPy Arrays and pandas
+DataFrames}\label{converting-between-numpy-arrays-and-pandas-dataframes}}
+
+\hypertarget{why-conversion-matters}{%
+\subsection{Why Conversion Matters}\label{why-conversion-matters}}
+
+While both pandas and NumPy are integral to data science, they serve
+different purposes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  pandas:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Foucses on \textbf{data manipulation} and analysis
+  \item
+    Provided intuitive tools to work with \textbf{tabular data}(e.g.,
+    labeled rows and columns).
+  \end{itemize}
+\item
+  NumPy:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Optimized for \textbf{numerical computations}.
+  \item
+    Offers mathematical functions like matrix multiplication, matrix
+    decomposition, and eigenvalue computations, which pandas does not
+    directly support.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{converting-a-numpy-array-to-a-pandas-dataframe}{%
+\subsection{Converting a NumPy Array to a pandas
+DataFrame}\label{converting-a-numpy-array-to-a-pandas-dataframe}}
+
+You have numerical data stored in a NumPy array and want to apply pandas
+functionalities like labeling rows/columns or analyzing tabular data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a NumPy array}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{], [}\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{], [}\DecValTok{70}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{90}\NormalTok{]])}
+
+\CommentTok{\# Convert to a DataFrame}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(data, columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\# Display the DataFrame}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+    A   B   C
+0  10  20  30
+1  40  50  60
+2  70  80  90
+\end{verbatim}
+
+\textbf{Key Points}
+
+\begin{itemize}
+\tightlist
+\item
+  Use the \texttt{pd.DataFrame()} constructor to create a DataFrame from
+  a NumPy array.
+\item
+  You can specify:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Column names} using the \texttt{columns} parameter.
+  \item
+    \textbf{Row labels} using the \texttt{index} parameter.
+  \end{itemize}
+\item
+  If \texttt{columns} or \texttt{index} are not specified, pandas
+  assigns default labels:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Columns: \texttt{0,\ 1,\ 2,\ ...}
+  \item
+    Rows: \texttt{0,\ 1,\ 2,\ ...}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{converting-a-pandas-dataframe-to-a-numpy-array}{%
+\subsection{Converting a pandas DataFrame to a NumPy
+Array}\label{converting-a-pandas-dataframe-to-a-numpy-array}}
+
+You have a pandas DataFrame and want to perform NumPy operations for
+optimized numerical processing.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert DataFrame to NumPy array}
+\NormalTok{array }\OperatorTok{=}\NormalTok{ df.to\_numpy()}
+
+\CommentTok{\# Display the NumPy array}
+\BuiltInTok{print}\NormalTok{(array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[10 20 30]
+ [40 50 60]
+ [70 80 90]]
+\end{verbatim}
+
+\textbf{Key Points} * Use \texttt{.to\_numpy()} for conversion. *
+\texttt{.values} is an older method but still works (not recommended for
+newer code).
+
+\hypertarget{preserving-index-and-column-information}{%
+\subsection{Preserving Index and Column
+Information}\label{preserving-index-and-column-information}}
+
+When converting a DataFrame to an array and back, ensure row/column
+labels are retained.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert DataFrame to NumPy array}
+\NormalTok{array\_with\_labels }\OperatorTok{=}\NormalTok{ df.to\_numpy()}
+
+\CommentTok{\# Convert back to a DataFrame}
+\NormalTok{df\_restored }\OperatorTok{=}\NormalTok{ pd.DataFrame(array\_with\_labels, columns}\OperatorTok{=}\NormalTok{df.columns, index}\OperatorTok{=}\NormalTok{df.index)}
+
+\CommentTok{\# Display the restored DataFrame}
+\BuiltInTok{print}\NormalTok{(df\_restored)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+    A   B   C
+0  10  20  30
+1  40  50  60
+2  70  80  90
+\end{verbatim}
+
+Note that you need to manually pass \texttt{columns} and \texttt{index}
+back when re-creating the DataFrame.
+
+\hypertarget{practice-user-cases}{%
+\subsection{Practice User Cases}\label{practice-user-cases}}
+
+\hypertarget{case-1-adding-labels-to-a-numpy-array}{%
+\subsubsection{Case 1: Adding labels to a NumPy
+Array}\label{case-1-adding-labels-to-a-numpy-array}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# NumPy array without labels}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ np.random.rand(}\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+
+\CommentTok{\# Add labels by converting to a DataFrame}
+\NormalTok{df\_with\_labels }\OperatorTok{=}\NormalTok{ pd.DataFrame(data, columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}Feature1\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Feature2\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Feature3\textquotesingle{}}\NormalTok{])}
+
+\BuiltInTok{print}\NormalTok{(df\_with\_labels)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Feature1  Feature2  Feature3
+0  0.867644  0.478449  0.684584
+1  0.378309  0.860889  0.096055
+2  0.168311  0.981326  0.685720
+3  0.459235  0.340368  0.396904
+\end{verbatim}
+
+\hypertarget{case-2-perform-numerical-computations}{%
+\subsubsection{Case 2: Perform Numerical
+Computations}\label{case-2-perform-numerical-computations}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# DataFrame for tabular manipulation}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{], }\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{]\})}
+
+\CommentTok{\# Convert to NumPy for computations}
+\NormalTok{array }\OperatorTok{=}\NormalTok{ df.to\_numpy()}
+
+\CommentTok{\# Perform a NumPy operation}
+\NormalTok{array\_squared }\OperatorTok{=}\NormalTok{ np.square(array)}
+
+\CommentTok{\# Convert back to a DataFrame}
+\NormalTok{df\_squared }\OperatorTok{=}\NormalTok{ pd.DataFrame(array\_squared, columns}\OperatorTok{=}\NormalTok{df.columns)}
+
+\BuiltInTok{print}\NormalTok{(df\_squared)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   A   B
+0  1  16
+1  4  25
+2  9  36
+\end{verbatim}
+
+\hypertarget{best-practices}{%
+\subsection{Best Practices}\label{best-practices}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Check Data Types}: Ensure the data in your DataFrame is
+  numerical before converting to NumPy for computations.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(df.dtypes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+A    int64
+B    int64
+dtype: object
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Handle Missing Values}: Fill or drop missing values (NaN) in
+  DataFrames before conversion to avoid errors in NumPy.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.fillna(}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \textbf{Optimize for Performance}: Use NumPy for heavy numerical
+  computations and pandas for data manipulation.
+\item
+  \textbf{Convert Back to pandas for Analysis}: After computations,
+  convert the NumPy array back to pandas if you need labeled data for
+  further analysis or visualization.
+\end{itemize}
+
+\hypertarget{comparison-table}{%
+\subsection{Comparison Table}\label{comparison-table}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2840}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3827}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Operation}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{pandas DataFrame}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{NumPy Array}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Row/Column Labels} & Yes & No \\
+\textbf{Indexing} & Label-based (\texttt{loc}, \texttt{iloc}) &
+Integer-based only \\
+\textbf{Mathematical Ops} & Slower (handles metadata) & Faster \\
+\textbf{Missing Data} & Supports (\texttt{NaN}) & Does not support
+(\texttt{NaN}) \\
+\end{longtable}
+
 \hypertarget{random-number-generation-in-numpy}{%
 \section{Random Number Generation in
 NumPy}\label{random-number-generation-in-numpy}}
@@ -9201,8 +9463,8 @@ slower than NumPy's random module.
 \hypertarget{practice-exercise-1-1}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-1}}
 
-\hypertarget{section-17}{%
-\subsubsection{}\label{section-17}}
+\hypertarget{section-23}{%
+\subsubsection{}\label{section-23}}
 
 Read the coordinates of the capital cities of the world from
 https://gist.github.com/ofou/df09a6834a8421b4f376c875194915c9 .
@@ -9507,11 +9769,14 @@ Based on the above table, Ben should go to Kroger, Barbara to Target and
 Beth can go to either store.
 
 As the complexity of operations increases, the number of nested
-for-loops also grows, making the code more cumbersome and harder to
-manage. In contrast, the approach using NumPy arrays remains concise and
-straightforward, regardless of complexity. Vectorized computations are
-not only cleaner but also significantly faster, providing a more
-efficient solution.
+for-loops tends to grow, making the code more cumbersome and difficult
+to manage. In contrast, leveraging NumPy arrays allows for concise and
+straightforward implementation, regardless of the complexity. Vectorized
+computations are not only cleaner but also significantly faster,
+offering a more efficient solution. To take advantage of this, you first
+need to convert a pandas DataFrame to a NumPy array for matrix
+multiplication. Once the computation is complete, you can convert the
+results back to a pandas DataFrame for further analysis or display
 
 \hypertarget{practice-exercise-3-1}{%
 \subsection{Practice exercise 3}\label{practice-exercise-3-1}}
@@ -9707,9 +9972,10 @@ IMDB users prefer \emph{drama}, and are amused the least by
 would rather watch \emph{comedy} than \emph{horror} movies, on an
 average.
 
-\hypertarget{practice-exercise-4-random-number-generation-using-numpy}{%
-\subsubsection{Practice exercise 4: Random number generation using
-NumPy}\label{practice-exercise-4-random-number-generation-using-numpy}}
+\hypertarget{practice-exercise-4-1}{%
+\subsection{Practice exercise 4:}\label{practice-exercise-4-1}}
+
+\textbf{Random number generation using NumPy}
 
 Suppose 500 people eat at Food cart 1, and another 500 eat at Food cart
 2, everyday.
@@ -9789,8 +10055,8 @@ Time taken =  0.008000850677490234
 
 The approach with NumPy is much faster than the one with loops.
 
-\hypertarget{practice-exercise-5-2}{%
-\subsection{Practice exercise 5}\label{practice-exercise-5-2}}
+\hypertarget{practice-exercise-5-1}{%
+\subsection{Practice exercise 5}\label{practice-exercise-5-1}}
 
 \textbf{Bootstrapping:} Find the 95\% confidence interval of mean profit
 for `Action' movies, using Bootstrapping.
@@ -12715,15 +12981,15 @@ are Asian! These songs indeed sound similar to \emph{drivers license}!
 \hypertarget{practice-exercise-1-2}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-2}}
 
-\hypertarget{section-18}{%
-\subsubsection{}\label{section-18}}
+\hypertarget{section-24}{%
+\subsubsection{}\label{section-24}}
 
 Read the file \emph{Top 10 Albums By Year.csv}. This file contains the
 top 10 albums for each year from 1990 to 2021. Each row corresponds to a
 unique album.
 
-\hypertarget{section-19}{%
-\subsubsection{}\label{section-19}}
+\hypertarget{section-25}{%
+\subsubsection{}\label{section-25}}
 
 Print the summary statistics of the data, and answer the following
 questions:
@@ -12738,14 +13004,14 @@ questions:
   What is the mean length of a track (in minutes)?
 \end{enumerate}
 
-\hypertarget{section-20}{%
-\subsubsection{}\label{section-20}}
+\hypertarget{section-26}{%
+\subsubsection{}\label{section-26}}
 
 Why is \texttt{Worldwide\ Sales} not included in the summary statistics
 table printed in the above step?
 
-\hypertarget{section-21}{%
-\subsubsection{}\label{section-21}}
+\hypertarget{section-27}{%
+\subsubsection{}\label{section-27}}
 
 Update the DataFrame so that \texttt{Worldwide\ Sales} is included in
 the summary statistics table. Print the summary statistics table.
@@ -12756,28 +13022,28 @@ numeric() by the python compiler. To avoid getting an error, use the
 \texttt{errors} argument of \texttt{to\_numeric()} to force such
 conversions to NaN (missing value).
 
-\hypertarget{section-22}{%
-\subsubsection{}\label{section-22}}
+\hypertarget{section-28}{%
+\subsubsection{}\label{section-28}}
 
 Create a new column called \texttt{mean\_sales\_per\_year} that computes
 the average worldwide sales per year for each album, assuming that the
 worldwide sales are as of 2022. Print the first 5 rows of the updated
 DataFrame.
 
-\hypertarget{section-23}{%
-\subsubsection{}\label{section-23}}
+\hypertarget{section-29}{%
+\subsubsection{}\label{section-29}}
 
 Find the album having the highest worldwide sales per year, and its
 artist.
 
-\hypertarget{section-24}{%
-\subsubsection{}\label{section-24}}
+\hypertarget{section-30}{%
+\subsubsection{}\label{section-30}}
 
 Subset the data to include only Hip-Hop albums. How many Hip\_Hop albums
 are there?
 
-\hypertarget{section-25}{%
-\subsubsection{}\label{section-25}}
+\hypertarget{section-31}{%
+\subsubsection{}\label{section-31}}
 
 Which album amongst hip-hop has the higest mean sales per year per
 track, and who is its artist?
@@ -12785,26 +13051,26 @@ track, and who is its artist?
 \hypertarget{practice-exercise-2-2}{%
 \subsection{Practice exercise 2}\label{practice-exercise-2-2}}
 
-\hypertarget{section-26}{%
-\subsubsection{}\label{section-26}}
+\hypertarget{section-32}{%
+\subsubsection{}\label{section-32}}
 
 Read the file \emph{STAT303-1 survey for data analysis.csv}.
 
-\hypertarget{section-27}{%
-\subsubsection{}\label{section-27}}
+\hypertarget{section-33}{%
+\subsubsection{}\label{section-33}}
 
 How many observations and variables are there in the data?
 
-\hypertarget{section-28}{%
-\subsubsection{}\label{section-28}}
+\hypertarget{section-34}{%
+\subsubsection{}\label{section-34}}
 
 Rename all the columns of the data, except the first two columns, with
 the shorter names in the list \texttt{new\_col\_names} given below. The
 order of column names in the list is the same as the order in which the
 columns are to be renamed starting with the third column from the left.
 
-\hypertarget{section-29}{%
-\subsubsection{}\label{section-29}}
+\hypertarget{section-35}{%
+\subsubsection{}\label{section-35}}
 
 Rename the following columns again:
 
@@ -12820,32 +13086,32 @@ Rename the following columns again:
 \textbf{Hint:} Use the function
 \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html}{rename()}
 
-\hypertarget{section-30}{%
-\subsubsection{}\label{section-30}}
+\hypertarget{section-36}{%
+\subsubsection{}\label{section-36}}
 
 Find the proportion of people going to more than 4 parties per month.
 Use the variable \texttt{parties\_per\_month}.
 
-\hypertarget{section-31}{%
-\subsubsection{}\label{section-31}}
+\hypertarget{section-37}{%
+\subsubsection{}\label{section-37}}
 
 Among the people who go to more than 4 parties a month, what proportion
 of them are introverts?
 
-\hypertarget{section-32}{%
-\subsubsection{}\label{section-32}}
+\hypertarget{section-38}{%
+\subsubsection{}\label{section-38}}
 
 Find the proportion of people in each category of the variable
 \texttt{how\_happy}.
 
-\hypertarget{section-33}{%
-\subsubsection{}\label{section-33}}
+\hypertarget{section-39}{%
+\subsubsection{}\label{section-39}}
 
 Among the people who go to more than 4 parties a month, what proportion
 of them are either \texttt{Pretty\ happy} or \texttt{Very\ happy}?
 
-\hypertarget{section-34}{%
-\subsubsection{}\label{section-34}}
+\hypertarget{section-40}{%
+\subsubsection{}\label{section-40}}
 
 Examine the column \texttt{num\_insta\_followers}. Some numbers in the
 column contain a comma(\texttt{,}) or a
@@ -12856,20 +13122,20 @@ numbers in the column.
 \href{https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html}{str.replace()}
 of the Pandas Series class.
 
-\hypertarget{section-35}{%
-\subsubsection{}\label{section-35}}
+\hypertarget{section-41}{%
+\subsubsection{}\label{section-41}}
 
 Convert the column \texttt{num\_insta\_followers} to numeric. Coerce the
 errors.
 
-\hypertarget{section-36}{%
-\subsubsection{}\label{section-36}}
+\hypertarget{section-42}{%
+\subsubsection{}\label{section-42}}
 
 What is the mean \texttt{internet\_hours\_per\_day} for the top 46
 people in terms of number of instagram followers?
 
-\hypertarget{section-37}{%
-\subsubsection{}\label{section-37}}
+\hypertarget{section-43}{%
+\subsubsection{}\label{section-43}}
 
 What is the mean \texttt{internet\_hours\_per\_day} for the remaining
 people?
@@ -12877,8 +13143,8 @@ people?
 \hypertarget{practice-exercise-3-2}{%
 \subsection{Practice exercise 3}\label{practice-exercise-3-2}}
 
-\hypertarget{section-38}{%
-\subsubsection{}\label{section-38}}
+\hypertarget{section-44}{%
+\subsubsection{}\label{section-44}}
 
 Use the updated dataset from Practice exercise 2.
 
@@ -12913,6 +13179,1159 @@ Each of the above variables has values - \texttt{Agree} /
 \end{enumerate}
 
 Two of the above methods avoid a \texttt{for}-loop. Which ones?
+
+\hypertarget{more-on-pandas}{%
+\chapter{More on Pandas}\label{more-on-pandas}}
+
+\hypertarget{types-of-data}{%
+\section{Types of Data}\label{types-of-data}}
+
+Each column(feature) in a pandas dataframe has a datatype associated
+with it. Those datatypes can be grouped into \textbf{Numerical},
+\textbf{Categorical}, and \textbf{Dates}.
+
+\begin{verbatim}
+<IPython.core.display.Image object>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movie\_ratings }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./datasets/movie\_ratings.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{movie\_ratings.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Opal Dreams & 14443 & 14443 & 9000000 & Nov 22 2006 & PG/PG-13 &
+Adapted screenplay & Drama & Fiction & 6.5 & 468 \\
+1 & Major Dundee & 14873 & 14873 & 3800000 & Apr 07 1965 & PG/PG-13 &
+Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 \\
+2 & The Informers & 315000 & 315000 & 18000000 & Apr 24 2009 & R &
+Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 \\
+3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & Jul 25 2003 & R &
+Adapted screenplay & Comedy & Fiction & 6.9 & 13510 \\
+4 & The Last Sin Eater & 388390 & 388390 & 2200000 & Feb 09 2007 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 \\
+\end{longtable}
+
+The \texttt{dtypes} property is used to find the data types associated
+with each column in the DataFrame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movie\_ratings.dtypes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Title                 object
+US Gross               int64
+Worldwide Gross        int64
+Production Budget      int64
+Release Date          object
+MPAA Rating           object
+Source                object
+Major Genre           object
+Creative Type         object
+IMDB Rating          float64
+IMDB Votes             int64
+dtype: object
+\end{verbatim}
+
+\hypertarget{available-data-types-and-associated-built-in-functions}{%
+\subsection{Available Data Types and Associated Built-in
+Functions}\label{available-data-types-and-associated-built-in-functions}}
+
+In a DataFrame, columns can have different data types. Here are the
+common data types you'll encounter and some built-in functions
+associated with each type:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Numerical Data (int, float)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Built-in functions: \texttt{mean()}, \texttt{sum()}, \texttt{min()},
+    \texttt{max()}, \texttt{std()}, \texttt{median()},
+    \texttt{quantile()}, etc.
+  \end{itemize}
+\item
+  \textbf{Object Data (str or mixed types)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Built-in functions: \texttt{str.contains()},
+    \texttt{str.startswith()}, \texttt{str.endswith()},
+    \texttt{str.lower()}, \texttt{str.upper()}, \texttt{str.replace()},
+    etc.
+  \end{itemize}
+\item
+  \textbf{Datetime Data (dates)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Built-in functions: \texttt{dt.year}, \texttt{dt.month},
+    \texttt{dt.day}, \texttt{dt.strftime()}, \texttt{dt.weekday()},
+    \texttt{dt.hour}, etc.
+  \end{itemize}
+\end{enumerate}
+
+These functions help in exploring and transforming the data effectively
+depending on the type of data in each column.
+
+\hypertarget{data-type-filtering}{%
+\subsection{Data Type Filtering}\label{data-type-filtering}}
+
+We can filter the columns based on its data types
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# select just categorical(object) columns}
+\NormalTok{movie\_ratings.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}object\textquotesingle{}}\NormalTok{).head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule\noalign{}
+& Title & Release Date & MPAA Rating & Source & Major Genre & Creative
+Type \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Opal Dreams & Nov 22 2006 & PG/PG-13 & Adapted screenplay & Drama &
+Fiction \\
+1 & Major Dundee & Apr 07 1965 & PG/PG-13 & Adapted screenplay &
+Western/Musical & Fiction \\
+2 & The Informers & Apr 24 2009 & R & Adapted screenplay &
+Horror/Thriller & Fiction \\
+3 & Buffalo Soldiers & Jul 25 2003 & R & Adapted screenplay & Comedy &
+Fiction \\
+4 & The Last Sin Eater & Feb 09 2007 & PG/PG-13 & Adapted screenplay &
+Drama & Fiction \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# select the numeric columns}
+\NormalTok{movie\_ratings.select\_dtypes(include}\OperatorTok{=}\StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{).head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& US Gross & Worldwide Gross & Production Budget & IMDB Rating & IMDB
+Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 14443 & 14443 & 9000000 & 6.5 & 468 \\
+1 & 14873 & 14873 & 3800000 & 6.7 & 2588 \\
+2 & 315000 & 315000 & 18000000 & 5.2 & 7595 \\
+3 & 353743 & 353743 & 15000000 & 6.9 & 13510 \\
+4 & 388390 & 388390 & 2200000 & 5.7 & 1012 \\
+\end{longtable}
+
+\hypertarget{data-type-conversion}{%
+\subsection{Data Type Conversion}\label{data-type-conversion}}
+
+Often, after the inital reading, we need to convert the datatypes of
+some of the columns to make them suitable for analysis,as the available
+functions and operations depend on the column's data type. For example,
+the datatype of Release Date in the DataFrame \texttt{movie\_ratings} is
+object. To perform datetime related computations on this variable, we'll
+need to convert it to a datatime format. We'll use the Pandas function
+\texttt{to\_datatime()} to covert it to a datatime format. Similar
+functions such as \texttt{to\_numeric()}, \texttt{to\_string()} etc.,
+can be used for other conversions.
+
+In Pandas, the
+\texttt{errors=\textquotesingle{}coerce\textquotesingle{}} parameter is
+often used in the context of data conversion, specifically when using
+the \texttt{pd.to\_numeric} function. This argument tells Pandas to
+convert values that it can and set the ones it cannot convert to
+\texttt{NaN}. It's a way of gracefully handling errors without raising
+an exception. Read the textbook for an example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# check the datatype of release data column }
+\BuiltInTok{print}\NormalTok{(movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dtypes)}
+\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+object
+\end{verbatim}
+
+\begin{verbatim}
+0    Nov 22 2006
+1    Apr 07 1965
+2    Apr 24 2009
+3    Jul 25 2003
+4    Feb 09 2007
+Name: Release Date, dtype: object
+\end{verbatim}
+
+Next, we'll convert the \texttt{Release\ Date} column in the DataFrame
+to the \texttt{datetime} format to facilitate further analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\# Let\textquotesingle{}s check the datatype of release data column again}
+\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dtypes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+dtype('<M8[ns]')
+\end{verbatim}
+
+\texttt{dtype(\textquotesingle{}\textless{}M8{[}ns{]}\textquotesingle{})}
+means a 64-bit datetime object with nanosecond precision stored in
+little-endian format. This data type is commonly used to represent
+timestamps in high-resolution time series data.
+
+\hypertarget{working-with-datatime-data}{%
+\subsection{\texorpdfstring{Working with \texttt{datatime}
+Data}{Working with datatime Data}}\label{working-with-datatime-data}}
+
+\hypertarget{the-dt-accessor}{%
+\subsubsection{\texorpdfstring{the \texttt{dt}
+accessor}{the dt accessor}}\label{the-dt-accessor}}
+
+The \texttt{.dt} accessor is a powerful tool in pandas that allows you
+to extract and manipulate components of datetime columns in a DataFrame.
+This is useful for analysis and feature engineering when dealing with
+time-related data.
+
+You can extract various parts of a datetime column using \texttt{.dt}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1776}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4393}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3832}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Attribute
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{.dt.year} & Extracts the year &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.year} \\
+\texttt{.dt.month} & Extracts the month (1-12) &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.month} \\
+\texttt{.dt.day} & Extracts the day of the month (1-31) &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.day} \\
+\texttt{.dt.hour} & Extracts the hour (0-23) &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.hour} \\
+\texttt{.dt.minute} & Extracts the minute &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.minute} \\
+\texttt{.dt.second} & Extracts the second &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.second} \\
+\texttt{.dt.weekday} & Extracts the day of the week (0=Monday, 6=Sunday)
+&
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.weekday} \\
+\texttt{.dt.dayofyear} & Extracts the day of the year (1-366) &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.dayofyear} \\
+\texttt{.dt.is\_leap\_year} & Checks if the year is a leap year &
+\texttt{df{[}\textquotesingle{}Release\ Date\textquotesingle{}{]}.dt.is\_leap\_year} \\
+\end{longtable}
+
+Let's add the year for the movie\_ratings dataframe next
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extracting the year from the release date}
+\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Release Year\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dt.year}
+\NormalTok{movie\_ratings.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes & Release Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Opal Dreams & 14443 & 14443 & 9000000 & 2006-11-22 & PG/PG-13 &
+Adapted screenplay & Drama & Fiction & 6.5 & 468 & 2006 \\
+1 & Major Dundee & 14873 & 14873 & 3800000 & 1965-04-07 & PG/PG-13 &
+Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 & 1965 \\
+2 & The Informers & 315000 & 315000 & 18000000 & 2009-04-24 & R &
+Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 & 2009 \\
+3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & 2003-07-25 & R &
+Adapted screenplay & Comedy & Fiction & 6.9 & 13510 & 2003 \\
+4 & The Last Sin Eater & 388390 & 388390 & 2200000 & 2007-02-09 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 & 2007 \\
+\end{longtable}
+
+In your pandas dataframe, if having start date and end date, your can
+calculate the time duration between them like below
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# let\textquotesingle{}s calculate the days since release till Jan 1st 2024}
+\NormalTok{movie\_ratings[}\StringTok{\textquotesingle{}Days Since Release\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ (pd.Timestamp(}\StringTok{\textquotesingle{}2024{-}01{-}01\textquotesingle{}}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{]).dt.days}
+\NormalTok{movie\_ratings.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes & Days Since Release \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Opal Dreams & 14443 & 14443 & 9000000 & 2006-11-22 & PG/PG-13 &
+Adapted screenplay & Drama & Fiction & 6.5 & 468 & 6249 \\
+1 & Major Dundee & 14873 & 14873 & 3800000 & 1965-04-07 & PG/PG-13 &
+Adapted screenplay & Western/Musical & Fiction & 6.7 & 2588 & 21453 \\
+2 & The Informers & 315000 & 315000 & 18000000 & 2009-04-24 & R &
+Adapted screenplay & Horror/Thriller & Fiction & 5.2 & 7595 & 5365 \\
+3 & Buffalo Soldiers & 353743 & 353743 & 15000000 & 2003-07-25 & R &
+Adapted screenplay & Comedy & Fiction & 6.9 & 13510 & 7465 \\
+4 & The Last Sin Eater & 388390 & 388390 & 2200000 & 2007-02-09 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.7 & 1012 & 6170 \\
+\end{longtable}
+
+\textbf{Filtering Data}: Use extracted datetime components to filter
+rows. Aggregation and grouping using datetime components will be covered
+in future chapters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter rows where the release month is January}
+\NormalTok{january\_releases }\OperatorTok{=}\NormalTok{ movie\_ratings[movie\_ratings[}\StringTok{\textquotesingle{}Release Date\textquotesingle{}}\NormalTok{].dt.month }\OperatorTok{==} \DecValTok{1}\NormalTok{]}
+\NormalTok{january\_releases.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+& Title & US Gross & Worldwide Gross & Production Budget & Release Date
+& MPAA Rating & Source & Major Genre & Creative Type & IMDB Rating &
+IMDB Votes & Release Year & Days Since Release \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+15 & Thr3e & 1008849 & 1060418 & 2400000 & 2007-01-05 & PG/PG-13 &
+Adapted screenplay & Horror/Thriller & Fiction & 5.0 & 2825 & 2007 &
+6205 \\
+57 & Impostor & 6114237 & 6114237 & 40000000 & 2002-01-04 & PG/PG-13 &
+Adapted screenplay & Horror/Thriller & Fiction & 6.0 & 9020 & 2002 &
+8032 \\
+62 & The Last Station & 6616974 & 6616974 & 18000000 & 2010-01-15 & R &
+Adapted screenplay & Drama & Non-Fiction & 7.0 & 3465 & 2010 & 5099 \\
+63 & The Big Bounce & 6471394 & 6626115 & 50000000 & 2004-01-30 &
+PG/PG-13 & Adapted screenplay & Comedy & Fiction & 4.8 & 9195 & 2004 &
+7276 \\
+84 & Not Easily Broken & 10572742 & 10572742 & 5000000 & 2009-01-09 &
+PG/PG-13 & Adapted screenplay & Drama & Fiction & 5.2 & 1010 & 2009 &
+5470 \\
+\end{longtable}
+
+\hypertarget{working-with-object-data}{%
+\subsection{\texorpdfstring{Working with \texttt{object}
+Data}{Working with object Data}}\label{working-with-object-data}}
+
+In pandas, the \texttt{object} data type is a flexible data type that
+can store a mix of text (strings), mixed types, or arbitrary Python
+objects. It is commonly used for string data and is a key part of
+working with categorical or unstructured data in pandas.
+
+Similar to datetime objects having a \texttt{dt} accessor, a number of
+specialized string methods are available when using the \texttt{str}
+accessor. These methods have in general matching names with the
+equivalent built-in string methods for single elements, but are applied
+element-wise on each of the values of the columns.
+
+\hypertarget{the-str-accessor-in-pandas}{%
+\subsubsection{\texorpdfstring{the \texttt{str} accessor in
+pandas}{the str accessor in pandas}}\label{the-str-accessor-in-pandas}}
+
+The \texttt{str} accessor in pandas provides a wide range of string
+methods that allow for efficient and convenient text processing on an
+entire Series of strings. Here are some commonly used str methods:
+
+\begin{itemize}
+\tightlist
+\item
+  String splitting: \texttt{str.split()}
+\item
+  String joining: \texttt{str.join()}
+\item
+  Substrings: \texttt{str.slice(start,\ stop)}, \texttt{str{[}0{]}}
+\item
+  String Case Conversion: \texttt{str.lower()}, \texttt{str.upper()},
+  \texttt{str.capitalize()}
+\item
+  Whitespace Removal: \texttt{str.strip()}, \texttt{str.lstrip()},
+  \texttt{str.rstrip()}
+\item
+  Replacing and Removing:
+  \texttt{str.replace(\textquotesingle{}old\textquotesingle{},\ \textquotesingle{}new\textquotesingle{})}
+\item
+  Pattern matching and extraction:
+  \texttt{str.contains(\textquotesingle{}pattern\textquotesingle{})},
+  \texttt{startswith(\textquotesingle{}prefix\textquotesingle{})},
+  \texttt{endswith(\textquotesingle{}suffix\textquotesingle{})}
+\item
+  String length and counting: \texttt{str.len()}, \texttt{str.count()}
+\end{itemize}
+
+Let's use the well-known titanic dataset to illustrate how to manipulate
+string columns in pandas dataframe next
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{titanic }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}./Datasets/titanic.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{titanic.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& PassengerId & Survived & Pclass & Name & Age & SibSp & Parch & Ticket
+& Fare & Cabin & Embarked \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 0 & 3 & Braund, Mr. Owen Harris & 22.0 & 1 & 0 & A/5 21171 &
+7.2500 & NaN & S \\
+1 & 2 & 1 & 1 & Cumings, Mrs. John Bradley (Florence Briggs Th... & 38.0
+& 1 & 0 & PC 17599 & 71.2833 & C85 & C \\
+2 & 3 & 1 & 3 & Heikkinen, Miss. Laina & 26.0 & 0 & 0 & STON/O2. 3101282
+& 7.9250 & NaN & S \\
+3 & 4 & 1 & 1 & Futrelle, Mrs. Jacques Heath (Lily May Peel) & 35.0 & 1
+& 0 & 113803 & 53.1000 & C123 & S \\
+4 & 5 & 0 & 3 & Allen, Mr. William Henry & 35.0 & 0 & 0 & 373450 &
+8.0500 & NaN & S \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{titanic.Name}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0                                Braund, Mr. Owen Harris
+1      Cumings, Mrs. John Bradley (Florence Briggs Th...
+2                                 Heikkinen, Miss. Laina
+3           Futrelle, Mrs. Jacques Heath (Lily May Peel)
+4                               Allen, Mr. William Henry
+                             ...                        
+886                                Montvila, Rev. Juozas
+887                         Graham, Miss. Margaret Edith
+888             Johnston, Miss. Catherine Helen "Carrie"
+889                                Behr, Mr. Karl Howell
+890                                  Dooley, Mr. Patrick
+Name: Name, Length: 891, dtype: object
+\end{verbatim}
+
+The \texttt{Name} column varies in length and contains passengers' last
+names, titles, and first names. By extracting the title from the
+\texttt{Name} column, we could infer the \textbf{sex} of the passenger
+and add it as a new feature. This could potentially be a significant
+predictor of survival, as the ``ladies first'' principle was often
+applied during the Titanic evacuation. Adding this feature may enhance
+the model's ability to predict whether a passenger survived.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Let\textquotesingle{}s check the length of the name of each passenger}
+\NormalTok{titanic[}\StringTok{"Name"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.}\BuiltInTok{len}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0      23
+1      51
+2      22
+3      44
+4      24
+       ..
+886    21
+887    28
+888    40
+889    21
+890    19
+Name: Name, Length: 891, dtype: int64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# check what is the maximum length of the name}
+\NormalTok{titanic.loc[titanic[}\StringTok{"Name"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.}\BuiltInTok{len}\NormalTok{().idxmax(), }\StringTok{"Name"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+'Penasco y Castellana, Mrs. Victor de Satode (Maria Josefa Perez de Soto y Vallejo)'
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the observations that contains the word \textquotesingle{}Mrs\textquotesingle{}}
+\NormalTok{titanic[titanic.Name.}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{\textquotesingle{}Mrs.\textquotesingle{}}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+& PassengerId & Survived & Pclass & Name & Age & SibSp & Parch & Ticket
+& Fare & Cabin & Embarked \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 2 & 1 & 1 & Cumings, Mrs. John Bradley (Florence Briggs Th... & 38.0
+& 1 & 0 & PC 17599 & 71.2833 & C85 & C \\
+3 & 4 & 1 & 1 & Futrelle, Mrs. Jacques Heath (Lily May Peel) & 35.0 & 1
+& 0 & 113803 & 53.1000 & C123 & S \\
+8 & 9 & 1 & 3 & Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg) & 27.0
+& 0 & 2 & 347742 & 11.1333 & NaN & S \\
+9 & 10 & 1 & 2 & Nasser, Mrs. Nicholas (Adele Achem) & 14.0 & 1 & 0 &
+237736 & 30.0708 & NaN & C \\
+15 & 16 & 1 & 2 & Hewlett, Mrs. (Mary D Kingcome) & 55.0 & 0 & 0 &
+248706 & 16.0000 & NaN & S \\
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+871 & 872 & 1 & 1 & Beckwith, Mrs. Richard Leonard (Sallie Monypeny) &
+47.0 & 1 & 1 & 11751 & 52.5542 & D35 & S \\
+874 & 875 & 1 & 2 & Abelson, Mrs. Samuel (Hannah Wizosky) & 28.0 & 1 & 0
+& P/PP 3381 & 24.0000 & NaN & C \\
+879 & 880 & 1 & 1 & Potter, Mrs. Thomas Jr (Lily Alexenia Wilson) & 56.0
+& 0 & 1 & 11767 & 83.1583 & C50 & C \\
+880 & 881 & 1 & 2 & Shelley, Mrs. William (Imanita Parrish Hall) & 25.0
+& 0 & 1 & 230433 & 26.0000 & NaN & S \\
+885 & 886 & 0 & 3 & Rice, Mrs. William (Margaret Norton) & 39.0 & 0 & 5
+& 382652 & 29.1250 & NaN & Q \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the observations that contains the word \textquotesingle{}Mrs\textquotesingle{}}
+\NormalTok{titanic.Name.}\BuiltInTok{str}\NormalTok{.count(}\StringTok{\textquotesingle{}Mrs.\textquotesingle{}}\NormalTok{).}\BuiltInTok{sum}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+129
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# split the name column into two columns}
+\NormalTok{titanic.Name.}\BuiltInTok{str}\NormalTok{.split(}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{, expand}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& 0 & 1 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Braund & Mr. Owen Harris \\
+1 & Cumings & Mrs. John Bradley (Florence Briggs Thayer) \\
+2 & Heikkinen & Miss. Laina \\
+3 & Futrelle & Mrs. Jacques Heath (Lily May Peel) \\
+4 & Allen & Mr. William Henry \\
+... & ... & ... \\
+886 & Montvila & Rev. Juozas \\
+887 & Graham & Miss. Margaret Edith \\
+888 & Johnston & Miss. Catherine Helen "Carrie" \\
+889 & Behr & Mr. Karl Howell \\
+890 & Dooley & Mr. Patrick \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the last part of the split}
+\NormalTok{titanic.Name.}\BuiltInTok{str}\NormalTok{.split(}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{, expand}\OperatorTok{=}\VariableTok{True}\NormalTok{).get(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0                                  Mr. Owen Harris
+1       Mrs. John Bradley (Florence Briggs Thayer)
+2                                      Miss. Laina
+3               Mrs. Jacques Heath (Lily May Peel)
+4                                Mr. William Henry
+                          ...                     
+886                                    Rev. Juozas
+887                           Miss. Margaret Edith
+888                 Miss. Catherine Helen "Carrie"
+889                                Mr. Karl Howell
+890                                    Mr. Patrick
+Name: 1, Length: 891, dtype: object
+\end{verbatim}
+
+Create a new column \texttt{Title} that contains the title of the
+passengers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# from the name, extract the title}
+\NormalTok{titanic[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ titanic.Name.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x.split(}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{)[}\DecValTok{1}\NormalTok{].split(}\StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{)[}\DecValTok{0}\NormalTok{].strip())}
+\NormalTok{titanic[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0        Mr
+1       Mrs
+2      Miss
+3       Mrs
+4        Mr
+       ... 
+886     Rev
+887    Miss
+888    Miss
+889      Mr
+890      Mr
+Name: Title, Length: 891, dtype: object
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the unique titles}
+\NormalTok{titanic.Title.unique()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array(['Mr', 'Mrs', 'Miss', 'Master', 'Don', 'Rev', 'Dr', 'Mme', 'Ms',
+       'Major', 'Lady', 'Sir', 'Mlle', 'Col', 'Capt', 'the Countess',
+       'Jonkheer'], dtype=object)
+\end{verbatim}
+
+Let's create a mapping dictionary next
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{title\_sex\_mapping }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{\textquotesingle{}Mr\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Mrs\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Miss\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Master\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Don\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Rev\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Dr\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,  }\CommentTok{\# Assumed to be Male unless you have additional context}
+    \StringTok{\textquotesingle{}Mme\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Ms\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Major\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Lady\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Sir\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Mlle\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Col\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Capt\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}the Countess\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{,}
+    \StringTok{\textquotesingle{}Jonkheer\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}Male\textquotesingle{}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{titanic[}\StringTok{\textquotesingle{}Sex\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ titanic[}\StringTok{\textquotesingle{}Title\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(title\_sex\_mapping)}
+\NormalTok{titanic.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+& PassengerId & Survived & Pclass & Name & Age & SibSp & Parch & Ticket
+& Fare & Cabin & Embarked & Title & Sex \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 0 & 3 & Braund, Mr. Owen Harris & 22.0 & 1 & 0 & A/5 21171 &
+7.2500 & NaN & S & Mr & Male \\
+1 & 2 & 1 & 1 & Cumings, Mrs. John Bradley (Florence Briggs Th... & 38.0
+& 1 & 0 & PC 17599 & 71.2833 & C85 & C & Mrs & Female \\
+2 & 3 & 1 & 3 & Heikkinen, Miss. Laina & 26.0 & 0 & 0 & STON/O2. 3101282
+& 7.9250 & NaN & S & Miss & Female \\
+3 & 4 & 1 & 1 & Futrelle, Mrs. Jacques Heath (Lily May Peel) & 35.0 & 1
+& 0 & 113803 & 53.1000 & C123 & S & Mrs & Female \\
+4 & 5 & 0 & 3 & Allen, Mr. William Henry & 35.0 & 0 & 0 & 373450 &
+8.0500 & NaN & S & Mr & Male \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{titanic.Sex.value\_counts()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Sex
+Male      578
+Female    313
+Name: count, dtype: int64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# cross tabulation}
+\NormalTok{pd.crosstab(titanic.Survived, titanic.Sex)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Sex & Female & Male \\
+Survived & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 81 & 468 \\
+1 & 232 & 110 \\
+\end{longtable}
+
+In the Titanic disaster, more women survived than men due to the social
+norms and evacuation protocols followed during the sinking. The
+principle of ``women and children first'' was enforced when lifeboats
+were being loaded. Since there were not enough lifeboats for everyone on
+board, priority was given to women and children, which contributed to
+the higher survival rate among females compared to males.
+
+\hypertarget{the-re-module-in-python-is-used-for-regular-expression}{%
+\subsubsection{\texorpdfstring{the \texttt{re} module in Python is used
+for regular
+expression}{the re module in Python is used for regular expression}}\label{the-re-module-in-python-is-used-for-regular-expression}}
+
+The \texttt{re} module in Python is used for \textbf{regular
+expressions}, which are powerful tools for text analysis and
+manipulation. Regular expressions allow you to search, match, and
+manipulate strings based on specific patterns.
+
+Common Use Cases of \texttt{re} in String Text Analysis
+
+\begin{itemize}
+\tightlist
+\item
+  Finding patterns in text:
+  \texttt{re.search(r\textquotesingle{}\textbackslash{}d\{4\}-\textbackslash{}d\{2\}-\textbackslash{}d\{2\}\textquotesingle{},\ text)}
+  \# searches for a date in the format YYYY-MM-DD
+\item
+  Extracting Specific parts of a string:
+  \texttt{re.findall(r\textquotesingle{}\textbackslash{}b{[}A-Za-z0-9.\_\%+-{]}+@{[}A-Za-z0-9.-{]}+\textbackslash{}.{[}A-Z\textbar{}a-z{]}\{2,\}\textbackslash{}b\textquotesingle{},\ text)}
+  \#extracts email addresses from the text.
+\item
+  Replacing Parts of a String:
+  \texttt{re.sub(r\textquotesingle{}\textbackslash{}\$\textbackslash{}d+\textquotesingle{},\ \textquotesingle{}{[}price{]}\textquotesingle{},\ text)}
+  \#replacing any price formatted as \$ with {[}price{]}.
+\end{itemize}
+
+\hypertarget{commonly-used-patterns-in-re}{%
+\paragraph{\texorpdfstring{Commonly Used Patterns in
+\texttt{re}}{Commonly Used Patterns in re}}\label{commonly-used-patterns-in-re}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{\textbackslash{}d}}: Matches any digit (0-9).
+\item
+  \textbf{\texttt{\textbackslash{}w}}: Matches any alphanumeric
+  character (letters and numbers).
+\item
+  \textbf{\texttt{\textbackslash{}s}}: Matches any whitespace character
+  (spaces, tabs, newlines).
+\item
+  \textbf{\texttt{{[}a-z{]}}}: Matches any lowercase letter from
+  \texttt{a} to \texttt{z}.
+\item
+  \textbf{\texttt{{[}A-Z{]}}}: Matches any uppercase letter from
+  \texttt{A} to \texttt{Z}.
+\item
+  \textbf{\texttt{*}}: Matches 0 or more occurrences of the preceding
+  character.
+\item
+  \textbf{\texttt{+}}: Matches 1 or more occurrences of the preceding
+  character.
+\item
+  \textbf{\texttt{?}}: Matches 0 or 1 occurrence of the preceding
+  character.
+\item
+  \textbf{\texttt{\^{}}}: Matches the beginning of a string.
+\item
+  \textbf{\texttt{\$}}: Matches the end of a string.
+\item
+  \textbf{\texttt{\textbar{}}}: Acts as an OR operator.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read\_html(}\StringTok{\textquotesingle{}https://en.wikipedia.org/wiki/List\_of\_Chicago\_Bulls\_seasons\textquotesingle{}}\NormalTok{)}
+\NormalTok{ChicagoBulls }\OperatorTok{=}\NormalTok{ data[}\DecValTok{2}\NormalTok{]}
+\NormalTok{ChicagoBulls.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+& Season & Team & Conference & Finish & Division & Finish.1 & Wins &
+Losses & Win\% & GB & Playoffs & Awards & Head coach \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1966--67 & 1966--67 & --- & --- & Western & 4th & 33 & 48 & 0.407 &
+11 & Lost Division semifinals (Hawks) 3--0{[}19{]} & Johnny Kerr
+(COY){[}6{]} & Johnny Kerr \\
+1 & 1967--68 & 1967--68 & --- & --- & Western & 4th & 29 & 53 & 0.354 &
+27 & Lost Division semifinals (Lakers) 4--1{[}20{]} & --- & Johnny
+Kerr \\
+2 & 1968--69 & 1968--69 & --- & --- & Western & 5th & 33 & 49 & 0.402 &
+22 & NaN & --- & Dick Motta \\
+3 & 1969--70 & 1969--70 & --- & --- & Western & 3rd{[}c{]} & 39 & 43 &
+0.476 & 9 & Lost Division semifinals (Hawks) 4--1{[}22{]} & --- & Dick
+Motta \\
+4 & 1970--71 & 1970--71 & Western & 3rd & Midwest{[}d{]} & 2nd & 51 & 31
+& 0.622 & 2 & Lost conference semifinals (Lakers) 4--3{[}23{]} & Dick
+Motta (COY){[}6{]} & Dick Motta \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# remove all charaters between box brackets inluding the brackets themselves in the columns Division, Finish, Playoffs, Awards}
+\ImportTok{import}\NormalTok{ re}
+\KeywordTok{def}\NormalTok{ remove\_brackets(x):}
+    \ControlFlowTok{return}\NormalTok{ re.sub(}\VerbatimStringTok{r\textquotesingle{}\textbackslash{}[.*?\textbackslash{}]\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, x)}
+
+\CommentTok{\# Apply the function to each column separately using map}
+\NormalTok{ChicagoBulls[}\StringTok{\textquotesingle{}Division\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ ChicagoBulls[}\StringTok{\textquotesingle{}Division\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(remove\_brackets)}
+\NormalTok{ChicagoBulls[}\StringTok{\textquotesingle{}Finish\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ ChicagoBulls[}\StringTok{\textquotesingle{}Finish\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(remove\_brackets)}
+\NormalTok{ChicagoBulls[}\StringTok{\textquotesingle{}Finish.1\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ ChicagoBulls[}\StringTok{\textquotesingle{}Finish.1\textquotesingle{}}\NormalTok{].}\BuiltInTok{map}\NormalTok{(remove\_brackets)}
+
+\NormalTok{ChicagoBulls.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllllllllll@{}}
+\toprule\noalign{}
+& Season & Team & Conference & Finish & Division & Finish.1 & Wins &
+Losses & Win\% & GB & Playoffs & Awards & Head coach \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1966--67 & 1966--67 & --- & --- & Western & 4th & 33 & 48 & 0.407 &
+11 & Lost Division semifinals (Hawks) 3--0{[}19{]} & Johnny Kerr
+(COY){[}6{]} & Johnny Kerr \\
+1 & 1967--68 & 1967--68 & --- & --- & Western & 4th & 29 & 53 & 0.354 &
+27 & Lost Division semifinals (Lakers) 4--1{[}20{]} & --- & Johnny
+Kerr \\
+2 & 1968--69 & 1968--69 & --- & --- & Western & 5th & 33 & 49 & 0.402 &
+22 & NaN & --- & Dick Motta \\
+3 & 1969--70 & 1969--70 & --- & --- & Western & 3rd & 39 & 43 & 0.476 &
+9 & Lost Division semifinals (Hawks) 4--1{[}22{]} & --- & Dick Motta \\
+4 & 1970--71 & 1970--71 & Western & 3rd & Midwest & 2nd & 51 & 31 &
+0.622 & 2 & Lost conference semifinals (Lakers) 4--3{[}23{]} & Dick
+Motta (COY){[}6{]} & Dick Motta \\
+\end{longtable}
+
+Another example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{gdp\_data }\OperatorTok{=}\NormalTok{ pd.read\_html(}\StringTok{"https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita"}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& Country/Territory &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+IMF{[}4{]}{[}5{]}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+World Bank{[}6{]}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+United Nations{[}7{]}} \\
+& Country/Territory & Estimate & Year & Estimate & Year & Estimate &
+Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Monaco & --- & --- & 240862 & 2022 & 240535 & 2022 \\
+1 & Liechtenstein & --- & --- & 187267 & 2022 & 197268 & 2022 \\
+2 & Luxembourg & 135321 & 2024 & 128259 & 2023 & 125897 & 2022 \\
+3 & Bermuda & --- & --- & 123091 & 2022 & 117568 & 2022 \\
+4 & Switzerland & 106098 & 2024 & 99995 & 2023 & 93636 & 2022 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# drop the year column}
+\NormalTok{gdp\_data.drop(columns}\OperatorTok{=}\NormalTok{[}\StringTok{"Year"}\NormalTok{], level}\OperatorTok{=}\DecValTok{1}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# drop the level 1 column}
+\NormalTok{gdp\_data }\OperatorTok{=}\NormalTok{ gdp\_data.droplevel(}\DecValTok{1}\NormalTok{, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{column\_name\_cleaner }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ x:re.split(}\VerbatimStringTok{r\textquotesingle{}\textbackslash{}[\textquotesingle{}}\NormalTok{, x)[}\DecValTok{0}\NormalTok{]}
+
+\NormalTok{gdp\_data.columns }\OperatorTok{=}\NormalTok{ gdp\_data.columns.}\BuiltInTok{map}\NormalTok{(column\_name\_cleaner)}
+
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& Country/Territory & IMF & World Bank & United Nations \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Monaco & --- & 240862 & 240535 \\
+1 & Liechtenstein & --- & 187267 & 197268 \\
+2 & Luxembourg & 135321 & 128259 & 125897 \\
+3 & Bermuda & --- & 123091 & 117568 \\
+4 & Switzerland & 106098 & 99995 & 93636 \\
+\end{longtable}
+
+\hypertarget{the-nltk-library-for-nlp-skipped}{%
+\subsubsection{\texorpdfstring{the \texttt{NLTK} Library for NLP
+(skipped)}{the NLTK Library for NLP (skipped)}}\label{the-nltk-library-for-nlp-skipped}}
+
+NLTK (Natural Language Toolkit) is a popular Python library for natural
+language processing (NLP) and text analysis. It provides a wide range of
+tools and resources for processing and analyzing human language data.
+NLTK is widely used in research, education, and industry for various
+text analysis tasks.
+
+\hypertarget{key-features-and-capabilities-of-nltk}{%
+\paragraph{Key Features and Capabilities of
+NLTK}\label{key-features-and-capabilities-of-nltk}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tokenization}: Splits text into individual words (word
+  tokenization) or sentences (sentence tokenization).
+\item
+  \textbf{Stop Word Removal}: Provides lists of common words (like
+  ``and'', ``the'', ``is'') in various languages that can be removed
+  from text to reduce noise.
+\item
+  \textbf{Stemming}: Reduces words to their root form (e.g., ``running''
+  to ``run'').
+\item
+  \textbf{Lemmatization}: Similar to stemming, but more sophisticated.
+  It reduces words to their dictionary form using vocabulary and
+  morphological analysis (e.g., ``better'' to ``good'').
+\end{itemize}
+
+\hypertarget{working-with-numerical-data}{%
+\subsection{\texorpdfstring{Working with \texttt{numerical}
+Data}{Working with numerical Data}}\label{working-with-numerical-data}}
+
+\hypertarget{summary-statistics-across-rowscolumns-in-pandas}{%
+\subsubsection{Summary statistics across rows/columns in
+Pandas}\label{summary-statistics-across-rowscolumns-in-pandas}}
+
+The Pandas DataFrame class has functions such as \texttt{sum()} and
+\texttt{mean()} to compute sum over rows or columns of a DataFrame.
+
+By default, functions like \texttt{mean()} and \texttt{sum()} compute
+the statistics for each column (i.e., all rows are aggregated) in the
+DataFrame. Let us compute the mean of all the numeric columns of the
+data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movie\_ratings.describe()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+& US Gross & Worldwide Gross & Production Budget & IMDB Rating & IMDB
+Votes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+count & 2.228000e+03 & 2.228000e+03 & 2.228000e+03 & 2228.000000 &
+2228.000000 \\
+mean & 5.076370e+07 & 1.019370e+08 & 3.816055e+07 & 6.239004 &
+33585.154847 \\
+std & 6.643081e+07 & 1.648589e+08 & 3.782604e+07 & 1.243285 &
+47325.651561 \\
+min & 0.000000e+00 & 8.840000e+02 & 2.180000e+02 & 1.400000 &
+18.000000 \\
+25\% & 9.646188e+06 & 1.320737e+07 & 1.200000e+07 & 5.500000 &
+6659.250000 \\
+50\% & 2.838649e+07 & 4.266892e+07 & 2.600000e+07 & 6.400000 &
+18169.000000 \\
+75\% & 6.453140e+07 & 1.200000e+08 & 5.300000e+07 & 7.100000 &
+40092.750000 \\
+max & 7.601676e+08 & 2.767891e+09 & 3.000000e+08 & 9.200000 &
+519541.000000 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# select the numeric columns}
+\NormalTok{movie\_ratings.mean(numeric\_only}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+US Gross                  5.076370e+07
+Worldwide Gross           1.019370e+08
+Production Budget         3.816055e+07
+IMDB Rating               6.239004e+00
+IMDB Votes                3.358515e+04
+Release Year              2.002005e+03
+ratio_wgross_by_budget    1.259483e+01
+dtype: float64
+\end{verbatim}
+
+\textbf{Using the \texttt{axis} parameter}:
+
+The \texttt{axis} parameter controls whether to compute the statistic
+across rows or columns: * The argument \texttt{axis=0}(deafult) denotes
+that the mean is taken over all the rows of the DataFrame. * For
+computing a statistic across column the argument \texttt{axis=1} will be
+used.
+
+If mean over a subset of columns is desired, then those column names can
+be subset from the data.
+
+For example, let us compute the mean IMDB rating, and mean IMDB votes of
+all the movies:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movie\_ratings[[}\StringTok{\textquotesingle{}IMDB Rating\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}IMDB Votes\textquotesingle{}}\NormalTok{]].mean(axis }\OperatorTok{=} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+IMDB Rating        6.239004
+IMDB Votes     33585.154847
+dtype: float64
+\end{verbatim}
+
+\textbf{Pandas \texttt{sum} function}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OperatorTok{=}\NormalTok{ [[}\DecValTok{10}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{11}\NormalTok{], [}\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{8}\NormalTok{], [}\DecValTok{9}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{3}\NormalTok{]]}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(data )}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& 0 & 1 & 2 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 10 & 18 & 11 \\
+1 & 13 & 15 & 8 \\
+2 & 9 & 20 & 3 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# By default, the sum method adds values accross rows and returns the sum for each column}
+\NormalTok{df.}\BuiltInTok{sum}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0    32
+1    53
+2    22
+dtype: int64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# By specifying the column axis (axis=\textquotesingle{}columns\textquotesingle{}), the sum() method add values accross columns and returns the sum of each row.}
+\NormalTok{df.}\BuiltInTok{sum}\NormalTok{(axis }\OperatorTok{=} \StringTok{\textquotesingle{}columns\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0    39
+1    36
+2    32
+dtype: int64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# in python, axis=1 stands for column, while axis=0 stands for rows}
+\NormalTok{df.}\BuiltInTok{sum}\NormalTok{(axis }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0    39
+1    36
+2    32
+dtype: int64
+\end{verbatim}
 
 \hypertarget{introduction-to-data-visualization}{%
 \chapter{Introduction to Data
@@ -14837,8 +16256,8 @@ From the above map, we can see that:
   \texttt{NU\_GPA}
 \end{itemize}
 
-\hypertarget{independent-study-1}{%
-\section{Independent Study}\label{independent-study-1}}
+\hypertarget{independent-study-3}{%
+\section{Independent Study}\label{independent-study-3}}
 
 \hypertarget{practice-exercise-1-3}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-3}}
@@ -14849,8 +16268,8 @@ over the time using matplotlib \texttt{pyplot}
 \hypertarget{practice-exercise-2-3}{%
 \subsection{Practice exercise 2}\label{practice-exercise-2-3}}
 
-\hypertarget{section-39}{%
-\subsubsection{}\label{section-39}}
+\hypertarget{section-45}{%
+\subsubsection{}\label{section-45}}
 
 Is \texttt{NU\_GPA} associated with \texttt{parties\_per\_month}?
 Analyze the association separately for \emph{Sophomores, Juniors, and
@@ -14861,8 +16280,8 @@ a 1 x 3 grid, where each grid is for a distinct \texttt{school\_year}.
 Plot the trendline as well for each scatterplot. Use the file
 \emph{survey\_data\_clean.csv}.
 
-\hypertarget{section-40}{%
-\subsubsection{}\label{section-40}}
+\hypertarget{section-46}{%
+\subsubsection{}\label{section-46}}
 
 Capping the the values of \texttt{parties\_per\_month} to 30, and make
 the visualizations again.
@@ -14875,24 +16294,24 @@ their characteristics? We'll use visualizations to answer this question.
 Use data from the file \emph{survey\_data\_clean.csv.} Proceed as
 follows:
 
-\hypertarget{section-41}{%
-\subsubsection{}\label{section-41}}
+\hypertarget{section-47}{%
+\subsubsection{}\label{section-47}}
 
 Make a visualization that compares the mean
 \texttt{expected\_marriage\_age} of introverts and extroverts \emph{(use
 the variable \texttt{introvert\_extrovert})}. What insights do you
 obtain?
 
-\hypertarget{section-42}{%
-\subsubsection{}\label{section-42}}
+\hypertarget{section-48}{%
+\subsubsection{}\label{section-48}}
 
 Does the mean \texttt{expected\_marriage\_age} of introverts and
 extroverts depend on whether they believe in love in first sight
 \emph{(variable name: \texttt{love\_first\_sight})}? Update the previous
 visualization to answer the question.
 
-\hypertarget{section-43}{%
-\subsubsection{}\label{section-43}}
+\hypertarget{section-49}{%
+\subsubsection{}\label{section-49}}
 
 In addition to \texttt{love\_first\_sight}, does the mean
 \texttt{expected\_marriage\_age} of introverts and extroverts depend on
@@ -14900,8 +16319,8 @@ whether they are a procrastinator \emph{(variable name:
 \texttt{procrastinator})}? Update the previous visualization to answer
 the question.
 
-\hypertarget{section-44}{%
-\subsubsection{}\label{section-44}}
+\hypertarget{section-50}{%
+\subsubsection{}\label{section-50}}
 
 Is there any critical information missing in the above visualizations
 that, if revealed, may cast doubts on the patterns observed in them?
@@ -14911,26 +16330,26 @@ that, if revealed, may cast doubts on the patterns observed in them?
 
 Read \emph{Australia\_weather.csv},
 
-\hypertarget{section-45}{%
-\subsubsection{}\label{section-45}}
+\hypertarget{section-51}{%
+\subsubsection{}\label{section-51}}
 
 Create a histogram showing the distributions of maximum temperature in
 Sydney, Canberra and Melbourne.
 
-\hypertarget{section-46}{%
-\subsubsection{}\label{section-46}}
+\hypertarget{section-52}{%
+\subsubsection{}\label{section-52}}
 
 Make a density plot showing the distributions of maximum temperature in
 Sydney, Canberra and Melbourne.
 
-\hypertarget{section-47}{%
-\subsubsection{}\label{section-47}}
+\hypertarget{section-53}{%
+\subsubsection{}\label{section-53}}
 
 Show the distributions of the maximum and minimum temperatures in a
 single plot.
 
-\hypertarget{section-48}{%
-\subsubsection{}\label{section-48}}
+\hypertarget{section-54}{%
+\subsubsection{}\label{section-54}}
 
 Create a scatter plot with a trendline for \texttt{MinTemp} and
 \texttt{MaxTemp}, including a confidence interval.
@@ -16445,8 +17864,8 @@ c:\Users\lsi8012\AppData\Local\anaconda3\Lib\site-packages\sklearn\cluster\_kmea
 <folium.folium.Map at 0x1f6a369ddf0>
 \end{verbatim}
 
-\hypertarget{independent-study-2}{%
-\section{Independent Study}\label{independent-study-2}}
+\hypertarget{independent-study-4}{%
+\section{Independent Study}\label{independent-study-4}}
 
 \hypertarget{multiple-plots-in-a-single-figure-using-seaborn}{%
 \subsection{Multiple plots in a single figure using
@@ -16465,14 +17884,14 @@ distribution of random variable.
 
 Using the tips\_df dataset
 
-\hypertarget{section-49}{%
-\subsubsection{}\label{section-49}}
+\hypertarget{section-55}{%
+\subsubsection{}\label{section-55}}
 
 Make a histogram showing the distributions of total bill on each day of
 the week
 
-\hypertarget{section-50}{%
-\subsubsection{}\label{section-50}}
+\hypertarget{section-56}{%
+\subsubsection{}\label{section-56}}
 
 Make a density plot showing the distributions of total bills on each
 day.
@@ -16759,22 +18178,22 @@ imputation method and mitigating potential biases in the analysis.
 \hypertarget{questions}{%
 \subsubsection{Questions}\label{questions}}
 
-\hypertarget{section-51}{%
-\paragraph{}\label{section-51}}
+\hypertarget{section-57}{%
+\paragraph{}\label{section-57}}
 
 Why can we ignore observations with missing values without risking
 skewing the analysis or trends in the case of \textbf{Missing Completely
 at Random (MCAR)}?
 
-\hypertarget{section-52}{%
-\paragraph{}\label{section-52}}
+\hypertarget{section-58}{%
+\paragraph{}\label{section-58}}
 
 Why could ignoring missing values lead to biased results for
 \textbf{Missing at Random (MAR)} and \textbf{Missing Not at Random
 (MNAR)} data?
 
-\hypertarget{section-53}{%
-\paragraph{}\label{section-53}}
+\hypertarget{section-59}{%
+\paragraph{}\label{section-59}}
 
 For the datset consisting of GDP per capita, think of hypothetical
 scenarios in which the missing values of GDP per capita can correspond
@@ -18795,8 +20214,8 @@ Med\_expend & High\_expend & Med\_expend & High\_expend \\
 & 1 & 0 & 1 \\
 \end{longtable}
 
-\hypertarget{independent-study-3}{%
-\section{Independent Study}\label{independent-study-3}}
+\hypertarget{independent-study-5}{%
+\section{Independent Study}\label{independent-study-5}}
 
 \hypertarget{practice-exercise-1-4}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-4}}
@@ -20270,26 +21689,14 @@ condition
 \hypertarget{sampling-data-by-group}{%
 \section{Sampling data by group}\label{sampling-data-by-group}}
 
-The \texttt{groupby()} and \texttt{apply()} method can be used to for
-stratified random sampling from a large dataset.
+If a dataset contains a large number of observations, operating on it
+can be computationally expensive. Instead, working on a sample of entire
+observations is a more efficient alterative. The \texttt{groupby()}
+method combined with \texttt{apply()} can be used for stratified random
+sampling from a large dataset.
 
-The spotify dataset has more than 200k observations. It may be expensive
-to operate with so many observations. Suppose, we wish to take a random
-sample of 650 observations to analyze spotify data, such that all genres
-are equally represented.
-
-Before taking the random sample, let us find the number of tracks in
-each genre.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{gdp\_lifeExp\_data.columns}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Index(['country', 'continent', 'year', 'lifeExp', 'pop', 'gdpPercap'], dtype='object')
-\end{verbatim}
+Before taking the random sample, let us find the number of countries in
+each continent.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -20307,7 +21714,7 @@ Oceania      24
 Name: count, dtype: int64
 \end{verbatim}
 
-Let us take a random sample of 100 observations from the entire dataset.
+Let us take a random sample of 650 observations from the entire dataset.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -20315,7 +21722,7 @@ Let us take a random sample of 100 observations from the entire dataset.
 \end{Highlighting}
 \end{Shaded}
 
-Now, let us see the number of track of each genre in our sample.
+Now, let us see the number of countries of each continent in our sample.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -20325,39 +21732,36 @@ Now, let us see the number of track of each genre in our sample.
 
 \begin{verbatim}
 continent
-Africa      227
-Asia        148
-Europe      133
-Americas    130
-Oceania      12
+Africa      241
+Asia        149
+Europe      142
+Americas    109
+Oceania       9
 Name: count, dtype: int64
 \end{verbatim}
 
 Some of the continent have a very low representation in the data. To
-rectify this, we can take a random sample of 20 observations from each
+rectify this, we can take a random sample of 130 observations from each
 of the 5 continents. In other words, we can take a random sample from
 each of the continent-based groups.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{evenly\_sampled\_lifeExp\_data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{).}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:x.sample(}\DecValTok{20}\NormalTok{))}
-\NormalTok{evenly\_sampled\_lifeExp\_data.continent.value\_counts()}
+\NormalTok{evenly\_sampled\_lifeExp\_data }\OperatorTok{=}\NormalTok{ gdp\_lifeExp\_data.groupby(}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{).}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:x.sample(}\DecValTok{130}\NormalTok{, replace}\OperatorTok{=}\VariableTok{True}\NormalTok{), include\_groups}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+
+\NormalTok{group\_sizes }\OperatorTok{=}\NormalTok{ evenly\_sampled\_lifeExp\_data.groupby(level}\OperatorTok{=}\DecValTok{0}\NormalTok{).size()}
+\BuiltInTok{print}\NormalTok{(group\_sizes)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_22244\739424435.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
-  evenly_sampled_lifeExp_data = gdp_lifeExp_data.groupby('continent').apply(lambda x:x.sample(20))
-\end{verbatim}
-
-\begin{verbatim}
 continent
-Africa      20
-Americas    20
-Asia        20
-Europe      20
-Oceania     20
-Name: count, dtype: int64
+Africa      130
+Americas    130
+Asia        130
+Europe      130
+Oceania     130
+dtype: int64
 \end{verbatim}
 
 The above stratified random sample equally represents all the continent.
@@ -20373,18 +21777,13 @@ method of the \emph{GroupBy} object returns the correlation between all
 pairs of columns within each group.
 
 \textbf{Example:} Find the correlation between \texttt{lifeExp} and
-\texttt{lifeExp} for each continent-country level combination.
+\texttt{gdpPercap} for each continent-country level combination.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{gdp\_lifeExp\_data.groupby([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{]).}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:x[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{].corr(x[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]))}
+\NormalTok{gdp\_lifeExp\_data.groupby([}\StringTok{\textquotesingle{}continent\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}country\textquotesingle{}}\NormalTok{]).}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x:x[}\StringTok{\textquotesingle{}lifeExp\textquotesingle{}}\NormalTok{].corr(x[}\StringTok{\textquotesingle{}gdpPercap\textquotesingle{}}\NormalTok{]), include\_groups}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-C:\Users\lsi8012\AppData\Local\Temp\ipykernel_27236\2286543289.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
-  gdp_lifeExp_data.groupby(['continent','country']).apply(lambda x:x['lifeExp'].corr(x['gdpPercap']))
-\end{verbatim}
 
 \begin{verbatim}
 continent  country       
@@ -20668,8 +22067,8 @@ Oceania & 69.255000 & 70.295000 & 71.085000 & 71.310000 & 71.910000 &
 80.719500 \\
 \end{longtable}
 
-\hypertarget{independent-study-4}{%
-\section{Independent Study}\label{independent-study-4}}
+\hypertarget{independent-study-6}{%
+\section{Independent Study}\label{independent-study-6}}
 
 \hypertarget{practice-exercise-1-5}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-5}}
@@ -20686,19 +22085,143 @@ Estimate the GDP per capita of each country as the average of the
 estimates of the three agencies - IMF, United Nations and World Bank.
 
 We need to do a bit of data cleaning before we could directly use the
-\texttt{groupby()} function. Follow the steps below to answer this
-question:
+\texttt{groupby()} function. Follow the steps below:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Drop the ``Year'' column
+\item
+  Drop the level 1 column name (innermost level column)
 \item
   Apply the following function on all the columns of the ``Estimate'' to
   convert them to numeric:
   \texttt{f\ =\ lambda\ x:pd.to\_numeric(x,errors\ =\ \textquotesingle{}coerce\textquotesingle{})}
 \item
-  Now use \texttt{groupby()} to find estimate the GDP per capita for
-  each country.
+  Set the Country/Territory column as the index
+\item
+  Convert all other columns into numeric and coerce errors using
+  `errors='coerce'`
+\item
+  Drop rows with NaN values
+\item
+  Find the average GDP per capital across the three agencies
 \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfs }\OperatorTok{=}\NormalTok{ pd.read\_html(}\StringTok{\textquotesingle{}https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita\textquotesingle{}}\NormalTok{, match }\OperatorTok{=} \StringTok{\textquotesingle{}Country\textquotesingle{}}\NormalTok{)}
+\NormalTok{gdp\_data  }\OperatorTok{=}\NormalTok{ dfs[}\DecValTok{0}\NormalTok{]}
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llllllll@{}}
+\toprule\noalign{}
+& Country/Territory &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+IMF{[}4{]}{[}5{]}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}}{%
+World Bank{[}6{]}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 2\tabcolsep}@{}}{%
+United Nations{[}7{]}} \\
+& Country/Territory & Estimate & Year & Estimate & Year & Estimate &
+Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Monaco & --- & --- & 240862 & 2022 & 240535 & 2022 \\
+1 & Liechtenstein & --- & --- & 187267 & 2022 & 197268 & 2022 \\
+2 & Luxembourg & 135321 & 2024 & 128259 & 2023 & 125897 & 2022 \\
+3 & Bermuda & --- & --- & 123091 & 2022 & 117568 & 2022 \\
+4 & Switzerland & 106098 & 2024 & 99995 & 2023 & 93636 & 2022 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Flatten the MultiIndex to access column names}
+\NormalTok{gdp\_data.columns }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(col).strip() }\ControlFlowTok{if} \BuiltInTok{isinstance}\NormalTok{(col, }\BuiltInTok{tuple}\NormalTok{) }\ControlFlowTok{else}\NormalTok{ col }\ControlFlowTok{for}\NormalTok{ col }\KeywordTok{in}\NormalTok{ gdp\_data.columns]}
+
+\CommentTok{\# Drop all columns containing "Year"}
+\NormalTok{gdp\_data }\OperatorTok{=}\NormalTok{ gdp\_data.loc[:, }\OperatorTok{\textasciitilde{}}\NormalTok{gdp\_data.columns.}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{, case}\OperatorTok{=}\VariableTok{False}\NormalTok{)]}
+
+\NormalTok{gdp\_data }\OperatorTok{=}\NormalTok{ gdp\_data.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"Country/Territory Country/Territory"}\NormalTok{: }\StringTok{"Country/Territory"}\NormalTok{\})}
+
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& Country/Territory & IMF & World Bank & United Nations \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Monaco & --- & 240862 & 240535 \\
+1 & Liechtenstein & --- & 187267 & 197268 \\
+2 & Luxembourg & 135321 & 128259 & 125897 \\
+3 & Bermuda & --- & 123091 & 117568 \\
+4 & Switzerland & 106098 & 99995 & 93636 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ re}
+\NormalTok{column\_name\_cleaner }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ x:re.split(}\VerbatimStringTok{r\textquotesingle{}\textbackslash{}[\textquotesingle{}}\NormalTok{, x)[}\DecValTok{0}\NormalTok{]}
+
+\NormalTok{gdp\_data.columns }\OperatorTok{=}\NormalTok{ gdp\_data.columns.}\BuiltInTok{map}\NormalTok{(column\_name\_cleaner)}
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& Country/Territory & IMF & World Bank & United Nations \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & Monaco & --- & 240862 & 240535 \\
+1 & Liechtenstein & --- & 187267 & 197268 \\
+2 & Luxembourg & 135321 & 128259 & 125897 \\
+3 & Bermuda & --- & 123091 & 117568 \\
+4 & Switzerland & 106098 & 99995 & 93636 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set the country column as the index}
+\NormalTok{gdp\_data.set\_index(}\StringTok{\textquotesingle{}Country/Territory\textquotesingle{}}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# convert all other columns into numeric and coerce errors}
+\NormalTok{gdp\_data }\OperatorTok{=}\NormalTok{ gdp\_data.}\BuiltInTok{apply}\NormalTok{(pd.to\_numeric, errors}\OperatorTok{=}\StringTok{\textquotesingle{}coerce\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# drop rows with NaN values}
+\NormalTok{gdp\_data.dropna(inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\#find the average GDP per capita}
+\NormalTok{gdp\_data[}\StringTok{\textquotesingle{}Average GDP per capita\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ gdp\_data.mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{gdp\_data.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+& IMF & World Bank & United Nations & Average GDP per capita \\
+Country/Territory & & & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Luxembourg & 135321.0 & 128259.0 & 125897.0 & 129825.666667 \\
+Switzerland & 106098.0 & 99995.0 & 93636.0 & 99909.666667 \\
+Ireland & 103500.0 & 103685.0 & 105993.0 & 104392.666667 \\
+Norway & 90434.0 & 87962.0 & 106623.0 & 95006.333333 \\
+Singapore & 89370.0 & 84734.0 & 78115.0 & 84073.000000 \\
+\end{longtable}
 
 \hypertarget{practice-exercise-2-5}{%
 \subsection{Practice exercise 2}\label{practice-exercise-2-5}}
@@ -20706,14 +22229,14 @@ question:
 Read the spotify dataset from \texttt{spotify\_data.csv} that contains
 information about tracks and artists
 
-\hypertarget{section-54}{%
-\subsubsection{}\label{section-54}}
+\hypertarget{section-60}{%
+\subsubsection{}\label{section-60}}
 
 Find the mean and standard deviation of the track popularity for each
 genre.
 
-\hypertarget{section-55}{%
-\subsubsection{}\label{section-55}}
+\hypertarget{section-61}{%
+\subsubsection{}\label{section-61}}
 
 Create a new categorical column, \texttt{energy\_lvl}, with two levels
 -- `Low energy' and `High energy' -- using equal-sized bins based on the
@@ -20721,48 +22244,48 @@ track's energy level. Then, calculate the mean, standard deviation, and
 90th percentile of track popularity for each genre and energy level
 combination
 
-\hypertarget{section-56}{%
-\subsubsection{}\label{section-56}}
+\hypertarget{section-62}{%
+\subsubsection{}\label{section-62}}
 
 Find the mean and standard deviation of track popularity and
 danceability for each genre and energy level. What insights you can gain
 from the generated table
 
-\hypertarget{section-57}{%
-\subsubsection{}\label{section-57}}
+\hypertarget{section-63}{%
+\subsubsection{}\label{section-63}}
 
 For each genre and energy level, find the mean and standard deviation of
 the track popularity, and the minimum and maximum values of loudness.
 
-\hypertarget{section-58}{%
-\subsubsection{}\label{section-58}}
+\hypertarget{section-64}{%
+\subsubsection{}\label{section-64}}
 
 Find the most popular artist from each genre.
 
-\hypertarget{section-59}{%
-\subsubsection{}\label{section-59}}
+\hypertarget{section-65}{%
+\subsubsection{}\label{section-65}}
 
 Filter the first 4 columns of the spotify dataset. Drop duplicate
 observartions in the resulting dataset using the Pandas DataFrame method
 \href{https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html}{\texttt{drop\_duplicates()}}.
 Find the top 3 most popular artists for each genre.
 
-\hypertarget{section-60}{%
-\subsubsection{}\label{section-60}}
+\hypertarget{section-66}{%
+\subsubsection{}\label{section-66}}
 
 The spotify dataset has more than 200k observations. It may be expensive
 to operate with so many observations. Take a random sample of 650
 observations to analyze spotify data, such that all genres are equally
 represented.
 
-\hypertarget{section-61}{%
-\subsubsection{}\label{section-61}}
+\hypertarget{section-67}{%
+\subsubsection{}\label{section-67}}
 
 Find the correlation between \texttt{danceability} and
 \texttt{track\ popularity} for each genre-energy level combination.
 
-\hypertarget{section-62}{%
-\subsubsection{}\label{section-62}}
+\hypertarget{section-68}{%
+\subsubsection{}\label{section-68}}
 
 Find the mean of track popularity for each genre-energy lvl combination
 such that each row corresponds to a genre, and the energy levels
@@ -20770,8 +22293,8 @@ correspond to columns.
 
 Hints: using \texttt{pivot\_table()}
 
-\hypertarget{section-63}{%
-\subsubsection{}\label{section-63}}
+\hypertarget{section-69}{%
+\subsubsection{}\label{section-69}}
 
 Find the \(90^{th}\) percentile of track popularity for each
 genre-energy lvl combination such that each row corresponds to a genre,
@@ -20779,19 +22302,19 @@ and the energy levels correspond to columns.
 
 Hints: using \texttt{pivot\_table()}
 
-\hypertarget{section-64}{%
-\subsubsection{}\label{section-64}}
+\hypertarget{section-70}{%
+\subsubsection{}\label{section-70}}
 
 Find the number of observations in each group, where each groups
 corresponds to a distinct genre-energy lvl combination
 
-\hypertarget{section-65}{%
-\subsubsection{}\label{section-65}}
+\hypertarget{section-71}{%
+\subsubsection{}\label{section-71}}
 
 Find the percentage of observations in each group of the above table.
 
-\hypertarget{section-66}{%
-\subsubsection{}\label{section-66}}
+\hypertarget{section-72}{%
+\subsubsection{}\label{section-72}}
 
 What percentage of unique tracks are contributed by the top 5 artists of
 each genre?
@@ -22372,8 +23895,8 @@ For a comprehensive user guide, please refer to the
 \href{https://pandas.pydata.org/docs/user_guide/merging.html}{official
 documentation}.
 
-\hypertarget{independent-study-5}{%
-\section{Independent Study}\label{independent-study-5}}
+\hypertarget{independent-study-7}{%
+\section{Independent Study}\label{independent-study-7}}
 
 \hypertarget{practice-exercise-1-6}{%
 \subsection{Practice exercise 1}\label{practice-exercise-1-6}}
@@ -22381,14 +23904,14 @@ documentation}.
 You are given the life expectancy data of each continent as a separate
 *.csv file.
 
-\hypertarget{section-67}{%
-\subsubsection{}\label{section-67}}
+\hypertarget{section-73}{%
+\subsubsection{}\label{section-73}}
 
 Visualize the change of life expectancy over time for different
 continents.
 
-\hypertarget{section-68}{%
-\subsubsection{}\label{section-68}}
+\hypertarget{section-74}{%
+\subsubsection{}\label{section-74}}
 
 Appending all the data files, i.e., stacking them on top of each other
 to form a combined datasets called ``data\_all\_continents''
@@ -22410,14 +23933,14 @@ arguments. Print the first 2 rows of the updated DataFrame. If the first
 row of the DataFrame has missing values for all columns, drop that row
 as well.
 
-\hypertarget{section-69}{%
-\subsubsection{}\label{section-69}}
+\hypertarget{section-75}{%
+\subsubsection{}\label{section-75}}
 
 Drop the inner level of column labels. Use the \texttt{droplevel()}
 method. Print the first 2 rows of the updated DataFrame.
 
-\hypertarget{section-70}{%
-\subsubsection{}\label{section-70}}
+\hypertarget{section-76}{%
+\subsubsection{}\label{section-76}}
 
 Convert the columns consisting of GDP per capita by \emph{IMF, World
 Bank}, and the \emph{United Nations} to numeric. Apply a lambda function
@@ -22427,8 +23950,8 @@ values in each column of the updated DataFrame.
 Note: \emph{Do not apply the function 3 times. Apply it once on a
 DataFrame consisting of these 3 columns.}
 
-\hypertarget{section-71}{%
-\subsubsection{}\label{section-71}}
+\hypertarget{section-77}{%
+\subsubsection{}\label{section-77}}
 
 Apply the lambda function below on all the column names of the dataset
 obtained in the previous question to clean the column names.
@@ -22443,8 +23966,8 @@ names and not columns.}
 
 Print the first 2 rows of the updated DataFrame.
 
-\hypertarget{section-72}{%
-\subsubsection{}\label{section-72}}
+\hypertarget{section-78}{%
+\subsubsection{}\label{section-78}}
 
 Create a new column \texttt{GDP\_per\_capita} that copies the GDP per
 capita values of the \texttt{United\ Nations}. If the GDP per capita is
@@ -22456,15 +23979,15 @@ copy it from the \texttt{IMF} column.
 Print the number of missing values in the \texttt{GDP\_per\_capita}
 column.
 
-\hypertarget{section-73}{%
-\subsubsection{}\label{section-73}}
+\hypertarget{section-79}{%
+\subsubsection{}\label{section-79}}
 
 Drop all the columns except \texttt{Country} and
 \texttt{GDP\_per\_capita}. Print the first 2 rows of the updated
 DataFrame.
 
-\hypertarget{section-74}{%
-\subsubsection{}\label{section-74}}
+\hypertarget{section-80}{%
+\subsubsection{}\label{section-80}}
 
 The country names contain some special characters \emph{(characters
 other than letters)} and need to be cleaned. The following function can
@@ -22495,8 +24018,8 @@ https://en.wikipedia.org/wiki/List\_of\_countries\_by\_population\_(United\_Nati
   Drop the first row since it is the total population in the world
 \end{itemize}
 
-\hypertarget{section-75}{%
-\subsubsection{}\label{section-75}}
+\hypertarget{section-81}{%
+\subsubsection{}\label{section-81}}
 
 Apply the lambda function below on all the column names of the dataset
 obtained in the previous question to clean the column names.
@@ -22511,8 +24034,8 @@ names and not columns.}
 
 Print the first 2 rows of the updated DataFrame.
 
-\hypertarget{section-76}{%
-\subsubsection{}\label{section-76}}
+\hypertarget{section-82}{%
+\subsubsection{}\label{section-82}}
 
 The country names contain some special characters \emph{(characters
 other than letters)} and need to be cleaned. The following function can
@@ -22547,8 +24070,8 @@ Assume that:
   is unavailable.
 \end{enumerate}
 
-\hypertarget{section-77}{%
-\subsubsection{}\label{section-77}}
+\hypertarget{section-83}{%
+\subsubsection{}\label{section-83}}
 
 For how many countries in \texttt{gdp\_per\_capita\_data} does the
 population seem to be unavailable in \texttt{population\_data}? Note
@@ -22574,8 +24097,8 @@ observation in the GDP per capita dataset, whose name in
 \texttt{population\_data} is the most \emph{`similar'} to the name of
 the country in \texttt{gdp\_per\_capita\_data}.
 
-\hypertarget{section-78}{%
-\subsubsection{}\label{section-78}}
+\hypertarget{section-84}{%
+\subsubsection{}\label{section-84}}
 
 Proceed as follows:
 
@@ -22634,8 +24157,8 @@ question. However, it would be perfect if don't use a \texttt{for} loop}
   function.
 \end{enumerate}
 
-\hypertarget{section-79}{%
-\subsubsection{}\label{section-79}}
+\hypertarget{section-85}{%
+\subsubsection{}\label{section-85}}
 
 In the dataset obtained in the previous question, for all observations
 where similarity score is less than 0.8, replace the population with
@@ -22717,8 +24240,8 @@ the year, i.e., the first value is for 1960, the second value is for
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-80}{%
-\subsection{}\label{section-80}}
+\hypertarget{section-86}{%
+\subsection{}\label{section-86}}
 
 Use list comprehension to create a list of the gaps between consecutive
 entries in \texttt{T}, i.e, the increase in GDP per capita with respect
@@ -22727,24 +24250,24 @@ to the previous year. The list with gaps should look like: {[}60, 177,
 
 \emph{(4 points)}
 
-\hypertarget{section-81}{%
-\subsection{}\label{section-81}}
+\hypertarget{section-87}{%
+\subsection{}\label{section-87}}
 
 Use \texttt{GDP\_increase} to find the maximum gap size, i.e, the
 maximum increase in GDP per capita.
 
 \emph{(1 point)}
 
-\hypertarget{section-82}{%
-\subsection{}\label{section-82}}
+\hypertarget{section-88}{%
+\subsection{}\label{section-88}}
 
 Use list comprehension with \texttt{GDP\_increase} to find the
 percentage of gaps that have size greater than \$1000.
 
 \emph{(3 points)}
 
-\hypertarget{section-83}{%
-\subsection{}\label{section-83}}
+\hypertarget{section-89}{%
+\subsection{}\label{section-89}}
 
 Use list comprehension with \texttt{GDP\_increase} to print the list of
 years in which the GDP per capita increase was more than \$2000.
@@ -22755,8 +24278,8 @@ function may help.
 
 \emph{(4 points)}
 
-\hypertarget{section-84}{%
-\subsection{}\label{section-84}}
+\hypertarget{section-90}{%
+\subsection{}\label{section-90}}
 
 Use list comprehension to:
 
@@ -22805,16 +24328,16 @@ Use list comprehension for all the questions below.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-85}{%
-\subsection{}\label{section-85}}
+\hypertarget{section-91}{%
+\subsection{}\label{section-91}}
 
 How many students have major / minor in any three of the above mentioned
 four areas?
 
 \emph{(1 point)}
 
-\hypertarget{section-86}{%
-\subsection{}\label{section-86}}
+\hypertarget{section-92}{%
+\subsection{}\label{section-92}}
 
 How many students have \emph{Math / Statistics / Computer Science} as an
 area of their major / minor?
@@ -22823,8 +24346,8 @@ area of their major / minor?
 
 \emph{(4 points)}
 
-\hypertarget{section-87}{%
-\subsection{}\label{section-87}}
+\hypertarget{section-93}{%
+\subsection{}\label{section-93}}
 
 How many students have \emph{Math / Statistics / Computer Science} as
 the \textbf{only area} of their major / minor?
@@ -22833,8 +24356,8 @@ the \textbf{only area} of their major / minor?
 
 \emph{(5 points)}
 
-\hypertarget{section-88}{%
-\subsection{}\label{section-88}}
+\hypertarget{section-94}{%
+\subsection{}\label{section-94}}
 
 How many students have \emph{Math / Statistics / Computer Science} and
 \emph{Social Sciences / Education} as a couple of areas of their major /
@@ -22858,8 +24381,8 @@ of drinks in starbucks.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-89}{%
-\subsection{}\label{section-89}}
+\hypertarget{section-95}{%
+\subsection{}\label{section-95}}
 
 What is the nested data structure of the object
 \texttt{starbucks\_drinks\_nutrition}? An example of a nested data
@@ -22868,8 +24391,8 @@ a tuple of dictionaries?
 
 \emph{(1 point)}
 
-\hypertarget{section-90}{%
-\subsection{}\label{section-90}}
+\hypertarget{section-96}{%
+\subsection{}\label{section-96}}
 
 Use dictionary-comprehension to print the name and \texttt{carb} content
 of all drinks that have a \texttt{carb} content of more than 50 units.
@@ -22881,8 +24404,8 @@ of all drinks that have a \texttt{carb} content of more than 50 units.
 \hypertarget{ted-talks}{%
 \section{Ted talks}\label{ted-talks}}
 
-\hypertarget{section-91}{%
-\subsection{}\label{section-91}}
+\hypertarget{section-97}{%
+\subsection{}\label{section-97}}
 
 Read the
 \href{https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json}{data}
@@ -22890,23 +24413,23 @@ on ted talks from 2006 to 2017.
 
 \emph{(1 point)}
 
-\hypertarget{section-92}{%
-\subsection{}\label{section-92}}
+\hypertarget{section-98}{%
+\subsection{}\label{section-98}}
 
 Find the number of talks in the dataset.
 
 \emph{(1 point)}
 
-\hypertarget{section-93}{%
-\subsection{}\label{section-93}}
+\hypertarget{section-99}{%
+\subsection{}\label{section-99}}
 
 Find the \texttt{headline}, \texttt{speaker} and \texttt{year\_filmed}
 of the talk with the highest number of views.
 
 \emph{(4 points)}
 
-\hypertarget{section-94}{%
-\subsection{}\label{section-94}}
+\hypertarget{section-100}{%
+\subsection{}\label{section-100}}
 
 Do the majority of talks have less views than the average number of
 views for a talk? Justify your answer.
@@ -22915,16 +24438,16 @@ views for a talk? Justify your answer.
 
 \textbf{Hint:} Print summary statistics for questions (4) and (5).
 
-\hypertarget{section-95}{%
-\subsection{}\label{section-95}}
+\hypertarget{section-101}{%
+\subsection{}\label{section-101}}
 
 Do at least 25\% of the talks have more views than the average number of
 views for a talk? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-96}{%
-\subsection{}\label{section-96}}
+\hypertarget{section-102}{%
+\subsection{}\label{section-102}}
 
 The last column of the dataset consists of votes obtained by the talk
 under different categories, such as \emph{Funny, Confusing, Fascinating,
@@ -22934,16 +24457,16 @@ first 5 rows of the updated dataset.
 
 \emph{(8 points)}
 
-\hypertarget{section-97}{%
-\subsection{}\label{section-97}}
+\hypertarget{section-103}{%
+\subsection{}\label{section-103}}
 
 With the data created in (a), find the \texttt{headline} of the talk
 that received the highest number of votes as \emph{Confusing}.
 
 \emph{(4 points)}
 
-\hypertarget{section-98}{%
-\subsection{}\label{section-98}}
+\hypertarget{section-104}{%
+\subsection{}\label{section-104}}
 
 With the data created in (a), find the \texttt{headline} and the
 \texttt{year} of the talk that received the highest percentage of votes
@@ -22956,38 +24479,38 @@ in the \emph{Fascinating} category.
 \hypertarget{university-rankings}{%
 \section{University rankings}\label{university-rankings}}
 
-\hypertarget{section-99}{%
-\subsection{}\label{section-99}}
+\hypertarget{section-105}{%
+\subsection{}\label{section-105}}
 
 Download the data set ``univ.txt''. Read it with python.
 
 \emph{(1 point)}
 
-\hypertarget{section-100}{%
-\subsection{}\label{section-100}}
+\hypertarget{section-106}{%
+\subsection{}\label{section-106}}
 
 Find summary statistics of the data. Based on the statistics, answer the
 next four questions.
 
 \emph{(1 point)}
 
-\hypertarget{section-101}{%
-\subsection{}\label{section-101}}
+\hypertarget{section-107}{%
+\subsection{}\label{section-107}}
 
 How many universities are there in the data set?
 
 \emph{(1 point)}
 
-\hypertarget{section-102}{%
-\subsection{}\label{section-102}}
+\hypertarget{section-108}{%
+\subsection{}\label{section-108}}
 
 Estimate the maximum \texttt{Tuition\ and\ fees} among universities that
 are in the bottom 25\% when ranked by total tuition and fees.
 
 \emph{(2 points)}
 
-\hypertarget{section-103}{%
-\subsection{}\label{section-103}}
+\hypertarget{section-109}{%
+\subsection{}\label{section-109}}
 
 How many universities share the ranking of 220? (If \texttt{s}
 universities share the same rank, say \texttt{r}, then the next lower
@@ -22996,16 +24519,16 @@ rank is \texttt{r+s}, and all the ranks in between \texttt{r} and
 
 \emph{(4 points)}
 
-\hypertarget{section-104}{%
-\subsection{}\label{section-104}}
+\hypertarget{section-110}{%
+\subsection{}\label{section-110}}
 
 Can you find the mean \texttt{Tuition\ and\ fees} for an undergrad
 student in the US from the summary statistics? Justify your answer.
 
 \emph{(3 points)}
 
-\hypertarget{section-105}{%
-\subsection{}\label{section-105}}
+\hypertarget{section-111}{%
+\subsection{}\label{section-111}}
 
 Find the average \texttt{Tuition\ and\ fees} for an undergrad student in
 the US.
@@ -23452,8 +24975,8 @@ variables are there in the data?
 
 \emph{(4 points)}
 
-\hypertarget{section-106}{%
-\subsection{}\label{section-106}}
+\hypertarget{section-112}{%
+\subsection{}\label{section-112}}
 
 Which variables have the strongest and weakest correlations with GDP per
 capita? Note that \texttt{lifeFemale} and \texttt{lifeMale} are the
@@ -23464,8 +24987,8 @@ judging a correlation as strong or weak.
 
 \emph{(4 points)}
 
-\hypertarget{section-107}{%
-\subsection{}\label{section-107}}
+\hypertarget{section-113}{%
+\subsection{}\label{section-113}}
 
 Does the male economic activity \emph{(in the column
 \texttt{economicActivityMale})} have a positive or negative correlation
@@ -23474,8 +24997,8 @@ If not, why do you think you are observing that correlation?
 
 \emph{(4 points)}
 
-\hypertarget{section-108}{%
-\subsection{}\label{section-108}}
+\hypertarget{section-114}{%
+\subsection{}\label{section-114}}
 
 What is the rank of the US amongst all countries in terms of GDP per
 capita? Which countries lie immediately above, and immediately below the
@@ -23499,8 +25022,8 @@ Note that:
 
 \emph{(4 points)}
 
-\hypertarget{section-109}{%
-\subsection{}\label{section-109}}
+\hypertarget{section-115}{%
+\subsection{}\label{section-115}}
 
 Which country or countries rank among the top 20 in terms of each of
 these social indicators - \texttt{economicActivityFemale},
@@ -23532,8 +25055,8 @@ indicator.
   maximum rank is less than or equal to 20 \emph{(one line of code)}.
 \end{enumerate}
 
-\hypertarget{section-110}{%
-\subsection{}\label{section-110}}
+\hypertarget{section-116}{%
+\subsection{}\label{section-116}}
 
 On which social indicator among \texttt{economicActivityFemale},
 \texttt{economicActivityMale}, \texttt{gdpPerCapita},
@@ -23547,8 +25070,8 @@ indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-111}{%
-\subsection{}\label{section-111}}
+\hypertarget{section-117}{%
+\subsection{}\label{section-117}}
 
 Find all the countries that have a lower GDP per capita than the US,
 despite having lower illiteracy rates (for both genders), higher
@@ -23565,8 +25088,8 @@ We'll use the same data as in in the previous question. For the
 questions below, assume that all numeric columns, \textbf{except GDP per
 capita}, are social indicators.
 
-\hypertarget{section-112}{%
-\subsection{}\label{section-112}}
+\hypertarget{section-118}{%
+\subsection{}\label{section-118}}
 
 Use the column \texttt{geographic\_location} to create a new column
 called \texttt{continent}. Merge the values of the
@@ -23601,8 +25124,8 @@ updated DataFrame.
   Rename the column \texttt{georgaphic\_location} to \texttt{continent}.
 \end{enumerate}
 
-\hypertarget{section-113}{%
-\subsection{}\label{section-113}}
+\hypertarget{section-119}{%
+\subsection{}\label{section-119}}
 
 Sort the column labels lexicographically. Drop the columns
 \texttt{region} and \texttt{contraception}. Print the first 5
@@ -23613,8 +25136,8 @@ observations of the updated DataFrame.
 
 \emph{(4 points)}
 
-\hypertarget{section-114}{%
-\subsection{}\label{section-114}}
+\hypertarget{section-120}{%
+\subsection{}\label{section-120}}
 
 Find the percentage of the total countries in each continent.
 
@@ -23623,22 +25146,22 @@ Find the percentage of the total countries in each continent.
 
 \emph{(4 points)}
 
-\hypertarget{section-115}{%
-\subsection{}\label{section-115}}
+\hypertarget{section-121}{%
+\subsection{}\label{section-121}}
 
 Which country has the highest GDP per capita? Let us call it country
 \(G\).
 
 \emph{(4 points)}
 
-\hypertarget{section-116}{%
-\subsection{}\label{section-116}}
+\hypertarget{section-122}{%
+\subsection{}\label{section-122}}
 
 We need to find the African country that is the closest to country \(G\)
 with regard to social indicators. Perform the following steps:
 
-\hypertarget{section-117}{%
-\subsubsection{}\label{section-117}}
+\hypertarget{section-123}{%
+\subsubsection{}\label{section-123}}
 
 Standardize each of the social indicators to a standard normal
 distribution so that all of them are on the same scale (remember to
@@ -23660,8 +25183,8 @@ exclude \emph{GDP per capita} from social indicators).
 
 \emph{(6 points)}
 
-\hypertarget{section-118}{%
-\subsubsection{}\label{section-118}}
+\hypertarget{section-124}{%
+\subsubsection{}\label{section-124}}
 
 Compute the
 \href{https://en.wikipedia.org/wiki/Taxicab_geometry}{Manhattan
@@ -23683,24 +25206,24 @@ on the scaled social indicators.
 
 \emph{(8 points)}
 
-\hypertarget{section-119}{%
-\subsubsection{}\label{section-119}}
+\hypertarget{section-125}{%
+\subsubsection{}\label{section-125}}
 
 Identify the African country, say country \(A\), with the least
 Manhattan distance to country \(G\).
 
 \emph{(8 points)}
 
-\hypertarget{section-120}{%
-\subsection{}\label{section-120}}
+\hypertarget{section-126}{%
+\subsection{}\label{section-126}}
 
 Find the correlation between the Manhattan distance from country \(G\)
 and GDP per capita for African countries.
 
 \emph{(6 points)}
 
-\hypertarget{section-121}{%
-\subsection{}\label{section-121}}
+\hypertarget{section-127}{%
+\subsection{}\label{section-127}}
 
 Based on the correlation coefficient in \(2(f)\), do you think African
 countries should try to emulate the social characteristics of country
@@ -23718,15 +25241,15 @@ IDs are stored in column \texttt{PATIENT}, and the medical conditions
 are stored in column \texttt{DESCRIPTION}. In \emph{patient.csv}, the
 patient IDs are stored in column \texttt{Id}.
 
-\hypertarget{section-122}{%
-\subsection{}\label{section-122}}
+\hypertarget{section-128}{%
+\subsection{}\label{section-128}}
 
 Print the patient IDs of all the patients with prediabetes condition.
 
 \emph{(4 points)}
 
-\hypertarget{section-123}{%
-\subsection{}\label{section-123}}
+\hypertarget{section-129}{%
+\subsection{}\label{section-129}}
 
 Make a subset of the data with only prediabetes patients. How many
 prediabetes patients are there?
@@ -23735,8 +25258,8 @@ prediabetes patients are there?
 
 \textbf{Hint:} \texttt{.isin()}
 
-\hypertarget{section-124}{%
-\subsection{}\label{section-124}}
+\hypertarget{section-130}{%
+\subsection{}\label{section-130}}
 
 What proportion of the total \texttt{HEALTHCARE\_EXPENSES} of all the
 patients correspond to the \texttt{HEALTHCARE\_EXPENSES} of prediabetes
@@ -23912,8 +25435,8 @@ time of its release.
 \hypertarget{month-of-release}{%
 \subsection{Month of release}\label{month-of-release}}
 
-\hypertarget{section-125}{%
-\subsubsection{}\label{section-125}}
+\hypertarget{section-131}{%
+\subsubsection{}\label{section-131}}
 
 Make an appropriate plot to visualize the mean profit of movies released
 each month.
@@ -23934,8 +25457,8 @@ each month.
 
 \emph{(6 points)}
 
-\hypertarget{section-126}{%
-\subsubsection{}\label{section-126}}
+\hypertarget{section-132}{%
+\subsubsection{}\label{section-132}}
 
 Based on the plot, which seasons have been the most and least profitable
 (on an average) for a movie release. Don't worry about the exact start
@@ -23949,8 +25472,8 @@ summer, late spring} etc.
 \subsection{Month of release with number of movies in each
 genre}\label{month-of-release-with-number-of-movies-in-each-genre}}
 
-\hypertarget{section-127}{%
-\subsubsection{}\label{section-127}}
+\hypertarget{section-133}{%
+\subsubsection{}\label{section-133}}
 
 Now that we know the most profitable season for releasing movies, let us
 visualize if some \texttt{genre}s are more popular during certain
@@ -23982,8 +25505,8 @@ each \texttt{genre} in each calendar month.
   Use the \emph{hue} argument
 \end{enumerate}
 
-\hypertarget{section-128}{%
-\subsubsection{}\label{section-128}}
+\hypertarget{section-134}{%
+\subsubsection{}\label{section-134}}
 
 Based on the above plot, which \texttt{genre} is the most popular during
 the most profitable season of release? And which genre is the most
@@ -23995,8 +25518,8 @@ popular during the least profitable season of release?
 \subsection{Month of release with proportion of movies in each
 genre}\label{month-of-release-with-proportion-of-movies-in-each-genre}}
 
-\hypertarget{section-129}{%
-\subsubsection{}\label{section-129}}
+\hypertarget{section-135}{%
+\subsubsection{}\label{section-135}}
 
 Visualize the proportion of movies in each \texttt{genre} for each month
 of release.
@@ -24030,8 +25553,8 @@ the visualization
 
 \emph{(8 points)}
 
-\hypertarget{section-130}{%
-\subsubsection{}\label{section-130}}
+\hypertarget{section-136}{%
+\subsubsection{}\label{section-136}}
 
 Which \texttt{genre} is the most popular during the month of May, and
 which one is the most popular during December?
@@ -24042,8 +25565,8 @@ which one is the most popular during December?
 \subsection{Year of release with
 genre}\label{year-of-release-with-genre}}
 
-\hypertarget{section-131}{%
-\subsubsection{}\label{section-131}}
+\hypertarget{section-137}{%
+\subsubsection{}\label{section-137}}
 
 Make an appropriate figure to visualize the average profit of movies of
 each \texttt{genre} for each year. Consider only the movies released
@@ -24068,8 +25591,8 @@ profit.
 
 \emph{(6 points)}
 
-\hypertarget{section-132}{%
-\subsubsection{}\label{section-132}}
+\hypertarget{section-138}{%
+\subsubsection{}\label{section-138}}
 
 Based on the figure above, which \texttt{genre}'s profitability seems to
 be increasing over the years, and which \texttt{genre} has the least
@@ -24083,31 +25606,31 @@ uncertainty in profit for most of the years.
 \hypertarget{pairplot-heatmap}{%
 \subsection{Pairplot / heatmap}\label{pairplot-heatmap}}
 
-\hypertarget{section-133}{%
-\subsubsection{}\label{section-133}}
+\hypertarget{section-139}{%
+\subsubsection{}\label{section-139}}
 
 Make a pairplot and heatmap of all the continuous variables in the data.
 
 \emph{(8 points)}
 
-\hypertarget{section-134}{%
-\subsubsection{}\label{section-134}}
+\hypertarget{section-140}{%
+\subsubsection{}\label{section-140}}
 
 Are there any trends that you can see in the pairplot, but not in the
 heatmap?
 
 \emph{(2 points)}
 
-\hypertarget{section-135}{%
-\subsubsection{}\label{section-135}}
+\hypertarget{section-141}{%
+\subsubsection{}\label{section-141}}
 
 Based on the plots in 2(a)(i), which variables are associated with
 profit?
 
 \emph{(2 points)}
 
-\hypertarget{section-136}{%
-\subsubsection{}\label{section-136}}
+\hypertarget{section-142}{%
+\subsubsection{}\label{section-142}}
 
 Among the variables listed in 2(a)(iii), select a subset of variables
 such that none of them are highly associated with each other. The rest
@@ -24119,8 +25642,8 @@ association with profit.
 \hypertarget{nested-associations}{%
 \subsection{Nested associations}\label{nested-associations}}
 
-\hypertarget{section-137}{%
-\subsubsection{}\label{section-137}}
+\hypertarget{section-143}{%
+\subsubsection{}\label{section-143}}
 
 Use the code below to create some new columns.
 
@@ -24138,8 +25661,8 @@ Which genre has the highest association between profit and IMDB votes?
 
 \emph{(8 points)}
 
-\hypertarget{section-138}{%
-\subsubsection{}\label{section-138}}
+\hypertarget{section-144}{%
+\subsubsection{}\label{section-144}}
 
 Make an appropriate figure to visualize the association between the
 number of IMDB votes and profit, for each combination of the fiction
@@ -24159,8 +25682,8 @@ object.
 \subsection{Profit based on movie
 director}\label{profit-based-on-movie-director}}
 
-\hypertarget{section-139}{%
-\subsubsection{}\label{section-139}}
+\hypertarget{section-145}{%
+\subsubsection{}\label{section-145}}
 
 Consider the directors who have directed more than 10 movies (based on
 the dataset). Make a horizontal barplot that shows the mean profit of
@@ -24182,8 +25705,8 @@ directors must appear in the barplot:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-140}{%
-\subsubsection{}\label{section-140}}
+\hypertarget{section-146}{%
+\subsubsection{}\label{section-146}}
 
 Based on the above plot, which director has the highest mean
 profitability, and which one has the highest variation in profitability?
@@ -24197,8 +25720,8 @@ profitability, and which one has the highest variation in profitability?
 \subsection{Distribution of profit based on genre
 (boxplots)}\label{distribution-of-profit-based-on-genre-boxplots}}
 
-\hypertarget{section-141}{%
-\subsubsection{}\label{section-141}}
+\hypertarget{section-147}{%
+\subsubsection{}\label{section-147}}
 
 Make boxplots to visualize the distribution of \texttt{profit} based on
 \texttt{genre}. Based on the plot, which genre has the most profitable
@@ -24206,8 +25729,8 @@ movies?
 
 \emph{(6 points)}
 
-\hypertarget{section-142}{%
-\subsubsection{}\label{section-142}}
+\hypertarget{section-148}{%
+\subsubsection{}\label{section-148}}
 
 Which genre has the most variation in profit, and which one has the
 least?
@@ -24218,16 +25741,16 @@ least?
 \subsection{Distribution of profit based on genre (density
 plots)}\label{distribution-of-profit-based-on-genre-density-plots}}
 
-\hypertarget{section-143}{%
-\subsubsection{}\label{section-143}}
+\hypertarget{section-149}{%
+\subsubsection{}\label{section-149}}
 
 Make density plots of \texttt{profit} based on \texttt{genre}. Adjust
 the limit on the horizonal axis, so that the plots are clearly visible.
 
 \emph{(6 points)}
 
-\hypertarget{section-144}{%
-\subsubsection{}\label{section-144}}
+\hypertarget{section-150}{%
+\subsubsection{}\label{section-150}}
 
 What additional insight / trend can you seen in the above plot that you
 cannot see with the boxplots?
@@ -24364,18 +25887,18 @@ Suppose there is an investor who only holds the index for a single day
 
 Based on the data,
 
-\hypertarget{section-145}{%
-\subsubsection{}\label{section-145}}
+\hypertarget{section-151}{%
+\subsubsection{}\label{section-151}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-146}{%
-\subsubsection{}\label{section-146}}
+\hypertarget{section-152}{%
+\subsubsection{}\label{section-152}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-147}{%
-\subsubsection{}\label{section-147}}
+\hypertarget{section-153}{%
+\subsubsection{}\label{section-153}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -24394,18 +25917,18 @@ Suppose there is an investor who will hold the index for a year (suppose
 there are 250 trading days in a year). Do the same analysis as the
 above:
 
-\hypertarget{section-148}{%
-\subsubsection{}\label{section-148}}
+\hypertarget{section-154}{%
+\subsubsection{}\label{section-154}}
 
 Show the histogram graph for all the possible returns.
 
-\hypertarget{section-149}{%
-\subsubsection{}\label{section-149}}
+\hypertarget{section-155}{%
+\subsubsection{}\label{section-155}}
 
 What is the expected return, risk and sharpe ratio?
 
-\hypertarget{section-150}{%
-\subsubsection{}\label{section-150}}
+\hypertarget{section-156}{%
+\subsubsection{}\label{section-156}}
 
 Is the return significantly greater than zero (a.k.a positive return)
 (use a threshold 0.01 for \(p\)-value) ?
@@ -24420,20 +25943,20 @@ our holding period from 1 day to 1 year(250 days).
 
 Show/answer:
 
-\hypertarget{section-151}{%
-\subsubsection{}\label{section-151}}
+\hypertarget{section-157}{%
+\subsubsection{}\label{section-157}}
 
 At least how many days do you need to hold the index in order to make a
 significant positive return (threshold 0.01)?
 
-\hypertarget{section-152}{%
-\subsubsection{}\label{section-152}}
+\hypertarget{section-158}{%
+\subsubsection{}\label{section-158}}
 
 How are the returns associated with the risks for different investment
 strategies?
 
-\hypertarget{section-153}{%
-\subsubsection{}\label{section-153}}
+\hypertarget{section-159}{%
+\subsubsection{}\label{section-159}}
 
 Make a graph as shown below.
 
@@ -24818,23 +26341,23 @@ along with the trendline. What is the trend indicated by the trendline?
 \subsection{\texorpdfstring{Trend with bins of
 \texttt{house\_age}}{Trend with bins of house\_age}}\label{trend-with-bins-of-house_age}}
 
-\hypertarget{section-154}{%
-\subsubsection{}\label{section-154}}
+\hypertarget{section-160}{%
+\subsubsection{}\label{section-160}}
 
 Bin \texttt{house\_age} into 5 approximately equal-sized bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-155}{%
-\subsubsection{}\label{section-155}}
+\hypertarget{section-161}{%
+\subsubsection{}\label{section-161}}
 
 After binning, plot the mean \texttt{house\_price} against the house age
 bins.
 
 \emph{(3 points)}
 
-\hypertarget{section-156}{%
-\subsubsection{}\label{section-156}}
+\hypertarget{section-162}{%
+\subsubsection{}\label{section-162}}
 
 Is the trend seen with this plot different from that seen with the
 trendline in the previous question? If yes, then is one of the trends
@@ -24842,8 +26365,8 @@ incorrect? Why or why not?
 
 \emph{(4 points)}
 
-\hypertarget{section-157}{%
-\subsubsection{}\label{section-157}}
+\hypertarget{section-163}{%
+\subsubsection{}\label{section-163}}
 
 Is one of the trends more informative? If yes, then which one and how?
 
