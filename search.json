@@ -4,7 +4,10 @@
     "href": "index.html",
     "title": "Introduction to Data Science with Python",
     "section": "",
-    "text": "Preface\nThis book is developed for the course STAT303-1 (Data Science with Python-1). The first two chapters of the book are a review of python, and will be covered very quickly. Students are expected to know the contents of these chapters beforehand, or be willing to learn it quickly. Students may use the STAT201 book (https://nustat.github.io/Intro_to_programming_for_data_sci/) to review the python basics required for the STAT303 sequence. The core part of the course begins from the third chapter - Reading data.\nPlease feel free to let the instructors know in case of any typos/mistakes/general feedback in this book."
+    "text": "Preface\nThis book is developed for STAT 303-1 (Data Science with Python-1), Sec 20 and Sec 21, in Fall 2024 at Northwestern University. The first two chapters provide a quick review of Python and will be covered rapidly. Students are expected to be familiar with this material beforehand or be prepared to learn it quickly. To review the required Python basics, students may refer to the STAT 201 book. The core content of the course begins in Chapter 3 – Reading Data.\nThis edition builds upon the foundational work of Professor Arvind Krishna, whose contributions have provided a strong framework for this resource. Throughout the quarter, the content will be updated and refined in real time to enhance clarity, depth, and relevance, ensuring alignment with current teaching objectives and methodologies.\nAs a living document, this book welcomes feedback, suggestions, and contributions from students, instructors, and the broader academic community. Your input helps improve its quality and effectiveness.\nThank you for being part of this journey—we hope this resource serves as a valuable guide in your learning.",
+    "crumbs": [
+      "Preface"
+    ]
   },
   {
     "objectID": "Introduction to Python and Jupyter Notebooks.html#python-language-basics",
