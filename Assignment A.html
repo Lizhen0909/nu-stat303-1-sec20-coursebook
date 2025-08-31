@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Data Science with Python - Appendix A — Assignment A</title>
+<title>Appendix A — Assignment A – Data Science I with python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,17 +71,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,14 +96,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -107,13 +141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment A.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment A.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -122,13 +156,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
+      <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
       <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introduction to Data Science with Python</a> 
+      <a href="./">Data Science I with python</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -146,55 +180,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Prerequisite: Python programming</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting started: Coding environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Introduction to Python and Jupyter Notebooks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  <a href="./venv_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
+  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Getting started: Coding environment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Prerequisite: Python programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./venv_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
+  <a href="./Introduction to Python and Jupyter Notebooks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Exploratory data analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exploratory data analysis: Core tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -235,6 +269,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Advanced Data Visualization</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Wrangling: Essential skills</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data cleaning and preparation.html" class="sidebar-item-text sidebar-link">
@@ -257,13 +302,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Assignment A.html" class="sidebar-item-text sidebar-link active">
@@ -311,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -367,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment A.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Appendix A — Assignment A</h1>
 <p class="subtitle lead">Data structures &amp; reading data</p>
@@ -383,7 +428,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="instructions" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="instructions">Instructions</h2>
@@ -404,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="list-comprehension" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="list-comprehension"><span class="header-section-number">A.1</span> List comprehension</h2>
 <p>USA’s GDP per capita from 1960 to 2021 is given by the tuple <code>T</code> in the code cell below. The values are arranged in ascending order of the year, i.e., the first value is for 1960, the second value is for 1961, and so on.</p>
-<div class="cell" data-execution_count="102">
+<div id="03164b35" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> (<span class="dv">3007</span>, <span class="dv">3067</span>, <span class="dv">3244</span>, <span class="dv">3375</span>,<span class="dv">3574</span>, <span class="dv">3828</span>, <span class="dv">4146</span>, <span class="dv">4336</span>, <span class="dv">4696</span>, <span class="dv">5032</span>,<span class="dv">5234</span>,<span class="dv">5609</span>,<span class="dv">6094</span>,<span class="dv">6726</span>,<span class="dv">7226</span>,<span class="dv">7801</span>,<span class="dv">8592</span>,<span class="dv">9453</span>,<span class="dv">10565</span>,<span class="dv">11674</span>,<span class="dv">12575</span>,<span class="dv">13976</span>,<span class="dv">14434</span>,<span class="dv">15544</span>,<span class="dv">17121</span>,<span class="dv">18237</span>,<span class="dv">19071</span>,<span class="dv">20039</span>,<span class="dv">21417</span>,<span class="dv">22857</span>,<span class="dv">23889</span>,<span class="dv">24342</span>,<span class="dv">25419</span>,<span class="dv">26387</span>,<span class="dv">27695</span>,<span class="dv">28691</span>,<span class="dv">29968</span>,<span class="dv">31459</span>,<span class="dv">32854</span>,<span class="dv">34515</span>,<span class="dv">36330</span>,<span class="dv">37134</span>,<span class="dv">37998</span>,<span class="dv">39490</span>,<span class="dv">41725</span>,<span class="dv">44123</span>,<span class="dv">46302</span>,<span class="dv">48050</span>,<span class="dv">48570</span>,<span class="dv">47195</span>,<span class="dv">48651</span>,<span class="dv">50066</span>,<span class="dv">51784</span>,<span class="dv">53291</span>,<span class="dv">55124</span>,<span class="dv">56763</span>,<span class="dv">57867</span>,<span class="dv">59915</span>,<span class="dv">62805</span>,<span class="dv">65095</span>,<span class="dv">63028</span>,<span class="dv">69288</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="section" class="level3" data-number="A.1.1">
@@ -449,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>There are some students having majors / minors in other areas as well.</p>
 <p>Use list comprehension for all the questions below.</p>
-<div class="cell" data-execution_count="82">
+<div id="c79ef832" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>majors_minors <span class="op">=</span> majors_minors <span class="op">=</span> [[<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>,  <span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>,  <span class="st">'Social Sciences / Education'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Cognitive Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Music'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Data Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>, <span class="st">'jazz'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Social Sciences / Education'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>,  <span class="st">'Social Sciences / Education'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Econ'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">''</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>,  <span class="st">'Social Sciences / Education'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Social Sciences / Education'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Social Sciences / Education'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Humanities / Communications'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>,  <span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Social Sciences / Education'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Humanities / Communications'</span>,  <span class="st">'Social Sciences / Education'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>,  <span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>, <span class="st">'Music'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Humanities / Communications'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Humanities / Communications'</span>, <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Social Sciences / Education'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>], [<span class="st">'Physical Sciences / Natural Sciences / Engineering'</span>,  <span class="st">'Math / Statistics / Computer Science'</span>], [<span class="st">'Math / Statistics / Computer Science'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="section-5" class="level3" data-number="A.2.1">
@@ -479,7 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dictionary" class="level2" data-number="A.3">
 <h2 data-number="A.3" class="anchored" data-anchor-id="dictionary"><span class="header-section-number">A.3</span> Dictionary</h2>
 <p>The code cell below defines an object having the nutrition information of drinks in starbucks.</p>
-<div class="cell" data-execution_count="116">
+<div id="0a225991" class="cell" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>starbucks_drinks_nutrition<span class="op">=</span>{<span class="st">'Cool Lime Starbucks Refreshers™ Beverage'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">45</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">11</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Strawberry Acai Starbucks Refreshers™ Beverage'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">80</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">18</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Very Berry Hibiscus Starbucks Refreshers™ Beverage'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">14</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Evolution Fresh™ Organic Ginger Limeade'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">110</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">28</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}], <span class="st">'Iced Coffee'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}], <span class="st">'Iced Espresso Classics - Vanilla Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">130</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">21</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">65</span>}], <span class="st">'Iced Espresso Classics - Caffe Mocha'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">23</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">90</span>}], <span class="st">'Iced Espresso Classics - Caramel Macchiato'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">130</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">21</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">65</span>}], <span class="st">'Shaken Sweet Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">80</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">19</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Berry Blossom White'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Black Mango'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">38</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}], <span class="st">'Tazo® Bottled Black with Lemon'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">35</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Brambleberry'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">35</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}], <span class="st">'Tazo® Bottled Giant Peach'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">37</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}], <span class="st">'Tazo® Bottled Iced Passion'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">70</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">17</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Lemon Ginger'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">120</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">31</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Organic Black Lemonade'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">35</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Organic Iced Black Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Organic Iced Green Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">120</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">31</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Plum Pomegranate'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">35</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Tazo® Bottled Tazoberry'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">38</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}], <span class="st">'Tazo® Bottled White Cranberry'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">35</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Teavana® Shaken Iced Black Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">30</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">8</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}], <span class="st">'Teavana® Shaken Iced Black Tea Lemonade'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">70</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">17</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Teavana® Shaken Iced Green Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">30</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">8</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}], <span class="st">'Teavana® Shaken Iced Green Tea Lemonade'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">70</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">17</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}], <span class="st">'Teavana® Shaken Iced Passion Tango™ Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">30</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">8</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}], <span class="st">'Teavana® Shaken Iced Passion Tango™ Tea Lemonade'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">90</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">24</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Teavana® Shaken Iced Peach Green Tea'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Starbucks Refreshers™ Raspberry Pomegranate'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">90</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">27</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Starbucks Refreshers™ Strawberry Lemonade'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">90</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">27</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Starbucks® Doubleshot Protein Dark Chocolate'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">210</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">33</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">2</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">20</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">115</span>}], <span class="st">'Starbucks® Doubleshot Protein Vanilla'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">200</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">34</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">2</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">20</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">120</span>}], <span class="st">'Starbucks® Iced Coffee Caramel'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">13</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Starbucks® Iced Coffee Light Sweetened'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">50</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">11</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Starbucks® Iced Coffee Unsweetened'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">2</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Blonde Roast'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Clover® Brewed Coffee'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Decaf Pike Place® Roast'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Featured Dark Roast'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Nariño 70 Cold Brew'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}], <span class="st">'Nariño 70 Cold Brew with Milk'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Nitro Cold Brew'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Nitro Cold Brew with Sweet Cream'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">70</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">5.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">20</span>}], <span class="st">'Pike Place® Roast'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}], <span class="st">'Vanilla Sweet Cream Cold Brew'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">110</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">6.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">14</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">25</span>}], <span class="st">'Hot Chocolate'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">320</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">9.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">47</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">4</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">14</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">160</span>}], <span class="st">'Starbucks® Signature Hot Chocolate'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">430</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">26.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">45</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">12</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">115</span>}], <span class="st">'Caffè Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">190</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">7.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">19</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">13</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">170</span>}], <span class="st">'Caffè Mocha'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">290</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">8.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">42</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">4</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">13</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}], <span class="st">'Cappuccino'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">120</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">4.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">12</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">8</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">100</span>}], <span class="st">'Caramel Macchiato'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">250</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">7.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">35</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}], <span class="st">'Cinnamon Dolce Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">260</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">6.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">40</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">11</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}], <span class="st">'Coconutmilk Mocha Macchiato'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">250</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">9.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">32</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">12</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">180</span>}], <span class="st">'Flat White'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">180</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">7.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">18</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">12</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">160</span>}], <span class="st">'Iced Caffè Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">130</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">4.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">13</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">8</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">115</span>}], <span class="st">'Iced Caffè Mocha'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">230</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">6.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">36</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">4</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">9</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">90</span>}], <span class="st">'Iced Caramel Macchiato'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">250</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">7.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">37</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}], <span class="st">'Iced Cinnamon Dolce Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">200</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">4.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">34</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">7</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">95</span>}], <span class="st">'Iced Coconutmilk Mocha Macchiato'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">260</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">9.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">34</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">11</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">180</span>}], <span class="st">'Iced Vanilla Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">190</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">4.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">30</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">7</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">100</span>}], <span class="st">'Iced White Chocolate Mocha'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">300</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">8.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">47</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">190</span>}], <span class="st">'Latte Macchiato'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">190</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">7.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">19</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">12</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">160</span>}], <span class="st">'Starbucks Doubleshot® on Ice Beverage'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">45</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">1.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">3</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">40</span>}], <span class="st">'Vanilla Latte'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">250</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">6.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">37</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">12</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">150</span>}], <span class="st">'White Chocolate Mocha'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">360</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">11.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">53</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">14</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">240</span>}], <span class="st">'Cinnamon Dolce Frappuccino® Blended Coffee'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">350</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">4.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">64</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">15</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}], <span class="st">'Coffee Light Frappuccino® Blended Coffee'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">110</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">24</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">3</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">200</span>}], <span class="st">'Mocha Frappuccino® Blended Coffee'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">280</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">2</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">4</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">220</span>}], <span class="st">'Mocha Light Frappuccino® Blended Coffee'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">140</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">0.5</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">28</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">1</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">4</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">180</span>}], <span class="st">'Cinnamon Dolce Crème'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">200</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">6.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">28</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">135</span>}], <span class="st">'Vanilla Crème'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">200</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">6.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">28</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">10</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">135</span>}], <span class="st">'Chocolate Smoothie'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">320</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">5.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">53</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">8</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">20</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">170</span>}], <span class="st">'Strawberry Smoothie'</span>: [{<span class="st">'Nutrition_type'</span>: <span class="st">'Calories'</span>, <span class="st">'value'</span>: <span class="dv">300</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fat'</span>, <span class="st">'value'</span>: <span class="fl">2.0</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Carb'</span>, <span class="st">'value'</span>: <span class="dv">60</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Fiber'</span>, <span class="st">'value'</span>: <span class="dv">7</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Protein'</span>, <span class="st">'value'</span>: <span class="dv">16</span>}, {<span class="st">'Nutrition_type'</span>: <span class="st">'Sodium'</span>, <span class="st">'value'</span>: <span class="dv">130</span>}]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="section-9" class="level3" data-number="A.3.1">
@@ -621,18 +668,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -664,11 +700,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -678,8 +751,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -691,7 +773,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -735,6 +939,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -760,6 +965,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -821,17 +1052,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Data wrangling.html" class="pagination-link">
+      <a href="./Data wrangling.html" class="pagination-link" aria-label="Data Reshaping and Enrichment">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping and Enrichment</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Assignment B.html" class="pagination-link">
+      <a href="./Assignment B.html" class="pagination-link" aria-label="Assignment B">
         <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

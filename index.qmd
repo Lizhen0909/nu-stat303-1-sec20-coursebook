@@ -1,10 +1,18 @@
 # Preface {.unnumbered}
 
-This book is developed for **STAT 303-1 (Data Science with Python-1), Sec 20 and Sec 21**, in **Fall 2024** at **Northwestern University**. The first two chapters provide a **quick review of Python** and will be covered rapidly. Students are expected to be familiar with this material beforehand or be prepared to learn it quickly. To review the required Python basics, students may refer to the [STAT 201 book](https://lizhen0909.github.io/Intro_to_programming_for_data_sci_wi25/). The **core content of the course begins in Chapter 3 – *Reading Data***.  
+This book has been developed for **STAT 303-1 (Data Science with Python I), Section 20**, at Northwestern University.  
+This edition builds upon the foundational work of **Professor Arvind Krishna**, whose contributions have provided a strong framework for this resource.  
 
-This edition builds upon the foundational work of **Professor Arvind Krishna**, whose contributions have provided a strong framework for this resource. 
-Throughout the quarter, the content will be updated and refined in real time to enhance **clarity, depth, and relevance**, ensuring alignment with current teaching objectives and methodologies.  
+In this first course of the sequence, we will learn how to **read, process, and visualize data** using several popular Python libraries.  
 
-As a **living document**, this book welcomes feedback, suggestions, and contributions from students, instructors, and the broader academic community. Your input helps improve its quality and effectiveness.  
+- **Chapters 1–2** guide you through setting up your coding environment in VS Code, working with Jupyter Notebooks, and enhancing your workflow.  
+- **Chapters 3–4** provide a concise review of prerequisite material from STAT 201. Students are expected to be familiar with this content or be prepared to learn it quickly.  
+  - For a fuller review, please refer to the [STAT 201 ebook](https://lizhen0909.github.io/Intro_to_programming_for_data_sci/).  
+- The **core content** of the course begins in **Chapter 5 – *Reading Data***.  
 
-Thank you for being part of this journey—we hope this resource serves as a valuable guide in your learning.  
+Throughout the quarter, the material will be continuously updated and refined to improve clarity, depth, and alignment with current teaching objectives.  
+
+As a **living document**, this book welcomes feedback, suggestions, and contributions from students, instructors, and the broader academic community.  
+Your input helps strengthen its quality and effectiveness.  
+
+Thank you for being part of this journey — we hope this resource serves as a valuable guide in your learning.  

@@ -4,7 +4,9 @@ project:
 
 
 book:  
-  title: "Introduction to Data Science with Python"
+  title: "Data Science I with python"
+  subtitle: "STAT 303-1-Sec20"
+  author: "Lizhen Shi"
   
   sidebar:
     search: true
@@ -13,15 +15,15 @@ book:
 
   chapters:
     - index.qmd
-    - part: 'Prerequisite: Python programming'
-      chapters:
-        - Introduction to Python and Jupyter Notebooks.ipynb
-        - data_structures.ipynb
     - part: 'Getting started: Coding environment'
       chapters:
         - venv_setup.ipynb
         - workflow_enhance.ipynb
-    - part: 'Exploratory data analysis'
+    - part: 'Prerequisite: Python programming'
+      chapters:
+        - Introduction to Python and Jupyter Notebooks.ipynb
+        - data_structures.ipynb
+    - part: 'Exploratory data analysis: Core tools'
       chapters:
         - Reading data.ipynb
         - NumPy.ipynb
@@ -29,10 +31,11 @@ book:
         - data_types_in_pandas.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
+    - part: 'Data Wrangling: Essential skills'
+      chapters:
         - Data cleaning and preparation.ipynb
         - Data aggregation.ipynb
         - Data wrangling.ipynb
-        
         # - student_solutions.ipynb
   appendices: 
     - Assignment A.ipynb

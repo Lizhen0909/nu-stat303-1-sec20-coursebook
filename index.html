@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Lizhen Shi">
 
-<title>Introduction to Data Science with Python</title>
+<title>Data Science I with python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Introduction to Python and Jupyter Notebooks.html" rel="next">
+<link href="./venv_setup.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -98,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introduction to Data Science with Python</a> 
+      <a href="./">Data Science I with python</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Prerequisite: Python programming</span></a>
+ <span class="menu-text">Getting started: Coding environment</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -125,14 +126,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Introduction to Python and Jupyter Notebooks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  <a href="./venv_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
+  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
   </div>
 </li>
       </ul>
@@ -140,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Getting started: Coding environment</span></a>
+ <span class="menu-text">Prerequisite: Python programming</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -148,14 +149,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./venv_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
+  <a href="./Introduction to Python and Jupyter Notebooks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
   </div>
 </li>
       </ul>
@@ -163,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Exploratory data analysis</span></a>
+ <span class="menu-text">Exploratory data analysis: Core tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -205,6 +206,17 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Advanced Data Visualization</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Wrangling: Essential skills</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data cleaning and preparation.html" class="sidebar-item-text sidebar-link">
@@ -227,13 +239,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
@@ -297,13 +309,20 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to Data Science with Python</h1>
+<h1 class="title">Data Science I with python</h1>
+<p class="subtitle lead">STAT 303-1-Sec20</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lizhen Shi </p>
+          </div>
+  </div>
     
   
     
@@ -316,10 +335,23 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>This book is developed for <strong>STAT 303-1 (Data Science with Python-1), Sec 20 and Sec 21</strong>, in <strong>Fall 2024</strong> at <strong>Northwestern University</strong>. The first two chapters provide a <strong>quick review of Python</strong> and will be covered rapidly. Students are expected to be familiar with this material beforehand or be prepared to learn it quickly. To review the required Python basics, students may refer to the <a href="https://lizhen0909.github.io/Intro_to_programming_for_data_sci_wi25/">STAT 201 book</a>. The <strong>core content of the course begins in Chapter 3 – <em>Reading Data</em></strong>.</p>
-<p>This edition builds upon the foundational work of <strong>Professor Arvind Krishna</strong>, whose contributions have provided a strong framework for this resource. Throughout the quarter, the content will be updated and refined in real time to enhance <strong>clarity, depth, and relevance</strong>, ensuring alignment with current teaching objectives and methodologies.</p>
-<p>As a <strong>living document</strong>, this book welcomes feedback, suggestions, and contributions from students, instructors, and the broader academic community. Your input helps improve its quality and effectiveness.</p>
-<p>Thank you for being part of this journey—we hope this resource serves as a valuable guide in your learning.</p>
+<p>This book has been developed for <strong>STAT 303-1 (Data Science with Python I), Section 20</strong>, at Northwestern University.<br>
+This edition builds upon the foundational work of <strong>Professor Arvind Krishna</strong>, whose contributions have provided a strong framework for this resource.</p>
+<p>In this first course of the sequence, we will learn how to <strong>read, process, and visualize data</strong> using several popular Python libraries.</p>
+<ul>
+<li><strong>Chapters 1–2</strong> guide you through setting up your coding environment in VS Code, working with Jupyter Notebooks, and enhancing your workflow.<br>
+</li>
+<li><strong>Chapters 3–4</strong> provide a concise review of prerequisite material from STAT 201. Students are expected to be familiar with this content or be prepared to learn it quickly.
+<ul>
+<li>For a fuller review, please refer to the <a href="https://lizhen0909.github.io/Intro_to_programming_for_data_sci/">STAT 201 ebook</a>.<br>
+</li>
+</ul></li>
+<li>The <strong>core content</strong> of the course begins in <strong>Chapter 5 – <em>Reading Data</em></strong>.</li>
+</ul>
+<p>Throughout the quarter, the material will be continuously updated and refined to improve clarity, depth, and alignment with current teaching objectives.</p>
+<p>As a <strong>living document</strong>, this book welcomes feedback, suggestions, and contributions from students, instructors, and the broader academic community.<br>
+Your input helps strengthen its quality and effectiveness.</p>
+<p>Thank you for being part of this journey — we hope this resource serves as a valuable guide in your learning.</p>
 
 
 </section>
@@ -746,8 +778,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Introduction to Python and Jupyter Notebooks.html" class="pagination-link" aria-label="Python Basics">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./venv_setup.html" class="pagination-link" aria-label="Setting up your environment with VS Code">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
