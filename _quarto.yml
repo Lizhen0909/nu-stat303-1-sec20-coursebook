@@ -25,8 +25,8 @@ book:
         - data_structures.ipynb
     - part: 'Exploratory data analysis: Core tools'
       chapters:
-        - Reading data.ipynb
         - NumPy.ipynb
+        - Reading data.ipynb
         - Pandas.ipynb
         - data_types_in_pandas.ipynb
         - Data visualization.ipynb
@@ -38,12 +38,12 @@ book:
         - Data wrangling.ipynb
         # - student_solutions.ipynb
   appendices: 
-    - Assignment A.ipynb
-    - Assignment B.ipynb
-    - Assignment C.ipynb
-    - Assignment D.ipynb
-    - Assignment E.ipynb
-    - Assignment F.ipynb
+    #- Assignment A.ipynb
+    #- Assignment B.ipynb
+    #- Assignment C.ipynb
+    #- Assignment D.ipynb
+    #- Assignment E.ipynb
+    #- Assignment F.ipynb
     # - Assignment G.ipynb
     - Datasets.ipynb
     # - references.qmd
