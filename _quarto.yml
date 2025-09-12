@@ -15,23 +15,23 @@ book:
 
   chapters:
     - index.qmd
-    - part: 'Getting started: Coding environment'
+    - part: 'Getting started'
       chapters:
         - venv_setup.ipynb
         - workflow_enhance.ipynb
-    - part: 'Prerequisite: Python programming'
+    - part: 'Python refresher'
       chapters:
         - Introduction to Python and Jupyter Notebooks.ipynb
         - data_structures.ipynb
-    - part: 'Exploratory data analysis: Core tools'
+    - part: 'Core Library Foundations'
       chapters:
-        - NumPy.ipynb
-        - Reading data.ipynb
+        - Numpy.ipynb
         - Pandas.ipynb
+        - Reading data.ipynb
         - data_types_in_pandas.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
-    - part: 'Data Wrangling: Essential skills'
+    - part: 'From messy to insight'
       chapters:
         - Data cleaning and preparation.ipynb
         - Data aggregation.ipynb

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Pandas – Data Science I with python</title>
+<title>6&nbsp; Pandas – Data Science I with python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data_types_in_pandas.html" rel="next">
-<link href="./Reading data.html" rel="prev">
+<link href="./Reading data.html" rel="next">
+<link href="./NumPy.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,7 +147,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NumPy.html">Exploratory data analysis: Core tools</a></li><li class="breadcrumb-item"><a href="./Pandas.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NumPy.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./Pandas.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -184,7 +184,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Getting started: Coding environment</span></a>
+ <span class="menu-text">Getting started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -207,7 +207,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Prerequisite: Python programming</span></a>
+ <span class="menu-text">Python refresher</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -230,7 +230,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Exploratory data analysis: Core tools</span></a>
+ <span class="menu-text">Core Library Foundations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -244,14 +244,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Reading data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+  <a href="./Pandas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Pandas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas</span></span></a>
+  <a href="./Reading data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -277,7 +277,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Data Wrangling: Essential skills</span></a>
+ <span class="menu-text">From messy to insight</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -330,113 +330,113 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
-  <li><a href="#pandas-data-structures---series-and-dataframe" id="toc-pandas-data-structures---series-and-dataframe" class="nav-link" data-scroll-target="#pandas-data-structures---series-and-dataframe"><span class="header-section-number">7.2</span> Pandas data structures - Series and DataFrame</a></li>
-  <li><a href="#creating-a-pandas-series-dataframe" id="toc-creating-a-pandas-series-dataframe" class="nav-link" data-scroll-target="#creating-a-pandas-series-dataframe"><span class="header-section-number">7.3</span> Creating a Pandas Series / DataFrame</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
+  <li><a href="#pandas-data-structures---series-and-dataframe" id="toc-pandas-data-structures---series-and-dataframe" class="nav-link" data-scroll-target="#pandas-data-structures---series-and-dataframe"><span class="header-section-number">6.2</span> Pandas data structures - Series and DataFrame</a></li>
+  <li><a href="#creating-a-pandas-series-dataframe" id="toc-creating-a-pandas-series-dataframe" class="nav-link" data-scroll-target="#creating-a-pandas-series-dataframe"><span class="header-section-number">6.3</span> Creating a Pandas Series / DataFrame</a>
   <ul>
-  <li><a href="#creating-a-seriesdataframe-from-python-list-or-dictionary" id="toc-creating-a-seriesdataframe-from-python-list-or-dictionary" class="nav-link" data-scroll-target="#creating-a-seriesdataframe-from-python-list-or-dictionary"><span class="header-section-number">7.3.1</span> Creating a Series/DataFrame from Python List or Dictionary</a>
+  <li><a href="#creating-a-seriesdataframe-from-python-list-or-dictionary" id="toc-creating-a-seriesdataframe-from-python-list-or-dictionary" class="nav-link" data-scroll-target="#creating-a-seriesdataframe-from-python-list-or-dictionary"><span class="header-section-number">6.3.1</span> Creating a Series/DataFrame from Python List or Dictionary</a>
   <ul class="collapse">
-  <li><a href="#creating-a-series" id="toc-creating-a-series" class="nav-link" data-scroll-target="#creating-a-series"><span class="header-section-number">7.3.1.1</span> Creating a series:</a></li>
-  <li><a href="#creating-a-dataframe" id="toc-creating-a-dataframe" class="nav-link" data-scroll-target="#creating-a-dataframe"><span class="header-section-number">7.3.1.2</span> Creating a DataFrame</a></li>
+  <li><a href="#creating-a-series" id="toc-creating-a-series" class="nav-link" data-scroll-target="#creating-a-series"><span class="header-section-number">6.3.1.1</span> Creating a series:</a></li>
+  <li><a href="#creating-a-dataframe" id="toc-creating-a-dataframe" class="nav-link" data-scroll-target="#creating-a-dataframe"><span class="header-section-number">6.3.1.2</span> Creating a DataFrame</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#creating-a-seriesdataframe-by-reading-data-from-a-file" id="toc-creating-a-seriesdataframe-by-reading-data-from-a-file" class="nav-link" data-scroll-target="#creating-a-seriesdataframe-by-reading-data-from-a-file"><span class="header-section-number">7.4</span> Creating a Series/DataFrame by Reading Data from a File</a></li>
-  <li><a href="#attributes-and-methods-of-a-pandas-dataframe" id="toc-attributes-and-methods-of-a-pandas-dataframe" class="nav-link" data-scroll-target="#attributes-and-methods-of-a-pandas-dataframe"><span class="header-section-number">7.5</span> Attributes and Methods of a Pandas DataFrame</a>
+  <li><a href="#creating-a-seriesdataframe-by-reading-data-from-a-file" id="toc-creating-a-seriesdataframe-by-reading-data-from-a-file" class="nav-link" data-scroll-target="#creating-a-seriesdataframe-by-reading-data-from-a-file"><span class="header-section-number">6.4</span> Creating a Series/DataFrame by Reading Data from a File</a></li>
+  <li><a href="#attributes-and-methods-of-a-pandas-dataframe" id="toc-attributes-and-methods-of-a-pandas-dataframe" class="nav-link" data-scroll-target="#attributes-and-methods-of-a-pandas-dataframe"><span class="header-section-number">6.5</span> Attributes and Methods of a Pandas DataFrame</a>
   <ul>
-  <li><a href="#attributes-of-a-pandas-dataframe" id="toc-attributes-of-a-pandas-dataframe" class="nav-link" data-scroll-target="#attributes-of-a-pandas-dataframe"><span class="header-section-number">7.5.1</span> Attributes of a Pandas DataFrame</a>
+  <li><a href="#attributes-of-a-pandas-dataframe" id="toc-attributes-of-a-pandas-dataframe" class="nav-link" data-scroll-target="#attributes-of-a-pandas-dataframe"><span class="header-section-number">6.5.1</span> Attributes of a Pandas DataFrame</a>
   <ul class="collapse">
-  <li><a href="#dtypes" id="toc-dtypes" class="nav-link" data-scroll-target="#dtypes"><span class="header-section-number">7.5.1.1</span> <code>dtypes</code></a></li>
-  <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns"><span class="header-section-number">7.5.1.2</span> <code>columns</code></a></li>
-  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index"><span class="header-section-number">7.5.1.3</span> <code>index</code></a></li>
-  <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes"><span class="header-section-number">7.5.1.4</span> <code>axes</code></a></li>
-  <li><a href="#ndim" id="toc-ndim" class="nav-link" data-scroll-target="#ndim"><span class="header-section-number">7.5.1.5</span> <code>ndim</code></a></li>
-  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="header-section-number">7.5.1.6</span> <code>size</code></a></li>
-  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"><span class="header-section-number">7.5.1.7</span> <code>shape</code></a></li>
-  <li><a href="#values" id="toc-values" class="nav-link" data-scroll-target="#values"><span class="header-section-number">7.5.1.8</span> <code>values</code></a></li>
+  <li><a href="#dtypes" id="toc-dtypes" class="nav-link" data-scroll-target="#dtypes"><span class="header-section-number">6.5.1.1</span> <code>dtypes</code></a></li>
+  <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns"><span class="header-section-number">6.5.1.2</span> <code>columns</code></a></li>
+  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index"><span class="header-section-number">6.5.1.3</span> <code>index</code></a></li>
+  <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes"><span class="header-section-number">6.5.1.4</span> <code>axes</code></a></li>
+  <li><a href="#ndim" id="toc-ndim" class="nav-link" data-scroll-target="#ndim"><span class="header-section-number">6.5.1.5</span> <code>ndim</code></a></li>
+  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="header-section-number">6.5.1.6</span> <code>size</code></a></li>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"><span class="header-section-number">6.5.1.7</span> <code>shape</code></a></li>
+  <li><a href="#values" id="toc-values" class="nav-link" data-scroll-target="#values"><span class="header-section-number">6.5.1.8</span> <code>values</code></a></li>
   </ul></li>
-  <li><a href="#methods-of-a-pandas-dataframe" id="toc-methods-of-a-pandas-dataframe" class="nav-link" data-scroll-target="#methods-of-a-pandas-dataframe"><span class="header-section-number">7.5.2</span> Methods of a Pandas DataFrame</a>
+  <li><a href="#methods-of-a-pandas-dataframe" id="toc-methods-of-a-pandas-dataframe" class="nav-link" data-scroll-target="#methods-of-a-pandas-dataframe"><span class="header-section-number">6.5.2</span> Methods of a Pandas DataFrame</a>
   <ul class="collapse">
-  <li><a href="#head" id="toc-head" class="nav-link" data-scroll-target="#head"><span class="header-section-number">7.5.2.1</span> <code>head()</code></a></li>
-  <li><a href="#tail" id="toc-tail" class="nav-link" data-scroll-target="#tail"><span class="header-section-number">7.5.2.2</span> <code>tail()</code></a></li>
-  <li><a href="#describe" id="toc-describe" class="nav-link" data-scroll-target="#describe"><span class="header-section-number">7.5.2.3</span> <code>describe()</code></a></li>
-  <li><a href="#maxmin" id="toc-maxmin" class="nav-link" data-scroll-target="#maxmin"><span class="header-section-number">7.5.2.4</span> <code>max()</code>/<code>min()</code></a></li>
-  <li><a href="#meanmedian" id="toc-meanmedian" class="nav-link" data-scroll-target="#meanmedian"><span class="header-section-number">7.5.2.5</span> <code>mean()</code>/<code>median()</code></a></li>
-  <li><a href="#std" id="toc-std" class="nav-link" data-scroll-target="#std"><span class="header-section-number">7.5.2.6</span> <code>std()</code></a></li>
-  <li><a href="#samplen" id="toc-samplen" class="nav-link" data-scroll-target="#samplen"><span class="header-section-number">7.5.2.7</span> <code>sample(n)</code></a></li>
-  <li><a href="#dropna" id="toc-dropna" class="nav-link" data-scroll-target="#dropna"><span class="header-section-number">7.5.2.8</span> <code>dropna()</code></a></li>
-  <li><a href="#unique" id="toc-unique" class="nav-link" data-scroll-target="#unique"><span class="header-section-number">7.5.2.9</span> <code>unique()</code></a></li>
-  <li><a href="#value_counts" id="toc-value_counts" class="nav-link" data-scroll-target="#value_counts"><span class="header-section-number">7.5.2.10</span> <code>value_counts()</code></a></li>
-  <li><a href="#isin" id="toc-isin" class="nav-link" data-scroll-target="#isin"><span class="header-section-number">7.5.2.11</span> <code>isin()</code></a></li>
+  <li><a href="#head" id="toc-head" class="nav-link" data-scroll-target="#head"><span class="header-section-number">6.5.2.1</span> <code>head()</code></a></li>
+  <li><a href="#tail" id="toc-tail" class="nav-link" data-scroll-target="#tail"><span class="header-section-number">6.5.2.2</span> <code>tail()</code></a></li>
+  <li><a href="#describe" id="toc-describe" class="nav-link" data-scroll-target="#describe"><span class="header-section-number">6.5.2.3</span> <code>describe()</code></a></li>
+  <li><a href="#maxmin" id="toc-maxmin" class="nav-link" data-scroll-target="#maxmin"><span class="header-section-number">6.5.2.4</span> <code>max()</code>/<code>min()</code></a></li>
+  <li><a href="#meanmedian" id="toc-meanmedian" class="nav-link" data-scroll-target="#meanmedian"><span class="header-section-number">6.5.2.5</span> <code>mean()</code>/<code>median()</code></a></li>
+  <li><a href="#std" id="toc-std" class="nav-link" data-scroll-target="#std"><span class="header-section-number">6.5.2.6</span> <code>std()</code></a></li>
+  <li><a href="#samplen" id="toc-samplen" class="nav-link" data-scroll-target="#samplen"><span class="header-section-number">6.5.2.7</span> <code>sample(n)</code></a></li>
+  <li><a href="#dropna" id="toc-dropna" class="nav-link" data-scroll-target="#dropna"><span class="header-section-number">6.5.2.8</span> <code>dropna()</code></a></li>
+  <li><a href="#unique" id="toc-unique" class="nav-link" data-scroll-target="#unique"><span class="header-section-number">6.5.2.9</span> <code>unique()</code></a></li>
+  <li><a href="#value_counts" id="toc-value_counts" class="nav-link" data-scroll-target="#value_counts"><span class="header-section-number">6.5.2.10</span> <code>value_counts()</code></a></li>
+  <li><a href="#isin" id="toc-isin" class="nav-link" data-scroll-target="#isin"><span class="header-section-number">6.5.2.11</span> <code>isin()</code></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#data-manipulations-with-pandas" id="toc-data-manipulations-with-pandas" class="nav-link" data-scroll-target="#data-manipulations-with-pandas"><span class="header-section-number">7.6</span> Data manipulations with Pandas</a>
+  <li><a href="#data-manipulations-with-pandas" id="toc-data-manipulations-with-pandas" class="nav-link" data-scroll-target="#data-manipulations-with-pandas"><span class="header-section-number">6.6</span> Data manipulations with Pandas</a>
   <ul>
-  <li><a href="#sub-setting-data" id="toc-sub-setting-data" class="nav-link" data-scroll-target="#sub-setting-data"><span class="header-section-number">7.6.1</span> Sub-setting data</a></li>
-  <li><a href="#setting-and-resetting-indices" id="toc-setting-and-resetting-indices" class="nav-link" data-scroll-target="#setting-and-resetting-indices"><span class="header-section-number">7.6.2</span> Setting and Resetting indices</a></li>
-  <li><a href="#dropping-a-column" id="toc-dropping-a-column" class="nav-link" data-scroll-target="#dropping-a-column"><span class="header-section-number">7.6.3</span> Dropping a column</a></li>
-  <li><a href="#adding-a-column" id="toc-adding-a-column" class="nav-link" data-scroll-target="#adding-a-column"><span class="header-section-number">7.6.4</span> Adding a column</a></li>
-  <li><a href="#renaming-a-column" id="toc-renaming-a-column" class="nav-link" data-scroll-target="#renaming-a-column"><span class="header-section-number">7.6.5</span> Renaming a column</a></li>
-  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data"><span class="header-section-number">7.6.6</span> Sorting data</a></li>
-  <li><a href="#ranking-data" id="toc-ranking-data" class="nav-link" data-scroll-target="#ranking-data"><span class="header-section-number">7.6.7</span> Ranking data</a></li>
+  <li><a href="#sub-setting-data" id="toc-sub-setting-data" class="nav-link" data-scroll-target="#sub-setting-data"><span class="header-section-number">6.6.1</span> Sub-setting data</a></li>
+  <li><a href="#setting-and-resetting-indices" id="toc-setting-and-resetting-indices" class="nav-link" data-scroll-target="#setting-and-resetting-indices"><span class="header-section-number">6.6.2</span> Setting and Resetting indices</a></li>
+  <li><a href="#dropping-a-column" id="toc-dropping-a-column" class="nav-link" data-scroll-target="#dropping-a-column"><span class="header-section-number">6.6.3</span> Dropping a column</a></li>
+  <li><a href="#adding-a-column" id="toc-adding-a-column" class="nav-link" data-scroll-target="#adding-a-column"><span class="header-section-number">6.6.4</span> Adding a column</a></li>
+  <li><a href="#renaming-a-column" id="toc-renaming-a-column" class="nav-link" data-scroll-target="#renaming-a-column"><span class="header-section-number">6.6.5</span> Renaming a column</a></li>
+  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data"><span class="header-section-number">6.6.6</span> Sorting data</a></li>
+  <li><a href="#ranking-data" id="toc-ranking-data" class="nav-link" data-scroll-target="#ranking-data"><span class="header-section-number">6.6.7</span> Ranking data</a></li>
   </ul></li>
-  <li><a href="#arithematic-operations-within-and-between-dataframes" id="toc-arithematic-operations-within-and-between-dataframes" class="nav-link" data-scroll-target="#arithematic-operations-within-and-between-dataframes"><span class="header-section-number">7.7</span> Arithematic operations within and between DataFrames</a>
+  <li><a href="#arithematic-operations-within-and-between-dataframes" id="toc-arithematic-operations-within-and-between-dataframes" class="nav-link" data-scroll-target="#arithematic-operations-within-and-between-dataframes"><span class="header-section-number">6.7</span> Arithematic operations within and between DataFrames</a>
   <ul>
-  <li><a href="#arithematic-operations-within-a-dataframe" id="toc-arithematic-operations-within-a-dataframe" class="nav-link" data-scroll-target="#arithematic-operations-within-a-dataframe"><span class="header-section-number">7.7.1</span> Arithematic operations within a DataFrame</a></li>
-  <li><a href="#arithematic-operations-between-dataframes" id="toc-arithematic-operations-between-dataframes" class="nav-link" data-scroll-target="#arithematic-operations-between-dataframes"><span class="header-section-number">7.7.2</span> Arithematic operations between DataFrames</a></li>
-  <li><a href="#arithmetic-between-dataframe-and-series-broadcasting" id="toc-arithmetic-between-dataframe-and-series-broadcasting" class="nav-link" data-scroll-target="#arithmetic-between-dataframe-and-series-broadcasting"><span class="header-section-number">7.7.3</span> Arithmetic Between DataFrame and Series (Broadcasting)</a></li>
-  <li><a href="#converting-a-dataframe-to-a-numpy-array" id="toc-converting-a-dataframe-to-a-numpy-array" class="nav-link" data-scroll-target="#converting-a-dataframe-to-a-numpy-array"><span class="header-section-number">7.7.4</span> Converting a DataFrame to a NumPy Array</a>
+  <li><a href="#arithematic-operations-within-a-dataframe" id="toc-arithematic-operations-within-a-dataframe" class="nav-link" data-scroll-target="#arithematic-operations-within-a-dataframe"><span class="header-section-number">6.7.1</span> Arithematic operations within a DataFrame</a></li>
+  <li><a href="#arithematic-operations-between-dataframes" id="toc-arithematic-operations-between-dataframes" class="nav-link" data-scroll-target="#arithematic-operations-between-dataframes"><span class="header-section-number">6.7.2</span> Arithematic operations between DataFrames</a></li>
+  <li><a href="#arithmetic-between-dataframe-and-series-broadcasting" id="toc-arithmetic-between-dataframe-and-series-broadcasting" class="nav-link" data-scroll-target="#arithmetic-between-dataframe-and-series-broadcasting"><span class="header-section-number">6.7.3</span> Arithmetic Between DataFrame and Series (Broadcasting)</a></li>
+  <li><a href="#converting-a-dataframe-to-a-numpy-array" id="toc-converting-a-dataframe-to-a-numpy-array" class="nav-link" data-scroll-target="#converting-a-dataframe-to-a-numpy-array"><span class="header-section-number">6.7.4</span> Converting a DataFrame to a NumPy Array</a>
   <ul class="collapse">
-  <li><a href="#using-.values" id="toc-using-.values" class="nav-link" data-scroll-target="#using-.values"><span class="header-section-number">7.7.4.1</span> Using <code>.values</code></a></li>
-  <li><a href="#using-.to_numpy" id="toc-using-.to_numpy" class="nav-link" data-scroll-target="#using-.to_numpy"><span class="header-section-number">7.7.4.2</span> Using <code>.to_numpy()</code></a></li>
+  <li><a href="#using-.values" id="toc-using-.values" class="nav-link" data-scroll-target="#using-.values"><span class="header-section-number">6.7.4.1</span> Using <code>.values</code></a></li>
+  <li><a href="#using-.to_numpy" id="toc-using-.to_numpy" class="nav-link" data-scroll-target="#using-.to_numpy"><span class="header-section-number">6.7.4.2</span> Using <code>.to_numpy()</code></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#advanced-dataframe-operations" id="toc-advanced-dataframe-operations" class="nav-link" data-scroll-target="#advanced-dataframe-operations"><span class="header-section-number">7.8</span> Advanced DataFrame Operations</a>
+  <li><a href="#advanced-dataframe-operations" id="toc-advanced-dataframe-operations" class="nav-link" data-scroll-target="#advanced-dataframe-operations"><span class="header-section-number">6.8</span> Advanced DataFrame Operations</a>
   <ul>
-  <li><a href="#apply-row-wise-or-column-wise" id="toc-apply-row-wise-or-column-wise" class="nav-link" data-scroll-target="#apply-row-wise-or-column-wise"><span class="header-section-number">7.8.1</span> <code>apply()</code>: Row-wise, or Column-wise</a></li>
-  <li><a href="#map-element-wise" id="toc-map-element-wise" class="nav-link" data-scroll-target="#map-element-wise"><span class="header-section-number">7.8.2</span> <code>map()</code>: Element-wise</a></li>
-  <li><a href="#key-differences-between-map-and-apply" id="toc-key-differences-between-map-and-apply" class="nav-link" data-scroll-target="#key-differences-between-map-and-apply"><span class="header-section-number">7.8.3</span> Key Differences Between <code>map()</code> and <code>apply()</code></a>
+  <li><a href="#apply-row-wise-or-column-wise" id="toc-apply-row-wise-or-column-wise" class="nav-link" data-scroll-target="#apply-row-wise-or-column-wise"><span class="header-section-number">6.8.1</span> <code>apply()</code>: Row-wise, or Column-wise</a></li>
+  <li><a href="#map-element-wise" id="toc-map-element-wise" class="nav-link" data-scroll-target="#map-element-wise"><span class="header-section-number">6.8.2</span> <code>map()</code>: Element-wise</a></li>
+  <li><a href="#key-differences-between-map-and-apply" id="toc-key-differences-between-map-and-apply" class="nav-link" data-scroll-target="#key-differences-between-map-and-apply"><span class="header-section-number">6.8.3</span> Key Differences Between <code>map()</code> and <code>apply()</code></a>
   <ul class="collapse">
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.8.3.1</span> Summary:</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.8.3.1</span> Summary:</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#introduction-to-lambda-functions-in-pandas" id="toc-introduction-to-lambda-functions-in-pandas" class="nav-link" data-scroll-target="#introduction-to-lambda-functions-in-pandas"><span class="header-section-number">7.9</span> Introduction to Lambda Functions in Pandas</a>
+  <li><a href="#introduction-to-lambda-functions-in-pandas" id="toc-introduction-to-lambda-functions-in-pandas" class="nav-link" data-scroll-target="#introduction-to-lambda-functions-in-pandas"><span class="header-section-number">6.9</span> Introduction to Lambda Functions in Pandas</a>
   <ul>
-  <li><a href="#syntax-of-lambda-functions" id="toc-syntax-of-lambda-functions" class="nav-link" data-scroll-target="#syntax-of-lambda-functions"><span class="header-section-number">7.9.1</span> Syntax of Lambda Functions:</a></li>
-  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features"><span class="header-section-number">7.9.2</span> Key Features</a></li>
+  <li><a href="#syntax-of-lambda-functions" id="toc-syntax-of-lambda-functions" class="nav-link" data-scroll-target="#syntax-of-lambda-functions"><span class="header-section-number">6.9.1</span> Syntax of Lambda Functions:</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features"><span class="header-section-number">6.9.2</span> Key Features</a></li>
   </ul></li>
-  <li><a href="#understanding-inplacetrue-and-inplacefalse" id="toc-understanding-inplacetrue-and-inplacefalse" class="nav-link" data-scroll-target="#understanding-inplacetrue-and-inplacefalse"><span class="header-section-number">7.10</span> Understanding <code>inplace=True</code> and <code>inplace=False</code></a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">7.11</span> Case study</a></li>
-  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">7.12</span> Independent Practice:</a>
+  <li><a href="#understanding-inplacetrue-and-inplacefalse" id="toc-understanding-inplacetrue-and-inplacefalse" class="nav-link" data-scroll-target="#understanding-inplacetrue-and-inplacefalse"><span class="header-section-number">6.10</span> Understanding <code>inplace=True</code> and <code>inplace=False</code></a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">6.11</span> Case study</a></li>
+  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">6.12</span> Independent Practice:</a>
   <ul>
-  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">7.12.1</span> Practice exercise 1</a>
+  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">6.12.1</span> Practice exercise 1</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">7.12.1.1</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">7.12.1.2</span> </a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">7.12.1.3</span> </a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">7.12.1.4</span> </a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">7.12.1.5</span> </a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">7.12.1.6</span> </a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7.12.1.7</span> </a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">7.12.1.8</span> </a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">6.12.1.1</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">6.12.1.2</span> </a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">6.12.1.3</span> </a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">6.12.1.4</span> </a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">6.12.1.5</span> </a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">6.12.1.6</span> </a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">6.12.1.7</span> </a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">6.12.1.8</span> </a></li>
   </ul></li>
-  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">7.12.2</span> Practice exercise 2</a>
+  <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">6.12.2</span> Practice exercise 2</a>
   <ul class="collapse">
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">7.12.2.1</span> </a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">7.12.2.2</span> </a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">7.12.2.3</span> </a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">7.12.2.4</span> </a></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">7.12.2.5</span> </a></li>
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"><span class="header-section-number">7.12.2.6</span> </a></li>
-  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"><span class="header-section-number">7.12.2.7</span> </a></li>
-  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"><span class="header-section-number">7.12.2.8</span> </a></li>
-  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"><span class="header-section-number">7.12.2.9</span> </a></li>
-  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">7.12.2.10</span> </a></li>
-  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">7.12.2.11</span> </a></li>
-  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">7.12.2.12</span> </a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">6.12.2.1</span> </a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">6.12.2.2</span> </a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">6.12.2.3</span> </a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">6.12.2.4</span> </a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">6.12.2.5</span> </a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"><span class="header-section-number">6.12.2.6</span> </a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"><span class="header-section-number">6.12.2.7</span> </a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"><span class="header-section-number">6.12.2.8</span> </a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"><span class="header-section-number">6.12.2.9</span> </a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">6.12.2.10</span> </a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">6.12.2.11</span> </a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">6.12.2.12</span> </a></li>
   </ul></li>
-  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">7.12.3</span> Practice exercise 3</a>
+  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">6.12.3</span> Practice exercise 3</a>
   <ul class="collapse">
-  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">7.12.3.1</span> </a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">6.12.3.1</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -445,9 +445,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NumPy.html">Exploratory data analysis: Core tools</a></li><li class="breadcrumb-item"><a href="./Pandas.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NumPy.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./Pandas.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas</span></h1>
 </div>
 
 
@@ -464,8 +464,8 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
 <p>Pandas is an essential tool in the data scientist or data analyst’s toolkit due to its ability to handle and transform data with ease and efficiency.</p>
 <p><img src="https://i.imgur.com/zfxLzEv.png" alt="example image" style="width: 750px;"></p>
 <p>Built on top of the NumPy package, Pandas extends the capabilities of NumPy by offering support for working with tabular or heterogeneous data. While NumPy is optimized for working with homogeneous numerical arrays, Pandas is specifically designed for handling structured, labeled data, commonly represented in two-dimensional tables known as DataFrames. There are some similarities between the two libraries. Like NumPy, Pandas provides basic mathematical functionalities such as addition, subtraction, conditional operations, and broadcasting. However, while NumPy focuses on multi-dimensional arrays, Pandas excels in offering the powerful 2D <code>DataFrame</code> object for data manipulation.</p>
@@ -485,8 +485,8 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pandas-data-structures---series-and-dataframe" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="pandas-data-structures---series-and-dataframe"><span class="header-section-number">7.2</span> Pandas data structures - Series and DataFrame</h2>
+<section id="pandas-data-structures---series-and-dataframe" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="pandas-data-structures---series-and-dataframe"><span class="header-section-number">6.2</span> Pandas data structures - Series and DataFrame</h2>
 <p>There are two core components of the Pandas library - Series and DataFrame.</p>
 <p>A DataFrame is a two-dimensional object - comprising of tabular data organized in rows and columns, where individual columns can be of different value types (numeric / string / boolean etc.). A DataFrame has row labels (also called row indices) which refer to individual rows, and column labels (also called column names) that refer to individual columns. By default, the row indices are integers starting from zero. However, both the row indices and column names can be customized by the user.</p>
 <p>Let us read the spotify data - <em>spotify_data.csv</em>, using the Pandas function <code>read_csv()</code>.</p>
@@ -689,16 +689,16 @@ Name: track_name, Length: 243190, dtype: object</code></pre>
 <p>A&nbsp;Series&nbsp;is essentially a column, and a&nbsp;DataFrame&nbsp;is a two-dimensional table made up of a collection of Series</p>
 <p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFmjpTWPpi4cZBAuL7W5H1LvGetG_MwnmvGQ&amp;s" alt="example image" style="width: 300px;"></p>
 </section>
-<section id="creating-a-pandas-series-dataframe" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="creating-a-pandas-series-dataframe"><span class="header-section-number">7.3</span> Creating a Pandas Series / DataFrame</h2>
+<section id="creating-a-pandas-series-dataframe" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="creating-a-pandas-series-dataframe"><span class="header-section-number">6.3</span> Creating a Pandas Series / DataFrame</h2>
 <ul>
 <li>From a Python List or Dictionary</li>
 <li>By Reading Data from a file</li>
 </ul>
-<section id="creating-a-seriesdataframe-from-python-list-or-dictionary" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="creating-a-seriesdataframe-from-python-list-or-dictionary"><span class="header-section-number">7.3.1</span> Creating a Series/DataFrame from Python List or Dictionary</h3>
-<section id="creating-a-series" class="level4" data-number="7.3.1.1">
-<h4 data-number="7.3.1.1" class="anchored" data-anchor-id="creating-a-series"><span class="header-section-number">7.3.1.1</span> Creating a series:</h4>
+<section id="creating-a-seriesdataframe-from-python-list-or-dictionary" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="creating-a-seriesdataframe-from-python-list-or-dictionary"><span class="header-section-number">6.3.1</span> Creating a Series/DataFrame from Python List or Dictionary</h3>
+<section id="creating-a-series" class="level4" data-number="6.3.1.1">
+<h4 data-number="6.3.1.1" class="anchored" data-anchor-id="creating-a-series"><span class="header-section-number">6.3.1.1</span> Creating a series:</h4>
 <ul>
 <li><strong>From a Python List</strong>: You can create a pandas Series by passing a list of values.</li>
 </ul>
@@ -748,8 +748,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="creating-a-dataframe" class="level4" data-number="7.3.1.2">
-<h4 data-number="7.3.1.2" class="anchored" data-anchor-id="creating-a-dataframe"><span class="header-section-number">7.3.1.2</span> Creating a DataFrame</h4>
+<section id="creating-a-dataframe" class="level4" data-number="6.3.1.2">
+<h4 data-number="6.3.1.2" class="anchored" data-anchor-id="creating-a-dataframe"><span class="header-section-number">6.3.1.2</span> Creating a DataFrame</h4>
 <ul>
 <li><strong>From a list of Python Dictionary</strong>: You can create a DataFrame where keys are column names and values are lists representing column data.</li>
 </ul>
@@ -871,8 +871,8 @@ dtype: int64</code></pre>
 </section>
 </section>
 </section>
-<section id="creating-a-seriesdataframe-by-reading-data-from-a-file" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="creating-a-seriesdataframe-by-reading-data-from-a-file"><span class="header-section-number">7.4</span> Creating a Series/DataFrame by Reading Data from a File</h2>
+<section id="creating-a-seriesdataframe-by-reading-data-from-a-file" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="creating-a-seriesdataframe-by-reading-data-from-a-file"><span class="header-section-number">6.4</span> Creating a Series/DataFrame by Reading Data from a File</h2>
 <p>In the real world, a Pandas DataFrame will typically be created by loading the datasets from existing storage such as SQL Database, CSV file, Excel file, text files, HTML files, etc., as we learned in the perious chapter of the book on Reading data.</p>
 <ul>
 <li><strong>Using <code>read_csv()</code></strong>: This is one of the most common methods to read data from a CSV file into a pandas DataFrame.</li>
@@ -880,8 +880,8 @@ dtype: int64</code></pre>
 <li><strong>Using <code>read_json()</code></strong>: You can also read data from json files.</li>
 </ul>
 </section>
-<section id="attributes-and-methods-of-a-pandas-dataframe" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="attributes-and-methods-of-a-pandas-dataframe"><span class="header-section-number">7.5</span> Attributes and Methods of a Pandas DataFrame</h2>
+<section id="attributes-and-methods-of-a-pandas-dataframe" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="attributes-and-methods-of-a-pandas-dataframe"><span class="header-section-number">6.5</span> Attributes and Methods of a Pandas DataFrame</h2>
 <p>All attributes and methods of a Pandas DataFrame object can be viewed with the python’s built-in <a href="https://docs.python.org/3/library/functions.html#dir">dir()</a> function.</p>
 <div id="47410eca" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#List of attributes and methods of a Pandas DataFrame</span></span>
@@ -889,11 +889,11 @@ dtype: int64</code></pre>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dir(spotify_data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Although we’ll see examples of attributes and methods of a Pandas DataFrame, please note that most of these attributes and methods are also applicable to the Pandas Series object.</p>
-<section id="attributes-of-a-pandas-dataframe" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="attributes-of-a-pandas-dataframe"><span class="header-section-number">7.5.1</span> Attributes of a Pandas DataFrame</h3>
+<section id="attributes-of-a-pandas-dataframe" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="attributes-of-a-pandas-dataframe"><span class="header-section-number">6.5.1</span> Attributes of a Pandas DataFrame</h3>
 <p>Some of the attributes of the Pandas DataFrame class are the following.</p>
-<section id="dtypes" class="level4" data-number="7.5.1.1">
-<h4 data-number="7.5.1.1" class="anchored" data-anchor-id="dtypes"><span class="header-section-number">7.5.1.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html"><code>dtypes</code></a></h4>
+<section id="dtypes" class="level4" data-number="6.5.1.1">
+<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="dtypes"><span class="header-section-number">6.5.1.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html"><code>dtypes</code></a></h4>
 <p>This attribute is a Series consisting the datatypes of columns of a Pandas DataFrame.</p>
 <div id="febb554f" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>spotify_data.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -955,8 +955,8 @@ dtype: object</code></pre>
 </tbody>
 </table>
 </section>
-<section id="columns" class="level4" data-number="7.5.1.2">
-<h4 data-number="7.5.1.2" class="anchored" data-anchor-id="columns"><span class="header-section-number">7.5.1.2</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html"><code>columns</code></a></h4>
+<section id="columns" class="level4" data-number="6.5.1.2">
+<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="columns"><span class="header-section-number">6.5.1.2</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html"><code>columns</code></a></h4>
 <p>This attribute consists of the column labels (or column names) of a Pandas DataFrame.</p>
 <div id="9efb8a3c" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>spotify_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -970,8 +970,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="index" class="level4" data-number="7.5.1.3">
-<h4 data-number="7.5.1.3" class="anchored" data-anchor-id="index"><span class="header-section-number">7.5.1.3</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.html"><code>index</code></a></h4>
+<section id="index" class="level4" data-number="6.5.1.3">
+<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="index"><span class="header-section-number">6.5.1.3</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.html"><code>index</code></a></h4>
 <p>This attribute consists of the row lables (or row indices) of a Pandas DataFrame.</p>
 <div id="9f273f47" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>spotify_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -980,8 +980,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="axes" class="level4" data-number="7.5.1.4">
-<h4 data-number="7.5.1.4" class="anchored" data-anchor-id="axes"><span class="header-section-number">7.5.1.4</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.axes.html"><code>axes</code></a></h4>
+<section id="axes" class="level4" data-number="6.5.1.4">
+<h4 data-number="6.5.1.4" class="anchored" data-anchor-id="axes"><span class="header-section-number">6.5.1.4</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.axes.html"><code>axes</code></a></h4>
 <p>This is a list of length two, where the first element is the row labels, and the second element is the columns labels. In other words, this attribute combines the information in the attributes - <code>index</code> and <code>columns</code>.</p>
 <div id="fd0cf2d9" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>spotify_data.axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -996,8 +996,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="ndim" class="level4" data-number="7.5.1.5">
-<h4 data-number="7.5.1.5" class="anchored" data-anchor-id="ndim"><span class="header-section-number">7.5.1.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html"><code>ndim</code></a></h4>
+<section id="ndim" class="level4" data-number="6.5.1.5">
+<h4 data-number="6.5.1.5" class="anchored" data-anchor-id="ndim"><span class="header-section-number">6.5.1.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html"><code>ndim</code></a></h4>
 <p>As in NumPy, this attribute specifies the number of dimensions. However, unlike NumPy, a Pandas DataFrame has a fixed dimenstion of 2, and a Pandas Series has a fixed dimesion of 1.</p>
 <div id="49ebc684" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>spotify_data.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1006,8 +1006,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="size" class="level4" data-number="7.5.1.6">
-<h4 data-number="7.5.1.6" class="anchored" data-anchor-id="size"><span class="header-section-number">7.5.1.6</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html"><code>size</code></a></h4>
+<section id="size" class="level4" data-number="6.5.1.6">
+<h4 data-number="6.5.1.6" class="anchored" data-anchor-id="size"><span class="header-section-number">6.5.1.6</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html"><code>size</code></a></h4>
 <p>This attribute specifies the number of elements in a DataFrame. Its value is the product of the number of rows and columns.</p>
 <div id="a83710f5" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>spotify_data.size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1016,8 +1016,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="shape" class="level4" data-number="7.5.1.7">
-<h4 data-number="7.5.1.7" class="anchored" data-anchor-id="shape"><span class="header-section-number">7.5.1.7</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.shape.html"><code>shape</code></a></h4>
+<section id="shape" class="level4" data-number="6.5.1.7">
+<h4 data-number="6.5.1.7" class="anchored" data-anchor-id="shape"><span class="header-section-number">6.5.1.7</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.shape.html"><code>shape</code></a></h4>
 <p>This is a tuple consisting of the number of rows and columns in a Pandas DataFrame.</p>
 <div id="37453cbc" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>spotify_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1026,8 +1026,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="values" class="level4" data-number="7.5.1.8">
-<h4 data-number="7.5.1.8" class="anchored" data-anchor-id="values"><span class="header-section-number">7.5.1.8</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.values.html"><code>values</code></a></h4>
+<section id="values" class="level4" data-number="6.5.1.8">
+<h4 data-number="6.5.1.8" class="anchored" data-anchor-id="values"><span class="header-section-number">6.5.1.8</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.values.html"><code>values</code></a></h4>
 <p>This provides a NumPy representation of a Pandas DataFrame.</p>
 <div id="7647ec9b" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>spotify_data.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1044,11 +1044,11 @@ dtype: object</code></pre>
 </div>
 </section>
 </section>
-<section id="methods-of-a-pandas-dataframe" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="methods-of-a-pandas-dataframe"><span class="header-section-number">7.5.2</span> Methods of a Pandas DataFrame</h3>
+<section id="methods-of-a-pandas-dataframe" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="methods-of-a-pandas-dataframe"><span class="header-section-number">6.5.2</span> Methods of a Pandas DataFrame</h3>
 <p>Some of the commonly used methods of the Pandas DataFrame class are the following.</p>
-<section id="head" class="level4" data-number="7.5.2.1">
-<h4 data-number="7.5.2.1" class="anchored" data-anchor-id="head"><span class="header-section-number">7.5.2.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html"><code>head()</code></a></h4>
+<section id="head" class="level4" data-number="6.5.2.1">
+<h4 data-number="6.5.2.1" class="anchored" data-anchor-id="head"><span class="header-section-number">6.5.2.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html"><code>head()</code></a></h4>
 <p>Prints the first <em>n</em> rows of a DataFrame.</p>
 <div id="265d4198" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>spotify_data.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1140,8 +1140,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="tail" class="level4" data-number="7.5.2.2">
-<h4 data-number="7.5.2.2" class="anchored" data-anchor-id="tail"><span class="header-section-number">7.5.2.2</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html"><code>tail()</code></a></h4>
+<section id="tail" class="level4" data-number="6.5.2.2">
+<h4 data-number="6.5.2.2" class="anchored" data-anchor-id="tail"><span class="header-section-number">6.5.2.2</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html"><code>tail()</code></a></h4>
 <p>Prints the last <em>n</em> rows of a DataFrame.</p>
 <div id="0e1bf4f9" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>spotify_data.tail(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1257,8 +1257,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="describe" class="level4" data-number="7.5.2.3">
-<h4 data-number="7.5.2.3" class="anchored" data-anchor-id="describe"><span class="header-section-number">7.5.2.3</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html"><code>describe()</code></a></h4>
+<section id="describe" class="level4" data-number="6.5.2.3">
+<h4 data-number="6.5.2.3" class="anchored" data-anchor-id="describe"><span class="header-section-number">6.5.2.3</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html"><code>describe()</code></a></h4>
 <p>Print summary statistics of a Pandas DataFrame, as seen in chapter 3 on Reading Data.</p>
 <div id="e1868353" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>spotify_data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1466,8 +1466,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="maxmin" class="level4" data-number="7.5.2.4">
-<h4 data-number="7.5.2.4" class="anchored" data-anchor-id="maxmin"><span class="header-section-number">7.5.2.4</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html"><code>max()</code></a>/<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html"><code>min()</code></a></h4>
+<section id="maxmin" class="level4" data-number="6.5.2.4">
+<h4 data-number="6.5.2.4" class="anchored" data-anchor-id="maxmin"><span class="header-section-number">6.5.2.4</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html"><code>max()</code></a>/<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html"><code>min()</code></a></h4>
 <p>Returns the max/min values of numeric columns. If the function is applied on non-numeric columns, it will return the maximum/minimum value based on the order of the alphabet.</p>
 <div id="d674fec5" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The max() method applied on a Series</span></span>
@@ -1505,8 +1505,8 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="meanmedian" class="level4" data-number="7.5.2.5">
-<h4 data-number="7.5.2.5" class="anchored" data-anchor-id="meanmedian"><span class="header-section-number">7.5.2.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html"><code>mean()</code></a>/<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.median.html"><code>median()</code></a></h4>
+<section id="meanmedian" class="level4" data-number="6.5.2.5">
+<h4 data-number="6.5.2.5" class="anchored" data-anchor-id="meanmedian"><span class="header-section-number">6.5.2.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html"><code>mean()</code></a>/<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.median.html"><code>median()</code></a></h4>
 <p>Returns the mean/median values of numeric columns.</p>
 <div id="4a2d6b6c" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply median to the numeric columns</span></span>
@@ -1535,8 +1535,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="std" class="level4" data-number="7.5.2.6">
-<h4 data-number="7.5.2.6" class="anchored" data-anchor-id="std"><span class="header-section-number">7.5.2.6</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html"><code>std()</code></a></h4>
+<section id="std" class="level4" data-number="6.5.2.6">
+<h4 data-number="6.5.2.6" class="anchored" data-anchor-id="std"><span class="header-section-number">6.5.2.6</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html"><code>std()</code></a></h4>
 <p>Returns the standard deviation of numeric columns.</p>
 <div id="a2a59f8b" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>spotify_data.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1563,8 +1563,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="samplen" class="level4" data-number="7.5.2.7">
-<h4 data-number="7.5.2.7" class="anchored" data-anchor-id="samplen"><span class="header-section-number">7.5.2.7</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html"><code>sample(n)</code></a></h4>
+<section id="samplen" class="level4" data-number="6.5.2.7">
+<h4 data-number="6.5.2.7" class="anchored" data-anchor-id="samplen"><span class="header-section-number">6.5.2.7</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html"><code>sample(n)</code></a></h4>
 <p>Returns <em>n</em> random observations from a Pandas DataFrame.</p>
 <div id="b74493d6" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>spotify_data.sample(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1704,8 +1704,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="dropna" class="level4" data-number="7.5.2.8">
-<h4 data-number="7.5.2.8" class="anchored" data-anchor-id="dropna"><span class="header-section-number">7.5.2.8</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html"><code>dropna()</code></a></h4>
+<section id="dropna" class="level4" data-number="6.5.2.8">
+<h4 data-number="6.5.2.8" class="anchored" data-anchor-id="dropna"><span class="header-section-number">6.5.2.8</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html"><code>dropna()</code></a></h4>
 <p>Drops all observations with at least one missing value.</p>
 <div id="30a46a29" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This code is not executed to avoid prining a large table</span></span>
@@ -2014,8 +2014,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="unique" class="level4" data-number="7.5.2.9">
-<h4 data-number="7.5.2.9" class="anchored" data-anchor-id="unique"><span class="header-section-number">7.5.2.9</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.unique.html"><code>unique()</code></a></h4>
+<section id="unique" class="level4" data-number="6.5.2.9">
+<h4 data-number="6.5.2.9" class="anchored" data-anchor-id="unique"><span class="header-section-number">6.5.2.9</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.unique.html"><code>unique()</code></a></h4>
 <p>This functions provides the unique values of a Series. For example, let us find the number of unique genres of songs in the spotify dataset:</p>
 <div id="7d94de0f" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>spotify_data.genres.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2026,8 +2026,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="value_counts" class="level4" data-number="7.5.2.10">
-<h4 data-number="7.5.2.10" class="anchored" data-anchor-id="value_counts"><span class="header-section-number">7.5.2.10</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts()</code></a></h4>
+<section id="value_counts" class="level4" data-number="6.5.2.10">
+<h4 data-number="6.5.2.10" class="anchored" data-anchor-id="value_counts"><span class="header-section-number">6.5.2.10</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts()</code></a></h4>
 <p>This function provides the number of observations of each value of a Series. For example, let us find the number of songs of each genre in the spotify dataset:</p>
 <div id="8f55b314" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>spotify_data.genres.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2051,8 +2051,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>More than half the songs in the dataset are <em>pop, rock</em> or <em>pop &amp; rock</em>.</p>
 </section>
-<section id="isin" class="level4" data-number="7.5.2.11">
-<h4 data-number="7.5.2.11" class="anchored" data-anchor-id="isin"><span class="header-section-number">7.5.2.11</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html"><code>isin()</code></a></h4>
+<section id="isin" class="level4" data-number="6.5.2.11">
+<h4 data-number="6.5.2.11" class="anchored" data-anchor-id="isin"><span class="header-section-number">6.5.2.11</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html"><code>isin()</code></a></h4>
 <p>This function provides a boolean Series indicating the position of certain values in a Series. The function is helpful in sub-setting data. For example, let us subset the songs that are either <em>latin, rap,</em> or <em>metal</em>:</p>
 <div id="2eb06f55" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>latin_rap_metal_songs <span class="op">=</span> spotify_data.loc[spotify_data.genres.isin([<span class="st">'latin'</span>,<span class="st">'rap'</span>,<span class="st">'metal'</span>]),:]</span>
@@ -2219,10 +2219,10 @@ Name: count, dtype: int64</code></pre>
 </section>
 </section>
 </section>
-<section id="data-manipulations-with-pandas" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="data-manipulations-with-pandas"><span class="header-section-number">7.6</span> Data manipulations with Pandas</h2>
-<section id="sub-setting-data" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="sub-setting-data"><span class="header-section-number">7.6.1</span> Sub-setting data</h3>
+<section id="data-manipulations-with-pandas" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="data-manipulations-with-pandas"><span class="header-section-number">6.6</span> Data manipulations with Pandas</h2>
+<section id="sub-setting-data" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="sub-setting-data"><span class="header-section-number">6.6.1</span> Sub-setting data</h3>
 <p>In the chapter on reading data, we learned about different ways for subsetting data, specifically:</p>
 <ul>
 <li>Selecting columns: <code>df['column_name']</code>, <code>df[['col1', 'col2']]</code></li>
@@ -2232,8 +2232,8 @@ Name: count, dtype: int64</code></pre>
 <li>Selecting by multiple conditions: <code>df[(df['column_name'] &gt; value) &amp; (df['other_column'] == another_value)]</code></li>
 </ul>
 </section>
-<section id="setting-and-resetting-indices" class="level3" data-number="7.6.2">
-<h3 data-number="7.6.2" class="anchored" data-anchor-id="setting-and-resetting-indices"><span class="header-section-number">7.6.2</span> Setting and Resetting indices</h3>
+<section id="setting-and-resetting-indices" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="setting-and-resetting-indices"><span class="header-section-number">6.6.2</span> Setting and Resetting indices</h3>
 <p>In pandas, the <code>index</code> of a dataframe can be accessed by using <code>index</code> attribute, it represents the row labels of a DataFrame. When you create a DataFrame without specifying an index, pandas automatically assigns a RangeIndex, which is a sequence of integers starting from 0.</p>
 <div id="953d1f9b" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the txt data</span></span>
@@ -2782,8 +2782,8 @@ Name: count, dtype: int64</code></pre>
 <p>In summary, the index is a powerful feature of pandas for organizing and accessing data, and it can be set, changed, or reset as needed to suit your data analysis.</p>
 <p>Later, you will learn about <strong>hierarchical indexing</strong>, which allows you to create multi-level indices by passing multiple columns.</p>
 </section>
-<section id="dropping-a-column" class="level3" data-number="7.6.3">
-<h3 data-number="7.6.3" class="anchored" data-anchor-id="dropping-a-column"><span class="header-section-number">7.6.3</span> Dropping a column</h3>
+<section id="dropping-a-column" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="dropping-a-column"><span class="header-section-number">6.6.3</span> Dropping a column</h3>
 <p>In pandas, you can drop a column from a DataFrame using the drop() method. This is useful when you want to remove columns that are redundant or when you want to simplify your DataFrame by excluding unnecessary data.</p>
 <pre><code>df.drop(columns='column_name')
 df.drop(columns= ['col_1', 'col_2'])</code></pre>
@@ -2944,8 +2944,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 <p><strong>Note</strong>: The <code>df.drop()</code> function can be used to remove rows by specifying row labels, index values, or based on conditions. It includes an <code>axis</code> parameter, which defaults to dropping rows (<code>axis=0</code>). Feel free to explore its additional options.</p>
 </section>
-<section id="adding-a-column" class="level3" data-number="7.6.4">
-<h3 data-number="7.6.4" class="anchored" data-anchor-id="adding-a-column"><span class="header-section-number">7.6.4</span> Adding a column</h3>
+<section id="adding-a-column" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="adding-a-column"><span class="header-section-number">6.6.4</span> Adding a column</h3>
 <p>In a DataFrame, it’s common to create new columns based on existing columns for analysis or prediction purposes. If the column name you specify does not already exist, a new column will be added to the DataFrame. If the column name already exists, the new values will overwrite the existing column.</p>
 <p>Let’s classify books based on their user rating</p>
 <div id="2cedec95" class="cell" data-execution_count="54">
@@ -3054,8 +3054,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="renaming-a-column" class="level3" data-number="7.6.5">
-<h3 data-number="7.6.5" class="anchored" data-anchor-id="renaming-a-column"><span class="header-section-number">7.6.5</span> Renaming a column</h3>
+<section id="renaming-a-column" class="level3" data-number="6.6.5">
+<h3 data-number="6.6.5" class="anchored" data-anchor-id="renaming-a-column"><span class="header-section-number">6.6.5</span> Renaming a column</h3>
 <p>To rename a column in a pandas DataFrame, you can use the <code>rename()</code> method. .</p>
 <ul>
 <li>Renaming a single column</li>
@@ -3223,8 +3223,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="sorting-data" class="level3" data-number="7.6.6">
-<h3 data-number="7.6.6" class="anchored" data-anchor-id="sorting-data"><span class="header-section-number">7.6.6</span> Sorting data</h3>
+<section id="sorting-data" class="level3" data-number="6.6.6">
+<h3 data-number="6.6.6" class="anchored" data-anchor-id="sorting-data"><span class="header-section-number">6.6.6</span> Sorting data</h3>
 <p>Sorting dataset is a very common operation. The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html">sort_values()</a> function of Pandas can be used to sort a Pandas DataFrame or Series. Let us sort the spotify data in decreasing order of <em>track_popularity</em>:</p>
 <div id="66be40d1" class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>bestseller_sorted <span class="op">=</span> bestseller_index_data.sort_values(by <span class="op">=</span> <span class="st">'User Rating'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
@@ -3310,8 +3310,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="ranking-data" class="level3" data-number="7.6.7">
-<h3 data-number="7.6.7" class="anchored" data-anchor-id="ranking-data"><span class="header-section-number">7.6.7</span> Ranking data</h3>
+<section id="ranking-data" class="level3" data-number="6.6.7">
+<h3 data-number="6.6.7" class="anchored" data-anchor-id="ranking-data"><span class="header-section-number">6.6.7</span> Ranking data</h3>
 <p>With the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rank.html">rank()</a> function, we can rank the observations.</p>
 <p>For example, let us add a new column to the bestseller data that provides the rank of the <code>User Rating</code> column:</p>
 <div id="df81a7ac" class="cell" data-execution_count="60">
@@ -3401,11 +3401,11 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 <p>Note the column <code>Rating_rank</code>. Why does it contain floating point numbers? Check the <code>rank()</code> documentation to find out!</p>
 </section>
 </section>
-<section id="arithematic-operations-within-and-between-dataframes" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="arithematic-operations-within-and-between-dataframes"><span class="header-section-number">7.7</span> Arithematic operations within and between DataFrames</h2>
+<section id="arithematic-operations-within-and-between-dataframes" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="arithematic-operations-within-and-between-dataframes"><span class="header-section-number">6.7</span> Arithematic operations within and between DataFrames</h2>
 <p>Pandas is built on top of NumPy, and for arithmetic operations, it inherits many of NumPy’s powerful features. Pandas provides an intuitive and efficient way to perform arithmetic operations both within a DataFrame (on columns or rows) and between multiple DataFrames. These operations are element-wise, meaning they are applied to corresponding elements of the DataFrame or Series.</p>
-<section id="arithematic-operations-within-a-dataframe" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="arithematic-operations-within-a-dataframe"><span class="header-section-number">7.7.1</span> Arithematic operations within a DataFrame</h3>
+<section id="arithematic-operations-within-a-dataframe" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="arithematic-operations-within-a-dataframe"><span class="header-section-number">6.7.1</span> Arithematic operations within a DataFrame</h3>
 <p>You can easily perform arithmetic operations on columns or rows within a DataFrame</p>
 <ul>
 <li>Arithmetic Between Columns</li>
@@ -3528,8 +3528,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="arithematic-operations-between-dataframes" class="level3" data-number="7.7.2">
-<h3 data-number="7.7.2" class="anchored" data-anchor-id="arithematic-operations-between-dataframes"><span class="header-section-number">7.7.2</span> Arithematic operations between DataFrames</h3>
+<section id="arithematic-operations-between-dataframes" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="arithematic-operations-between-dataframes"><span class="header-section-number">6.7.2</span> Arithematic operations between DataFrames</h3>
 <p>When performing operations between two DataFrames, pandas aligns the data based on both the <code>index</code> and <code>column labels</code>. If the indices or columns do not match, pandas automatically fills the missing values with NaN (not-a-number) unless a fill value is provided.</p>
 <p>Let us create two toy DataFrames:</p>
 <div id="bf91907b" class="cell" data-execution_count="63">
@@ -3811,8 +3811,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="arithmetic-between-dataframe-and-series-broadcasting" class="level3" data-number="7.7.3">
-<h3 data-number="7.7.3" class="anchored" data-anchor-id="arithmetic-between-dataframe-and-series-broadcasting"><span class="header-section-number">7.7.3</span> Arithmetic Between DataFrame and Series (Broadcasting)</h3>
+<section id="arithmetic-between-dataframe-and-series-broadcasting" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="arithmetic-between-dataframe-and-series-broadcasting"><span class="header-section-number">6.7.3</span> Arithmetic Between DataFrame and Series (Broadcasting)</h3>
 <p>Pandas supports <strong>broadcasting</strong>, where a Series can be broadcasted to match the dimensions of a DataFrame during an arithmetic operation.</p>
 <div id="b30e7a27" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Broadcasting: The row [1,2] (a Series) is added on every row in df2 </span></span>
@@ -3929,12 +3929,12 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="converting-a-dataframe-to-a-numpy-array" class="level3" data-number="7.7.4">
-<h3 data-number="7.7.4" class="anchored" data-anchor-id="converting-a-dataframe-to-a-numpy-array"><span class="header-section-number">7.7.4</span> Converting a DataFrame to a NumPy Array</h3>
+<section id="converting-a-dataframe-to-a-numpy-array" class="level3" data-number="6.7.4">
+<h3 data-number="6.7.4" class="anchored" data-anchor-id="converting-a-dataframe-to-a-numpy-array"><span class="header-section-number">6.7.4</span> Converting a DataFrame to a NumPy Array</h3>
 <p>In pandas, you often need to convert a DataFrame or Series into a NumPy array to perform specific operations or to interface with libraries that require NumPy arrays.</p>
 <p>There are two common methods for converting pandas objects to NumPy arrays: <code>.values</code> and <code>.to_numpy()</code>.</p>
-<section id="using-.values" class="level4" data-number="7.7.4.1">
-<h4 data-number="7.7.4.1" class="anchored" data-anchor-id="using-.values"><span class="header-section-number">7.7.4.1</span> Using <code>.values</code></h4>
+<section id="using-.values" class="level4" data-number="6.7.4.1">
+<h4 data-number="6.7.4.1" class="anchored" data-anchor-id="using-.values"><span class="header-section-number">6.7.4.1</span> Using <code>.values</code></h4>
 <ul>
 <li><p>The <code>.values</code> attribute returns the underlying NumPy array representation of a DataFrame or Series.</p></li>
 <li><p>It provides a direct conversion, but it has been deprecated in favor of the newer <code>.to_numpy()</code> method because .values does not always handle all DataFrame types consistently.</p></li>
@@ -3984,8 +3984,8 @@ df.drop(columns= ['col_1', 'col_2'])</code></pre>
 </div>
 </div>
 </section>
-<section id="using-.to_numpy" class="level4" data-number="7.7.4.2">
-<h4 data-number="7.7.4.2" class="anchored" data-anchor-id="using-.to_numpy"><span class="header-section-number">7.7.4.2</span> Using <code>.to_numpy()</code></h4>
+<section id="using-.to_numpy" class="level4" data-number="6.7.4.2">
+<h4 data-number="6.7.4.2" class="anchored" data-anchor-id="using-.to_numpy"><span class="header-section-number">6.7.4.2</span> Using <code>.to_numpy()</code></h4>
 <ul>
 <li>The <code>.to_numpy()</code> method is a recommended way to convert a DataFrame to a NumPy array.</li>
 <li>It handles different types of data, such as nullable types or mixed data types, more consistently than .values.</li>
@@ -4116,11 +4116,11 @@ Wall time: 996 μs</code></pre>
 </section>
 </section>
 </section>
-<section id="advanced-dataframe-operations" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="advanced-dataframe-operations"><span class="header-section-number">7.8</span> Advanced DataFrame Operations</h2>
+<section id="advanced-dataframe-operations" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="advanced-dataframe-operations"><span class="header-section-number">6.8</span> Advanced DataFrame Operations</h2>
 <p>Pandas provides powerful methods for applying functions to DataFrame rows, columns, or individual elements. These methods allow for flexible data transformations, making them essential for advanced data manipulation.</p>
-<section id="apply-row-wise-or-column-wise" class="level3" data-number="7.8.1">
-<h3 data-number="7.8.1" class="anchored" data-anchor-id="apply-row-wise-or-column-wise"><span class="header-section-number">7.8.1</span> <code>apply()</code>: Row-wise, or Column-wise</h3>
+<section id="apply-row-wise-or-column-wise" class="level3" data-number="6.8.1">
+<h3 data-number="6.8.1" class="anchored" data-anchor-id="apply-row-wise-or-column-wise"><span class="header-section-number">6.8.1</span> <code>apply()</code>: Row-wise, or Column-wise</h3>
 <p>The <code>apply()</code> function in pandas is used to apply a function along an axis of a DataFrame.</p>
 <ul>
 <li>Row-wise: You can apply a function to each row using <code>axis=1</code>.</li>
@@ -4240,8 +4240,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="map-element-wise" class="level3" data-number="7.8.2">
-<h3 data-number="7.8.2" class="anchored" data-anchor-id="map-element-wise"><span class="header-section-number">7.8.2</span> <code>map()</code>: Element-wise</h3>
+<section id="map-element-wise" class="level3" data-number="6.8.2">
+<h3 data-number="6.8.2" class="anchored" data-anchor-id="map-element-wise"><span class="header-section-number">6.8.2</span> <code>map()</code>: Element-wise</h3>
 <p><code>map()</code> is typically used for element-wise transformations on a Series.</p>
 <div id="e682adad" class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the function to compute square of a number</span></span>
@@ -4358,8 +4358,8 @@ dtype: int64</code></pre>
 <span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co"># df_str.map(square)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="key-differences-between-map-and-apply" class="level3" data-number="7.8.3">
-<h3 data-number="7.8.3" class="anchored" data-anchor-id="key-differences-between-map-and-apply"><span class="header-section-number">7.8.3</span> Key Differences Between <code>map()</code> and <code>apply()</code></h3>
+<section id="key-differences-between-map-and-apply" class="level3" data-number="6.8.3">
+<h3 data-number="6.8.3" class="anchored" data-anchor-id="key-differences-between-map-and-apply"><span class="header-section-number">6.8.3</span> Key Differences Between <code>map()</code> and <code>apply()</code></h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
@@ -4401,8 +4401,8 @@ dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
-<section id="summary" class="level4" data-number="7.8.3.1">
-<h4 data-number="7.8.3.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.8.3.1</span> Summary:</h4>
+<section id="summary" class="level4" data-number="6.8.3.1">
+<h4 data-number="6.8.3.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.8.3.1</span> Summary:</h4>
 <ul>
 <li><code>map()</code>: Primarily used for element-wise operations. It can take functions, dictionaries, or Series as input for substitution or transformation.</li>
 <li><code>apply()</code>: Apply complex functions across rows or columns.</li>
@@ -4410,15 +4410,15 @@ dtype: int64</code></pre>
 </section>
 </section>
 </section>
-<section id="introduction-to-lambda-functions-in-pandas" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="introduction-to-lambda-functions-in-pandas"><span class="header-section-number">7.9</span> Introduction to Lambda Functions in Pandas</h2>
+<section id="introduction-to-lambda-functions-in-pandas" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="introduction-to-lambda-functions-in-pandas"><span class="header-section-number">6.9</span> Introduction to Lambda Functions in Pandas</h2>
 <p>A lambda function is a small, anonymous function defined using the lambda keyword in Python. It can take any number of arguments but can only have one expression. In pandas, lambda functions are often used for quick and concise operations on data.</p>
-<section id="syntax-of-lambda-functions" class="level3" data-number="7.9.1">
-<h3 data-number="7.9.1" class="anchored" data-anchor-id="syntax-of-lambda-functions"><span class="header-section-number">7.9.1</span> Syntax of Lambda Functions:</h3>
+<section id="syntax-of-lambda-functions" class="level3" data-number="6.9.1">
+<h3 data-number="6.9.1" class="anchored" data-anchor-id="syntax-of-lambda-functions"><span class="header-section-number">6.9.1</span> Syntax of Lambda Functions:</h3>
 <p><code>lambda arguments: expression</code></p>
 </section>
-<section id="key-features" class="level3" data-number="7.9.2">
-<h3 data-number="7.9.2" class="anchored" data-anchor-id="key-features"><span class="header-section-number">7.9.2</span> Key Features</h3>
+<section id="key-features" class="level3" data-number="6.9.2">
+<h3 data-number="6.9.2" class="anchored" data-anchor-id="key-features"><span class="header-section-number">6.9.2</span> Key Features</h3>
 <ul>
 <li><strong>Anonymous</strong>: Lambda functions are defined without a name.</li>
 <li><strong>Concise</strong>: They are typically used for small, simple functions that are not reused elsewhere.</li>
@@ -4564,8 +4564,8 @@ dtype: int64</code></pre>
 </div>
 </section>
 </section>
-<section id="understanding-inplacetrue-and-inplacefalse" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="understanding-inplacetrue-and-inplacefalse"><span class="header-section-number">7.10</span> Understanding <code>inplace=True</code> and <code>inplace=False</code></h2>
+<section id="understanding-inplacetrue-and-inplacefalse" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="understanding-inplacetrue-and-inplacefalse"><span class="header-section-number">6.10</span> Understanding <code>inplace=True</code> and <code>inplace=False</code></h2>
 <p>Above, we covered multiple methods that allow you to modify a DataFrame or Series. The <code>inplace</code> parameter of these methods determines whether the operation modifies the original object or returns a new object.</p>
 <ul>
 <li><code>inplace=True</code>: Modifies the original DataFrame or Series directly and returns None. The changes are made in place, meaning the original object is altered.</li>
@@ -4604,8 +4604,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="case-study" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="case-study"><span class="header-section-number">7.11</span> Case study</h2>
+<section id="case-study" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="case-study"><span class="header-section-number">6.11</span> Case study</h2>
 <p>To see the application of arithematic operations on DataFrames, let us see the case study below.</p>
 <p><strong>Song recommendation:</strong> Spotify recommends songs based on songs listened by the user. Suppose you have listened to the song <em>drivers license</em>. Spotify intends to recommend you 5 songs that are <em>similar</em> to <em>drivers license</em>. Which songs should it recommend?</p>
 <p>Let us see the available song information that can help us identify songs similar to <em>drivers license</em>. The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html">columns</a> attribute of DataFrame will display all the columns names. The description of some of the column names relating to audio features is <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features">here</a>.</p>
@@ -5430,64 +5430,64 @@ dtype: float64</code></pre>
 </div>
 <p>We can see the top 5 songs most similar to <em>drivers license</em> in the <em>track_name</em> column above. Interestingly, three of the five songs are Asian! These songs indeed sound similar to <em>drivers license</em>!</p>
 </section>
-<section id="independent-practice" class="level2" data-number="7.12">
-<h2 data-number="7.12" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">7.12</span> Independent Practice:</h2>
-<section id="practice-exercise-1" class="level3" data-number="7.12.1">
-<h3 data-number="7.12.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">7.12.1</span> Practice exercise 1</h3>
-<section id="section" class="level4" data-number="7.12.1.1">
-<h4 data-number="7.12.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">7.12.1.1</span> </h4>
+<section id="independent-practice" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">6.12</span> Independent Practice:</h2>
+<section id="practice-exercise-1" class="level3" data-number="6.12.1">
+<h3 data-number="6.12.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">6.12.1</span> Practice exercise 1</h3>
+<section id="section" class="level4" data-number="6.12.1.1">
+<h4 data-number="6.12.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">6.12.1.1</span> </h4>
 <p>Read the file <em>Top 10 Albums By Year.csv</em>. This file contains the top 10 albums for each year from 1990 to 2021. Each row corresponds to a unique album.</p>
 </section>
-<section id="section-1" class="level4" data-number="7.12.1.2">
-<h4 data-number="7.12.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">7.12.1.2</span> </h4>
+<section id="section-1" class="level4" data-number="6.12.1.2">
+<h4 data-number="6.12.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">6.12.1.2</span> </h4>
 <p>Print the summary statistics of the data, and answer the following questions:</p>
 <ol type="1">
 <li>What proportion of albums have 15 or lesser tracks? Mention a range for the proportion.</li>
 <li>What is the mean length of a track (in minutes)?</li>
 </ol>
 </section>
-<section id="section-2" class="level4" data-number="7.12.1.3">
-<h4 data-number="7.12.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">7.12.1.3</span> </h4>
+<section id="section-2" class="level4" data-number="6.12.1.3">
+<h4 data-number="6.12.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">6.12.1.3</span> </h4>
 <p>Why is <code>Worldwide Sales</code> not included in the summary statistics table printed in the above step?</p>
 </section>
-<section id="section-3" class="level4" data-number="7.12.1.4">
-<h4 data-number="7.12.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">7.12.1.4</span> </h4>
+<section id="section-3" class="level4" data-number="6.12.1.4">
+<h4 data-number="6.12.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">6.12.1.4</span> </h4>
 <p>Update the DataFrame so that <code>Worldwide Sales</code> is included in the summary statistics table. Print the summary statistics table.</p>
 <p><strong>Hint</strong>: Sometimes it may not be possible to convert an object to numeric(). For example, the object ‘hi’ cannot be converted to a numeric() by the python compiler. To avoid getting an error, use the <code>errors</code> argument of <code>to_numeric()</code> to force such conversions to NaN (missing value).</p>
 </section>
-<section id="section-4" class="level4" data-number="7.12.1.5">
-<h4 data-number="7.12.1.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">7.12.1.5</span> </h4>
+<section id="section-4" class="level4" data-number="6.12.1.5">
+<h4 data-number="6.12.1.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">6.12.1.5</span> </h4>
 <p>Create a new column called <code>mean_sales_per_year</code> that computes the average worldwide sales per year for each album, assuming that the worldwide sales are as of 2022. Print the first 5 rows of the updated DataFrame.</p>
 </section>
-<section id="section-5" class="level4" data-number="7.12.1.6">
-<h4 data-number="7.12.1.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">7.12.1.6</span> </h4>
+<section id="section-5" class="level4" data-number="6.12.1.6">
+<h4 data-number="6.12.1.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">6.12.1.6</span> </h4>
 <p>Find the album having the highest worldwide sales per year, and its artist.</p>
 </section>
-<section id="section-6" class="level4" data-number="7.12.1.7">
-<h4 data-number="7.12.1.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">7.12.1.7</span> </h4>
+<section id="section-6" class="level4" data-number="6.12.1.7">
+<h4 data-number="6.12.1.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">6.12.1.7</span> </h4>
 <p>Subset the data to include only Hip-Hop albums. How many Hip_Hop albums are there?</p>
 </section>
-<section id="section-7" class="level4" data-number="7.12.1.8">
-<h4 data-number="7.12.1.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">7.12.1.8</span> </h4>
+<section id="section-7" class="level4" data-number="6.12.1.8">
+<h4 data-number="6.12.1.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">6.12.1.8</span> </h4>
 <p>Which album amongst hip-hop has the higest mean sales per year per track, and who is its artist?</p>
 </section>
 </section>
-<section id="practice-exercise-2" class="level3" data-number="7.12.2">
-<h3 data-number="7.12.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">7.12.2</span> Practice exercise 2</h3>
-<section id="section-8" class="level4" data-number="7.12.2.1">
-<h4 data-number="7.12.2.1" class="anchored" data-anchor-id="section-8"><span class="header-section-number">7.12.2.1</span> </h4>
+<section id="practice-exercise-2" class="level3" data-number="6.12.2">
+<h3 data-number="6.12.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">6.12.2</span> Practice exercise 2</h3>
+<section id="section-8" class="level4" data-number="6.12.2.1">
+<h4 data-number="6.12.2.1" class="anchored" data-anchor-id="section-8"><span class="header-section-number">6.12.2.1</span> </h4>
 <p>Read the file <em>STAT303-1 survey for data analysis.csv</em>.</p>
 </section>
-<section id="section-9" class="level4" data-number="7.12.2.2">
-<h4 data-number="7.12.2.2" class="anchored" data-anchor-id="section-9"><span class="header-section-number">7.12.2.2</span> </h4>
+<section id="section-9" class="level4" data-number="6.12.2.2">
+<h4 data-number="6.12.2.2" class="anchored" data-anchor-id="section-9"><span class="header-section-number">6.12.2.2</span> </h4>
 <p>How many observations and variables are there in the data?</p>
 </section>
-<section id="section-10" class="level4" data-number="7.12.2.3">
-<h4 data-number="7.12.2.3" class="anchored" data-anchor-id="section-10"><span class="header-section-number">7.12.2.3</span> </h4>
+<section id="section-10" class="level4" data-number="6.12.2.3">
+<h4 data-number="6.12.2.3" class="anchored" data-anchor-id="section-10"><span class="header-section-number">6.12.2.3</span> </h4>
 <p>Rename all the columns of the data, except the first two columns, with the shorter names in the list <code>new_col_names</code> given below. The order of column names in the list is the same as the order in which the columns are to be renamed starting with the third column from the left.</p>
 </section>
-<section id="section-11" class="level4" data-number="7.12.2.4">
-<h4 data-number="7.12.2.4" class="anchored" data-anchor-id="section-11"><span class="header-section-number">7.12.2.4</span> </h4>
+<section id="section-11" class="level4" data-number="6.12.2.4">
+<h4 data-number="6.12.2.4" class="anchored" data-anchor-id="section-11"><span class="header-section-number">6.12.2.4</span> </h4>
 <p>Rename the following columns again:</p>
 <ol type="1">
 <li><p>Rename <code>do_you_smoke</code> to <code>smoke</code>.</p></li>
@@ -5495,44 +5495,44 @@ dtype: float64</code></pre>
 </ol>
 <p><strong>Hint:</strong> Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html">rename()</a></p>
 </section>
-<section id="section-12" class="level4" data-number="7.12.2.5">
-<h4 data-number="7.12.2.5" class="anchored" data-anchor-id="section-12"><span class="header-section-number">7.12.2.5</span> </h4>
+<section id="section-12" class="level4" data-number="6.12.2.5">
+<h4 data-number="6.12.2.5" class="anchored" data-anchor-id="section-12"><span class="header-section-number">6.12.2.5</span> </h4>
 <p>Find the proportion of people going to more than 4 parties per month. Use the variable <code>parties_per_month</code>.</p>
 </section>
-<section id="section-13" class="level4" data-number="7.12.2.6">
-<h4 data-number="7.12.2.6" class="anchored" data-anchor-id="section-13"><span class="header-section-number">7.12.2.6</span> </h4>
+<section id="section-13" class="level4" data-number="6.12.2.6">
+<h4 data-number="6.12.2.6" class="anchored" data-anchor-id="section-13"><span class="header-section-number">6.12.2.6</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are introverts?</p>
 </section>
-<section id="section-14" class="level4" data-number="7.12.2.7">
-<h4 data-number="7.12.2.7" class="anchored" data-anchor-id="section-14"><span class="header-section-number">7.12.2.7</span> </h4>
+<section id="section-14" class="level4" data-number="6.12.2.7">
+<h4 data-number="6.12.2.7" class="anchored" data-anchor-id="section-14"><span class="header-section-number">6.12.2.7</span> </h4>
 <p>Find the proportion of people in each category of the variable <code>how_happy</code>.</p>
 </section>
-<section id="section-15" class="level4" data-number="7.12.2.8">
-<h4 data-number="7.12.2.8" class="anchored" data-anchor-id="section-15"><span class="header-section-number">7.12.2.8</span> </h4>
+<section id="section-15" class="level4" data-number="6.12.2.8">
+<h4 data-number="6.12.2.8" class="anchored" data-anchor-id="section-15"><span class="header-section-number">6.12.2.8</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are either <code>Pretty happy</code> or <code>Very happy</code>?</p>
 </section>
-<section id="section-16" class="level4" data-number="7.12.2.9">
-<h4 data-number="7.12.2.9" class="anchored" data-anchor-id="section-16"><span class="header-section-number">7.12.2.9</span> </h4>
+<section id="section-16" class="level4" data-number="6.12.2.9">
+<h4 data-number="6.12.2.9" class="anchored" data-anchor-id="section-16"><span class="header-section-number">6.12.2.9</span> </h4>
 <p>Examine the column <code>num_insta_followers</code>. Some numbers in the column contain a comma(<code>,</code>) or a tilde(<code>~</code>). Remove both these characters from the numbers in the column.</p>
 <p><strong>Hint:</strong> You may use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html">str.replace()</a> of the Pandas Series class.</p>
 </section>
-<section id="section-17" class="level4" data-number="7.12.2.10">
-<h4 data-number="7.12.2.10" class="anchored" data-anchor-id="section-17"><span class="header-section-number">7.12.2.10</span> </h4>
+<section id="section-17" class="level4" data-number="6.12.2.10">
+<h4 data-number="6.12.2.10" class="anchored" data-anchor-id="section-17"><span class="header-section-number">6.12.2.10</span> </h4>
 <p>Convert the column <code>num_insta_followers</code> to numeric. Coerce the errors.</p>
 </section>
-<section id="section-18" class="level4" data-number="7.12.2.11">
-<h4 data-number="7.12.2.11" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.12.2.11</span> </h4>
+<section id="section-18" class="level4" data-number="6.12.2.11">
+<h4 data-number="6.12.2.11" class="anchored" data-anchor-id="section-18"><span class="header-section-number">6.12.2.11</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
 </section>
-<section id="section-19" class="level4" data-number="7.12.2.12">
-<h4 data-number="7.12.2.12" class="anchored" data-anchor-id="section-19"><span class="header-section-number">7.12.2.12</span> </h4>
+<section id="section-19" class="level4" data-number="6.12.2.12">
+<h4 data-number="6.12.2.12" class="anchored" data-anchor-id="section-19"><span class="header-section-number">6.12.2.12</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
 </section>
 </section>
-<section id="practice-exercise-3" class="level3" data-number="7.12.3">
-<h3 data-number="7.12.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">7.12.3</span> Practice exercise 3</h3>
-<section id="section-20" class="level4" data-number="7.12.3.1">
-<h4 data-number="7.12.3.1" class="anchored" data-anchor-id="section-20"><span class="header-section-number">7.12.3.1</span> </h4>
+<section id="practice-exercise-3" class="level3" data-number="6.12.3">
+<h3 data-number="6.12.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">6.12.3</span> Practice exercise 3</h3>
+<section id="section-20" class="level4" data-number="6.12.3.1">
+<h4 data-number="6.12.3.1" class="anchored" data-anchor-id="section-20"><span class="header-section-number">6.12.3.1</span> </h4>
 <p>Use the updated dataset from Practice exercise 2.</p>
 <p>The last four variables in the dataset are:</p>
 <ol type="1">
@@ -5975,13 +5975,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Reading data.html" class="pagination-link" aria-label="Reading Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reading Data</span></span>
+      <a href="./NumPy.html" class="pagination-link" aria-label="NumPy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NumPy</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data_types_in_pandas.html" class="pagination-link" aria-label="More on Pandas">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">More on Pandas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Reading data.html" class="pagination-link" aria-label="Reading Data">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
