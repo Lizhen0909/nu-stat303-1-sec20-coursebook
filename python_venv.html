@@ -332,6 +332,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#difference-between-conda-and-poetry" id="toc-difference-between-conda-and-poetry" class="nav-link" data-scroll-target="#difference-between-conda-and-poetry"><span class="header-section-number">2.6.3</span> Difference Between <code>conda</code> and <code>poetry</code></a></li>
   <li><a href="#modern-python-package-managers-uv-pip-conda-poetry" id="toc-modern-python-package-managers-uv-pip-conda-poetry" class="nav-link" data-scroll-target="#modern-python-package-managers-uv-pip-conda-poetry"><span class="header-section-number">2.6.4</span> Modern Python Package Managers: uv, pip, conda, poetry</a></li>
   </ul></li>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">2.7</span> Independent Study</a>
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="header-section-number">2.7.1</span> Instructions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -627,10 +631,23 @@ This can cause errors, unexpected behavior, or even break your code.</p>
 <p><code>conda</code> is a powerful package and environment management tool, especially popular in data science. It helps you avoid and resolve dependency conflicts by managing packages and their versions more effectively than <code>pip</code> alone.</p>
 <p><strong>Key features of conda:</strong> - Create isolated environments for different projects - Install packages and their dependencies from the Anaconda repository - Easily switch between environments - Export and share environment configurations</p>
 <p><strong>How conda helps with dependency conflicts:</strong> - When you install a package with <code>conda</code>, it automatically checks for compatible versions of all dependencies and installs them together. - If a conflict is detected, conda will warn you and suggest solutions, or prevent incompatible installations.</p>
-<p><strong>Basic conda commands:</strong> - Create a new environment: <code>bash   conda create --name myenv numpy pandas matplotlib</code> - Activate an environment: <code>bash   conda activate myenv</code> - Install a package in an environment: <code>bash   conda install seaborn</code> - List all environments: <code>bash   conda env list</code> - Export environment configuration: <code>bash   conda env export &gt; environment.yml</code> - Recreate an environment from a file: <code>bash   conda env create -f environment.yml</code></p>
+<p><strong>Basic conda commands:</strong> - Create a new environment:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> myenv numpy pandas matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>Activate an environment:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Install a package in an environment:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>List all environments:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Export environment configuration:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="op">&gt;</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Recreate an environment from a file:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
 <p><strong>Example:</strong> Suppose you need to work on two projects that require different versions of <code>scikit-learn</code>. You can create two separate environments:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> projectA scikit-learn=0.24</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> projectB scikit-learn=1.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> projectA scikit-learn=0.24</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> projectB scikit-learn=1.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Each environment will have its own compatible dependencies, so you avoid conflicts.</p>
 <p><strong>Summary:</strong> Using <code>conda</code> is highly recommended for managing complex dependencies and environments in data science workflows.</p>
 </section>
@@ -639,8 +656,31 @@ This can cause errors, unexpected behavior, or even break your code.</p>
 <p><code>poetry</code> is a modern Python tool for dependency management and packaging. It helps you create, manage, and share Python projects with reproducible environments.</p>
 <p><strong>Key features of poetry:</strong> - Handles dependencies and virtual environments automatically - Uses a <code>pyproject.toml</code> file to specify project requirements - Locks dependencies for reproducibility (<code>poetry.lock</code>) - Simplifies publishing packages to PyPI</p>
 <p><strong>How poetry helps with dependency management:</strong> - Automatically resolves and installs compatible versions of all dependencies - Prevents dependency conflicts by using a lock file - Makes it easy to update, add, or remove packages</p>
-<p><strong>Basic poetry commands:</strong> - Install poetry (if not already installed): <code>bash   pip install poetry</code> - Create a new project: <code>bash   poetry new myproject</code> - Add a package: <code>bash   poetry add numpy pandas matplotlib</code> - Install dependencies: <code>bash   poetry install</code> - Run commands inside the environment: <code>bash   poetry run python script.py</code> - Update dependencies: <code>bash   poetry update</code></p>
-<p><strong>Example workflow:</strong> 1. Create a new project: <code>bash    poetry new ds_project    cd ds_project</code> 2. Add dependencies: <code>bash    poetry add numpy pandas matplotlib seaborn</code> 3. Install all dependencies: <code>bash    poetry install</code> 4. Run your code inside the poetry-managed environment: <code>bash    poetry run python your_script.py</code></p>
+<p><strong>Basic poetry commands:</strong> - Install poetry (if not already installed):</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install poetry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>Create a new project:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> new myproject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Add a package:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add numpy pandas matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Install dependencies:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Run commands inside the environment:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> run python script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Update dependencies:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Example workflow:</strong> 1. Create a new project:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> new ds_project</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ds_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><p>Add dependencies:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add numpy pandas matplotlib seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Install all dependencies:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Run your code inside the poetry-managed environment:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> run python your_script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 <p><strong>Summary:</strong> <code>poetry</code> is highly recommended for modern Python projects, especially when you want reliable dependency management, easy environment setup, and reproducible results.</p>
 </section>
 <section id="difference-between-conda-and-poetry" class="level3" data-number="2.6.3">
@@ -663,6 +703,60 @@ This can cause errors, unexpected behavior, or even break your code.</p>
 <p><strong>For this course:</strong> - You will continue using <code>pip</code> and <code>.venv</code> for installing packages and managing your environment. - As you work on larger or more complex Python projects, or manage multiple environments, consider exploring tools like <code>conda</code>, <code>poetry</code>, and <code>uv</code> for better performance, reproducibility, and ease of use.</p>
 <p><strong>Summary:</strong> - <code>pip</code> is the standard tool for installing Python packages. - <code>.venv</code> helps you create isolated environments. - <code>conda</code> and <code>poetry</code> offer advanced dependency management and environment handling. - <code>uv</code> is an emerging tool for fast, modern Python package management.</p>
 <p>Stay curious and keep learning about new tools—they can make your workflow smoother and more efficient!</p>
+</section>
+</section>
+<section id="independent-study" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">2.7</span> Independent Study</h2>
+<p>Setting Up Your Python Data Science Environment using <code>pip</code></p>
+<p><strong>Objective</strong>: Practice creating and managing Python packages and environments using <code>pip</code>, and verifying your setup.</p>
+<section id="instructions" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">2.7.1</span> Instructions</h3>
+<p>Step 1: <strong>Create a New Workplace</strong> - Create a folder named <code>test_pip_env</code>. - Open the folder in VS code</p>
+<p>Step 2: <strong>Create a pip environment named <code>stat303_pip_env</code> in the current workplace</strong></p>
+<ul>
+<li>Within the <code>test_pip_env</code> workspace</li>
+<li>Create the env using pip command line <code>python -m venv stat303_pip_env</code></li>
+<li>Activate the environment.
+<ul>
+<li>on Windowns: <code>.\stat303_pip_env\Scripts\activate</code></li>
+<li>macOS/Linux: <code>source stat303_pip_env/bin/activate</code></li>
+</ul></li>
+</ul>
+<p>After activation, your command prompt will change to show the virtual environment’s name (e.g., (stat303_pip_env))</p>
+<p>Step 3: <strong>Install Required Packages for the env</strong></p>
+<ul>
+<li>Inside the <code>stat303_pip_env</code>, install the following packages using <code>pip</code>:
+<ul>
+<li><code>numpy</code></li>
+<li><code>pandas</code></li>
+<li><code>matplotlib</code></li>
+</ul></li>
+<li>Install the following packages using <code>conda</code>
+<ul>
+<li><code>statsmodels</code></li>
+</ul></li>
+</ul>
+<p>Step 4: <strong>Export the Environment Configuration</strong></p>
+<ul>
+<li>Export the configuration of your <code>stat303_pip_env</code> environment to a file named <code>stat303_env.txt</code>.</li>
+</ul>
+<p>Step 6: <strong>Deactivate and Remove the Environment</strong></p>
+<ul>
+<li>Deactivate the <code>stat303_pip_env</code> environment.</li>
+<li>Remove the <code>stat303_pip_env</code> environment to ensure you understand how to clean up.</li>
+</ul>
+<p>Step 7: <strong>Recreate the Environment Using the Exported Environment File</strong></p>
+<ul>
+<li>Create a new environment using the <code>stat303_env.txt</code> file.</li>
+<li>Activate the <code>stat303_pip_env</code> environment.</li>
+<li>Verify that the packages <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code> are installed.</li>
+</ul>
+<p>Step 8: <strong>Run a Jupyter Notebook</strong></p>
+<ul>
+<li>Create a Jupyter Notebook within the created environment.</li>
+<li>Import <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</li>
+<li>Print the versions of these packages.</li>
+</ul>
 
 
 </section>

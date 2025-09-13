@@ -330,14 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#jupyter-notebooks-in-vs-code" id="toc-jupyter-notebooks-in-vs-code" class="nav-link" data-scroll-target="#jupyter-notebooks-in-vs-code"><span class="header-section-number">1.5</span> Jupyter Notebooks in VS Code</a></li>
   <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">1.6</span> Independent Study</a>
   <ul>
-  <li><a href="#using-pip" id="toc-using-pip" class="nav-link" data-scroll-target="#using-pip"><span class="header-section-number">1.6.1</span> Using <code>pip</code></a>
-  <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="header-section-number">1.6.1.1</span> Instructions</a></li>
-  </ul></li>
-  <li><a href="#using-conda" id="toc-using-conda" class="nav-link" data-scroll-target="#using-conda"><span class="header-section-number">1.6.2</span> Using <code>conda</code></a>
-  <ul class="collapse">
-  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1"><span class="header-section-number">1.6.2.1</span> Instructions</a></li>
-  </ul></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="header-section-number">1.6.1</span> Instructions</a></li>
   </ul></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">1.7</span> Reference</a></li>
   </ul>
@@ -552,109 +545,36 @@ One place for editing, running, debugging, documenting, and version-controlling 
 </section>
 <section id="independent-study" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">1.6</span> Independent Study</h2>
-<p>Setting Up Your Python Data Science Environment using <code>pip</code> and <code>conda</code></p>
-<p><strong>Objective</strong>: Practice creating and managing Python packages and environments using <code>pip</code> and <code>conda</code>, and verifying your setup.</p>
-<p>Note: Feel free to use ChatGPT to find the commands you need.</p>
-<section id="using-pip" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="using-pip"><span class="header-section-number">1.6.1</span> Using <code>pip</code></h3>
-<section id="instructions" class="level4" data-number="1.6.1.1">
-<h4 data-number="1.6.1.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">1.6.1.1</span> Instructions</h4>
-<p>Step 1: <strong>Create a New Workplace</strong> - Create a folder named <code>test_pip_env</code>. - Open the folder in VS code</p>
-<p>Step 2: <strong>Create a pip environment named <code>stat303_pip_env</code> in the current workplace</strong></p>
+<p>Setting Up Your Python Data Science Environment using <code>pip</code></p>
+<p><strong>Objective</strong>: Practice creating and managing Python packages and environments using <code>pip</code>, and verifying your setup.</p>
+<section id="instructions" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">1.6.1</span> Instructions</h3>
+<p>Step 1: <strong>Create a New Workplace</strong> - Create a folder named <code>STAT303_1</code>. - Open the folder in VS code - Create a <code>setup_test.ipynb</code> notebook - Add a code cell</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, VS Code &amp; .venv!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Step 2: <strong>Create the <code>.venv</code> environment in the current workplace</strong> to run the cell</p>
+<p>Step 3: Verify ENvironment Consistency</p>
 <ul>
-<li>Within the <code>test_pip_env</code> workspace</li>
-<li>Create the env using pip command line <code>python -m venv stat303_pip_env</code></li>
-<li>Activate the environment.
-<ul>
-<li>on Windowns: <code>.\stat303_pip_env\Scripts\activate</code></li>
-<li>macOS/Linux: <code>source stat303_pip_env/bin/activate</code></li>
-</ul></li>
+<li>Open a terminal inside VS Code; ensure it’s using <code>.venv</code>.<br>
+</li>
+<li>In that terminal, also run:</li>
 </ul>
-<p>After activation, your command prompt will change to show the virtual environment’s name (e.g., (stat303_pip_env))</p>
-<p>Step 3: <strong>Install Required Packages for the env</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Make sure VS Code’s selected interpreter and the terminal’s interpreter version match.</p>
+<p>In the notebook, run:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Compare that path to what you saw in the terminal.</p>
+<p>Step 4: Troubleshooting (if needed)</p>
+<p>If something doesn’t work (e.g., kernel doesn’t show <code>.venv</code>, or code cell errors), try:</p>
 <ul>
-<li>Inside the <code>stat303_pip_env</code>, install the following packages using <code>pip</code>:
-<ul>
-<li><code>numpy</code></li>
-<li><code>pandas</code></li>
-<li><code>matplotlib</code></li>
-</ul></li>
-<li>Install the following packages using <code>conda</code>
-<ul>
-<li><code>statsmodels</code></li>
-</ul></li>
+<li>Restart VS Code.<br>
+</li>
+<li>Deactivate and reactivate the <code>.venv</code>.<br>
+</li>
+<li>Ensure you installed the <strong>Python</strong> &amp; <strong>Jupyter</strong> extensions.<br>
+</li>
+<li>Confirm you have saved the notebook with the <code>.ipynb</code> extension.</li>
 </ul>
-<p>Step 4: <strong>Export the Environment Configuration</strong></p>
-<ul>
-<li>Export the configuration of your <code>stat303_pip_env</code> environment to a file named <code>stat303_env.txt</code>.</li>
-</ul>
-<p>Step 6: <strong>Deactivate and Remove the Environment</strong></p>
-<ul>
-<li>Deactivate the <code>stat303_pip_env</code> environment.</li>
-<li>Remove the <code>stat303_pip_env</code> environment to ensure you understand how to clean up.</li>
-</ul>
-<p>Step 7: <strong>Recreate the Environment Using the Exported Environment File</strong></p>
-<ul>
-<li>Create a new environment using the <code>stat303_env.txt</code> file.</li>
-<li>Activate the <code>stat303_pip_env</code> environment.</li>
-<li>Verify that the packages <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code> are installed.</li>
-</ul>
-<p>Step 8: <strong>Run a Jupyter Notebook</strong></p>
-<ul>
-<li>Create a Jupyter Notebook within the created environment.</li>
-<li>Import <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</li>
-<li>Print the versions of these packages.</li>
-</ul>
-</section>
-</section>
-<section id="using-conda" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="using-conda"><span class="header-section-number">1.6.2</span> Using <code>conda</code></h3>
-<section id="instructions-1" class="level4" data-number="1.6.2.1">
-<h4 data-number="1.6.2.1" class="anchored" data-anchor-id="instructions-1"><span class="header-section-number">1.6.2.1</span> Instructions</h4>
-<p>Step 1: <strong>Create a New Workspace</strong> - Create a folder named <code>test_conda_env</code>. - Open the folder in VS code -</p>
-<p>Step 2: <strong>Create a conda environment named <code>stat303_conda_env</code></strong></p>
-<ul>
-<li>Within the workplace, create the env using conda command : <code>conda create --name stat303_conda_env</code></li>
-<li>Activate the environment: <code>conda activate stat303_conda_env</code></li>
-</ul>
-<p>Step 3: <strong>Install Required Packages for the env</strong></p>
-<ul>
-<li>Inside the <code>stat303_conda_env</code>, install the following packages using <code>conda</code>:
-<ul>
-<li><code>numpy</code></li>
-<li><code>pandas</code></li>
-<li><code>matplotlib</code></li>
-</ul></li>
-<li>Install the following packages using <code>pip</code>
-<ul>
-<li><code>scikit-learn</code></li>
-<li><code>statsmodels</code></li>
-</ul></li>
-</ul>
-<p>Step 4: <strong>Export the Environment Configuration</strong></p>
-<ul>
-<li>Export the configuration of your <code>stat303_conda_env</code> environment to a file named <code>stat303_env.yml</code>: <code>conda env export --name stat303_conda_env &gt; stat303_env.yml</code></li>
-</ul>
-<p>Step 5: <strong>Deactivate and Remove the Environment</strong></p>
-<ul>
-<li><p>Deactivate the <code>stat303_conda_env</code> environment</p></li>
-<li><p>Remove the <code>stat303_conda_env</code> environment to ensure you understand how to clean up.</p></li>
-</ul>
-<p>Step 6: <strong>Recreate the Environment Using the Exported YML File</strong></p>
-<ul>
-<li>Create a new environment using the <code>stat303_env.yml</code> file.</li>
-<li>Activate the <code>stat303_conda_env</code> environment.</li>
-<li>Verify that the packages <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, <code>scikit-learn</code>, and <code>statsmodels</code> are installed.</li>
-</ul>
-<p>Step 7: <strong>Run a Jupyter Notebook</strong></p>
-<ul>
-<li>Create a new notebook and write a simple Python script to
-<ul>
-<li>Import <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</li>
-<li>Print the versions of these packages.</li>
-</ul></li>
-</ul>
-</section>
 </section>
 </section>
 <section id="reference" class="level2" data-number="1.7">
