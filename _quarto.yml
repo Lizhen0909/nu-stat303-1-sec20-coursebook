@@ -17,7 +17,8 @@ book:
     - index.qmd
     - part: 'Getting started'
       chapters:
-        - venv_setup.ipynb
+        - vscode_setup.ipynb
+        - python_venv.ipynb
         - workflow_enhance.ipynb
     - part: 'Python refresher'
       chapters:
