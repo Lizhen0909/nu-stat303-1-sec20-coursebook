@@ -26,9 +26,9 @@ book:
         - data_structures.ipynb
     - part: 'Core library foundations'
       chapters:
+        - Reading data.ipynb
         - Numpy.ipynb
         - Pandas.ipynb
-        - Reading data.ipynb
         - data_types_in_pandas.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
