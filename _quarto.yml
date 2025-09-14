@@ -22,9 +22,9 @@ book:
         - workflow_enhance.ipynb
     - part: 'Python refresher'
       chapters:
-        - Introduction to Python and Jupyter Notebooks.ipynb
+        - python_basics.ipynb
         - data_structures.ipynb
-    - part: 'Core Library Foundations'
+    - part: 'Core library foundations'
       chapters:
         - Numpy.ipynb
         - Pandas.ipynb
