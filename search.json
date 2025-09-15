@@ -1151,5 +1151,16 @@
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Datasets & Templates</span>"
     ]
+  },
+  {
+    "objectID": "Assignment A.html#ai-use-disclosure-5-pts",
+    "href": "Assignment A.html#ai-use-disclosure-5-pts",
+    "title": "Appendix A — Assignment A",
+    "section": "A.4 AI Use Disclosure (5 pts)",
+    "text": "A.4 AI Use Disclosure (5 pts)\nIn 1–3 short paragraphs, clearly state whether generative AI tools were used to complete any part of this assignment.\n\nIf no AI was used, write:\n“I did not use generative AI tools on this assignment.”\nIf AI was used, you must specify:\n\nTool(s) used (e.g., ChatGPT, GitHub Copilot, Claude, etc.)\n\nHow they were used (e.g., idea generation, debugging, code suggestions, writing help)\n\nWhere they influenced your work (which questions/sections)\n\nEdits & verification you made (how you checked correctness, what you modified)\n\n\n\nA.4.1 AI Use Template\n\nUsed AI? Yes / No\n\nTool(s):\n\nPurpose / How used (1–3 sentences):\n\nScope (which questions/sections):\n\nEdits & verification (what you changed and how you checked correctness):\n\n\nExample (for illustration only):\n- Used AI? Yes\n- Tools: ChatGPT (free), GitHub Copilot\n- How used: Asked for a pandas snippet to impute missing values and for a seaborn example.\n- Scope: Q1(b) imputation, Q2(a) first draft of bar chart code.\n- Edits & verification: Rewrote code to use groupby().transform('median'); validated results by comparing summary stats; added axis labels manually.\n\nGrading (5 points):\n- 5 points = complete, specific, and honest (tools named, usage described clearly)\n- 3–4 points = vague or missing some details\n- 1–2 points = minimal effort or very unclear\n- 0 points = missing or misleading disclosure",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Assignment A</span>"
+    ]
   }
 ]
