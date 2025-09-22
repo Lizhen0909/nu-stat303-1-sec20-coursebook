@@ -1142,17 +1142,6 @@
     ]
   },
   {
-    "objectID": "Datasets.html",
-    "href": "Datasets.html",
-    "title": "Appendix B — Datasets & Templates",
-    "section": "",
-    "text": "Datasets used in the book, and assignment / project templates can be found here",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Datasets & Templates</span>"
-    ]
-  },
-  {
     "objectID": "Assignment A.html#ai-use-disclosure-5-pts",
     "href": "Assignment A.html#ai-use-disclosure-5-pts",
     "title": "Appendix A — Assignment A",
@@ -1161,6 +1150,17 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Assignment A</span>"
+    ]
+  },
+  {
+    "objectID": "Datasets.html",
+    "href": "Datasets.html",
+    "title": "Appendix B — Datasets & Templates",
+    "section": "",
+    "text": "Datasets used in the book, and assignment / project templates can be found here",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Datasets & Templates</span>"
     ]
   }
 ]
