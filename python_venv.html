@@ -866,20 +866,20 @@ This can cause errors, unexpected behavior, or even break your code.</p>
 </ul>
 <p><strong>Step 4: Export Your Environment Configuration</strong></p>
 <ul>
-<li>Save your environment’s package list to a file:</li>
-<li><code>bash     pip freeze &gt; stat303_env.txt</code></li>
+<li><p>Save your environment’s package list to a file:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> stat303_env.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p><strong>Step 5: Deactivate and Remove the Environment</strong></p>
 <ul>
 <li><p>Deactivate the environment:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Remove the environment folder to clean up.</p></li>
 </ul>
 <p><strong>Step 6: Recreate the Environment from the Exported File</strong></p>
 <ul>
 <li><p>Create a new environment and activate it.</p></li>
 <li><p>Install packages from your saved file:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> stat303_env.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> stat303_env.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Verify that <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, and (if installed) <code>scikit-learn</code> are present.</p></li>
 </ul>
 <p><strong>Step 7: Run a Jupyter Notebook</strong></p>
