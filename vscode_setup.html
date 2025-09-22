@@ -318,11 +318,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quick-start-setting-up-python-vs-code" id="toc-quick-start-setting-up-python-vs-code" class="nav-link" data-scroll-target="#quick-start-setting-up-python-vs-code"><span class="header-section-number">1.3</span> Quick Start: Setting Up Python &amp; VS Code</a></li>
   <li><a href="#full-setup-reliable-python-environment-in-vs-code" id="toc-full-setup-reliable-python-environment-in-vs-code" class="nav-link" data-scroll-target="#full-setup-reliable-python-environment-in-vs-code"><span class="header-section-number">1.4</span> Full Setup: Reliable Python Environment in VS Code</a></li>
   <li><a href="#jupyter-notebooks-in-vs-code" id="toc-jupyter-notebooks-in-vs-code" class="nav-link" data-scroll-target="#jupyter-notebooks-in-vs-code"><span class="header-section-number">1.5</span> Jupyter Notebooks in VS Code</a></li>
-  <li><a href="#independent-study-practice-your-python-data-science-setup" id="toc-independent-study-practice-your-python-data-science-setup" class="nav-link" data-scroll-target="#independent-study-practice-your-python-data-science-setup"><span class="header-section-number">1.6</span> Independent Study: Practice Your Python Data Science Setup</a>
+  <li><a href="#rendering-notebook-as-html-using-quarto" id="toc-rendering-notebook-as-html-using-quarto" class="nav-link" data-scroll-target="#rendering-notebook-as-html-using-quarto"><span class="header-section-number">1.6</span> Rendering notebook as HTML using Quarto</a>
   <ul>
-  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link" data-scroll-target="#step-by-step-instructions"><span class="header-section-number">1.6.1</span> Step-by-Step Instructions</a></li>
+  <li><a href="#installing-and-verifying-quarto" id="toc-installing-and-verifying-quarto" class="nav-link" data-scroll-target="#installing-and-verifying-quarto"><span class="header-section-number">1.6.1</span> Installing and Verifying Quarto</a></li>
+  <li><a href="#converting-the-notebook-to-html" id="toc-converting-the-notebook-to-html" class="nav-link" data-scroll-target="#converting-the-notebook-to-html"><span class="header-section-number">1.6.2</span> Converting the Notebook to HTML</a></li>
   </ul></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">1.7</span> Reference</a></li>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">1.7</span> Independent Study</a>
+  <ul>
+  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link" data-scroll-target="#step-by-step-instructions"><span class="header-section-number">1.7.1</span> Step-by-Step Instructions</a></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">1.8</span> Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -531,40 +536,78 @@ One place for editing, running, debugging, documenting, and version-controlling 
 </ul>
 <p>Jupyter Notebooks in VS Code provide a powerful, flexible workflow for data science and Python development.</p>
 </section>
-<section id="independent-study-practice-your-python-data-science-setup" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="independent-study-practice-your-python-data-science-setup"><span class="header-section-number">1.6</span> Independent Study: Practice Your Python Data Science Setup</h2>
+<section id="rendering-notebook-as-html-using-quarto" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="rendering-notebook-as-html-using-quarto"><span class="header-section-number">1.6</span> Rendering notebook as HTML using Quarto</h2>
+<p>Quarto is designed for high-quality, customizable, and publishable outputs, making it suitable for reports, blogs, or presentations. We’ll use Quarto to print the **.ipynb* file as HTML for your assignment submission.</p>
+<section id="installing-and-verifying-quarto" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="installing-and-verifying-quarto"><span class="header-section-number">1.6.1</span> Installing and Verifying Quarto</h3>
+<ul>
+<li><p>Download and install Quarto from the <a href="https://quarto.org/">official website</a>.</p></li>
+<li><p>Follow the installation instructions for your operating system.</p></li>
+<li><p>Open your terminal within VS Code:</p>
+<ul>
+<li>Go to <code>Terminal</code> -&gt; <code>New Terminal</code>.</li>
+</ul></li>
+<li><p>Run the following command to verify that Quarto and its dependencies are correctly installed: <code>quarto --version</code></p></li>
+<li><p>You should see the installed quarto version. If the command line doesn’t work, you might see an error message like:</p>
+<pre><code>- `quarto is not recognized`
+- `quarto command is not found` </code></pre>
+<p>This issue is often caused by Quarto not being added to the PATH environment variable. Similar to how you added the Python path to the environment variable above, you need to add the Quarto path to the system environment variable so that the command can be recognized by your operating system’s shell.</p>
+<p>On Windows, if you used the default installation path (without changing it), Quarto is installed in: <code>C:\Users\&lt;USER&gt;\AppData\Local\Programs\Quarto\bin</code></p></li>
+</ul>
+<p><strong>Note:</strong><br>
+Before moving forward, ensure that the command <code>quarto --version</code> successfully prints the version of your installed quarto. If it does not, you may need to troubleshoot your quarto installation or add it to the PATH environment variable.</p>
+</section>
+<section id="converting-the-notebook-to-html" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="converting-the-notebook-to-html"><span class="header-section-number">1.6.2</span> Converting the Notebook to HTML</h3>
+<p>Check the procedure for rendering a notebook as HTML <a href="https://quarto.org/docs/output-formats/html-basics.html">here</a>. You have several options to format the file. Here are some points to remember when using Quarto to render your notebook as HTML:</p>
+<ol type="1">
+<li><p>The <a href="https://nbsphinx.readthedocs.io/en/0.9.3/raw-cells.html"><code>Raw NBConvert</code></a> cell type is used to render different code formats into HTML or LaTeX. This information is stored in the notebook metadata and converted appropriately. <strong>Use this cell type to put the desired formatting settings for the HTML file.</strong></p></li>
+<li><p>In the formatting settings, remember to use the setting <strong><a href="https://quarto.org/docs/output-formats/html-basics.html#self-contained"><code>embed-resources: true</code></a></strong>. This will ensure that the rendered HTML file is self-contained, and is not dependent on other files. This is especially important when you are sending the HTML file to someone, or uploading it somewhere. If the file is self-contained, then you can send the file by itself without having to attach the dependent files with it.</p></li>
+</ol>
+<p>Once you have entered the desired formatting setting in the <code>Raw NBConver</code> cell, you are ready to render the notebook to HTML. Open the terminal, navigate to the directory containing the notebook <em>(.ipynb file)</em>, and use the command: <code>quarto render filename.ipynb --to html</code>.</p>
+</section>
+</section>
+<section id="independent-study" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">1.7</span> Independent Study</h2>
 <p><strong>Goal:</strong> Get hands-on experience creating a reproducible Python environment using <code>pip</code> and <code>.venv</code> in VS Code.</p>
-<section id="step-by-step-instructions" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="step-by-step-instructions"><span class="header-section-number">1.6.1</span> Step-by-Step Instructions</h3>
+<section id="step-by-step-instructions" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="step-by-step-instructions"><span class="header-section-number">1.7.1</span> Step-by-Step Instructions</h3>
 <p><strong>Step 1: Create Your Workspace</strong></p>
 <ul>
 <li><p>Make a folder named <code>STAT303_1</code> for your course work.</p></li>
 <li><p>Open this folder in VS Code.</p></li>
 <li><p>Create a new notebook: <code>setup_test.ipynb</code>.</p></li>
 <li><p>Add a code cell:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, VS Code &amp; .venv!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, VS Code &amp; .venv!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Run the cell. If prompted, create/select a Python environment (choose <code>.venv</code>).</p></li>
 </ul>
 <p><strong>Step 2: Create the <code>.venv</code> Environment</strong></p>
 <ul>
 <li><p>If VS Code does not prompt you, open the terminal in VS Code.</p></li>
 <li><p>Run:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m venv <span class="op">.</span><span class="fu">venv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m venv <span class="op">.</span><span class="fu">venv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Activate the environment:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Install essential packages:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pip install numpy pandas matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pip install numpy pandas matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p><strong>Step 3: Verify Environment Consistency</strong></p>
 <ul>
 <li><p>In the terminal, check your Python version:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>In the notebook, run:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Make sure the Python path in the notebook matches the one in your terminal. This confirms you are using the same environment.</p></li>
 </ul>
-<p><strong>Step 4: Troubleshooting Tips</strong></p>
+<p><strong>Step 4: Generate html from the notebook using Quarto</strong></p>
+<ul>
+<li><p>In the terminal, make sure you are in the directory that contains your notebook</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>quarto render setup_test<span class="op">.</span><span class="fu">ipynb</span>  <span class="op">--</span>to html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Make sure the html file was generated in the same directory</p></li>
+</ul>
+<p><strong>Troubleshooting Tips</strong></p>
 <p>If you run into issues (e.g., kernel not showing <code>.venv</code>, code cell errors):</p>
 <ul>
 <li>Restart VS Code.</li>
@@ -572,16 +615,38 @@ One place for editing, running, debugging, documenting, and version-controlling 
 <li>Make sure <strong>Python</strong> &amp; <strong>Jupyter</strong> extensions are installed.</li>
 <li>Save your notebook with the <code>.ipynb</code> extension.</li>
 <li>If the kernel is missing, use the kernel picker (top right) to select <code>.venv</code>.</li>
+<li>If you see an error like <em>“No such file or directory”</em> or <em>“No valid input files passed to render”</em>:
+<ol type="1">
+<li>Check your current location:
+<ul>
+<li>macOS / Linux: <code>pwd</code><br>
+</li>
+<li>Windows: <code>cd</code></li>
+</ul></li>
+<li>List files in the current directory:
+<ul>
+<li>macOS / Linux: <code>ls</code><br>
+</li>
+<li>Windows: <code>dir</code></li>
+</ul></li>
+<li>If the notebook isn’t there:
+<ul>
+<li>Use <code>cd</code> to move into the correct folder, or<br>
+</li>
+<li>Provide the full (absolute) path to the file.</li>
+</ul></li>
+</ol></li>
 </ul>
 <p><strong>Extra:</strong></p>
 <ul>
-<li>Try installing another package (e.g., <code>seaborn</code>) and import it in a new cell to test.</li>
+<li>Try installing a package (e.g., <code>seaborn</code>) and import it in a new cell to test.</li>
 <li>Practice switching kernels to see how environments affect your code.</li>
+<li>Practice creating a <code>.conda</code> env and use <code>conda</code> to install the <code>seaborn</code> package</li>
 </ul>
 </section>
 </section>
-<section id="reference" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="reference"><span class="header-section-number">1.7</span> Reference</h2>
+<section id="reference" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="reference"><span class="header-section-number">1.8</span> Reference</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/getstarted/userinterface">Getting Started with VS Code</a></li>
 <li><a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Notebooks in VS Code</a></li>
