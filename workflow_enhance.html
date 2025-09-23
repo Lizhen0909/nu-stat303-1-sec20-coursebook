@@ -336,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   <li><a href="#installing-required-packages-within-your-notebook" id="toc-installing-required-packages-within-your-notebook" class="nav-link" data-scroll-target="#installing-required-packages-within-your-notebook"><span class="header-section-number">3.4</span> Installing Required Packages Within Your Notebook</a></li>
-  <li><a href="#specifying-your-file-path" id="toc-specifying-your-file-path" class="nav-link" data-scroll-target="#specifying-your-file-path"><span class="header-section-number">3.5</span> Specifying Your File Path</a>
+  <li><a href="#file-paths-in-python" id="toc-file-paths-in-python" class="nav-link" data-scroll-target="#file-paths-in-python"><span class="header-section-number">3.5</span> File Paths in Python</a>
   <ul>
   <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path"><span class="header-section-number">3.5.1</span> Absolute Path</a></li>
   <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path"><span class="header-section-number">3.5.2</span> Relative Path</a></li>
@@ -616,7 +616,7 @@ Wall time: 23 ms</code></pre>
 <h2 data-number="3.4" class="anchored" data-anchor-id="installing-required-packages-within-your-notebook"><span class="header-section-number">3.4</span> Installing Required Packages Within Your Notebook</h2>
 <p>When working in Jupyter notebooks, you often need to install new Python packages. There are two main ways to do this:</p>
 <ol type="1">
-<li><p><strong>Shell Command:</strong></p>
+<li><p><strong>Shell Command (not recommend):</strong></p>
 <ul>
 <li><p>Use an exclamation mark (<code>!</code>) before the command:</p>
 <ul>
@@ -633,82 +633,37 @@ Wall time: 23 ms</code></pre>
 <li><p>This is Jupyter-specific and ensures the package is installed in the environment where your notebook is running.</p></li>
 </ul></li>
 </ol>
-<p><strong>Best Practice:</strong></p>
-<ul>
-<li><p>Prefer <code>%pip install package_name</code> in Jupyter notebooks to avoid confusion about which environment is being updated.</p></li>
-<li><p>If you use <code>!pip install</code>, double-check that the package is available in your notebook (sometimes you may need to restart the kernel).</p></li>
-</ul>
 <p><strong>Example:</strong></p>
 <ul>
 <li><p><code>%pip install numpy</code> # Installs numpy in the notebook’s environment</p></li>
 <li><p><code>!pip install numpy</code> # Installs numpy using the system shell (may differ from notebook environment)</p></li>
 </ul>
-<p>To guarantee that package installation happens in the same environment as your notebook kernel, use the Python executable associated with the running notebook. This avoids issues where packages are installed in a different environment than the one your code is using.</p>
-<p><strong>How to do this:</strong></p>
-<ul>
-<li><p>Use the following command to ensure <code>pip</code> installs to the correct environment:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-<p>This method is especially useful if you have multiple Python environments or are unsure which one is active in your notebook.</p>
-<div id="cell-22" class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: numpy in c:\users\lsi8012\appdata\local\anaconda3\lib\site-packages (1.26.4)</code></pre>
-</div>
-</div>
 <p>Unlike shell commands, the <code>%pip</code> magic command is designed specifically for Jupyter notebooks. It automatically installs packages into the exact environment your notebook kernel is using, reducing confusion and installation errors.</p>
-<p><strong>Why use <code>%pip</code>?</strong></p>
-<ul>
-<li>It guarantees that the installed package will be available in your current notebook session.</li>
-<li>No need to worry about mismatched environments or restarting the kernel after installation.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will install <code>numpy</code> directly into the notebook’s environment, making it immediately available for import and use.</p>
-<div id="cell-24" class="cell">
+<div id="cell-21" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Requirement already satisfied: numpy in c:\users\lsi8012\appdata\local\anaconda3\lib\site-packages (1.26.4)
 Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
-<p>In most cases, you don’t need to type <code>%</code> before <code>pip install numpy</code> because Jupyter’s “automagic” feature is enabled by default. Automagic lets you use some magic commands without the <code>%</code> prefix, as long as there isn’t a variable with the same name in your code.</p>
+<p>In most cases, you don’t need to type <code>%</code> before <code>pip install numpy</code> because Jupyter’s “automagic” feature is enabled by default. Automagic lets you use line magics without the <code>%</code> (unless their name conflicts with Python variables or commands).</p>
 <p><strong>How automagic works:</strong></p>
 <ul>
 <li>If you type <code>pip install numpy</code>, Jupyter will interpret it as <code>%pip install numpy</code> automatically.</li>
-<li>If you have a variable named <code>pip</code>, the command will use the variable instead, which can cause unexpected behavior.</li>
 </ul>
 <p><strong>Best practice:</strong></p>
 <ul>
 <li>Use <code>%pip install ...</code> for clarity and to avoid conflicts.</li>
 <li>Automagic is convenient, but explicit magic commands are safer in shared or complex notebooks.</li>
 </ul>
-<p><strong>Tip:</strong> Not all magic commands work with automagic—some still require the <code>%</code> or <code>%%</code> prefix.</p>
-<div id="cell-26" class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: numpy in c:\users\lsi8012\appdata\local\anaconda3\lib\site-packages (1.26.4)
-Note: you may need to restart the kernel to use updated packages.</code></pre>
-</div>
-</div>
+<p><strong>Note:</strong> Cell magics still require the <code>%%</code> prefix.</p>
 </section>
-<section id="specifying-your-file-path" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="specifying-your-file-path"><span class="header-section-number">3.5</span> Specifying Your File Path</h2>
-<p>Understanding how to specify file paths in Python is essential for loading and saving data. File paths tell Python where to find or store your files, such as datasets, results, or scripts.</p>
+<section id="file-paths-in-python" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="file-paths-in-python"><span class="header-section-number">3.5</span> File Paths in Python</h2>
+<p>Understanding how to specify file paths in Python is essential for loading and saving data. File paths tell Python where to find or store your files (e.g., datasets, results, or scripts).</p>
 <p>There are two main types of file paths: <strong>absolute paths</strong> and <strong>relative paths</strong>.</p>
 <ul>
 <li><strong>Absolute Path:</strong> Gives the complete location of a file or folder from the root of your file system. It always points to the same place, no matter where your code is running.</li>
@@ -717,19 +672,19 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <p>Choosing the right type of path helps avoid errors and makes your code more portable across different computers and operating systems.</p>
 <section id="absolute-path" class="level3" data-number="3.5.1">
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="absolute-path"><span class="header-section-number">3.5.1</span> Absolute Path</h3>
-<p>An <strong>absolute path</strong> provides the full address to a file or directory, starting from the root of your system. It does not depend on where your code is running.</p>
+<p>An <strong>absolute path</strong> provides the full address to a file or directory, starting from the root of your system. It does <strong>not</strong> depend on where your code is running.</p>
 <p><strong>Example (Windows):</strong></p>
-<div id="cell-28" class="cell" data-execution_count="23">
+<div id="cell-25" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute path example (Windows)</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute path example (Windows)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-29" class="cell" data-execution_count="24">
+<div id="cell-26" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda env <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda env <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># conda environments:
@@ -744,38 +699,27 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="relative-path"><span class="header-section-number">3.5.2</span> Relative Path</h3>
 <p>A <strong>relative path</strong> describes the location of a file or folder in relation to your current working directory. It is shorter, more flexible, and makes your code easier to share and run on different computers.</p>
 <p>Relative paths are especially useful in projects with organized folder structures, because they allow you to move your code and data together without changing file references.</p>
-<p>To find your current working directory in Python, you can use either a magic command or a shell command:</p>
+<p>To find your current working directory in your notebook, you can use a magic command:</p>
 <ul>
-<li><p>Magic command: <code>%pwd</code></p></li>
-<li><p>Shell command: <code>!cd</code> (Windows) or <code>!pwd</code> (macOS/Linux)</p></li>
+<li>Magic command: <code>%pwd</code></li>
 </ul>
 <p>Knowing your current working directory helps you understand where Python will look for files when using relative paths.</p>
-<div id="cell-32" class="cell" data-execution_count="25">
+<div id="cell-29" class="cell" data-execution_count="25">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Magic command</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Magic command</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>'c:\\Users\\lsi8012\\Documents\\Courses\\FA24\\DataScience_Intro_python_fa24_Sec20_21'</code></pre>
 </div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="26">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shell command</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>c:\Users\lsi8012\Documents\Courses\FA24\DataScience_Intro_python_fa24_Sec20_21</code></pre>
-</div>
-</div>
 <p>Example of a Relative Path:</p>
-<div id="cell-35" class="cell" data-execution_count="27">
+<div id="cell-31" class="cell" data-execution_count="27">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of relative path</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"sample.txt"</span>  <span class="co"># Relative to the current directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of relative path</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"sample.txt"</span>  <span class="co"># Relative to the current directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The relative path <code>sample.txt</code> means that there is a file in the current working directory.</p>
@@ -787,30 +731,30 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <section id="method-1-using-escaped-backslashes" class="level4" data-number="3.5.3.1">
 <h4 data-number="3.5.3.1" class="anchored" data-anchor-id="method-1-using-escaped-backslashes"><span class="header-section-number">3.5.3.1</span> Method 1: <strong>Using Escaped Backslashes</strong></h4>
 <p>Use double backslashes (<code>\\</code>) to prevent Python from interpreting them as escape characters.</p>
-<div id="cell-39" class="cell" data-execution_count="28">
+<div id="cell-35" class="cell" data-execution_count="28">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">Username</span><span class="ch">\\</span><span class="st">Documents</span><span class="ch">\\</span><span class="st">data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">Username</span><span class="ch">\\</span><span class="st">Documents</span><span class="ch">\\</span><span class="st">data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="method-2-using-raw-strings" class="level4" data-number="3.5.3.2">
 <h4 data-number="3.5.3.2" class="anchored" data-anchor-id="method-2-using-raw-strings"><span class="header-section-number">3.5.3.2</span> Method 2: <strong>Using Raw Strings</strong></h4>
 <p>Prefix the path with <code>r</code> to tell Python to treat backslashes as literal characters.</p>
-<div id="cell-41" class="cell" data-execution_count="29">
+<div id="cell-37" class="cell" data-execution_count="29">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="method-3-using-forward-slashes" class="level4" data-number="3.5.3.3">
 <h4 data-number="3.5.3.3" class="anchored" data-anchor-id="method-3-using-forward-slashes"><span class="header-section-number">3.5.3.3</span> Method 3: <strong>Using forward slashes (<code>/</code>)</strong></h4>
 <p>Python accepts forward slashes (<code>/</code>) in file paths, even on Windows. This is often the simplest and most portable method.</p>
-<div id="cell-43" class="cell" data-execution_count="30">
+<div id="cell-39" class="cell" data-execution_count="30">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"C:/Users/Username/Documents/data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"C:/Users/Username/Documents/data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -818,11 +762,11 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <h4 data-number="3.5.3.4" class="anchored" data-anchor-id="method-4-using-os.path.join"><span class="header-section-number">3.5.3.4</span> Method 4: <strong>Using <code>os.path.join</code></strong></h4>
 <p>Use <code>os.path.join()</code> to build paths programmatically. This method automatically uses the correct separator for your operating system, making your code cross-platform.</p>
 <p>Using these methods helps prevent bugs, makes your code easier to share, and ensures it works on different computers and operating systems.</p>
-<div id="cell-45" class="cell" data-execution_count="31">
+<div id="cell-41" class="cell" data-execution_count="31">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> os.path.join(<span class="st">"C:"</span>, <span class="st">"Users"</span>, <span class="st">"Username"</span>, <span class="st">"Documents"</span>, <span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> os.path.join(<span class="st">"C:"</span>, <span class="st">"Users"</span>, <span class="st">"Username"</span>, <span class="st">"Documents"</span>, <span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>This method works across different operating systems because <code>os.path.join</code> automatically uses the correct path separator (<code>\</code> for Windows and <code>/</code>for Linux/Mac).</p>
@@ -851,17 +795,17 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <p>In data science projects, you often work with data files (such as CSV, Excel, or JSON) stored in various folders. Managing these files efficiently is essential for reproducible workflows and organized projects.</p>
 <p>The Python <code>os</code> module provides powerful tools to interact with your operating system and manage files and directories directly from your notebook. With <code>os</code>, you can: - Check your current working directory - List files and folders - Create, rename, or delete directories - Move between folders - Check if files or folders exist before using them</p>
 <p>Let’s import the <code>os</code> module and explore some of its most useful functions for data science tasks.</p>
-<div id="cell-50" class="cell" data-execution_count="7">
+<div id="cell-46" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>We can get the location of the current working directory using the <code>os.getcwd</code> function.</p>
-<div id="cell-52" class="cell" data-execution_count="8">
+<div id="cell-48" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>'c:\\Users\\lsi8012\\mydev\\STAT303-1-class-notes'</code></pre>
@@ -869,16 +813,16 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </div>
 <p>The command <code>os.chdir('..')</code> in Python changes the current working directory to the parent directory of the current one.</p>
 <p>Note that <code>..</code> as the path notation for the parent directory is universally true across all major operating systems, including Windows, macOS, and Linux. It allows you to move one level up in the directory hierarchy, which is very useful when navigating directories programmatically, especially in scripts where directory traversal is needed.</p>
-<div id="cell-54" class="cell" data-execution_count="9">
+<div id="cell-50" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'..'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'..'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-55" class="cell" data-execution_count="10">
+<div id="cell-51" class="cell" data-execution_count="10">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>'c:\\Users\\lsi8012\\mydev'</code></pre>
@@ -892,10 +836,10 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 <li>week2 is a folder inside the current directory.</li>
 </ul>
 <p>The <code>os.listdir()</code> function in Python returns a list of all files and directories in the specified path. If no path is provided, it returns the contents of the current working directory.</p>
-<div id="cell-59" class="cell" data-execution_count="11">
+<div id="cell-55" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>os.listdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>os.listdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>['limonstar-web',
@@ -912,10 +856,10 @@ base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
 </div>
 </div>
 <p>Check whether a specific folder/file exist in the current working directory</p>
-<div id="cell-61" class="cell" data-execution_count="12">
+<div id="cell-57" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">'data'</span> <span class="kw">in</span> os.listdir(<span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">'data'</span> <span class="kw">in</span> os.listdir(<span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>False</code></pre>
