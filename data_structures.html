@@ -333,15 +333,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reverse-sorting" id="toc-reverse-sorting" class="nav-link" data-scroll-target="#reverse-sorting"><span class="header-section-number">5.4.4.3</span> Reverse Sorting</a></li>
   <li><a href="#sorting-with-a-key" id="toc-sorting-with-a-key" class="nav-link" data-scroll-target="#sorting-with-a-key"><span class="header-section-number">5.4.4.4</span> Sorting with a key</a></li>
   <li><a href="#sorting-complex-data" id="toc-sorting-complex-data" class="nav-link" data-scroll-target="#sorting-complex-data"><span class="header-section-number">5.4.4.5</span> Sorting Complex Data</a></li>
-  <li><a href="#mini-exercises" id="toc-mini-exercises" class="nav-link" data-scroll-target="#mini-exercises"><span class="header-section-number">5.4.4.6</span> Mini Exercises</a></li>
   </ul></li>
-  <li><a href="#lambda-functions-in-python" id="toc-lambda-functions-in-python" class="nav-link" data-scroll-target="#lambda-functions-in-python"><span class="header-section-number">5.4.5</span> Lambda Functions in Python</a>
-  <ul class="collapse">
-  <li><a href="#mini-exercises-1" id="toc-mini-exercises-1" class="nav-link" data-scroll-target="#mini-exercises-1"><span class="header-section-number">5.4.5.1</span> Mini Exercises</a></li>
-  </ul></li>
+  <li><a href="#lambda-functions-in-python" id="toc-lambda-functions-in-python" class="nav-link" data-scroll-target="#lambda-functions-in-python"><span class="header-section-number">5.4.5</span> Lambda Functions in Python</a></li>
   <li><a href="#enumerate" id="toc-enumerate" class="nav-link" data-scroll-target="#enumerate"><span class="header-section-number">5.4.6</span> <code>enumerate()</code></a></li>
   <li><a href="#zip" id="toc-zip" class="nav-link" data-scroll-target="#zip"><span class="header-section-number">5.4.7</span> <code>zip()</code></a></li>
   <li><a href="#common-functions-for-iterables" id="toc-common-functions-for-iterables" class="nav-link" data-scroll-target="#common-functions-for-iterables"><span class="header-section-number">5.4.8</span> Common Functions for Iterables</a></li>
+  </ul></li>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">5.5</span> Independent Study</a>
+  <ul>
+  <li><a href="#sorting-the-data" id="toc-sorting-the-data" class="nav-link" data-scroll-target="#sorting-the-data"><span class="header-section-number">5.5.1</span> Sorting the data</a></li>
+  <li><a href="#lambda" id="toc-lambda" class="nav-link" data-scroll-target="#lambda"><span class="header-section-number">5.5.2</span> <code>lambda</code></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">5.5.3</span> </a></li>
+  <li><a href="#student-data" id="toc-student-data" class="nav-link" data-scroll-target="#student-data"><span class="header-section-number">5.5.4</span> Student data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -527,8 +530,18 @@ gpa -&gt; 3.7</code></pre>
 <section id="membership-lookups" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="membership-lookups"><span class="header-section-number">5.4.2</span> Membership &amp; Lookups</h3>
 <p>Membership operations let you check if an item exists in a collection (like a list, set, or dictionary). Use <code>in</code> and <code>not in</code> for these checks. Lookups retrieve values by key or index, and are fastest in sets and dictionaries.</p>
-<p><strong>Examples:</strong> - <code>3 in [1, 2, 3]</code> → <code>True</code> (checks if 3 is in the list) - <code>'a' in {'a': 1, 'b': 2}</code> → <code>True</code> (checks if ‘a’ is a key in the dictionary) - <code>5 not in {1, 2, 3}</code> → <code>True</code> (checks if 5 is not in the set)</p>
-<p><strong>Tip:</strong> - Dictionary and set lookups are very fast (constant time). - List and tuple membership checks are slower (linear time). - For safe dictionary lookups, use <code>.get(key)</code> to avoid errors if the key is missing.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>3 in [1, 2, 3]</code> → <code>True</code> (checks if 3 is in the list)</li>
+<li><code>'a' in {'a': 1, 'b': 2}</code> → <code>True</code> (checks if ‘a’ is a key in the dictionary)</li>
+<li><code>5 not in {1, 2, 3}</code> → <code>True</code> (checks if 5 is not in the set)</li>
+</ul>
+<p><strong>Tip:</strong></p>
+<ul>
+<li>Dictionary and set lookups are very fast (constant time).</li>
+<li>List and tuple membership checks are slower (linear time).</li>
+<li>For safe dictionary lookups, use <code>.get(key)</code> to avoid errors if the key is missing.</li>
+</ul>
 </section>
 <section id="unpacking" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="unpacking"><span class="header-section-number">5.4.3</span> Unpacking</h3>
@@ -688,14 +701,6 @@ year 3</code></pre>
 </div>
 </div>
 </section>
-<section id="mini-exercises" class="level4" data-number="5.4.4.6">
-<h4 data-number="5.4.4.6" class="anchored" data-anchor-id="mini-exercises"><span class="header-section-number">5.4.4.6</span> Mini Exercises</h4>
-<ul>
-<li><p>Sort [10, 2, 33, 25, 7] in descending order.</p></li>
-<li><p>Given words = [“data”, “python”, “AI”, “science”], sort alphabetically ignoring case.</p></li>
-<li><p>Sort [(“Ann”, 22), (“Bob”, 19), (“Chen”, 22)] by age, preserving name order when ages match.</p></li>
-</ul>
-</section>
 </section>
 <section id="lambda-functions-in-python" class="level3" data-number="5.4.5">
 <h3 data-number="5.4.5" class="anchored" data-anchor-id="lambda-functions-in-python"><span class="header-section-number">5.4.5</span> Lambda Functions in Python</h3>
@@ -770,34 +775,13 @@ That’s where <strong>lambda functions</strong> help.</p>
 <li>is reused often</li>
 </ul></li>
 </ul>
-<section id="mini-exercises-1" class="level4" data-number="5.4.5.1">
-<h4 data-number="5.4.5.1" class="anchored" data-anchor-id="mini-exercises-1"><span class="header-section-number">5.4.5.1</span> Mini Exercises</h4>
-<ul>
-<li>Use <code>lambda</code> with <code>sorted()</code> to order the list:</li>
-</ul>
-<div id="b7980988" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Use <code>lambda</code> with <code>filter()</code> to keep only names starting with a vowel:</li>
-</ul>
-<div id="850c61c0" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Eve"</span>, <span class="st">"Uma"</span>, <span class="st">"Sam"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Use <code>lambda</code> with <code>map()</code> to convert Celsius to Fahrenheit:</li>
-</ul>
-<div id="73afa195" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>temps_c <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">37</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 </section>
 <section id="enumerate" class="level3" data-number="5.4.6">
 <h3 data-number="5.4.6" class="anchored" data-anchor-id="enumerate"><span class="header-section-number">5.4.6</span> <code>enumerate()</code></h3>
 <p>The <code>enumerate()</code> function is a built-in Python tool that adds a counter to any iterable, returning pairs of (index, item) as you loop. This is especially useful when you need both the item and its position in a loop.</p>
 <p><strong>Syntax:</strong></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, value <span class="kw">in</span> <span class="bu">enumerate</span>(iterable, start<span class="op">=</span><span class="dv">0</span>):</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use index and value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, value <span class="kw">in</span> <span class="bu">enumerate</span>(iterable, start<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use index and value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>iterable</code>: Any sequence (list, tuple, string, etc.)</li>
 <li><code>start</code>: Optional, sets the starting index (default is 0)</li>
@@ -810,9 +794,9 @@ That’s where <strong>lambda functions</strong> help.</p>
 </ul>
 <p><strong>Example:</strong></p>
 <div id="38a61a7e" class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span>]</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, fruit <span class="kw">in</span> <span class="bu">enumerate</span>(fruits):</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(idx, fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span>]</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, fruit <span class="kw">in</span> <span class="bu">enumerate</span>(fruits):</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(idx, fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 apple
 1 banana
@@ -826,7 +810,7 @@ That’s where <strong>lambda functions</strong> help.</p>
 <h3 data-number="5.4.7" class="anchored" data-anchor-id="zip"><span class="header-section-number">5.4.7</span> <code>zip()</code></h3>
 <p>The <code>zip()</code> function combines two or more iterables (like lists, tuples, or strings) into tuples, pairing elements by their position. This is useful for parallel iteration, creating pairs, or merging data from multiple sources.</p>
 <p><strong>Syntax:</strong></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">zip</span>(iterable1, iterable2, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">zip</span>(iterable1, iterable2, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Each tuple contains one element from each iterable, matched by position.</li>
 <li>Stops at the shortest iterable.</li>
@@ -834,10 +818,10 @@ That’s where <strong>lambda functions</strong> help.</p>
 <p><strong>Why use <code>zip()</code>?</strong> - Parallel iteration over multiple sequences - Pairing related data (e.g., names and scores) - Creating dictionaries from two lists</p>
 <p><strong>Example:</strong></p>
 <div id="15763e3f" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Chen'</span>]</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>]</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, score <span class="kw">in</span> <span class="bu">zip</span>(names, scores):</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Chen'</span>]</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>]</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, score <span class="kw">in</span> <span class="bu">zip</span>(names, scores):</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Alice 85
 Bob 92
@@ -845,9 +829,9 @@ Chen 78</code></pre>
 </div>
 </div>
 <div id="82731f09" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a dictionary from two lists:</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>gradebook <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(names, scores))</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gradebook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a dictionary from two lists:</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>gradebook <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(names, scores))</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gradebook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'Alice': 85, 'Bob': 92, 'Chen': 78}</code></pre>
 </div>
@@ -923,6 +907,120 @@ Chen 78</code></pre>
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="independent-study" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">5.5</span> Independent Study</h2>
+<section id="sorting-the-data" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="sorting-the-data"><span class="header-section-number">5.5.1</span> Sorting the data</h3>
+<ul>
+<li><p>Sort [10, 2, 33, 25, 7] in descending order.</p></li>
+<li><p>Given words = [“data”, “python”, “AI”, “science”], sort alphabetically ignoring case.</p></li>
+<li><p>Sort [(“Ann”, 22), (“Bob”, 19), (“Chen”, 22)] by age, preserving name order when ages match.</p></li>
+</ul>
+</section>
+<section id="lambda" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="lambda"><span class="header-section-number">5.5.2</span> <code>lambda</code></h3>
+<ul>
+<li>Use <code>lambda</code> with <code>sorted()</code> to order the list:</li>
+</ul>
+<div id="a38578a4" class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Use <code>lambda</code> with <code>filter()</code> to keep only names starting with a vowel:</li>
+</ul>
+<div id="54959767" class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Eve"</span>, <span class="st">"Uma"</span>, <span class="st">"Sam"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Use <code>lambda</code> with <code>map()</code> to convert Celsius to Fahrenheit:</li>
+</ul>
+<div id="d9751429" class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>temps_c <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">37</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="section"><span class="header-section-number">5.5.3</span> </h3>
+<p>You are given a list of strings representing student names. Some students appear more than once because they signed up for multiple activities.</p>
+<p>Write a Python function that:</p>
+<ol type="1">
+<li><strong>Removes duplicate names</strong> while <em>preserving the first occurrence order</em>.<br>
+</li>
+<li><strong>Returns a list of tuples</strong> <code>(index, name_length)</code> for each <strong>unique name</strong>, where:
+<ul>
+<li><code>index</code> is the original position of the name in the list (first occurrence).<br>
+</li>
+<li><code>name_length</code> is the length of the name.</li>
+</ul></li>
+</ol>
+<p>Finally, <strong>sort the output list by <code>name_length</code> in descending order</strong>.</p>
+<div id="e4909cb6" class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Alice"</span>, <span class="st">"Charlie"</span>, <span class="st">"Bob"</span>, <span class="st">"Dave"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="student-data" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="student-data"><span class="header-section-number">5.5.4</span> Student data</h3>
+<div id="8c4a0022" class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CELL 1: Student Data Setup</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> [</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">101</span>, <span class="st">"Alice"</span>, <span class="st">"STAT303"</span>, <span class="dv">85</span>),</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">102</span>, <span class="st">"Bob"</span>, <span class="st">"STAT301"</span>, <span class="dv">92</span>),</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">103</span>, <span class="st">"Charlie"</span>, <span class="st">"STAT303"</span>, <span class="dv">78</span>),</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">104</span>, <span class="st">"Diana"</span>, <span class="st">"STAT301"</span>, <span class="dv">95</span>),</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">105</span>, <span class="st">"Eve"</span>, <span class="st">"STAT303"</span>, <span class="dv">88</span>),</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">106</span>, <span class="st">"Frank"</span>, <span class="st">"STAT304"</span>, <span class="dv">82</span>),</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">107</span>, <span class="st">"Grace"</span>, <span class="st">"STAT301"</span>, <span class="dv">90</span>),</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">108</span>, <span class="st">"Hank"</span>, <span class="st">"STAT304"</span>, <span class="dv">87</span>),</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">109</span>, <span class="st">"Ivy"</span>, <span class="st">"STAT303"</span>, <span class="dv">91</span>),</span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">101</span>, <span class="st">"Alice"</span>, <span class="st">"STAT301"</span>, <span class="dv">88</span>),</span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">101</span>, <span class="st">"Alice"</span>, <span class="st">"STAT304"</span>, <span class="dv">82</span>),</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">101</span>, <span class="st">"Alice"</span>, <span class="st">"STAT302"</span>, <span class="dv">86</span>),</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">102</span>, <span class="st">"Bob"</span>, <span class="st">"STAT303"</span>, <span class="dv">79</span>),</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">102</span>, <span class="st">"Bob"</span>, <span class="st">"STAT304"</span>, <span class="dv">85</span>),</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">102</span>, <span class="st">"Bob"</span>, <span class="st">"STAT302"</span>, <span class="dv">83</span>),</span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">103</span>, <span class="st">"Charlie"</span>, <span class="st">"STAT301"</span>, <span class="dv">91</span>),</span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">103</span>, <span class="st">"Charlie"</span>, <span class="st">"STAT304"</span>, <span class="dv">84</span>),</span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">103</span>, <span class="st">"Charlie"</span>, <span class="st">"STAT302"</span>, <span class="dv">80</span>),</span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">104</span>, <span class="st">"Diana"</span>, <span class="st">"STAT303"</span>, <span class="dv">89</span>),</span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">104</span>, <span class="st">"Diana"</span>, <span class="st">"STAT304"</span>, <span class="dv">93</span>),</span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">104</span>, <span class="st">"Diana"</span>, <span class="st">"STAT302"</span>, <span class="dv">96</span>),</span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">105</span>, <span class="st">"Eve"</span>, <span class="st">"STAT301"</span>, <span class="dv">87</span>),</span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">105</span>, <span class="st">"Eve"</span>, <span class="st">"STAT304"</span>, <span class="dv">90</span>),</span>
+<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">105</span>, <span class="st">"Eve"</span>, <span class="st">"STAT302"</span>, <span class="dv">85</span>),</span>
+<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">106</span>, <span class="st">"Frank"</span>, <span class="st">"STAT303"</span>, <span class="dv">76</span>),</span>
+<span id="cb58-28"><a href="#cb58-28" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">106</span>, <span class="st">"Frank"</span>, <span class="st">"STAT301"</span>, <span class="dv">81</span>),</span>
+<span id="cb58-29"><a href="#cb58-29" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">106</span>, <span class="st">"Frank"</span>, <span class="st">"STAT302"</span>, <span class="dv">79</span>),</span>
+<span id="cb58-30"><a href="#cb58-30" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">107</span>, <span class="st">"Grace"</span>, <span class="st">"STAT303"</span>, <span class="dv">84</span>),</span>
+<span id="cb58-31"><a href="#cb58-31" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">107</span>, <span class="st">"Grace"</span>, <span class="st">"STAT304"</span>, <span class="dv">88</span>),</span>
+<span id="cb58-32"><a href="#cb58-32" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">107</span>, <span class="st">"Grace"</span>, <span class="st">"STAT302"</span>, <span class="dv">91</span>),</span>
+<span id="cb58-33"><a href="#cb58-33" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">108</span>, <span class="st">"Hank"</span>, <span class="st">"STAT303"</span>, <span class="dv">80</span>),</span>
+<span id="cb58-34"><a href="#cb58-34" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">108</span>, <span class="st">"Hank"</span>, <span class="st">"STAT301"</span>, <span class="dv">83</span>),</span>
+<span id="cb58-35"><a href="#cb58-35" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">108</span>, <span class="st">"Hank"</span>, <span class="st">"STAT302"</span>, <span class="dv">82</span>),</span>
+<span id="cb58-36"><a href="#cb58-36" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">109</span>, <span class="st">"Ivy"</span>, <span class="st">"STAT301"</span>, <span class="dv">94</span>),</span>
+<span id="cb58-37"><a href="#cb58-37" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">109</span>, <span class="st">"Ivy"</span>, <span class="st">"STAT304"</span>, <span class="dv">89</span>),</span>
+<span id="cb58-38"><a href="#cb58-38" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">109</span>, <span class="st">"Ivy"</span>, <span class="st">"STAT302"</span>, <span class="dv">92</span>),</span>
+<span id="cb58-39"><a href="#cb58-39" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">110</span>, <span class="st">"Jack"</span>, <span class="st">"STAT303"</span>, <span class="dv">83</span>),</span>
+<span id="cb58-40"><a href="#cb58-40" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">110</span>, <span class="st">"Jack"</span>, <span class="st">"STAT301"</span>, <span class="dv">86</span>),</span>
+<span id="cb58-41"><a href="#cb58-41" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">110</span>, <span class="st">"Jack"</span>, <span class="st">"STAT304"</span>, <span class="dv">79</span>),</span>
+<span id="cb58-42"><a href="#cb58-42" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">110</span>, <span class="st">"Jack"</span>, <span class="st">"STAT302"</span>, <span class="dv">81</span>),</span>
+<span id="cb58-43"><a href="#cb58-43" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">111</span>, <span class="st">"Karen"</span>, <span class="st">"STAT303"</span>, <span class="dv">96</span>),</span>
+<span id="cb58-44"><a href="#cb58-44" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">111</span>, <span class="st">"Karen"</span>, <span class="st">"STAT301"</span>, <span class="dv">92</span>),</span>
+<span id="cb58-45"><a href="#cb58-45" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">111</span>, <span class="st">"Karen"</span>, <span class="st">"STAT304"</span>, <span class="dv">94</span>),</span>
+<span id="cb58-46"><a href="#cb58-46" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">111</span>, <span class="st">"Karen"</span>, <span class="st">"STAT302"</span>, <span class="dv">98</span>),</span>
+<span id="cb58-47"><a href="#cb58-47" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">112</span>, <span class="st">"Leo"</span>, <span class="st">"STAT303"</span>, <span class="dv">72</span>),</span>
+<span id="cb58-48"><a href="#cb58-48" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">112</span>, <span class="st">"Leo"</span>, <span class="st">"STAT301"</span>, <span class="dv">75</span>),</span>
+<span id="cb58-49"><a href="#cb58-49" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">112</span>, <span class="st">"Leo"</span>, <span class="st">"STAT304"</span>, <span class="dv">78</span>),</span>
+<span id="cb58-50"><a href="#cb58-50" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">112</span>, <span class="st">"Leo"</span>, <span class="st">"STAT302"</span>, <span class="dv">74</span>)</span>
+<span id="cb58-51"><a href="#cb58-51" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>What is the data type for this variable</li>
+<li>How many unique students in the dataset</li>
+<li>How many unique courses in the dataset</li>
+<li>what is the grade range?</li>
+<li>What is the average grade?</li>
+</ul>
 
 
 </section>
