@@ -367,6 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reading-json-with-pandas" id="toc-reading-json-with-pandas" class="nav-link" data-scroll-target="#reading-json-with-pandas"><span class="header-section-number">6.5.4.1</span> Reading JSON with Pandas</a></li>
   <li><a href="#real-example-ted-talks-dataset" id="toc-real-example-ted-talks-dataset" class="nav-link" data-scroll-target="#real-example-ted-talks-dataset"><span class="header-section-number">6.5.4.2</span> Real Example: TED Talks Dataset</a></li>
   <li><a href="#reading-data-from-urls-and-apis" id="toc-reading-data-from-urls-and-apis" class="nav-link" data-scroll-target="#reading-data-from-urls-and-apis"><span class="header-section-number">6.5.4.3</span> Reading Data from URLs and APIs</a></li>
+  <li><a href="#read-data-from-wikipedia" id="toc-read-data-from-wikipedia" class="nav-link" data-scroll-target="#read-data-from-wikipedia"><span class="header-section-number">6.5.4.4</span> Read data from wikipedia</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">6.6</span> Independent Study</a>
@@ -570,7 +571,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="6.3.4" class="anchored" data-anchor-id="loading-data-with-pd.read_csv"><span class="header-section-number">6.3.4</span> Loading Data with <code>pd.read_csv()</code></h3>
 <p><strong>What is <code>pd.read_csv()</code>?</strong></p>
 <p>The <code>pd.read_csv()</code> function is your gateway to loading CSV data into Python. It converts CSV files into a pandas <strong>DataFrame</strong> - think of it as a powerful, interactive spreadsheet that you can manipulate with code.</p>
-<p><strong>Key Features:</strong> - <strong>Automatic data type detection</strong>: Pandas intelligently guesses column types (numbers, text, dates) - <strong>Header recognition</strong>: Automatically uses the first row as column names - <strong>Missing data handling</strong>: Gracefully handles empty cells - <strong>Flexible parsing</strong>: Can handle various CSV formats and delimiters</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Automatic data type detection</strong>: Pandas intelligently guesses column types (numbers, text, dates)</li>
+<li><strong>Header recognition</strong>: Automatically uses the first row as column names</li>
+<li><strong>Missing data handling</strong>: Gracefully handles empty cells</li>
+<li><strong>Flexible parsing</strong>: Can handle various CSV formats and delimiters</li>
+</ul>
 <div id="f9c2d468" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>movie_ratings <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/movie_ratings.csv'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>movie_ratings.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -704,9 +711,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dataframe-two-dimensional-data" class="level4" data-number="6.3.5.2">
 <h4 data-number="6.3.5.2" class="anchored" data-anchor-id="dataframe-two-dimensional-data"><span class="header-section-number">6.3.5.2</span> <strong>DataFrame</strong>: Two-Dimensional Data</h4>
 <p>A <strong>DataFrame</strong> is the star of pandas - it’s like a complete spreadsheet or database table:</p>
-<p><strong>Key Characteristics:</strong> - <strong>Two-dimensional</strong>: Organized in rows and columns - <strong>Heterogeneous</strong>: Different columns can have different data types - <strong>Labeled axes</strong>: Both rows (index) and columns have names/labels - <strong>Flexible</strong>: Easy to filter, sort, group, and analyze</p>
-<p><strong>Structure:</strong> - <strong>Rows (Index)</strong>: Each row represents one <strong>observation</strong> (e.g., one movie, customer, transaction) - <strong>Columns</strong>: Each column represents one <strong>variable/feature</strong> (e.g., title, price, rating, date) - <strong>Cells</strong>: Individual data points where rows and columns intersect</p>
-<p><strong>Default Behavior:</strong> - <strong>Row indices</strong>: Automatically numbered 0, 1, 2, 3… (but customizable) - <strong>Column names</strong>: Taken from the first row of your CSV file (the header) - <strong>Data types</strong>: Automatically detected (numbers, text, dates, etc.)</p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li><strong>Two-dimensional</strong>: Organized in rows and columns</li>
+<li><strong>Heterogeneous</strong>: Different columns can have different data types</li>
+<li><strong>Labeled axes</strong>: Both rows (index) and columns have names/labels</li>
+<li><strong>Flexible</strong>: Easy to filter, sort, group, and analyze</li>
+</ul>
+<p><strong>Structure:</strong></p>
+<ul>
+<li><strong>Rows (Index)</strong>: Each row represents one <strong>observation</strong> (e.g., one movie, customer, transaction)</li>
+<li><strong>Columns</strong>: Each column represents one <strong>variable/feature</strong> (e.g., title, price, rating, date)</li>
+<li><strong>Cells</strong>: Individual data points where rows and columns intersect</li>
+</ul>
+<p><strong>Default Behavior:</strong></p>
+<ul>
+<li><strong>Row indices</strong>: Automatically numbered 0, 1, 2, 3… (but customizable)</li>
+<li><strong>Column names</strong>: Taken from the first row of your CSV file (the header)</li>
+<li><strong>Data types</strong>: Automatically detected (numbers, text, dates, etc.)</li>
+</ul>
 </section>
 </section>
 <section id="attributes-and-methods-of-a-pandas-dataframe" class="level3" data-number="6.3.6">
@@ -1282,7 +1305,13 @@ Last 3 movies:
 </section>
 <section id="what-youll-learn" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="what-youll-learn"><span class="header-section-number">6.5.2</span> What You’ll Learn</h3>
-<p>In this section, we’ll explore how to: - <strong>Read text files</strong> with different delimiters (tabs, semicolons, etc.) - <strong>Handle JSON data</strong> from APIs and web services - <strong>Access live data</strong> directly from URLs and APIs - <strong>Extract tables</strong> from HTML web pages</p>
+<p>In this section, we’ll explore how to:</p>
+<ul>
+<li><strong>Read text files</strong> with different delimiters (tabs, semicolons, etc.)</li>
+<li><strong>Handle JSON data</strong> from APIs and web services</li>
+<li><strong>Access live data</strong> directly from URLs and APIs</li>
+<li><strong>Extract tables</strong> from HTML web pages</li>
+</ul>
 <blockquote class="blockquote">
 <p>💡 <strong>Key Insight</strong>: The same <code>pd.read_csv()</code> function can read many text-based formats by adjusting parameters!</p>
 </blockquote>
@@ -1297,8 +1326,9 @@ Last 3 movies:
 </ul>
 <section id="reading-tab-separated-files" class="level4" data-number="6.5.3.1">
 <h4 data-number="6.5.3.1" class="anchored" data-anchor-id="reading-tab-separated-files"><span class="header-section-number">6.5.3.1</span> Reading Tab-Separated Files</h4>
-<p><strong>Common Delimiters in Text Files:</strong>- <strong>Space</strong> (<code></code>) → Simple space-separated files</p>
+<p><strong>Common Delimiters in Text Files:</strong></p>
 <ul>
+<li><strong>Space</strong> (<code></code>) → Simple space-separated files</li>
 <li><strong>Tab character</strong> (<code>\t</code>) → Creates TSV (Tab-Separated Values) files- <strong>Pipe symbol</strong> (<code>|</code>) → Used when data contains commas</li>
 <li><strong>Semicolon</strong> (<code>;</code>) → Common in European data files</li>
 </ul>
@@ -1412,9 +1442,11 @@ Last 3 movies:
 </div>
 </div>
 </div>
-<p><strong>Key Points:</strong> - Use the <strong>same</strong> <code>pd.read_csv()</code> function for text files - Specify the delimiter with the <code>sep</code> parameter</p>
+<p><strong>Key Points:</strong></p>
 <ul>
-<li><code>\t</code> represents the tab character</li>
+<li><p>Use the <strong>same</strong> <code>pd.read_csv()</code> function for text files</p></li>
+<li><p>Specify the delimiter with the <code>sep</code> parameter</p></li>
+<li><p><code>\t</code> represents the tab character</p></li>
 </ul>
 </section>
 <section id="common-separator-examples" class="level4" data-number="6.5.3.2">
@@ -1462,7 +1494,12 @@ Last 3 movies:
  Shape: (2228, 12)</code></pre>
 </div>
 </div>
-<p><strong>When to use automatic detection:</strong> - ✅ When you’re unsure about the delimiter - ✅ For quick data exploration - ❌ Avoid in production code (be explicit for reliability)</p>
+<p><strong>When to use automatic detection:</strong></p>
+<ul>
+<li>✅ When you’re unsure about the delimiter</li>
+<li>✅ For quick data exploration</li>
+<li>❌ Avoid in production code (be explicit for reliability)</li>
+</ul>
 <blockquote class="blockquote">
 <p>💡 <strong>Pro Tip</strong>: Always check the <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas documentation</a> for parameter details!</p>
 </blockquote>
@@ -1536,30 +1573,27 @@ Last 3 movies:
 <section id="real-example-ted-talks-dataset" class="level4" data-number="6.5.4.2">
 <h4 data-number="6.5.4.2" class="anchored" data-anchor-id="real-example-ted-talks-dataset"><span class="header-section-number">6.5.4.2</span> Real Example: TED Talks Dataset</h4>
 <p>Let’s load a real JSON dataset containing TED Talks information:</p>
-<div id="ad4935a3" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div id="2e0afb8d" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TED Talks data from GitHub (JSON format)</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json'</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Loading TED Talks data from JSON..."</span>)</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>tedtalks_data <span class="op">=</span> pd.read_json(url)</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"✅ Loaded </span><span class="sc">{</span>tedtalks_data<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> TED Talks with </span><span class="sc">{</span>tedtalks_data<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> features!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TED Talks data from GitHub (JSON format)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/cwkenwaysun/TEDmap/master/data/TED_Talks.json'</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Loading TED Talks data from JSON..."</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>tedtalks_data <span class="op">=</span> pd.read_json(url)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"✅ Loaded </span><span class="sc">{</span>tedtalks_data<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> TED Talks with </span><span class="sc">{</span>tedtalks_data<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> features!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Loading TED Talks data from JSON...
 ✅ Loaded 2474 TED Talks with 16 features!</code></pre>
 </div>
 </div>
 <div id="8419cf5e" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore the TED Talks dataset</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Dataset Info:"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>tedtalks_data.head(<span class="dv">3</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>tedtalks_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> First few TED Talks:"</span>)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(tedtalks_data.columns)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore the TED Talks dataset</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Dataset Info:"</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>tedtalks_data.head(<span class="dv">3</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>tedtalks_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> First few TED Talks:"</span>)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(tedtalks_data.columns)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Dataset Info:
 Shape: (2474, 16)
@@ -1574,60 +1608,59 @@ Columns: ['id', 'speaker', 'headline', 'URL', 'description', 'transcript_URL', '
 <p><strong>Modern data science often involves accessing live data</strong> from web APIs (Application Programming Interfaces). This allows you to get real-time information directly into your analysis pipeline.</p>
 <p><strong>Using the <code>requests</code> Library</strong></p>
 <p>The <code>requests</code> library is the standard tool for making HTTP requests in Python. You’ll need to install it if not already available:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Basic API Request Pattern:</strong> 1. <strong>Send request</strong> to the API URL 2. <strong>Check response</strong> status (success/error) 3. <strong>Parse JSON data</strong> into usable format 4. <strong>Convert to DataFrame</strong> for analysis</p>
 <p>Let’s demonstrate with the <strong>CoinGecko API</strong>, which provides cryptocurrency market data:</p>
-<div id="b4980fe8" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the API endpoint</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>api_url <span class="op">=</span> <span class="st">'https://api.coingecko.com/api/v3/coins/markets'</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add parameters to get USD prices for top 10 cryptocurrencies</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'vs_currency'</span>: <span class="st">'usd'</span>,  <span class="co"># Price in US Dollars</span></span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'order'</span>: <span class="st">'market_cap_desc'</span>,  <span class="co"># Sort by market cap</span></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'per_page'</span>: <span class="dv">10</span>,  <span class="co"># Get top 10 coins</span></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'page'</span>: <span class="dv">1</span>,  <span class="co"># First page</span></span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sparkline'</span>: <span class="va">False</span>  <span class="co"># Don't include price history</span></span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Requesting cryptocurrency data from CoinGecko API..."</span>)</span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Send GET request with parameters</span></span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(api_url, params<span class="op">=</span>params)</span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Check HTTP status codes</span></span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Response Status Code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✅ Request successful!"</span>)</span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Parse JSON response</span></span>
-<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>    crypto_data <span class="op">=</span> response.json()</span>
-<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display basic info about the response</span></span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"📊 Received data for </span><span class="sc">{</span><span class="bu">len</span>(crypto_data)<span class="sc">}</span><span class="ss"> cryptocurrencies"</span>)</span>
-<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Show raw JSON structure (first item only)</span></span>
-<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Sample JSON structure:"</span>)</span>
-<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Keys available: </span><span class="sc">{</span><span class="bu">list</span>(crypto_data[<span class="dv">0</span>].keys())<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Handle different error codes</span></span>
-<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>    error_messages <span class="op">=</span> {</span>
-<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>        <span class="dv">400</span>: <span class="st">"Bad Request - Check your parameters"</span>,</span>
-<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a>        <span class="dv">401</span>: <span class="st">"Unauthorized - API key might be required"</span>,</span>
-<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>        <span class="dv">403</span>: <span class="st">"Forbidden - Access denied"</span>, </span>
-<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>        <span class="dv">404</span>: <span class="st">"Not Found - Invalid endpoint"</span>,</span>
-<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>        <span class="dv">429</span>: <span class="st">"Rate Limited - Too many requests"</span>,</span>
-<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a>        <span class="dv">500</span>: <span class="st">"Server Error - Try again later"</span></span>
-<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>    error_msg <span class="op">=</span> error_messages.get(response.status_code, <span class="st">"Unknown error"</span>)</span>
-<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"❌ Request failed: </span><span class="sc">{</span>error_msg<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>    crypto_data <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b4980fe8" class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the API endpoint</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>api_url <span class="op">=</span> <span class="st">'https://api.coingecko.com/api/v3/coins/markets'</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add parameters to get USD prices for top 10 cryptocurrencies</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'vs_currency'</span>: <span class="st">'usd'</span>,  <span class="co"># Price in US Dollars</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'order'</span>: <span class="st">'market_cap_desc'</span>,  <span class="co"># Sort by market cap</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'per_page'</span>: <span class="dv">10</span>,  <span class="co"># Get top 10 coins</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'page'</span>: <span class="dv">1</span>,  <span class="co"># First page</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sparkline'</span>: <span class="va">False</span>  <span class="co"># Don't include price history</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" Requesting cryptocurrency data from CoinGecko API..."</span>)</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Send GET request with parameters</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(api_url, params<span class="op">=</span>params)</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Check HTTP status codes</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Response Status Code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✅ Request successful!"</span>)</span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Parse JSON response</span></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    crypto_data <span class="op">=</span> response.json()</span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display basic info about the response</span></span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"📊 Received data for </span><span class="sc">{</span><span class="bu">len</span>(crypto_data)<span class="sc">}</span><span class="ss"> cryptocurrencies"</span>)</span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Show raw JSON structure (first item only)</span></span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Sample JSON structure:"</span>)</span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Keys available: </span><span class="sc">{</span><span class="bu">list</span>(crypto_data[<span class="dv">0</span>].keys())<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Handle different error codes</span></span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a>    error_messages <span class="op">=</span> {</span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a>        <span class="dv">400</span>: <span class="st">"Bad Request - Check your parameters"</span>,</span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a>        <span class="dv">401</span>: <span class="st">"Unauthorized - API key might be required"</span>,</span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a>        <span class="dv">403</span>: <span class="st">"Forbidden - Access denied"</span>, </span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a>        <span class="dv">404</span>: <span class="st">"Not Found - Invalid endpoint"</span>,</span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>        <span class="dv">429</span>: <span class="st">"Rate Limited - Too many requests"</span>,</span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a>        <span class="dv">500</span>: <span class="st">"Server Error - Try again later"</span></span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a>    error_msg <span class="op">=</span> error_messages.get(response.status_code, <span class="st">"Unknown error"</span>)</span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"❌ Request failed: </span><span class="sc">{</span>error_msg<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a>    crypto_data <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Requesting cryptocurrency data from CoinGecko API...
  Response Status Code: 200
@@ -1639,43 +1672,43 @@ Keys available: ['id', 'symbol', 'name', 'image', 'current_price', 'market_cap',
 </div>
 </div>
 <div id="86e68ed6" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert JSON data to pandas DataFrame (if successful)</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> crypto_data:</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Method 1: Convert JSON directly to DataFrame</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    crypto_df <span class="op">=</span> pd.DataFrame(crypto_data)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 Cryptocurrency Market Data:"</span>)</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Dataset shape: </span><span class="sc">{</span>crypto_df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select and display key columns</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    key_columns <span class="op">=</span> [<span class="st">'name'</span>, <span class="st">'symbol'</span>, <span class="st">'current_price'</span>, <span class="st">'market_cap'</span>, <span class="st">'price_change_percentage_24h'</span>]</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    display_df <span class="op">=</span> crypto_df[key_columns].copy()</span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format for better readability</span></span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>    display_df[<span class="st">'current_price'</span>] <span class="op">=</span> display_df[<span class="st">'current_price'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"$</span><span class="sc">{</span>x<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>    display_df[<span class="st">'market_cap'</span>] <span class="op">=</span> display_df[<span class="st">'market_cap'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"$</span><span class="sc">{</span>x<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>    display_df[<span class="st">'price_change_percentage_24h'</span>] <span class="op">=</span> display_df[<span class="st">'price_change_percentage_24h'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename columns for display</span></span>
-<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    display_df.columns <span class="op">=</span> [<span class="st">'Name'</span>, <span class="st">'Symbol'</span>, <span class="st">'Current Price'</span>, <span class="st">'Market Cap'</span>, <span class="st">'24h Change %'</span>]</span>
-<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">🏆 Top 10 Cryptocurrencies by Market Cap:"</span>)</span>
-<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>    display(display_df)</span>
-<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Method 2: Manual processing for learning</span></span>
-<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">💰 Price Summary:"</span>)</span>
-<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> coin <span class="kw">in</span> crypto_data[:<span class="dv">5</span>]:  <span class="co"># Show first 5</span></span>
-<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> coin[<span class="st">'name'</span>]</span>
-<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>        symbol <span class="op">=</span> coin[<span class="st">'symbol'</span>].upper()</span>
-<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>        price <span class="op">=</span> coin[<span class="st">'current_price'</span>]</span>
-<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>        change_24h <span class="op">=</span> coin[<span class="st">'price_change_percentage_24h'</span>]</span>
-<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Format change with color indicator</span></span>
-<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>        change_indicator <span class="op">=</span> <span class="st">"🔺"</span> <span class="cf">if</span> change_24h <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"🔻"</span></span>
-<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>change_indicator<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">): $</span><span class="sc">{</span>price<span class="sc">:,.2f}</span><span class="ss"> | 24h: </span><span class="sc">{</span>change_24h<span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
-<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"❌ No data to process due to API request failure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert JSON data to pandas DataFrame (if successful)</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> crypto_data:</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Method 1: Convert JSON directly to DataFrame</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    crypto_df <span class="op">=</span> pd.DataFrame(crypto_data)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 Cryptocurrency Market Data:"</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Dataset shape: </span><span class="sc">{</span>crypto_df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select and display key columns</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    key_columns <span class="op">=</span> [<span class="st">'name'</span>, <span class="st">'symbol'</span>, <span class="st">'current_price'</span>, <span class="st">'market_cap'</span>, <span class="st">'price_change_percentage_24h'</span>]</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    display_df <span class="op">=</span> crypto_df[key_columns].copy()</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format for better readability</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    display_df[<span class="st">'current_price'</span>] <span class="op">=</span> display_df[<span class="st">'current_price'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"$</span><span class="sc">{</span>x<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    display_df[<span class="st">'market_cap'</span>] <span class="op">=</span> display_df[<span class="st">'market_cap'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"$</span><span class="sc">{</span>x<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>    display_df[<span class="st">'price_change_percentage_24h'</span>] <span class="op">=</span> display_df[<span class="st">'price_change_percentage_24h'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename columns for display</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>    display_df.columns <span class="op">=</span> [<span class="st">'Name'</span>, <span class="st">'Symbol'</span>, <span class="st">'Current Price'</span>, <span class="st">'Market Cap'</span>, <span class="st">'24h Change %'</span>]</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">🏆 Top 10 Cryptocurrencies by Market Cap:"</span>)</span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>    display(display_df)</span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Method 2: Manual processing for learning</span></span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">💰 Price Summary:"</span>)</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> coin <span class="kw">in</span> crypto_data[:<span class="dv">5</span>]:  <span class="co"># Show first 5</span></span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> coin[<span class="st">'name'</span>]</span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>        symbol <span class="op">=</span> coin[<span class="st">'symbol'</span>].upper()</span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>        price <span class="op">=</span> coin[<span class="st">'current_price'</span>]</span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>        change_24h <span class="op">=</span> coin[<span class="st">'price_change_percentage_24h'</span>]</span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Format change with color indicator</span></span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>        change_indicator <span class="op">=</span> <span class="st">"🔺"</span> <span class="cf">if</span> change_24h <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"🔻"</span></span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>change_indicator<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">): $</span><span class="sc">{</span>price<span class="sc">:,.2f}</span><span class="ss"> | 24h: </span><span class="sc">{</span>change_24h<span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"❌ No data to process due to API request failure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 📊 Cryptocurrency Market Data:
@@ -1794,36 +1827,37 @@ Dataset shape: (10, 26)
 🔻 BNB (BNB): $1,006.92 | 24h: -1.12%</code></pre>
 </div>
 </div>
-<div id="67e9c66d" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the html table from wikipedia</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>api_url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita'</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas to read all tables from the webpage</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>wiki_response <span class="op">=</span> requests.get(api_url)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check HTTP status codes</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Response Status Code: </span><span class="sc">{</span>wiki_response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> wiki_response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✅ Request successful!"</span>)</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output error message based on the status code</span></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    error_messages <span class="op">=</span> {</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>        <span class="dv">400</span>: <span class="st">"Bad Request - Check your parameters"</span>,</span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>        <span class="dv">401</span>: <span class="st">"Unauthorized - API key might be required"</span>,</span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>        <span class="dv">403</span>: <span class="st">"Forbidden - Access denied"</span>, </span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>        <span class="dv">404</span>: <span class="st">"Not Found - Invalid endpoint"</span>,</span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>        <span class="dv">429</span>: <span class="st">"Rate Limited - Too many requests"</span>,</span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>        <span class="dv">500</span>: <span class="st">"Server Error - Try again later"</span></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>    error_msg <span class="op">=</span> error_messages.get(wiki_response.status_code, <span class="st">"Unknown error"</span>)</span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"❌ Request failed: </span><span class="sc">{</span>error_msg<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="read-data-from-wikipedia" class="level4" data-number="6.5.4.4">
+<h4 data-number="6.5.4.4" class="anchored" data-anchor-id="read-data-from-wikipedia"><span class="header-section-number">6.5.4.4</span> Read data from wikipedia</h4>
+<div id="67e9c66d" class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>api_url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita'</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas to read all tables from the webpage</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>wiki_response <span class="op">=</span> requests.get(api_url)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check HTTP status codes</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Response Status Code: </span><span class="sc">{</span>wiki_response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> wiki_response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✅ Request successful!"</span>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output error message based on the status code</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    error_messages <span class="op">=</span> {</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>        <span class="dv">400</span>: <span class="st">"Bad Request - Check your parameters"</span>,</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>        <span class="dv">401</span>: <span class="st">"Unauthorized - API key might be required"</span>,</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>        <span class="dv">403</span>: <span class="st">"Forbidden - Access denied"</span>, </span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>        <span class="dv">404</span>: <span class="st">"Not Found - Invalid endpoint"</span>,</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>        <span class="dv">429</span>: <span class="st">"Rate Limited - Too many requests"</span>,</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>        <span class="dv">500</span>: <span class="st">"Server Error - Try again later"</span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>    error_msg <span class="op">=</span> error_messages.get(wiki_response.status_code, <span class="st">"Unknown error"</span>)</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"❌ Request failed: </span><span class="sc">{</span>error_msg<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Response Status Code: 403
 ❌ Request failed: Forbidden - Access denied</code></pre>
 </div>
 </div>
-<section id="understanding-http-403-errors-with-wikipedia" class="level5" data-number="6.5.4.3.1">
-<h5 data-number="6.5.4.3.1" class="anchored" data-anchor-id="understanding-http-403-errors-with-wikipedia"><span class="header-section-number">6.5.4.3.1</span> <strong>Understanding HTTP 403 Errors with Wikipedia</strong></h5>
+<section id="understanding-http-403-errors-with-wikipedia" class="level5" data-number="6.5.4.4.1">
+<h5 data-number="6.5.4.4.1" class="anchored" data-anchor-id="understanding-http-403-errors-with-wikipedia"><span class="header-section-number">6.5.4.4.1</span> <strong>Understanding HTTP 403 Errors with Wikipedia</strong></h5>
 <p><strong>Why Wikipedia Returns 403 “Forbidden” Errors:</strong></p>
 <p>Wikipedia and many other websites block requests that appear to be automated bots or scrapers. When you make a request without proper headers, the server sees it as suspicious and blocks it with a 403 error.</p>
 <p><strong>Common Causes of 403 Errors:</strong></p>
@@ -1835,122 +1869,122 @@ Dataset shape: (10, 26)
 <li>❌ <strong>IP blocking</strong>: Your IP has been flagged</li>
 </ul>
 </section>
-<section id="solution-add-proper-headers" class="level5" data-number="6.5.4.3.2">
-<h5 data-number="6.5.4.3.2" class="anchored" data-anchor-id="solution-add-proper-headers"><span class="header-section-number">6.5.4.3.2</span> <strong>Solution: Add Proper Headers</strong></h5>
+<section id="solution-add-proper-headers" class="level5" data-number="6.5.4.4.2">
+<h5 data-number="6.5.4.4.2" class="anchored" data-anchor-id="solution-add-proper-headers"><span class="header-section-number">6.5.4.4.2</span> <strong>Solution: Add Proper Headers</strong></h5>
 <p>The key is to make your request look like it’s coming from a real web browser by adding appropriate headers:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'User-Agent'</span>: <span class="st">'My Data Analysis Project (your_email@example.com)'</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)'</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Pass the headers to read_html</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(url, header<span class="op">=</span><span class="dv">0</span>, attrs<span class="op">=</span>headers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'User-Agent'</span>: <span class="st">'My Data Analysis Project (your_email@example.com)'</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)'</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Pass the headers to read_html</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(url, header<span class="op">=</span><span class="dv">0</span>, attrs<span class="op">=</span>headers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s define a helper function for this purpose</p>
 <div id="6bb968ba" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_html_tables_from_url(url, match<span class="op">=</span><span class="va">None</span>, user_agent<span class="op">=</span><span class="va">None</span>, timeout<span class="op">=</span><span class="dv">10</span>, <span class="op">**</span>kwargs):</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Read HTML tables from a website URL with error handling and customizable options.</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">    -----------</span></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co">    url : str</span></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co">        The website URL to scrape tables from</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">    match : str, optional</span></span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">        String or regex pattern to match tables (passed to pd.read_html)</span></span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co">    user_agent : str, optional</span></span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Custom User-Agent header. If None, uses a default Chrome User-Agent</span></span>
-<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co">    timeout : int, default 10</span></span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Request timeout in seconds</span></span>
-<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="co">    **kwargs : dict</span></span>
-<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Additional arguments passed to pd.read_html()</span></span>
-<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
-<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="co">    list of DataFrames or None</span></span>
-<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a><span class="co">        List of pandas DataFrames (one per table found), or None if error occurs</span></span>
-<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Examples:</span></span>
-<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a><span class="co">    ---------</span></span>
-<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a><span class="co">    # Basic usage</span></span>
-<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a><span class="co">    tables = read_html_tables_from_url("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita")</span></span>
-<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a><span class="co">    # Filter tables containing specific text</span></span>
-<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a><span class="co">    tables = read_html_tables_from_url(url, match="Country")</span></span>
-<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a><span class="co">    # With custom user agent</span></span>
-<span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a><span class="co">    tables = read_html_tables_from_url(url, user_agent="MyBot/1.0")</span></span>
-<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> requests</span>
-<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Default User-Agent if none provided</span></span>
-<span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> user_agent <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>        user_agent <span class="op">=</span> <span class="st">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'</span></span>
-<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: user_agent}</span>
-<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"🌐 Fetching data from: </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make the HTTP request</span></span>
-<span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers, timeout<span class="op">=</span>timeout)</span>
-<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a>        response.raise_for_status()  <span class="co"># Raise an exception for bad status codes (4xx or 5xx)</span></span>
-<span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-50"><a href="#cb54-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"✅ Successfully retrieved webpage (Status: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb54-51"><a href="#cb54-51" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-52"><a href="#cb54-52" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Parse HTML tables</span></span>
-<span id="cb54-53"><a href="#cb54-53" aria-hidden="true" tabindex="-1"></a>        read_html_kwargs <span class="op">=</span> {<span class="st">'match'</span>: match} <span class="cf">if</span> match <span class="cf">else</span> {}</span>
-<span id="cb54-54"><a href="#cb54-54" aria-hidden="true" tabindex="-1"></a>        read_html_kwargs.update(kwargs)  <span class="co"># Add any additional arguments</span></span>
-<span id="cb54-55"><a href="#cb54-55" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-56"><a href="#cb54-56" aria-hidden="true" tabindex="-1"></a>        tables <span class="op">=</span> pd.read_html(response.content, <span class="op">**</span>read_html_kwargs)</span>
-<span id="cb54-57"><a href="#cb54-57" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-58"><a href="#cb54-58" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"📊 Found </span><span class="sc">{</span><span class="bu">len</span>(tables)<span class="sc">}</span><span class="ss"> table(s) on the page"</span>)</span>
-<span id="cb54-59"><a href="#cb54-59" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-60"><a href="#cb54-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display table information</span></span>
-<span id="cb54-61"><a href="#cb54-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> tables:</span>
-<span id="cb54-62"><a href="#cb54-62" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📋 Table Overview:"</span>)</span>
-<span id="cb54-63"><a href="#cb54-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i, table <span class="kw">in</span> <span class="bu">enumerate</span>(tables):</span>
-<span id="cb54-64"><a href="#cb54-64" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"  Table </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>table<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (rows × columns)"</span>)</span>
-<span id="cb54-65"><a href="#cb54-65" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">4</span>:  <span class="co"># Limit output for readability</span></span>
-<span id="cb54-66"><a href="#cb54-66" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"  ... and </span><span class="sc">{</span><span class="bu">len</span>(tables) <span class="op">-</span> <span class="dv">5</span><span class="sc">}</span><span class="ss"> more tables"</span>)</span>
-<span id="cb54-67"><a href="#cb54-67" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
-<span id="cb54-68"><a href="#cb54-68" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-69"><a href="#cb54-69" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tables</span>
-<span id="cb54-70"><a href="#cb54-70" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb54-71"><a href="#cb54-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.HTTPError <span class="im">as</span> err:</span>
-<span id="cb54-72"><a href="#cb54-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ HTTP Error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-73"><a href="#cb54-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb54-74"><a href="#cb54-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.<span class="pp">ConnectionError</span> <span class="im">as</span> err:</span>
-<span id="cb54-75"><a href="#cb54-75" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ Connection Error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-76"><a href="#cb54-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb54-77"><a href="#cb54-77" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.Timeout <span class="im">as</span> err:</span>
-<span id="cb54-78"><a href="#cb54-78" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ Timeout Error: Request took longer than </span><span class="sc">{</span>timeout<span class="sc">}</span><span class="ss"> seconds"</span>)</span>
-<span id="cb54-79"><a href="#cb54-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb54-80"><a href="#cb54-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.RequestException <span class="im">as</span> err:</span>
-<span id="cb54-81"><a href="#cb54-81" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ Request Error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-82"><a href="#cb54-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb54-83"><a href="#cb54-83" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> err:</span>
-<span id="cb54-84"><a href="#cb54-84" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ No tables found on the page or parsing error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-85"><a href="#cb54-85" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb54-86"><a href="#cb54-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb54-87"><a href="#cb54-87" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ An unexpected error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-88"><a href="#cb54-88" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_html_tables_from_url(url, match<span class="op">=</span><span class="va">None</span>, user_agent<span class="op">=</span><span class="va">None</span>, timeout<span class="op">=</span><span class="dv">10</span>, <span class="op">**</span>kwargs):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Read HTML tables from a website URL with error handling and customizable options.</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">    -----------</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">    url : str</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co">        The website URL to scrape tables from</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">    match : str, optional</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co">        String or regex pattern to match tables (passed to pd.read_html)</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co">    user_agent : str, optional</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Custom User-Agent header. If None, uses a default Chrome User-Agent</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co">    timeout : int, default 10</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Request timeout in seconds</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="co">    **kwargs : dict</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Additional arguments passed to pd.read_html()</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="co">    list of DataFrames or None</span></span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="co">        List of pandas DataFrames (one per table found), or None if error occurs</span></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Examples:</span></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="co">    ---------</span></span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a><span class="co">    # Basic usage</span></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="co">    tables = read_html_tables_from_url("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita")</span></span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a><span class="co">    # Filter tables containing specific text</span></span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a><span class="co">    tables = read_html_tables_from_url(url, match="Country")</span></span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a><span class="co">    # With custom user agent</span></span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a><span class="co">    tables = read_html_tables_from_url(url, user_agent="MyBot/1.0")</span></span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> requests</span>
+<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Default User-Agent if none provided</span></span>
+<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> user_agent <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a>        user_agent <span class="op">=</span> <span class="st">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'</span></span>
+<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: user_agent}</span>
+<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb53-44"><a href="#cb53-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"🌐 Fetching data from: </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make the HTTP request</span></span>
+<span id="cb53-47"><a href="#cb53-47" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers, timeout<span class="op">=</span>timeout)</span>
+<span id="cb53-48"><a href="#cb53-48" aria-hidden="true" tabindex="-1"></a>        response.raise_for_status()  <span class="co"># Raise an exception for bad status codes (4xx or 5xx)</span></span>
+<span id="cb53-49"><a href="#cb53-49" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"✅ Successfully retrieved webpage (Status: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb53-51"><a href="#cb53-51" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-52"><a href="#cb53-52" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Parse HTML tables</span></span>
+<span id="cb53-53"><a href="#cb53-53" aria-hidden="true" tabindex="-1"></a>        read_html_kwargs <span class="op">=</span> {<span class="st">'match'</span>: match} <span class="cf">if</span> match <span class="cf">else</span> {}</span>
+<span id="cb53-54"><a href="#cb53-54" aria-hidden="true" tabindex="-1"></a>        read_html_kwargs.update(kwargs)  <span class="co"># Add any additional arguments</span></span>
+<span id="cb53-55"><a href="#cb53-55" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-56"><a href="#cb53-56" aria-hidden="true" tabindex="-1"></a>        tables <span class="op">=</span> pd.read_html(response.content, <span class="op">**</span>read_html_kwargs)</span>
+<span id="cb53-57"><a href="#cb53-57" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-58"><a href="#cb53-58" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"📊 Found </span><span class="sc">{</span><span class="bu">len</span>(tables)<span class="sc">}</span><span class="ss"> table(s) on the page"</span>)</span>
+<span id="cb53-59"><a href="#cb53-59" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-60"><a href="#cb53-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display table information</span></span>
+<span id="cb53-61"><a href="#cb53-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> tables:</span>
+<span id="cb53-62"><a href="#cb53-62" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📋 Table Overview:"</span>)</span>
+<span id="cb53-63"><a href="#cb53-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i, table <span class="kw">in</span> <span class="bu">enumerate</span>(tables):</span>
+<span id="cb53-64"><a href="#cb53-64" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"  Table </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>table<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (rows × columns)"</span>)</span>
+<span id="cb53-65"><a href="#cb53-65" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">4</span>:  <span class="co"># Limit output for readability</span></span>
+<span id="cb53-66"><a href="#cb53-66" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"  ... and </span><span class="sc">{</span><span class="bu">len</span>(tables) <span class="op">-</span> <span class="dv">5</span><span class="sc">}</span><span class="ss"> more tables"</span>)</span>
+<span id="cb53-67"><a href="#cb53-67" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
+<span id="cb53-68"><a href="#cb53-68" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-69"><a href="#cb53-69" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tables</span>
+<span id="cb53-70"><a href="#cb53-70" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-71"><a href="#cb53-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.HTTPError <span class="im">as</span> err:</span>
+<span id="cb53-72"><a href="#cb53-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ HTTP Error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-73"><a href="#cb53-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb53-74"><a href="#cb53-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.<span class="pp">ConnectionError</span> <span class="im">as</span> err:</span>
+<span id="cb53-75"><a href="#cb53-75" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ Connection Error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-76"><a href="#cb53-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb53-77"><a href="#cb53-77" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.Timeout <span class="im">as</span> err:</span>
+<span id="cb53-78"><a href="#cb53-78" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ Timeout Error: Request took longer than </span><span class="sc">{</span>timeout<span class="sc">}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb53-79"><a href="#cb53-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb53-80"><a href="#cb53-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.exceptions.RequestException <span class="im">as</span> err:</span>
+<span id="cb53-81"><a href="#cb53-81" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ Request Error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-82"><a href="#cb53-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb53-83"><a href="#cb53-83" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> err:</span>
+<span id="cb53-84"><a href="#cb53-84" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ No tables found on the page or parsing error: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-85"><a href="#cb53-85" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb53-86"><a href="#cb53-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb53-87"><a href="#cb53-87" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"❌ An unexpected error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-88"><a href="#cb53-88" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now let’s demonstrate how to use our new function with different options:</p>
 <div id="c071dfa1" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Basic usage - Get all tables from GDP Wikipedia page</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita'</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> read_html_tables_from_url(url)</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> tables:</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Successfully retrieved </span><span class="sc">{</span><span class="bu">len</span>(tables)<span class="sc">}</span><span class="ss"> tables!"</span>)</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display info about the largest table</span></span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    largest_table <span class="op">=</span> <span class="bu">max</span>(tables, key<span class="op">=</span><span class="bu">len</span>)</span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 Largest table has </span><span class="sc">{</span>largest_table<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows and </span><span class="sc">{</span>largest_table<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns"</span>)</span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(largest_table.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"❌ Failed to retrieve tables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Basic usage - Get all tables from GDP Wikipedia page</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita'</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> read_html_tables_from_url(url)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> tables:</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Successfully retrieved </span><span class="sc">{</span><span class="bu">len</span>(tables)<span class="sc">}</span><span class="ss"> tables!"</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display info about the largest table</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    largest_table <span class="op">=</span> <span class="bu">max</span>(tables, key<span class="op">=</span><span class="bu">len</span>)</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 Largest table has </span><span class="sc">{</span>largest_table<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows and </span><span class="sc">{</span>largest_table<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns"</span>)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(largest_table.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"❌ Failed to retrieve tables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🌐 Fetching data from: https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita
 ✅ Successfully retrieved webpage (Status: 200)
@@ -1986,21 +2020,21 @@ Columns: ['Country/Territory', 'IMF (2025)[a][5]', 'World Bank (2022–24)[6]', 
 </div>
 </div>
 <div id="c22256e7" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Filtered search - Only get tables containing 'Country'</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>filtered_tables <span class="op">=</span> read_html_tables_from_url(url, match<span class="op">=</span><span class="st">'Country'</span>)</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> filtered_tables:</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Found </span><span class="sc">{</span><span class="bu">len</span>(filtered_tables)<span class="sc">}</span><span class="ss"> table(s) containing 'Country'"</span>)</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Examine the first filtered table</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    gdp_table <span class="op">=</span> filtered_tables[<span class="dv">0</span>]</span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📋 GDP Table Details:"</span>)</span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>gdp_table<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(gdp_table.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🔍 Sample data:"</span>)</span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>    display(gdp_table.head(<span class="dv">3</span>))</span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"❌ No tables found containing 'Country'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Filtered search - Only get tables containing 'Country'</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>filtered_tables <span class="op">=</span> read_html_tables_from_url(url, match<span class="op">=</span><span class="st">'Country'</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> filtered_tables:</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Found </span><span class="sc">{</span><span class="bu">len</span>(filtered_tables)<span class="sc">}</span><span class="ss"> table(s) containing 'Country'"</span>)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Examine the first filtered table</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    gdp_table <span class="op">=</span> filtered_tables[<span class="dv">0</span>]</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📋 GDP Table Details:"</span>)</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>gdp_table<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span><span class="bu">list</span>(gdp_table.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🔍 Sample data:"</span>)</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    display(gdp_table.head(<span class="dv">3</span>))</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"❌ No tables found containing 'Country'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🌐 Fetching data from: https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita
 ✅ Successfully retrieved webpage (Status: 200)
