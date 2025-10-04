@@ -29,7 +29,7 @@ book:
         - Reading_data.ipynb
         - Pandas.ipynb
         - data_types_in_pandas.ipynb
-        - Numpy.ipynb
+        - NumPy.ipynb
         - vectorized_numpy.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
