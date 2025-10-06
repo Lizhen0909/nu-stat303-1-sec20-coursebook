@@ -41,7 +41,7 @@ book:
         # - student_solutions.ipynb
   appendices: 
     - Assignment A.ipynb
-    #- Assignment B.ipynb
+    - Assignment B.ipynb
     #- Assignment C.ipynb
     #- Assignment D.ipynb
     #- Assignment E.ipynb
