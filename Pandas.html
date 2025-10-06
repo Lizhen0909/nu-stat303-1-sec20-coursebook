@@ -421,7 +421,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#summary-statistics-rows-vs-columns-with-axis-parameter" id="toc-summary-statistics-rows-vs-columns-with-axis-parameter" class="nav-link" data-scroll-target="#summary-statistics-rows-vs-columns-with-axis-parameter"><span class="header-section-number">7.7.2.1</span> Summary Statistics: Rows vs Columns with <code>axis</code> Parameter</a></li>
   </ul></li>
   <li><a href="#summary-working-with-numerical-data" id="toc-summary-working-with-numerical-data" class="nav-link" data-scroll-target="#summary-working-with-numerical-data"><span class="header-section-number">7.7.3</span> Summary: Working with Numerical Data</a></li>
-  <li><a href="#next-chapter-arithmetic-operations" id="toc-next-chapter-arithmetic-operations" class="nav-link" data-scroll-target="#next-chapter-arithmetic-operations"><span class="header-section-number">7.7.4</span> 💡 Next Chapter: Arithmetic Operations</a></li>
   </ul></li>
   <li><a href="#understanding-inplacetrue-vs-inplacefalse" id="toc-understanding-inplacetrue-vs-inplacefalse" class="nav-link" data-scroll-target="#understanding-inplacetrue-vs-inplacefalse"><span class="header-section-number">7.8</span> Understanding <code>inplace=True</code> vs <code>inplace=False</code></a>
   <ul>
@@ -6714,18 +6713,18 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 </section>
-<section id="next-chapter-arithmetic-operations" class="level3" data-number="7.7.4">
-<h3 data-number="7.7.4" class="anchored" data-anchor-id="next-chapter-arithmetic-operations"><span class="header-section-number">7.7.4</span> 💡 Next Chapter: Arithmetic Operations</h3>
-<p>Now that you understand numerical data analysis, you’re ready to learn <strong>arithmetic operations</strong> - the foundation for creating new metrics, transforming data, and building complex calculations that drive business insights.</p>
-<p><strong>Transition Preview</strong>: - ➕ <strong>Addition/Subtraction</strong>: Profit = Revenue - Cost - ✖️ <strong>Multiplication/Division</strong>: ROI = Profit / Investment<br>
-- 🔄 <strong>Between DataFrames</strong>: Comparing datasets and stores - ⚠️ <strong>Error Handling</strong>: Managing missing data and edge cases</p>
-</section>
 </section>
 <section id="understanding-inplacetrue-vs-inplacefalse" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="understanding-inplacetrue-vs-inplacefalse"><span class="header-section-number">7.8</span> Understanding <code>inplace=True</code> vs <code>inplace=False</code></h2>
 <section id="why-this-matters-memory-performance-and-safety" class="level3" data-number="7.8.1">
 <h3 data-number="7.8.1" class="anchored" data-anchor-id="why-this-matters-memory-performance-and-safety"><span class="header-section-number">7.8.1</span> Why This Matters: Memory, Performance, and Safety</h3>
-<p>The <code>inplace</code> parameter is one of the <strong>most important concepts</strong> in pandas for: - <strong>Memory management</strong> (avoid unnecessary copies) - <strong>Data integrity</strong> (prevent accidental modifications) - <strong>Performance optimization</strong> (reduce overhead) - <strong>Debugging</strong> (track data transformations)</p>
+<p>The <code>inplace</code> parameter is one of the <strong>most important concepts</strong> in pandas for:</p>
+<ul>
+<li><strong>Memory management</strong> (avoid unnecessary copies)</li>
+<li><strong>Data integrity</strong> (prevent accidental modifications)</li>
+<li><strong>Performance optimization</strong> (reduce overhead)</li>
+<li><strong>Debugging</strong> (track data transformations)</li>
+</ul>
 </section>
 <section id="core-concept-modify-vs-create" class="level3" data-number="7.8.2">
 <h3 data-number="7.8.2" class="anchored" data-anchor-id="core-concept-modify-vs-create"><span class="header-section-number">7.8.2</span> Core Concept: Modify vs Create</h3>
@@ -7679,12 +7678,12 @@ Mean sales per year per track: 309,361.91</code></pre>
 <section id="section-7" class="level4" data-number="7.9.2.1">
 <h4 data-number="7.9.2.1" class="anchored" data-anchor-id="section-7"><span class="header-section-number">7.9.2.1</span> </h4>
 <p>Read the file <em>STAT303-1 survey for data analysis.csv</em>.</p>
-<div id="aee1c823" class="cell">
+<div id="aee1c823" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Survey data loaded successfully!
 Shape: (192, 51)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -7847,7 +7846,7 @@ Shape: (192, 51)</code></pre>
 <section id="section-8" class="level4" data-number="7.9.2.2">
 <h4 data-number="7.9.2.2" class="anchored" data-anchor-id="section-8"><span class="header-section-number">7.9.2.2</span> </h4>
 <p>How many observations and variables are there in the data?</p>
-<div id="24496c7c" class="cell">
+<div id="24496c7c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of observations (rows): 192
 Number of variables (columns): 51
@@ -7859,10 +7858,10 @@ Dataset shape: (192, 51)</code></pre>
 <section id="section-9" class="level4" data-number="7.9.2.3">
 <h4 data-number="7.9.2.3" class="anchored" data-anchor-id="section-9"><span class="header-section-number">7.9.2.3</span> </h4>
 <p>Rename all the columns of the data, except the first two columns, with the shorter names in the list <code>new_col_names</code> given below. The order of column names in the list is the same as the order in which the columns are to be renamed starting with the third column from the left.</p>
-<div id="176f9d1d" class="cell" data-execution_count="27">
+<div id="176f9d1d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="849e13e0" class="cell">
+<div id="849e13e0" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>New column names: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'do_you_smoke', 'weed', 'are_you_an_introvert_or_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
 Columns renamed successfully!</code></pre>
@@ -7877,7 +7876,7 @@ Columns renamed successfully!</code></pre>
 <li><p>Rename <code>are_you_an_introvert_or_extrovert</code> to <code>introvert_extrovert</code>.</p></li>
 </ol>
 <p><strong>Hint:</strong> Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html">rename()</a></p>
-<div id="b334da09" class="cell">
+<div id="b334da09" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Updated columns: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'smoke', 'weed', 'introvert_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
 Specific columns renamed successfully!</code></pre>
@@ -7887,31 +7886,31 @@ Specific columns renamed successfully!</code></pre>
 <section id="section-11" class="level4" data-number="7.9.2.5">
 <h4 data-number="7.9.2.5" class="anchored" data-anchor-id="section-11"><span class="header-section-number">7.9.2.5</span> </h4>
 <p>Find the proportion of people going to more than 4 parties per month. Use the variable <code>parties_per_month</code>.</p>
-<div id="273df409" class="cell">
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>0.3385416666666667</code></pre>
+<div id="273df409" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>0.34</code></pre>
 </div>
 </div>
 </section>
 <section id="section-12" class="level4" data-number="7.9.2.6">
 <h4 data-number="7.9.2.6" class="anchored" data-anchor-id="section-12"><span class="header-section-number">7.9.2.6</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are introverts?</p>
-<div id="eb51e1de" class="cell">
-<div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>0.5076923076923077</code></pre>
+<div id="eb51e1de" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>0.51</code></pre>
 </div>
 </div>
 </section>
 <section id="section-13" class="level4" data-number="7.9.2.7">
 <h4 data-number="7.9.2.7" class="anchored" data-anchor-id="section-13"><span class="header-section-number">7.9.2.7</span> </h4>
 <p>Find the proportion of people in each category of the variable <code>how_happy</code>.</p>
-<div id="d4dfc414" class="cell">
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div id="d4dfc414" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>how_happy
-Pretty happy     0.703125
-Very happy       0.151042
-Not too happy    0.088542
-Don't know       0.057292
+Pretty happy     0.70
+Very happy       0.15
+Not too happy    0.09
+Don't know       0.06
 Name: proportion, dtype: float64</code></pre>
 </div>
 </div>
@@ -7919,9 +7918,9 @@ Name: proportion, dtype: float64</code></pre>
 <section id="section-14" class="level4" data-number="7.9.2.8">
 <h4 data-number="7.9.2.8" class="anchored" data-anchor-id="section-14"><span class="header-section-number">7.9.2.8</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are either <code>Pretty happy</code> or <code>Very happy</code>?</p>
-<div id="5f26144f" class="cell">
-<div class="cell-output cell-output-display" data-execution_count="39">
-<pre><code>0.9076923076923077</code></pre>
+<div id="5f26144f" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0.91</code></pre>
 </div>
 </div>
 </section>
@@ -7937,18 +7936,18 @@ Name: proportion, dtype: float64</code></pre>
 <section id="section-17" class="level4" data-number="7.9.2.11">
 <h4 data-number="7.9.2.11" class="anchored" data-anchor-id="section-17"><span class="header-section-number">7.9.2.11</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
-<div id="f931e248" class="cell">
-<div class="cell-output cell-output-display" data-execution_count="45">
-<pre><code>5.088888888888889</code></pre>
+<div id="f931e248" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>5.09</code></pre>
 </div>
 </div>
 </section>
 <section id="section-18" class="level4" data-number="7.9.2.12">
 <h4 data-number="7.9.2.12" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.9.2.12</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
-<div id="f0645f34" class="cell">
-<div class="cell-output cell-output-display" data-execution_count="46">
-<pre><code>13.118881118881118</code></pre>
+<div id="f0645f34" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>13.12</code></pre>
 </div>
 </div>
 
