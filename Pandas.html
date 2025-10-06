@@ -429,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#core-concept-modify-vs-create" id="toc-core-concept-modify-vs-create" class="nav-link" data-scroll-target="#core-concept-modify-vs-create"><span class="header-section-number">7.8.2</span> Core Concept: Modify vs Create</a></li>
   <li><a href="#common-methods-supporting-inplace-parameter" id="toc-common-methods-supporting-inplace-parameter" class="nav-link" data-scroll-target="#common-methods-supporting-inplace-parameter"><span class="header-section-number">7.8.3</span> Common Methods Supporting <code>inplace</code> Parameter</a></li>
   </ul></li>
-  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">7.9</span> Independent Practice:</a>
+  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">7.9</span> Independent Practice</a>
   <ul>
   <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">7.9.1</span> Practice exercise 1</a>
   <ul class="collapse">
@@ -455,10 +455,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"><span class="header-section-number">7.9.2.10</span> </a></li>
   <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">7.9.2.11</span> </a></li>
   <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">7.9.2.12</span> </a></li>
-  </ul></li>
-  <li><a href="#practice-exercise-3" id="toc-practice-exercise-3" class="nav-link" data-scroll-target="#practice-exercise-3"><span class="header-section-number">7.9.3</span> Practice exercise 3</a>
-  <ul class="collapse">
-  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">7.9.3.1</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -7060,12 +7056,117 @@ Original now has no NaN: True</code></pre>
 </section>
 </section>
 <section id="independent-practice" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">7.9</span> Independent Practice:</h2>
+<h2 data-number="7.9" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">7.9</span> Independent Practice</h2>
 <section id="practice-exercise-1" class="level3" data-number="7.9.1">
 <h3 data-number="7.9.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">7.9.1</span> Practice exercise 1</h3>
 <section id="section" class="level4" data-number="7.9.1.1">
 <h4 data-number="7.9.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">7.9.1.1</span> </h4>
 <p>Read the file <em>Top 10 Albums By Year.csv</em>. This file contains the top 10 albums for each year from 1990 to 2021. Each row corresponds to a unique album.</p>
+<div id="3a16cbf5" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Ranking</th>
+<th data-quarto-table-cell-role="th">Artist</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Worldwide Sales</th>
+<th data-quarto-table-cell-role="th">CDs</th>
+<th data-quarto-table-cell-role="th">Tracks</th>
+<th data-quarto-table-cell-role="th">Album Length</th>
+<th data-quarto-table-cell-role="th">Hours</th>
+<th data-quarto-table-cell-role="th">Minutes</th>
+<th data-quarto-table-cell-role="th">Seconds</th>
+<th data-quarto-table-cell-role="th">Genre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1990</td>
+<td>8</td>
+<td>Phil Collins</td>
+<td>Serious Hits... Live!</td>
+<td>9956520</td>
+<td>1</td>
+<td>15</td>
+<td>1:16:53</td>
+<td>1.28</td>
+<td>76.88</td>
+<td>4613</td>
+<td>Rock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1990</td>
+<td>1</td>
+<td>Madonna</td>
+<td>The Immaculate Collection</td>
+<td>30000000</td>
+<td>1</td>
+<td>17</td>
+<td>1:13:32</td>
+<td>1.23</td>
+<td>73.53</td>
+<td>4412</td>
+<td>Pop</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1990</td>
+<td>10</td>
+<td>The Three Tenors</td>
+<td>Carreras Domingo Pavarotti In Concert 1990</td>
+<td>8533000</td>
+<td>1</td>
+<td>17</td>
+<td>1:07:55</td>
+<td>1.13</td>
+<td>67.92</td>
+<td>4075</td>
+<td>Classical</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1990</td>
+<td>4</td>
+<td>MC Hammer</td>
+<td>Please Hammer Don't Hurt Em</td>
+<td>18000000</td>
+<td>1</td>
+<td>13</td>
+<td>0:59:04</td>
+<td>0.98</td>
+<td>59.07</td>
+<td>3544</td>
+<td>Hip Hop</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1990</td>
+<td>6</td>
+<td>Movie Soundtrack</td>
+<td>Aashiqui</td>
+<td>15000000</td>
+<td>1</td>
+<td>12</td>
+<td>0:58:13</td>
+<td>0.97</td>
+<td>58.22</td>
+<td>3493</td>
+<td>World</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
 <section id="section-1" class="level4" data-number="7.9.1.2">
 <h4 data-number="7.9.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">7.9.1.2</span> </h4>
@@ -7073,27 +7174,504 @@ Original now has no NaN: True</code></pre>
 <ul>
 <li>Why is <code>Worldwide Sales</code> not included in the summary statistics table printed in the above step?</li>
 </ul>
+<div id="3817356e" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Ranking</th>
+<th data-quarto-table-cell-role="th">Worldwide Sales</th>
+<th data-quarto-table-cell-role="th">CDs</th>
+<th data-quarto-table-cell-role="th">Tracks</th>
+<th data-quarto-table-cell-role="th">Hours</th>
+<th data-quarto-table-cell-role="th">Minutes</th>
+<th data-quarto-table-cell-role="th">Seconds</th>
+<th data-quarto-table-cell-role="th">mean_sales_per_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>320.000000</td>
+<td>320.00000</td>
+<td>3.190000e+02</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>3.190000e+02</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>2005.500000</td>
+<td>5.50000</td>
+<td>1.071093e+07</td>
+<td>1.043750</td>
+<td>14.306250</td>
+<td>0.941406</td>
+<td>56.478500</td>
+<td>3388.715625</td>
+<td>8.166979e+05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>9.247553</td>
+<td>2.87678</td>
+<td>7.566796e+06</td>
+<td>0.246528</td>
+<td>5.868995</td>
+<td>0.382895</td>
+<td>22.970109</td>
+<td>1378.209812</td>
+<td>6.496845e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1990.000000</td>
+<td>1.00000</td>
+<td>1.909009e+06</td>
+<td>1.000000</td>
+<td>6.000000</td>
+<td>0.320000</td>
+<td>19.430000</td>
+<td>1166.000000</td>
+<td>2.112606e+05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>1997.750000</td>
+<td>3.00000</td>
+<td>5.000000e+06</td>
+<td>1.000000</td>
+<td>12.000000</td>
+<td>0.740000</td>
+<td>44.137500</td>
+<td>2648.250000</td>
+<td>4.656061e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>2005.500000</td>
+<td>5.50000</td>
+<td>8.255866e+06</td>
+<td>1.000000</td>
+<td>13.000000</td>
+<td>0.860000</td>
+<td>51.555000</td>
+<td>3093.500000</td>
+<td>5.806452e+05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>2013.250000</td>
+<td>8.00000</td>
+<td>1.400000e+07</td>
+<td>1.000000</td>
+<td>15.000000</td>
+<td>1.090000</td>
+<td>65.112500</td>
+<td>3906.750000</td>
+<td>8.973684e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2021.000000</td>
+<td>10.00000</td>
+<td>4.500000e+07</td>
+<td>4.000000</td>
+<td>67.000000</td>
+<td>5.070000</td>
+<td>304.030000</td>
+<td>18242.000000</td>
+<td>4.485025e+06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="c16baf86" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>dtype('O')</code></pre>
+</div>
+</div>
 </section>
 <section id="section-2" class="level4" data-number="7.9.1.3">
 <h4 data-number="7.9.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">7.9.1.3</span> </h4>
 <p>Update the DataFrame so that <code>Worldwide Sales</code> is included in the summary statistics table. Print the summary statistics table.</p>
 <p><strong>Hint</strong>: Sometimes it may not be possible to convert an object to numeric(). For example, the object ‘hi’ cannot be converted to a numeric() by the python compiler. To avoid getting an error, use the <code>errors</code> argument of <code>to_numeric()</code> to force such conversions to NaN (missing value).</p>
+<div id="531285ea" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Ranking</th>
+<th data-quarto-table-cell-role="th">Worldwide Sales</th>
+<th data-quarto-table-cell-role="th">CDs</th>
+<th data-quarto-table-cell-role="th">Tracks</th>
+<th data-quarto-table-cell-role="th">Hours</th>
+<th data-quarto-table-cell-role="th">Minutes</th>
+<th data-quarto-table-cell-role="th">Seconds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>320.000000</td>
+<td>320.00000</td>
+<td>3.190000e+02</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>320.000000</td>
+<td>320.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>2005.500000</td>
+<td>5.50000</td>
+<td>1.071093e+07</td>
+<td>1.043750</td>
+<td>14.306250</td>
+<td>0.941406</td>
+<td>56.478500</td>
+<td>3388.715625</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>9.247553</td>
+<td>2.87678</td>
+<td>7.566796e+06</td>
+<td>0.246528</td>
+<td>5.868995</td>
+<td>0.382895</td>
+<td>22.970109</td>
+<td>1378.209812</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1990.000000</td>
+<td>1.00000</td>
+<td>1.909009e+06</td>
+<td>1.000000</td>
+<td>6.000000</td>
+<td>0.320000</td>
+<td>19.430000</td>
+<td>1166.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>1997.750000</td>
+<td>3.00000</td>
+<td>5.000000e+06</td>
+<td>1.000000</td>
+<td>12.000000</td>
+<td>0.740000</td>
+<td>44.137500</td>
+<td>2648.250000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>2005.500000</td>
+<td>5.50000</td>
+<td>8.255866e+06</td>
+<td>1.000000</td>
+<td>13.000000</td>
+<td>0.860000</td>
+<td>51.555000</td>
+<td>3093.500000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>2013.250000</td>
+<td>8.00000</td>
+<td>1.400000e+07</td>
+<td>1.000000</td>
+<td>15.000000</td>
+<td>1.090000</td>
+<td>65.112500</td>
+<td>3906.750000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2021.000000</td>
+<td>10.00000</td>
+<td>4.500000e+07</td>
+<td>4.000000</td>
+<td>67.000000</td>
+<td>5.070000</td>
+<td>304.030000</td>
+<td>18242.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
 <section id="section-3" class="level4" data-number="7.9.1.4">
 <h4 data-number="7.9.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">7.9.1.4</span> </h4>
 <p>Create a new column called <code>mean_sales_per_year</code> that computes the average worldwide sales per year for each album, assuming that the worldwide sales are as of 2022. Print the first 5 rows of the updated DataFrame.</p>
+<div id="c8a03716" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Ranking</th>
+<th data-quarto-table-cell-role="th">Artist</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Worldwide Sales</th>
+<th data-quarto-table-cell-role="th">CDs</th>
+<th data-quarto-table-cell-role="th">Tracks</th>
+<th data-quarto-table-cell-role="th">Album Length</th>
+<th data-quarto-table-cell-role="th">Hours</th>
+<th data-quarto-table-cell-role="th">Minutes</th>
+<th data-quarto-table-cell-role="th">Seconds</th>
+<th data-quarto-table-cell-role="th">Genre</th>
+<th data-quarto-table-cell-role="th">mean_sales_per_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1990</td>
+<td>8</td>
+<td>Phil Collins</td>
+<td>Serious Hits... Live!</td>
+<td>9956520.0</td>
+<td>1</td>
+<td>15</td>
+<td>1:16:53</td>
+<td>1.28</td>
+<td>76.88</td>
+<td>4613</td>
+<td>Rock</td>
+<td>311141.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1990</td>
+<td>1</td>
+<td>Madonna</td>
+<td>The Immaculate Collection</td>
+<td>30000000.0</td>
+<td>1</td>
+<td>17</td>
+<td>1:13:32</td>
+<td>1.23</td>
+<td>73.53</td>
+<td>4412</td>
+<td>Pop</td>
+<td>937500.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1990</td>
+<td>10</td>
+<td>The Three Tenors</td>
+<td>Carreras Domingo Pavarotti In Concert 1990</td>
+<td>8533000.0</td>
+<td>1</td>
+<td>17</td>
+<td>1:07:55</td>
+<td>1.13</td>
+<td>67.92</td>
+<td>4075</td>
+<td>Classical</td>
+<td>266656.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1990</td>
+<td>4</td>
+<td>MC Hammer</td>
+<td>Please Hammer Don't Hurt Em</td>
+<td>18000000.0</td>
+<td>1</td>
+<td>13</td>
+<td>0:59:04</td>
+<td>0.98</td>
+<td>59.07</td>
+<td>3544</td>
+<td>Hip Hop</td>
+<td>562500.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1990</td>
+<td>6</td>
+<td>Movie Soundtrack</td>
+<td>Aashiqui</td>
+<td>15000000.0</td>
+<td>1</td>
+<td>12</td>
+<td>0:58:13</td>
+<td>0.97</td>
+<td>58.22</td>
+<td>3493</td>
+<td>World</td>
+<td>468750.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
 <section id="section-4" class="level4" data-number="7.9.1.5">
 <h4 data-number="7.9.1.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">7.9.1.5</span> </h4>
-<p>Find the album having the highest worldwide sales per year, and its artist.</p>
+<p>Find the album having the highest worldwide sales in the dataset, and its artist.</p>
+<div id="c0f05db1" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales: 9956520
+Album: Serious Hits... Live!
+Artist: Phil Collins</code></pre>
+</div>
+</div>
 </section>
 <section id="section-5" class="level4" data-number="7.9.1.6">
 <h4 data-number="7.9.1.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">7.9.1.6</span> </h4>
 <p>Subset the data to include only Hip-Hop albums. How many Hip_Hop albums are there?</p>
+<div id="66d6d0ca" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of Hip-Hop albums: 42
+
+Hip-Hop albums:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Ranking</th>
+<th data-quarto-table-cell-role="th">Artist</th>
+<th data-quarto-table-cell-role="th">Album</th>
+<th data-quarto-table-cell-role="th">Worldwide Sales</th>
+<th data-quarto-table-cell-role="th">CDs</th>
+<th data-quarto-table-cell-role="th">Tracks</th>
+<th data-quarto-table-cell-role="th">Album Length</th>
+<th data-quarto-table-cell-role="th">Hours</th>
+<th data-quarto-table-cell-role="th">Minutes</th>
+<th data-quarto-table-cell-role="th">Seconds</th>
+<th data-quarto-table-cell-role="th">Genre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1990</td>
+<td>4</td>
+<td>MC Hammer</td>
+<td>Please Hammer Don't Hurt Em</td>
+<td>18000000</td>
+<td>1</td>
+<td>13</td>
+<td>0:59:04</td>
+<td>0.98</td>
+<td>59.07</td>
+<td>3544</td>
+<td>Hip Hop</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">63</td>
+<td>1996</td>
+<td>6</td>
+<td>Fugees</td>
+<td>The Score</td>
+<td>13860000</td>
+<td>1</td>
+<td>13</td>
+<td>1:00:52</td>
+<td>1.01</td>
+<td>60.87</td>
+<td>3652</td>
+<td>Hip Hop</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">101</td>
+<td>2000</td>
+<td>1</td>
+<td>Eminem</td>
+<td>The Marshall Mathers LP</td>
+<td>32000000</td>
+<td>1</td>
+<td>18</td>
+<td>1:12:04</td>
+<td>1.20</td>
+<td>72.07</td>
+<td>4324</td>
+<td>Hip Hop</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">102</td>
+<td>2000</td>
+<td>10</td>
+<td>Nelly</td>
+<td>Country Grammar</td>
+<td>10715000</td>
+<td>1</td>
+<td>17</td>
+<td>1:06:35</td>
+<td>1.11</td>
+<td>66.58</td>
+<td>3995</td>
+<td>Hip Hop</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">120</td>
+<td>2002</td>
+<td>6</td>
+<td>Nelly</td>
+<td>Nellyville</td>
+<td>11000000</td>
+<td>1</td>
+<td>19</td>
+<td>1:19:40</td>
+<td>1.33</td>
+<td>79.67</td>
+<td>4780</td>
+<td>Hip Hop</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
 <section id="section-6" class="level4" data-number="7.9.1.7">
 <h4 data-number="7.9.1.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">7.9.1.7</span> </h4>
 <p>Which album amongst hip-hop has the higest mean sales per year per track, and who is its artist?</p>
+<div id="b8fd5214" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Album: 迷
+Mean sales per year: 3,402,981.00
+Mean sales per year per track: 309,361.91</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="practice-exercise-2" class="level3" data-number="7.9.2">
@@ -7101,19 +7679,194 @@ Original now has no NaN: True</code></pre>
 <section id="section-7" class="level4" data-number="7.9.2.1">
 <h4 data-number="7.9.2.1" class="anchored" data-anchor-id="section-7"><span class="header-section-number">7.9.2.1</span> </h4>
 <p>Read the file <em>STAT303-1 survey for data analysis.csv</em>.</p>
+<div id="aee1c823" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Survey data loaded successfully!
+Shape: (192, 51)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Timestamp</th>
+<th data-quarto-table-cell-role="th">fav_alcohol</th>
+<th data-quarto-table-cell-role="th">On average (approx.) how many parties a month do you attend during the school year? Enter a whole number (0, 1, 2, 3, 4, ...)</th>
+<th data-quarto-table-cell-role="th">smoke</th>
+<th data-quarto-table-cell-role="th">weed</th>
+<th data-quarto-table-cell-role="th">introvert_extrovert</th>
+<th data-quarto-table-cell-role="th">love_first_sight</th>
+<th data-quarto-table-cell-role="th">learning_style</th>
+<th data-quarto-table-cell-role="th">left_right_brained</th>
+<th data-quarto-table-cell-role="th">personality_type</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">used_python_before</th>
+<th data-quarto-table-cell-role="th">dominant_hand</th>
+<th data-quarto-table-cell-role="th">childhood_in_US</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">region_of_residence</th>
+<th data-quarto-table-cell-role="th">political_affliation</th>
+<th data-quarto-table-cell-role="th">cant_change_math_ability</th>
+<th data-quarto-table-cell-role="th">can_change_math_ability</th>
+<th data-quarto-table-cell-role="th">math_is_genetic</th>
+<th data-quarto-table-cell-role="th">much_effort_is_lack_of_talent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022/09/13 1:43:34 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Introvert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>INFJ</td>
+<td>...</td>
+<td>Yes</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022/09/13 5:28:17 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Extrovert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ESFJ</td>
+<td>...</td>
+<td>Yes</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Male</td>
+<td>West</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022/09/13 7:56:38 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3</td>
+<td>No</td>
+<td>Yes</td>
+<td>Introvert</td>
+<td>No</td>
+<td>Kinesthetic (learn best through figuring out h...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ISTJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>No</td>
+<td>Female</td>
+<td>International</td>
+<td>No affiliation</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2022/09/13 10:34:37 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>12</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ENFJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Southeast</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2022/09/14 4:46:19 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>Yes</td>
+<td>Reading/Writing (learn best through words ofte...</td>
+<td>Right-brained (creative, art, imaginative, int...</td>
+<td>ENTJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 51 columns</p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-8" class="level4" data-number="7.9.2.2">
 <h4 data-number="7.9.2.2" class="anchored" data-anchor-id="section-8"><span class="header-section-number">7.9.2.2</span> </h4>
 <p>How many observations and variables are there in the data?</p>
+<div id="24496c7c" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of observations (rows): 192
+Number of variables (columns): 51
+
+Dataset shape: (192, 51)</code></pre>
+</div>
+</div>
 </section>
 <section id="section-9" class="level4" data-number="7.9.2.3">
 <h4 data-number="7.9.2.3" class="anchored" data-anchor-id="section-9"><span class="header-section-number">7.9.2.3</span> </h4>
 <p>Rename all the columns of the data, except the first two columns, with the shorter names in the list <code>new_col_names</code> given below. The order of column names in the list is the same as the order in which the columns are to be renamed starting with the third column from the left.</p>
-<div id="176f9d1d" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="176f9d1d" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="849e13e0" class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># survey_data.columns = list(survey_data.columns[0:2])+new_col_names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>New column names: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'do_you_smoke', 'weed', 'are_you_an_introvert_or_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
+Columns renamed successfully!</code></pre>
+</div>
 </div>
 </section>
 <section id="section-10" class="level4" data-number="7.9.2.4">
@@ -7124,22 +7877,53 @@ Original now has no NaN: True</code></pre>
 <li><p>Rename <code>are_you_an_introvert_or_extrovert</code> to <code>introvert_extrovert</code>.</p></li>
 </ol>
 <p><strong>Hint:</strong> Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html">rename()</a></p>
+<div id="b334da09" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Updated columns: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'smoke', 'weed', 'introvert_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
+Specific columns renamed successfully!</code></pre>
+</div>
+</div>
 </section>
 <section id="section-11" class="level4" data-number="7.9.2.5">
 <h4 data-number="7.9.2.5" class="anchored" data-anchor-id="section-11"><span class="header-section-number">7.9.2.5</span> </h4>
 <p>Find the proportion of people going to more than 4 parties per month. Use the variable <code>parties_per_month</code>.</p>
+<div id="273df409" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>0.3385416666666667</code></pre>
+</div>
+</div>
 </section>
 <section id="section-12" class="level4" data-number="7.9.2.6">
 <h4 data-number="7.9.2.6" class="anchored" data-anchor-id="section-12"><span class="header-section-number">7.9.2.6</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are introverts?</p>
+<div id="eb51e1de" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>0.5076923076923077</code></pre>
+</div>
+</div>
 </section>
 <section id="section-13" class="level4" data-number="7.9.2.7">
 <h4 data-number="7.9.2.7" class="anchored" data-anchor-id="section-13"><span class="header-section-number">7.9.2.7</span> </h4>
 <p>Find the proportion of people in each category of the variable <code>how_happy</code>.</p>
+<div id="d4dfc414" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>how_happy
+Pretty happy     0.703125
+Very happy       0.151042
+Not too happy    0.088542
+Don't know       0.057292
+Name: proportion, dtype: float64</code></pre>
+</div>
+</div>
 </section>
 <section id="section-14" class="level4" data-number="7.9.2.8">
 <h4 data-number="7.9.2.8" class="anchored" data-anchor-id="section-14"><span class="header-section-number">7.9.2.8</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are either <code>Pretty happy</code> or <code>Very happy</code>?</p>
+<div id="5f26144f" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>0.9076923076923077</code></pre>
+</div>
+</div>
 </section>
 <section id="section-15" class="level4" data-number="7.9.2.9">
 <h4 data-number="7.9.2.9" class="anchored" data-anchor-id="section-15"><span class="header-section-number">7.9.2.9</span> </h4>
@@ -7153,32 +7937,20 @@ Original now has no NaN: True</code></pre>
 <section id="section-17" class="level4" data-number="7.9.2.11">
 <h4 data-number="7.9.2.11" class="anchored" data-anchor-id="section-17"><span class="header-section-number">7.9.2.11</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
+<div id="f931e248" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>5.088888888888889</code></pre>
+</div>
+</div>
 </section>
 <section id="section-18" class="level4" data-number="7.9.2.12">
 <h4 data-number="7.9.2.12" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.9.2.12</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
-</section>
-</section>
-<section id="practice-exercise-3" class="level3" data-number="7.9.3">
-<h3 data-number="7.9.3" class="anchored" data-anchor-id="practice-exercise-3"><span class="header-section-number">7.9.3</span> Practice exercise 3</h3>
-<section id="section-19" class="level4" data-number="7.9.3.1">
-<h4 data-number="7.9.3.1" class="anchored" data-anchor-id="section-19"><span class="header-section-number">7.9.3.1</span> </h4>
-<p>Use the updated dataset from Practice exercise 2.</p>
-<p>The last four variables in the dataset are:</p>
-<ol type="1">
-<li><p><code>cant_change_math_ability</code></p></li>
-<li><p><code>can_change_math_ability</code></p></li>
-<li><p><code>math_is_genetic</code></p></li>
-<li><p><code>much_effort_is_lack_of_talent</code></p></li>
-</ol>
-<p>Each of the above variables has values - <code>Agree</code> / <code>Disagree</code>. Replace <code>Agree</code> with <code>1</code> and <code>Disagree</code> with <code>0</code>.</p>
-<p><strong>Hint :</strong> You can do it with any one of the following methods:</p>
-<ol type="1">
-<li><p>Use the map() function</p></li>
-<li><p>Use the apply() function with the lambda function</p></li>
-<li><p>Use the replace() function</p></li>
-</ol>
-<p>Two of the above methods avoid a <code>for</code>-loop. Which ones?</p>
+<div id="f0645f34" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>13.118881118881118</code></pre>
+</div>
+</div>
 
 
 </section>
