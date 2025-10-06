@@ -7678,7 +7678,14 @@ Mean sales per year per track: 309,361.91</code></pre>
 <section id="section-7" class="level4" data-number="7.9.2.1">
 <h4 data-number="7.9.2.1" class="anchored" data-anchor-id="section-7"><span class="header-section-number">7.9.2.1</span> </h4>
 <p>Read the file <em>STAT303-1 survey for data analysis.csv</em>.</p>
-<div id="aee1c823" class="cell" data-execution_count="1">
+<div id="aee1c823" class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the survey data</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>survey_data <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/STAT303-1 survey for data analysis.csv'</span>)</span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Survey data loaded successfully!"</span>)</span>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>survey_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>survey_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Survey data loaded successfully!
 Shape: (192, 51)</code></pre>
@@ -7846,7 +7853,13 @@ Shape: (192, 51)</code></pre>
 <section id="section-8" class="level4" data-number="7.9.2.2">
 <h4 data-number="7.9.2.2" class="anchored" data-anchor-id="section-8"><span class="header-section-number">7.9.2.2</span> </h4>
 <p>How many observations and variables are there in the data?</p>
-<div id="24496c7c" class="cell" data-execution_count="2">
+<div id="24496c7c" class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check number of observations and variables</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of observations (rows): </span><span class="sc">{</span>survey_data<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of variables (columns): </span><span class="sc">{</span>survey_data<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Dataset shape: </span><span class="sc">{</span>survey_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of observations (rows): 192
 Number of variables (columns): 51
@@ -7859,9 +7872,15 @@ Dataset shape: (192, 51)</code></pre>
 <h4 data-number="7.9.2.3" class="anchored" data-anchor-id="section-9"><span class="header-section-number">7.9.2.3</span> </h4>
 <p>Rename all the columns of the data, except the first two columns, with the shorter names in the list <code>new_col_names</code> given below. The order of column names in the list is the same as the order in which the columns are to be renamed starting with the third column from the left.</p>
 <div id="176f9d1d" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="849e13e0" class="cell" data-execution_count="4">
+<div id="849e13e0" class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns (keeping first two original, replacing the rest)</span></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>survey_data.columns <span class="op">=</span> <span class="bu">list</span>(survey_data.columns[<span class="dv">0</span>:<span class="dv">2</span>]) <span class="op">+</span> new_col_names</span>
+<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"New column names: </span><span class="sc">{</span><span class="bu">list</span>(survey_data.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columns renamed successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>New column names: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'do_you_smoke', 'weed', 'are_you_an_introvert_or_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
 Columns renamed successfully!</code></pre>
@@ -7876,7 +7895,18 @@ Columns renamed successfully!</code></pre>
 <li><p>Rename <code>are_you_an_introvert_or_extrovert</code> to <code>introvert_extrovert</code>.</p></li>
 </ol>
 <p><strong>Hint:</strong> Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html">rename()</a></p>
-<div id="b334da09" class="cell" data-execution_count="5">
+<div id="b334da09" class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename specific columns using rename function</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a>survey_data <span class="op">=</span> survey_data.rename(columns<span class="op">=</span>{</span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'do_you_smoke'</span>: <span class="st">'smoke'</span>,</span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-8"><a href="#cb129-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'are_you_an_introvert_or_extrovert'</span>: <span class="st">'introvert_extrovert'</span>})</span>
+<span id="cb129-9"><a href="#cb129-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-10"><a href="#cb129-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Updated columns: </span><span class="sc">{</span><span class="bu">list</span>(survey_data.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb129-11"><a href="#cb129-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Specific columns renamed successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Updated columns: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'smoke', 'weed', 'introvert_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
 Specific columns renamed successfully!</code></pre>
@@ -7886,7 +7916,11 @@ Specific columns renamed successfully!</code></pre>
 <section id="section-11" class="level4" data-number="7.9.2.5">
 <h4 data-number="7.9.2.5" class="anchored" data-anchor-id="section-11"><span class="header-section-number">7.9.2.5</span> </h4>
 <p>Find the proportion of people going to more than 4 parties per month. Use the variable <code>parties_per_month</code>.</p>
-<div id="273df409" class="cell" data-execution_count="6">
+<div id="273df409" class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>survey_data[<span class="st">'parties_per_month'</span>]<span class="op">=</span>pd.to_numeric(survey_data.parties_per_month,errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>parties_result <span class="op">=</span> survey_data.loc[survey_data[<span class="st">'parties_per_month'</span>] <span class="op">&gt;</span> <span class="dv">4</span>, :].shape[<span class="dv">0</span>] <span class="op">/</span> survey_data.shape[<span class="dv">0</span>]</span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(parties_result, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>0.34</code></pre>
 </div>
@@ -7895,7 +7929,11 @@ Specific columns renamed successfully!</code></pre>
 <section id="section-12" class="level4" data-number="7.9.2.6">
 <h4 data-number="7.9.2.6" class="anchored" data-anchor-id="section-12"><span class="header-section-number">7.9.2.6</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are introverts?</p>
-<div id="eb51e1de" class="cell" data-execution_count="7">
+<div id="eb51e1de" class="cell">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Among people who go to more than 4 parties, what proportion are introverts?</span></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>introvert_parties_result <span class="op">=</span> survey_data.loc[(survey_data[<span class="st">'parties_per_month'</span>]<span class="op">&gt;</span><span class="dv">4</span>) <span class="op">&amp;</span> (survey_data[<span class="st">'introvert_extrovert'</span>]<span class="op">==</span><span class="st">'Introvert'</span>), :].shape[<span class="dv">0</span>] <span class="op">/</span> survey_data.loc[survey_data[<span class="st">'parties_per_month'</span>]<span class="op">&gt;</span><span class="dv">4</span>, :].shape[<span class="dv">0</span>]</span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(introvert_parties_result, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0.51</code></pre>
 </div>
@@ -7904,7 +7942,10 @@ Specific columns renamed successfully!</code></pre>
 <section id="section-13" class="level4" data-number="7.9.2.7">
 <h4 data-number="7.9.2.7" class="anchored" data-anchor-id="section-13"><span class="header-section-number">7.9.2.7</span> </h4>
 <p>Find the proportion of people in each category of the variable <code>how_happy</code>.</p>
-<div id="d4dfc414" class="cell" data-execution_count="8">
+<div id="d4dfc414" class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find proportion of people in each happiness category</span></span>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a>survey_data[<span class="st">'how_happy'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>how_happy
 Pretty happy     0.70
@@ -7918,7 +7959,11 @@ Name: proportion, dtype: float64</code></pre>
 <section id="section-14" class="level4" data-number="7.9.2.8">
 <h4 data-number="7.9.2.8" class="anchored" data-anchor-id="section-14"><span class="header-section-number">7.9.2.8</span> </h4>
 <p>Among the people who go to more than 4 parties a month, what proportion of them are either <code>Pretty happy</code> or <code>Very happy</code>?</p>
-<div id="5f26144f" class="cell" data-execution_count="9">
+<div id="5f26144f" class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Among the people who go to more than 4 parties a month, what proportion of them are either `Pretty happy` or `Very happy`?</span></span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>happy_result <span class="op">=</span> survey_data.loc[(survey_data[<span class="st">'parties_per_month'</span>]<span class="op">&gt;</span><span class="dv">4</span>) <span class="op">&amp;</span> (survey_data[<span class="st">'how_happy'</span>].isin([<span class="st">'Pretty happy'</span>, <span class="st">'Very happy'</span>])), :].shape[<span class="dv">0</span>] <span class="op">/</span> survey_data.loc[survey_data[<span class="st">'parties_per_month'</span>]<span class="op">&gt;</span><span class="dv">4</span>, :].shape[<span class="dv">0</span>]</span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(happy_result, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0.91</code></pre>
 </div>
@@ -7928,15 +7973,30 @@ Name: proportion, dtype: float64</code></pre>
 <h4 data-number="7.9.2.9" class="anchored" data-anchor-id="section-15"><span class="header-section-number">7.9.2.9</span> </h4>
 <p>Examine the column <code>num_insta_followers</code>. Some numbers in the column contain a comma(<code>,</code>) or a tilde(<code>~</code>). Remove both these characters from the numbers in the column.</p>
 <p><strong>Hint:</strong> You may use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html">str.replace()</a> of the Pandas Series class.</p>
+<div id="6d8acb48" class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>survey_data_insta <span class="op">=</span> survey_data.copy()</span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a>survey_data_insta[<span class="st">'num_insta_followers'</span>]<span class="op">=</span>survey_data_insta[<span class="st">'num_insta_followers'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>,<span class="st">''</span>)</span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>survey_data_insta[<span class="st">'num_insta_followers'</span>]<span class="op">=</span>survey_data_insta[<span class="st">'num_insta_followers'</span>].<span class="bu">str</span>.replace(<span class="st">'~'</span>,<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="section-16" class="level4" data-number="7.9.2.10">
 <h4 data-number="7.9.2.10" class="anchored" data-anchor-id="section-16"><span class="header-section-number">7.9.2.10</span> </h4>
 <p>Convert the column <code>num_insta_followers</code> to numeric. Coerce the errors.</p>
+<div id="e39ce1b9" class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>survey_data_insta.num_insta_followers <span class="op">=</span> pd.to_numeric(survey_data_insta.num_insta_followers,errors<span class="op">=</span><span class="st">'coerce'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="section-17" class="level4" data-number="7.9.2.11">
 <h4 data-number="7.9.2.11" class="anchored" data-anchor-id="section-17"><span class="header-section-number">7.9.2.11</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
-<div id="f931e248" class="cell" data-execution_count="12">
+<div id="f931e248" class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the mean `internet_hours_per_day` for the top 46 people in terms of number of instagram followers?</span></span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>top_46_insta <span class="op">=</span> survey_data_insta.sort_values(<span class="st">'num_insta_followers'</span>,ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">46</span>)</span>
+<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a>top_46_insta.internet_hours_per_day <span class="op">=</span> pd.to_numeric(top_46_insta.internet_hours_per_day,errors <span class="op">=</span> <span class="st">'coerce'</span>)</span>
+<span id="cb141-5"><a href="#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(top_46_insta[<span class="st">'internet_hours_per_day'</span>].mean(), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>5.09</code></pre>
 </div>
@@ -7945,7 +8005,12 @@ Name: proportion, dtype: float64</code></pre>
 <section id="section-18" class="level4" data-number="7.9.2.12">
 <h4 data-number="7.9.2.12" class="anchored" data-anchor-id="section-18"><span class="header-section-number">7.9.2.12</span> </h4>
 <p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
-<div id="f0645f34" class="cell" data-execution_count="13">
+<div id="f0645f34" class="cell">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="co"># What is the mean `internet_hours_per_day` for the remaining people?</span></span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a>low_insta <span class="op">=</span> survey_data_insta.sort_values(<span class="st">'num_insta_followers'</span>,ascending<span class="op">=</span><span class="va">False</span>).iloc[<span class="dv">46</span>:,:]</span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a>low_insta.internet_hours_per_day <span class="op">=</span> pd.to_numeric(low_insta.internet_hours_per_day,errors <span class="op">=</span> <span class="st">'coerce'</span>)</span>
+<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(low_insta.internet_hours_per_day.mean(), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>13.12</code></pre>
 </div>
