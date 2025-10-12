@@ -387,22 +387,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#reading-other-data-formats" id="toc-reading-other-data-formats" class="nav-link" data-scroll-target="#reading-other-data-formats"><span class="header-section-number">6.7</span> Reading Other Data Formats</a>
   <ul>
-  <li><a href="#common-data-formats-overview" id="toc-common-data-formats-overview" class="nav-link" data-scroll-target="#common-data-formats-overview"><span class="header-section-number">6.7.1</span> Common Data Formats Overview</a></li>
-  <li><a href="#what-youll-learn" id="toc-what-youll-learn" class="nav-link" data-scroll-target="#what-youll-learn"><span class="header-section-number">6.7.2</span> What You’ll Learn</a></li>
-  <li><a href="#reading-text-files-.txt" id="toc-reading-text-files-.txt" class="nav-link" data-scroll-target="#reading-text-files-.txt"><span class="header-section-number">6.7.3</span> Reading Text Files (.txt)</a>
+  <li><a href="#reading-text-files-.txt" id="toc-reading-text-files-.txt" class="nav-link" data-scroll-target="#reading-text-files-.txt"><span class="header-section-number">6.7.1</span> Reading Text Files (.txt)</a>
   <ul class="collapse">
-  <li><a href="#reading-tab-separated-files" id="toc-reading-tab-separated-files" class="nav-link" data-scroll-target="#reading-tab-separated-files"><span class="header-section-number">6.7.3.1</span> Reading Tab-Separated Files</a></li>
-  <li><a href="#common-separator-examples" id="toc-common-separator-examples" class="nav-link" data-scroll-target="#common-separator-examples"><span class="header-section-number">6.7.3.2</span> Common Separator Examples</a></li>
-  <li><a href="#automatic-delimiter-detection" id="toc-automatic-delimiter-detection" class="nav-link" data-scroll-target="#automatic-delimiter-detection"><span class="header-section-number">6.7.3.3</span> Automatic Delimiter Detection</a></li>
+  <li><a href="#reading-tab-separated-files" id="toc-reading-tab-separated-files" class="nav-link" data-scroll-target="#reading-tab-separated-files"><span class="header-section-number">6.7.1.1</span> Reading Tab-Separated Files</a></li>
+  <li><a href="#common-separator-examples" id="toc-common-separator-examples" class="nav-link" data-scroll-target="#common-separator-examples"><span class="header-section-number">6.7.1.2</span> Common Separator Examples</a></li>
+  <li><a href="#automatic-delimiter-detection" id="toc-automatic-delimiter-detection" class="nav-link" data-scroll-target="#automatic-delimiter-detection"><span class="header-section-number">6.7.1.3</span> Automatic Delimiter Detection</a></li>
   </ul></li>
-  <li><a href="#reading-json-data" id="toc-reading-json-data" class="nav-link" data-scroll-target="#reading-json-data"><span class="header-section-number">6.7.4</span> Reading JSON Data</a>
+  <li><a href="#reading-json-data" id="toc-reading-json-data" class="nav-link" data-scroll-target="#reading-json-data"><span class="header-section-number">6.7.2</span> Reading JSON Data</a>
   <ul class="collapse">
-  <li><a href="#reading-json-with-pandas" id="toc-reading-json-with-pandas" class="nav-link" data-scroll-target="#reading-json-with-pandas"><span class="header-section-number">6.7.4.1</span> Reading JSON with Pandas</a></li>
-  <li><a href="#real-example-ted-talks-dataset" id="toc-real-example-ted-talks-dataset" class="nav-link" data-scroll-target="#real-example-ted-talks-dataset"><span class="header-section-number">6.7.4.2</span> Real Example: TED Talks Dataset</a></li>
+  <li><a href="#reading-json-with-pandas" id="toc-reading-json-with-pandas" class="nav-link" data-scroll-target="#reading-json-with-pandas"><span class="header-section-number">6.7.2.1</span> Reading JSON with Pandas</a></li>
+  <li><a href="#real-example-ted-talks-dataset" id="toc-real-example-ted-talks-dataset" class="nav-link" data-scroll-target="#real-example-ted-talks-dataset"><span class="header-section-number">6.7.2.2</span> Real Example: TED Talks Dataset</a></li>
   </ul></li>
-  <li><a href="#reading-data-from-web-urls" id="toc-reading-data-from-web-urls" class="nav-link" data-scroll-target="#reading-data-from-web-urls"><span class="header-section-number">6.7.5</span> Reading Data from Web URLs</a>
+  <li><a href="#reading-data-from-web-urls" id="toc-reading-data-from-web-urls" class="nav-link" data-scroll-target="#reading-data-from-web-urls"><span class="header-section-number">6.7.3</span> Reading Data from Web URLs</a>
   <ul class="collapse">
-  <li><a href="#read-data-from-wikipedia" id="toc-read-data-from-wikipedia" class="nav-link" data-scroll-target="#read-data-from-wikipedia"><span class="header-section-number">6.7.5.1</span> Read data from wikipedia</a></li>
+  <li><a href="#read-data-from-wikipedia" id="toc-read-data-from-wikipedia" class="nav-link" data-scroll-target="#read-data-from-wikipedia"><span class="header-section-number">6.7.3.1</span> Read data from wikipedia</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">6.8</span> Independent Study</a>
@@ -2018,8 +2016,7 @@ memory usage: 191.6+ KB</code></pre>
 <section id="reading-other-data-formats" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="reading-other-data-formats"><span class="header-section-number">6.7</span> Reading Other Data Formats</h2>
 <p>While <strong>CSV is the most popular format</strong> for structured data, real-world data comes in many different formats. As a data analyst, you’ll frequently encounter various file types and data sources that require different reading approaches.</p>
-<section id="common-data-formats-overview" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="common-data-formats-overview"><span class="header-section-number">6.7.1</span> Common Data Formats Overview</h3>
+<p><strong>Common Data Formats Overview</strong></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -2068,30 +2065,25 @@ memory usage: 191.6+ KB</code></pre>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="what-youll-learn" class="level3" data-number="6.7.2">
-<h3 data-number="6.7.2" class="anchored" data-anchor-id="what-youll-learn"><span class="header-section-number">6.7.2</span> What You’ll Learn</h3>
 <p>In this section, we’ll explore how to:</p>
 <ul>
 <li><strong>Read text files</strong> with different delimiters (tabs, semicolons, etc.)</li>
 <li><strong>Handle JSON data</strong> from APIs and web services</li>
-<li><strong>Access live data</strong> directly from URLs and APIs</li>
-<li><strong>Extract tables</strong> from HTML web pages</li>
+<li><strong>Access live data</strong> directly from URLs and web pages</li>
 </ul>
 <blockquote class="blockquote">
 <p>💡 <strong>Key Insight</strong>: The same <code>pd.read_csv()</code> function can read many text-based formats by adjusting parameters!</p>
 </blockquote>
-</section>
-<section id="reading-text-files-.txt" class="level3" data-number="6.7.3">
-<h3 data-number="6.7.3" class="anchored" data-anchor-id="reading-text-files-.txt"><span class="header-section-number">6.7.3</span> Reading Text Files (.txt)</h3>
+<section id="reading-text-files-.txt" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="reading-text-files-.txt"><span class="header-section-number">6.7.1</span> Reading Text Files (.txt)</h3>
 <p><strong>Text files offer maximum flexibility</strong> for storing tabular data with custom delimiters.</p>
 <p><strong>Key Differences from CSV:</strong></p>
 <ul>
 <li><p><strong>CSV files</strong>: Always use commas (<code>,</code>) as delimitersLet’s read a file where values are separated by tab characters:</p></li>
 <li><p><strong>Text files</strong>: Can use <strong>any character</strong> as a delimiter</p></li>
 </ul>
-<section id="reading-tab-separated-files" class="level4" data-number="6.7.3.1">
-<h4 data-number="6.7.3.1" class="anchored" data-anchor-id="reading-tab-separated-files"><span class="header-section-number">6.7.3.1</span> Reading Tab-Separated Files</h4>
+<section id="reading-tab-separated-files" class="level4" data-number="6.7.1.1">
+<h4 data-number="6.7.1.1" class="anchored" data-anchor-id="reading-tab-separated-files"><span class="header-section-number">6.7.1.1</span> Reading Tab-Separated Files</h4>
 <p><strong>Common Delimiters in Text Files:</strong></p>
 <ul>
 <li><strong>Space</strong> (<code></code>) → Simple space-separated files</li>
@@ -2215,8 +2207,8 @@ memory usage: 191.6+ KB</code></pre>
 <li><p><code>\t</code> represents the tab character</p></li>
 </ul>
 </section>
-<section id="common-separator-examples" class="level4" data-number="6.7.3.2">
-<h4 data-number="6.7.3.2" class="anchored" data-anchor-id="common-separator-examples"><span class="header-section-number">6.7.3.2</span> Common Separator Examples</h4>
+<section id="common-separator-examples" class="level4" data-number="6.7.1.2">
+<h4 data-number="6.7.1.2" class="anchored" data-anchor-id="common-separator-examples"><span class="header-section-number">6.7.1.2</span> Common Separator Examples</h4>
 <ul>
 <li>The function automatically handles headers and data types</li>
 </ul>
@@ -2241,8 +2233,8 @@ memory usage: 191.6+ KB</code></pre>
 </div>
 </div>
 </section>
-<section id="automatic-delimiter-detection" class="level4" data-number="6.7.3.3">
-<h4 data-number="6.7.3.3" class="anchored" data-anchor-id="automatic-delimiter-detection"><span class="header-section-number">6.7.3.3</span> Automatic Delimiter Detection</h4>
+<section id="automatic-delimiter-detection" class="level4" data-number="6.7.1.3">
+<h4 data-number="6.7.1.3" class="anchored" data-anchor-id="automatic-delimiter-detection"><span class="header-section-number">6.7.1.3</span> Automatic Delimiter Detection</h4>
 <p>Pandas can automatically detect delimiters using the Python engine:</p>
 <div id="af8aec12" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let pandas automatically detect the delimiter</span></span>
@@ -2271,8 +2263,8 @@ memory usage: 191.6+ KB</code></pre>
 </blockquote>
 </section>
 </section>
-<section id="reading-json-data" class="level3" data-number="6.7.4">
-<h3 data-number="6.7.4" class="anchored" data-anchor-id="reading-json-data"><span class="header-section-number">6.7.4</span> Reading JSON Data</h3>
+<section id="reading-json-data" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="reading-json-data"><span class="header-section-number">6.7.2</span> Reading JSON Data</h3>
 <p><strong>JSON (JavaScript Object Notation)</strong> is the <strong>standard format for web APIs</strong> and modern data exchange.</p>
 <p><strong>Why JSON is Everywhere:</strong></p>
 <ul>
@@ -2318,8 +2310,8 @@ memory usage: 191.6+ KB</code></pre>
 </tr>
 </tbody>
 </table>
-<section id="reading-json-with-pandas" class="level4" data-number="6.7.4.1">
-<h4 data-number="6.7.4.1" class="anchored" data-anchor-id="reading-json-with-pandas"><span class="header-section-number">6.7.4.1</span> Reading JSON with Pandas</h4>
+<section id="reading-json-with-pandas" class="level4" data-number="6.7.2.1">
+<h4 data-number="6.7.2.1" class="anchored" data-anchor-id="reading-json-with-pandas"><span class="header-section-number">6.7.2.1</span> Reading JSON with Pandas</h4>
 <ul>
 <li>📊 <strong>Data type inference</strong> (numbers, dates, etc.)</li>
 </ul>
@@ -2336,8 +2328,8 @@ memory usage: 191.6+ KB</code></pre>
 <li><p>✅ <strong>JSON strings</strong>: Direct JSON text</p></li>
 </ul>
 </section>
-<section id="real-example-ted-talks-dataset" class="level4" data-number="6.7.4.2">
-<h4 data-number="6.7.4.2" class="anchored" data-anchor-id="real-example-ted-talks-dataset"><span class="header-section-number">6.7.4.2</span> Real Example: TED Talks Dataset</h4>
+<section id="real-example-ted-talks-dataset" class="level4" data-number="6.7.2.2">
+<h4 data-number="6.7.2.2" class="anchored" data-anchor-id="real-example-ted-talks-dataset"><span class="header-section-number">6.7.2.2</span> Real Example: TED Talks Dataset</h4>
 <p>Let’s load a real JSON dataset containing TED Talks information:</p>
 <div id="2e0afb8d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TED Talks data from GitHub (JSON format)</span></span>
@@ -2370,8 +2362,8 @@ Columns: ['id', 'speaker', 'headline', 'URL', 'description', 'transcript_URL', '
 </div>
 </section>
 </section>
-<section id="reading-data-from-web-urls" class="level3" data-number="6.7.5">
-<h3 data-number="6.7.5" class="anchored" data-anchor-id="reading-data-from-web-urls"><span class="header-section-number">6.7.5</span> Reading Data from Web URLs</h3>
+<section id="reading-data-from-web-urls" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="reading-data-from-web-urls"><span class="header-section-number">6.7.3</span> Reading Data from Web URLs</h3>
 <p><strong>Modern data science often involves accessing live data</strong> from web APIs (Application Programming Interfaces). This allows you to get real-time information directly into your analysis pipeline.</p>
 <p><strong>Using the <code>requests</code> Library</strong></p>
 <p>The <code>requests</code> library is the standard tool for making HTTP requests in Python. You’ll need to install it if not already available:</p>
@@ -2594,8 +2586,8 @@ Dataset shape: (10, 26)
 🔻 BNB (BNB): $1,006.92 | 24h: -1.12%</code></pre>
 </div>
 </div>
-<section id="read-data-from-wikipedia" class="level4" data-number="6.7.5.1">
-<h4 data-number="6.7.5.1" class="anchored" data-anchor-id="read-data-from-wikipedia"><span class="header-section-number">6.7.5.1</span> Read data from wikipedia</h4>
+<section id="read-data-from-wikipedia" class="level4" data-number="6.7.3.1">
+<h4 data-number="6.7.3.1" class="anchored" data-anchor-id="read-data-from-wikipedia"><span class="header-section-number">6.7.3.1</span> Read data from wikipedia</h4>
 <div id="67e9c66d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>api_url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita'</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas to read all tables from the webpage</span></span>
@@ -2622,8 +2614,8 @@ Dataset shape: (10, 26)
 ❌ Request failed: Forbidden - Access denied</code></pre>
 </div>
 </div>
-<section id="understanding-http-403-errors-with-wikipedia" class="level5" data-number="6.7.5.1.1">
-<h5 data-number="6.7.5.1.1" class="anchored" data-anchor-id="understanding-http-403-errors-with-wikipedia"><span class="header-section-number">6.7.5.1.1</span> <strong>Understanding HTTP 403 Errors with Wikipedia</strong></h5>
+<section id="understanding-http-403-errors-with-wikipedia" class="level5" data-number="6.7.3.1.1">
+<h5 data-number="6.7.3.1.1" class="anchored" data-anchor-id="understanding-http-403-errors-with-wikipedia"><span class="header-section-number">6.7.3.1.1</span> <strong>Understanding HTTP 403 Errors with Wikipedia</strong></h5>
 <p><strong>Why Wikipedia Returns 403 “Forbidden” Errors:</strong></p>
 <p>Wikipedia and many other websites block requests that appear to be automated bots or scrapers. When you make a request without proper headers, the server sees it as suspicious and blocks it with a 403 error.</p>
 <p><strong>Common Causes of 403 Errors:</strong></p>
@@ -2635,8 +2627,8 @@ Dataset shape: (10, 26)
 <li>❌ <strong>IP blocking</strong>: Your IP has been flagged</li>
 </ul>
 </section>
-<section id="solution-add-proper-headers" class="level5" data-number="6.7.5.1.2">
-<h5 data-number="6.7.5.1.2" class="anchored" data-anchor-id="solution-add-proper-headers"><span class="header-section-number">6.7.5.1.2</span> <strong>Solution: Add Proper Headers</strong></h5>
+<section id="solution-add-proper-headers" class="level5" data-number="6.7.3.1.2">
+<h5 data-number="6.7.3.1.2" class="anchored" data-anchor-id="solution-add-proper-headers"><span class="header-section-number">6.7.3.1.2</span> <strong>Solution: Add Proper Headers</strong></h5>
 <p>The key is to make your request look like it’s coming from a real web browser by adding appropriate headers:</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'User-Agent'</span>: <span class="st">'My Data Analysis Project (your_email@example.com)'</span></span>
