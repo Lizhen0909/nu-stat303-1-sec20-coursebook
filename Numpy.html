@@ -380,7 +380,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#arithmetic-operations" id="toc-arithmetic-operations" class="nav-link" data-scroll-target="#arithmetic-operations"><span class="header-section-number">9.8.1</span> Arithmetic Operations</a>
   <ul class="collapse">
-  <li><a href="#comprehensive-arithmetic-examples" id="toc-comprehensive-arithmetic-examples" class="nav-link" data-scroll-target="#comprehensive-arithmetic-examples"><span class="header-section-number">9.8.1.1</span> Comprehensive Arithmetic Examples</a></li>
+  <li><a href="#array-and-array" id="toc-array-and-array" class="nav-link" data-scroll-target="#array-and-array"><span class="header-section-number">9.8.1.1</span> Array and Array</a></li>
+  <li><a href="#broadcasting-the-heart-of-numpy-vectorization" id="toc-broadcasting-the-heart-of-numpy-vectorization" class="nav-link" data-scroll-target="#broadcasting-the-heart-of-numpy-vectorization"><span class="header-section-number">9.8.1.2</span> Broadcasting: The Heart of NumPy Vectorization</a></li>
   </ul></li>
   <li><a href="#aggregate-functions-statistical-summaries" id="toc-aggregate-functions-statistical-summaries" class="nav-link" data-scroll-target="#aggregate-functions-statistical-summaries"><span class="header-section-number">9.8.2</span> Aggregate Functions: Statistical Summaries</a>
   <ul class="collapse">
@@ -1785,13 +1786,15 @@ Detailed breakdown:
 <h3 data-number="9.8.1" class="anchored" data-anchor-id="arithmetic-operations"><span class="header-section-number">9.8.1</span> Arithmetic Operations</h3>
 <p>NumPy arrays support all standard arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>**</code>, <code>%</code>) and apply them <strong>element-wise</strong>. You can perform operations between:</p>
 <ul>
-<li><strong>Array and Scalar</strong>: The scalar is applied to every element (broadcasting)</li>
-<li><strong>Array and Array</strong>: Must have compatible shapes (same shape or broadcastable)</li>
+<li><strong>Array and Array</strong> → Operands must have <strong>compatible shapes</strong> (same shape or broadcastable)</li>
+<li><strong>Array and Vector</strong> → The vector is <strong>broadcast across rows or columns</strong> depending on its shape, enabling <strong>element-wise operations</strong><br>
+</li>
+<li><strong>Array and Scalar</strong> → The scalar is applied to <strong>every element</strong> of the array (<strong>broadcasting</strong>)</li>
 </ul>
 <p>💡 <strong>Key Advantage</strong>: These operations are <strong>vectorized</strong> - they execute at C speed, not Python loop speed!</p>
-<section id="comprehensive-arithmetic-examples" class="level4" data-number="9.8.1.1">
-<h4 data-number="9.8.1.1" class="anchored" data-anchor-id="comprehensive-arithmetic-examples"><span class="header-section-number">9.8.1.1</span> Comprehensive Arithmetic Examples</h4>
-<p>Let’s explore all arithmetic operations with practical examples:</p>
+<section id="array-and-array" class="level4" data-number="9.8.1.1">
+<h4 data-number="9.8.1.1" class="anchored" data-anchor-id="array-and-array"><span class="header-section-number">9.8.1.1</span> Array and Array</h4>
+<p>Let’s explore <strong>arithmetic operations between two arrays</strong> through practical examples:</p>
 <div id="29d3ec75" class="cell" data-execution_count="54">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1858,35 +1861,11 @@ C     [ 8 12 18 22]</code></pre>
        [-132,  -98, -132, -148]])</code></pre>
 </div>
 </div>
-<div id="39548bd4" class="cell" data-execution_count="57">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a scalar to an array adds the scalar to each element of the array</span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="57">
-<pre><code>array([[123, 153, 183, 203],
-       [103, 133, 163, 193],
-       [143, 113, 153, 173]])</code></pre>
-</div>
-</div>
-<div id="49740c06" class="cell" data-execution_count="58">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dividing an array by a scalar divides all elements of the array by the scalar</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">/</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="58">
-<pre><code>array([[ 60.,  75.,  90., 100.],
-       [ 50.,  65.,  80.,  95.],
-       [ 70.,  55.,  75.,  85.]])</code></pre>
-</div>
-</div>
 <div id="99a18133" class="cell" data-execution_count="59">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">*</span> arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">*</span> arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>array([[1200, 2250, 3600, 5000],
@@ -1894,18 +1873,215 @@ C     [ 8 12 18 22]</code></pre>
        [1120, 1320, 2700, 3740]])</code></pre>
 </div>
 </div>
-<div id="ab118b9a" class="cell" data-execution_count="60">
+</section>
+<section id="broadcasting-the-heart-of-numpy-vectorization" class="level4" data-number="9.8.1.2">
+<h4 data-number="9.8.1.2" class="anchored" data-anchor-id="broadcasting-the-heart-of-numpy-vectorization"><span class="header-section-number">9.8.1.2</span> Broadcasting: The Heart of NumPy Vectorization</h4>
+<p>Besides supporting arithmetic operations between arrays, <strong>broadcasting</strong> is NumPy’s powerful mechanism that enables operations between arrays of different shapes <strong>without explicitly reshaping them</strong>.</p>
+<ul>
+<li><strong>Array and Vector</strong> → The vector is <strong>broadcast across rows or columns</strong> depending on its shape, enabling <strong>element-wise operations</strong><br>
+</li>
+<li><strong>Array and Scalar</strong> → The scalar is applied to <strong>every element</strong> of the array (<strong>broadcasting</strong>)</li>
+</ul>
+<p>Broadcasting is the foundation that makes <strong>vectorization</strong> in NumPy so flexible and intuitive.</p>
+<section id="broadcasting-rules" class="level5" data-number="9.8.1.2.1">
+<h5 data-number="9.8.1.2.1" class="anchored" data-anchor-id="broadcasting-rules"><span class="header-section-number">9.8.1.2.1</span> Broadcasting Rules</h5>
+<p>NumPy broadcasting follows these rules:</p>
+<ol type="1">
+<li><strong>Start from the trailing dimension</strong> and work backwards</li>
+<li><strong>Dimensions are compatible</strong> if:
+<ul>
+<li>They are equal, OR</li>
+<li>One of them is 1, OR<br>
+</li>
+<li>One of them doesn’t exist (missing dimension)</li>
+</ul></li>
+<li><strong>Missing dimensions</strong> are assumed to be size 1</li>
+</ol>
+<p><img src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/02.05-broadcasting.png" width="360"></p>
+<div id="4d2a3254" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulus operator with scalar</span></span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">%</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Broadcasting Rules Demonstration</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_broadcast_compatibility(shape1, shape2):</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Check if two shapes are compatible for broadcasting</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Pad shorter shape with 1s on the left</span></span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>    ndim1, ndim2 <span class="op">=</span> <span class="bu">len</span>(shape1), <span class="bu">len</span>(shape2)</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>    max_ndim <span class="op">=</span> <span class="bu">max</span>(ndim1, ndim2)</span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>    shape1_padded <span class="op">=</span> [<span class="dv">1</span>] <span class="op">*</span> (max_ndim <span class="op">-</span> ndim1) <span class="op">+</span> <span class="bu">list</span>(shape1)</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>    shape2_padded <span class="op">=</span> [<span class="dv">1</span>] <span class="op">*</span> (max_ndim <span class="op">-</span> ndim2) <span class="op">+</span> <span class="bu">list</span>(shape2)</span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>    result_shape <span class="op">=</span> []</span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>    compatible <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(max_ndim):</span>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a>        dim1, dim2 <span class="op">=</span> shape1_padded[i], shape2_padded[i]</span>
+<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dim1 <span class="op">==</span> dim2:</span>
+<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a>            result_shape.append(dim1)</span>
+<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> dim1 <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a>            result_shape.append(dim2)</span>
+<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> dim2 <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a>            result_shape.append(dim1)</span>
+<span id="cb80-25"><a href="#cb80-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb80-26"><a href="#cb80-26" aria-hidden="true" tabindex="-1"></a>            compatible <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb80-27"><a href="#cb80-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb80-28"><a href="#cb80-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb80-29"><a href="#cb80-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> compatible, <span class="bu">tuple</span>(result_shape) <span class="cf">if</span> compatible <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb80-30"><a href="#cb80-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-31"><a href="#cb80-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Test different shape combinations</span></span>
+<span id="cb80-32"><a href="#cb80-32" aria-hidden="true" tabindex="-1"></a>test_cases <span class="op">=</span> [</span>
+<span id="cb80-33"><a href="#cb80-33" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">4</span>,)),      <span class="co"># Compatible</span></span>
+<span id="cb80-34"><a href="#cb80-34" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">3</span>, <span class="dv">1</span>)),    <span class="co"># Compatible  </span></span>
+<span id="cb80-35"><a href="#cb80-35" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">2</span>,)),      <span class="co"># Incompatible</span></span>
+<span id="cb80-36"><a href="#cb80-36" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">4</span>,)),   <span class="co"># Compatible</span></span>
+<span id="cb80-37"><a href="#cb80-37" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">3</span>, <span class="dv">4</span>)), <span class="co"># Compatible</span></span>
+<span id="cb80-38"><a href="#cb80-38" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>)), <span class="co"># Compatible</span></span>
+<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">2</span>, <span class="dv">3</span>)),    <span class="co"># Incompatible</span></span>
+<span id="cb80-40"><a href="#cb80-40" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb80-41"><a href="#cb80-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-42"><a href="#cb80-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Broadcasting Compatibility Check:"</span>)</span>
+<span id="cb80-43"><a href="#cb80-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb80-44"><a href="#cb80-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> shape1, shape2 <span class="kw">in</span> test_cases:</span>
+<span id="cb80-45"><a href="#cb80-45" aria-hidden="true" tabindex="-1"></a>    compatible, result_shape <span class="op">=</span> check_broadcast_compatibility(shape1, shape2)</span>
+<span id="cb80-46"><a href="#cb80-46" aria-hidden="true" tabindex="-1"></a>    status <span class="op">=</span> <span class="st">"✅ Compatible"</span> <span class="cf">if</span> compatible <span class="cf">else</span> <span class="st">"❌ Incompatible"</span></span>
+<span id="cb80-47"><a href="#cb80-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> compatible:</span>
+<span id="cb80-48"><a href="#cb80-48" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">str</span>(shape1)<span class="sc">:&gt;10}</span><span class="ss"> + </span><span class="sc">{</span><span class="bu">str</span>(shape2)<span class="sc">:&gt;10}</span><span class="ss"> → </span><span class="sc">{</span><span class="bu">str</span>(result_shape)<span class="sc">:&gt;12}</span><span class="ss"> </span><span class="sc">{</span>status<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb80-49"><a href="#cb80-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb80-50"><a href="#cb80-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">str</span>(shape1)<span class="sc">:&gt;10}</span><span class="ss"> + </span><span class="sc">{</span><span class="bu">str</span>(shape2)<span class="sc">:&gt;10}</span><span class="ss"> → </span><span class="sc">{</span><span class="st">'N/A'</span><span class="sc">:&gt;12}</span><span class="ss"> </span><span class="sc">{</span>status<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="60">
-<pre><code>array([[0, 2, 0, 0],
-       [0, 2, 0, 2],
-       [0, 2, 2, 2]])</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>Broadcasting Compatibility Check:
+--------------------------------------------------
+    (3, 4) +       (4,) →       (3, 4) ✅ Compatible
+    (3, 4) +     (3, 1) →       (3, 4) ✅ Compatible
+    (3, 4) +       (2,) →          N/A ❌ Incompatible
+ (2, 3, 4) +       (4,) →    (2, 3, 4) ✅ Compatible
+ (2, 3, 4) +     (3, 4) →    (2, 3, 4) ✅ Compatible
+ (2, 3, 4) +  (2, 1, 4) →    (2, 3, 4) ✅ Compatible
+    (3, 4) +     (2, 3) →          N/A ❌ Incompatible</code></pre>
 </div>
 </div>
+<p><strong>Comprehensive Broadcasting Examples:</strong></p>
+<div id="419cc3b2" class="cell" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"=== BROADCASTING EXAMPLES ===</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: 2D array + 1D array (most common case)</span></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>arr_2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], </span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>                   [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>], </span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>                   [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]])</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>arr_1d <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>])</span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: (3,4) + (4,) broadcasting"</span>)</span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"2D array shape: </span><span class="sc">{</span>arr_2d<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"1D array shape: </span><span class="sc">{</span>arr_1d<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a>result_1 <span class="op">=</span> arr_2d <span class="op">+</span> arr_1d</span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Result shape: </span><span class="sc">{</span>result_1<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Result:"</span>)</span>
+<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result_1)</span>
+<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb82-18"><a href="#cb82-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Broadcasting with different orientations</span></span>
+<span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a>arr_col <span class="op">=</span> np.array([[<span class="dv">100</span>], </span>
+<span id="cb82-21"><a href="#cb82-21" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">200</span>], </span>
+<span id="cb82-22"><a href="#cb82-22" aria-hidden="true" tabindex="-1"></a>                    [<span class="dv">300</span>]])  <span class="co"># Column vector (3,1)</span></span>
+<span id="cb82-23"><a href="#cb82-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-24"><a href="#cb82-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 2: (3,4) + (3,1) broadcasting"</span>)</span>
+<span id="cb82-25"><a href="#cb82-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"2D array shape: </span><span class="sc">{</span>arr_2d<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-26"><a href="#cb82-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Column vector shape: </span><span class="sc">{</span>arr_col<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-27"><a href="#cb82-27" aria-hidden="true" tabindex="-1"></a>result_2 <span class="op">=</span> arr_2d <span class="op">+</span> arr_col</span>
+<span id="cb82-28"><a href="#cb82-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Result shape: </span><span class="sc">{</span>result_2<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-29"><a href="#cb82-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Result:"</span>)</span>
+<span id="cb82-30"><a href="#cb82-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result_2)</span>
+<span id="cb82-31"><a href="#cb82-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb82-32"><a href="#cb82-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-33"><a href="#cb82-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Scalar broadcasting (always works)</span></span>
+<span id="cb82-34"><a href="#cb82-34" aria-hidden="true" tabindex="-1"></a>scalar <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb82-35"><a href="#cb82-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 3: (3,4) + scalar broadcasting"</span>)</span>
+<span id="cb82-36"><a href="#cb82-36" aria-hidden="true" tabindex="-1"></a>result_3 <span class="op">=</span> arr_2d <span class="op">+</span> scalar</span>
+<span id="cb82-37"><a href="#cb82-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Result shape: </span><span class="sc">{</span>result_3<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-38"><a href="#cb82-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Result:"</span>)</span>
+<span id="cb82-39"><a href="#cb82-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result_3)</span>
+<span id="cb82-40"><a href="#cb82-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb82-41"><a href="#cb82-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-42"><a href="#cb82-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 4: 3D broadcasting</span></span>
+<span id="cb82-43"><a href="#cb82-43" aria-hidden="true" tabindex="-1"></a>arr_3d <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb82-44"><a href="#cb82-44" aria-hidden="true" tabindex="-1"></a>arr_2d_broadcast <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]])  <span class="co"># (1, 4)</span></span>
+<span id="cb82-45"><a href="#cb82-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-46"><a href="#cb82-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 4: (2,3,4) + (1,4) broadcasting"</span>)</span>
+<span id="cb82-47"><a href="#cb82-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"3D array shape: </span><span class="sc">{</span>arr_3d<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-48"><a href="#cb82-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"2D array shape: </span><span class="sc">{</span>arr_2d_broadcast<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-49"><a href="#cb82-49" aria-hidden="true" tabindex="-1"></a>result_4 <span class="op">=</span> arr_3d <span class="op">+</span> arr_2d_broadcast</span>
+<span id="cb82-50"><a href="#cb82-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Result shape: </span><span class="sc">{</span>result_4<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb82-51"><a href="#cb82-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Broadcasting successful!"</span>)</span>
+<span id="cb82-52"><a href="#cb82-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>=== BROADCASTING EXAMPLES ===
+
+Example 1: (3,4) + (4,) broadcasting
+2D array shape: (3, 4)
+1D array shape: (4,)
+Result shape: (3, 4)
+Result:
+[[11 22 33 44]
+ [15 26 37 48]
+ [19 30 41 52]]
+
+Example 2: (3,4) + (3,1) broadcasting
+2D array shape: (3, 4)
+Column vector shape: (3, 1)
+Result shape: (3, 4)
+Result:
+[[101 102 103 104]
+ [205 206 207 208]
+ [309 310 311 312]]
+
+Example 3: (3,4) + scalar broadcasting
+Result shape: (3, 4)
+Result:
+[[1001 1002 1003 1004]
+ [1005 1006 1007 1008]
+ [1009 1010 1011 1012]]
+
+Example 4: (2,3,4) + (1,4) broadcasting
+3D array shape: (2, 3, 4)
+2D array shape: (1, 4)
+Result shape: (2, 3, 4)
+Broadcasting successful!
+</code></pre>
+</div>
+</div>
+<p><strong>Invalid operations</strong> (will raise ValueError)</p>
+<div id="2b714505" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Invalid operations (will raise ValueError)</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> np.ones((<span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.ones((<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb84-12"><a href="#cb84-12" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb84-13"><a href="#cb84-13" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb84-14"><a href="#cb84-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error: operands could not be broadcast together with shapes (3,4) (3,3) </code></pre>
+</div>
+</div>
+<p>In the above example, <code>a + b</code> cannot be broadcast together and evaluated successfully. See the <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">broadcasting documentation</a> to learn more about it.</p>
+</section>
 </section>
 </section>
 <section id="aggregate-functions-statistical-summaries" class="level3" data-number="9.8.2">
@@ -3420,7 +3596,7 @@ Sample day 1: Prices=[107.49080238 119.01428613 114.63987884 111.97316968]
 <h3 data-number="9.11.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">9.11.1</span> Practice exercise 1</h3>
 <section id="section" class="level4" data-number="9.11.1.1">
 <h4 data-number="9.11.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">9.11.1.1</span> </h4>
-<p>Read the coordinates of the capital cities of the world from https://gist.github.com/ofou/df09a6834a8421b4f376c875194915c9 .</p>
+<p>Read the coordinates of the capital cities of the world from the <em>country-capital-lat-long-population.csv</em> .</p>
 <p>Task 1: Use NumPy to print the name and coordinates of the capital city closest to the US capital - Washington DC.</p>
 <p>Note that:</p>
 <ol type="1">
@@ -3434,12 +3610,44 @@ Sample day 1: Prices=[107.49080238 119.01428613 114.63987884 111.97316968]
 <li>Use <code>np.argmin</code> to locate the index of the minimum value in an array</li>
 <li>Exclude the capital itself to avoid trivial zero values in the results.</li>
 </ol>
+<div id="48813071" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>Closest capital city is: Ottawa-Gatineau
+Coordinates of the closest capital city are: [ 45.4166 -75.698 ]</code></pre>
+</div>
+</div>
 <p>Task 2: Use NumPy to:</p>
 <ol type="1">
 <li><p>Print the names of the countries of the top 10 capital cities closest to the US capital - Washington DC.</p></li>
 <li><p>Create and print a NumPy array containing the coordinates of the top 10 cities.</p></li>
 </ol>
 <p><strong>Hint:</strong> Use the <em>concatenate()</em> function from the <em>NumPy</em> library to stack the coordinates of the top 10 cities.</p>
+<div id="3af344b1" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 10 countries closest to Washington DC are:
+ Canada
+Bahamas
+Bermuda
+Cuba
+Turks and Caicos Islands
+Cayman Islands
+Haiti
+Jamaica
+Dominican Republic
+Saint Pierre and Miquelon
+Coordinates of the top 10 cities closest to US are: 
+ [[ 45.4166 -75.698 ]
+ [ 25.0582 -77.3431]
+ [ 32.2915 -64.778 ]
+ [ 23.1195 -82.3785]
+ [ 21.4612 -71.1419]
+ [ 19.2866 -81.3744]
+ [ 18.5392 -72.335 ]
+ [ 17.997  -76.7936]
+ [ 18.4896 -69.9018]
+ [ 46.7738 -56.1815]]</code></pre>
+</div>
+</div>
 
 
 </section>
