@@ -3704,13 +3704,26 @@ Sample day 1: Prices=[107.49080238 119.01428613 114.63987884 111.97316968]
 <p><strong>Data:</strong> <code>country-capital-lat-long-population.csv</code></p>
 <p><strong>Task:</strong><br>
 Use NumPy to print the <strong>name</strong> and <strong>coordinates</strong> of the capital city <strong>closest</strong> to the U.S. capital, <strong>Washington, D.C.</strong> (exclude Washington, D.C. itself).</p>
-<p><strong>Notes</strong> 1. The <strong>Country Name</strong> for the U.S. is <strong>“United States of America”</strong> in the dataset. 2. “Closeness” is measured by <strong>Euclidean distance</strong> computed on the latitude/longitude pairs (for this exercise). 3. <strong>Exclude</strong> the U.S. capital row to avoid the trivial zero distance.</p>
-<p><strong>Hints</strong> 1. Use <code>DataFrame.to_numpy()</code> to convert columns to NumPy arrays.<br>
-2. Use <strong>broadcasting</strong> to compute euclidean distances from Washington, D.C. to all other capitals.<br>
-3. Use <code>np.argmin</code> to get the index of the <strong>minimum</strong> distance (closest capital).<br>
-4. Use <code>np.argsort()</code> to get the <strong>indices of the 10 smallest distances</strong> (nearest capitals) and index back into the DataFrame for names/coordinates.<br>
-5. Use <code>np.argsort()</code> to get the <strong>indices of the 10 largest distances</strong> (farthest capitals) similarly.<br>
-6. Remember to <strong>mask out</strong> or drop the Washington, D.C. row before computing distances.</p>
+<p><strong>Notes</strong></p>
+<ol type="1">
+<li>The <strong>Country Name</strong> for the U.S. is <strong>“United States of America”</strong> in the dataset.</li>
+<li>“Closeness” is measured by <strong>Euclidean distance</strong> computed on the latitude/longitude pairs (for this exercise).</li>
+<li><strong>Exclude</strong> the U.S. capital row to avoid the trivial zero distance.</li>
+</ol>
+<p><strong>Hints</strong></p>
+<ol type="1">
+<li>Use <code>DataFrame.to_numpy()</code> to convert columns to NumPy arrays.<br>
+</li>
+<li>Use <strong>broadcasting</strong> to compute euclidean distances from Washington, D.C. to all other capitals.<br>
+</li>
+<li>Use <code>np.argmin</code> to get the index of the <strong>minimum</strong> distance (closest capital).<br>
+</li>
+<li>Use <code>np.argsort()</code> to get the <strong>indices of the 10 smallest distances</strong> (nearest capitals) and index back into the DataFrame for names/coordinates.<br>
+</li>
+<li>Use <code>np.argsort()</code> to get the <strong>indices of the 10 largest distances</strong> (farthest capitals) similarly.<br>
+</li>
+<li>Remember to <strong>mask out</strong> or drop the Washington, D.C. row before computing distances.</li>
+</ol>
 <div id="48813071" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-stdout">
 <pre><code>Closest capital city is: Ottawa-Gatineau
@@ -3863,9 +3876,24 @@ Top 10 closest capital cities to Washington DC are:
 </section>
 <section id="bonus-task-top-10-nearest-farthest-capitals-from-washington-d.c.-haversine" class="level3" data-number="9.11.2">
 <h3 data-number="9.11.2" class="anchored" data-anchor-id="bonus-task-top-10-nearest-farthest-capitals-from-washington-d.c.-haversine"><span class="header-section-number">9.11.2</span> ⭐ Bonus Task: Top 10 Nearest &amp; Farthest Capitals from Washington, D.C. (Haversine)</h3>
-<p>Using the <strong>haversine</strong> (great-circle) distance, find: - The <strong>top 10 closest</strong> capital cities to <strong>Washington, D.C.</strong> - The <strong>top 10 farthest</strong> capital cities from <strong>Washington, D.C.</strong></p>
-<p><strong>Notes</strong> - Use lat/lon in <strong>degrees</strong> (your haversine function should convert to <strong>radians</strong> internally). - Exclude <strong>Washington, D.C.</strong> itself from the results. - Handle ties deterministically (e.g., <code>kind="stable"</code> in <code>argsort</code> if needed).</p>
-<p><strong>Hints</strong> - Compute distances from D.C. to all capitals → <code>dists</code> - <strong>Closest 10:</strong> <code>idx_close = np.argsort(dists, kind="stable")[:10]</code> - <strong>Farthest 10:</strong> <code>idx_far = np.argsort(dists, kind="stable")[-10:][::-1]</code> - Use those indices to pull <strong>city names</strong> and <strong>coordinates</strong> from your DataFrame.</p>
+<p>Using the <strong>haversine</strong> (great-circle) distance, find:</p>
+<ul>
+<li>The <strong>top 10 closest</strong> capital cities to <strong>Washington, D.C.</strong></li>
+<li>The <strong>top 10 farthest</strong> capital cities from <strong>Washington, D.C.</strong></li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul>
+<li>Use lat/lon in <strong>degrees</strong> (your haversine function should convert to <strong>radians</strong> internally).</li>
+<li>Exclude <strong>Washington, D.C.</strong> itself from the results.</li>
+<li>Handle ties deterministically (e.g., <code>kind="stable"</code> in <code>argsort</code> if needed).</li>
+</ul>
+<p><strong>Hints</strong></p>
+<ul>
+<li>Compute distances from D.C. to all capitals → <code>dists</code></li>
+<li><strong>Closest 10:</strong> <code>idx_close = np.argsort(dists, kind="stable")[:10]</code></li>
+<li><strong>Farthest 10:</strong> <code>idx_far = np.argsort(dists, kind="stable")[-10:][::-1]</code></li>
+<li>Use those indices to pull <strong>city names</strong> and <strong>coordinates</strong> from your DataFrame.</li>
+</ul>
 <blockquote class="blockquote">
 <p>🔎 Why haversine? It computes <strong>real geodesic distance on a sphere</strong>, which is more accurate than Euclidean distance on raw lat/lon.</p>
 </blockquote>
