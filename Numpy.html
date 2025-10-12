@@ -322,10 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">9.1</span> Learning Objectives</a>
-  <ul>
-  <li><a href="#foundation-skills" id="toc-foundation-skills" class="nav-link" data-scroll-target="#foundation-skills"><span class="header-section-number">9.1.1</span> Foundation Skills</a></li>
-  </ul></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">9.1</span> Learning Objectives</a></li>
   <li><a href="#getting-started-with-numpy" id="toc-getting-started-with-numpy" class="nav-link" data-scroll-target="#getting-started-with-numpy"><span class="header-section-number">9.2</span> Getting Started with NumPy</a></li>
   <li><a href="#why-numpy" id="toc-why-numpy" class="nav-link" data-scroll-target="#why-numpy"><span class="header-section-number">9.3</span> Why NumPy?</a>
   <ul>
@@ -422,7 +419,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#concatenation-quick-reference" id="toc-concatenation-quick-reference" class="nav-link" data-scroll-target="#concatenation-quick-reference"><span class="header-section-number">9.10.5</span> Concatenation Quick Reference</a></li>
   <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions"><span class="header-section-number">9.10.6</span> Common Pitfalls and Solutions</a></li>
-  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices"><span class="header-section-number">9.10.7</span> Best Practices</a></li>
   </ul></li>
   <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">9.11</span> Independent Practice</a>
   <ul>
@@ -461,17 +457,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="learning-objectives" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">9.1</span> Learning Objectives</h2>
 <p>By the end of this tutorial, you will be able to:</p>
-<section id="foundation-skills" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="foundation-skills"><span class="header-section-number">9.1.1</span> Foundation Skills</h3>
 <ul>
-<li><strong>Create NumPy arrays</strong> using various methods (<code>np.array()</code>, <code>np.zeros()</code>, <code>np.arange()</code>, etc.)</li>
-<li><strong>Understand array attributes</strong> (<code>shape</code>, <code>dtype</code>, <code>size</code>, <code>ndim</code>) and their importance</li>
-<li><strong>Master indexing and slicing</strong> for extracting and modifying array elements</li>
-<li><strong>Implement efficient array reshaping</strong> and concatenation techniques<br>
+<li><strong>Create NumPy arrays</strong> using various functions (<code>np.array()</code>, <code>np.zeros()</code>, <code>np.arange()</code>, etc.)<br>
 </li>
-<li><strong>Choose appropriate data types</strong> to minimize memory usage</li>
+<li><strong>Interpret array attributes</strong> (<code>shape</code>, <code>dtype</code>, <code>size</code>, <code>ndim</code>) and understand their roles in computation<br>
+</li>
+<li><strong>Apply indexing and slicing</strong> to extract and modify array elements<br>
+</li>
+<li><strong>Use conditional selection</strong> for advanced element filtering<br>
+</li>
+<li><strong>Reshape and concatenate arrays efficiently</strong> for flexible data manipulation</li>
 </ul>
-</section>
 </section>
 <section id="getting-started-with-numpy" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="getting-started-with-numpy"><span class="header-section-number">9.2</span> Getting Started with NumPy</h2>
@@ -3416,17 +3412,6 @@ Sample day 1: Prices=[107.49080238 119.01428613 114.63987884 111.97316968]
 </tr>
 </tbody>
 </table>
-</section>
-<section id="best-practices" class="level3" data-number="9.10.7">
-<h3 data-number="9.10.7" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">9.10.7</span> Best Practices</h3>
-<ol type="1">
-<li><strong>Pre-allocate when possible</strong> for better memory efficiency</li>
-<li><strong>Use batch concatenation</strong> instead of iterative concatenation<br>
-</li>
-<li><strong>Choose descriptive functions</strong> (<code>vstack</code>/<code>hstack</code>) over generic <code>concatenate</code> when appropriate</li>
-<li><strong>Check shapes first</strong> with <code>.shape</code> to avoid runtime errors</li>
-<li><strong>Consider memory usage</strong> for large datasets - sometimes lists are better for building, then concatenate once</li>
-</ol>
 </section>
 </section>
 <section id="independent-practice" class="level2" data-number="9.11">
