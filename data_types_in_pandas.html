@@ -449,15 +449,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">8.9.1.3</span> </a></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">8.9.1.4</span> </a></li>
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">8.9.1.5</span> </a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">8.9.1.6</span> </a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">8.9.1.7</span> </a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8.9.1.8</span> </a></li>
   </ul></li>
   <li><a href="#practice-exercise-2" id="toc-practice-exercise-2" class="nav-link" data-scroll-target="#practice-exercise-2"><span class="header-section-number">8.9.2</span> Practice exercise 2</a>
   <ul class="collapse">
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">8.9.2.1</span> </a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">8.9.2.2</span> </a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">8.9.2.3</span> </a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">8.9.2.1</span> </a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">8.9.2.2</span> </a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8.9.2.3</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -4680,15 +4677,183 @@ headquarters      NN                       Noun (singular)      False
 <section id="section" class="level4" data-number="8.9.1.1">
 <h4 data-number="8.9.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">8.9.1.1</span> </h4>
 <p>Read the file <em>STAT303-1 survey for data analysis.csv</em>.</p>
+<div id="cell-83" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>survey_data <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/STAT303-1 survey for data analysis.csv'</span>)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Survey data loaded successfully!"</span>)</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>survey_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>survey_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Survey data loaded successfully!
+Shape: (192, 51)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Timestamp</th>
+<th data-quarto-table-cell-role="th">fav_alcohol</th>
+<th data-quarto-table-cell-role="th">On average (approx.) how many parties a month do you attend during the school year? Enter a whole number (0, 1, 2, 3, 4, ...)</th>
+<th data-quarto-table-cell-role="th">smoke</th>
+<th data-quarto-table-cell-role="th">weed</th>
+<th data-quarto-table-cell-role="th">introvert_extrovert</th>
+<th data-quarto-table-cell-role="th">love_first_sight</th>
+<th data-quarto-table-cell-role="th">learning_style</th>
+<th data-quarto-table-cell-role="th">left_right_brained</th>
+<th data-quarto-table-cell-role="th">personality_type</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">used_python_before</th>
+<th data-quarto-table-cell-role="th">dominant_hand</th>
+<th data-quarto-table-cell-role="th">childhood_in_US</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">region_of_residence</th>
+<th data-quarto-table-cell-role="th">political_affliation</th>
+<th data-quarto-table-cell-role="th">cant_change_math_ability</th>
+<th data-quarto-table-cell-role="th">can_change_math_ability</th>
+<th data-quarto-table-cell-role="th">math_is_genetic</th>
+<th data-quarto-table-cell-role="th">much_effort_is_lack_of_talent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022/09/13 1:43:34 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Introvert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>INFJ</td>
+<td>...</td>
+<td>Yes</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022/09/13 5:28:17 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Extrovert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ESFJ</td>
+<td>...</td>
+<td>Yes</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Male</td>
+<td>West</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022/09/13 7:56:38 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3</td>
+<td>No</td>
+<td>Yes</td>
+<td>Introvert</td>
+<td>No</td>
+<td>Kinesthetic (learn best through figuring out h...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ISTJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>No</td>
+<td>Female</td>
+<td>International</td>
+<td>No affiliation</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2022/09/13 10:34:37 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>12</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ENFJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Southeast</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2022/09/14 4:46:19 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>Yes</td>
+<td>Reading/Writing (learn best through words ofte...</td>
+<td>Right-brained (creative, art, imaginative, int...</td>
+<td>ENTJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 51 columns</p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-1" class="level4" data-number="8.9.1.2">
 <h4 data-number="8.9.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">8.9.1.2</span> </h4>
 <p>Rename all the columns of the data, except the first two columns, with the shorter names in the list <code>new_col_names</code> given below. The order of column names in the list is the same as the order in which the columns are to be renamed starting with the third column from the left.</p>
-<div id="cell-85" class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-85" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>new_col_names <span class="op">=</span> [<span class="st">'parties_per_month'</span>, <span class="st">'do_you_smoke'</span>, <span class="st">'weed'</span>, <span class="st">'are_you_an_introvert_or_extrovert'</span>, <span class="st">'love_first_sight'</span>, <span class="st">'learning_style'</span>, <span class="st">'left_right_brained'</span>, <span class="st">'personality_type'</span>, <span class="st">'social_media'</span>, <span class="st">'num_insta_followers'</span>, <span class="st">'streaming_platforms'</span>, <span class="st">'expected_marriage_age'</span>, <span class="st">'expected_starting_salary'</span>, <span class="st">'fav_sport'</span>, <span class="st">'minutes_ex_per_week'</span>, <span class="st">'sleep_hours_per_day'</span>, <span class="st">'how_happy'</span>, <span class="st">'farthest_distance_travelled'</span>, <span class="st">'fav_number'</span>, <span class="st">'fav_letter'</span>, <span class="st">'internet_hours_per_day'</span>, <span class="st">'only_child'</span>, <span class="st">'birthdate_odd_even'</span>, <span class="st">'birth_month'</span>, <span class="st">'fav_season'</span>, <span class="st">'living_location_on_campus'</span>, <span class="st">'major'</span>, <span class="st">'num_majors_minors'</span>, <span class="st">'high_school_GPA'</span>, <span class="st">'NU_GPA'</span>, <span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'height_father'</span>, <span class="st">'height_mother'</span>, <span class="st">'school_year'</span>, <span class="st">'procrastinator'</span>, <span class="st">'num_clubs'</span>, <span class="st">'student_athlete'</span>, <span class="st">'AP_stats'</span>, <span class="st">'used_python_before'</span>, <span class="st">'dominant_hand'</span>, <span class="st">'childhood_in_US'</span>, <span class="st">'gender'</span>, <span class="st">'region_of_residence'</span>, <span class="st">'political_affliation'</span>, <span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-86" class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># survey_data.columns = list(survey_data.columns[0:2])+new_col_names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-86" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>survey_data.columns <span class="op">=</span> <span class="bu">list</span>(survey_data.columns[<span class="dv">0</span>:<span class="dv">2</span>])<span class="op">+</span>new_col_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-2" class="level4" data-number="8.9.1.3">
@@ -4699,26 +4864,198 @@ headquarters      NN                       Noun (singular)      False
 <li><p>Rename <code>are_you_an_introvert_or_extrovert</code> to <code>introvert_extrovert</code>.</p></li>
 </ol>
 <p><strong>Hint:</strong> Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html">rename()</a></p>
+<div id="cell-88" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename specific columns using rename function</span></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>survey_data <span class="op">=</span> survey_data.rename(columns<span class="op">=</span>{</span>
+<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'do_you_smoke'</span>: <span class="st">'smoke'</span>,</span>
+<span id="cb90-7"><a href="#cb90-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-8"><a href="#cb90-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'are_you_an_introvert_or_extrovert'</span>: <span class="st">'introvert_extrovert'</span>})</span>
+<span id="cb90-9"><a href="#cb90-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-10"><a href="#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Updated columns: </span><span class="sc">{</span><span class="bu">list</span>(survey_data.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb90-11"><a href="#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Specific columns renamed successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Updated columns: ['Timestamp', 'fav_alcohol', 'parties_per_month', 'smoke', 'weed', 'introvert_extrovert', 'love_first_sight', 'learning_style', 'left_right_brained', 'personality_type', 'social_media', 'num_insta_followers', 'streaming_platforms', 'expected_marriage_age', 'expected_starting_salary', 'fav_sport', 'minutes_ex_per_week', 'sleep_hours_per_day', 'how_happy', 'farthest_distance_travelled', 'fav_number', 'fav_letter', 'internet_hours_per_day', 'only_child', 'birthdate_odd_even', 'birth_month', 'fav_season', 'living_location_on_campus', 'major', 'num_majors_minors', 'high_school_GPA', 'NU_GPA', 'age', 'height', 'height_father', 'height_mother', 'school_year', 'procrastinator', 'num_clubs', 'student_athlete', 'AP_stats', 'used_python_before', 'dominant_hand', 'childhood_in_US', 'gender', 'region_of_residence', 'political_affliation', 'cant_change_math_ability', 'can_change_math_ability', 'math_is_genetic', 'much_effort_is_lack_of_talent']
+Specific columns renamed successfully!</code></pre>
+</div>
+</div>
 </section>
 <section id="section-3" class="level4" data-number="8.9.1.4">
 <h4 data-number="8.9.1.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">8.9.1.4</span> </h4>
 <p>Examine the column <code>num_insta_followers</code>. Some numbers in the column contain a comma(<code>,</code>) or a tilde(<code>~</code>). Remove both these characters from the numbers in the column.</p>
 <p><strong>Hint:</strong> You may use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html">str.replace()</a> of the Pandas Series class.</p>
+<div id="cell-90" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>survey_data_insta <span class="op">=</span> survey_data.copy()</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>survey_data_insta[<span class="st">'num_insta_followers'</span>]<span class="op">=</span>survey_data_insta[<span class="st">'num_insta_followers'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>,<span class="st">''</span>)</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>survey_data_insta[<span class="st">'num_insta_followers'</span>]<span class="op">=</span>survey_data_insta[<span class="st">'num_insta_followers'</span>].<span class="bu">str</span>.replace(<span class="st">'~'</span>,<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-91" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>survey_data_insta.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Timestamp</th>
+<th data-quarto-table-cell-role="th">fav_alcohol</th>
+<th data-quarto-table-cell-role="th">parties_per_month</th>
+<th data-quarto-table-cell-role="th">smoke</th>
+<th data-quarto-table-cell-role="th">weed</th>
+<th data-quarto-table-cell-role="th">introvert_extrovert</th>
+<th data-quarto-table-cell-role="th">love_first_sight</th>
+<th data-quarto-table-cell-role="th">learning_style</th>
+<th data-quarto-table-cell-role="th">left_right_brained</th>
+<th data-quarto-table-cell-role="th">personality_type</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">used_python_before</th>
+<th data-quarto-table-cell-role="th">dominant_hand</th>
+<th data-quarto-table-cell-role="th">childhood_in_US</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">region_of_residence</th>
+<th data-quarto-table-cell-role="th">political_affliation</th>
+<th data-quarto-table-cell-role="th">cant_change_math_ability</th>
+<th data-quarto-table-cell-role="th">can_change_math_ability</th>
+<th data-quarto-table-cell-role="th">math_is_genetic</th>
+<th data-quarto-table-cell-role="th">much_effort_is_lack_of_talent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022/09/13 1:43:34 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Introvert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>INFJ</td>
+<td>...</td>
+<td>Yes</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022/09/13 5:28:17 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3</td>
+<td>No</td>
+<td>Occasionally</td>
+<td>Extrovert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ESFJ</td>
+<td>...</td>
+<td>Yes</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Male</td>
+<td>West</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022/09/13 7:56:38 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>3</td>
+<td>No</td>
+<td>Yes</td>
+<td>Introvert</td>
+<td>No</td>
+<td>Kinesthetic (learn best through figuring out h...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ISTJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>No</td>
+<td>Female</td>
+<td>International</td>
+<td>No affiliation</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2022/09/13 10:34:37 pm GMT-5</td>
+<td>Hard liquor/Mixed drink</td>
+<td>12</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>No</td>
+<td>Visual (learn best through images or graphic o...</td>
+<td>Left-brained (logic, science, critical thinkin...</td>
+<td>ENFJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Southeast</td>
+<td>Democrat</td>
+<td>Disagree</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2022/09/14 4:46:19 pm GMT-5</td>
+<td>I don't drink</td>
+<td>1</td>
+<td>No</td>
+<td>No</td>
+<td>Extrovert</td>
+<td>Yes</td>
+<td>Reading/Writing (learn best through words ofte...</td>
+<td>Right-brained (creative, art, imaginative, int...</td>
+<td>ENTJ</td>
+<td>...</td>
+<td>No</td>
+<td>Right</td>
+<td>Yes</td>
+<td>Female</td>
+<td>Northeast</td>
+<td>Democrat</td>
+<td>Agree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+<td>Disagree</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 51 columns</p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-4" class="level4" data-number="8.9.1.5">
 <h4 data-number="8.9.1.5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">8.9.1.5</span> </h4>
-<p>Convert the column <code>num_insta_followers</code> to numeric. Coerce the errors.</p>
-</section>
-<section id="section-5" class="level4" data-number="8.9.1.6">
-<h4 data-number="8.9.1.6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">8.9.1.6</span> </h4>
-<p>What is the mean <code>internet_hours_per_day</code> for the top 46 people in terms of number of instagram followers?</p>
-</section>
-<section id="section-6" class="level4" data-number="8.9.1.7">
-<h4 data-number="8.9.1.7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">8.9.1.7</span> </h4>
-<p>What is the mean <code>internet_hours_per_day</code> for the remaining people?</p>
-</section>
-<section id="section-7" class="level4" data-number="8.9.1.8">
-<h4 data-number="8.9.1.8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">8.9.1.8</span> </h4>
 <p>Use the cleaned dataset where the column <code>num_insta_followers</code> has been updated.</p>
 <p>The last four variables in the dataset are:</p>
 <ol type="1">
@@ -4732,19 +5069,210 @@ headquarters      NN                       Noun (singular)      False
 <ol type="1">
 <li><p>Use the map() function</p></li>
 <li><p>Use the apply() function with the lambda function</p></li>
-<li><p>Use the replace() function</p></li>
 </ol>
-<p>Two of the above methods avoid a <code>for</code>-loop. Which ones?</p>
+<div id="cell-93" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># implement a function to convert the column to numeric, forcing errors to NaN</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the columns to convert</span></span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>columns_to_convert <span class="op">=</span> [<span class="st">'cant_change_math_ability'</span>, <span class="st">'can_change_math_ability'</span>, </span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'math_is_genetic'</span>, <span class="st">'much_effort_is_lack_of_talent'</span>]</span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: Using map() function (avoids for-loop)</span></span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> columns_to_convert:</span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>    survey_data_insta[col] <span class="op">=</span> survey_data_insta[col].<span class="bu">map</span>({<span class="st">'Agree'</span>: <span class="dv">1</span>, <span class="st">'Disagree'</span>: <span class="dv">0</span>})</span>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Method 1: Using map() function"</span>)</span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(survey_data_insta[columns_to_convert].head())</span>
+<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Data types:"</span>)</span>
+<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(survey_data_insta[columns_to_convert].dtypes)</span>
+<span id="cb94-15"><a href="#cb94-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: Using apply() function with lambda (avoids for-loop)</span></span>
+<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let's reload the data to show this method</span></span>
+<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a>survey_data_insta2 <span class="op">=</span> survey_data.copy()</span>
+<span id="cb94-19"><a href="#cb94-19" aria-hidden="true" tabindex="-1"></a>survey_data_insta2[<span class="st">'num_insta_followers'</span>] <span class="op">=</span> survey_data_insta2[<span class="st">'num_insta_followers'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>,<span class="st">''</span>)</span>
+<span id="cb94-20"><a href="#cb94-20" aria-hidden="true" tabindex="-1"></a>survey_data_insta2[<span class="st">'num_insta_followers'</span>] <span class="op">=</span> survey_data_insta2[<span class="st">'num_insta_followers'</span>].<span class="bu">str</span>.replace(<span class="st">'~'</span>,<span class="st">''</span>)</span>
+<span id="cb94-21"><a href="#cb94-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-22"><a href="#cb94-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> columns_to_convert:</span>
+<span id="cb94-23"><a href="#cb94-23" aria-hidden="true" tabindex="-1"></a>    survey_data_insta2[col] <span class="op">=</span> survey_data_insta2[col].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Agree'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb94-24"><a href="#cb94-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-25"><a href="#cb94-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">Method 2: Using apply() with lambda function"</span>)</span>
+<span id="cb94-26"><a href="#cb94-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(survey_data_insta2[columns_to_convert].head())</span>
+<span id="cb94-27"><a href="#cb94-27" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Method 1: Using map() function
+   cant_change_math_ability  can_change_math_ability  math_is_genetic  \
+0                         0                        1                0   
+1                         0                        1                0   
+2                         0                        1                0   
+3                         0                        1                0   
+4                         1                        0                0   
+
+   much_effort_is_lack_of_talent  
+0                              0  
+1                              0  
+2                              0  
+3                              0  
+4                              0  
+
+Data types:
+cant_change_math_ability         int64
+can_change_math_ability          int64
+math_is_genetic                  int64
+much_effort_is_lack_of_talent    int64
+dtype: object
+
+
+Method 2: Using apply() with lambda function
+   cant_change_math_ability  can_change_math_ability  math_is_genetic  \
+0                         0                        1                0   
+1                         0                        1                0   
+2                         0                        1                0   
+3                         0                        1                0   
+4                         1                        0                0   
+
+   much_effort_is_lack_of_talent  
+0                              0  
+1                              0  
+2                              0  
+3                              0  
+4                              0  </code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="practice-exercise-2" class="level3" data-number="8.9.2">
 <h3 data-number="8.9.2" class="anchored" data-anchor-id="practice-exercise-2"><span class="header-section-number">8.9.2</span> Practice exercise 2</h3>
 <p>This exercise will motivate vectorized computations with NumPy. Vectorized computations help perform computations more efficiently, and also make the code concise.</p>
 <p>Read the (1) quantities of roll, bun, cake and bread required by 3 people - Ben, Barbara &amp; Beth, from <em>food_quantity.csv</em>, (2) price of these food items in two shops - Target and Kroger, from <em>price.csv</em>. Find out which shop should each person go to minimize their expenses.</p>
-<section id="section-8" class="level4" data-number="8.9.2.1">
-<h4 data-number="8.9.2.1" class="anchored" data-anchor-id="section-8"><span class="header-section-number">8.9.2.1</span> </h4>
+<div id="cell-95" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>food_df <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/food_quantity.csv'</span>)</span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>food_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Person</th>
+<th data-quarto-table-cell-role="th">roll</th>
+<th data-quarto-table-cell-role="th">bun</th>
+<th data-quarto-table-cell-role="th">cake</th>
+<th data-quarto-table-cell-role="th">bread</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Ben</td>
+<td>6</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Barbara</td>
+<td>3</td>
+<td>6</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Beth</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-96" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>price_df <span class="op">=</span> pd.read_csv(<span class="st">'./datasets/price.csv'</span>)</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>price_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Item</th>
+<th data-quarto-table-cell-role="th">Target</th>
+<th data-quarto-table-cell-role="th">Kroger</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>roll</td>
+<td>1.5</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>bun</td>
+<td>2.0</td>
+<td>2.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>cake</td>
+<td>5.0</td>
+<td>4.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>bread</td>
+<td>16.0</td>
+<td>17.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="section-5" class="level4" data-number="8.9.2.1">
+<h4 data-number="8.9.2.1" class="anchored" data-anchor-id="section-5"><span class="header-section-number">8.9.2.1</span> </h4>
 <p>Compute the expenses of Ben if he prefers to buy all food items from Target</p>
-<div id="cell-102" class="cell" data-execution_count="12">
+<div id="cell-98" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Get Ben's quantities</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>ben_quantities <span class="op">=</span> food_df[food_df[<span class="st">'Person'</span>] <span class="op">==</span> <span class="st">'Ben'</span>].iloc[<span class="dv">0</span>]  <span class="co"># Get Ben's row</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ben's food quantities:"</span>)</span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ben_quantities)</span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Get Target prices</span></span>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a>target_prices <span class="op">=</span> price_df.set_index(<span class="st">'Item'</span>)[<span class="st">'Target'</span>]  <span class="co"># Set Item as index, get Target column</span></span>
+<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Target prices:"</span>)</span>
+<span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(target_prices)</span>
+<span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-14"><a href="#cb98-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Calculate Ben's total expenses at Target</span></span>
+<span id="cb98-15"><a href="#cb98-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply quantities by corresponding Target prices</span></span>
+<span id="cb98-16"><a href="#cb98-16" aria-hidden="true" tabindex="-1"></a>food_items <span class="op">=</span> [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>]</span>
+<span id="cb98-17"><a href="#cb98-17" aria-hidden="true" tabindex="-1"></a>total_expense <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb98-18"><a href="#cb98-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-19"><a href="#cb98-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ben's expense breakdown at Target:"</span>)</span>
+<span id="cb98-20"><a href="#cb98-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> food_items:</span>
+<span id="cb98-21"><a href="#cb98-21" aria-hidden="true" tabindex="-1"></a>    quantity <span class="op">=</span> ben_quantities[item]</span>
+<span id="cb98-22"><a href="#cb98-22" aria-hidden="true" tabindex="-1"></a>    price <span class="op">=</span> target_prices[item]</span>
+<span id="cb98-23"><a href="#cb98-23" aria-hidden="true" tabindex="-1"></a>    expense <span class="op">=</span> quantity <span class="op">*</span> price</span>
+<span id="cb98-24"><a href="#cb98-24" aria-hidden="true" tabindex="-1"></a>    total_expense <span class="op">+=</span> expense</span>
+<span id="cb98-25"><a href="#cb98-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>quantity<span class="sc">}</span><span class="ss"> × $</span><span class="sc">{</span>price<span class="sc">}</span><span class="ss"> = $</span><span class="sc">{</span>expense<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb98-26"><a href="#cb98-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-27"><a href="#cb98-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Ben's total expense at Target: $</span><span class="sc">{</span>total_expense<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ben's food quantities:
 Person    Ben
@@ -4772,10 +5300,64 @@ Ben's total expense at Target: $50.0</code></pre>
 </div>
 </div>
 </section>
-<section id="section-9" class="level4" data-number="8.9.2.2">
-<h4 data-number="8.9.2.2" class="anchored" data-anchor-id="section-9"><span class="header-section-number">8.9.2.2</span> </h4>
+<section id="section-6" class="level4" data-number="8.9.2.2">
+<h4 data-number="8.9.2.2" class="anchored" data-anchor-id="section-6"><span class="header-section-number">8.9.2.2</span> </h4>
 <p>Compute Ben’s total expenses at both Target and Kroger. Which store is cheaper for him?</p>
-<div id="cell-104" class="cell" data-execution_count="14">
+<div id="cell-100" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Get Ben's quantities (reuse from previous calculation)</span></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>ben_quantities <span class="op">=</span> food_df[food_df[<span class="st">'Person'</span>] <span class="op">==</span> <span class="st">'Ben'</span>].iloc[<span class="dv">0</span>]</span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>food_items <span class="op">=</span> [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>]</span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Get prices from both stores</span></span>
+<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>target_prices <span class="op">=</span> price_df.set_index(<span class="st">'Item'</span>)[<span class="st">'Target'</span>]</span>
+<span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a>kroger_prices <span class="op">=</span> price_df.set_index(<span class="st">'Item'</span>)[<span class="st">'Kroger'</span>]</span>
+<span id="cb100-10"><a href="#cb100-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-11"><a href="#cb100-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🛒 BEN'S EXPENSE COMPARISON"</span>)</span>
+<span id="cb100-12"><a href="#cb100-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb100-13"><a href="#cb100-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ben's quantities:"</span>, [ben_quantities[item] <span class="cf">for</span> item <span class="kw">in</span> food_items])</span>
+<span id="cb100-14"><a href="#cb100-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb100-15"><a href="#cb100-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-16"><a href="#cb100-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Calculate expenses at both stores</span></span>
+<span id="cb100-17"><a href="#cb100-17" aria-hidden="true" tabindex="-1"></a>target_total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb100-18"><a href="#cb100-18" aria-hidden="true" tabindex="-1"></a>kroger_total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb100-19"><a href="#cb100-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-20"><a href="#cb100-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Detailed breakdown:"</span>)</span>
+<span id="cb100-21"><a href="#cb100-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'Item'</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Qty'</span><span class="sc">:&lt;4}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Target'</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Kroger'</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Target $'</span><span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Kroger $'</span><span class="sc">:&lt;10}</span><span class="ss">"</span>)</span>
+<span id="cb100-22"><a href="#cb100-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb100-23"><a href="#cb100-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-24"><a href="#cb100-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> food_items:</span>
+<span id="cb100-25"><a href="#cb100-25" aria-hidden="true" tabindex="-1"></a>    quantity <span class="op">=</span> ben_quantities[item]</span>
+<span id="cb100-26"><a href="#cb100-26" aria-hidden="true" tabindex="-1"></a>    target_price <span class="op">=</span> target_prices[item]</span>
+<span id="cb100-27"><a href="#cb100-27" aria-hidden="true" tabindex="-1"></a>    kroger_price <span class="op">=</span> kroger_prices[item]</span>
+<span id="cb100-28"><a href="#cb100-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb100-29"><a href="#cb100-29" aria-hidden="true" tabindex="-1"></a>    target_expense <span class="op">=</span> quantity <span class="op">*</span> target_price</span>
+<span id="cb100-30"><a href="#cb100-30" aria-hidden="true" tabindex="-1"></a>    kroger_expense <span class="op">=</span> quantity <span class="op">*</span> kroger_price</span>
+<span id="cb100-31"><a href="#cb100-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb100-32"><a href="#cb100-32" aria-hidden="true" tabindex="-1"></a>    target_total <span class="op">+=</span> target_expense</span>
+<span id="cb100-33"><a href="#cb100-33" aria-hidden="true" tabindex="-1"></a>    kroger_total <span class="op">+=</span> kroger_expense</span>
+<span id="cb100-34"><a href="#cb100-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb100-35"><a href="#cb100-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span>quantity<span class="sc">:&lt;4}</span><span class="ss"> $</span><span class="sc">{</span>target_price<span class="sc">:&lt;7}</span><span class="ss"> $</span><span class="sc">{</span>kroger_price<span class="sc">:&lt;7}</span><span class="ss"> $</span><span class="sc">{</span>target_expense<span class="sc">:&lt;9}</span><span class="ss"> $</span><span class="sc">{</span>kroger_expense<span class="sc">:&lt;9}</span><span class="ss">"</span>)</span>
+<span id="cb100-36"><a href="#cb100-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-37"><a href="#cb100-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb100-38"><a href="#cb100-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'TOTAL'</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">''</span><span class="sc">:&lt;4}</span><span class="ss"> </span><span class="sc">{</span><span class="st">''</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">''</span><span class="sc">:&lt;8}</span><span class="ss"> $</span><span class="sc">{</span>target_total<span class="sc">:&lt;9}</span><span class="ss"> $</span><span class="sc">{</span>kroger_total<span class="sc">:&lt;9}</span><span class="ss">"</span>)</span>
+<span id="cb100-39"><a href="#cb100-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-40"><a href="#cb100-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Determine which store is cheaper</span></span>
+<span id="cb100-41"><a href="#cb100-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">💰 COMPARISON RESULTS:"</span>)</span>
+<span id="cb100-42"><a href="#cb100-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ben's total at Target: $</span><span class="sc">{</span>target_total<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb100-43"><a href="#cb100-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ben's total at Kroger: $</span><span class="sc">{</span>kroger_total<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb100-44"><a href="#cb100-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-45"><a href="#cb100-45" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> target_total <span class="op">&lt;</span> kroger_total:</span>
+<span id="cb100-46"><a href="#cb100-46" aria-hidden="true" tabindex="-1"></a>    savings <span class="op">=</span> kroger_total <span class="op">-</span> target_total</span>
+<span id="cb100-47"><a href="#cb100-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"🏆 TARGET is cheaper by $</span><span class="sc">{</span>savings<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb100-48"><a href="#cb100-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ben should shop at TARGET to save money!"</span>)</span>
+<span id="cb100-49"><a href="#cb100-49" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> kroger_total <span class="op">&lt;</span> target_total:</span>
+<span id="cb100-50"><a href="#cb100-50" aria-hidden="true" tabindex="-1"></a>    savings <span class="op">=</span> target_total <span class="op">-</span> kroger_total</span>
+<span id="cb100-51"><a href="#cb100-51" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"🏆 KROGER is cheaper by $</span><span class="sc">{</span>savings<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb100-52"><a href="#cb100-52" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ben should shop at KROGER to save money!"</span>)</span>
+<span id="cb100-53"><a href="#cb100-53" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb100-54"><a href="#cb100-54" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"🤝 Both stores cost the same for Ben!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🛒 BEN'S EXPENSE COMPARISON
 ========================================
@@ -4799,10 +5381,108 @@ Ben should shop at KROGER to save money!</code></pre>
 </div>
 </div>
 </section>
-<section id="section-10" class="level4" data-number="8.9.2.3">
-<h4 data-number="8.9.2.3" class="anchored" data-anchor-id="section-10"><span class="header-section-number">8.9.2.3</span> </h4>
+<section id="section-7" class="level4" data-number="8.9.2.3">
+<h4 data-number="8.9.2.3" class="anchored" data-anchor-id="section-7"><span class="header-section-number">8.9.2.3</span> </h4>
 <p>Compute each person’s total expenses at both Target and Kroger. Which store is cheaper for them?</p>
-<div id="cell-106" class="cell" data-execution_count="15">
+<div id="cell-102" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Set up data</span></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>food_items <span class="op">=</span> [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>]</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>target_prices <span class="op">=</span> price_df.set_index(<span class="st">'Item'</span>)[<span class="st">'Target'</span>]</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>kroger_prices <span class="op">=</span> price_df.set_index(<span class="st">'Item'</span>)[<span class="st">'Kroger'</span>]</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🛒 COMPLETE EXPENSE ANALYSIS FOR ALL PEOPLE"</span>)</span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Food items: </span><span class="sc">{</span>food_items<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Target prices: </span><span class="sc">{</span>target_prices<span class="sc">.</span>values<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb102-12"><a href="#cb102-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Kroger prices: </span><span class="sc">{</span>kroger_prices<span class="sc">.</span>values<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb102-13"><a href="#cb102-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-15"><a href="#cb102-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Calculate expenses for each person</span></span>
+<span id="cb102-16"><a href="#cb102-16" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb102-17"><a href="#cb102-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-18"><a href="#cb102-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, person_row <span class="kw">in</span> food_df.iterrows():</span>
+<span id="cb102-19"><a href="#cb102-19" aria-hidden="true" tabindex="-1"></a>    person_name <span class="op">=</span> person_row[<span class="st">'Person'</span>]</span>
+<span id="cb102-20"><a href="#cb102-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-21"><a href="#cb102-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate total expenses at both stores</span></span>
+<span id="cb102-22"><a href="#cb102-22" aria-hidden="true" tabindex="-1"></a>    target_total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb102-23"><a href="#cb102-23" aria-hidden="true" tabindex="-1"></a>    kroger_total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb102-24"><a href="#cb102-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-25"><a href="#cb102-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"👤 </span><span class="sc">{</span>person_name<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">'S ANALYSIS:"</span>)</span>
+<span id="cb102-26"><a href="#cb102-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb102-27"><a href="#cb102-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'Item'</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Qty'</span><span class="sc">:&lt;4}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Target $'</span><span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Kroger $'</span><span class="sc">:&lt;10}</span><span class="ss">"</span>)</span>
+<span id="cb102-28"><a href="#cb102-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb102-29"><a href="#cb102-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-30"><a href="#cb102-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> food_items:</span>
+<span id="cb102-31"><a href="#cb102-31" aria-hidden="true" tabindex="-1"></a>        quantity <span class="op">=</span> person_row[item]</span>
+<span id="cb102-32"><a href="#cb102-32" aria-hidden="true" tabindex="-1"></a>        target_expense <span class="op">=</span> quantity <span class="op">*</span> target_prices[item]</span>
+<span id="cb102-33"><a href="#cb102-33" aria-hidden="true" tabindex="-1"></a>        kroger_expense <span class="op">=</span> quantity <span class="op">*</span> kroger_prices[item]</span>
+<span id="cb102-34"><a href="#cb102-34" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb102-35"><a href="#cb102-35" aria-hidden="true" tabindex="-1"></a>        target_total <span class="op">+=</span> target_expense</span>
+<span id="cb102-36"><a href="#cb102-36" aria-hidden="true" tabindex="-1"></a>        kroger_total <span class="op">+=</span> kroger_expense</span>
+<span id="cb102-37"><a href="#cb102-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb102-38"><a href="#cb102-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span>quantity<span class="sc">:&lt;4}</span><span class="ss"> $</span><span class="sc">{</span>target_expense<span class="sc">:&lt;9.2f}</span><span class="ss"> $</span><span class="sc">{</span>kroger_expense<span class="sc">:&lt;9.2f}</span><span class="ss">"</span>)</span>
+<span id="cb102-39"><a href="#cb102-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-40"><a href="#cb102-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb102-41"><a href="#cb102-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'TOTAL'</span><span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span><span class="st">''</span><span class="sc">:&lt;4}</span><span class="ss"> $</span><span class="sc">{</span>target_total<span class="sc">:&lt;9.2f}</span><span class="ss"> $</span><span class="sc">{</span>kroger_total<span class="sc">:&lt;9.2f}</span><span class="ss">"</span>)</span>
+<span id="cb102-42"><a href="#cb102-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-43"><a href="#cb102-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Determine cheaper store</span></span>
+<span id="cb102-44"><a href="#cb102-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> target_total <span class="op">&lt;</span> kroger_total:</span>
+<span id="cb102-45"><a href="#cb102-45" aria-hidden="true" tabindex="-1"></a>        cheaper_store <span class="op">=</span> <span class="st">"TARGET"</span></span>
+<span id="cb102-46"><a href="#cb102-46" aria-hidden="true" tabindex="-1"></a>        savings <span class="op">=</span> kroger_total <span class="op">-</span> target_total</span>
+<span id="cb102-47"><a href="#cb102-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"🏆 </span><span class="sc">{</span>cheaper_store<span class="sc">}</span><span class="ss"> is cheaper by $</span><span class="sc">{</span>savings<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb102-48"><a href="#cb102-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> kroger_total <span class="op">&lt;</span> target_total:</span>
+<span id="cb102-49"><a href="#cb102-49" aria-hidden="true" tabindex="-1"></a>        cheaper_store <span class="op">=</span> <span class="st">"KROGER"</span></span>
+<span id="cb102-50"><a href="#cb102-50" aria-hidden="true" tabindex="-1"></a>        savings <span class="op">=</span> target_total <span class="op">-</span> kroger_total</span>
+<span id="cb102-51"><a href="#cb102-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"🏆 </span><span class="sc">{</span>cheaper_store<span class="sc">}</span><span class="ss"> is cheaper by $</span><span class="sc">{</span>savings<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb102-52"><a href="#cb102-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb102-53"><a href="#cb102-53" aria-hidden="true" tabindex="-1"></a>        cheaper_store <span class="op">=</span> <span class="st">"TIE"</span></span>
+<span id="cb102-54"><a href="#cb102-54" aria-hidden="true" tabindex="-1"></a>        savings <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb102-55"><a href="#cb102-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"🤝 Both stores cost the same!"</span>)</span>
+<span id="cb102-56"><a href="#cb102-56" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-57"><a href="#cb102-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store results</span></span>
+<span id="cb102-58"><a href="#cb102-58" aria-hidden="true" tabindex="-1"></a>    results.append({</span>
+<span id="cb102-59"><a href="#cb102-59" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Person'</span>: person_name,</span>
+<span id="cb102-60"><a href="#cb102-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Target_Total'</span>: target_total,</span>
+<span id="cb102-61"><a href="#cb102-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Kroger_Total'</span>: kroger_total,</span>
+<span id="cb102-62"><a href="#cb102-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Cheaper_Store'</span>: cheaper_store,</span>
+<span id="cb102-63"><a href="#cb102-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Savings'</span>: savings</span>
+<span id="cb102-64"><a href="#cb102-64" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb102-65"><a href="#cb102-65" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-66"><a href="#cb102-66" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb102-67"><a href="#cb102-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-68"><a href="#cb102-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Create summary DataFrame</span></span>
+<span id="cb102-69"><a href="#cb102-69" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb102-70"><a href="#cb102-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-71"><a href="#cb102-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 SUMMARY TABLE:"</span>)</span>
+<span id="cb102-72"><a href="#cb102-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb102-73"><a href="#cb102-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_df.to_string(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb102-74"><a href="#cb102-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-75"><a href="#cb102-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> FINAL RECOMMENDATIONS:"</span>)</span>
+<span id="cb102-76"><a href="#cb102-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb102-77"><a href="#cb102-77" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> results_df.iterrows():</span>
+<span id="cb102-78"><a href="#cb102-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'Cheaper_Store'</span>] <span class="op">==</span> <span class="st">'TIE'</span>:</span>
+<span id="cb102-79"><a href="#cb102-79" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"• </span><span class="sc">{</span>row[<span class="st">'Person'</span>]<span class="sc">}</span><span class="ss">: Can shop at either store (same cost)"</span>)</span>
+<span id="cb102-80"><a href="#cb102-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb102-81"><a href="#cb102-81" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"• </span><span class="sc">{</span>row[<span class="st">'Person'</span>]<span class="sc">}</span><span class="ss">: Shop at </span><span class="sc">{</span>row[<span class="st">'Cheaper_Store'</span>]<span class="sc">}</span><span class="ss"> to save $</span><span class="sc">{</span>row[<span class="st">'Savings'</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb102-82"><a href="#cb102-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-83"><a href="#cb102-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Additional insights</span></span>
+<span id="cb102-84"><a href="#cb102-84" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> ADDITIONAL INSIGHTS:"</span>)</span>
+<span id="cb102-85"><a href="#cb102-85" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">25</span>)</span>
+<span id="cb102-86"><a href="#cb102-86" aria-hidden="true" tabindex="-1"></a>target_shoppers <span class="op">=</span> results_df[results_df[<span class="st">'Cheaper_Store'</span>] <span class="op">==</span> <span class="st">'TARGET'</span>][<span class="st">'Person'</span>].tolist()</span>
+<span id="cb102-87"><a href="#cb102-87" aria-hidden="true" tabindex="-1"></a>kroger_shoppers <span class="op">=</span> results_df[results_df[<span class="st">'Cheaper_Store'</span>] <span class="op">==</span> <span class="st">'KROGER'</span>][<span class="st">'Person'</span>].tolist()</span>
+<span id="cb102-88"><a href="#cb102-88" aria-hidden="true" tabindex="-1"></a>tie_shoppers <span class="op">=</span> results_df[results_df[<span class="st">'Cheaper_Store'</span>] <span class="op">==</span> <span class="st">'TIE'</span>][<span class="st">'Person'</span>].tolist()</span>
+<span id="cb102-89"><a href="#cb102-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-90"><a href="#cb102-90" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> target_shoppers:</span>
+<span id="cb102-91"><a href="#cb102-91" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Target is better for: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(target_shoppers)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb102-92"><a href="#cb102-92" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> kroger_shoppers:</span>
+<span id="cb102-93"><a href="#cb102-93" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Kroger is better for: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(kroger_shoppers)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb102-94"><a href="#cb102-94" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> tie_shoppers:</span>
+<span id="cb102-95"><a href="#cb102-95" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"No difference for: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(tie_shoppers)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb102-96"><a href="#cb102-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-97"><a href="#cb102-97" aria-hidden="true" tabindex="-1"></a>total_savings <span class="op">=</span> results_df[<span class="st">'Savings'</span>].<span class="bu">sum</span>()</span>
+<span id="cb102-98"><a href="#cb102-98" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total potential savings if everyone shops optimally: $</span><span class="sc">{</span>total_savings<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🛒 COMPLETE EXPENSE ANALYSIS FOR ALL PEOPLE
 ============================================================
