@@ -334,11 +334,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">10.1</span> Learning Objectives</a></li>
   <li><a href="#vectorization-in-numpy" id="toc-vectorization-in-numpy" class="nav-link" data-scroll-target="#vectorization-in-numpy"><span class="header-section-number">10.2</span> Vectorization in NumPy</a>
   <ul>
-  <li><a href="#why-vectorization-matters" id="toc-why-vectorization-matters" class="nav-link" data-scroll-target="#why-vectorization-matters"><span class="header-section-number">10.2.1</span> Why Vectorization Matters</a></li>
-  <li><a href="#performance-comparison-numpy-vectorization-vs-python-loops" id="toc-performance-comparison-numpy-vectorization-vs-python-loops" class="nav-link" data-scroll-target="#performance-comparison-numpy-vectorization-vs-python-loops"><span class="header-section-number">10.2.2</span> Performance Comparison: NumPy Vectorization Vs Python Loops</a>
+  <li><a href="#why-vectorization-matters" id="toc-why-vectorization-matters" class="nav-link" data-scroll-target="#why-vectorization-matters"><span class="header-section-number">10.2.1</span> Why Vectorization Matters</a>
   <ul class="collapse">
-  <li><a href="#scenario-1-basic-mathematical-operations" id="toc-scenario-1-basic-mathematical-operations" class="nav-link" data-scroll-target="#scenario-1-basic-mathematical-operations"><span class="header-section-number">10.2.2.1</span> Scenario 1: Basic Mathematical Operations</a></li>
-  <li><a href="#scenario-2-complex-mathematical-operations" id="toc-scenario-2-complex-mathematical-operations" class="nav-link" data-scroll-target="#scenario-2-complex-mathematical-operations"><span class="header-section-number">10.2.2.2</span> Scenario 2: Complex Mathematical Operations</a></li>
+  <li><a href="#performance-comparison-numpy-vectorization-vs.-python-loops" id="toc-performance-comparison-numpy-vectorization-vs.-python-loops" class="nav-link" data-scroll-target="#performance-comparison-numpy-vectorization-vs.-python-loops"><span class="header-section-number">10.2.1.1</span> Performance Comparison: NumPy Vectorization Vs. Python Loops</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#vectorized-operations-in-numpy" id="toc-vectorized-operations-in-numpy" class="nav-link" data-scroll-target="#vectorized-operations-in-numpy"><span class="header-section-number">10.3</span> Vectorized Operations in NumPy</a>
@@ -357,30 +355,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#converting-between-numpy-arrays-and-pandas-dataframes" id="toc-converting-between-numpy-arrays-and-pandas-dataframes" class="nav-link" data-scroll-target="#converting-between-numpy-arrays-and-pandas-dataframes"><span class="header-section-number">10.4</span> Converting Between NumPy Arrays and Pandas DataFrames</a>
   <ul>
-  <li><a href="#why-conversion-matters" id="toc-why-conversion-matters" class="nav-link" data-scroll-target="#why-conversion-matters"><span class="header-section-number">10.4.1</span> Why Conversion Matters</a></li>
-  <li><a href="#decision-framework-when-to-use-which-library" id="toc-decision-framework-when-to-use-which-library" class="nav-link" data-scroll-target="#decision-framework-when-to-use-which-library"><span class="header-section-number">10.4.2</span> Decision Framework: When to Use Which Library</a>
+  <li><a href="#decision-framework-when-to-use-which-library" id="toc-decision-framework-when-to-use-which-library" class="nav-link" data-scroll-target="#decision-framework-when-to-use-which-library"><span class="header-section-number">10.4.1</span> Decision Framework: When to Use Which Library</a>
   <ul class="collapse">
-  <li><a href="#stay-in-pandas-when-you-can" id="toc-stay-in-pandas-when-you-can" class="nav-link" data-scroll-target="#stay-in-pandas-when-you-can"><span class="header-section-number">10.4.2.1</span> ✅ Stay in Pandas When You Can</a></li>
-  <li><a href="#convert-to-numpy-when-you-must" id="toc-convert-to-numpy-when-you-must" class="nav-link" data-scroll-target="#convert-to-numpy-when-you-must"><span class="header-section-number">10.4.2.2</span> Convert to NumPy When You Must</a></li>
-  <li><a href="#quick-decision-guide" id="toc-quick-decision-guide" class="nav-link" data-scroll-target="#quick-decision-guide"><span class="header-section-number">10.4.2.3</span> Quick Decision Guide</a></li>
+  <li><a href="#stay-in-pandas-for-vectorized-operations" id="toc-stay-in-pandas-for-vectorized-operations" class="nav-link" data-scroll-target="#stay-in-pandas-for-vectorized-operations"><span class="header-section-number">10.4.1.1</span> Stay in Pandas for Vectorized Operations</a></li>
+  <li><a href="#convert-to-numpy-when-you-must" id="toc-convert-to-numpy-when-you-must" class="nav-link" data-scroll-target="#convert-to-numpy-when-you-must"><span class="header-section-number">10.4.1.2</span> Convert to NumPy When You Must</a></li>
+  <li><a href="#quick-decision-guide" id="toc-quick-decision-guide" class="nav-link" data-scroll-target="#quick-decision-guide"><span class="header-section-number">10.4.1.3</span> Quick Decision Guide</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#conversion-methods-pandas-numpy" id="toc-conversion-methods-pandas-numpy" class="nav-link" data-scroll-target="#conversion-methods-pandas-numpy"><span class="header-section-number">10.5</span> Conversion Methods: Pandas ↔︎ NumPy</a>
   <ul>
   <li><a href="#the-two-way-street" id="toc-the-two-way-street" class="nav-link" data-scroll-target="#the-two-way-street"><span class="header-section-number">10.5.1</span> The Two-Way Street</a></li>
-  <li><a href="#pandas-dataframe-numpy-array" id="toc-pandas-dataframe-numpy-array" class="nav-link" data-scroll-target="#pandas-dataframe-numpy-array"><span class="header-section-number">10.5.2</span> Pandas DataFrame → NumPy Array</a>
+  <li><a href="#save-restore-metadata-manually" id="toc-save-restore-metadata-manually" class="nav-link" data-scroll-target="#save-restore-metadata-manually"><span class="header-section-number">10.5.2</span> Save &amp; Restore Metadata Manually</a></li>
+  <li><a href="#pandas-dataframe-numpy-array" id="toc-pandas-dataframe-numpy-array" class="nav-link" data-scroll-target="#pandas-dataframe-numpy-array"><span class="header-section-number">10.5.3</span> Pandas DataFrame → NumPy Array</a>
   <ul class="collapse">
-  <li><a href="#conversion-methods-performance" id="toc-conversion-methods-performance" class="nav-link" data-scroll-target="#conversion-methods-performance"><span class="header-section-number">10.5.2.1</span> Conversion Methods &amp; Performance</a></li>
+  <li><a href="#conversion-methods-performance" id="toc-conversion-methods-performance" class="nav-link" data-scroll-target="#conversion-methods-performance"><span class="header-section-number">10.5.3.1</span> Conversion Methods &amp; Performance</a></li>
   </ul></li>
-  <li><a href="#numpy-array-pandas-dataframe" id="toc-numpy-array-pandas-dataframe" class="nav-link" data-scroll-target="#numpy-array-pandas-dataframe"><span class="header-section-number">10.5.3</span> NumPy Array → Pandas DataFrame</a>
+  <li><a href="#numpy-array-pandas-dataframe" id="toc-numpy-array-pandas-dataframe" class="nav-link" data-scroll-target="#numpy-array-pandas-dataframe"><span class="header-section-number">10.5.4</span> NumPy Array → Pandas DataFrame</a>
   <ul class="collapse">
-  <li><a href="#method-1-basic-conversion" id="toc-method-1-basic-conversion" class="nav-link" data-scroll-target="#method-1-basic-conversion"><span class="header-section-number">10.5.3.1</span> Method 1: Basic Conversion</a></li>
-  <li><a href="#method-2-custom-row-and-column-labels" id="toc-method-2-custom-row-and-column-labels" class="nav-link" data-scroll-target="#method-2-custom-row-and-column-labels"><span class="header-section-number">10.5.3.2</span> Method 2: Custom Row and Column Labels</a></li>
-  <li><a href="#key-parameters-options" id="toc-key-parameters-options" class="nav-link" data-scroll-target="#key-parameters-options"><span class="header-section-number">10.5.3.3</span> Key Parameters &amp; Options</a></li>
-  </ul></li>
-  <li><a href="#preserving-metadata-during-conversion" id="toc-preserving-metadata-during-conversion" class="nav-link" data-scroll-target="#preserving-metadata-during-conversion"><span class="header-section-number">10.5.4</span> Preserving Metadata During Conversion</a>
-  <ul class="collapse">
-  <li><a href="#save-restore-metadata-manually" id="toc-save-restore-metadata-manually" class="nav-link" data-scroll-target="#save-restore-metadata-manually"><span class="header-section-number">10.5.4.1</span> Save &amp; Restore Metadata Manually</a></li>
+  <li><a href="#method-1-basic-conversion" id="toc-method-1-basic-conversion" class="nav-link" data-scroll-target="#method-1-basic-conversion"><span class="header-section-number">10.5.4.1</span> Method 1: Basic Conversion</a></li>
+  <li><a href="#method-2-custom-row-and-column-labels" id="toc-method-2-custom-row-and-column-labels" class="nav-link" data-scroll-target="#method-2-custom-row-and-column-labels"><span class="header-section-number">10.5.4.2</span> Method 2: Custom Row and Column Labels</a></li>
+  <li><a href="#key-parameters-options" id="toc-key-parameters-options" class="nav-link" data-scroll-target="#key-parameters-options"><span class="header-section-number">10.5.4.3</span> Key Parameters &amp; Options</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#random-number-generation-in-numpy" id="toc-random-number-generation-in-numpy" class="nav-link" data-scroll-target="#random-number-generation-in-numpy"><span class="header-section-number">10.6</span> Random Number Generation in NumPy</a>
@@ -491,50 +485,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ_9hGutgPqNO9OCLy-vDyJub4iLpgThGZ9A&amp;s.png" class="img-fluid"></p>
 <section id="why-vectorization-matters" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="why-vectorization-matters"><span class="header-section-number">10.2.1</span> Why Vectorization Matters</h3>
-<p><strong>Loop Approach (Slow):</strong></p>
+<p><strong>Vectorized operations</strong> require fewer lines of code and are easier to read compared to Python loops.<br>
+Moreover, since they rely on compiled <strong>C</strong> and <strong>Fortran</strong> libraries that leverage <strong>CPU SIMD instructions</strong> and <strong>efficient cache utilization</strong>, they can be <strong>significantly faster and more scalable</strong> than pure Python loops.</p>
+<p><strong>Loop Approach:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> []</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(array1)):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(array2)):</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        result.append(array1[i] <span class="op">*</span> array2[j] <span class="op">+</span> some_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Vectorized Approach (Fast):</strong></p>
+<p><strong>Vectorized Approach:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> array1[:, np.newaxis] <span class="op">*</span> array2 <span class="op">+</span> some_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Key Benefits:</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Benefit</th>
-<th>Impact</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Speed</strong></td>
-<td>(far) faster than Python loops</td>
-</tr>
-<tr class="even">
-<td><strong>Code clarity</strong></td>
-<td>Fewer lines, easier to read</td>
-</tr>
-<tr class="odd">
-<td><strong>Optimized execution</strong></td>
-<td>Uses compiled C/Fortran libraries</td>
-</tr>
-<tr class="even">
-<td><strong>Parallel processing</strong></td>
-<td>Leverages CPU SIMD instructions</td>
-</tr>
-<tr class="odd">
-<td><strong>Memory efficiency</strong></td>
-<td>Better cache utilization</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="performance-comparison-numpy-vectorization-vs-python-loops" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="performance-comparison-numpy-vectorization-vs-python-loops"><span class="header-section-number">10.2.2</span> Performance Comparison: NumPy Vectorization Vs Python Loops</h3>
+<section id="performance-comparison-numpy-vectorization-vs.-python-loops" class="level4" data-number="10.2.1.1">
+<h4 data-number="10.2.1.1" class="anchored" data-anchor-id="performance-comparison-numpy-vectorization-vs.-python-loops"><span class="header-section-number">10.2.1.1</span> Performance Comparison: NumPy Vectorization Vs. Python Loops</h4>
 <p>Understanding the performance benefits of vectorization is crucial for writing efficient scientific computing code. Let’s compare different scenarios to see when and why vectorization matters.</p>
-<section id="scenario-1-basic-mathematical-operations" class="level4" data-number="10.2.2.1">
-<h4 data-number="10.2.2.1" class="anchored" data-anchor-id="scenario-1-basic-mathematical-operations"><span class="header-section-number">10.2.2.1</span> Scenario 1: Basic Mathematical Operations</h4>
+<section id="scenario-1-basic-mathematical-operations" class="level5" data-number="10.2.1.1.1">
+<h5 data-number="10.2.1.1.1" class="anchored" data-anchor-id="scenario-1-basic-mathematical-operations"><span class="header-section-number">10.2.1.1.1</span> Scenario 1: Basic Mathematical Operations</h5>
 <p><code>np.dot</code> is a vectorized operation in NumPy that performs matrix multiplication or dot product between arrays. It efficiently computes the element-wise multiplications and then sums them up. To better understand its efficiency, let’s first implement the dot product using for loops, and then compare its performance with <code>np.dot</code> to see the benefits of vectorization.</p>
 <div id="a41fddf7" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
@@ -626,8 +590,8 @@ Key Observations:
 </div>
 </div>
 </section>
-<section id="scenario-2-complex-mathematical-operations" class="level4" data-number="10.2.2.2">
-<h4 data-number="10.2.2.2" class="anchored" data-anchor-id="scenario-2-complex-mathematical-operations"><span class="header-section-number">10.2.2.2</span> Scenario 2: Complex Mathematical Operations</h4>
+<section id="scenario-2-complex-mathematical-operations" class="level5" data-number="10.2.1.1.2">
+<h5 data-number="10.2.1.1.2" class="anchored" data-anchor-id="scenario-2-complex-mathematical-operations"><span class="header-section-number">10.2.1.1.2</span> Scenario 2: Complex Mathematical Operations</h5>
 <p>Let’s compare more complex operations that show even greater performance differences:</p>
 <div id="d4461e3b" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
@@ -692,6 +656,7 @@ Results match: True</code></pre>
 </div>
 </div>
 <p>The performance comparisons clearly demonstrate that <strong>vectorized NumPy operations significantly outperform equivalent Python loops</strong></p>
+</section>
 </section>
 </section>
 </section>
@@ -908,8 +873,12 @@ Element-wise Multiplication after reshaping:
 <section id="converting-between-numpy-arrays-and-pandas-dataframes" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="converting-between-numpy-arrays-and-pandas-dataframes"><span class="header-section-number">10.4</span> Converting Between NumPy Arrays and Pandas DataFrames</h2>
 <p><strong>Seamless data conversion</strong> between NumPy and pandas is essential for efficient data science workflows. Each library excels in different areas, and knowing when and how to convert between them maximizes your analytical power.</p>
-<section id="why-conversion-matters" class="level3" data-number="10.4.1">
-<h3 data-number="10.4.1" class="anchored" data-anchor-id="why-conversion-matters"><span class="header-section-number">10.4.1</span> Why Conversion Matters</h3>
+<p><strong>Typical Data Science Workflow</strong></p>
+<pre><code>1.  LOAD DATA → Use Pandas (CSV, Excel, databases)
+2.  CLEAN &amp; PREPARE → Use Pandas (filtering, grouping, handling missing data)
+3.  COMPUTE → Convert to NumPy (ML algorithms, linear algebra, heavy math)
+4.  ANALYZE &amp; VISUALIZE → Convert back to Pandas (results interpretation)
+5.  EXPORT → Use Pandas (CSV, Parquet, SQL)</code></pre>
 <p><strong>NumPy</strong> and <strong>pandas</strong> complement each other perfectly:</p>
 <table class="caption-top table">
 <colgroup>
@@ -932,13 +901,13 @@ Element-wise Multiplication after reshaping:
 </tr>
 <tr class="even">
 <td><strong>Speed</strong></td>
-<td>⚡ Faster numerical operations</td>
-<td>🔍 Easier data exploration</td>
+<td>Faster numerical operations</td>
+<td>Easier data exploration</td>
 </tr>
 <tr class="odd">
 <td><strong>Memory</strong></td>
-<td>💾 More memory efficient</td>
-<td>🏷️ Rich metadata (labels, dtypes)</td>
+<td>More memory efficient</td>
+<td>Rich metadata (labels, dtypes)</td>
 </tr>
 <tr class="even">
 <td><strong>Use Cases</strong></td>
@@ -953,23 +922,17 @@ Element-wise Multiplication after reshaping:
 <tr class="even">
 <td><strong>Missing Data</strong></td>
 <td>Limited NaN support</td>
-<td>🛡️ Robust NaN handling</td>
+<td>Robust NaN handling</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Typical Data Science Workflow</strong></p>
-<pre><code>1.  LOAD DATA → Use Pandas (CSV, Excel, databases)
-2.  CLEAN &amp; PREPARE → Use Pandas (filtering, grouping, handling missing data)
-3.  COMPUTE → Convert to NumPy (ML algorithms, linear algebra, heavy math)
-4.  ANALYZE &amp; VISUALIZE → Convert back to Pandas (results interpretation)
-5.  EXPORT → Use Pandas (CSV, Parquet, SQL)</code></pre>
 <p><strong>The key question</strong>: <em>When should you stay in pandas vs convert to NumPy?</em></p>
-</section>
-<section id="decision-framework-when-to-use-which-library" class="level3" data-number="10.4.2">
-<h3 data-number="10.4.2" class="anchored" data-anchor-id="decision-framework-when-to-use-which-library"><span class="header-section-number">10.4.2</span> Decision Framework: When to Use Which Library</h3>
-<section id="stay-in-pandas-when-you-can" class="level4" data-number="10.4.2.1">
-<h4 data-number="10.4.2.1" class="anchored" data-anchor-id="stay-in-pandas-when-you-can"><span class="header-section-number">10.4.2.1</span> ✅ Stay in Pandas When You Can</h4>
-<p>Pandas operations are built on NumPy and are <strong>often fast enough</strong>! No conversion needed for:</p>
+<section id="decision-framework-when-to-use-which-library" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="decision-framework-when-to-use-which-library"><span class="header-section-number">10.4.1</span> Decision Framework: When to Use Which Library</h3>
+<section id="stay-in-pandas-for-vectorized-operations" class="level4" data-number="10.4.1.1">
+<h4 data-number="10.4.1.1" class="anchored" data-anchor-id="stay-in-pandas-for-vectorized-operations"><span class="header-section-number">10.4.1.1</span> Stay in Pandas for Vectorized Operations</h4>
+<p>Vectorized operations in Pandas are built on top of <strong>NumPy</strong> and are <strong>often fast enough</strong> for most tasks!<br>
+These operations include, but are not limited to:</p>
 <p><strong>1. Standard Mathematical Operations</strong></p>
 <ul>
 <li>Arithmetic: <code>df['total'] = df['price'] * df['quantity']</code></li>
@@ -987,13 +950,6 @@ Element-wise Multiplication after reshaping:
 <li>Vectorized operations: <code>df['log_val'] = np.log(df['value'])</code></li>
 <li>Conditional logic: <code>df['flag'] = df['amount'] &gt; 100</code></li>
 <li>String operations: <code>df['upper'] = df['name'].str.upper()</code></li>
-</ul>
-<p><strong>💡 Why stay in pandas?</strong></p>
-<ul>
-<li>✅ Metadata preserved automatically (column names, index)</li>
-<li>✅ Simpler code (no manual metadata management)</li>
-<li>✅ Fast enough for most cases (&lt; 1 million rows)</li>
-<li>✅ Better integration with data I/O and visualization</li>
 </ul>
 <p>Let’s see this in action:</p>
 <div id="d91ecc29" class="cell" data-execution_count="27">
@@ -1094,9 +1050,9 @@ Product_D     1.162     1.193     1.162
 </div>
 </div>
 </section>
-<section id="convert-to-numpy-when-you-must" class="level4" data-number="10.4.2.2">
-<h4 data-number="10.4.2.2" class="anchored" data-anchor-id="convert-to-numpy-when-you-must"><span class="header-section-number">10.4.2.2</span> Convert to NumPy When You Must</h4>
-<p>Convert to NumPy arrays for these specific scenarios:</p>
+<section id="convert-to-numpy-when-you-must" class="level4" data-number="10.4.1.2">
+<h4 data-number="10.4.1.2" class="anchored" data-anchor-id="convert-to-numpy-when-you-must"><span class="header-section-number">10.4.1.2</span> Convert to NumPy When You Must</h4>
+<p>Convert your DataFrame to a <strong>NumPy array</strong> only in specific scenarios where Pandas alone isn’t enough:</p>
 <p><strong>1. Specialized NumPy Functions</strong></p>
 <ul>
 <li>Linear algebra: <code>np.linalg.inv()</code>, <code>np.linalg.eig()</code>, matrix decomposition</li>
@@ -1259,34 +1215,8 @@ Time saved: 96.5%
 </div>
 </div>
 </section>
-<section id="quick-decision-guide" class="level4" data-number="10.4.2.3">
-<h4 data-number="10.4.2.3" class="anchored" data-anchor-id="quick-decision-guide"><span class="header-section-number">10.4.2.3</span> Quick Decision Guide</h4>
-<p><strong>“Should I convert to NumPy or stay in pandas?”</strong></p>
-<pre><code>START HERE
-    ↓
-Is it a standard math operation? (add, multiply, mean, etc.)
-    YES → ✅ STAY IN PANDAS
-    NO  → Continue
-    ↓
-Is it a string/datetime operation? (.str, .dt accessor)
-    YES → ✅ STAY IN PANDAS
-    NO  → Continue
-    ↓
-Do you need the result with labels/metadata?
-    YES → ✅ STAY IN PANDAS (or plan metadata restoration)
-    NO  → Continue
-    ↓
-Is it for ML/scientific library (sklearn, scipy, etc.)?
-    YES → 🔄 CONVERT TO NUMPY
-    NO  → Continue
-    ↓
-Is it a specialized NumPy function (linalg, fft, etc.)?
-    YES → 🔄 CONVERT TO NUMPY
-    NO  → Continue
-    ↓
-Is performance critical with &gt;1M rows?
-    YES → 🔄 TRY NUMPY (benchmark first!)
-    NO  → ✅ STAY IN PANDAS</code></pre>
+<section id="quick-decision-guide" class="level4" data-number="10.4.1.3">
+<h4 data-number="10.4.1.3" class="anchored" data-anchor-id="quick-decision-guide"><span class="header-section-number">10.4.1.3</span> Quick Decision Guide</h4>
 <p><strong>Summary Table</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -1354,12 +1284,6 @@ Is performance critical with &gt;1M rows?
 </tr>
 </tbody>
 </table>
-<p><strong>💡 Rule of Thumb</strong>:</p>
-<ul>
-<li><strong>Default</strong>: Stay in pandas (90% of cases)</li>
-<li><strong>Convert</strong>: Only when you need NumPy-specific features or ML integration</li>
-<li><strong>Always</strong>: Have a plan for metadata preservation if you convert</li>
-</ul>
 <p>Now let’s learn the actual conversion methods!</p>
 </section>
 </section>
@@ -1378,16 +1302,128 @@ Is performance critical with &gt;1M rows?
 │  ✅ Missing data     │ ←──────────────────  │  ⚠️  Limited NaN     │
 │                      │   pd.DataFrame()     │                      │
 └──────────────────────┘                      └──────────────────────┘</code></pre>
-<p><strong>⚠️ Critical Point</strong>: Converting DataFrame → Array <strong>loses all metadata</strong>!</p>
+<p><strong>Challenge:</strong> Converting a DataFrame to a NumPy array <strong>drops all metadata</strong>:</p>
 <ul>
-<li>Column names disappear</li>
-<li>Index labels are gone</li>
-<li>Data becomes just numbers</li>
+<li>❌ Column names are lost</li>
+<li>❌ Index labels are removed<br>
+</li>
+<li>❌ Data type information is simplified or lost</li>
+<li>❌ Categorical mappings are gone</li>
 </ul>
-<p><strong>Solution</strong>: Either (1) don’t need metadata, (2) save and restore it, or (3) stay in pandas!</p>
+<p><strong>Why this matters</strong>: After performing NumPy computations, you often need to convert results back to a DataFrame with the original structure for analysis, visualization, or export.</p>
+<p><strong>Solution</strong>: Save &amp; Restore Metadata Manually</p>
 </section>
-<section id="pandas-dataframe-numpy-array" class="level3" data-number="10.5.2">
-<h3 data-number="10.5.2" class="anchored" data-anchor-id="pandas-dataframe-numpy-array"><span class="header-section-number">10.5.2</span> Pandas DataFrame → NumPy Array</h3>
+<section id="save-restore-metadata-manually" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="save-restore-metadata-manually"><span class="header-section-number">10.5.2</span> Save &amp; Restore Metadata Manually</h3>
+<p>The most straightforward approach: <strong>save metadata before conversion</strong>, then <strong>restore it after computation</strong>.</p>
+<div id="363d88da" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🔄 Manual Metadata Preservation"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with rich metadata</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>df_original <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Temperature"</span>: [<span class="fl">72.5</span>, <span class="fl">68.3</span>, <span class="fl">75.1</span>, <span class="fl">71.9</span>],</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Humidity"</span>: [<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">48</span>, <span class="dv">50</span>],</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"WindSpeed"</span>: [<span class="fl">12.3</span>, <span class="fl">8.7</span>, <span class="fl">15.2</span>, <span class="fl">10.1</span>]</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>]</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original DataFrame:"</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_original)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Index: </span><span class="sc">{</span>df_original<span class="sc">.</span>index<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span>df_original<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dtypes:</span><span class="ch">\n</span><span class="sc">{</span>df_original<span class="sc">.</span>dtypes<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1: Save metadata BEFORE converting to NumPy</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>saved_index <span class="op">=</span> df_original.index.copy()</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>saved_columns <span class="op">=</span> df_original.columns.copy()</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>saved_dtypes <span class="op">=</span> df_original.dtypes.to_dict()</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✅ Metadata saved!"</span>)</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 2: Convert to NumPy for computation</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> df_original.to_numpy()</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">NumPy array (metadata lost):"</span>)</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr)</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>arr<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, dtype: </span><span class="sc">{</span>arr<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 3: Perform computations (example: normalize values)</span></span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract mean and divide by std for each column</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>arr_normalized <span class="op">=</span> (arr <span class="op">-</span> arr.mean(axis<span class="op">=</span><span class="dv">0</span>)) <span class="op">/</span> arr.std(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Normalized array (still no metadata):"</span>)</span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr_normalized)</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 4: Restore metadata when converting back to DataFrame</span></span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>df_result <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>    arr_normalized,</span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>saved_index,</span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>saved_columns</span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 Reconstructed DataFrame with metadata:"</span>)</span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_result)</span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Index restored: </span><span class="sc">{</span>df_result<span class="sc">.</span>index<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns restored: </span><span class="sc">{</span>df_result<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dtypes restored (may differ due to normalization):</span><span class="ch">\n</span><span class="sc">{</span>df_result<span class="sc">.</span>dtypes<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>🔄 STRATEGY 1: Manual Metadata Preservation
+==================================================
+Original DataFrame:
+           Temperature  Humidity  WindSpeed
+Monday            72.5        45       12.3
+Tuesday           68.3        52        8.7
+Wednesday         75.1        48       15.2
+Thursday          71.9        50       10.1
+
+Index: ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
+Columns: ['Temperature', 'Humidity', 'WindSpeed']
+Dtypes:
+Temperature    float64
+Humidity         int64
+WindSpeed      float64
+dtype: object
+
+✅ Metadata saved!
+
+NumPy array (metadata lost):
+[[72.5 45.  12.3]
+ [68.3 52.   8.7]
+ [75.1 48.  15.2]
+ [71.9 50.  10.1]]
+Shape: (4, 3), dtype: float64
+
+Normalized array (still no metadata):
+[[ 0.22667166 -1.45010473  0.29531936]
+ [-1.50427558  1.25675744 -1.171094  ]
+ [ 1.29821043 -0.29002095  1.47659679]
+ [-0.02060651  0.48336824 -0.60082214]]
+
+📊 Reconstructed DataFrame with metadata:
+           Temperature  Humidity  WindSpeed
+Monday        0.226672 -1.450105   0.295319
+Tuesday      -1.504276  1.256757  -1.171094
+Wednesday     1.298210 -0.290021   1.476597
+Thursday     -0.020607  0.483368  -0.600822
+
+Index restored: ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
+Columns restored: ['Temperature', 'Humidity', 'WindSpeed']
+Dtypes restored (may differ due to normalization):
+Temperature    float64
+Humidity       float64
+WindSpeed      float64
+dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-numpy-array" class="level3" data-number="10.5.3">
+<h3 data-number="10.5.3" class="anchored" data-anchor-id="pandas-dataframe-numpy-array"><span class="header-section-number">10.5.3</span> Pandas DataFrame → NumPy Array</h3>
 <p><strong>When to convert</strong>: You need NumPy’s computational speed and mathematical functions.</p>
 <p><strong>Common scenarios</strong>:</p>
 <ul>
@@ -1396,31 +1432,32 @@ Is performance critical with &gt;1M rows?
 <li>Machine learning algorithms that expect NumPy arrays</li>
 <li>Mathematical operations not available in pandas</li>
 </ul>
-<section id="conversion-methods-performance" class="level4" data-number="10.5.2.1">
-<h4 data-number="10.5.2.1" class="anchored" data-anchor-id="conversion-methods-performance"><span class="header-section-number">10.5.2.1</span> Conversion Methods &amp; Performance</h4>
+<section id="conversion-methods-performance" class="level4" data-number="10.5.3.1">
+<h4 data-number="10.5.3.1" class="anchored" data-anchor-id="conversion-methods-performance"><span class="header-section-number">10.5.3.1</span> Conversion Methods &amp; Performance</h4>
+<p>Let’s create a pandas DataFrame to demonstrate the conversion:</p>
 <div id="6192829e" class="cell" data-execution_count="31">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" PANDAS TO NUMPY CONVERSION"</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with a DataFrame of tech stock prices</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>stock_data <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"AAPL"</span>:  [<span class="fl">150.0</span>, <span class="fl">152.5</span>, <span class="fl">148.2</span>, <span class="fl">155.1</span>],</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GOOGL"</span>: [<span class="fl">2800.0</span>, <span class="fl">2750.0</span>, <span class="fl">2825.0</span>, <span class="fl">2900.0</span>],</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MSFT"</span>:  [<span class="fl">300.0</span>, <span class="fl">305.0</span>, <span class="fl">298.5</span>, <span class="fl">310.0</span>],</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TSLA"</span>:  [<span class="fl">800.0</span>, <span class="fl">795.0</span>, <span class="fl">820.0</span>, <span class="fl">815.0</span>],</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"Day 1"</span>, <span class="st">"Day 2"</span>, <span class="st">"Day 3"</span>, <span class="st">"Day 4"</span>]</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📈 Original DataFrame:"</span>)</span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock_data)</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>stock_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dtypes:"</span>)</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock_data.dtypes)</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Memory usage (deep): </span><span class="sc">{</span>stock_data<span class="sc">.</span>memory_usage(deep<span class="op">=</span><span class="va">True</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> bytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" PANDAS TO NUMPY CONVERSION"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with a DataFrame of tech stock prices</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>stock_data <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"AAPL"</span>:  [<span class="fl">150.0</span>, <span class="fl">152.5</span>, <span class="fl">148.2</span>, <span class="fl">155.1</span>],</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GOOGL"</span>: [<span class="fl">2800.0</span>, <span class="fl">2750.0</span>, <span class="fl">2825.0</span>, <span class="fl">2900.0</span>],</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MSFT"</span>:  [<span class="fl">300.0</span>, <span class="fl">305.0</span>, <span class="fl">298.5</span>, <span class="fl">310.0</span>],</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TSLA"</span>:  [<span class="fl">800.0</span>, <span class="fl">795.0</span>, <span class="fl">820.0</span>, <span class="fl">815.0</span>],</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"Day 1"</span>, <span class="st">"Day 2"</span>, <span class="st">"Day 3"</span>, <span class="st">"Day 4"</span>]</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📈 Original DataFrame:"</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock_data)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>stock_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dtypes:"</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock_data.dtypes)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Memory usage (deep): </span><span class="sc">{</span>stock_data<span class="sc">.</span>memory_usage(deep<span class="op">=</span><span class="va">True</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> bytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> PANDAS TO NUMPY CONVERSION
@@ -1442,8 +1479,8 @@ dtype: object
 Memory usage (deep): 344 bytes</code></pre>
 </div>
 </div>
-<section id="method-1-.to_numpy-recommended" class="level5" data-number="10.5.2.1.1">
-<h5 data-number="10.5.2.1.1" class="anchored" data-anchor-id="method-1-.to_numpy-recommended"><span class="header-section-number">10.5.2.1.1</span> Method 1: <code>.to_numpy()</code> (Recommended ✅)</h5>
+<section id="method-1-.to_numpy-recommended" class="level5" data-number="10.5.3.1.1">
+<h5 data-number="10.5.3.1.1" class="anchored" data-anchor-id="method-1-.to_numpy-recommended"><span class="header-section-number">10.5.3.1.1</span> Method 1: <code>.to_numpy()</code> (Recommended ✅)</h5>
 <p>The <strong>preferred modern approach</strong> for converting DataFrames to NumPy arrays. This method:</p>
 <ul>
 <li>Converts DataFrame data into a NumPy array</li>
@@ -1454,15 +1491,15 @@ Memory usage (deep): 344 bytes</code></pre>
 <div id="81e5160a" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: .to_numpy() - The modern, recommended approach</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🔢 Method 1 — .to_numpy() (recommended):"</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>array_modern <span class="op">=</span> stock_data.to_numpy()</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Converted NumPy array:"</span>)</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_modern)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>array_modern<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>array_modern<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">⚠️ Note: Row indices (Day 1, Day 2...) and column names (AAPL, GOOGL...) are lost!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: .to_numpy() - The modern, recommended approach</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🔢 Method 1 — .to_numpy() (recommended):"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>array_modern <span class="op">=</span> stock_data.to_numpy()</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Converted NumPy array:"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_modern)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>array_modern<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>array_modern<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">⚠️ Note: Row indices (Day 1, Day 2...) and column names (AAPL, GOOGL...) are lost!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1479,24 +1516,24 @@ Data type: float64</code></pre>
 </div>
 <p><strong>Key Point</strong>: Notice how the resulting array contains <strong>only the numerical values</strong>. All the metadata (index labels like “Day 1”, column names like “AAPL”) is removed. This is what makes NumPy arrays fast but less descriptive than DataFrames.</p>
 </section>
-<section id="method-2-.values-legacy-but-still-works" class="level5" data-number="10.5.2.1.2">
-<h5 data-number="10.5.2.1.2" class="anchored" data-anchor-id="method-2-.values-legacy-but-still-works"><span class="header-section-number">10.5.2.1.2</span> Method 2: .values (legacy but still works)</h5>
+<section id="method-2-.values-legacy-but-still-works" class="level5" data-number="10.5.3.1.2">
+<h5 data-number="10.5.3.1.2" class="anchored" data-anchor-id="method-2-.values-legacy-but-still-works"><span class="header-section-number">10.5.3.1.2</span> Method 2: .values (legacy but still works)</h5>
 <p>An <strong>older method</strong> that still works but is <strong>not recommended</strong> for new code. It behaves similarly to <code>.to_numpy()</code> but can produce unexpected results with certain pandas dtypes.</p>
 <div id="8243ec9a" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: .values - Legacy approach (avoid in new code)</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">⚠️  Method 2 — .values (legacy):"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>array_legacy <span class="op">=</span> stock_data.values</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Converted array using .values:"</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_legacy)</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>array_legacy<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>array_legacy<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify both methods produce same result (in this case)</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Same result as .to_numpy()? </span><span class="sc">{</span>np<span class="sc">.</span>array_equal(array_modern, array_legacy)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"✅ For simple numeric DataFrames, both methods work identically"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: .values - Legacy approach (avoid in new code)</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">⚠️  Method 2 — .values (legacy):"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>array_legacy <span class="op">=</span> stock_data.values</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Converted array using .values:"</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_legacy)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>array_legacy<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>array_legacy<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify both methods produce same result (in this case)</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Same result as .to_numpy()? </span><span class="sc">{</span>np<span class="sc">.</span>array_equal(array_modern, array_legacy)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"✅ For simple numeric DataFrames, both methods work identically"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1517,21 +1554,21 @@ Same result as .to_numpy()? True</code></pre>
 <li><code>.to_numpy()</code> is more explicit and future-proof</li>
 </ul>
 </section>
-<section id="method-3-force-a-specific-dtype-e.g.-int32" class="level5" data-number="10.5.2.1.3">
-<h5 data-number="10.5.2.1.3" class="anchored" data-anchor-id="method-3-force-a-specific-dtype-e.g.-int32"><span class="header-section-number">10.5.2.1.3</span> Method 3: Force a specific dtype (e.g., int32)</h5>
+<section id="method-3-force-a-specific-dtype-e.g.-int32" class="level5" data-number="10.5.3.1.3">
+<h5 data-number="10.5.3.1.3" class="anchored" data-anchor-id="method-3-force-a-specific-dtype-e.g.-int32"><span class="header-section-number">10.5.3.1.3</span> Method 3: Force a specific dtype (e.g., int32)</h5>
 <div id="d27a3f32" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 3: Force a specific dtype during conversion</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🔧 Method 3 — Force data type (int32):"</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>array_int <span class="op">=</span> stock_data.to_numpy(dtype<span class="op">=</span>np.int32)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array with forced int32 dtype:"</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_int)</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Original dtype: </span><span class="sc">{</span>stock_data<span class="sc">.</span>to_numpy()<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Forced dtype: </span><span class="sc">{</span>array_int<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">⚠️ Warning: Float values were truncated (not rounded) to integers!"</span>)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Example: 150.0 → </span><span class="sc">{</span>array_int[<span class="dv">0</span>, <span class="dv">0</span>]<span class="sc">}</span><span class="ss">, but 152.5 → </span><span class="sc">{</span>array_int[<span class="dv">1</span>, <span class="dv">0</span>]<span class="sc">}</span><span class="ss"> (loses 0.5)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 3: Force a specific dtype during conversion</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🔧 Method 3 — Force data type (int32):"</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>array_int <span class="op">=</span> stock_data.to_numpy(dtype<span class="op">=</span>np.int32)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array with forced int32 dtype:"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_int)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Original dtype: </span><span class="sc">{</span>stock_data<span class="sc">.</span>to_numpy()<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Forced dtype: </span><span class="sc">{</span>array_int<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">⚠️ Warning: Float values were truncated (not rounded) to integers!"</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Example: 150.0 → </span><span class="sc">{</span>array_int[<span class="dv">0</span>, <span class="dv">0</span>]<span class="sc">}</span><span class="ss">, but 152.5 → </span><span class="sc">{</span>array_int[<span class="dv">1</span>, <span class="dv">0</span>]<span class="sc">}</span><span class="ss"> (loses 0.5)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1562,8 +1599,8 @@ Preview (first 2 rows):
 <li>Check for NaN values before converting to integer types</li>
 </ul>
 </section>
-<section id="method-4-convert-specific-columns-only" class="level5" data-number="10.5.2.1.4">
-<h5 data-number="10.5.2.1.4" class="anchored" data-anchor-id="method-4-convert-specific-columns-only"><span class="header-section-number">10.5.2.1.4</span> Method 4: Convert specific columns only</h5>
+<section id="method-4-convert-specific-columns-only" class="level5" data-number="10.5.3.1.4">
+<h5 data-number="10.5.3.1.4" class="anchored" data-anchor-id="method-4-convert-specific-columns-only"><span class="header-section-number">10.5.3.1.4</span> Method 4: Convert specific columns only</h5>
 <p><strong>Why select specific columns?</strong></p>
 <ul>
 <li><strong>Performance</strong>: Process only needed data</li>
@@ -1574,18 +1611,18 @@ Preview (first 2 rows):
 <div id="d455aa7d" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 4: Select and convert specific columns</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🎯 Method 4 — Specific columns only (AAPL, MSFT):"</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only AAPL and MSFT columns, then convert</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>tech_stocks <span class="op">=</span> stock_data[[<span class="st">"AAPL"</span>, <span class="st">"MSFT"</span>]].to_numpy()</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Selected columns converted to array:"</span>)</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tech_stocks)</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Original DataFrame shape: </span><span class="sc">{</span>stock_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (4 rows × 4 columns)"</span>)</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Selected array shape: </span><span class="sc">{</span>tech_stocks<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (4 rows × 2 columns)"</span>)</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>tech_stocks<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">💡 Memory saved: </span><span class="sc">{</span>(stock_data.shape[<span class="dv">1</span>] <span class="op">-</span> tech_stocks.shape[<span class="dv">1</span>]) <span class="op">/</span> stock_data<span class="sc">.</span>shape[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss">% fewer columns!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 4: Select and convert specific columns</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">🎯 Method 4 — Specific columns only (AAPL, MSFT):"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only AAPL and MSFT columns, then convert</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>tech_stocks <span class="op">=</span> stock_data[[<span class="st">"AAPL"</span>, <span class="st">"MSFT"</span>]].to_numpy()</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Selected columns converted to array:"</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tech_stocks)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Original DataFrame shape: </span><span class="sc">{</span>stock_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (4 rows × 4 columns)"</span>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Selected array shape: </span><span class="sc">{</span>tech_stocks<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (4 rows × 2 columns)"</span>)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>tech_stocks<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">💡 Memory saved: </span><span class="sc">{</span>(stock_data.shape[<span class="dv">1</span>] <span class="op">-</span> tech_stocks.shape[<span class="dv">1</span>]) <span class="op">/</span> stock_data<span class="sc">.</span>shape[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss">% fewer columns!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1641,33 +1678,33 @@ Data type: float64</code></pre>
 <li><strong>Specify <code>dtype</code></strong> when downstream computations require consistent numeric types.</li>
 <li><strong>Check for missing values</strong> (<code>NaN</code>, <code>NaT</code>) before casting to integer dtypes.</li>
 <li><strong>Prefer <code>.to_numpy()</code> over <code>.values</code></strong> for clarity and forward compatibility.</li>
-<li>Be mindful that conversions may <strong>return a copy</strong>, not a view—modify the DataFrame directly if needed.</li>
 </ul>
 </section>
 </section>
 </section>
-<section id="numpy-array-pandas-dataframe" class="level3" data-number="10.5.3">
-<h3 data-number="10.5.3" class="anchored" data-anchor-id="numpy-array-pandas-dataframe"><span class="header-section-number">10.5.3</span> NumPy Array → Pandas DataFrame</h3>
+<section id="numpy-array-pandas-dataframe" class="level3" data-number="10.5.4">
+<h3 data-number="10.5.4" class="anchored" data-anchor-id="numpy-array-pandas-dataframe"><span class="header-section-number">10.5.4</span> NumPy Array → Pandas DataFrame</h3>
+<p>Let’s create an NumPy array to demonstrate the conversion:</p>
 <div id="f2125b9c" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 📊 COMPREHENSIVE ARRAY → DATAFRAME CONVERSION</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🔄 NUMPY TO PANDAS CONVERSION"</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Original NumPy array</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.array([</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">95</span>],</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">88</span>, <span class="dv">76</span>, <span class="dv">91</span>, <span class="dv">82</span>],</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">95</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">90</span>]</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Carol'</span>]</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>subjects <span class="op">=</span> [<span class="st">'Math'</span>, <span class="st">'Science'</span>, <span class="st">'English'</span>, <span class="st">'History'</span>]</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original NumPy array:"</span>)</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scores)</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>scores<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 📊 COMPREHENSIVE ARRAY → DATAFRAME CONVERSION</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🔄 NUMPY TO PANDAS CONVERSION"</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Original NumPy array</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.array([</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">95</span>],</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">88</span>, <span class="dv">76</span>, <span class="dv">91</span>, <span class="dv">82</span>],</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">95</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">90</span>]</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Carol'</span>]</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>subjects <span class="op">=</span> [<span class="st">'Math'</span>, <span class="st">'Science'</span>, <span class="st">'English'</span>, <span class="st">'History'</span>]</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original NumPy array:"</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scores)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>scores<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>🔄 NUMPY TO PANDAS CONVERSION
@@ -1679,16 +1716,16 @@ Original NumPy array:
 Shape: (3, 4)</code></pre>
 </div>
 </div>
-<section id="method-1-basic-conversion" class="level4" data-number="10.5.3.1">
-<h4 data-number="10.5.3.1" class="anchored" data-anchor-id="method-1-basic-conversion"><span class="header-section-number">10.5.3.1</span> Method 1: Basic Conversion</h4>
+<section id="method-1-basic-conversion" class="level4" data-number="10.5.4.1">
+<h4 data-number="10.5.4.1" class="anchored" data-anchor-id="method-1-basic-conversion"><span class="header-section-number">10.5.4.1</span> Method 1: Basic Conversion</h4>
 <p>Create a DataFrame directly from a NumPy array using <code>pd.DataFrame()</code>. By default, pandas will auto-generate integer labels (0, 1, 2, …) for both rows and columns.</p>
 <div id="9b70bb46" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic conversion - auto-generated index and column labels</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df_basic <span class="op">=</span> pd.DataFrame(scores)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📋 Basic DataFrame (auto index/columns):"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>df_basic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic conversion - auto-generated index and column labels</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df_basic <span class="op">=</span> pd.DataFrame(scores)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📋 Basic DataFrame (auto index/columns):"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>df_basic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1738,16 +1775,16 @@ Shape: (3, 4)</code></pre>
 </div>
 <p>Notice that the row indices are <code>[0, 1, 2]</code> and column names are <code>[0, 1, 2, 3]</code> — these are automatically generated when no labels are specified.</p>
 </section>
-<section id="method-2-custom-row-and-column-labels" class="level4" data-number="10.5.3.2">
-<h4 data-number="10.5.3.2" class="anchored" data-anchor-id="method-2-custom-row-and-column-labels"><span class="header-section-number">10.5.3.2</span> Method 2: Custom Row and Column Labels</h4>
+<section id="method-2-custom-row-and-column-labels" class="level4" data-number="10.5.4.2">
+<h4 data-number="10.5.4.2" class="anchored" data-anchor-id="method-2-custom-row-and-column-labels"><span class="header-section-number">10.5.4.2</span> Method 2: Custom Row and Column Labels</h4>
 <p>For better readability and data analysis, you can specify meaningful names for rows (<code>index</code>) and columns when creating the DataFrame.</p>
 <div id="e9480e0d" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom labels for better data interpretation</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>df_labeled <span class="op">=</span> pd.DataFrame(scores, index<span class="op">=</span>students, columns<span class="op">=</span>subjects)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📊 Labeled DataFrame (custom index &amp; columns):"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>df_labeled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom labels for better data interpretation</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>df_labeled <span class="op">=</span> pd.DataFrame(scores, index<span class="op">=</span>students, columns<span class="op">=</span>subjects)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📊 Labeled DataFrame (custom index &amp; columns):"</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>df_labeled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1798,8 +1835,8 @@ Shape: (3, 4)</code></pre>
 <p>Now the DataFrame has meaningful labels: - <strong>Row indices</strong>: Student names (Alice, Bob, Carol) - <strong>Column names</strong>: Subject names (Math, Science, English, History)</p>
 <p>This makes the data much more interpretable and easier to work with!</p>
 </section>
-<section id="key-parameters-options" class="level4" data-number="10.5.3.3">
-<h4 data-number="10.5.3.3" class="anchored" data-anchor-id="key-parameters-options"><span class="header-section-number">10.5.3.3</span> Key Parameters &amp; Options</h4>
+<section id="key-parameters-options" class="level4" data-number="10.5.4.3">
+<h4 data-number="10.5.4.3" class="anchored" data-anchor-id="key-parameters-options"><span class="header-section-number">10.5.4.3</span> Key Parameters &amp; Options</h4>
 <p>When converting NumPy arrays to DataFrames, you can customize the output using these parameters:</p>
 <table class="caption-top table">
 <colgroup>
@@ -1845,127 +1882,6 @@ Shape: (3, 4)</code></pre>
 </ul>
 </section>
 </section>
-<section id="preserving-metadata-during-conversion" class="level3" data-number="10.5.4">
-<h3 data-number="10.5.4" class="anchored" data-anchor-id="preserving-metadata-during-conversion"><span class="header-section-number">10.5.4</span> Preserving Metadata During Conversion</h3>
-<p><strong>Challenge:</strong> Converting a DataFrame to a NumPy array <strong>drops all metadata</strong>:</p>
-<ul>
-<li>❌ Column names are lost</li>
-<li>❌ Index labels are removed<br>
-</li>
-<li>❌ Data type information is simplified or lost</li>
-<li>❌ Categorical mappings are gone</li>
-</ul>
-<p><strong>Why this matters</strong>: After performing NumPy computations, you often need to convert results back to a DataFrame with the original structure for analysis, visualization, or export.</p>
-<section id="save-restore-metadata-manually" class="level4" data-number="10.5.4.1">
-<h4 data-number="10.5.4.1" class="anchored" data-anchor-id="save-restore-metadata-manually"><span class="header-section-number">10.5.4.1</span> Save &amp; Restore Metadata Manually</h4>
-<p>The most straightforward approach: <strong>save metadata before conversion</strong>, then <strong>restore it after computation</strong>.</p>
-<div id="739160a4" class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🔄 STRATEGY 1: Manual Metadata Preservation"</span>)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with rich metadata</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>df_original <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Temperature"</span>: [<span class="fl">72.5</span>, <span class="fl">68.3</span>, <span class="fl">75.1</span>, <span class="fl">71.9</span>],</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Humidity"</span>: [<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">48</span>, <span class="dv">50</span>],</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"WindSpeed"</span>: [<span class="fl">12.3</span>, <span class="fl">8.7</span>, <span class="fl">15.2</span>, <span class="fl">10.1</span>]</span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>]</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original DataFrame:"</span>)</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_original)</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Index: </span><span class="sc">{</span>df_original<span class="sc">.</span>index<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns: </span><span class="sc">{</span>df_original<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dtypes:</span><span class="ch">\n</span><span class="sc">{</span>df_original<span class="sc">.</span>dtypes<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1: Save metadata BEFORE converting to NumPy</span></span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>saved_index <span class="op">=</span> df_original.index.copy()</span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>saved_columns <span class="op">=</span> df_original.columns.copy()</span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>saved_dtypes <span class="op">=</span> df_original.dtypes.to_dict()</span>
-<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✅ Metadata saved!"</span>)</span>
-<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 2: Convert to NumPy for computation</span></span>
-<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> df_original.to_numpy()</span>
-<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">NumPy array (metadata lost):"</span>)</span>
-<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr)</span>
-<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>arr<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, dtype: </span><span class="sc">{</span>arr<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 3: Perform computations (example: normalize values)</span></span>
-<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract mean and divide by std for each column</span></span>
-<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>arr_normalized <span class="op">=</span> (arr <span class="op">-</span> arr.mean(axis<span class="op">=</span><span class="dv">0</span>)) <span class="op">/</span> arr.std(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Normalized array (still no metadata):"</span>)</span>
-<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr_normalized)</span>
-<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 4: Restore metadata when converting back to DataFrame</span></span>
-<span id="cb47-42"><a href="#cb47-42" aria-hidden="true" tabindex="-1"></a>df_result <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb47-43"><a href="#cb47-43" aria-hidden="true" tabindex="-1"></a>    arr_normalized,</span>
-<span id="cb47-44"><a href="#cb47-44" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>saved_index,</span>
-<span id="cb47-45"><a href="#cb47-45" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>saved_columns</span>
-<span id="cb47-46"><a href="#cb47-46" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb47-47"><a href="#cb47-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-48"><a href="#cb47-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 Reconstructed DataFrame with metadata:"</span>)</span>
-<span id="cb47-49"><a href="#cb47-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_result)</span>
-<span id="cb47-50"><a href="#cb47-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Index restored: </span><span class="sc">{</span>df_result<span class="sc">.</span>index<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-51"><a href="#cb47-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns restored: </span><span class="sc">{</span>df_result<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-52"><a href="#cb47-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dtypes restored (may differ due to normalization):</span><span class="ch">\n</span><span class="sc">{</span>df_result<span class="sc">.</span>dtypes<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>🔄 STRATEGY 1: Manual Metadata Preservation
-==================================================
-Original DataFrame:
-           Temperature  Humidity  WindSpeed
-Monday            72.5        45       12.3
-Tuesday           68.3        52        8.7
-Wednesday         75.1        48       15.2
-Thursday          71.9        50       10.1
-
-Index: ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
-Columns: ['Temperature', 'Humidity', 'WindSpeed']
-Dtypes:
-Temperature    float64
-Humidity         int64
-WindSpeed      float64
-dtype: object
-
-✅ Metadata saved!
-
-NumPy array (metadata lost):
-[[72.5 45.  12.3]
- [68.3 52.   8.7]
- [75.1 48.  15.2]
- [71.9 50.  10.1]]
-Shape: (4, 3), dtype: float64
-
-Normalized array (still no metadata):
-[[ 0.22667166 -1.45010473  0.29531936]
- [-1.50427558  1.25675744 -1.171094  ]
- [ 1.29821043 -0.29002095  1.47659679]
- [-0.02060651  0.48336824 -0.60082214]]
-
-📊 Reconstructed DataFrame with metadata:
-           Temperature  Humidity  WindSpeed
-Monday        0.226672 -1.450105   0.295319
-Tuesday      -1.504276  1.256757  -1.171094
-Wednesday     1.298210 -0.290021   1.476597
-Thursday     -0.020607  0.483368  -0.600822
-
-Index restored: ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
-Columns restored: ['Temperature', 'Humidity', 'WindSpeed']
-Dtypes restored (may differ due to normalization):
-Temperature    float64
-Humidity       float64
-WindSpeed      float64
-dtype: object</code></pre>
-</div>
-</div>
-</section>
-</section>
 </section>
 <section id="random-number-generation-in-numpy" class="level2" data-number="10.6">
 <h2 data-number="10.6" class="anchored" data-anchor-id="random-number-generation-in-numpy"><span class="header-section-number">10.6</span> Random Number Generation in NumPy</h2>
@@ -1990,8 +1906,8 @@ dtype: object</code></pre>
 <tbody>
 <tr class="odd">
 <td><strong>Speed</strong></td>
-<td>🐌 Slow (one at a time)</td>
-<td>⚡ Fast (vectorized)</td>
+<td>Slow (one at a time)</td>
+<td>Fast (vectorized)</td>
 </tr>
 <tr class="even">
 <td><strong>Output</strong></td>
@@ -2099,23 +2015,23 @@ dtype: object</code></pre>
 <div id="919dbfa6" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 UNIFORM DISTRIBUTION: np.random.rand()"</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 2x3 array of random values between 0 and 1</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>rand_array <span class="op">=</span> np.random.rand(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"2×3 array of uniform random numbers [0, 1):"</span>)</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rand_array)</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>rand_array<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Min: </span><span class="sc">{</span>rand_array<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.4f}</span><span class="ss">, Max: </span><span class="sc">{</span>rand_array<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean: </span><span class="sc">{</span>rand_array<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss"> (expected ~0.5)"</span>)</span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Practical use: Generate random probabilities</span></span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">💡 Practical Use: Simulate coin flip probabilities"</span>)</span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> np.random.rand(<span class="dv">10</span>)</span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [<span class="st">'Heads'</span> <span class="cf">if</span> p <span class="op">&gt;</span> <span class="fl">0.5</span> <span class="cf">else</span> <span class="st">'Tails'</span> <span class="cf">for</span> p <span class="kw">in</span> probabilities]</span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Probabilities: </span><span class="sc">{</span>probabilities<span class="sc">.</span><span class="bu">round</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Results: </span><span class="sc">{</span>results<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 UNIFORM DISTRIBUTION: np.random.rand()"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a 2x3 array of random values between 0 and 1</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>rand_array <span class="op">=</span> np.random.rand(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"2×3 array of uniform random numbers [0, 1):"</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rand_array)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>rand_array<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Min: </span><span class="sc">{</span>rand_array<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.4f}</span><span class="ss">, Max: </span><span class="sc">{</span>rand_array<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean: </span><span class="sc">{</span>rand_array<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss"> (expected ~0.5)"</span>)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Practical use: Generate random probabilities</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">💡 Practical Use: Simulate coin flip probabilities"</span>)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> np.random.rand(<span class="dv">10</span>)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [<span class="st">'Heads'</span> <span class="cf">if</span> p <span class="op">&gt;</span> <span class="fl">0.5</span> <span class="cf">else</span> <span class="st">'Tails'</span> <span class="cf">for</span> p <span class="kw">in</span> probabilities]</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Probabilities: </span><span class="sc">{</span>probabilities<span class="sc">.</span><span class="bu">round</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Results: </span><span class="sc">{</span>results<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2125,21 +2041,21 @@ dtype: object</code></pre>
 <div id="a3583c18" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📊 UNIFORM DISTRIBUTION: np.random.uniform()"</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate random numbers in a custom range</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Random temperatures between 60°F and 90°F"</span>)</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> np.random.uniform(<span class="dv">60</span>, <span class="dv">90</span>, size<span class="op">=</span><span class="dv">7</span>)</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="st">'Mon'</span>, <span class="st">'Tue'</span>, <span class="st">'Wed'</span>, <span class="st">'Thu'</span>, <span class="st">'Fri'</span>, <span class="st">'Sat'</span>, <span class="st">'Sun'</span>]</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> day, temp <span class="kw">in</span> <span class="bu">zip</span>(days, temperatures):</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>temp<span class="sc">:.1f}</span><span class="ss">°F"</span>)</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2D array example</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: 3×5 matrix of random prices between $10 and $100"</span>)</span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.random.uniform(<span class="dv">10</span>, <span class="dv">100</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.<span class="bu">round</span>(<span class="dv">2</span>))</span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Average price: $</span><span class="sc">{</span>prices<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📊 UNIFORM DISTRIBUTION: np.random.uniform()"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate random numbers in a custom range</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Random temperatures between 60°F and 90°F"</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> np.random.uniform(<span class="dv">60</span>, <span class="dv">90</span>, size<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="st">'Mon'</span>, <span class="st">'Tue'</span>, <span class="st">'Wed'</span>, <span class="st">'Thu'</span>, <span class="st">'Fri'</span>, <span class="st">'Sat'</span>, <span class="st">'Sun'</span>]</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> day, temp <span class="kw">in</span> <span class="bu">zip</span>(days, temperatures):</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>temp<span class="sc">:.1f}</span><span class="ss">°F"</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2D array example</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: 3×5 matrix of random prices between $10 and $100"</span>)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.random.uniform(<span class="dv">10</span>, <span class="dv">100</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.<span class="bu">round</span>(<span class="dv">2</span>))</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Average price: $</span><span class="sc">{</span>prices<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 0.5376299   0.42818625 -0.2799933 ]
@@ -2158,26 +2074,26 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 <div id="b0dc613a" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 NORMAL DISTRIBUTION: np.random.randn()"</span>)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate standard normal distribution</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>normal_array <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Generated </span><span class="sc">{</span><span class="bu">len</span>(normal_array)<span class="sc">}</span><span class="ss"> samples from standard normal distribution"</span>)</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean: </span><span class="sc">{</span>normal_array<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss"> (expected: 0)"</span>)</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Std Dev: </span><span class="sc">{</span>normal_array<span class="sc">.</span>std()<span class="sc">:.4f}</span><span class="ss"> (expected: 1)"</span>)</span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Min: </span><span class="sc">{</span>normal_array<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss">, Max: </span><span class="sc">{</span>normal_array<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show distribution statistics</span></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📈 Distribution check (68-95-99.7 rule):"</span>)</span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>within_1std <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(normal_array) <span class="op">&lt;=</span> <span class="dv">1</span>) <span class="op">/</span> <span class="bu">len</span>(normal_array) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>within_2std <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(normal_array) <span class="op">&lt;=</span> <span class="dv">2</span>) <span class="op">/</span> <span class="bu">len</span>(normal_array) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>within_3std <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(normal_array) <span class="op">&lt;=</span> <span class="dv">3</span>) <span class="op">/</span> <span class="bu">len</span>(normal_array) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Within ±1σ: </span><span class="sc">{</span>within_1std<span class="sc">:.1f}</span><span class="ss">% (expected: ~68%)"</span>)</span>
-<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Within ±2σ: </span><span class="sc">{</span>within_2std<span class="sc">:.1f}</span><span class="ss">% (expected: ~95%)"</span>)</span>
-<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Within ±3σ: </span><span class="sc">{</span>within_3std<span class="sc">:.1f}</span><span class="ss">% (expected: ~99.7%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 NORMAL DISTRIBUTION: np.random.randn()"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate standard normal distribution</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>normal_array <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Generated </span><span class="sc">{</span><span class="bu">len</span>(normal_array)<span class="sc">}</span><span class="ss"> samples from standard normal distribution"</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean: </span><span class="sc">{</span>normal_array<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss"> (expected: 0)"</span>)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Std Dev: </span><span class="sc">{</span>normal_array<span class="sc">.</span>std()<span class="sc">:.4f}</span><span class="ss"> (expected: 1)"</span>)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Min: </span><span class="sc">{</span>normal_array<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss">, Max: </span><span class="sc">{</span>normal_array<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show distribution statistics</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📈 Distribution check (68-95-99.7 rule):"</span>)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>within_1std <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(normal_array) <span class="op">&lt;=</span> <span class="dv">1</span>) <span class="op">/</span> <span class="bu">len</span>(normal_array) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>within_2std <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(normal_array) <span class="op">&lt;=</span> <span class="dv">2</span>) <span class="op">/</span> <span class="bu">len</span>(normal_array) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>within_3std <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(normal_array) <span class="op">&lt;=</span> <span class="dv">3</span>) <span class="op">/</span> <span class="bu">len</span>(normal_array) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Within ±1σ: </span><span class="sc">{</span>within_1std<span class="sc">:.1f}</span><span class="ss">% (expected: ~68%)"</span>)</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Within ±2σ: </span><span class="sc">{</span>within_2std<span class="sc">:.1f}</span><span class="ss">% (expected: ~95%)"</span>)</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Within ±3σ: </span><span class="sc">{</span>within_3std<span class="sc">:.1f}</span><span class="ss">% (expected: ~99.7%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2187,23 +2103,23 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 <div id="401412e9" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📊 NORMAL DISTRIBUTION: np.random.normal()"</span>)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Student exam scores (mean=75, std=10)</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Simulate exam scores (μ=75, σ=10)"</span>)</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="op">=</span> np.random.normal(<span class="dv">75</span>, <span class="dv">10</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Scores: </span><span class="sc">{</span>exam_scores<span class="sc">.</span><span class="bu">round</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Class average: </span><span class="sc">{</span>exam_scores<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Passing (≥60): </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>(exam_scores <span class="op">&gt;=</span> <span class="dv">60</span>)<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(exam_scores)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Heights in inches (mean=68, std=3)</span></span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: Adult heights in inches (μ=68</span><span class="ch">\"</span><span class="st">, σ=3</span><span class="ch">\"</span><span class="st">)"</span>)</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>heights <span class="op">=</span> np.random.normal(<span class="dv">68</span>, <span class="dv">3</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Generated </span><span class="sc">{</span><span class="bu">len</span>(heights)<span class="sc">}</span><span class="ss"> height measurements"</span>)</span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average height: </span><span class="sc">{</span>heights<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ch">\"</span><span class="ss">"</span>)</span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tallest: </span><span class="sc">{</span>heights<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.1f}</span><span class="ch">\"</span><span class="ss">, Shortest: </span><span class="sc">{</span>heights<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.1f}</span><span class="ch">\"</span><span class="ss">"</span>)</span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Between 65</span><span class="ch">\"</span><span class="ss"> and 71</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>((heights <span class="op">&gt;=</span> <span class="dv">65</span>) <span class="op">&amp;</span> (heights <span class="op">&lt;=</span> <span class="dv">71</span>))<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📊 NORMAL DISTRIBUTION: np.random.normal()"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Student exam scores (mean=75, std=10)</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Simulate exam scores (μ=75, σ=10)"</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="op">=</span> np.random.normal(<span class="dv">75</span>, <span class="dv">10</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Scores: </span><span class="sc">{</span>exam_scores<span class="sc">.</span><span class="bu">round</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Class average: </span><span class="sc">{</span>exam_scores<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Passing (≥60): </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>(exam_scores <span class="op">&gt;=</span> <span class="dv">60</span>)<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(exam_scores)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Heights in inches (mean=68, std=3)</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: Adult heights in inches (μ=68</span><span class="ch">\"</span><span class="st">, σ=3</span><span class="ch">\"</span><span class="st">)"</span>)</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>heights <span class="op">=</span> np.random.normal(<span class="dv">68</span>, <span class="dv">3</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Generated </span><span class="sc">{</span><span class="bu">len</span>(heights)<span class="sc">}</span><span class="ss"> height measurements"</span>)</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average height: </span><span class="sc">{</span>heights<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ch">\"</span><span class="ss">"</span>)</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tallest: </span><span class="sc">{</span>heights<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.1f}</span><span class="ch">\"</span><span class="ss">, Shortest: </span><span class="sc">{</span>heights<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.1f}</span><span class="ch">\"</span><span class="ss">"</span>)</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Between 65</span><span class="ch">\"</span><span class="ss"> and 71</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>((heights <span class="op">&gt;=</span> <span class="dv">65</span>) <span class="op">&amp;</span> (heights <span class="op">&lt;=</span> <span class="dv">71</span>))<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2215,25 +2131,25 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 <div id="e7c793b0" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🎲 RANDOM INTEGERS: np.random.randint()"</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Dice rolls</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Roll a six-sided die 20 times"</span>)</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>dice_rolls <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, size<span class="op">=</span><span class="dv">20</span>)  <span class="co"># 1 to 6 inclusive</span></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rolls: </span><span class="sc">{</span>dice_rolls<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Distribution: </span><span class="sc">{</span><span class="bu">dict</span>(<span class="bu">zip</span>(<span class="op">*</span>np.unique(dice_rolls, return_counts<span class="op">=</span><span class="va">True</span>)))<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Random matrix of integers</span></span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: 4×4 matrix of random integers [10, 20)"</span>)</span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>int_matrix <span class="op">=</span> np.random.randint(<span class="dv">10</span>, <span class="dv">20</span>, size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>))</span>
-<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(int_matrix)</span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sum: </span><span class="sc">{</span>int_matrix<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">, Average: </span><span class="sc">{</span>int_matrix<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Random customer IDs</span></span>
-<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 3: Generate 10 random customer IDs [1000, 9999]"</span>)</span>
-<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>customer_ids <span class="op">=</span> np.random.randint(<span class="dv">1000</span>, <span class="dv">10000</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IDs: </span><span class="sc">{</span>customer_ids<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🎲 RANDOM INTEGERS: np.random.randint()"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Dice rolls</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Roll a six-sided die 20 times"</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>dice_rolls <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, size<span class="op">=</span><span class="dv">20</span>)  <span class="co"># 1 to 6 inclusive</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rolls: </span><span class="sc">{</span>dice_rolls<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Distribution: </span><span class="sc">{</span><span class="bu">dict</span>(<span class="bu">zip</span>(<span class="op">*</span>np.unique(dice_rolls, return_counts<span class="op">=</span><span class="va">True</span>)))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Random matrix of integers</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: 4×4 matrix of random integers [10, 20)"</span>)</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>int_matrix <span class="op">=</span> np.random.randint(<span class="dv">10</span>, <span class="dv">20</span>, size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(int_matrix)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sum: </span><span class="sc">{</span>int_matrix<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">, Average: </span><span class="sc">{</span>int_matrix<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Random customer IDs</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 3: Generate 10 random customer IDs [1000, 9999]"</span>)</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>customer_ids <span class="op">=</span> np.random.randint(<span class="dv">1000</span>, <span class="dv">10000</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IDs: </span><span class="sc">{</span>customer_ids<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2244,38 +2160,38 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 <div id="c8d4c653" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🎯 RANDOM SELECTION: np.random.choice()"</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Random selection WITH replacement</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Select 5 numbers WITH replacement [1-5]"</span>)</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>choice_array <span class="op">=</span> np.random.choice([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], size<span class="op">=</span><span class="dv">10</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Selected: </span><span class="sc">{</span>choice_array<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Notice: Numbers can repeat!"</span>)</span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Random selection WITHOUT replacement</span></span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: Select 3 winners from 10 contestants (no duplicates)"</span>)</span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>contestants <span class="op">=</span> np.array([<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Carol'</span>, <span class="st">'David'</span>, <span class="st">'Eve'</span>, </span>
-<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'Frank'</span>, <span class="st">'Grace'</span>, <span class="st">'Henry'</span>, <span class="st">'Iris'</span>, <span class="st">'Jack'</span>])</span>
-<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>winners <span class="op">=</span> np.random.choice(contestants, size<span class="op">=</span><span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Winners: </span><span class="sc">{</span>winners<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Weighted random choice (probabilities)</span></span>
-<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 3: Biased coin flip (70% Heads, 30% Tails)"</span>)</span>
-<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>outcomes <span class="op">=</span> [<span class="st">'Heads'</span>, <span class="st">'Tails'</span>]</span>
-<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> [<span class="fl">0.7</span>, <span class="fl">0.3</span>]</span>
-<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>flips <span class="op">=</span> np.random.choice(outcomes, size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>probabilities)</span>
-<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a>unique, counts <span class="op">=</span> np.unique(flips, return_counts<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome, count <span class="kw">in</span> <span class="bu">zip</span>(unique, counts):</span>
-<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>outcome<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">/100 (</span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">%)"</span>)</span>
-<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 4: Bootstrap sampling</span></span>
-<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 4: Bootstrap sampling (sampling with replacement)"</span>)</span>
-<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">34</span>, <span class="dv">89</span>, <span class="dv">12</span>, <span class="dv">56</span>])</span>
-<span id="cb55-29"><a href="#cb55-29" aria-hidden="true" tabindex="-1"></a>bootstrap_sample <span class="op">=</span> np.random.choice(data, size<span class="op">=</span><span class="bu">len</span>(data), replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>data<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap: </span><span class="sc">{</span>bootstrap_sample<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap mean: </span><span class="sc">{</span>bootstrap_sample<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">, Original mean: </span><span class="sc">{</span>data<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"🎯 RANDOM SELECTION: np.random.choice()"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Random selection WITH replacement</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Example 1: Select 5 numbers WITH replacement [1-5]"</span>)</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>choice_array <span class="op">=</span> np.random.choice([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], size<span class="op">=</span><span class="dv">10</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Selected: </span><span class="sc">{</span>choice_array<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Notice: Numbers can repeat!"</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Random selection WITHOUT replacement</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 2: Select 3 winners from 10 contestants (no duplicates)"</span>)</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>contestants <span class="op">=</span> np.array([<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Carol'</span>, <span class="st">'David'</span>, <span class="st">'Eve'</span>, </span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'Frank'</span>, <span class="st">'Grace'</span>, <span class="st">'Henry'</span>, <span class="st">'Iris'</span>, <span class="st">'Jack'</span>])</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>winners <span class="op">=</span> np.random.choice(contestants, size<span class="op">=</span><span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Winners: </span><span class="sc">{</span>winners<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Weighted random choice (probabilities)</span></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 3: Biased coin flip (70% Heads, 30% Tails)"</span>)</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>outcomes <span class="op">=</span> [<span class="st">'Heads'</span>, <span class="st">'Tails'</span>]</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> [<span class="fl">0.7</span>, <span class="fl">0.3</span>]</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>flips <span class="op">=</span> np.random.choice(outcomes, size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>probabilities)</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>unique, counts <span class="op">=</span> np.unique(flips, return_counts<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome, count <span class="kw">in</span> <span class="bu">zip</span>(unique, counts):</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>outcome<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">/100 (</span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">%)"</span>)</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 4: Bootstrap sampling</span></span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Example 4: Bootstrap sampling (sampling with replacement)"</span>)</span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">34</span>, <span class="dv">89</span>, <span class="dv">12</span>, <span class="dv">56</span>])</span>
+<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a>bootstrap_sample <span class="op">=</span> np.random.choice(data, size<span class="op">=</span><span class="bu">len</span>(data), replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>data<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap: </span><span class="sc">{</span>bootstrap_sample<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap mean: </span><span class="sc">{</span>bootstrap_sample<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">, Original mean: </span><span class="sc">{</span>data<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2285,31 +2201,31 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 <div id="fde2bdf2" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 OTHER USEFUL DISTRIBUTIONS"</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Binomial: Number of successes in n trials</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"1. BINOMIAL: Coin flips (10 flips, 50% probability)"</span>)</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>coin_flips <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">0.5</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Average heads in 10 flips: </span><span class="sc">{</span>coin_flips<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (expected: 5)"</span>)</span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Poisson: Count of events in fixed interval</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">2. POISSON: Customer arrivals (λ=3 per hour)"</span>)</span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>arrivals <span class="op">=</span> np.random.poisson(lam<span class="op">=</span><span class="dv">3</span>, size<span class="op">=</span><span class="dv">24</span>)  <span class="co"># 24 hours</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Arrivals per hour: </span><span class="sc">{</span>arrivals<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Total customers: </span><span class="sc">{</span>arrivals<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">, Average: </span><span class="sc">{</span>arrivals<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Exponential: Time between events</span></span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">3. EXPONENTIAL: Time between customer arrivals (scale=5 min)"</span>)</span>
-<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>wait_times <span class="op">=</span> np.random.exponential(scale<span class="op">=</span><span class="dv">5</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Wait times (minutes): </span><span class="sc">{</span>wait_times<span class="sc">.</span><span class="bu">round</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Average wait: </span><span class="sc">{</span>wait_times<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> min"</span>)</span>
-<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Beta: Probabilities and proportions</span></span>
-<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">4. BETA: Probability distribution (α=2, β=5)"</span>)</span>
-<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> np.random.beta(<span class="dv">2</span>, <span class="dv">5</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Mean probability: </span><span class="sc">{</span>probabilities<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Range: [</span><span class="sc">{</span>probabilities<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>probabilities<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3f}</span><span class="ss">]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"📊 OTHER USEFUL DISTRIBUTIONS"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Binomial: Number of successes in n trials</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"1. BINOMIAL: Coin flips (10 flips, 50% probability)"</span>)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>coin_flips <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">0.5</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Average heads in 10 flips: </span><span class="sc">{</span>coin_flips<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (expected: 5)"</span>)</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Poisson: Count of events in fixed interval</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">2. POISSON: Customer arrivals (λ=3 per hour)"</span>)</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>arrivals <span class="op">=</span> np.random.poisson(lam<span class="op">=</span><span class="dv">3</span>, size<span class="op">=</span><span class="dv">24</span>)  <span class="co"># 24 hours</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Arrivals per hour: </span><span class="sc">{</span>arrivals<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Total customers: </span><span class="sc">{</span>arrivals<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">, Average: </span><span class="sc">{</span>arrivals<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Exponential: Time between events</span></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">3. EXPONENTIAL: Time between customer arrivals (scale=5 min)"</span>)</span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>wait_times <span class="op">=</span> np.random.exponential(scale<span class="op">=</span><span class="dv">5</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Wait times (minutes): </span><span class="sc">{</span>wait_times<span class="sc">.</span><span class="bu">round</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Average wait: </span><span class="sc">{</span>wait_times<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> min"</span>)</span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Beta: Probabilities and proportions</span></span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">4. BETA: Probability distribution (α=2, β=5)"</span>)</span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> np.random.beta(<span class="dv">2</span>, <span class="dv">5</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Mean probability: </span><span class="sc">{</span>probabilities<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Range: [</span><span class="sc">{</span>probabilities<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>probabilities<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3f}</span><span class="ss">]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2324,35 +2240,35 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 <div id="8d6568cd" class="cell" data-execution_count="53">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> py_random</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" PERFORMANCE COMPARISON: NumPy vs Python random"</span>)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>n_numbers <span class="op">=</span> <span class="dv">1_000_000</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Python random (slow)</span></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Python random module (generating </span><span class="sc">{</span>n_numbers<span class="sc">:,}</span><span class="ss"> numbers):"</span>)</span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>python_randoms <span class="op">=</span> [py_random.random() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_numbers)]</span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>python_time <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Time: </span><span class="sc">{</span>python_time<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy random (fast)</span></span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> NumPy random module (generating </span><span class="sc">{</span>n_numbers<span class="sc">:,}</span><span class="ss"> numbers):"</span>)</span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>numpy_randoms <span class="op">=</span> np.random.rand(n_numbers)</span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>numpy_time <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Time: </span><span class="sc">{</span>numpy_time<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
-<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparison</span></span>
-<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>speedup <span class="op">=</span> python_time <span class="op">/</span> numpy_time <span class="cf">if</span> numpy_time <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
-<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> RESULT:"</span>)</span>
-<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   NumPy is </span><span class="sc">{</span>speedup<span class="sc">:.1f}</span><span class="ss">x faster!"</span>)</span>
-<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Time saved: </span><span class="sc">{</span>(python_time <span class="op">-</span> numpy_time)<span class="sc">:.4f}</span><span class="ss"> seconds (</span><span class="sc">{</span>(python_time <span class="op">-</span> numpy_time)<span class="op">/</span>python_time<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
-<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Key Takeaway:"</span>)</span>
-<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"   Use NumPy random for any serious data science work!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> py_random</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" PERFORMANCE COMPARISON: NumPy vs Python random"</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>n_numbers <span class="op">=</span> <span class="dv">1_000_000</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Python random (slow)</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Python random module (generating </span><span class="sc">{</span>n_numbers<span class="sc">:,}</span><span class="ss"> numbers):"</span>)</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>python_randoms <span class="op">=</span> [py_random.random() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_numbers)]</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>python_time <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Time: </span><span class="sc">{</span>python_time<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy random (fast)</span></span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> NumPy random module (generating </span><span class="sc">{</span>n_numbers<span class="sc">:,}</span><span class="ss"> numbers):"</span>)</span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>numpy_randoms <span class="op">=</span> np.random.rand(n_numbers)</span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>numpy_time <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Time: </span><span class="sc">{</span>numpy_time<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparison</span></span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>speedup <span class="op">=</span> python_time <span class="op">/</span> numpy_time <span class="cf">if</span> numpy_time <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> RESULT:"</span>)</span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   NumPy is </span><span class="sc">{</span>speedup<span class="sc">:.1f}</span><span class="ss">x faster!"</span>)</span>
+<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"   Time saved: </span><span class="sc">{</span>(python_time <span class="op">-</span> numpy_time)<span class="sc">:.4f}</span><span class="ss"> seconds (</span><span class="sc">{</span>(python_time <span class="op">-</span> numpy_time)<span class="op">/</span>python_time<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-28"><a href="#cb56-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Key Takeaway:"</span>)</span>
+<span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"   Use NumPy random for any serious data science work!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> PERFORMANCE COMPARISON: NumPy vs Python random
@@ -2375,30 +2291,30 @@ Used for: heights, weights, test scores, measurement errors, etc.</p>
 </section>
 <section id="quick-reference-guide" class="level3" data-number="10.6.10">
 <h3 data-number="10.6.10" class="anchored" data-anchor-id="quick-reference-guide"><span class="header-section-number">10.6.10</span> Quick Reference Guide</h3>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform [0, 1)</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">5</span>)                    <span class="co"># 1D array of 5 numbers</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">3</span>, <span class="dv">4</span>)                 <span class="co"># 3×4 matrix</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform [a, b]</span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>np.random.uniform(<span class="dv">10</span>, <span class="dv">20</span>, size<span class="op">=</span><span class="dv">10</span>)   <span class="co"># 10 numbers between 10 and 20</span></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Normal (Gaussian)</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>np.random.randn(<span class="dv">100</span>)                 <span class="co"># Standard normal (μ=0, σ=1)</span></span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>np.random.normal(<span class="dv">50</span>, <span class="dv">10</span>, size<span class="op">=</span><span class="dv">100</span>)   <span class="co"># Custom μ=50, σ=10</span></span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Integers</span></span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>np.random.randint(<span class="dv">1</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">50</span>)   <span class="co"># 50 random integers [1, 100)</span></span>
-<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Random selection</span></span>
-<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>np.random.choice([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>], size<span class="op">=</span><span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>)  <span class="co"># No duplicates</span></span>
-<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>np.random.choice([<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>], size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>])  <span class="co"># Weighted</span></span>
-<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffling</span></span>
-<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>np.random.shuffle(arr)               <span class="co"># Shuffles in-place</span></span>
-<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Permutation</span></span>
-<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>np.random.permutation(<span class="dv">10</span>)            <span class="co"># Random permutation of 0-9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform [0, 1)</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">5</span>)                    <span class="co"># 1D array of 5 numbers</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">3</span>, <span class="dv">4</span>)                 <span class="co"># 3×4 matrix</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform [a, b]</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>np.random.uniform(<span class="dv">10</span>, <span class="dv">20</span>, size<span class="op">=</span><span class="dv">10</span>)   <span class="co"># 10 numbers between 10 and 20</span></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Normal (Gaussian)</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>np.random.randn(<span class="dv">100</span>)                 <span class="co"># Standard normal (μ=0, σ=1)</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>np.random.normal(<span class="dv">50</span>, <span class="dv">10</span>, size<span class="op">=</span><span class="dv">100</span>)   <span class="co"># Custom μ=50, σ=10</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Integers</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>np.random.randint(<span class="dv">1</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">50</span>)   <span class="co"># 50 random integers [1, 100)</span></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Random selection</span></span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>np.random.choice([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>], size<span class="op">=</span><span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>)  <span class="co"># No duplicates</span></span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>np.random.choice([<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>], size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>])  <span class="co"># Weighted</span></span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffling</span></span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a>np.random.shuffle(arr)               <span class="co"># Shuffles in-place</span></span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Permutation</span></span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a>np.random.permutation(<span class="dv">10</span>)            <span class="co"># Random permutation of 0-9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="independent-study" class="level2" data-number="10.7">
