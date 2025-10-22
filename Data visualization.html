@@ -315,8 +315,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment D.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Assignment D</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -828,16 +834,54 @@ Seaborn
 <p>Let’s break down what each configuration does:</p>
 <section id="matplotlib-configuration" class="level4" data-number="11.3.7.1">
 <h4 data-number="11.3.7.1" class="anchored" data-anchor-id="matplotlib-configuration"><span class="header-section-number">11.3.7.1</span> Matplotlib Configuration</h4>
-<p><strong><code>%matplotlib inline</code></strong> (Jupyter Magic Command) - Displays plots directly in the notebook - Without this, plots may not appear or open in separate windows - Only needed once per notebook session</p>
-<p><strong><code>figure.figsize</code></strong> - Default Plot Dimensions - Format: <code>(width, height)</code> in inches - Default is <code>(6.4, 4.8)</code> - often too small - We set <code>(10, 6)</code> for better visibility - Can be overridden for individual plots</p>
-<p><strong><code>figure.dpi</code></strong> - Dots Per Inch (Resolution) - Controls image quality and sharpness - Default: 72 DPI (screen display) - We set 100 DPI for crisper display - Use 300 DPI for publication-quality exports</p>
-<p><strong><code>font.size</code></strong> - Text Size - Default: 10 points - We set 11 for better readability - Affects all text: labels, titles, legends</p>
+<p><strong><code>%matplotlib inline</code></strong> (Jupyter Magic Command)</p>
+<ul>
+<li>Displays plots directly in the notebook</li>
+<li>Without this, plots may not appear or open in separate windows</li>
+<li>Only needed once per notebook session</li>
+</ul>
+<p><strong><code>figure.figsize</code></strong> - Default Plot Dimensions</p>
+<ul>
+<li>Format: <code>(width, height)</code> in inches</li>
+<li>Default is <code>(6.4, 4.8)</code> - often too small</li>
+<li>We set <code>(10, 6)</code> for better visibility</li>
+<li>Can be overridden for individual plots</li>
+</ul>
+<p><strong><code>figure.dpi</code></strong> - Dots Per Inch (Resolution)</p>
+<ul>
+<li>Controls image quality and sharpness</li>
+<li>Default: 72 DPI (screen display)</li>
+<li>We set 100 DPI for crisper display</li>
+<li>Use 300 DPI for publication-quality exports</li>
+</ul>
+<p><strong><code>font.size</code></strong> - Text Size</p>
+<ul>
+<li>Default: 10 points</li>
+<li>We set 11 for better readability</li>
+<li>Affects all text: labels, titles, legends</li>
+</ul>
 </section>
 <section id="seaborn-configuration" class="level4" data-number="11.3.7.2">
 <h4 data-number="11.3.7.2" class="anchored" data-anchor-id="seaborn-configuration"><span class="header-section-number">11.3.7.2</span> Seaborn Configuration</h4>
-<p><strong><code>set_style("whitegrid")</code></strong> - Visual Theme - Options: <code>darkgrid</code>, <code>whitegrid</code>, <code>dark</code>, <code>white</code>, <code>ticks</code> - <code>whitegrid</code>: Clean white background with subtle grid - Professional appearance suitable for presentations</p>
-<p><strong><code>set_palette("deep")</code></strong> - Color Scheme - Options: <code>deep</code>, <code>muted</code>, <code>pastel</code>, <code>colorblind</code>, etc. - <code>deep</code>: Saturated colors with good contrast - Automatically applied to Seaborn plots</p>
-<p><strong><code>set_context("notebook")</code></strong> - Scaling Preset - Options: <code>paper</code>, <code>notebook</code>, <code>talk</code>, <code>poster</code> - Controls relative size of elements - <code>notebook</code>: Optimal for Jupyter display - Use <code>talk</code> for presentations, <code>poster</code> for large displays</p>
+<p><strong><code>set_style("whitegrid")</code></strong> - Visual Theme</p>
+<ul>
+<li>Options: <code>darkgrid</code>, <code>whitegrid</code>, <code>dark</code>, <code>white</code>, <code>ticks</code></li>
+<li><code>whitegrid</code>: Clean white background with subtle grid</li>
+<li>Professional appearance suitable for presentations</li>
+</ul>
+<p><strong><code>set_palette("deep")</code></strong> - Color Scheme</p>
+<ul>
+<li>Options: <code>deep</code>, <code>muted</code>, <code>pastel</code>, <code>colorblind</code>, etc.</li>
+<li><code>deep</code>: Saturated colors with good contrast</li>
+<li>Automatically applied to Seaborn plots</li>
+</ul>
+<p><strong><code>set_context("notebook")</code></strong> - Scaling Preset</p>
+<ul>
+<li>Options: <code>paper</code>, <code>notebook</code>, <code>talk</code>, <code>poster</code></li>
+<li>Controls relative size of elements</li>
+<li><code>notebook</code>: Optimal for Jupyter display</li>
+<li>Use <code>talk</code> for presentations, <code>poster</code> for large displays</li>
+</ul>
 </section>
 </section>
 <section id="step-5-verify-your-setup" class="level3" data-number="11.3.8">
