@@ -338,74 +338,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#chapter-overview" id="toc-chapter-overview" class="nav-link active" data-scroll-target="#chapter-overview"><span class="header-section-number">12.1</span> Chapter Overview</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">12.2</span> Learning Objectives</a></li>
-  <li><a href="#understanding-matplotlib-architecture" id="toc-understanding-matplotlib-architecture" class="nav-link" data-scroll-target="#understanding-matplotlib-architecture"><span class="header-section-number">12.3</span> Understanding Matplotlib Architecture</a>
+  <li><a href="#understanding-matplotlib-architecture" id="toc-understanding-matplotlib-architecture" class="nav-link" data-scroll-target="#understanding-matplotlib-architecture"><span class="header-section-number">12.2</span> Understanding Matplotlib Architecture</a>
   <ul>
-  <li><a href="#why-learn-the-object-oriented-interface" id="toc-why-learn-the-object-oriented-interface" class="nav-link" data-scroll-target="#why-learn-the-object-oriented-interface"><span class="header-section-number">12.3.1</span> Why Learn the Object-Oriented Interface?</a></li>
-  <li><a href="#step-1-compare-pyplot-vs-object-oriented-interfaces" id="toc-step-1-compare-pyplot-vs-object-oriented-interfaces" class="nav-link" data-scroll-target="#step-1-compare-pyplot-vs-object-oriented-interfaces"><span class="header-section-number">12.3.2</span> Step 1: Compare Pyplot vs Object-Oriented Interfaces</a>
+  <li><a href="#why-learn-the-object-oriented-interface" id="toc-why-learn-the-object-oriented-interface" class="nav-link" data-scroll-target="#why-learn-the-object-oriented-interface"><span class="header-section-number">12.2.1</span> Why Learn the Object-Oriented Interface?</a></li>
+  <li><a href="#compare-pyplot-vs-object-oriented-interfaces" id="toc-compare-pyplot-vs-object-oriented-interfaces" class="nav-link" data-scroll-target="#compare-pyplot-vs-object-oriented-interfaces"><span class="header-section-number">12.2.2</span> Compare Pyplot vs Object-Oriented Interfaces</a>
   <ul class="collapse">
-  <li><a href="#example-gdp-vs-life-expectancy" id="toc-example-gdp-vs-life-expectancy" class="nav-link" data-scroll-target="#example-gdp-vs-life-expectancy"><span class="header-section-number">12.3.2.1</span> Example: GDP vs Life Expectancy</a></li>
-  <li><a href="#approach-1-pyplot-interface-implicit" id="toc-approach-1-pyplot-interface-implicit" class="nav-link" data-scroll-target="#approach-1-pyplot-interface-implicit"><span class="header-section-number">12.3.2.2</span> Approach 1: Pyplot Interface (Implicit)</a></li>
-  <li><a href="#approach-2-object-oriented-interface-explicit" id="toc-approach-2-object-oriented-interface-explicit" class="nav-link" data-scroll-target="#approach-2-object-oriented-interface-explicit"><span class="header-section-number">12.3.2.3</span> Approach 2: Object-Oriented Interface (Explicit)</a></li>
+  <li><a href="#pyplot-interface-implicit" id="toc-pyplot-interface-implicit" class="nav-link" data-scroll-target="#pyplot-interface-implicit"><span class="header-section-number">12.2.2.1</span> Pyplot Interface (Implicit)</a></li>
+  <li><a href="#object-oriented-interface-explicit" id="toc-object-oriented-interface-explicit" class="nav-link" data-scroll-target="#object-oriented-interface-explicit"><span class="header-section-number">12.2.2.2</span> Object-Oriented Interface (Explicit)</a></li>
   </ul></li>
-  <li><a href="#step-2-understand-the-matplotlib-object-hierarchy" id="toc-step-2-understand-the-matplotlib-object-hierarchy" class="nav-link" data-scroll-target="#step-2-understand-the-matplotlib-object-hierarchy"><span class="header-section-number">12.3.3</span> Step 2: Understand the Matplotlib Object Hierarchy</a>
+  <li><a href="#pyplot-a-convenience-wrapper" id="toc-pyplot-a-convenience-wrapper" class="nav-link" data-scroll-target="#pyplot-a-convenience-wrapper"><span class="header-section-number">12.2.3</span> Pyplot: A Convenience Wrapper</a></li>
+  <li><a href="#when-the-oop-interface-becomes-essential" id="toc-when-the-oop-interface-becomes-essential" class="nav-link" data-scroll-target="#when-the-oop-interface-becomes-essential"><span class="header-section-number">12.2.4</span> When the OOP Interface Becomes Essential</a></li>
+  <li><a href="#understand-the-matplotlib-object-hierarchy" id="toc-understand-the-matplotlib-object-hierarchy" class="nav-link" data-scroll-target="#understand-the-matplotlib-object-hierarchy"><span class="header-section-number">12.2.5</span> Understand the Matplotlib Object Hierarchy</a>
   <ul class="collapse">
-  <li><a href="#the-hierarchical-structure" id="toc-the-hierarchical-structure" class="nav-link" data-scroll-target="#the-hierarchical-structure"><span class="header-section-number">12.3.3.1</span> The Hierarchical Structure</a></li>
-  <li><a href="#figure-the-top-level-container" id="toc-figure-the-top-level-container" class="nav-link" data-scroll-target="#figure-the-top-level-container"><span class="header-section-number">12.3.3.2</span> Figure: The Top-Level Container</a></li>
-  <li><a href="#axes-the-plot-area" id="toc-axes-the-plot-area" class="nav-link" data-scroll-target="#axes-the-plot-area"><span class="header-section-number">12.3.3.3</span> Axes: The Plot Area</a></li>
+  <li><a href="#the-hierarchical-structure" id="toc-the-hierarchical-structure" class="nav-link" data-scroll-target="#the-hierarchical-structure"><span class="header-section-number">12.2.5.1</span> The Hierarchical Structure</a></li>
+  <li><a href="#figure-the-top-level-container" id="toc-figure-the-top-level-container" class="nav-link" data-scroll-target="#figure-the-top-level-container"><span class="header-section-number">12.2.5.2</span> Figure: The Top-Level Container</a></li>
+  <li><a href="#axes-the-plot-area" id="toc-axes-the-plot-area" class="nav-link" data-scroll-target="#axes-the-plot-area"><span class="header-section-number">12.2.5.3</span> Axes: The Plot Area</a></li>
   </ul></li>
-  <li><a href="#step-3-create-and-customize-plots-with-the-oop-interface" id="toc-step-3-create-and-customize-plots-with-the-oop-interface" class="nav-link" data-scroll-target="#step-3-create-and-customize-plots-with-the-oop-interface"><span class="header-section-number">12.3.4</span> Step 3: Create and Customize Plots with the OOP Interface</a>
+  <li><a href="#create-and-customize-plots-with-the-oop-interface" id="toc-create-and-customize-plots-with-the-oop-interface" class="nav-link" data-scroll-target="#create-and-customize-plots-with-the-oop-interface"><span class="header-section-number">12.2.6</span> Create and Customize Plots with the OOP Interface</a>
   <ul class="collapse">
-  <li><a href="#components-of-an-axes-object" id="toc-components-of-an-axes-object" class="nav-link" data-scroll-target="#components-of-an-axes-object"><span class="header-section-number">12.3.4.1</span> Components of an Axes Object</a></li>
+  <li><a href="#components-of-an-axes-object" id="toc-components-of-an-axes-object" class="nav-link" data-scroll-target="#components-of-an-axes-object"><span class="header-section-number">12.2.6.1</span> Components of an Axes Object</a></li>
   </ul></li>
-  <li><a href="#step-4-understand-when-oop-interface-is-essential" id="toc-step-4-understand-when-oop-interface-is-essential" class="nav-link" data-scroll-target="#step-4-understand-when-oop-interface-is-essential"><span class="header-section-number">12.3.5</span> Step 4: Understand When OOP Interface is Essential</a></li>
   </ul></li>
-  <li><a href="#section-2-mastering-subplots" id="toc-section-2-mastering-subplots" class="nav-link" data-scroll-target="#section-2-mastering-subplots"><span class="header-section-number">12.4</span> Section 2: Mastering Subplots</a>
+  <li><a href="#mastering-subplots" id="toc-mastering-subplots" class="nav-link" data-scroll-target="#mastering-subplots"><span class="header-section-number">12.3</span> Mastering Subplots</a>
   <ul>
-  <li><a href="#types-of-subplot-layouts" id="toc-types-of-subplot-layouts" class="nav-link" data-scroll-target="#types-of-subplot-layouts"><span class="header-section-number">12.4.1</span> Types of Subplot Layouts</a></li>
-  <li><a href="#step-1-create-simple-subplot-grids" id="toc-step-1-create-simple-subplot-grids" class="nav-link" data-scroll-target="#step-1-create-simple-subplot-grids"><span class="header-section-number">12.4.2</span> Step 1: Create Simple Subplot Grids</a></li>
-  <li><a href="#step-2-control-subplot-layout-and-spacing" id="toc-step-2-control-subplot-layout-and-spacing" class="nav-link" data-scroll-target="#step-2-control-subplot-layout-and-spacing"><span class="header-section-number">12.4.3</span> Step 2: Control Subplot Layout and Spacing</a></li>
-  <li><a href="#step-3-integrate-matplotlib-with-pandas-and-seaborn" id="toc-step-3-integrate-matplotlib-with-pandas-and-seaborn" class="nav-link" data-scroll-target="#step-3-integrate-matplotlib-with-pandas-and-seaborn"><span class="header-section-number">12.4.4</span> Step 3: Integrate Matplotlib with Pandas and Seaborn</a></li>
-  <li><a href="#step-4-create-nested-subplots-insets" id="toc-step-4-create-nested-subplots-insets" class="nav-link" data-scroll-target="#step-4-create-nested-subplots-insets"><span class="header-section-number">12.4.5</span> Step 4: Create Nested Subplots (Insets)</a>
+  <li><a href="#types-of-subplot-layouts" id="toc-types-of-subplot-layouts" class="nav-link" data-scroll-target="#types-of-subplot-layouts"><span class="header-section-number">12.3.1</span> Types of Subplot Layouts</a></li>
+  <li><a href="#create-simple-subplot-grids" id="toc-create-simple-subplot-grids" class="nav-link" data-scroll-target="#create-simple-subplot-grids"><span class="header-section-number">12.3.2</span> Create Simple Subplot Grids</a></li>
+  <li><a href="#control-subplot-layout-and-spacing" id="toc-control-subplot-layout-and-spacing" class="nav-link" data-scroll-target="#control-subplot-layout-and-spacing"><span class="header-section-number">12.3.3</span> Control Subplot Layout and Spacing</a></li>
+  <li><a href="#integrate-matplotlib-with-pandas-and-seaborn" id="toc-integrate-matplotlib-with-pandas-and-seaborn" class="nav-link" data-scroll-target="#integrate-matplotlib-with-pandas-and-seaborn"><span class="header-section-number">12.3.4</span> Integrate Matplotlib with Pandas and Seaborn</a></li>
+  <li><a href="#create-nested-subplots-insets" id="toc-create-nested-subplots-insets" class="nav-link" data-scroll-target="#create-nested-subplots-insets"><span class="header-section-number">12.3.5</span> Create Nested Subplots (Insets)</a>
   <ul class="collapse">
-  <li><a href="#using-add_axes-for-precise-control" id="toc-using-add_axes-for-precise-control" class="nav-link" data-scroll-target="#using-add_axes-for-precise-control"><span class="header-section-number">12.4.5.1</span> Using <code>add_axes()</code> for Precise Control</a></li>
+  <li><a href="#using-add_axes-for-precise-control" id="toc-using-add_axes-for-precise-control" class="nav-link" data-scroll-target="#using-add_axes-for-precise-control"><span class="header-section-number">12.3.5.1</span> Using <code>add_axes()</code> for Precise Control</a></li>
   </ul></li>
-  <li><a href="#step-5-advanced-formatting-with-custom-tick-formatters" id="toc-step-5-advanced-formatting-with-custom-tick-formatters" class="nav-link" data-scroll-target="#step-5-advanced-formatting-with-custom-tick-formatters"><span class="header-section-number">12.4.6</span> Step 5: Advanced Formatting with Custom Tick Formatters</a>
+  <li><a href="#advanced-formatting-with-custom-tick-formatters" id="toc-advanced-formatting-with-custom-tick-formatters" class="nav-link" data-scroll-target="#advanced-formatting-with-custom-tick-formatters"><span class="header-section-number">12.3.6</span> Advanced Formatting with Custom Tick Formatters</a>
   <ul class="collapse">
-  <li><a href="#example-formatting-large-numbers-with-commas" id="toc-example-formatting-large-numbers-with-commas" class="nav-link" data-scroll-target="#example-formatting-large-numbers-with-commas"><span class="header-section-number">12.4.6.1</span> Example: Formatting Large Numbers with Commas</a></li>
+  <li><a href="#example-formatting-large-numbers-with-commas" id="toc-example-formatting-large-numbers-with-commas" class="nav-link" data-scroll-target="#example-formatting-large-numbers-with-commas"><span class="header-section-number">12.3.6.1</span> Example: Formatting Large Numbers with Commas</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#load-noise-complaint-data" id="toc-load-noise-complaint-data" class="nav-link" data-scroll-target="#load-noise-complaint-data"><span class="header-section-number">13</span> Load noise complaint data</a>
+  <li><a href="#creating-subplots-with-seaborn" id="toc-creating-subplots-with-seaborn" class="nav-link" data-scroll-target="#creating-subplots-with-seaborn"><span class="header-section-number">12.4</span> Creating Subplots with Seaborn</a>
   <ul>
-  <li><a href="#section-3-advanced-seaborn-techniques" id="toc-section-3-advanced-seaborn-techniques" class="nav-link" data-scroll-target="#section-3-advanced-seaborn-techniques"><span class="header-section-number">13.1</span> Section 3: Advanced Seaborn Techniques</a>
-  <ul class="collapse">
-  <li><a href="#step-1-create-multi-dimensional-visualizations-with-facetgrid" id="toc-step-1-create-multi-dimensional-visualizations-with-facetgrid" class="nav-link" data-scroll-target="#step-1-create-multi-dimensional-visualizations-with-facetgrid"><span class="header-section-number">13.1.1</span> Step 1: Create Multi-Dimensional Visualizations with FacetGrid</a></li>
-  <li><a href="#pyplot-a-convenience-wrapper-around-the-object-oriented-interface" id="toc-pyplot-a-convenience-wrapper-around-the-object-oriented-interface" class="nav-link" data-scroll-target="#pyplot-a-convenience-wrapper-around-the-object-oriented-interface"><span class="header-section-number">13.1.2</span> <code>pyplot</code>: a convenience wrapper around the object-oriented interface</a></li>
+  <li><a href="#using-facetgrid" id="toc-using-facetgrid" class="nav-link" data-scroll-target="#using-facetgrid"><span class="header-section-number">12.4.1</span> Using <code>Facetgrid</code></a></li>
+  <li><a href="#using-pairplot" id="toc-using-pairplot" class="nav-link" data-scroll-target="#using-pairplot"><span class="header-section-number">12.4.2</span> Using <code>Pairplot</code></a></li>
   </ul></li>
-  <li><a href="#creating-subplots-with-seaborn" id="toc-creating-subplots-with-seaborn" class="nav-link" data-scroll-target="#creating-subplots-with-seaborn"><span class="header-section-number">13.2</span> Creating Subplots with Seaborn</a>
+  <li><a href="#geosptial-plotting" id="toc-geosptial-plotting" class="nav-link" data-scroll-target="#geosptial-plotting"><span class="header-section-number">12.5</span> Geosptial Plotting</a>
+  <ul>
+  <li><a href="#static-plots-with-geopandas" id="toc-static-plots-with-geopandas" class="nav-link" data-scroll-target="#static-plots-with-geopandas"><span class="header-section-number">12.5.1</span> Static Plots with GeoPandas</a>
   <ul class="collapse">
-  <li><a href="#using-facetgrid" id="toc-using-facetgrid" class="nav-link" data-scroll-target="#using-facetgrid"><span class="header-section-number">13.2.1</span> Using <code>Facetgrid</code></a></li>
-  <li><a href="#using-pairplot" id="toc-using-pairplot" class="nav-link" data-scroll-target="#using-pairplot"><span class="header-section-number">13.2.2</span> Using <code>Pairplot</code></a></li>
+  <li><a href="#components-of-a-shapefile" id="toc-components-of-a-shapefile" class="nav-link" data-scroll-target="#components-of-a-shapefile"><span class="header-section-number">12.5.1.1</span> Components of a Shapefile</a></li>
   </ul></li>
-  <li><a href="#geosptial-plotting" id="toc-geosptial-plotting" class="nav-link" data-scroll-target="#geosptial-plotting"><span class="header-section-number">13.3</span> Geosptial Plotting</a>
-  <ul class="collapse">
-  <li><a href="#static-plots-with-geopandas" id="toc-static-plots-with-geopandas" class="nav-link" data-scroll-target="#static-plots-with-geopandas"><span class="header-section-number">13.3.1</span> Static Plots with GeoPandas</a>
-  <ul class="collapse">
-  <li><a href="#components-of-a-shapefile" id="toc-components-of-a-shapefile" class="nav-link" data-scroll-target="#components-of-a-shapefile"><span class="header-section-number">13.3.1.1</span> Components of a Shapefile</a></li>
+  <li><a href="#dataset-bicycle-sharing-in-chicago" id="toc-dataset-bicycle-sharing-in-chicago" class="nav-link" data-scroll-target="#dataset-bicycle-sharing-in-chicago"><span class="header-section-number">12.5.2</span> Dataset: Bicycle Sharing in Chicago</a></li>
+  <li><a href="#adding-the-divvy-station-to-the-plot" id="toc-adding-the-divvy-station-to-the-plot" class="nav-link" data-scroll-target="#adding-the-divvy-station-to-the-plot"><span class="header-section-number">12.5.3</span> Adding the divvy station to the plot</a></li>
+  <li><a href="#change-the-chicago-shapefile" id="toc-change-the-chicago-shapefile" class="nav-link" data-scroll-target="#change-the-chicago-shapefile"><span class="header-section-number">12.5.4</span> Change the chicago shapefile</a></li>
+  <li><a href="#interactive-plotting" id="toc-interactive-plotting" class="nav-link" data-scroll-target="#interactive-plotting"><span class="header-section-number">12.5.5</span> Interactive Plotting</a></li>
+  <li><a href="#adding-the-divvy-station-on-the-interactive-folium.map" id="toc-adding-the-divvy-station-on-the-interactive-folium.map" class="nav-link" data-scroll-target="#adding-the-divvy-station-on-the-interactive-folium.map"><span class="header-section-number">12.5.6</span> Adding the divvy station on the interactive <code>Folium.Map</code></a></li>
   </ul></li>
-  <li><a href="#dataset-bicycle-sharing-in-chicago" id="toc-dataset-bicycle-sharing-in-chicago" class="nav-link" data-scroll-target="#dataset-bicycle-sharing-in-chicago"><span class="header-section-number">13.3.2</span> Dataset: Bicycle Sharing in Chicago</a></li>
-  <li><a href="#adding-the-divvy-station-to-the-plot" id="toc-adding-the-divvy-station-to-the-plot" class="nav-link" data-scroll-target="#adding-the-divvy-station-to-the-plot"><span class="header-section-number">13.3.3</span> Adding the divvy station to the plot</a></li>
-  <li><a href="#change-the-chicago-shapefile" id="toc-change-the-chicago-shapefile" class="nav-link" data-scroll-target="#change-the-chicago-shapefile"><span class="header-section-number">13.3.4</span> Change the chicago shapefile</a></li>
-  <li><a href="#interactive-plotting" id="toc-interactive-plotting" class="nav-link" data-scroll-target="#interactive-plotting"><span class="header-section-number">13.3.5</span> Interactive Plotting</a></li>
-  <li><a href="#adding-the-divvy-station-on-the-interactive-folium.map" id="toc-adding-the-divvy-station-on-the-interactive-folium.map" class="nav-link" data-scroll-target="#adding-the-divvy-station-on-the-interactive-folium.map"><span class="header-section-number">13.3.6</span> Adding the divvy station on the interactive <code>Folium.Map</code></a></li>
-  </ul></li>
-  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">13.4</span> Independent Study</a>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">12.6</span> Independent Study</a>
+  <ul>
+  <li><a href="#practice-exercise-1" id="toc-practice-exercise-1" class="nav-link" data-scroll-target="#practice-exercise-1"><span class="header-section-number">12.6.1</span> Practice exercise 1</a>
   <ul class="collapse">
-  <li><a href="#multiple-plots-in-a-single-figure-using-seaborn" id="toc-multiple-plots-in-a-single-figure-using-seaborn" class="nav-link" data-scroll-target="#multiple-plots-in-a-single-figure-using-seaborn"><span class="header-section-number">13.4.1</span> Multiple plots in a single figure using Seaborn</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">13.4.1.1</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">13.4.1.2</span> </a></li>
-  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">12.6.1.1</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">12.6.1.2</span> </a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -449,22 +440,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Geospatial visualization</strong> for mapping and location-based data</li>
 </ul>
 <p>By the end of this chapter, you’ll be able to create publication-quality, complex visualizations that combine multiple data views and handle specialized data types like geographic information.</p>
-</section>
-<section id="learning-objectives" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">12.2</span> Learning Objectives</h2>
-<p>By the end of this chapter, you will be able to:</p>
-<ol type="1">
-<li><strong>Understand and apply matplotlib’s object-oriented interface</strong> to gain full control over plot customization</li>
-<li><strong>Master the matplotlib object hierarchy</strong> (Figure, Axes, Axis) and how components relate</li>
-<li><strong>Create complex subplot layouts</strong> including grids, nested plots, and custom arrangements</li>
-<li><strong>Integrate multiple libraries</strong> by passing axes objects between matplotlib, pandas, and seaborn</li>
-<li><strong>Use advanced seaborn features</strong> like FacetGrid and pairplot for multi-dimensional analysis</li>
-<li><strong>Visualize geospatial data</strong> using geopandas for both static and interactive maps</li>
-<li><strong>Layer multiple data sources</strong> on maps to create rich, informative visualizations</li>
-<li><strong>Choose the appropriate visualization approach</strong> based on data structure and communication goals</li>
-</ol>
 <p>To get started, let’s import necessary libraries.</p>
-<div id="f88d5605" class="cell" data-execution_count="1">
+<div id="f88d5605" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -473,18 +450,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="understanding-matplotlib-architecture" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="understanding-matplotlib-architecture"><span class="header-section-number">12.3</span> Understanding Matplotlib Architecture</h2>
-<section id="why-learn-the-object-oriented-interface" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="why-learn-the-object-oriented-interface"><span class="header-section-number">12.3.1</span> Why Learn the Object-Oriented Interface?</h3>
+<section id="understanding-matplotlib-architecture" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="understanding-matplotlib-architecture"><span class="header-section-number">12.2</span> Understanding Matplotlib Architecture</h2>
+<p><img src="images/matplotlib_interfaces.png" class="img-fluid"></p>
+<section id="why-learn-the-object-oriented-interface" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="why-learn-the-object-oriented-interface"><span class="header-section-number">12.2.1</span> Why Learn the Object-Oriented Interface?</h3>
 <p>In the previous chapter, we primarily used matplotlib’s <strong>pyplot interface</strong> - a convenient, MATLAB-style approach where you call functions like <code>plt.plot()</code> and <code>plt.xlabel()</code> that operate on an implicit “current” figure and axes.</p>
-<p>The <strong>object-oriented (OOP) interface</strong> gives you explicit control over every component of your visualization. This becomes essential when you need to:</p>
+<p>The <strong>object-oriented (OOP) interface</strong> gives you explicit control over every component of your visualization and allow you to create publication-quality figures with precise control. This becomes essential when you need to:</p>
 <ul>
 <li>Create complex multi-panel layouts with different plot types</li>
 <li>Customize individual subplots independently</li>
 <li>Pass specific axes to pandas or seaborn plotting functions</li>
-<li>Build reusable, modular visualization code</li>
-<li>Create publication-quality figures with precise control</li>
 </ul>
 <p><strong>Key Difference:</strong></p>
 <ul>
@@ -493,36 +469,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Let’s explore both approaches to understand when each is most useful.</p>
 </section>
-<section id="step-1-compare-pyplot-vs-object-oriented-interfaces" class="level3" data-number="12.3.2">
-<h3 data-number="12.3.2" class="anchored" data-anchor-id="step-1-compare-pyplot-vs-object-oriented-interfaces"><span class="header-section-number">12.3.2</span> Step 1: Compare Pyplot vs Object-Oriented Interfaces</h3>
+<section id="compare-pyplot-vs-object-oriented-interfaces" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="compare-pyplot-vs-object-oriented-interfaces"><span class="header-section-number">12.2.2</span> Compare Pyplot vs Object-Oriented Interfaces</h3>
 <p>Let’s create the same plot using both interfaces to see the difference in syntax and approach.</p>
-<section id="example-gdp-vs-life-expectancy" class="level4" data-number="12.3.2.1">
-<h4 data-number="12.3.2.1" class="anchored" data-anchor-id="example-gdp-vs-life-expectancy"><span class="header-section-number">12.3.2.1</span> Example: GDP vs Life Expectancy</h4>
 <p>We’ll use a dataset containing GDP and life expectancy data for countries.</p>
-<div id="cell-5" class="cell">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdp_data <span class="op">=</span> pd.read_csv(<span class="st">'datasets/gdp_lifeExpectancy.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gdp_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">continent</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">lifeExp</th>
+<th data-quarto-table-cell-role="th">pop</th>
+<th data-quarto-table-cell-role="th">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1952</td>
+<td>28.801</td>
+<td>8425333</td>
+<td>779.445314</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1957</td>
+<td>30.332</td>
+<td>9240934</td>
+<td>820.853030</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1962</td>
+<td>31.997</td>
+<td>10267083</td>
+<td>853.100710</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1967</td>
+<td>34.020</td>
+<td>11537966</td>
+<td>836.197138</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1972</td>
+<td>36.088</td>
+<td>13079460</td>
+<td>739.981106</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-</section>
-<section id="approach-1-pyplot-interface-implicit" class="level4" data-number="12.3.2.2">
-<h4 data-number="12.3.2.2" class="anchored" data-anchor-id="approach-1-pyplot-interface-implicit"><span class="header-section-number">12.3.2.2</span> Approach 1: Pyplot Interface (Implicit)</h4>
-<div id="466590d0" class="cell">
+</div>
+</div>
+<section id="pyplot-interface-implicit" class="level4" data-number="12.2.2.1">
+<h4 data-number="12.2.2.1" class="anchored" data-anchor-id="pyplot-interface-implicit"><span class="header-section-number">12.2.2.1</span> Pyplot Interface (Implicit)</h4>
+<div id="466590d0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pyplot interface - operates on the "current" figure/axes</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(gdp_data.lifeExpectancy, gdp_data.GDP_per_capita)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(gdp_data.lifeExp, gdp_data.gdpPercap)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per Capita'</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'GDP vs Life Expectancy (Pyplot Interface)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Advanced_Data_Visualization_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="approach-2-object-oriented-interface-explicit" class="level4" data-number="12.3.2.3">
-<h4 data-number="12.3.2.3" class="anchored" data-anchor-id="approach-2-object-oriented-interface-explicit"><span class="header-section-number">12.3.2.3</span> Approach 2: Object-Oriented Interface (Explicit)</h4>
-<div id="600b9696" class="cell">
+<section id="object-oriented-interface-explicit" class="level4" data-number="12.2.2.2">
+<h4 data-number="12.2.2.2" class="anchored" data-anchor-id="object-oriented-interface-explicit"><span class="header-section-number">12.2.2.2</span> Object-Oriented Interface (Explicit)</h4>
+<div id="600b9696" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Object-oriented interface</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()  <span class="co"># Create a figure and an axes explicitly</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot on the specific axes object</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax.scatter(gdp_data.lifeExpectancy, gdp_data.GDP_per_capita)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax.scatter(gdp_data.lifeExp, gdp_data.gdpPercap)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Life Expectancy'</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'GDP per Capita'</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'GDP vs Life Expectancy (OOP Interface)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -553,16 +600,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>More verbose but more flexible</li>
 </ul></li>
 </ol>
-<p><strong>When to use which:</strong> - <strong>Use pyplot</strong> for: Quick exploratory analysis, simple single plots, interactive sessions - <strong>Use OOP</strong> for: Multiple subplots, complex layouts, production code, when integrating with pandas/seaborn</p>
-<p>Let’s visualize the interface differences:</p>
-<p><img src="images/matplotlib_interfaces.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="step-2-understand-the-matplotlib-object-hierarchy" class="level3" data-number="12.3.3">
-<h3 data-number="12.3.3" class="anchored" data-anchor-id="step-2-understand-the-matplotlib-object-hierarchy"><span class="header-section-number">12.3.3</span> Step 2: Understand the Matplotlib Object Hierarchy</h3>
+<section id="pyplot-a-convenience-wrapper" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="pyplot-a-convenience-wrapper"><span class="header-section-number">12.2.3</span> Pyplot: A Convenience Wrapper</h3>
+<p>The <strong><code>pyplot</code></strong> interface (e.g., <code>plt.plot()</code>) is a <em>convenience layer</em> built on top of Matplotlib’s <strong>object-oriented (OOP)</strong> interface.</p>
+<p>Behind the scenes, it:</p>
+<ul>
+<li>Automatically creates a <strong>Figure</strong> and <strong>Axes</strong> if they don’t already exist<br>
+</li>
+<li>Keeps track of the <strong>“current”</strong> figure and axes<br>
+</li>
+<li>Routes plotting commands to that current axes object</li>
+</ul>
+<p>This makes <code>pyplot</code> extremely convenient for <strong>quick, one-off plots</strong> or <strong>exploratory analysis</strong>,<br>
+but it can quickly become <strong>confusing or limiting</strong> when working with <strong>multiple figures or subplots</strong>.</p>
+</section>
+<section id="when-the-oop-interface-becomes-essential" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="when-the-oop-interface-becomes-essential"><span class="header-section-number">12.2.4</span> When the OOP Interface Becomes Essential</h3>
+<p>While <code>pyplot</code> is great for simplicity, the <strong>OOP interface</strong> (<code>fig, ax = plt.subplots()</code>) is the right choice for:</p>
+<ul>
+<li>Creating <strong>multiple subplots</strong> within a single figure<br>
+</li>
+<li>Building <strong>complex layouts</strong> or <strong>publication-quality plots</strong><br>
+</li>
+<li>Integrating with <strong>pandas</strong> or <strong>seaborn</strong>, which both accept an <code>ax</code> parameter — allowing you to specify <strong>exactly where</strong> a plot should appear (something <code>pyplot</code> alone cannot do)</li>
+</ul>
+</section>
+<section id="understand-the-matplotlib-object-hierarchy" class="level3" data-number="12.2.5">
+<h3 data-number="12.2.5" class="anchored" data-anchor-id="understand-the-matplotlib-object-hierarchy"><span class="header-section-number">12.2.5</span> Understand the Matplotlib Object Hierarchy</h3>
 <p>To work effectively with matplotlib’s OOP interface, you need to understand how plot components are organized.</p>
-<section id="the-hierarchical-structure" class="level4" data-number="12.3.3.1">
-<h4 data-number="12.3.3.1" class="anchored" data-anchor-id="the-hierarchical-structure"><span class="header-section-number">12.3.3.1</span> The Hierarchical Structure</h4>
+<section id="the-hierarchical-structure" class="level4" data-number="12.2.5.1">
+<h4 data-number="12.2.5.1" class="anchored" data-anchor-id="the-hierarchical-structure"><span class="header-section-number">12.2.5.1</span> The Hierarchical Structure</h4>
 <p>Matplotlib plots follow a <strong>hierarchical structure</strong>, with two core components:</p>
 <ul>
 <li><strong>Figure:</strong> The overall container for one or more plots (the entire window/canvas)</li>
@@ -584,13 +653,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       ├── Title
       ├── Legend
       └── Artist objects (Lines, Patches, Text, Collections, etc.)</code></pre>
-<p><strong>Important Terminology:</strong> - <strong>Figure</strong> = The entire window/image (can contain multiple plots) - <strong>Axes</strong> = A single plot area (confusingly NOT the axis lines!) - <strong>Axis</strong> = The x-axis or y-axis number line</p>
+<p><strong>Important Terminology:</strong></p>
+<ul>
+<li><strong>Figure</strong> = The entire window/image (can contain multiple plots)</li>
+<li><strong>Axes</strong> = A single plot area (confusingly NOT the axis lines!)</li>
+<li><strong>Axis</strong> = The x-axis or y-axis number line</li>
+</ul>
 <p>Understanding this structure is key to using Matplotlib’s object-oriented interface, as it allows you to <strong>access and customize each component directly</strong>.</p>
 </section>
-<section id="figure-the-top-level-container" class="level4" data-number="12.3.3.2">
-<h4 data-number="12.3.3.2" class="anchored" data-anchor-id="figure-the-top-level-container"><span class="header-section-number">12.3.3.2</span> Figure: The Top-Level Container</h4>
+<section id="figure-the-top-level-container" class="level4" data-number="12.2.5.2">
+<h4 data-number="12.2.5.2" class="anchored" data-anchor-id="figure-the-top-level-container"><span class="header-section-number">12.2.5.2</span> Figure: The Top-Level Container</h4>
 <p>The <code>Figure</code> is an instance of <code>matplotlib.figure.Figure</code>. It is the <strong>top level container</strong> for all plot elements - think of it as the canvas or paper on which you draw.</p>
-<p><strong>Key points about Figure:</strong> - It’s the final image that may contain one or more Axes - It keeps track of all the Axes, titles, legends, etc. - You cannot plot data directly on a Figure (only on Axes) - It controls the overall image size, DPI, background color</p>
+<p><strong>Key points about Figure:</strong></p>
+<ul>
+<li>It’s the final image that may contain one or more Axes</li>
+<li>It keeps track of all the Axes, titles, legends, etc.</li>
+<li>You cannot plot data directly on a Figure (only on Axes)</li>
+<li>It controls the overall image size, DPI, background color</li>
+</ul>
 <p>Let’s create an empty Figure to see what it looks like:</p>
 <div id="944a4be4" class="cell" data-scrolled="true">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty figure - just the container, no plots yet</span></span>
@@ -603,10 +683,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Observation:</strong> The Figure is just a blank canvas. Creating a figure with <code>plt.figure()</code> does NOT automatically create an axes - that’s why you see an empty rectangle.</p>
 </section>
-<section id="axes-the-plot-area" class="level4" data-number="12.3.3.3">
-<h4 data-number="12.3.3.3" class="anchored" data-anchor-id="axes-the-plot-area"><span class="header-section-number">12.3.3.3</span> Axes: The Plot Area</h4>
+<section id="axes-the-plot-area" class="level4" data-number="12.2.5.3">
+<h4 data-number="12.2.5.3" class="anchored" data-anchor-id="axes-the-plot-area"><span class="header-section-number">12.2.5.3</span> Axes: The Plot Area</h4>
 <p>An <code>Axes</code> is an instance of <code>matplotlib.axes.Axes</code>. <strong>This is where data are plotted</strong> - it’s what you typically think of as “a plot” or “a graph.”</p>
-<p><strong>Key points about Axes:</strong> - A Figure can contain many Axes (multiple plots) - But each Axes belongs to only one Figure - This is where you call plotting methods like <code>.plot()</code>, <code>.scatter()</code>, <code>.bar()</code> - Each Axes has its own x-axis, y-axis, title, labels, etc.</p>
+<p><strong>Key points about Axes:</strong></p>
+<ul>
+<li>A Figure can contain many Axes (multiple plots)</li>
+<li>But each Axes belongs to only one Figure</li>
+<li>This is where you call plotting methods like <code>.plot()</code>, <code>.scatter()</code>, <code>.bar()</code></li>
+<li>Each Axes has its own x-axis, y-axis, title, labels, etc.</li>
+</ul>
 <p><strong>Creating Axes:</strong></p>
 <p>There are two common ways to add Axes to a Figure:</p>
 <div id="7f342022" class="cell">
@@ -641,11 +727,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Note:</strong> When you create a 2x2 grid with <code>subplots(2, 2)</code>, you get a 2D array of Axes objects. You access them using indexing: <code>axes[row, col]</code>.</p>
 </section>
 </section>
-<section id="step-3-create-and-customize-plots-with-the-oop-interface" class="level3" data-number="12.3.4">
-<h3 data-number="12.3.4" class="anchored" data-anchor-id="step-3-create-and-customize-plots-with-the-oop-interface"><span class="header-section-number">12.3.4</span> Step 3: Create and Customize Plots with the OOP Interface</h3>
+<section id="create-and-customize-plots-with-the-oop-interface" class="level3" data-number="12.2.6">
+<h3 data-number="12.2.6" class="anchored" data-anchor-id="create-and-customize-plots-with-the-oop-interface"><span class="header-section-number">12.2.6</span> Create and Customize Plots with the OOP Interface</h3>
 <p>Now that we understand the hierarchy, let’s create a complete plot using the OOP interface, customizing every component.</p>
-<section id="components-of-an-axes-object" class="level4" data-number="12.3.4.1">
-<h4 data-number="12.3.4.1" class="anchored" data-anchor-id="components-of-an-axes-object"><span class="header-section-number">12.3.4.1</span> Components of an Axes Object</h4>
+<section id="components-of-an-axes-object" class="level4" data-number="12.2.6.1">
+<h4 data-number="12.2.6.1" class="anchored" data-anchor-id="components-of-an-axes-object"><span class="header-section-number">12.2.6.1</span> Components of an Axes Object</h4>
 <p>The <code>Axes</code> object contains several elements that make up the plot:</p>
 <ul>
 <li><strong>Data plotting area:</strong> Contains the actual data visualizations (lines, bars, points, etc.)</li>
@@ -703,33 +789,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Key Observations:</strong></p>
-<p>Notice the pattern in the OOP interface - every customization method starts with <code>ax.set_*()</code> or acts on the axes object: - <code>ax.set_title()</code> - sets title - <code>ax.set_xlabel()</code> / <code>ax.set_ylabel()</code> - sets labels - <code>ax.set_xlim()</code> / <code>ax.set_ylim()</code> - sets axis limits - <code>ax.set_xticks()</code> / <code>ax.set_yticks()</code> - sets tick positions - <code>ax.grid()</code> - adds gridlines - <code>ax.legend()</code> - adds legend - <code>ax.annotate()</code> - adds annotations</p>
+<p>Notice the pattern in the OOP interface - every customization method starts with <code>ax.set_*()</code> or acts on the axes object:</p>
+<ul>
+<li><code>ax.set_title()</code> - sets title</li>
+<li><code>ax.set_xlabel()</code> / <code>ax.set_ylabel()</code> - sets labels</li>
+<li><code>ax.set_xlim()</code> / <code>ax.set_ylim()</code> - sets axis limits</li>
+<li><code>ax.set_xticks()</code> / <code>ax.set_yticks()</code> - sets tick positions</li>
+<li><code>ax.grid()</code> - adds gridlines</li>
+<li><code>ax.legend()</code> - adds legend</li>
+<li><code>ax.annotate()</code> - adds annotations</li>
+</ul>
 <p>This explicit control is what makes the OOP interface powerful for complex visualizations.</p>
-<hr>
 </section>
 </section>
-<section id="step-4-understand-when-oop-interface-is-essential" class="level3" data-number="12.3.5">
-<h3 data-number="12.3.5" class="anchored" data-anchor-id="step-4-understand-when-oop-interface-is-essential"><span class="header-section-number">12.3.5</span> Step 4: Understand When OOP Interface is Essential</h3>
-<p>The OOP interface truly shines when you need to work with multiple plots or integrate with other libraries. Here’s why it’s essential:</p>
-<p><strong>1. Pyplot is a Convenience Wrapper</strong></p>
-<p>The pyplot interface (e.g., <code>plt.plot()</code>) is actually a wrapper around the OOP interface. Behind the scenes, it: - Automatically creates a Figure and Axes if they don’t exist - Keeps track of the “current” figure and axes - Routes commands to the current axes</p>
-<p>This is convenient for simple plots but can become confusing with multiple figures.</p>
-<p><strong>2. Integration with Pandas and Seaborn</strong></p>
-<p>Both pandas and seaborn plotting functions accept an <code>ax</code> parameter, allowing you to specify exactly where to draw the plot. This is impossible with the pyplot interface alone.</p>
-<p><strong>When you must use OOP interface:</strong> - Creating multiple subplots in a single figure - Passing specific axes to pandas/seaborn functions - Building complex dashboard-style visualizations - Creating reusable plotting functions - Need precise control over individual subplot properties</p>
-<hr>
 </section>
-</section>
-<section id="section-2-mastering-subplots" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="section-2-mastering-subplots"><span class="header-section-number">12.4</span> Section 2: Mastering Subplots</h2>
+<section id="mastering-subplots" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="mastering-subplots"><span class="header-section-number">12.3</span> Mastering Subplots</h2>
 <p>Now that you understand matplotlib’s architecture, let’s explore how to create sophisticated multi-panel layouts. Subplots allow you to display multiple related visualizations in a single figure, making comparisons easier and creating comprehensive data stories.</p>
-<section id="types-of-subplot-layouts" class="level3" data-number="12.4.1">
-<h3 data-number="12.4.1" class="anchored" data-anchor-id="types-of-subplot-layouts"><span class="header-section-number">12.4.1</span> Types of Subplot Layouts</h3>
-<p>We’ll cover two main scenarios: 1. <strong>Non-overlapping subplots</strong> - Multiple plots in a grid (most common) 2. <strong>Nested subplots</strong> - Plots inside other plots (for insets and zoomed views)</p>
-<hr>
+<p>The OOP interface truly shines when you need to work with multiple plots or integrate with other libraries. Here’s why it’s essential:</p>
+<section id="types-of-subplot-layouts" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="types-of-subplot-layouts"><span class="header-section-number">12.3.1</span> Types of Subplot Layouts</h3>
+<p>We’ll cover two main scenarios:</p>
+<ol type="1">
+<li><strong>Non-overlapping subplots</strong> - Multiple plots in a grid (most common)</li>
+<li><strong>Nested subplots</strong> - Plots inside other plots (for insets and zoomed views)</li>
+</ol>
 </section>
-<section id="step-1-create-simple-subplot-grids" class="level3" data-number="12.4.2">
-<h3 data-number="12.4.2" class="anchored" data-anchor-id="step-1-create-simple-subplot-grids"><span class="header-section-number">12.4.2</span> Step 1: Create Simple Subplot Grids</h3>
+<section id="create-simple-subplot-grids" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="create-simple-subplot-grids"><span class="header-section-number">12.3.2</span> Create Simple Subplot Grids</h3>
 <p>The most common use case is arranging multiple plots in a grid pattern. The <code>plt.subplots()</code> function makes this straightforward.</p>
 <p><strong>Syntax:</strong></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows, ncols, figsize<span class="op">=</span>(width, height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -760,20 +847,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Key Points:</strong> - <code>axes</code> is a 2D NumPy array with shape <code>(2, 2)</code> - Access subplots using <code>axes[row, col]</code> (0-indexed) - Each axes is independent - customize titles, labels, colors separately - <code>fig.suptitle()</code> adds a title for the entire figure (not just one subplot) - <code>plt.tight_layout()</code> automatically adjusts spacing to prevent overlaps</p>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><code>axes</code> is a 2D NumPy array with shape <code>(2, 2)</code></li>
+<li>Access subplots using <code>axes[row, col]</code> (0-indexed)</li>
+<li>Each axes is independent - customize titles, labels, colors separately</li>
+<li><code>fig.suptitle()</code> adds a title for the entire figure (not just one subplot)</li>
+<li><code>plt.tight_layout()</code> automatically adjusts spacing to prevent overlaps</li>
+</ul>
 <hr>
 </section>
-<section id="step-2-control-subplot-layout-and-spacing" class="level3" data-number="12.4.3">
-<h3 data-number="12.4.3" class="anchored" data-anchor-id="step-2-control-subplot-layout-and-spacing"><span class="header-section-number">12.4.3</span> Step 2: Control Subplot Layout and Spacing</h3>
+<section id="control-subplot-layout-and-spacing" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="control-subplot-layout-and-spacing"><span class="header-section-number">12.3.3</span> Control Subplot Layout and Spacing</h3>
 <p>Proper spacing between subplots is crucial for readability. Let’s explore layout control options.</p>
-<p><strong>Layout Control Methods:</strong> - <code>plt.tight_layout()</code> - Automatic spacing adjustment (recommended) - <code>plt.tight_layout(pad=value)</code> - Control padding between subplots - <code>plt.subplots_adjust()</code> - Manual control over spacing - <code>figsize</code> parameter - Control overall figure dimensions</p>
+<p><strong>Layout Control Methods:</strong></p>
+<ul>
+<li><code>plt.tight_layout()</code> - Automatic spacing adjustment (recommended)</li>
+<li><code>plt.tight_layout(pad=value)</code> - Control padding between subplots</li>
+<li><code>plt.subplots_adjust()</code> - Manual control over spacing</li>
+<li><code>figsize</code> parameter - Control overall figure dimensions</li>
+</ul>
 </section>
-<section id="step-3-integrate-matplotlib-with-pandas-and-seaborn" class="level3" data-number="12.4.4">
-<h3 data-number="12.4.4" class="anchored" data-anchor-id="step-3-integrate-matplotlib-with-pandas-and-seaborn"><span class="header-section-number">12.4.4</span> Step 3: Integrate Matplotlib with Pandas and Seaborn</h3>
+<section id="integrate-matplotlib-with-pandas-and-seaborn" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="integrate-matplotlib-with-pandas-and-seaborn"><span class="header-section-number">12.3.4</span> Integrate Matplotlib with Pandas and Seaborn</h3>
 <p>One of the most powerful features of the OOP interface is the ability to pass axes objects to pandas and seaborn plotting functions. This gives you precise control over where each plot appears.</p>
 <p><strong>The <code>ax</code> Parameter:</strong></p>
-<p>Both pandas and seaborn plotting functions accept an <code>ax</code> parameter: - <code>df.plot(..., ax=axes[0, 0])</code> - pandas plots - <code>sns.scatterplot(..., ax=axes[0, 1])</code> - seaborn plots</p>
-<p>This allows you to: - Combine different plot types in one figure - Mix pandas, seaborn, and matplotlib plotting - Create complex dashboards with precise layout control</p>
+<p>Both pandas and seaborn plotting functions accept an <code>ax</code> parameter:</p>
+<ul>
+<li><code>df.plot(..., ax=axes[0, 0])</code> - pandas plots</li>
+<li><code>sns.scatterplot(..., ax=axes[0, 1])</code> - seaborn plots</li>
+</ul>
+<p>This allows you to:</p>
+<ul>
+<li>Combine different plot types in one figure</li>
+<li>Mix pandas, seaborn, and matplotlib plotting</li>
+<li>Create complex dashboards with precise layout control</li>
+</ul>
 <p>Let’s create a comprehensive visualization using multiple data sources and libraries:</p>
 <div id="dfa550a2" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load datasets</span></span>
@@ -826,19 +935,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Independent Customization:</strong> Each subplot has its own title, labels, and styling</li>
 <li><strong>Layout Control:</strong> <code>tight_layout(pad=3)</code> adds extra padding for readability</li>
 </ol>
-<p><strong>Important Notes:</strong> - Seaborn and pandas are wrappers around matplotlib - They create plots ON the axes you specify via the <code>ax</code> parameter - Without the <code>ax</code> parameter, they would create their own figure/axes - This is why the OOP interface is essential for complex layouts</p>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li>Seaborn and pandas are wrappers around matplotlib</li>
+<li>They create plots ON the axes you specify via the <code>ax</code> parameter</li>
+<li>Without the <code>ax</code> parameter, they would create their own figure/axes</li>
+<li>This is why the OOP interface is essential for complex layouts</li>
+</ul>
 <hr>
 </section>
-<section id="step-4-create-nested-subplots-insets" class="level3" data-number="12.4.5">
-<h3 data-number="12.4.5" class="anchored" data-anchor-id="step-4-create-nested-subplots-insets"><span class="header-section-number">12.4.5</span> Step 4: Create Nested Subplots (Insets)</h3>
+<section id="create-nested-subplots-insets" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="create-nested-subplots-insets"><span class="header-section-number">12.3.5</span> Create Nested Subplots (Insets)</h3>
 <p>Sometimes you want to show a detailed view of a specific region within a larger plot. This is called an <strong>inset</strong> or <strong>nested subplot</strong>.</p>
-<p><strong>Use Cases for Insets:</strong> - Zooming into a specific region of interest - Showing a histogram or distribution alongside the main plot - Displaying summary statistics or related analysis - Creating “picture-in-picture” visualizations</p>
+<p><strong>Use Cases for Insets:</strong></p>
+<ul>
+<li>Zooming into a specific region of interest</li>
+<li>Showing a histogram or distribution alongside the main plot</li>
+<li>Displaying summary statistics or related analysis</li>
+<li>Creating “picture-in-picture” visualizations</li>
+</ul>
 <p>You can create nested subplots using <code>fig.add_axes()</code> or <code>inset_axes()</code>.</p>
-<section id="using-add_axes-for-precise-control" class="level4" data-number="12.4.5.1">
-<h4 data-number="12.4.5.1" class="anchored" data-anchor-id="using-add_axes-for-precise-control"><span class="header-section-number">12.4.5.1</span> Using <code>add_axes()</code> for Precise Control</h4>
+<section id="using-add_axes-for-precise-control" class="level4" data-number="12.3.5.1">
+<h4 data-number="12.3.5.1" class="anchored" data-anchor-id="using-add_axes-for-precise-control"><span class="header-section-number">12.3.5.1</span> Using <code>add_axes()</code> for Precise Control</h4>
 <p><strong>Syntax:</strong></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_axes([left, bottom, width, height])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Parameters (all are fractions from 0 to 1):</strong> - <code>left</code>: Horizontal starting position (0=left edge, 1=right edge) - <code>bottom</code>: Vertical starting position (0=bottom edge, 1=top edge) - <code>width</code>: Width as fraction of figure width - <code>height</code>: Height as fraction of figure height</p>
+<p><strong>Parameters (all are fractions from 0 to 1):</strong></p>
+<ul>
+<li><code>left</code>: Horizontal starting position (0=left edge, 1=right edge)</li>
+<li><code>bottom</code>: Vertical starting position (0=bottom edge, 1=top edge)</li>
+<li><code>width</code>: Width as fraction of figure width</li>
+<li><code>height</code>: Height as fraction of figure height</li>
+</ul>
 <p>Let’s create a plot with two inset plots showing related information:</p>
 <div id="c7360509" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
@@ -902,70 +1029,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Same vertical position and size as right inset</li>
 </ul></li>
 </ol>
-<p><strong>Tips for Insets:</strong> - Use <code>facecolor</code> to distinguish insets from main plot - Remove ticks (<code>set_xticks([])</code>) to reduce clutter - Keep inset titles short and informative - Position insets where they don’t obscure important data - Consider using <code>inset_axes()</code> from <code>mpl_toolkits.axes_grid1</code> for more flexible positioning</p>
+<p><strong>Tips for Insets:</strong></p>
+<ul>
+<li>Use <code>facecolor</code> to distinguish insets from main plot</li>
+<li>Remove ticks (<code>set_xticks([])</code>) to reduce clutter</li>
+<li>Keep inset titles short and informative</li>
+<li>Position insets where they don’t obscure important data</li>
+<li>Consider using <code>inset_axes()</code> from <code>mpl_toolkits.axes_grid1</code> for more flexible positioning</li>
+</ul>
 <hr>
 </section>
 </section>
-<section id="step-5-advanced-formatting-with-custom-tick-formatters" class="level3" data-number="12.4.6">
-<h3 data-number="12.4.6" class="anchored" data-anchor-id="step-5-advanced-formatting-with-custom-tick-formatters"><span class="header-section-number">12.4.6</span> Step 5: Advanced Formatting with Custom Tick Formatters</h3>
-<p>When creating professional visualizations, you often need to format axis labels for readability. This is especially important for: - Large numbers (adding commas or using K/M notation) - Currency values (adding $ or other symbols) - Percentages - Dates and times - Scientific notation</p>
+<section id="advanced-formatting-with-custom-tick-formatters" class="level3" data-number="12.3.6">
+<h3 data-number="12.3.6" class="anchored" data-anchor-id="advanced-formatting-with-custom-tick-formatters"><span class="header-section-number">12.3.6</span> Advanced Formatting with Custom Tick Formatters</h3>
+<p>When creating professional visualizations, you often need to format axis labels for readability. This is especially important for:</p>
+<ul>
+<li>Large numbers (adding commas or using K/M notation)</li>
+<li>Currency values (adding $ or other symbols)</li>
+<li>Percentages</li>
+<li>Dates and times</li>
+<li>Scientific notation</li>
+</ul>
 <p>The OOP interface provides powerful formatting capabilities through the <code>yaxis</code> and <code>xaxis</code> objects.</p>
-<section id="example-formatting-large-numbers-with-commas" class="level4" data-number="12.4.6.1">
-<h4 data-number="12.4.6.1" class="anchored" data-anchor-id="example-formatting-large-numbers-with-commas"><span class="header-section-number">12.4.6.1</span> Example: Formatting Large Numbers with Commas</h4>
+<section id="example-formatting-large-numbers-with-commas" class="level4" data-number="12.3.6.1">
+<h4 data-number="12.3.6.1" class="anchored" data-anchor-id="example-formatting-large-numbers-with-commas"><span class="header-section-number">12.3.6.1</span> Example: Formatting Large Numbers with Commas</h4>
 <p>Let’s visualize noise complaint data with properly formatted axis labels:</p>
-</section>
-</section>
-</section>
-<section id="load-noise-complaint-data" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Load noise complaint data</h1>
-<p>nyc_party_complaints = pd.read_csv(‘datasets/party_nyc.csv’) nyc_party_complaints.head()</p>
+<div id="be6e728b" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load noise complaint data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>nyc_party_complaints <span class="op">=</span> pd.read_csv(<span class="st">'datasets/party_nyc.csv'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>nyc_party_complaints.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Created Date</th>
+<th data-quarto-table-cell-role="th">Closed Date</th>
+<th data-quarto-table-cell-role="th">Location Type</th>
+<th data-quarto-table-cell-role="th">Incident Zip</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">Borough</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Hour_of_the_day</th>
+<th data-quarto-table-cell-role="th">Month_of_the_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>12/31/2015 0:01</td>
+<td>12/31/2015 3:48</td>
+<td>Store/Commercial</td>
+<td>10034.0</td>
+<td>NEW YORK</td>
+<td>MANHATTAN</td>
+<td>40.866183</td>
+<td>-73.918930</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>12/31/2015 0:02</td>
+<td>12/31/2015 4:36</td>
+<td>Store/Commercial</td>
+<td>10040.0</td>
+<td>NEW YORK</td>
+<td>MANHATTAN</td>
+<td>40.859324</td>
+<td>-73.931237</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>12/31/2015 0:03</td>
+<td>12/31/2015 0:40</td>
+<td>Residential Building/House</td>
+<td>10026.0</td>
+<td>NEW YORK</td>
+<td>MANHATTAN</td>
+<td>40.799415</td>
+<td>-73.953371</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>12/31/2015 0:03</td>
+<td>12/31/2015 1:53</td>
+<td>Residential Building/House</td>
+<td>11231.0</td>
+<td>BROOKLYN</td>
+<td>BROOKLYN</td>
+<td>40.678285</td>
+<td>-73.994668</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>12/31/2015 0:05</td>
+<td>12/31/2015 3:49</td>
+<td>Residential Building/House</td>
+<td>10033.0</td>
+<td>NEW YORK</td>
+<td>MANHATTAN</td>
+<td>40.850304</td>
+<td>-73.938516</td>
+<td>0</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <p>Now let’s create a bar plot showing complaint locations, with properly formatted y-axis labels:</p>
 <div id="dfc8c78e" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar plot using pandas (returns axes object)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> nyc_party_complaints[<span class="st">'Location Type'</span>].value_counts().plot.bar(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    ylabel<span class="op">=</span><span class="st">'Number of Complaints'</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    xlabel<span class="op">=</span><span class="st">'Location Type'</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>),</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'steelblue'</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Format y-axis to add commas to large numbers</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:,.0f}</span><span class="st">'</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize the plot</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Noise Complaints by Location Type (NYC 2016)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(ax.get_xticklabels(), rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Advanced_Data_Visualization_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Key Technique - Custom Axis Formatting:</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:,.0f}</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This uses Python’s format specification mini-language: - <code>{x:,.0f}</code> - Format as float with comma separators and 0 decimal places - <code>{x:,.2f}</code> - Two decimal places with commas - <code>{x:.2%}</code> - Percentage with 2 decimal places - <code>${x:,.0f}</code> - Currency format</p>
-<p><strong>Observations:</strong> - Most complaints come from residential buildings and houses (as expected for party/music noise) - The y-axis now shows “1,000” instead of “1000” - much easier to read! - Pandas <code>.plot.bar()</code> returns an axes object that we can further customize - We rotated x-axis labels 45° for better readability using <code>set_xticklabels()</code></p>
-<p>This demonstrates how pandas plotting (convenience) and matplotlib OOP (control) work together seamlessly.</p>
-<hr>
-<section id="section-3-advanced-seaborn-techniques" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="section-3-advanced-seaborn-techniques"><span class="header-section-number">13.1</span> Section 3: Advanced Seaborn Techniques</h2>
-<p>Seaborn builds on matplotlib to provide high-level functions for creating statistical visualizations. In the previous chapter, you learned basic seaborn plotting. Now we’ll explore advanced features that make complex multi-dimensional analysis easier.</p>
-<hr>
-<section id="step-1-create-multi-dimensional-visualizations-with-facetgrid" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="step-1-create-multi-dimensional-visualizations-with-facetgrid"><span class="header-section-number">13.1.1</span> Step 1: Create Multi-Dimensional Visualizations with FacetGrid</h3>
-<p>Seaborn’s <code>FacetGrid</code> is a powerful tool for creating <strong>small multiples</strong> - grids of plots where each subplot shows a subset of your data based on categorical variables.</p>
-<p><strong>Why Use FacetGrid?</strong> - Automatically creates subplot grids based on data categories - Much easier than manually creating subplots and filtering data - Ideal for comparing patterns across different groups - Enables exploration of multi-dimensional relationships</p>
-<p><strong>Key Parameters:</strong> - <code>data</code>: DataFrame to visualize - <code>col</code>: Variable to create column-wise subplots - <code>row</code>: Variable to create row-wise subplots - <code>hue</code>: Variable for color-coding within each subplot - <code>col_wrap</code>: Wrap columns after this many plots</p>
-<p>Let’s explore with the tips dataset:</p>
-<p>Let us create a bar plot visualizing the average number of complaints with the time of the day.</p>
-<div id="a281801f" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(x<span class="op">=</span><span class="st">"Hour_of_the_day"</span>, y <span class="op">=</span> <span class="st">'complaints'</span>,  data<span class="op">=</span>nyc_complaints_grouped)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ax.figure.set_figwidth(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar plot using pandas (returns axes object)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> nyc_party_complaints[<span class="st">'Location Type'</span>].value_counts().plot.bar(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    ylabel<span class="op">=</span><span class="st">'Number of Complaints'</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    xlabel<span class="op">=</span><span class="st">'Location Type'</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'steelblue'</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Format y-axis to add commas to large numbers</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:,.0f}</span><span class="st">'</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize the plot</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Noise Complaints by Location Type (NYC 2016)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(ax.get_xticklabels(), rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -974,22 +1177,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>From the above plot, we observe that most of the complaints are made around midnight. However, interestingly, there are some complaints at each hour of the day.</p>
-<p>Note that the above barplot shows the mean number of complaints in a month at each hour of the day. The black lines are the 95% confidence intervals of the mean number of complaints.</p>
+<p><strong>Key Technique - Custom Axis Formatting:</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:,.0f}</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This uses Python’s format specification mini-language:</p>
+<ul>
+<li><code>{x:,.0f}</code> - Format as float with comma separators and 0 decimal places</li>
+<li><code>{x:,.2f}</code> - Two decimal places with commas</li>
+<li><code>{x:.2%}</code> - Percentage with 2 decimal places</li>
+<li><code>${x:,.0f}</code> - Currency format</li>
+</ul>
+<p><strong>Observations:</strong></p>
+<ul>
+<li>Most complaints come from residential buildings and houses (as expected for party/music noise)</li>
+<li>The y-axis now shows “1,000” instead of “1000” - much easier to read!</li>
+<li>Pandas <code>.plot.bar()</code> returns an axes object that we can further customize</li>
+<li>We rotated x-axis labels 45° for better readability using <code>set_xticklabels()</code></li>
+</ul>
+<p>This demonstrates how pandas plotting (convenience) and matplotlib OOP (control) work together seamlessly.</p>
+<hr>
 </section>
-<section id="pyplot-a-convenience-wrapper-around-the-object-oriented-interface" class="level3" data-number="13.1.2">
-<h3 data-number="13.1.2" class="anchored" data-anchor-id="pyplot-a-convenience-wrapper-around-the-object-oriented-interface"><span class="header-section-number">13.1.2</span> <code>pyplot</code>: a convenience wrapper around the object-oriented interface</h3>
-<p>While the pyplot interface is simpler for quick, basic plots, it ultimately wraps around the object-oriented structure of Matplotlib, meaning that it’s built on top of the object-oriented interface.</p>
 </section>
 </section>
-<section id="creating-subplots-with-seaborn" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="creating-subplots-with-seaborn"><span class="header-section-number">13.2</span> Creating Subplots with Seaborn</h2>
+<section id="creating-subplots-with-seaborn" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="creating-subplots-with-seaborn"><span class="header-section-number">12.4</span> Creating Subplots with Seaborn</h2>
 <p>We previously demonstrated how Seaborn integrates seamlessly with Matplotlib’s object-oriented interface, allowing you to pass the <code>ax</code> argument to any Seaborn function, thereby directing the plot to a specific axis within a subplot grid.</p>
 <p>Additionally, Seaborn offers a more convenient and simplified approach to creating subplots, thanks to its high-level functions and built-in integration with Matplotlib. Here’s how Seaborn makes working with subplots easier:</p>
-<section id="using-facetgrid" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="using-facetgrid"><span class="header-section-number">13.2.1</span> Using <code>Facetgrid</code></h3>
-<p>Seaborn’s <code>FacetGrid</code> function make it very easy to create facet grids or subplots based on data dimensions (such as categories), which would require more manual effort with Matplotlib.</p>
-<p>You can use the <code>row</code> and <code>col</code> parameters to control how the data is split into subplots along these dimensions.</p>
+<section id="using-facetgrid" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="using-facetgrid"><span class="header-section-number">12.4.1</span> Using <code>Facetgrid</code></h3>
+<p>Seaborn’s <code>FacetGrid</code> is a powerful tool for creating <strong>small multiples</strong> - grids of plots where each subplot shows a subset of your data based on categorical variables.</p>
+<p><strong>Why Use FacetGrid?</strong></p>
+<ul>
+<li>Automatically creates subplot grids based on data categories</li>
+<li>Much easier than manually creating subplots and filtering data</li>
+<li>Ideal for comparing patterns across different groups</li>
+<li>Enables exploration of multi-dimensional relationships</li>
+</ul>
+<p><strong>Key Parameters:</strong></p>
+<ul>
+<li><code>data</code>: DataFrame to visualize</li>
+<li><code>col</code>: Variable to create column-wise subplots</li>
+<li><code>row</code>: Variable to create row-wise subplots</li>
+<li><code>hue</code>: Variable for color-coding within each subplot</li>
+<li><code>col_wrap</code>: Wrap columns after this many plots</li>
+</ul>
+<p>Let’s explore with the tips dataset:</p>
 <div id="e68d2952" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seaborn Example using FacetGrid:</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tips_df <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
@@ -1110,8 +1341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="using-pairplot" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="using-pairplot"><span class="header-section-number">13.2.2</span> Using <code>Pairplot</code></h3>
+<section id="using-pairplot" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="using-pairplot"><span class="header-section-number">12.4.2</span> Using <code>Pairplot</code></h3>
 <p>Pairplots are used to visualize the association between all variable-pairs in the data. In other words, pairplots simultaneously visualize the scatterplots between all variable-pairs.</p>
 <p>Let us visualize the pair-wise association of tips variables in the tips dataset</p>
 <div id="ed6b9f80" class="cell" data-scrolled="true" data-execution_count="25">
@@ -1144,8 +1375,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="geosptial-plotting" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="geosptial-plotting"><span class="header-section-number">13.3</span> Geosptial Plotting</h2>
+<section id="geosptial-plotting" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="geosptial-plotting"><span class="header-section-number">12.5</span> Geosptial Plotting</h2>
 <p>There are several widely used Python packages pecifically designed for working with geospatial datasets. In this lesson, we will cover:</p>
 <ul>
 <li>GeoPandas</li>
@@ -1162,11 +1393,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "class": algorithms.Blowfish,</code></pre>
 </div>
 </div>
-<section id="static-plots-with-geopandas" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="static-plots-with-geopandas"><span class="header-section-number">13.3.1</span> Static Plots with GeoPandas</h3>
+<section id="static-plots-with-geopandas" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="static-plots-with-geopandas"><span class="header-section-number">12.5.1</span> Static Plots with GeoPandas</h3>
 <p>A <strong>shapefile</strong> is a widely-used format for storing geographic information system (GIS) data, specifically vector data. It contains geometries (like points, lines, and polygons) that represent features on the earth’s surface, along with associated attributes for each feature, such as names, populations, or other data relevant to the feature.</p>
-<section id="components-of-a-shapefile" class="level4" data-number="13.3.1.1">
-<h4 data-number="13.3.1.1" class="anchored" data-anchor-id="components-of-a-shapefile"><span class="header-section-number">13.3.1.1</span> Components of a Shapefile</h4>
+<section id="components-of-a-shapefile" class="level4" data-number="12.5.1.1">
+<h4 data-number="12.5.1.1" class="anchored" data-anchor-id="components-of-a-shapefile"><span class="header-section-number">12.5.1.1</span> Components of a Shapefile</h4>
 <p>A shapefile isn’t a single file but a collection of files with the same name and different extensions, which work together to store geographic and attribute data:</p>
 <ul>
 <li><code>.shp</code>: Stores the geometry (shapes of features, like points, lines, polygons).</li>
@@ -1333,8 +1564,8 @@ CRS: EPSG:4326</code></pre>
 <p>Next, we will add the Divvy bicycle stations on top of the chicago shapefile</p>
 </section>
 </section>
-<section id="dataset-bicycle-sharing-in-chicago" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="dataset-bicycle-sharing-in-chicago"><span class="header-section-number">13.3.2</span> Dataset: Bicycle Sharing in Chicago</h3>
+<section id="dataset-bicycle-sharing-in-chicago" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="dataset-bicycle-sharing-in-chicago"><span class="header-section-number">12.5.2</span> Dataset: Bicycle Sharing in Chicago</h3>
 <p align="center">
 <img src="https://d21xlh2maitm24.cloudfront.net/chi/DivvyLogo_p_v2.svg?mtime=20170608140727">
 </p>
@@ -1513,8 +1744,8 @@ CRS: EPSG:4326</code></pre>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data_station_same.shape</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="adding-the-divvy-station-to-the-plot" class="level3" data-number="13.3.3">
-<h3 data-number="13.3.3" class="anchored" data-anchor-id="adding-the-divvy-station-to-the-plot"><span class="header-section-number">13.3.3</span> Adding the divvy station to the plot</h3>
+<section id="adding-the-divvy-station-to-the-plot" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="adding-the-divvy-station-to-the-plot"><span class="header-section-number">12.5.3</span> Adding the divvy station to the plot</h3>
 <p>Once the coordinates are prepared, we’ll add them as scatter plots on top of the Chicago shapefile</p>
 <div id="9e7198fe" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the stations to the plot</span></span>
@@ -1540,8 +1771,8 @@ CRS: EPSG:4326</code></pre>
 </div>
 </div>
 </section>
-<section id="change-the-chicago-shapefile" class="level3" data-number="13.3.4">
-<h3 data-number="13.3.4" class="anchored" data-anchor-id="change-the-chicago-shapefile"><span class="header-section-number">13.3.4</span> Change the chicago shapefile</h3>
+<section id="change-the-chicago-shapefile" class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="change-the-chicago-shapefile"><span class="header-section-number">12.5.4</span> Change the chicago shapefile</h3>
 <p>Using a different Chicago shapefile from <code>GeoDa</code> is a great way to observe how geographic boundaries or data details may vary</p>
 <div id="95366b2c" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="op">=</span> gpd.read_file(geodatasets.get_path(<span class="st">"geoda.chicago_commpop"</span>))</span>
@@ -1560,8 +1791,8 @@ CRS: EPSG:4326</code></pre>
 </div>
 </div>
 </section>
-<section id="interactive-plotting" class="level3" data-number="13.3.5">
-<h3 data-number="13.3.5" class="anchored" data-anchor-id="interactive-plotting"><span class="header-section-number">13.3.5</span> Interactive Plotting</h3>
+<section id="interactive-plotting" class="level3" data-number="12.5.5">
+<h3 data-number="12.5.5" class="anchored" data-anchor-id="interactive-plotting"><span class="header-section-number">12.5.5</span> Interactive Plotting</h3>
 <p>Alongside static plots, <code>geopandas</code> can create interactive maps based on the <a href="https://python-visualization.github.io/folium/latest/">folium</a> library.</p>
 <p>Creating maps for interactive exploration mirrors the API of static <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.plot.html">plots</a> in an <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html">explore()</a> method of a GeoSeries or GeoDataFrame.</p>
 <p>Here’s an explanation of how <code>explore()</code> works and its key features:</p>
@@ -2085,8 +2316,8 @@ CRS: EPSG:4326</code></pre>
 </div>
 </div>
 </section>
-<section id="adding-the-divvy-station-on-the-interactive-folium.map" class="level3" data-number="13.3.6">
-<h3 data-number="13.3.6" class="anchored" data-anchor-id="adding-the-divvy-station-on-the-interactive-folium.map"><span class="header-section-number">13.3.6</span> Adding the divvy station on the interactive <code>Folium.Map</code></h3>
+<section id="adding-the-divvy-station-on-the-interactive-folium.map" class="level3" data-number="12.5.6">
+<h3 data-number="12.5.6" class="anchored" data-anchor-id="adding-the-divvy-station-on-the-interactive-folium.map"><span class="header-section-number">12.5.6</span> Adding the divvy station on the interactive <code>Folium.Map</code></h3>
 <p>We need to extract the station information from the trip dataset and add description to the station. You can skip this part</p>
 <div id="6842bb13" class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for adding the description to the station</span></span>
@@ -2627,24 +2858,20 @@ CRS: EPSG:4326</code></pre>
 </div>
 </section>
 </section>
-<section id="independent-study" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">13.4</span> Independent Study</h2>
-<section id="multiple-plots-in-a-single-figure-using-seaborn" class="level3" data-number="13.4.1">
-<h3 data-number="13.4.1" class="anchored" data-anchor-id="multiple-plots-in-a-single-figure-using-seaborn"><span class="header-section-number">13.4.1</span> Multiple plots in a single figure using Seaborn</h3>
-<p><strong>Purpose:</strong> Histogram and density plots visualize the distribution of a continuous variable.</p>
-<p>A histogram plots the number of observations occurring within discrete, evenly spaced bins of a random variable, to visualize the distribution of the variable. It may be considered a special case of a bar plot as bars are used to plot the observation counts.</p>
-<p>A density plot uses a kernel density estimate to approximate the distribution of random variable.</p>
-<p>Using the tips_df dataset</p>
-<section id="section" class="level4" data-number="13.4.1.1">
-<h4 data-number="13.4.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">13.4.1.1</span> </h4>
-<p>Make a histogram showing the distributions of total bill on each day of the week</p>
+<section id="independent-study" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">12.6</span> Independent Study</h2>
+<section id="practice-exercise-1" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="practice-exercise-1"><span class="header-section-number">12.6.1</span> Practice exercise 1</h3>
+<p>Read <em>survey_data_clean.csv</em></p>
+<section id="section" class="level4" data-number="12.6.1.1">
+<h4 data-number="12.6.1.1" class="anchored" data-anchor-id="section"><span class="header-section-number">12.6.1.1</span> </h4>
+<p>Is <code>NU_GPA</code> associated with <code>parties_per_month</code>? Analyze the association separately for <em>Sophomores, Juniors, and Seniors</em> (categories of the variable <code>school_year</code>). Make scatterplots of <code>NU_GPA</code> vs <code>parties_per_month</code> in a 1 x 3 grid, where each grid is for a distinct <code>school_year</code>. Plot the trendline as well for each scatterplot. Use the file <em>survey_data_clean.csv</em>.</p>
 </section>
-<section id="section-1" class="level4" data-number="13.4.1.2">
-<h4 data-number="13.4.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">13.4.1.2</span> </h4>
-<p>Make a density plot showing the distributions of total bills on each day.</p>
+<section id="section-1" class="level4" data-number="12.6.1.2">
+<h4 data-number="12.6.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">12.6.1.2</span> </h4>
+<p>Capping the the values of <code>parties_per_month</code> to 30, and make the visualizations again.</p>
 
 
-</section>
 </section>
 </section>
 </section>
