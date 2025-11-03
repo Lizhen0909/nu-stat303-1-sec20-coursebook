@@ -1178,8 +1178,18 @@ Name: Grad.Rate, dtype: float64</code></pre>
 <section id="custom-binning" class="level3" data-number="14.3.3">
 <h3 data-number="14.3.3" class="anchored" data-anchor-id="custom-binning"><span class="header-section-number">14.3.3</span> Custom Binning</h3>
 <p>Sometimes your analysis calls for bins that match business rules or domain thresholds rather than equal-width or equal-size splits. With <code>pd.cut()</code>, you can supply exact edges and readable labels to get bins that make sense for your audience.</p>
-<p>Practical tips: - Choose edges based on policy or domain knowledge (e.g., &lt;$10K, $10K–$40K, &gt;$40K). - Use <code>include_lowest=True</code> to ensure the minimum value is captured by the first bin, and <code>right</code> to control which side of the interval is closed (default is right-closed). - To avoid leaving values outside your bins, use open-ended edges with <code>-np.inf</code> and <code>np.inf</code>. - Provide human-friendly <code>labels</code>; the result is an ordered categorical, so plots and tables keep the intended order.</p>
-<p>We’ll demonstrate two patterns: 1) Fixed-width $10K bins (for a quick grid-like view) 2) Domain-based bins (Low/Medium/High) with open-ended edges</p>
+<p>Practical tips:</p>
+<ul>
+<li>Choose edges based on policy or domain knowledge (e.g., &lt;$10K, $10K–$40K, &gt;$40K).</li>
+<li>Use <code>include_lowest=True</code> to ensure the minimum value is captured by the first bin, and <code>right</code> to control which side of the interval is closed (default is right-closed).</li>
+<li>To avoid leaving values outside your bins, use open-ended edges with <code>-np.inf</code> and <code>np.inf</code>.</li>
+<li>Provide human-friendly <code>labels</code>; the result is an ordered categorical, so plots and tables keep the intended order.</li>
+</ul>
+<p>We’ll demonstrate two patterns:</p>
+<ol type="1">
+<li>Fixed-width $10K bins (for a quick grid-like view)</li>
+<li>Domain-based bins (Low/Medium/High) with open-ended edges</li>
+</ol>
 <div id="8db5bf15" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: fixed-width $10K bins up to $60K</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>edges_10k <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">70000</span>, <span class="dv">10000</span>))</span>
@@ -1877,14 +1887,27 @@ dtype: float64</code></pre>
 <section id="feature-scaling" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="feature-scaling"><span class="header-section-number">14.5</span> Feature Scaling</h2>
 <p>Feature scaling is a crucial step in data preparation, especially for machine learning algorithms that are sensitive to the scale of input features. Scaling ensures that numerical features contribute equally to model training and prevents features with larger ranges from dominating those with smaller ranges.</p>
-<p><strong>Why scale features?</strong> - Many algorithms (e.g., k-nearest neighbors, k-means, principal component analysis, gradient descent-based models) compute distances or rely on feature magnitude. - Features with larger scales can unduly influence the model if not scaled.</p>
-<p><strong>Common scaling methods:</strong> - <strong>Min-Max Scaling:</strong> Rescales features to a fixed range, usually [0, 1]. - <strong>Standardization (Z-score):</strong> Centers features by removing the mean and scaling to unit variance.</p>
+<p><strong>Why scale features?</strong></p>
+<ul>
+<li>Many algorithms (e.g., k-nearest neighbors, k-means, principal component analysis, gradient descent-based models) compute distances or rely on feature magnitude.</li>
+<li>Features with larger scales can unduly influence the model if not scaled.</li>
+</ul>
+<p><strong>Common scaling methods:</strong></p>
+<ul>
+<li><strong>Min-Max Scaling:</strong> Rescales features to a fixed range, usually [0, 1].</li>
+<li><strong>Standardization (Z-score):</strong> Centers features by removing the mean and scaling to unit variance.</li>
+</ul>
 <blockquote class="blockquote">
 <p><strong>Note:</strong> Only continuous numerical features should be scaled. <strong>Do not scale encoded categorical variables (such as label-encoded or one-hot encoded columns)</strong>. Scaling these can distort their meaning and introduce unintended relationships. For example, one-hot encoded columns are already binary (0/1), and scaling them would break their interpretation as category indicators.</p>
 </blockquote>
 <section id="how-to-scale-features-in-practice" class="level3" data-number="14.5.1">
 <h3 data-number="14.5.1" class="anchored" data-anchor-id="how-to-scale-features-in-practice"><span class="header-section-number">14.5.1</span> How to Scale Features in Practice</h3>
-<p>Let’s demonstrate how to scale the continuous numerical features in the college dataset. We’ll use both Min-Max scaling and Standardization (Z-score). We’ll <strong>exclude all categorical and encoded categorical variables</strong> from scaling, including: - The original ‘Private’ column (categorical) - Any label-encoded columns (e.g., ‘Private_label’) - Any one-hot/dummy variables (e.g., columns created by <code>pd.get_dummies</code>)</p>
+<p>Let’s demonstrate how to scale the continuous numerical features in the college dataset. We’ll use both Min-Max scaling and Standardization (Z-score). We’ll <strong>exclude all categorical and encoded categorical variables</strong> from scaling, including:</p>
+<ul>
+<li>The original ‘Private’ column (categorical)</li>
+<li>Any label-encoded columns (e.g., ‘Private_label’)</li>
+<li>Any one-hot/dummy variables (e.g., columns created by <code>pd.get_dummies</code>)</li>
+</ul>
 <p>Scaling these columns would destroy their categorical meaning. For example, one-hot encoded columns are meant to be 0 or 1, representing category membership. Scaling would turn them into non-binary values, which is not meaningful for models.</p>
 <div id="0c2c41c8" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only continuous numerical columns for scaling</span></span>
