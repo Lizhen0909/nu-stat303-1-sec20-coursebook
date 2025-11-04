@@ -575,7 +575,12 @@ By summarizing data at a higher level, you reduce complexity, making it easier t
 <section id="categorical-aggregation" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="categorical-aggregation"><span class="header-section-number">15.2</span> Categorical Aggregation</h2>
 <p>Before diving into advanced grouping operations, it’s important to understand how to aggregate <strong>categorical variables</strong>. Unlike numerical aggregation (mean, sum, etc.), categorical aggregation focuses on <strong>counting frequencies</strong> and understanding the distribution of categories.</p>
-<p>Categorical aggregation helps answer questions like: - How many observations belong to each category? - What’s the distribution across different categories? - How do two categorical variables relate to each other?</p>
+<p>Categorical aggregation helps answer questions like:</p>
+<ul>
+<li>How many observations belong to each category?</li>
+<li>What’s the distribution across different categories?</li>
+<li>How do two categorical variables relate to each other?</li>
+</ul>
 <section id="one-way-aggregation-value_counts" class="level3" data-number="15.2.1">
 <h3 data-number="15.2.1" class="anchored" data-anchor-id="one-way-aggregation-value_counts"><span class="header-section-number">15.2.1</span> One-way Aggregation: <code>value_counts()</code></h3>
 <p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts()</code></a> method is the simplest way to count occurrences of each unique value in a categorical column. It returns a Series with categories as the index and their counts as values.</p>
@@ -1019,12 +1024,11 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 </section>
 <section id="groupby-grouping-by-a-single-column" class="level2" data-number="15.3">
 <h2 data-number="15.3" class="anchored" data-anchor-id="groupby-grouping-by-a-single-column"><span class="header-section-number">15.3</span> <code>groupby()</code>: Grouping by a Single Column</h2>
-<p>Now that we understand the value of grouping operations through <code>value_counts()</code> and <code>crosstab()</code>, let’s dive into <strong><code>groupby()</code></strong>—the most flexible and powerful grouping method in pandas.</p>
 <p>The <code>groupby()</code> method allows you to split a DataFrame based on the values in one or more columns, creating groups that can be analyzed separately. Unlike <code>crosstab()</code>, which is optimized for creating cross-tabulation tables, <code>groupby()</code> gives you complete control over how to aggregate, transform, and filter your data.</p>
 <section id="syntax-of-groupby" class="level3" data-number="15.3.1">
 <h3 data-number="15.3.1" class="anchored" data-anchor-id="syntax-of-groupby"><span class="header-section-number">15.3.1</span> Syntax of <code>groupby()</code></h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>DataFrame.groupby(by<span class="op">=</span><span class="st">"column_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This creates a <strong>GroupBy object</strong> that represents the grouped data. The data is logically split into groups based on unique values in the specified column(s), but remains in the original DataFrame until you apply an aggregation or transformation.</p>
+<p>This creates a <strong>GroupBy object</strong> that represents the grouped data.</p>
 </section>
 <section id="example-grouping-by-continent" class="level3" data-number="15.3.2">
 <h3 data-number="15.3.2" class="anchored" data-anchor-id="example-grouping-by-continent"><span class="header-section-number">15.3.2</span> Example: Grouping by Continent</h3>
@@ -1051,8 +1055,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <pre><code>pandas.core.groupby.generic.DataFrameGroupBy</code></pre>
 </div>
 </div>
-<p><strong>Key Point:</strong> The GroupBy object <code>grouped</code> contains the information about how observations are distributed across groups. Each observation has been assigned to a specific group based on the value of <code>continent</code> for that observation. However, the dataset is <strong>not physically split</strong> into different DataFrames—all observations remain in the same DataFrame <code>gdp_lifeExp_data</code>.</p>
-<p>Think of it as an organizational layer on top of your data: the GroupBy object knows which rows belong to which group, and can apply operations to each group separately.</p>
+<p><strong>Key Point:</strong> The GroupBy object <code>grouped</code> contains the information about how observations are distributed across groups. Each observation has been assigned to a specific group based on the value of <code>continent</code> for that observation. However, the dataset is <strong>not physically split</strong> into different DataFrames—all observations remain in the same DataFrame <code>gdp_lifeExp_data</code>until you apply an aggregation or transformation.</p>
 </section>
 <section id="exploring-groupby-objects-attributes-and-methods" class="level3" data-number="15.3.4">
 <h3 data-number="15.3.4" class="anchored" data-anchor-id="exploring-groupby-objects-attributes-and-methods"><span class="header-section-number">15.3.4</span> Exploring GroupBy Objects: Attributes and Methods</h3>
