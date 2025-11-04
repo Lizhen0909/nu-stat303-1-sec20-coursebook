@@ -462,6 +462,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div id="cell-1" class="cell" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="61">
+<img src="images/group.png" width="700" height="400">
+</div>
+</div>
 <section id="why-grouping-and-aggregation-matter-in-data-science" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="why-grouping-and-aggregation-matter-in-data-science"><span class="header-section-number">15.1</span> Why Grouping and Aggregation Matter in Data Science</h2>
 <p>Grouping and aggregation are foundational techniques in data analysis that transform raw data into actionable insights. Here’s why they’re essential:</p>
@@ -481,7 +486,7 @@ By summarizing data at a higher level, you reduce complexity, making it easier t
 <p>In this chapter, we’ll explore grouping and aggregating using pandas. These methods will help you group and summarize data, making complex analysis comparatively easy.</p>
 <p>Throughout this chapter, we’ll use the <strong>GDP and Life Expectancy dataset</strong> (<code>gdp_lifeExpectancy.csv</code>), which contains information about countries’ GDP per capita and life expectancy over time. This dataset is ideal for demonstrating how grouping can reveal patterns across countries, continents, and years.</p>
 <p>Let’s start by importing the necessary libraries and loading the data.</p>
-<div id="cell-2" class="cell" data-execution_count="1">
+<div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -492,7 +497,7 @@ By summarizing data at a higher level, you reduce complexity, making it easier t
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.5</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the GDP and Life Expectancy dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/gdp_lifeExpectancy.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -575,7 +580,7 @@ By summarizing data at a higher level, you reduce complexity, making it easier t
 <h3 data-number="15.2.1" class="anchored" data-anchor-id="one-way-aggregation-value_counts"><span class="header-section-number">15.2.1</span> One-way Aggregation: <code>value_counts()</code></h3>
 <p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts()</code></a> method is the simplest way to count occurrences of each unique value in a categorical column. It returns a Series with categories as the index and their counts as values.</p>
 <p><strong>Example:</strong> Let’s count how many observations (country-year combinations) we have for each continent.</p>
-<div id="cell-5" class="cell" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of observations for each continent</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>continent_counts <span class="op">=</span> gdp_lifeExp_data[<span class="st">'continent'</span>].value_counts()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>continent_counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -599,7 +604,7 @@ Name: count, dtype: int64</code></pre>
 <li><strong><code>dropna=False</code></strong> - Includes counts of missing values</li>
 </ul>
 <p>Let’s see the <strong>proportion</strong> of observations in each continent:</p>
-<div id="cell-7" class="cell" data-execution_count="4">
+<div id="cell-8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get proportions instead of counts</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>continent_proportions <span class="op">=</span> gdp_lifeExp_data[<span class="st">'continent'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportions of observations by continent:"</span>)</span>
@@ -623,12 +628,17 @@ Africa represents 36.6% of all observations</code></pre>
 <section id="two-way-aggregation-crosstab" class="level3" data-number="15.2.2">
 <h3 data-number="15.2.2" class="anchored" data-anchor-id="two-way-aggregation-crosstab"><span class="header-section-number">15.2.2</span> Two-way Aggregation: <code>crosstab()</code></h3>
 <p>While <code>value_counts()</code> works for a single categorical variable, <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html"><code>crosstab()</code></a> is used to examine the relationship between <strong>two categorical variables</strong>. It creates a frequency table (also called a contingency table) showing counts for each combination of categories.</p>
-<p><strong>Use case:</strong> <code>crosstab()</code> is ideal for: - Understanding how categories from two variables overlap - Checking data balance across multiple dimensions - Creating frequency tables for statistical analysis</p>
+<p><strong>Use case:</strong> <code>crosstab()</code> is ideal for:</p>
+<ul>
+<li>Understanding how categories from two variables overlap</li>
+<li>Checking data balance across multiple dimensions</li>
+<li>Creating frequency tables for statistical analysis</li>
+</ul>
 <p>The <code>crosstab()</code> method is a special case of a pivot table specifically designed for computing group frequencies (or the size of each group).</p>
 <section id="basic-crosstab-example" class="level4" data-number="15.2.2.1">
 <h4 data-number="15.2.2.1" class="anchored" data-anchor-id="basic-crosstab-example"><span class="header-section-number">15.2.2.1</span> Basic <code>crosstab()</code> Example</h4>
 <p>Let’s start with a simple one-way frequency count using <code>crosstab()</code>. While <code>value_counts()</code> is more direct for this purpose, <code>crosstab()</code> can do it too:</p>
-<div id="cell-10" class="cell" data-execution_count="5">
+<div id="cell-11" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a basic crosstab to count observations by continent</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'columns' parameter is just a label for the column header</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pd.crosstab(gdp_lifeExp_data[<span class="st">'continent'</span>], columns<span class="op">=</span><span class="st">'count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -680,7 +690,7 @@ Africa represents 36.6% of all observations</code></pre>
 <p>Now let’s create a <strong>two-way frequency table</strong> to see how observations are distributed across both <code>continent</code> and <code>year</code>. This helps us understand the temporal coverage for each continent.</p>
 <p><strong>Adding Margins:</strong><br>
 Use the <code>margins=True</code> argument to add row and column totals. The <code>All</code> row and column provide the sum across each dimension.</p>
-<div id="cell-12" class="cell" data-execution_count="6">
+<div id="cell-13" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a two-way frequency table for continent and year</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>continent_year_table <span class="op">=</span> pd.crosstab(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    gdp_lifeExp_data[<span class="st">'continent'</span>], </span>
@@ -832,16 +842,31 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 </div>
 </div>
 </div>
-<p><strong>Interpretation:</strong> - Each cell shows the count of country-year observations for that continent-year combination - The <code>All</code> column shows total observations per continent (same as <code>value_counts()</code>) - The <code>All</code> row shows total observations per year - The bottom-right cell (1704) is the grand total of all observations</p>
-<p>This table is useful for: - Checking if data is representative across all groups - Identifying any missing years for specific continents - Understanding the temporal balance of your dataset</p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>Each cell shows the count of country-year observations for that continent-year combination</li>
+<li>The <code>All</code> column shows total observations per continent (same as <code>value_counts()</code>)</li>
+<li>The <code>All</code> row shows total observations per year</li>
+<li>The bottom-right cell (1704) is the grand total of all observations</li>
+</ul>
+<p>This table is useful for:</p>
+<ul>
+<li>Checking if data is representative across all groups</li>
+<li>Identifying any missing years for specific continents</li>
+<li>Understanding the temporal balance of your dataset</li>
+</ul>
 </section>
 <section id="using-crosstab-with-aggregation-functions" class="level4" data-number="15.2.2.3">
 <h4 data-number="15.2.2.3" class="anchored" data-anchor-id="using-crosstab-with-aggregation-functions"><span class="header-section-number">15.2.2.3</span> Using <code>crosstab()</code> with Aggregation Functions</h4>
-<p>So far, we’ve used <code>crosstab()</code> to count frequencies. However, you can also use it to <strong>aggregate numerical values</strong> for each category combination by specifying: - <strong><code>values</code></strong> - The numerical column to aggregate - <strong><code>aggfunc</code></strong> - The aggregation function to apply (e.g., ‘mean’, ‘sum’, ‘median’)</p>
+<p>So far, we’ve used <code>crosstab()</code> to count frequencies. However, you can also use it to <strong>aggregate numerical values</strong> for each category combination by specifying:</p>
+<ul>
+<li><strong><code>values</code></strong> - The numerical column to aggregate</li>
+<li><strong><code>aggfunc</code></strong> - The aggregation function to apply (e.g., ‘mean’, ‘sum’, ‘median’)</li>
+</ul>
 <p>This makes <code>crosstab()</code> a powerful tool that combines categorical grouping with numerical aggregation.</p>
 <p><strong>Example:</strong> Calculate the mean life expectancy for each continent-year combination.</p>
 <p>This helps us see how life expectancy has evolved over time across different continents.</p>
-<div id="cell-16" class="cell" data-execution_count="7">
+<div id="cell-17" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean life expectancy for each continent-year combination</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mean_lifeExp_table <span class="op">=</span> pd.crosstab(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    gdp_lifeExp_data[<span class="st">'continent'</span>], </span>
@@ -974,9 +999,20 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 </div>
 </div>
 </div>
-<p><strong>Key Insights:</strong> - Life expectancy has generally increased over time across all continents - Oceania consistently has the highest life expectancy - Africa has the lowest life expectancy, though it’s improving - The gap between continents is gradually narrowing over time</p>
+<p><strong>Key Insights:</strong></p>
+<ul>
+<li>Life expectancy has generally increased over time across all continents</li>
+<li>Oceania consistently has the highest life expectancy</li>
+<li>Africa has the lowest life expectancy, though it’s improving</li>
+<li>The gap between continents is gradually narrowing over time</li>
+</ul>
 <p>While <code>crosstab()</code> is excellent for two-way categorical analysis, <code>groupby()</code> offers significantly more flexibility:</p>
-<p>Think of it as a progression: - <strong><code>value_counts()</code></strong> → Count frequencies for one variable - <strong><code>crosstab()</code></strong> → Cross-tabulate two categorical variables with optional aggregation - <strong><code>groupby()</code></strong> → The most flexible and powerful grouping tool for all scenarios</p>
+<p>Think of it as a progression:</p>
+<ul>
+<li><strong><code>value_counts()</code></strong> → Count frequencies for one variable</li>
+<li><strong><code>crosstab()</code></strong> → Cross-tabulate two categorical variables with optional aggregation</li>
+<li><strong><code>groupby()</code></strong> → The most flexible and powerful grouping tool for all scenarios</li>
+</ul>
 <p>In the next section, we’ll explore <code>groupby()</code> in depth, starting with single-column grouping and gradually building up to more complex operations.</p>
 </section>
 </section>
@@ -993,7 +1029,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <section id="example-grouping-by-continent" class="level3" data-number="15.3.2">
 <h3 data-number="15.3.2" class="anchored" data-anchor-id="example-grouping-by-continent"><span class="header-section-number">15.3.2</span> Example: Grouping by Continent</h3>
 <p>Let’s group the life expectancy data by <code>continent</code>. This will allow us to analyze statistics separately for each continent.</p>
-<div id="cell-20" class="cell" data-execution_count="8">
+<div id="cell-21" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a GroupBy object by grouping data by 'continent'</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>grouped <span class="op">=</span> gdp_lifeExp_data.groupby(<span class="st">'continent'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1008,7 +1044,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <section id="understanding-the-groupby-object" class="level3" data-number="15.3.3">
 <h3 data-number="15.3.3" class="anchored" data-anchor-id="understanding-the-groupby-object"><span class="header-section-number">15.3.3</span> Understanding the GroupBy Object</h3>
 <p>The <code>groupby()</code> method returns a <strong>GroupBy object</strong>, not a DataFrame. This object contains information about how the data is grouped, but doesn’t display the groups directly.</p>
-<div id="cell-22" class="cell" data-execution_count="9">
+<div id="cell-23" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the type of the grouped object</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(grouped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1024,7 +1060,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <section id="keys---identifying-the-grouping-columns" class="level4" data-number="15.3.4.1">
 <h4 data-number="15.3.4.1" class="anchored" data-anchor-id="keys---identifying-the-grouping-columns"><span class="header-section-number">15.3.4.1</span> <code>keys</code> - Identifying the Grouping Column(s)</h4>
 <p>The column(s) used to group the data are called <strong>keys</strong>. You can view the grouping key(s) using the <code>keys</code> attribute.</p>
-<div id="cell-26" class="cell" data-execution_count="10">
+<div id="cell-27" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the grouping key(s)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>grouped.keys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1035,7 +1071,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <section id="ngroups---counting-the-number-of-groups" class="level4" data-number="15.3.4.2">
 <h4 data-number="15.3.4.2" class="anchored" data-anchor-id="ngroups---counting-the-number-of-groups"><span class="header-section-number">15.3.4.2</span> <code>ngroups</code> - Counting the Number of Groups</h4>
 <p>The <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.ngroups.html"><code>ngroups</code></a> attribute tells you how many unique groups exist based on the grouping key(s).</p>
-<div id="cell-28" class="cell" data-execution_count="11">
+<div id="cell-29" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of groups</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>grouped.ngroups</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1045,15 +1081,19 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 </section>
 <section id="groups---viewing-group-names-and-their-members" class="level4" data-number="15.3.4.3">
 <h4 data-number="15.3.4.3" class="anchored" data-anchor-id="groups---viewing-group-names-and-their-members"><span class="header-section-number">15.3.4.3</span> <code>groups</code> - Viewing Group Names and Their Members</h4>
-<p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.groups.html"><code>groups</code></a> attribute returns a dictionary where: - <strong>Keys</strong> are the group names (unique values of the grouping column) - <strong>Values</strong> are the row indices (labels) of observations belonging to each group</p>
-<div id="cell-30" class="cell" data-execution_count="12">
+<p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.groups.html"><code>groups</code></a> attribute returns a dictionary where:</p>
+<ul>
+<li><strong>Keys</strong> are the group names (unique values of the grouping column)</li>
+<li><strong>Values</strong> are the row indices (labels) of observations belonging to each group</li>
+</ul>
+<div id="cell-31" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the group names (keys of the dictionary)</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>grouped.groups.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>dict_keys(['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'])</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="13">
+<div id="cell-32" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the complete groups dictionary (group names and their row indices)</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>grouped.groups</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -1061,7 +1101,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 </div>
 </div>
 <p>You can also access just the row indices (values) for all groups:</p>
-<div id="cell-33" class="cell" data-execution_count="14">
+<div id="cell-34" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the row indices for all groups</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>grouped.groups.values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -1086,7 +1126,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <section id="size---counting-observations-per-group" class="level4" data-number="15.3.4.4">
 <h4 data-number="15.3.4.4" class="anchored" data-anchor-id="size---counting-observations-per-group"><span class="header-section-number">15.3.4.4</span> <code>size()</code> - Counting Observations per Group</h4>
 <p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.size.html"><code>size()</code></a> method returns the number of observations in each group. This is useful for understanding the distribution of data across groups.</p>
-<div id="cell-35" class="cell" data-execution_count="15">
+<div id="cell-36" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of observations in each continent group</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>grouped.size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -1103,7 +1143,7 @@ dtype: int64</code></pre>
 <section id="first---viewing-the-first-element-of-each-group" class="level4" data-number="15.3.4.5">
 <h4 data-number="15.3.4.5" class="anchored" data-anchor-id="first---viewing-the-first-element-of-each-group"><span class="header-section-number">15.3.4.5</span> <code>first()</code> - Viewing the First Element of Each Group</h4>
 <p>The <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.first.html"><code>first()</code></a> method returns the first non-missing element from each group. This can be useful for quickly inspecting what each group looks like.</p>
-<div id="cell-37" class="cell" data-execution_count="16">
+<div id="cell-38" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first non-missing observation from each continent group</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>grouped.first()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
@@ -1180,7 +1220,7 @@ dtype: int64</code></pre>
 <section id="get_group---extracting-data-for-a-specific-group" class="level4" data-number="15.3.4.6">
 <h4 data-number="15.3.4.6" class="anchored" data-anchor-id="get_group---extracting-data-for-a-specific-group"><span class="header-section-number">15.3.4.6</span> <code>get_group()</code> - Extracting Data for a Specific Group</h4>
 <p>The <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.get_group.html"><code>get_group()</code></a> method returns all observations belonging to a particular group. This is useful when you want to analyze or visualize a specific group in detail.</p>
-<div id="cell-39" class="cell" data-execution_count="17">
+<div id="cell-40" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract all observations for the 'Asia' continent</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>grouped.get_group(<span class="st">'Asia'</span>).head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -1361,8 +1401,13 @@ dtype: int64</code></pre>
 <section id="example-calculating-mean-statistics-by-country" class="level3" data-number="15.4.2">
 <h3 data-number="15.4.2" class="anchored" data-anchor-id="example-calculating-mean-statistics-by-country"><span class="header-section-number">15.4.2</span> Example: Calculating Mean Statistics by Country</h3>
 <p>Let’s find the mean life expectancy, population, and GDP per capita for each country during the period 1952-2007. This will give us a single summary statistic for each country across all years in the dataset.</p>
-<p><strong>Approach:</strong> 1. Remove columns we don’t want to aggregate (<code>continent</code> and <code>year</code>) 2. Group by <code>country</code> 3. Calculate the mean for all remaining numeric columns</p>
-<div id="cell-42" class="cell" data-execution_count="18">
+<p><strong>Approach:</strong></p>
+<ol type="1">
+<li>Remove columns we don’t want to aggregate (<code>continent</code> and <code>year</code>)</li>
+<li>Group by <code>country</code></li>
+<li>Calculate the mean for all remaining numeric columns</li>
+</ol>
+<div id="cell-43" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group the data by 'country' and calculate mean statistics</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First, drop columns we don't want to aggregate</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>grouped_country <span class="op">=</span> gdp_lifeExp_data.drop([<span class="st">'continent'</span>, <span class="st">'year'</span>], axis<span class="op">=</span><span class="dv">1</span>).groupby(<span class="st">'country'</span>)</span>
@@ -1462,7 +1507,7 @@ dtype: int64</code></pre>
 <section id="calculating-other-statistics" class="level3" data-number="15.4.3">
 <h3 data-number="15.4.3" class="anchored" data-anchor-id="calculating-other-statistics"><span class="header-section-number">15.4.3</span> Calculating Other Statistics</h3>
 <p>We can apply different aggregation functions to understand the variability and spread of data within each group. Let’s calculate the standard deviation to see how much variation exists within each country over time.</p>
-<div id="cell-44" class="cell" data-execution_count="19">
+<div id="cell-45" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the standard deviation for each country</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>country_std <span class="op">=</span> grouped_country.std()</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1560,13 +1605,17 @@ dtype: int64</code></pre>
 </section>
 <section id="multiple-and-custom-aggregations-using-agg" class="level2" data-number="15.5">
 <h2 data-number="15.5" class="anchored" data-anchor-id="multiple-and-custom-aggregations-using-agg"><span class="header-section-number">15.5</span> Multiple and Custom Aggregations Using <code>agg()</code></h2>
-<p>While applying single aggregation functions like <code>mean()</code> or <code>std()</code> is useful, you’ll often need to: 1. Apply <strong>multiple aggregation functions</strong> simultaneously 2. Use <strong>custom aggregation functions</strong> that aren’t built into pandas</p>
+<p>While applying single aggregation functions like <code>mean()</code> or <code>std()</code> is useful, you’ll often need to:</p>
+<ol type="1">
+<li>Apply <strong>multiple aggregation functions</strong> simultaneously</li>
+<li>Use <strong>custom aggregation functions</strong> that aren’t built into pandas</li>
+</ol>
 <p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html"><code>agg()</code></a> method of a GroupBy object provides this flexibility.</p>
 <section id="multiple-aggregations-on-a-single-column" class="level3" data-number="15.5.1">
 <h3 data-number="15.5.1" class="anchored" data-anchor-id="multiple-aggregations-on-a-single-column"><span class="header-section-number">15.5.1</span> Multiple Aggregations on a Single Column</h3>
 <p>When you need to compute several statistics for the same column, pass a <strong>list of function names</strong> to <code>agg()</code>.</p>
 <p><strong>Example:</strong> Calculate both the mean and standard deviation of GDP per capita for each country.</p>
-<div id="cell-48" class="cell" data-execution_count="20">
+<div id="cell-49" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply multiple aggregation functions to 'gdpPercap' column</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gdp_stats <span class="op">=</span> grouped_country[<span class="st">'gdpPercap'</span>].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>])</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1651,7 +1700,7 @@ dtype: int64</code></pre>
 <h3 data-number="15.5.2" class="anchored" data-anchor-id="custom-aggregation-functions"><span class="header-section-number">15.5.2</span> Custom Aggregation Functions</h3>
 <p>In addition to built-in functions, you can create your own custom aggregation functions. This is useful when you need a statistic that isn’t available in pandas.</p>
 <p><strong>Example:</strong> Calculate the <strong>range</strong> (max - min) of GDP per capita for each country using a lambda function.</p>
-<div id="cell-50" class="cell" data-execution_count="21">
+<div id="cell-51" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the range (max - min) of gdpPercap for each country using a lambda function</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>gdp_range <span class="op">=</span> grouped_country[<span class="st">'gdpPercap'</span>].agg(<span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>())</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1672,13 +1721,13 @@ Netherlands         27856.361462
 Name: gdpPercap, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-51" class="cell" data-execution_count="22">
+<div id="cell-52" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, define a named function for better readability</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> range_func(x):</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate the range (max - min) of a series"""</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-52" class="cell" data-execution_count="23">
+<div id="cell-53" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine built-in functions with custom functions</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>gdp_complete_stats <span class="op">=</span> grouped_country[<span class="st">'gdpPercap'</span>].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>, range_func])</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1773,9 +1822,13 @@ Name: gdpPercap, dtype: float64</code></pre>
 </section>
 <section id="renaming-aggregated-columns" class="level3" data-number="15.5.3">
 <h3 data-number="15.5.3" class="anchored" data-anchor-id="renaming-aggregated-columns"><span class="header-section-number">15.5.3</span> Renaming Aggregated Columns</h3>
-<p>For better readability and professional reporting, you can rename the columns resulting from aggregation. Pass a <strong>list of tuples</strong> to <code>agg()</code>, where each tuple contains: 1. The new column name (string) 2. The aggregation function (string or callable)</p>
+<p>For better readability and professional reporting, you can rename the columns resulting from aggregation. Pass a <strong>list of tuples</strong> to <code>agg()</code>, where each tuple contains:</p>
+<ol type="1">
+<li>The new column name (string)</li>
+<li>The aggregation function (string or callable)</li>
+</ol>
 <p><strong>Example:</strong> Create a summary table with custom column names and include a 90th percentile calculation.</p>
-<div id="cell-54" class="cell" data-execution_count="24">
+<div id="cell-55" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply multiple aggregations with custom column names</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gdp_summary <span class="op">=</span> grouped_country[<span class="st">'gdpPercap'</span>].agg(</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    [(<span class="st">'Average'</span>, <span class="st">'mean'</span>),</span>
@@ -1877,7 +1930,7 @@ Name: gdpPercap, dtype: float64</code></pre>
 <h2 data-number="15.6" class="anchored" data-anchor-id="multiple-aggregations-on-multiple-columns"><span class="header-section-number">15.6</span> Multiple Aggregations on Multiple Columns</h2>
 <p>Often, you’ll want to apply the same aggregation functions to several columns simultaneously. This is straightforward with <code>agg()</code>.</p>
 <p><strong>Example:</strong> Calculate the mean and standard deviation of both life expectancy (<code>lifeExp</code>) and population (<code>pop</code>) for each country.</p>
-<div id="cell-56" class="cell" data-execution_count="25">
+<div id="cell-57" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the same aggregations to multiple columns</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>multi_column_stats <span class="op">=</span> grouped_country[[<span class="st">'lifeExp'</span>, <span class="st">'pop'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>])</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1989,9 +2042,13 @@ Name: gdpPercap, dtype: float64</code></pre>
 </section>
 <section id="different-aggregations-for-different-columns" class="level2" data-number="15.7">
 <h2 data-number="15.7" class="anchored" data-anchor-id="different-aggregations-for-different-columns"><span class="header-section-number">15.7</span> Different Aggregations for Different Columns</h2>
-<p>Sometimes you need to apply <strong>different sets of functions to different columns</strong>. For this, pass a <strong>dictionary</strong> to <code>agg()</code> where: - <strong>Keys</strong> are column names - <strong>Values</strong> are lists of aggregation functions (as strings or callables)</p>
+<p>Sometimes you need to apply <strong>different sets of functions to different columns</strong>. For this, pass a <strong>dictionary</strong> to <code>agg()</code> where:</p>
+<ul>
+<li><strong>Keys</strong> are column names</li>
+<li><strong>Values</strong> are lists of aggregation functions (as strings or callables)</li>
+</ul>
 <p>This approach gives you complete control over which statistics are computed for each column.</p>
-<div id="cell-58" class="cell" data-execution_count="26">
+<div id="cell-59" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply different aggregation functions to different columns using a dictionary</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>varied_stats <span class="op">=</span> grouped_country.agg({</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gdpPercap'</span>: [<span class="st">'mean'</span>, <span class="st">'std'</span>],      <span class="co"># Mean and std for GDP per capita</span></span>
@@ -2132,8 +2189,12 @@ Name: gdpPercap, dtype: float64</code></pre>
 <section id="combining-dictionary-syntax-with-custom-column-names" class="level3" data-number="15.7.1">
 <h3 data-number="15.7.1" class="anchored" data-anchor-id="combining-dictionary-syntax-with-custom-column-names"><span class="header-section-number">15.7.1</span> Combining Dictionary Syntax with Custom Column Names</h3>
 <p>You can also use the dictionary approach with custom column names by passing tuples as the aggregation values.</p>
-<p><strong>Example:</strong> For each country, calculate: - Mean and standard deviation of life expectancy (with custom names) - Min and max values of GDP per capita</p>
-<div id="cell-60" class="cell" data-execution_count="27">
+<p><strong>Example:</strong> For each country, calculate:</p>
+<ul>
+<li>Mean and standard deviation of life expectancy (with custom names)</li>
+<li>Min and max values of GDP per capita</li>
+</ul>
+<div id="cell-61" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply different functions to different columns with custom names</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>custom_varied_stats <span class="op">=</span> grouped_country.agg({</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lifeExp'</span>: [(<span class="st">'Average'</span>, <span class="st">'mean'</span>), </span>
@@ -2258,11 +2319,11 @@ Name: gdpPercap, dtype: float64</code></pre>
 <li><code>DataFrame.groupby(by=["col1", "col2"])</code></li>
 </ul>
 <p>Consider the life expectancy dataset, we can group by both country and continent to analyze <code>gdpPercap</code>, <code>lifeExp</code>, and <code>pop</code> trends for each country within each continent, providing a more comprehensive view of the data.</p>
-<div id="cell-62" class="cell" data-execution_count="28">
+<div id="cell-63" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Grouping by multiple columns</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry <span class="op">=</span> gdp_lifeExp_data.groupby([<span class="st">'continent'</span>, <span class="st">'country'</span>])[ <span class="st">"lifeExp"</span>].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>, <span class="st">'max'</span>, <span class="st">'min'</span>]).sort_values(by <span class="op">=</span> <span class="st">'mean'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-63" class="cell" data-execution_count="29">
+<div id="cell-64" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
@@ -2385,20 +2446,20 @@ Name: gdpPercap, dtype: float64</code></pre>
 <li>This index allows each level (e.g., continent, country) to act as an independent category that can be accessed individually.</li>
 </ul>
 <p>In the above output, <code>continent</code> and <code>country</code> form a two-level hierarchical index, allowing us to drill down from continent-level to country-level summaries.</p>
-<div id="cell-65" class="cell" data-execution_count="30">
+<div id="cell-66" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.index.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="31">
+<div id="cell-67" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the first level of the index</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.index.levels[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>Index(['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'], dtype='object', name='continent')</code></pre>
 </div>
 </div>
-<div id="cell-67" class="cell" data-execution_count="32">
+<div id="cell-68" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the second level of the index</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.index.levels[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -2414,7 +2475,7 @@ Name: gdpPercap, dtype: float64</code></pre>
 <section id="subsetting-data-in-a-hierarchical-index" class="level3" data-number="15.8.3">
 <h3 data-number="15.8.3" class="anchored" data-anchor-id="subsetting-data-in-a-hierarchical-index"><span class="header-section-number">15.8.3</span> Subsetting Data in a Hierarchical Index</h3>
 <p><code>grouped_continent_country</code> is still a DataFrame with hierarchical indexing. You can use <code>.loc[]</code> for subsetting, just as you would with a single-level index.</p>
-<div id="cell-69" class="cell" data-execution_count="33">
+<div id="cell-70" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the observations for the 'Americas' continent</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.loc[<span class="st">'Americas'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
@@ -2480,7 +2541,7 @@ Name: gdpPercap, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="34">
+<div id="cell-71" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the mean life expectancy for the 'Americas' continent</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.loc[<span class="st">'Americas'</span>][<span class="st">'mean'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -2493,7 +2554,7 @@ Uruguay          70.781583
 Name: mean, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-71" class="cell" data-execution_count="35">
+<div id="cell-72" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another way to get the mean life expectancy for the 'Americas' continent</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.loc[<span class="st">'Americas'</span>, <span class="st">'mean'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
@@ -2507,7 +2568,7 @@ Name: mean, dtype: float64</code></pre>
 </div>
 </div>
 <p>You can use a tuple to access data for specific levels in a multi-level index.</p>
-<div id="cell-73" class="cell" data-execution_count="36">
+<div id="cell-74" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the observations for the 'United States' country</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.loc[( <span class="st">'Americas'</span>, <span class="st">'United States'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
@@ -2518,7 +2579,7 @@ min     68.440000
 Name: (Americas, United States), dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-74" class="cell" data-execution_count="37">
+<div id="cell-75" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.loc[( <span class="st">'Americas'</span>, <span class="st">'United States'</span>), [<span class="st">'mean'</span>, <span class="st">'std'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>mean    73.478500
@@ -2526,14 +2587,14 @@ std      3.343781
 Name: (Americas, United States), dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-75" class="cell" data-execution_count="38">
+<div id="cell-76" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>Index(['country', 'continent', 'year', 'lifeExp', 'pop', 'gdpPercap'], dtype='object')</code></pre>
 </div>
 </div>
 <p>Finally, you can use <code>reset_index()</code> to convert the hierarchical index into a regular index, allowing you to apply the standard subsetting and filtering methods covered in previous chapters</p>
-<div id="cell-77" class="cell" data-execution_count="39">
+<div id="cell-78" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry.reset_index().head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
@@ -2606,7 +2667,7 @@ Name: (Americas, United States), dtype: float64</code></pre>
 </section>
 <section id="grouping-by-multiple-columns-and-aggregating-multiple-variables" class="level3" data-number="15.8.4">
 <h3 data-number="15.8.4" class="anchored" data-anchor-id="grouping-by-multiple-columns-and-aggregating-multiple-variables"><span class="header-section-number">15.8.4</span> Grouping by multiple columns and aggregating multiple variables</h3>
-<div id="cell-79" class="cell" data-execution_count="40">
+<div id="cell-80" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Grouping by multiple columns</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry_multi <span class="op">=</span> gdp_lifeExp_data.groupby([<span class="st">'continent'</span>, <span class="st">'country'</span>,<span class="st">'year'</span>])[ [<span class="st">'lifeExp'</span>, <span class="st">'pop'</span>, <span class="st">'gdpPercap'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'max'</span>, <span class="st">'min'</span>])</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry_multi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2807,14 +2868,14 @@ In this example, we are grouping the data by three columns: <code>continent</cod
 We apply multiple aggregation functions (<code>mean</code>, <code>std</code>, <code>max</code>, and <code>min</code>) to multiple variables (<code>lifeExp</code>, <code>pop</code>, and <code>gdpPercap</code>).</p></li>
 </ul>
 <p>This type of operation is commonly referred to as <strong>“multi-column grouping with multiple aggregations”</strong> in pandas. It’s a powerful approach because it allows us to obtain a detailed statistical summary for each combination of grouping columns across several variables.</p>
-<div id="cell-81" class="cell" data-execution_count="41">
+<div id="cell-82" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># its columns are also two levels deep</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry_multi.columns.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="cell-82" class="cell" data-execution_count="42">
+<div id="cell-83" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pass a tuple to the loc() method to access the values of the multi-level columns with a multi-level index</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry_multi.loc[(<span class="st">'Americas'</span>,<span class="st">'United States'</span>), (<span class="st">'lifeExp'</span>, <span class="st">'mean'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -2843,17 +2904,17 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 <p>The <code>apply()</code> function applies a custom function to each group, allowing for flexible operations. The function can return either a scalar, Series, or DataFrame.</p>
 <p><strong>Example</strong>: Consider the life expectancy dataset, find the top 3 life expectancy values for each continent</p>
 <p>We’ll first define a function that sorts a dataset by decreasing life expectancy and returns the top 3 rows. Then, we’ll apply this function on each group using the <code>apply()</code> method of the <em>GroupBy</em> object.</p>
-<div id="cell-87" class="cell" data-execution_count="43">
+<div id="cell-88" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to get the top 3 rows based on life expectancy for each group</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_3_life_expectancy(group):</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group.nlargest(<span class="dv">3</span>, <span class="st">'lifeExp'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-88" class="cell" data-execution_count="44">
+<div id="cell-89" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Defining the groups in the data</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>grouped_gdpcapital_data <span class="op">=</span> gdp_lifeExp_data.groupby(<span class="st">'continent'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we’ll use the <code>apply()</code> method to apply the <code>top_3_life_expectancy()</code> function on each group of the object <code>grouped_gdpcapital_data</code>.</p>
-<div id="cell-90" class="cell" data-execution_count="45">
+<div id="cell-91" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function to each continent group</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>top_life_expectancy <span class="op">=</span> gdp_lifeExp_data.groupby(<span class="st">'continent'</span>)[[<span class="st">'continent'</span>, <span class="st">'country'</span>, <span class="st">'year'</span>, <span class="st">'lifeExp'</span>, <span class="st">'gdpPercap'</span>]].<span class="bu">apply</span>(top_3_life_expectancy).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2923,7 +2984,7 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 </div>
 <p>The <code>top_3_life_expectancy()</code> function is applied to each group, and the results are concatenated internally with the <code>concat()</code> function. The output therefore has a hierarchical index whose outer level indices are the group keys.</p>
 <p>We can also use a lambda function instead of separately defining the function <code>top_3_life_expectancy()</code>:</p>
-<div id="cell-93" class="cell" data-execution_count="46">
+<div id="cell-94" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a lambda function to get the top 3 life expectancy values for each continent</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>top_life_expectancy <span class="op">=</span> (</span>
@@ -3005,14 +3066,14 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 <p>In the example provided, some countries had missing values for GDP per capita. To handle this, we imputed the missing GDP per capita for each country using the average GDP per capita of its corresponding continent.</p>
 <p>Now, we’ll explore an alternative approach using <code>groupby()</code> and <code>transform()</code> to perform this imputation.</p>
 <p>Let us read the datasets and the function that makes a visualization to compare the imputed values with the actual values.</p>
-<div id="cell-97" class="cell" data-execution_count="47">
+<div id="cell-98" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing data with missing values</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>gdp_missing_data <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/GDP_missing_data.csv'</span>)</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing data with all values</span></span>
 <span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>gdp_complete_data <span class="op">=</span> pd.read_csv(<span class="st">'./Datasets/GDP_complete_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-98" class="cell" data-execution_count="48">
+<div id="cell-99" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Index of rows with missing values for GDP per capita</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>null_ind_gdpPC <span class="op">=</span> gdp_missing_data.index[gdp_missing_data.gdpPerCapita.isnull()]</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3061,7 +3122,7 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 <span id="cb70-46"><a href="#cb70-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rmse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Approach 1:</strong> Using the `.loc``</p>
-<div id="cell-100" class="cell" data-execution_count="49">
+<div id="cell-101" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding the mean GDP per capita of the continent</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>avg_gdpPerCapita <span class="op">=</span> gdp_missing_data[<span class="st">'gdpPerCapita'</span>].groupby(gdp_missing_data[<span class="st">'continent'</span>]).mean()</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3078,7 +3139,7 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Data aggregation_files/figure-html/cell-50-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Data aggregation_files/figure-html/cell-51-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -3089,7 +3150,7 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 <p><strong>Approach 2:</strong> Using the <code>groupby()</code> and <code>transform()</code> methods.</p>
 <p>The <code>transform()</code> function is a powerful tool for filling missing values in grouped data. It allows us to apply a function across each group and align the result back to the original DataFrame, making it perfect for filling missing values based on group statistics.</p>
 <p>In this example, we use <code>transform()</code> to impute missing values in the <code>gdpPerCapita</code> column by filling them with the mean <code>gdpPerCapita</code> of each continent:</p>
-<div id="cell-102" class="cell" data-execution_count="50">
+<div id="cell-103" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a copy of missing data to impute missing values</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>gdp_imputed_data <span class="op">=</span> gdp_missing_data.copy()</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3104,7 +3165,7 @@ Name: (lifeExp, mean), dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Data aggregation_files/figure-html/cell-51-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Data aggregation_files/figure-html/cell-52-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -3144,14 +3205,14 @@ plot_actual_vs_predicted()</code></pre>
 <h3 data-number="15.9.3" class="anchored" data-anchor-id="using-filter-on-groups"><span class="header-section-number">15.9.3</span> Using <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.filter.html"><code>filter()</code></a> on Groups</h3>
 <p>The <code>filter()</code> function filters entire groups based on a condition. It evaluates each group and keeps only those that meet the specified criteria.</p>
 <p>Example: Keep only the countries where the mean life expectancy is greater than 70</p>
-<div id="cell-107" class="cell" data-execution_count="51">
+<div id="cell-108" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only the continent where the mean life expectancy is greater than 74</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.groupby(<span class="st">'continent'</span>).<span class="bu">filter</span>(<span class="kw">lambda</span> x: x[<span class="st">'lifeExp'</span>].mean() <span class="op">&gt;</span> <span class="dv">74</span>)[<span class="st">'continent'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>array(['Oceania'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-108" class="cell" data-execution_count="52">
+<div id="cell-109" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only the country where the mean life expectancy is greater than 74</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.groupby(<span class="st">'country'</span>).<span class="bu">filter</span>(<span class="kw">lambda</span> x: x[<span class="st">'lifeExp'</span>].mean() <span class="op">&gt;</span> <span class="dv">74</span>)[<span class="st">'country'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
@@ -3161,7 +3222,7 @@ plot_actual_vs_predicted()</code></pre>
 </div>
 </div>
 <p>Using <code>.nunique()</code> get the number of countries that satisfy this condition</p>
-<div id="cell-110" class="cell" data-execution_count="53">
+<div id="cell-111" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.groupby(<span class="st">'country'</span>).<span class="bu">filter</span>(<span class="kw">lambda</span> x: x[<span class="st">'lifeExp'</span>].mean() <span class="op">&gt;</span> <span class="dv">74</span>)[<span class="st">'country'</span>].nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>12</code></pre>
@@ -3173,7 +3234,7 @@ plot_actual_vs_predicted()</code></pre>
 <h2 data-number="15.10" class="anchored" data-anchor-id="sampling-data-by-group"><span class="header-section-number">15.10</span> Sampling data by group</h2>
 <p>If a dataset contains a large number of observations, operating on it can be computationally expensive. Instead, working on a sample of entire observations is a more efficient alterative. The <code>groupby()</code> method combined with <code>apply()</code> can be used for stratified random sampling from a large dataset.</p>
 <p>Before taking the random sample, let us find the number of countries in each continent.</p>
-<div id="cell-113" class="cell" data-execution_count="54">
+<div id="cell-114" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.continent.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>continent
@@ -3186,11 +3247,11 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Let us take a random sample of 650 observations from the entire dataset.</p>
-<div id="cell-115" class="cell" data-execution_count="55">
+<div id="cell-116" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>sample_lifeExp_data <span class="op">=</span> gdp_lifeExp_data.sample(<span class="dv">650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let us see the number of countries of each continent in our sample.</p>
-<div id="cell-117" class="cell" data-execution_count="56">
+<div id="cell-118" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>sample_lifeExp_data.continent.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>continent
@@ -3203,7 +3264,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Some of the continent have a very low representation in the data. To rectify this, we can take a random sample of 130 observations from each of the 5 continents. In other words, we can take a random sample from each of the continent-based groups.</p>
-<div id="cell-119" class="cell" data-execution_count="57">
+<div id="cell-120" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>evenly_sampled_lifeExp_data <span class="op">=</span> gdp_lifeExp_data.groupby(<span class="st">'continent'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x:x.sample(<span class="dv">130</span>, replace<span class="op">=</span><span class="va">True</span>), include_groups<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>group_sizes <span class="op">=</span> evenly_sampled_lifeExp_data.groupby(level<span class="op">=</span><span class="dv">0</span>).size()</span>
@@ -3224,7 +3285,7 @@ dtype: int64</code></pre>
 <h2 data-number="15.11" class="anchored" data-anchor-id="corr-correlation-by-group"><span class="header-section-number">15.11</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.DataFrameGroupBy.corr.html"><code>corr()</code></a>: Correlation by group</h2>
 <p>The <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html"><code>corr()</code></a> method of the <em>GroupBy</em> object returns the correlation between all pairs of columns within each group.</p>
 <p><strong>Example:</strong> Find the correlation between <code>lifeExp</code> and <code>gdpPercap</code> for each continent-country level combination.</p>
-<div id="cell-124" class="cell" data-execution_count="58">
+<div id="cell-125" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>gdp_lifeExp_data.groupby([<span class="st">'continent'</span>,<span class="st">'country'</span>]).<span class="bu">apply</span>(<span class="kw">lambda</span> x:x[<span class="st">'lifeExp'</span>].corr(x[<span class="st">'gdpPercap'</span>]), include_groups<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>continent  country       

@@ -487,9 +487,24 @@ window.Quarto = {
 <p>Neither format is inherently “better”—the right format depends on what you’re trying to accomplish.</p>
 <section id="why-data-reshaping-matters" class="level3" data-number="16.1.1">
 <h3 data-number="16.1.1" class="anchored" data-anchor-id="why-data-reshaping-matters"><span class="header-section-number">16.1.1</span> Why Data Reshaping Matters</h3>
-<p><strong>1. Different Tools Require Different Formats</strong> - <strong>Visualization libraries</strong> (like seaborn and matplotlib) often prefer long format for grouped plotting - <strong>Statistical models</strong> may require wide format with one row per subject - <strong>Machine learning algorithms</strong> typically need wide format where each row is an observation and columns are features</p>
-<p><strong>2. Facilitates Specific Analyses</strong> - <strong>Time series comparisons</strong> are easier in wide format (comparing 2007 vs 1957 life expectancy) - <strong>Grouped aggregations</strong> work naturally with long format - <strong>Cross-sectional analysis</strong> benefits from wide format</p>
-<p><strong>3. Simplifies Data Operations</strong> - Some calculations are trivial in one format but complex in another - Merging datasets often requires matching formats - Creating summary tables may need pivoting</p>
+<p><strong>1. Different Tools Require Different Formats</strong></p>
+<ul>
+<li><strong>Visualization libraries</strong> (like seaborn and matplotlib) often prefer long format for grouped plotting</li>
+<li><strong>Statistical models</strong> may require wide format with one row per subject</li>
+<li><strong>Machine learning algorithms</strong> typically need wide format where each row is an observation and columns are features</li>
+</ul>
+<p><strong>2. Facilitates Specific Analyses</strong></p>
+<ul>
+<li><strong>Time series comparisons</strong> are easier in wide format (comparing 2007 vs 1957 life expectancy)</li>
+<li><strong>Grouped aggregations</strong> work naturally with long format</li>
+<li><strong>Cross-sectional analysis</strong> benefits from wide format</li>
+</ul>
+<p><strong>3. Simplifies Data Operations</strong></p>
+<ul>
+<li>Some calculations are trivial in one format but complex in another</li>
+<li>Merging datasets often requires matching formats</li>
+<li>Creating summary tables may need pivoting</li>
+</ul>
 </section>
 <section id="understanding-wide-vs.-long-format" class="level3" data-number="16.1.2">
 <h3 data-number="16.1.2" class="anchored" data-anchor-id="understanding-wide-vs.-long-format"><span class="header-section-number">16.1.2</span> Understanding Wide vs.&nbsp;Long Format</h3>

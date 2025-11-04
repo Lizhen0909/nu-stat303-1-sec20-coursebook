@@ -419,8 +419,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#simple-example-with-fellowship-data" id="toc-simple-example-with-fellowship-data" class="nav-link" data-scroll-target="#simple-example-with-fellowship-data"><span class="header-section-number">17.4.2.1</span> Simple Example with Fellowship Data</a></li>
   <li><a href="#real-world-example-combining-continental-data" id="toc-real-world-example-combining-continental-data" class="nav-link" data-scroll-target="#real-world-example-combining-continental-data"><span class="header-section-number">17.4.2.2</span> Real-World Example: Combining Continental Data</a></li>
-  <li><a href="#horizontal-concatenation-combining-columns" id="toc-horizontal-concatenation-combining-columns" class="nav-link" data-scroll-target="#horizontal-concatenation-combining-columns"><span class="header-section-number">17.4.2.3</span> Horizontal Concatenation (Combining Columns)</a></li>
-  <li><a href="#handling-duplicate-column-names" id="toc-handling-duplicate-column-names" class="nav-link" data-scroll-target="#handling-duplicate-column-names"><span class="header-section-number">17.4.2.4</span> Handling Duplicate Column Names</a></li>
+  </ul></li>
+  <li><a href="#horizontal-concatenation-combining-columns" id="toc-horizontal-concatenation-combining-columns" class="nav-link" data-scroll-target="#horizontal-concatenation-combining-columns"><span class="header-section-number">17.4.3</span> Horizontal Concatenation (Combining Columns)</a>
+  <ul class="collapse">
+  <li><a href="#handling-duplicate-column-names" id="toc-handling-duplicate-column-names" class="nav-link" data-scroll-target="#handling-duplicate-column-names"><span class="header-section-number">17.4.3.1</span> Handling Duplicate Column Names</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#summary-choosing-the-right-method" id="toc-summary-choosing-the-right-method" class="nav-link" data-scroll-target="#summary-choosing-the-right-method"><span class="header-section-number">17.5</span> Summary: Choosing the Right Method</a>
@@ -503,12 +505,32 @@ window.Quarto = {
 </div>
 <section id="introduction-why-combine-datasets" class="level2" data-number="17.1">
 <h2 data-number="17.1" class="anchored" data-anchor-id="introduction-why-combine-datasets"><span class="header-section-number">17.1</span> Introduction: Why Combine Datasets?</h2>
-<p>In real-world data analysis, information is rarely contained in a single dataset. You’ll often need to <strong>combine multiple datasets</strong> from different sources to get a complete picture. This process is fundamental to data analysis and goes by several names: - <strong>Merging</strong> - joining datasets based on common keys - <strong>Joining</strong> - combining datasets using indices - <strong>Concatenating</strong> - stacking datasets vertically or horizontally</p>
+<p>In real-world data analysis, information is rarely contained in a single dataset. You’ll often need to <strong>combine multiple datasets</strong> from different sources to get a complete picture. This process is fundamental to data analysis and goes by several names:</p>
+<ul>
+<li><strong>Merging</strong> - joining datasets based on common keys</li>
+<li><strong>Joining</strong> - combining datasets using indices</li>
+<li><strong>Concatenating</strong> - stacking datasets vertically or horizontally</li>
+</ul>
 <section id="common-scenarios-requiring-data-combination" class="level3" data-number="17.1.1">
 <h3 data-number="17.1.1" class="anchored" data-anchor-id="common-scenarios-requiring-data-combination"><span class="header-section-number">17.1.1</span> Common Scenarios Requiring Data Combination</h3>
-<p><strong>1. Distributed Information</strong> - Customer demographics in one table, purchase history in another - Product details separate from sales transactions - Survey responses split across multiple files</p>
-<p><strong>2. Data from Multiple Sources</strong> - Internal company data + external market data - Multiple databases (HR, Sales, Inventory) - Different time periods stored in separate files</p>
-<p><strong>3. Analytical Requirements</strong> - Enriching existing data with additional attributes - Comparing data across different groups or time periods - Building comprehensive datasets for machine learning</p>
+<p><strong>1. Distributed Information</strong></p>
+<ul>
+<li>Customer demographics in one table, purchase history in another</li>
+<li>Product details separate from sales transactions</li>
+<li>Survey responses split across multiple files</li>
+</ul>
+<p><strong>2. Data from Multiple Sources</strong></p>
+<ul>
+<li>Internal company data + external market data</li>
+<li>Multiple databases (HR, Sales, Inventory)</li>
+<li>Different time periods stored in separate files</li>
+</ul>
+<p><strong>3. Analytical Requirements</strong></p>
+<ul>
+<li>Enriching existing data with additional attributes</li>
+<li>Comparing data across different groups or time periods</li>
+<li>Building comprehensive datasets for machine learning</li>
+</ul>
 </section>
 <section id="the-three-main-combination-methods" class="level3" data-number="17.1.2">
 <h3 data-number="17.1.2" class="anchored" data-anchor-id="the-three-main-combination-methods"><span class="header-section-number">17.1.2</span> The Three Main Combination Methods</h3>
@@ -701,7 +723,12 @@ Columns: ['FellowshipID', 'FirstName', 'Age']
 </div>
 </div>
 </div>
-<p><strong>Observation:</strong> Both datasets contain information about fellowship members, but they may have: - <strong>Common columns</strong> that can serve as keys for merging (like <code>FellowshipID</code> or <code>Name</code>) - <strong>Different sets of attributes</strong> that complement each other - <strong>Potentially different numbers of rows</strong> (not all members may appear in both datasets)</p>
+<p><strong>Observation:</strong> Both datasets contain information about fellowship members, but they may have:</p>
+<ul>
+<li><strong>Common columns</strong> that can serve as keys for merging (like <code>FellowshipID</code> or <code>Name</code>)</li>
+<li><strong>Different sets of attributes</strong> that complement each other</li>
+<li><strong>Potentially different numbers of rows</strong> (not all members may appear in both datasets)</li>
+</ul>
 <p>Our goal is to combine these datasets to create a comprehensive view of the fellowship.</p>
 </section>
 <section id="example-1-basic-merge-with-automatic-key-detection" class="level3" data-number="17.2.3">
@@ -833,7 +860,12 @@ Merged dataset shape: (2, 4)
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>df_merged_diff.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Important observations:</strong> - Notice that <strong>both</strong> key columns (<code>FellowshipID</code> and <code>ID</code>) appear in the result - They contain identical values (the matched keys) - You can drop one of them after merging: <code>df_merged_diff.drop('ID', axis=1)</code></p>
+<p><strong>Important observations:</strong></p>
+<ul>
+<li>Notice that <strong>both</strong> key columns (<code>FellowshipID</code> and <code>ID</code>) appear in the result</li>
+<li>They contain identical values (the matched keys)</li>
+<li>You can drop one of them after merging: <code>df_merged_diff.drop('ID', axis=1)</code></li>
+</ul>
 <p><strong>Common use case:</strong> Merging data from different sources where column naming conventions differ (e.g., <code>customer_id</code> vs <code>cust_id</code>, <code>date</code> vs <code>timestamp</code>).</p>
 </section>
 <section id="example-3-merging-on-multiple-columns" class="level3" data-number="17.2.5">
@@ -852,7 +884,12 @@ Merged dataset shape: (2, 4)
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>df_multi_key.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Real-world examples of composite keys:</strong> - <strong>Sales transactions:</strong> Match on both <code>Store_ID</code> AND <code>Date</code> (same store can have sales on different dates) - <strong>Student grades:</strong> Match on <code>Student_ID</code> AND <code>Course_ID</code> (same student takes multiple courses) - <strong>Time series data:</strong> Match on <code>Location</code> AND <code>Timestamp</code> (multiple locations measured over time)</p>
+<p><strong>Real-world examples of composite keys:</strong></p>
+<ul>
+<li><strong>Sales transactions:</strong> Match on both <code>Store_ID</code> AND <code>Date</code> (same store can have sales on different dates)</li>
+<li><strong>Student grades:</strong> Match on <code>Student_ID</code> AND <code>Course_ID</code> (same student takes multiple courses)</li>
+<li><strong>Time series data:</strong> Match on <code>Location</code> AND <code>Timestamp</code> (multiple locations measured over time)</li>
+</ul>
 <p><strong>Syntax variations:</strong></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using on= (when column names are the same)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pd.merge(df1, df2, on<span class="op">=</span>[<span class="st">'col1'</span>, <span class="st">'col2'</span>])</span>
@@ -965,19 +1002,19 @@ Only rows with matching keys in BOTH datasets are kept
 <p>Use inner join when you need <strong>complete information</strong> from both datasets for your analysis.</p>
 <p><strong>Real-world examples:</strong></p>
 <ol type="1">
-<li><strong>Analyzing vaccination impact on COVID infection rates</strong>
+<li><p><strong>Analyzing vaccination impact on COVID infection rates</strong></p>
 <ul>
 <li>Dataset 1: COVID infection rates by country</li>
 <li>Dataset 2: Vaccination counts by country</li>
 <li><strong>Why inner join?</strong> You can’t analyze the relationship unless you have BOTH metrics for a country. Countries missing either value can’t contribute to the analysis.</li>
 </ul></li>
-<li><strong>Customer purchase analysis</strong>
+<li><p><strong>Customer purchase analysis</strong></p>
 <ul>
 <li>Dataset 1: Customer demographics</li>
 <li>Dataset 2: Purchase transactions</li>
 <li><strong>Why inner join?</strong> To analyze how demographics relate to purchases, you need both demographic info AND purchase history.</li>
 </ul></li>
-<li><strong>A/B testing results</strong>
+<li><p><strong>A/B testing results</strong></p>
 <ul>
 <li>Dataset 1: User group assignments (control/treatment)</li>
 <li>Dataset 2: Conversion outcomes</li>
@@ -1065,19 +1102,19 @@ Rows with NaN values (no match in right dataset): 2
 <p>Use left join when the <strong>left dataset contains your primary data</strong> that must be retained, while the right dataset provides supplementary information that may be missing for some records.</p>
 <p><strong>Real-world examples:</strong></p>
 <ol type="1">
-<li><strong>COVID infection rates + government effectiveness scores</strong>
+<li><p><strong>COVID infection rates + government effectiveness scores</strong></p>
 <ul>
 <li>Left: COVID infection rates (critical, hard to impute)</li>
 <li>Right: Government effectiveness scores (can be estimated from GDP, crime rate, etc.)</li>
 <li><strong>Why left join?</strong> Keep all countries with infection rate data. Missing government scores can be imputed later using correlated variables.</li>
 </ul></li>
-<li><strong>Customer demographics + credit card spending</strong>
+<li><p><strong>Customer demographics + credit card spending</strong></p>
 <ul>
 <li>Left: Customer demographics (all customers)</li>
 <li>Right: Credit card transactions (only customers who made purchases)</li>
 <li><strong>Why left join?</strong> Keep all customers, even those with no purchases. Missing spend can be filled with 0 (indicating no transactions).</li>
 </ul></li>
-<li><strong>Employee records + performance reviews</strong>
+<li><p><strong>Employee records + performance reviews</strong></p>
 <ul>
 <li>Left: All employee records</li>
 <li>Right: Recent performance reviews (not all employees reviewed yet)</li>
@@ -1164,12 +1201,21 @@ All rows from RIGHT dataset are kept, even if no match in LEFT
 </div>
 </div>
 <p><strong>When to use right join:</strong></p>
-<p>Right join serves the same purpose as left join, just with the DataFrames swapped. In practice: - <strong>Most analysts prefer left join</strong> because it’s more intuitive (reads left-to-right) - <strong>Right join is rarely used</strong> - you can always swap the DataFrames and use left join instead</p>
+<p>Right join serves the same purpose as left join, just with the DataFrames swapped. In practice:</p>
+<ul>
+<li><strong>Most analysts prefer left join</strong> because it’s more intuitive (reads left-to-right)</li>
+<li><strong>Right join is rarely used</strong> - you can always swap the DataFrames and use left join instead</li>
+</ul>
 <p><strong>Example equivalence:</strong></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These produce the same result:</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df_right <span class="op">=</span> pd.merge(df_A, df_B, how<span class="op">=</span><span class="st">'right'</span>)  <span class="co"># Right join</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df_left <span class="op">=</span> pd.merge(df_B, df_A, how<span class="op">=</span><span class="st">'left'</span>)    <span class="co"># Equivalent left join</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>When you might see right join:</strong> - Legacy code or specific coding style preferences - SQL background where RIGHT JOIN might be more familiar - Method chaining where the order is determined by workflow</p>
+<p><strong>When you might see right join:</strong></p>
+<ul>
+<li>Legacy code or specific coding style preferences</li>
+<li>SQL background where RIGHT JOIN might be more familiar</li>
+<li>Method chaining where the order is determined by workflow</li>
+</ul>
 <p><strong>Best practice:</strong> Stick with left join and arrange your DataFrames accordingly—it makes code more readable and maintainable.</p>
 </section>
 <section id="outer-join-keep-all-rows-from-both-dataframes" class="level4" data-number="17.2.6.4">
@@ -1279,25 +1325,25 @@ dtype: int64
 <p>Use outer join when you <strong>cannot afford to lose any data</strong> from either dataset, even if it means having incomplete records.</p>
 <p><strong>Real-world examples:</strong></p>
 <ol type="1">
-<li><strong>Course surveys from multiple time points</strong>
+<li><p><strong>Course surveys from multiple time points</strong></p>
 <ul>
 <li>Dataset 1: Mid-semester survey responses</li>
 <li>Dataset 2: End-of-semester survey responses</li>
 <li><strong>Why outer join?</strong> Students who responded to either survey provide valuable feedback. Keep all responses, even from students who only completed one survey. Analyze response patterns and sentiment across all participants.</li>
 </ul></li>
-<li><strong>Multi-source customer data integration</strong>
+<li><p><strong>Multi-source customer data integration</strong></p>
 <ul>
 <li>Dataset 1: Online purchase records</li>
 <li>Dataset 2: In-store purchase records</li>
 <li><strong>Why outer join?</strong> Customers may shop through one channel only. Keep all customers to understand total customer base and channel preferences.</li>
 </ul></li>
-<li><strong>Scientific study with partial data</strong>
+<li><p><strong>Scientific study with partial data</strong></p>
 <ul>
 <li>Dataset 1: Lab test results</li>
 <li>Dataset 2: Clinical observations</li>
 <li><strong>Why outer join?</strong> Some subjects may have only lab results or only clinical observations due to scheduling, dropouts, or data collection issues. Keep all subjects to maximize sample size and identify patterns in data availability.</li>
 </ul></li>
-<li><strong>Data quality auditing</strong>
+<li><p><strong>Data quality auditing</strong></p>
 <ul>
 <li>Dataset 1: Expected records (should exist)</li>
 <li>Dataset 2: Actual records (what we have)</li>
@@ -1547,7 +1593,13 @@ Now rows are matched by FellowshipID, not arbitrary row numbers!
 </div>
 </div>
 </div>
-<p><strong>Perfect!</strong> Now the join is meaningful: - Rows are matched by <code>FellowshipID</code> (a business key) - All rows from the left DataFrame are kept (default left join) - <code>NaN</code> values appear where <code>FellowshipID</code> doesn’t exist in the right DataFrame - The index preserves the key for easy lookup</p>
+<p><strong>Perfect!</strong> Now the join is meaningful:</p>
+<ul>
+<li>Rows are matched by <code>FellowshipID</code> (a business key)</li>
+<li>All rows from the left DataFrame are kept (default left join)</li>
+<li><code>NaN</code> values appear where <code>FellowshipID</code> doesn’t exist in the right DataFrame</li>
+<li>The index preserves the key for easy lookup</li>
+</ul>
 </section>
 <section id="changing-join-type-in-join" class="level3" data-number="17.3.4">
 <h3 data-number="17.3.4" class="anchored" data-anchor-id="changing-join-type-in-join"><span class="header-section-number">17.3.4</span> Changing Join Type in <code>join()</code></h3>
@@ -1638,7 +1690,13 @@ Right join:
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>lotr_combined</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Key points about vertical concatenation:</strong> - Rows are simply stacked (group 1 rows, then group 2 rows) - Index values may be duplicated (notice indices 0-4 appear, then 5-8) - All columns from both DataFrames are kept - No key matching occurs—just physical stacking</p>
+<p><strong>Key points about vertical concatenation:</strong></p>
+<ul>
+<li>Rows are simply stacked (group 1 rows, then group 2 rows)</li>
+<li>Index values may be duplicated (notice indices 0-4 appear, then 5-8)</li>
+<li>All columns from both DataFrames are kept</li>
+<li>No key matching occurs—just physical stacking</li>
+</ul>
 <p><strong>Use <code>ignore_index=True</code> to create a new sequential index:</strong></p>
 <div id="7ed07b71" class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index to create sequential numbering</span></span>
@@ -1647,7 +1705,6 @@ Right join:
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"With ignore_index=True, we get a clean sequential index:</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>lotr_combined_reset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
 </section>
 <section id="real-world-example-combining-continental-data" class="level4" data-number="17.4.2.2">
 <h4 data-number="17.4.2.2" class="anchored" data-anchor-id="real-world-example-combining-continental-data"><span class="header-section-number">17.4.2.2</span> Real-World Example: Combining Continental Data</h4>
@@ -1944,8 +2001,9 @@ Right join:
 <p>In the above example, datasets were appended (or stacked on top of each other).</p>
 <p>Datasets can also be concatenated side-by-side (by providing the argument axis = 1 with the concat() function) as we saw with the merge function.</p>
 </section>
-<section id="horizontal-concatenation-combining-columns" class="level4" data-number="17.4.2.3">
-<h4 data-number="17.4.2.3" class="anchored" data-anchor-id="horizontal-concatenation-combining-columns"><span class="header-section-number">17.4.2.3</span> Horizontal Concatenation (Combining Columns)</h4>
+</section>
+<section id="horizontal-concatenation-combining-columns" class="level3" data-number="17.4.3">
+<h3 data-number="17.4.3" class="anchored" data-anchor-id="horizontal-concatenation-combining-columns"><span class="header-section-number">17.4.3</span> Horizontal Concatenation (Combining Columns)</h3>
 <p>Setting <code>axis=1</code> combines DataFrames side-by-side by aligning their <strong>indices</strong>.</p>
 <div id="3d33644b" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate horizontally (axis=1) - combine columns</span></span>
@@ -2019,11 +2077,21 @@ Right join:
 </div>
 </div>
 </div>
-<p><strong>Notice:</strong> - DataFrames are placed side-by-side - <strong>Index values are used for alignment</strong> (matching FellowshipIDs are aligned) - Non-matching indices result in NaN values - This is similar to an outer join on the index</p>
-<p><strong>When to use horizontal concat:</strong> - Adding new features/columns to existing data - Combining results from different analyses on the same observations - Building feature matrices for machine learning (each DataFrame contains different feature sets)</p>
-</section>
-<section id="handling-duplicate-column-names" class="level4" data-number="17.4.2.4">
-<h4 data-number="17.4.2.4" class="anchored" data-anchor-id="handling-duplicate-column-names"><span class="header-section-number">17.4.2.4</span> Handling Duplicate Column Names</h4>
+<p><strong>Notice:</strong></p>
+<ul>
+<li>DataFrames are placed side-by-side</li>
+<li><strong>Index values are used for alignment</strong> (matching FellowshipIDs are aligned)</li>
+<li>Non-matching indices result in NaN values</li>
+<li>This is similar to an outer join on the index</li>
+</ul>
+<p><strong>When to use horizontal concat:</strong></p>
+<ul>
+<li>Adding new features/columns to existing data</li>
+<li>Combining results from different analyses on the same observations</li>
+<li>Building feature matrices for machine learning (each DataFrame contains different feature sets)</li>
+</ul>
+<section id="handling-duplicate-column-names" class="level4" data-number="17.4.3.1">
+<h4 data-number="17.4.3.1" class="anchored" data-anchor-id="handling-duplicate-column-names"><span class="header-section-number">17.4.3.1</span> Handling Duplicate Column Names</h4>
 <p>When concatenating horizontally with duplicate column names, pandas keeps both columns:</p>
 <div id="5221a6a7" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See column names when both DataFrames have 'Name'</span></span>
@@ -2158,15 +2226,15 @@ Right join:
 <section id="decision-tree" class="level3" data-number="17.5.1">
 <h3 data-number="17.5.1" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">17.5.1</span> Decision Tree:</h3>
 <ol type="1">
-<li><strong>Do you need to match rows based on values in columns?</strong>
+<li><p><strong>Do you need to match rows based on values in columns?</strong></p>
 <ul>
 <li>Yes → Use <code>merge()</code> (specify join type and <code>on=</code> parameter)</li>
 </ul></li>
-<li><strong>Do you need to match rows based on index values?</strong>
+<li><p><strong>Do you need to match rows based on index values?</strong></p>
 <ul>
 <li>Yes → Use <code>join()</code> (ensure indices are meaningful)</li>
 </ul></li>
-<li><strong>Do you just need to stack DataFrames?</strong>
+<li><p><strong>Do you just need to stack DataFrames?</strong></p>
 <ul>
 <li>Vertically (add more rows) → Use <code>concat(axis=0)</code></li>
 <li>Horizontally (add more columns) → Use <code>concat(axis=1)</code> (aligns on index)</li>
@@ -2227,7 +2295,12 @@ Right join:
 <p><strong>Example:</strong> Customer purchase analysis with left join</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All customers + their purchases (if any)</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df_customer_purchases <span class="op">=</span> customers.merge(purchases, on<span class="op">=</span><span class="st">'CustomerID'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Interpretation:</strong> - NaN in purchase columns = Customer hasn’t made a purchase yet - This is <strong>informative</strong> - these customers might be new or inactive - Analysis: “What percentage of customers have never purchased?” requires keeping NaN</p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>NaN in purchase columns = Customer hasn’t made a purchase yet</li>
+<li>This is <strong>informative</strong> - these customers might be new or inactive</li>
+<li>Analysis: “What percentage of customers have never purchased?” requires keeping NaN</li>
+</ul>
 <p><strong>Action:</strong> Keep NaN and analyze it as a category (e.g., <code>df['Purchase'].isna().sum()</code>)</p>
 </section>
 <section id="strategy-2-fill-with-default-values" class="level4" data-number="17.6.2.2">
@@ -2237,7 +2310,13 @@ Right join:
 <div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing sales with 0</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>df_merged[<span class="st">'TotalSales'</span>] <span class="op">=</span> df_merged[<span class="st">'TotalSales'</span>].fillna(<span class="dv">0</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>df_merged[<span class="st">'TransactionCount'</span>] <span class="op">=</span> df_merged[<span class="st">'TransactionCount'</span>].fillna(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Common fill values:</strong> - <code>0</code> - for counts, amounts, quantities - <code>'None'</code> or <code>'Unknown'</code> - for categorical data - <code>False</code> - for boolean flags - Mean/median - for numerical features (use with caution!)</p>
+<p><strong>Common fill values:</strong></p>
+<ul>
+<li><code>0</code> - for counts, amounts, quantities</li>
+<li><code>'None'</code> or <code>'Unknown'</code> - for categorical data</li>
+<li><code>False</code> - for boolean flags</li>
+<li>Mean/median - for numerical features (use with caution!)</li>
+</ul>
 <p><strong>Caution:</strong> Only fill when you’re certain what the missing value <em>means</em>.</p>
 </section>
 <section id="strategy-3-drop-rows-with-missing-values" class="level4" data-number="17.6.2.3">
@@ -2246,7 +2325,12 @@ Right join:
 <p><strong>Example:</strong> Analyzing relationship between two variables (need both)</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows where either GDP or Population is missing</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>df_complete <span class="op">=</span> df_merged.dropna(subset<span class="op">=</span>[<span class="st">'GDP'</span>, <span class="st">'Population'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Options:</strong> - <code>dropna()</code> - drop rows with <em>any</em> NaN - <code>dropna(subset=['col1', 'col2'])</code> - drop only if specific columns have NaN - <code>dropna(thresh=5)</code> - drop only if fewer than 5 non-NaN values</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>dropna()</code> - drop rows with <em>any</em> NaN</li>
+<li><code>dropna(subset=['col1', 'col2'])</code> - drop only if specific columns have NaN</li>
+<li><code>dropna(thresh=5)</code> - drop only if fewer than 5 non-NaN values</li>
+</ul>
 <p><strong>Caution:</strong> You’re losing data! Document how many rows were dropped and why.</p>
 </section>
 <section id="strategy-4-use-a-different-join-type" class="level4" data-number="17.6.2.4">
@@ -2320,8 +2404,14 @@ Right join:
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Also good: Create a flag for missing values before filling</span></span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'GDP_was_missing'</span>] <span class="op">=</span> df[<span class="st">'GDP'</span>].isna()</span>
 <span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'GDP'</span>] <span class="op">=</span> df[<span class="st">'GDP'</span>].fillna(df[<span class="st">'GDP'</span>].median())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>3. Consider the Impact</strong> - <strong>Dropping rows:</strong> Reduces sample size, may introduce bias - <strong>Filling with defaults:</strong> May distort statistics (mean, correlations) - <strong>Keeping NaN:</strong> Requires careful handling in analysis/visualization</p>
-<p><strong>4. Choose Join Type Carefully</strong> The best way to handle missing values is often to <strong>prevent them</strong> by using the right join type for your analysis question!</p>
+<p><strong>3. Consider the Impact</strong></p>
+<ul>
+<li><strong>Dropping rows:</strong> Reduces sample size, may introduce bias</li>
+<li><strong>Filling with defaults:</strong> May distort statistics (mean, correlations)</li>
+<li><strong>Keeping NaN:</strong> Requires careful handling in analysis/visualization</li>
+</ul>
+<p><strong>4. Choose Join Type Carefully</strong></p>
+<p>The best way to handle missing values is often to <strong>prevent them</strong> by using the right join type for your analysis question!</p>
 <p><strong>Remember:</strong> Missing values after combining datasets are <strong>expected and normal</strong>. The key is understanding what they mean and handling them appropriately for your specific analysis goals.</p>
 </section>
 </section>
