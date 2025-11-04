@@ -38,6 +38,7 @@ book:
         - Data_cleaning.ipynb
         - Data_preparation.ipynb
         - Data aggregation.ipynb
+        - Data_reshaping.ipynb
         - Data wrangling.ipynb
         # - student_solutions.ipynb
   appendices: 
