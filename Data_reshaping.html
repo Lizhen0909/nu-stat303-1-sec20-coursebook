@@ -724,7 +724,12 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 <p>The <code>pivot_table()</code> function is one of pandas’ most versatile tools—it serves a dual purpose as both an <strong>aggregation tool</strong> and a <strong>data reshaping tool</strong>. While you may have seen pivot tables in Excel for summarizing data, pandas’ <code>pivot_table()</code> is even more powerful.</p>
 <section id="what-is-pivoting" class="level3" data-number="16.2.1">
 <h3 data-number="16.2.1" class="anchored" data-anchor-id="what-is-pivoting"><span class="header-section-number">16.2.1</span> What is Pivoting?</h3>
-<p><strong>Pivoting</strong> transforms long format data into wide format by: - Taking values from rows and spreading them <strong>across columns</strong> - Creating a <strong>cross-tabulation</strong> structure that’s easy to read - Automatically <strong>aggregating</strong> when there are multiple values per group</p>
+<p><strong>Pivoting</strong> transforms long format data into wide format by:</p>
+<ul>
+<li>Taking values from rows and spreading them <strong>across columns</strong></li>
+<li>Creating a <strong>cross-tabulation</strong> structure that’s easy to read</li>
+<li>Automatically <strong>aggregating</strong> when there are multiple values per group</li>
+</ul>
 <p>Think of it as “pivoting” your data 90 degrees—what was vertical becomes horizontal.</p>
 <p>Let’s start with a simple example before moving to more complex scenarios.</p>
 </section>
@@ -1085,9 +1090,24 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 </div>
 </div>
 <p><strong>Understanding Multi-Level Indices:</strong></p>
-<p>When you pass a list to the <code>index</code> parameter, pandas creates a <strong>hierarchical (multi-level) index</strong>: - <strong>Level 0</strong> (outermost): <code>continent</code> - Groups countries by continent - <strong>Level 1</strong> (inner): <code>country</code> - Individual countries within each continent</p>
-<p><strong>Parameters Breakdown:</strong> - <strong><code>index=['continent', 'country']</code></strong> - Creates two-level row hierarchy - <strong><code>columns='year'</code></strong> - Years spread across columns (1952, 1957, …, 2007) - <strong><code>values='lifeExp'</code></strong> - The metric we’re pivoting - <strong><code>aggfunc='mean'</code></strong> - How to aggregate if there are duplicates (though each country-year is unique here)</p>
-<p><strong>Benefits of this structure:</strong> - Easy to see all years for a country in one row - Natural grouping by continent - Facilitates comparisons across time periods</p>
+<p>When you pass a list to the <code>index</code> parameter, pandas creates a <strong>hierarchical (multi-level) index</strong>:</p>
+<ul>
+<li><strong>Level 0</strong> (outermost): <code>continent</code> - Groups countries by continent</li>
+<li><strong>Level 1</strong> (inner): <code>country</code> - Individual countries within each continent</li>
+</ul>
+<p><strong>Parameters Breakdown:</strong></p>
+<ul>
+<li><strong><code>index=['continent', 'country']</code></strong> - Creates two-level row hierarchy</li>
+<li><strong><code>columns='year'</code></strong> - Years spread across columns (1952, 1957, …, 2007)</li>
+<li><strong><code>values='lifeExp'</code></strong> - The metric we’re pivoting</li>
+<li><strong><code>aggfunc='mean'</code></strong> - How to aggregate if there are duplicates (though each country-year is unique here)</li>
+</ul>
+<p><strong>Benefits of this structure:</strong></p>
+<ul>
+<li>Easy to see all years for a country in one row</li>
+<li>Natural grouping by continent</li>
+<li>Facilitates comparisons across time periods</li>
+</ul>
 </section>
 <section id="practical-use-temporal-comparisons" class="level3" data-number="16.2.4">
 <h3 data-number="16.2.4" class="anchored" data-anchor-id="practical-use-temporal-comparisons"><span class="header-section-number">16.2.4</span> Practical Use: Temporal Comparisons</h3>
@@ -1160,8 +1180,19 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 </div>
 </div>
 </div>
-<p><strong>Reading the Heatmap:</strong> - <strong>Darker (blue) colors</strong> indicate higher life expectancy - <strong>Lighter (yellow) colors</strong> indicate lower life expectancy - <strong>Horizontal patterns</strong> show trends over time for individual countries - <strong>Vertical patterns</strong> show disparities across countries in a specific year</p>
-<p><strong>Patterns to Notice:</strong> 1. General darkening from left to right = life expectancy increasing over time globally 2. Top rows (Oceania, Europe) consistently darker = higher life expectancy 3. Bottom rows (Africa) show more yellow = lower life expectancy, though improving</p>
+<p><strong>Reading the Heatmap:</strong></p>
+<ul>
+<li><strong>Darker (blue) colors</strong> indicate higher life expectancy</li>
+<li><strong>Lighter (yellow) colors</strong> indicate lower life expectancy</li>
+<li><strong>Horizontal patterns</strong> show trends over time for individual countries</li>
+<li><strong>Vertical patterns</strong> show disparities across countries in a specific year</li>
+</ul>
+<p><strong>Patterns to Notice:</strong></p>
+<ol type="1">
+<li>General darkening from left to right = life expectancy increasing over time globally</li>
+<li>Top rows (Oceania, Europe) consistently darker = higher life expectancy</li>
+<li>Bottom rows (Africa) show more yellow = lower life expectancy, though improving</li>
+</ol>
 <p><strong>Common Aggregation Functions in <code>pivot_table()</code></strong></p>
 <p>You can use various aggregation functions within <code>pivot_table()</code> to summarize data:</p>
 <ul>
@@ -1617,9 +1648,20 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 <p><strong><code>melt()</code></strong> is the inverse operation of pivoting—it transforms <strong>wide format</strong> data into <strong>long format</strong> by “unpivoting” columns into rows. This is also called “melting” because you’re “melting” wide columns down into a taller, narrower structure.</p>
 <section id="why-melt-your-data" class="level3" data-number="16.3.1">
 <h3 data-number="16.3.1" class="anchored" data-anchor-id="why-melt-your-data"><span class="header-section-number">16.3.1</span> Why Melt Your Data?</h3>
-<p><strong>Visualization Libraries Prefer Long Format:</strong> - Seaborn and many plotting tools expect data in long format - Makes it easy to create grouped plots with <code>hue</code>, <code>style</code>, or <code>col</code> parameters</p>
-<p><strong>Better for Statistical Analysis:</strong> - Long format is “tidy data”—each variable in one column, each observation in one row - Required for many statistical models and tests</p>
-<p><strong>More Flexible for groupby() Operations:</strong> - Easier to filter and aggregate when variables are in rows rather than column names</p>
+<p><strong>Visualization Libraries Prefer Long Format:</strong></p>
+<ul>
+<li>Seaborn and many plotting tools expect data in long format</li>
+<li>Makes it easy to create grouped plots with <code>hue</code>, <code>style</code>, or <code>col</code> parameters</li>
+</ul>
+<p><strong>Better for Statistical Analysis:</strong></p>
+<ul>
+<li>Long format is “tidy data”—each variable in one column, each observation in one row</li>
+<li>Required for many statistical models and tests</li>
+</ul>
+<p><strong>More Flexible for groupby() Operations:</strong></p>
+<ul>
+<li>Easier to filter and aggregate when variables are in rows rather than column names</li>
+</ul>
 </section>
 <section id="understanding-melt-parameters" class="level3" data-number="16.3.2">
 <h3 data-number="16.3.2" class="anchored" data-anchor-id="understanding-melt-parameters"><span class="header-section-number">16.3.2</span> Understanding <code>melt()</code> Parameters</h3>
@@ -1942,7 +1984,12 @@ LONG FORMAT (after melting):
 <li>The <code>lifeExp</code> column contains the actual values</li>
 </ul></li>
 </ol>
-<p><strong>Key Parameters Used:</strong> - <code>var_name='year'</code> - Column header values (1952, 1957, etc.) go into a new column called ‘year’ - <code>value_name='lifeExp'</code> - Cell values go into a new column called ‘lifeExp’ - <code>ignore_index=False</code> - Preserve the multi-level index (continent, country)</p>
+<p><strong>Key Parameters Used:</strong></p>
+<ul>
+<li><code>var_name='year'</code> - Column header values (1952, 1957, etc.) go into a new column called ‘year’</li>
+<li><code>value_name='lifeExp'</code> - Cell values go into a new column called ‘lifeExp’</li>
+<li><code>ignore_index=False</code> - Preserve the multi-level index (continent, country)</li>
+</ul>
 <p>This is now in <strong>tidy format</strong>, perfect for plotting and analysis!</p>
 </section>
 <section id="example-2-using-melted-data-for-visualization" class="level3" data-number="16.3.4">
@@ -1980,8 +2027,19 @@ LONG FORMAT (after melting):
 </div>
 </div>
 <p><strong>Why This Works So Well:</strong></p>
-<p>This visualization would be extremely difficult with wide format data! With long format: - Seaborn automatically groups by continent using the <code>hue</code> parameter - The <code>x='year'</code> and <code>y='lifeExp'</code> mappings are straightforward - Error bars show variation across countries within each continent</p>
-<p><strong>Key Insights from the Plot:</strong> - All continents show upward trends (global improvement in healthcare) - Oceania maintains the highest life expectancy throughout - Africa starts lowest but shows improvement - The gap between continents has narrowed over time (error bars converge)</p>
+<p>This visualization would be extremely difficult with wide format data! With long format:</p>
+<ul>
+<li>Seaborn automatically groups by continent using the <code>hue</code> parameter</li>
+<li>The <code>x='year'</code> and <code>y='lifeExp'</code> mappings are straightforward</li>
+<li>Error bars show variation across countries within each continent</li>
+</ul>
+<p><strong>Key Insights from the Plot:</strong></p>
+<ul>
+<li>All continents show upward trends (global improvement in healthcare)</li>
+<li>Oceania maintains the highest life expectancy throughout</li>
+<li>Africa starts lowest but shows improvement</li>
+<li>The gap between continents has narrowed over time (error bars converge)</li>
+</ul>
 <p>This is the power of having data in the right format!</p>
 </section>
 <section id="pivot-melt-the-full-circle" class="level3" data-number="16.3.5">
