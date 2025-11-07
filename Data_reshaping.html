@@ -401,10 +401,9 @@ window.Quarto = {
   <li><a href="#melting-from-wide-to-long-melt" id="toc-melting-from-wide-to-long-melt" class="nav-link" data-scroll-target="#melting-from-wide-to-long-melt"><span class="header-section-number">16.3</span> Melting from Wide to Long: <code>melt()</code></a>
   <ul>
   <li><a href="#why-melt-your-data" id="toc-why-melt-your-data" class="nav-link" data-scroll-target="#why-melt-your-data"><span class="header-section-number">16.3.1</span> Why Melt Your Data?</a></li>
-  <li><a href="#understanding-melt-parameters" id="toc-understanding-melt-parameters" class="nav-link" data-scroll-target="#understanding-melt-parameters"><span class="header-section-number">16.3.2</span> Understanding <code>melt()</code> Parameters</a></li>
-  <li><a href="#example-1-basic-melt" id="toc-example-1-basic-melt" class="nav-link" data-scroll-target="#example-1-basic-melt"><span class="header-section-number">16.3.3</span> Example 1: Basic Melt</a></li>
-  <li><a href="#example-2-using-melted-data-for-visualization" id="toc-example-2-using-melted-data-for-visualization" class="nav-link" data-scroll-target="#example-2-using-melted-data-for-visualization"><span class="header-section-number">16.3.4</span> Example 2: Using Melted Data for Visualization</a></li>
-  <li><a href="#pivot-melt-the-full-circle" id="toc-pivot-melt-the-full-circle" class="nav-link" data-scroll-target="#pivot-melt-the-full-circle"><span class="header-section-number">16.3.5</span> Pivot ↔︎ Melt: The Full Circle</a></li>
+  <li><a href="#example-1-basic-melt" id="toc-example-1-basic-melt" class="nav-link" data-scroll-target="#example-1-basic-melt"><span class="header-section-number">16.3.2</span> Example 1: Basic Melt</a></li>
+  <li><a href="#example-2-using-melted-data-for-visualization" id="toc-example-2-using-melted-data-for-visualization" class="nav-link" data-scroll-target="#example-2-using-melted-data-for-visualization"><span class="header-section-number">16.3.3</span> Example 2: Using Melted Data for Visualization</a></li>
+  <li><a href="#pivot-melt-the-full-circle" id="toc-pivot-melt-the-full-circle" class="nav-link" data-scroll-target="#pivot-melt-the-full-circle"><span class="header-section-number">16.3.4</span> Pivot ↔︎ Melt: The Full Circle</a></li>
   </ul></li>
   <li><a href="#stacking-and-unstacking-using-stack-and-unstack" id="toc-stacking-and-unstacking-using-stack-and-unstack" class="nav-link" data-scroll-target="#stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">16.4</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></a>
   <ul>
@@ -591,7 +590,7 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 </tr>
 </tbody>
 </table>
-<p><strong>Same data, different organization!</strong> The wide format makes it easy to compare 2000 vs 2010 (just look across the row), while the long format is ideal for plotting trends over time with seaborn.</p>
+<p><strong>Same data, different organization!</strong></p>
 </section>
 <section id="reshaping-tools-in-pandas" class="level3" data-number="16.1.3">
 <h3 data-number="16.1.3" class="anchored" data-anchor-id="reshaping-tools-in-pandas"><span class="header-section-number">16.1.3</span> Reshaping Tools in Pandas</h3>
@@ -1083,13 +1082,6 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 <ul>
 <li><strong>Level 0</strong> (outermost): <code>continent</code> - Groups countries by continent</li>
 <li><strong>Level 1</strong> (inner): <code>country</code> - Individual countries within each continent</li>
-</ul>
-<p><strong>Parameters Breakdown:</strong></p>
-<ul>
-<li><strong><code>index=['continent', 'country']</code></strong> - Creates two-level row hierarchy</li>
-<li><strong><code>columns='year'</code></strong> - Years spread across columns (1952, 1957, …, 2007)</li>
-<li><strong><code>values='lifeExp'</code></strong> - The metric we’re pivoting</li>
-<li><strong><code>aggfunc='mean'</code></strong> - How to aggregate if there are duplicates (though each country-year is unique here)</li>
 </ul>
 <p><strong>Benefits of this structure:</strong></p>
 <ul>
@@ -1651,50 +1643,10 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 <ul>
 <li>Easier to filter and aggregate when variables are in rows rather than column names</li>
 </ul>
-</section>
-<section id="understanding-melt-parameters" class="level3" data-number="16.3.2">
-<h3 data-number="16.3.2" class="anchored" data-anchor-id="understanding-melt-parameters"><span class="header-section-number">16.3.2</span> Understanding <code>melt()</code> Parameters</h3>
-<p>The <code>melt()</code> function has four key parameters:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 39%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Parameter</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong><code>id_vars</code></strong></td>
-<td>Columns to keep as identifiers (not melted)</td>
-<td><code>['continent', 'country']</code></td>
-</tr>
-<tr class="even">
-<td><strong><code>value_vars</code></strong></td>
-<td>Columns to melt into rows (optional—defaults to all non-id columns)</td>
-<td><code>[1952, 1957, 2007]</code></td>
-</tr>
-<tr class="odd">
-<td><strong><code>var_name</code></strong></td>
-<td>Name for the new column containing old column names</td>
-<td><code>'year'</code></td>
-</tr>
-<tr class="even">
-<td><strong><code>value_name</code></strong></td>
-<td>Name for the new column containing the values</td>
-<td><code>'lifeExp'</code></td>
-</tr>
-</tbody>
-</table>
 <p>Let’s see this in action!</p>
 </section>
-<section id="example-1-basic-melt" class="level3" data-number="16.3.3">
-<h3 data-number="16.3.3" class="anchored" data-anchor-id="example-1-basic-melt"><span class="header-section-number">16.3.3</span> Example 1: Basic Melt</h3>
+<section id="example-1-basic-melt" class="level3" data-number="16.3.2">
+<h3 data-number="16.3.2" class="anchored" data-anchor-id="example-1-basic-melt"><span class="header-section-number">16.3.2</span> Example 1: Basic Melt</h3>
 <p>Let’s take our pivoted data (wide format) and melt it back to long format. First, let’s look at what we’re starting with:</p>
 <div id="45a69338" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's look at our wide format data (first 5 rows)</span></span>
@@ -1981,8 +1933,8 @@ LONG FORMAT (after melting):
 </ul>
 <p>This is now in <strong>tidy format</strong>, perfect for plotting and analysis!</p>
 </section>
-<section id="example-2-using-melted-data-for-visualization" class="level3" data-number="16.3.4">
-<h3 data-number="16.3.4" class="anchored" data-anchor-id="example-2-using-melted-data-for-visualization"><span class="header-section-number">16.3.4</span> Example 2: Using Melted Data for Visualization</h3>
+<section id="example-2-using-melted-data-for-visualization" class="level3" data-number="16.3.3">
+<h3 data-number="16.3.3" class="anchored" data-anchor-id="example-2-using-melted-data-for-visualization"><span class="header-section-number">16.3.3</span> Example 2: Using Melted Data for Visualization</h3>
 <p>Now that we have data in long format, we can easily create time series plots grouped by continent. This would be much harder with wide format data!</p>
 <div id="20c8ab90" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for plotting by resetting index to access continent column</span></span>
@@ -2031,8 +1983,8 @@ LONG FORMAT (after melting):
 </ul>
 <p>This is the power of having data in the right format!</p>
 </section>
-<section id="pivot-melt-the-full-circle" class="level3" data-number="16.3.5">
-<h3 data-number="16.3.5" class="anchored" data-anchor-id="pivot-melt-the-full-circle"><span class="header-section-number">16.3.5</span> Pivot ↔︎ Melt: The Full Circle</h3>
+<section id="pivot-melt-the-full-circle" class="level3" data-number="16.3.4">
+<h3 data-number="16.3.4" class="anchored" data-anchor-id="pivot-melt-the-full-circle"><span class="header-section-number">16.3.4</span> Pivot ↔︎ Melt: The Full Circle</h3>
 <p>Let’s verify that <code>pivot_table()</code> and <code>melt()</code> are truly inverse operations by starting with long format, pivoting to wide, then melting back to long:</p>
 <div id="248ce5cd" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Start with original long format data</span></span>
