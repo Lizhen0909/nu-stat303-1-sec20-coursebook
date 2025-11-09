@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -539,7 +546,7 @@ gpa -&gt; 3.7</code></pre>
 <pre><code>[(5, 25), (6, 36), (7, 49), (8, 64), (9, 81), (10, 100), (11, 121), (12, 144), (13, 169), (14, 196), (15, 225)]</code></pre>
 </div>
 </div>
-<p>Creating a list of words that start with the letter ‘a’ in a given list of words.</p>
+<p>Creating a list of words that start with the letter <q>a</q> in a given list of words.</p>
 <div id="c7547e9f" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'avocado'</span>, <span class="st">'grape'</span>, <span class="st">'apricot'</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>a_words <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word.startswith(<span class="st">'a'</span>)]</span>
@@ -575,7 +582,7 @@ gpa -&gt; 3.7</code></pre>
 <p><strong>Examples:</strong></p>
 <ul>
 <li><code>3 in [1, 2, 3]</code> → <code>True</code> (checks if 3 is in the list)</li>
-<li><code>'a' in {'a': 1, 'b': 2}</code> → <code>True</code> (checks if ‘a’ is a key in the dictionary)</li>
+<li><code>'a' in {'a': 1, 'b': 2}</code> → <code>True</code> (checks if <q>a</q> is a key in the dictionary)</li>
 <li><code>5 not in {1, 2, 3}</code> → <code>True</code> (checks if 5 is not in the set)</li>
 </ul>
 <p><strong>Tip:</strong></p>
@@ -957,8 +964,8 @@ Chen 78</code></pre>
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="sorting-the-data"><span class="header-section-number">5.5.1</span> Sorting the data</h3>
 <ul>
 <li><p>Sort [10, 2, 33, 25, 7] in descending order.</p></li>
-<li><p>Given words = [“data”, “python”, “AI”, “science”], sort alphabetically ignoring case.</p></li>
-<li><p>Sort [(“Ann”, 22), (“Bob”, 19), (“Chen”, 22)] by age, preserving name order when ages match.</p></li>
+<li><p>Given words = [<q>data</q>, <q>python</q>, <q>AI</q>, <q>science</q>], sort alphabetically ignoring case.</p></li>
+<li><p>Sort [(<q>Ann</q>, 22), (<q>Bob</q>, 19), (<q>Chen</q>, 22)] by age, preserving name order when ages match.</p></li>
 </ul>
 </section>
 <section id="lambda" class="level3" data-number="5.5.2">

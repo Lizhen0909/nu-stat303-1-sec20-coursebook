@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -1294,8 +1301,8 @@ dtype: object</code></pre>
 </table>
 <p><strong>🚨 Common Data Type Issues:</strong></p>
 <ul>
-<li><strong>Numbers stored as ‘object’</strong>: Often means there are non-numeric characters (like ‘$’ or ‘,’)</li>
-<li><strong>Dates as ‘object’</strong>: Need to convert using <code>pd.to_datetime()</code></li>
+<li><strong>Numbers stored as <q>object</q></strong>: Often means there are non-numeric characters (like <q>$</q> or <q>,</q>)</li>
+<li><strong>Dates as <q>object</q></strong>: Need to convert using <code>pd.to_datetime()</code></li>
 <li><strong>Missing values in integers</strong>: Forces conversion to float64</li>
 </ul>
 </section>
@@ -1305,7 +1312,7 @@ dtype: object</code></pre>
 <strong>Why it matters</strong>:</p>
 <ul>
 <li>Understand your dataset size at a glance</li>
-<li>Know if you have a “tall” (many rows) or “wide” (many columns) dataset</li>
+<li>Know if you have a <q>tall</q> (many rows) or <q>wide</q> (many columns) dataset</li>
 <li>Estimate memory requirements</li>
 <li>Spot issues (e.g., fewer rows than expected after filtering)</li>
 </ul>
@@ -1772,7 +1779,7 @@ memory usage: 191.6+ KB</code></pre>
 <tr class="odd">
 <td><strong>Example</strong></td>
 <td>Entire movie database</td>
-<td>Just the ‘Rating’ column</td>
+<td>Just the <q>Rating</q> column</td>
 </tr>
 <tr class="even">
 <td><strong>Relationship</strong></td>
@@ -2646,7 +2653,7 @@ Dataset shape: (10, 26)
 </div>
 <section id="understanding-http-403-errors-with-wikipedia" class="level5" data-number="6.7.3.1.1">
 <h5 data-number="6.7.3.1.1" class="anchored" data-anchor-id="understanding-http-403-errors-with-wikipedia"><span class="header-section-number">6.7.3.1.1</span> <strong>Understanding HTTP 403 Errors with Wikipedia</strong></h5>
-<p><strong>Why Wikipedia Returns 403 “Forbidden” Errors:</strong></p>
+<p><strong>Why Wikipedia Returns 403 <q>Forbidden</q> Errors:</strong></p>
 <p>Wikipedia and many other websites block requests that appear to be automated bots or scrapers. When you make a request without proper headers, the server sees it as suspicious and blocks it with a 403 error.</p>
 <p><strong>Common Causes of 403 Errors:</strong></p>
 <ul>
@@ -2923,11 +2930,11 @@ Columns: ['Country/Territory', 'IMF (2025)[a][5]', 'World Bank (2022–24)[6]', 
 <section id="practice-exercise-2-reading-.txt-data" class="level3" data-number="6.8.2">
 <h3 data-number="6.8.2" class="anchored" data-anchor-id="practice-exercise-2-reading-.txt-data"><span class="header-section-number">6.8.2</span> Practice exercise 2: Reading <code>.txt</code> data</h3>
 <p>Read the file <em>bestseller_books.txt</em>. It contains top 50 best-selling books on amazon from 2009 to 2019. Identify the delimiter without opening the file with Notepad or a text-editing software. How many rows and columns are there in the dataset?</p>
-<p>Alternatively, you can use the argument <code>sep = None</code>, and <code>engine = 'python'</code>. The default engine is C. However, the ‘python’ engine has a ‘sniffer’ tool which may identify the delimiter automatically.</p>
+<p>Alternatively, you can use the argument <code>sep = None</code>, and <code>engine = 'python'</code>. The default engine is C. However, the <q>python</q> engine has a <q>sniffer</q> tool which may identify the delimiter automatically.</p>
 </section>
 <section id="practice-exercise-3-reading-html-data" class="level3" data-number="6.8.3">
 <h3 data-number="6.8.3" class="anchored" data-anchor-id="practice-exercise-3-reading-html-data"><span class="header-section-number">6.8.3</span> Practice exercise 3: Reading HTML data</h3>
-<p>Read the table(s) consisting of attendance of spectators in FIFA worlds cup from this <a href="https://en.wikipedia.org/wiki/FIFA_World_Cup">page</a>. Read only those table(s) that have the word <em>‘reaching’</em> in them. How many rows and columns are there in the table(s)?</p>
+<p>Read the table(s) consisting of attendance of spectators in FIFA worlds cup from this <a href="https://en.wikipedia.org/wiki/FIFA_World_Cup">page</a>. Read only those table(s) that have the word <em><q>reaching</q></em> in them. How many rows and columns are there in the table(s)?</p>
 </section>
 <section id="practice-exercise-4-reading-json-data" class="level3" data-number="6.8.4">
 <h3 data-number="6.8.4" class="anchored" data-anchor-id="practice-exercise-4-reading-json-data"><span class="header-section-number">6.8.4</span> Practice exercise 4: Reading JSON data</h3>

@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -365,8 +366,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -506,8 +513,8 @@ window.Quarto = {
 <p><em>(8 points)</em></p>
 <p><strong>Hint:</strong></p>
 <ol type="1">
-<li><p>Use <code>value_counts()</code> to see the values of <code>geographic_location</code>. The code <code>if 'Asia' in 'something'</code> will return <code>True</code> if ‘<em>something</em>’ contains the string ‘<em>Asia</em>’, for example, if ‘<em>something</em>’ is ‘<em>North Asia</em>’, the code with return True. <em>This part of the hint is just for your understanding. You don’t need to write any code in this part.</em></p></li>
-<li><p>Apply a lambda function on the Series <code>geographic_location</code> to replace a string that contains ‘<em>Asia</em>’ with ‘<em>Asia</em>’, replace a string that contains ‘<em>Europe</em>’ with ‘<em>Europe</em>’, and replace a string that contains ‘<em>Africa</em>’ with ‘<em>Africa</em>’. <em>This will be a single line of code.</em></p></li>
+<li><p>Use <code>value_counts()</code> to see the values of <code>geographic_location</code>. The code <code>if 'Asia' in 'something'</code> will return <code>True</code> if <q><em>something</em></q> contains the string <q><em>Asia</em></q>, for example, if <q><em>something</em></q> is <q><em>North Asia</em></q>, the code with return True. <em>This part of the hint is just for your understanding. You don’t need to write any code in this part.</em></p></li>
+<li><p>Apply a lambda function on the Series <code>geographic_location</code> to replace a string that contains <q><em>Asia</em></q> with <q><em>Asia</em></q>, replace a string that contains <q><em>Europe</em></q> with <q><em>Europe</em></q>, and replace a string that contains <q><em>Africa</em></q> with <q><em>Africa</em></q>. <em>This will be a single line of code.</em></p></li>
 <li><p>Rename the column <code>georgaphic_location</code> to <code>continent</code>.</p></li>
 </ol>
 </section>
@@ -611,8 +618,8 @@ window.Quarto = {
 <p>A. Eliminate the characters <code>~</code>, <code>+</code>, and <code>,</code> from all the values of the Series.</p>
 <p>B. Convert the Series to numeric (with coercion if needed).</p></li>
 <li><p>If at least 10 values are NOT found to contain a digit, then:</p>
-<p>A. If the values of the Series are <em>‘Yes’</em> and <em>‘No’</em>, then replace <em>‘Yes’</em> with <em>1</em> and <em>‘No’</em> with <em>0</em>. The Series datatype must change to numeric as well.</p>
-<p>B. If the values of the Series are <em>‘Agree’</em> and <em>‘Disagree’</em>, then replace <em>‘Agree’</em> with <em>1</em> and <em>‘Disagree’</em> with <em>0</em>. The Series datatype must change to numeric as well.</p></li>
+<p>A. If the values of the Series are <em><q>Yes</q></em> and <em><q>No</q></em>, then replace <em><q>Yes</q></em> with <em>1</em> and <em><q>No</q></em> with <em>0</em>. The Series datatype must change to numeric as well.</p>
+<p>B. If the values of the Series are <em><q>Agree</q></em> and <em><q>Disagree</q></em>, then replace <em><q>Agree</q></em> with <em>1</em> and <em><q>Disagree</q></em> with <em>0</em>. The Series datatype must change to numeric as well.</p></li>
 </ol>
 <p>Apply the function to each column of <code>survey_data</code> using the <em>apply()</em> method. Save the updated DataFrame as <code>survey_data_clean</code>. Then, execute the following code.</p>
 <div id="0ad3102a" class="cell">
@@ -645,7 +652,7 @@ window.Quarto = {
 <p>In <strong>1–3 short paragraphs</strong>, clearly state whether <strong>generative AI tools</strong> were used to complete any part of this assignment.</p>
 <ul>
 <li><p>If <strong>no AI was used</strong>, write:<br>
-<em>“I did not use generative AI tools on this assignment.”</em></p></li>
+<em><q>I did not use generative AI tools on this assignment.</q></em></p></li>
 <li><p>If <strong>AI was used</strong>, you must specify:</p>
 <ol type="1">
 <li><strong>Tool(s)</strong> used (e.g., ChatGPT, GitHub Copilot, Claude, etc.)<br>

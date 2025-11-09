@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -480,7 +487,7 @@ the_3_musketeers: ['Athos', 'Porthos', 'Aramis'] | type: &lt;class 'list'&gt;</c
 <p>Python allows you to assign values to several variables at once in a single line. This technique is especially useful for initializing related variables and can make your code cleaner and more efficient.</p>
 <p><strong>Example:</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>color1, color2, color3 <span class="op">=</span> <span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After this assignment: - <code>color1</code> is “red” - <code>color2</code> is “green” - <code>color3</code> is “blue”</p>
+<p>After this assignment: - <code>color1</code> is <q>red</q> - <code>color2</code> is <q>green</q> - <code>color3</code> is <q>blue</q></p>
 <p>This approach works for any number of variables, as long as the number of values matches the number of variable names.</p>
 <div id="21f65c7b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>color1, color2, color3 <span class="op">=</span> <span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span></span>
@@ -831,7 +838,7 @@ else:
 </div>
 </div>
 <p><strong>The <code>elif</code> statement</strong></p>
-<p>Python also provides an <code>elif</code> statement (short for “else if”) to chain a series of conditional blocks. The conditions are evaluated one by one. For the first condition that evaluates to <code>True</code>, the block of statements below it is executed. The remaining conditions and statements are not evaluated. So, in an <code>if</code>, <code>elif</code>, <code>elif</code>… chain, at most one block of statements is executed, the one corresponding to the first condition that evaluates to <code>True</code>.</p>
+<p>Python also provides an <code>elif</code> statement (short for <q>else if</q>) to chain a series of conditional blocks. The conditions are evaluated one by one. For the first condition that evaluates to <code>True</code>, the block of statements below it is executed. The remaining conditions and statements are not evaluated. So, in an <code>if</code>, <code>elif</code>, <code>elif</code>… chain, at most one block of statements is executed, the one corresponding to the first condition that evaluates to <code>True</code>.</p>
 <div id="4bdd37e0" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>today <span class="op">=</span> <span class="st">'Wednesday'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1024,7 +1031,7 @@ else:
 <section id="infinite-loops" class="level4" data-number="4.6.2.2">
 <h4 data-number="4.6.2.2" class="anchored" data-anchor-id="infinite-loops"><span class="header-section-number">4.6.2.2</span> Infinite Loops</h4>
 <p>Suppose the condition in a <code>while</code> loop always holds true. In that case, Python repeatedly executes the code within the loop forever, and the execution of the code never completes. This situation is called an infinite loop. It generally indicates that you’ve made a mistake in your code. For example, you may have provided the wrong condition or forgotten to update a variable within the loop, eventually falsifying the condition.</p>
-<p>If your code is <em>stuck</em> in an infinite loop during execution, just press the “Stop” button on the toolbar (next to “Run”) or select “Kernel &gt; Interrupt” from the menu bar. This will <em>interrupt</em> the execution of the code. The following two cells both lead to infinite loops and need to be interrupted.</p>
+<p>If your code is <em>stuck</em> in an infinite loop during execution, just press the <q>Stop</q> button on the toolbar (next to <q>Run</q>) or select <q>Kernel &gt; Interrupt</q> from the menu bar. This will <em>interrupt</em> the execution of the code. The following two cells both lead to infinite loops and need to be interrupted.</p>
 <div id="bd1e5f94" class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INFINITE LOOP - INTERRUPT THIS CELL</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>

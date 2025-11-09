@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -1534,7 +1541,7 @@ Data type: float64</code></pre>
        [ 155.1, 2900. ,  310. ,  815. ]])</code></pre>
 </div>
 </div>
-<p><strong>Key Point</strong>: Notice how the resulting array contains <strong>only the numerical values</strong>. All the metadata (index labels like “Day 1”, column names like “AAPL”) is removed. This is what makes NumPy arrays fast but less descriptive than DataFrames.</p>
+<p><strong>Key Point</strong>: Notice how the resulting array contains <strong>only the numerical values</strong>. All the metadata (index labels like <q>Day 1</q>, column names like <q>AAPL</q>) is removed. This is what makes NumPy arrays fast but less descriptive than DataFrames.</p>
 </section>
 <section id="method-2-.values-legacy-but-still-works" class="level5" data-number="10.5.3.1.2">
 <h5 data-number="10.5.3.1.2" class="anchored" data-anchor-id="method-2-.values-legacy-but-still-works"><span class="header-section-number">10.5.3.1.2</span> Method 2: .values (legacy but still works)</h5>
@@ -1568,7 +1575,7 @@ Same result as .to_numpy()? True</code></pre>
 </div>
 <p><strong>Why avoid <code>.values</code>?</strong></p>
 <ul>
-<li>Less clear intent (what does “values” mean?)</li>
+<li>Less clear intent (what does <q>values</q> mean?)</li>
 <li>Can behave unpredictably with pandas extension dtypes (nullable integers, strings, etc.)</li>
 <li>Not officially recommended in pandas documentation</li>
 <li><code>.to_numpy()</code> is more explicit and future-proof</li>

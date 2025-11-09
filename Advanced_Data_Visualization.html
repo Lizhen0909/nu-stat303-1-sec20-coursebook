@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="12.2" class="anchored" data-anchor-id="matplotlibs-two-interfaces"><span class="header-section-number">12.2</span> Matplotlib’s Two Interfaces</h2>
 <p>Matplotlib provides <strong>two main interfaces</strong> for creating visualizations: the <strong>pyplot interface</strong> and the <strong>object-oriented (OOP) interface</strong>.</p>
 <p><img src="images/matplotlib_interfaces.png" class="img-fluid"></p>
-<p>In the previous chapter, we primarily used the <strong>pyplot interface</strong> — a convenient, MATLAB-style approach where functions such as <code>plt.plot()</code> and <code>plt.xlabel()</code> operate on an implicit <em>“current”</em> figure and axes.</p>
+<p>In the previous chapter, we primarily used the <strong>pyplot interface</strong> — a convenient, MATLAB-style approach where functions such as <code>plt.plot()</code> and <code>plt.xlabel()</code> operate on an implicit <em><q>current</q></em> figure and axes.</p>
 <p>The <strong>object-oriented (OOP) interface</strong>, on the other hand, offers <strong>explicit control</strong> over every element of your plot. It’s the preferred approach for building <strong>complex layouts</strong>, <strong>multiple subplots</strong>, or <strong>publication-quality figures</strong> where precision and flexibility matter.</p>
 <section id="compare-pyplot-vs-object-oriented-interfaces" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="compare-pyplot-vs-object-oriented-interfaces"><span class="header-section-number">12.2.1</span> Compare Pyplot vs Object-Oriented Interfaces</h3>
@@ -591,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Pyplot Interface:</strong></p>
 <ul>
 <li>Simpler syntax: <code>plt.scatter()</code>, <code>plt.xlabel()</code></li>
-<li>Operates on implicit “current” figure</li>
+<li>Operates on implicit <q>current</q> figure</li>
 <li>Great for quick, simple plots</li>
 <li>Less control when working with multiple subplots</li>
 </ul></li>
@@ -612,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Automatically creates a <strong>Figure</strong> and <strong>Axes</strong> if they don’t already exist<br>
 </li>
-<li>Keeps track of the <strong>“current”</strong> figure and axes<br>
+<li>Keeps track of the <strong><q>current</q></strong> figure and axes<br>
 </li>
 <li>Routes plotting commands to that current axes object</li>
 </ul>
@@ -639,7 +646,7 @@ but it can quickly become <strong>confusing or limiting</strong> when working wi
 <p>Matplotlib plots follow a <strong>hierarchical structure</strong>, with two core components:</p>
 <ul>
 <li><strong>Figure:</strong> The overall container for one or more plots (the entire window/canvas)</li>
-<li><strong>Axes:</strong> The individual plot area where data is visualized (what you think of as “a plot”)</li>
+<li><strong>Axes:</strong> The individual plot area where data is visualized (what you think of as <q>a plot</q>)</li>
 </ul>
 <p>Each Axes contains further elements such as:</p>
 <ul>
@@ -693,7 +700,7 @@ Number of axes in figure: 0</code></pre>
 </section>
 <section id="axes-the-plot-area" class="level4" data-number="12.2.2.3">
 <h4 data-number="12.2.2.3" class="anchored" data-anchor-id="axes-the-plot-area"><span class="header-section-number">12.2.2.3</span> Axes: The Plot Area</h4>
-<p>An <code>Axes</code> is an instance of <code>matplotlib.axes.Axes</code>. <strong>This is where data are plotted</strong> - it’s what you typically think of as “a plot” or “a graph.”</p>
+<p>An <code>Axes</code> is an instance of <code>matplotlib.axes.Axes</code>. <strong>This is where data are plotted</strong> - it’s what you typically think of as <q>a plot</q> or <q>a graph.</q></p>
 <p><strong>Key points about Axes:</strong></p>
 <ul>
 <li>A Figure can contain many Axes (multiple plots)</li>
@@ -981,7 +988,7 @@ Access top-left axes: Axes(0.125,0.53;0.352273x0.35)</code></pre>
 <li>Zooming into a specific region of interest</li>
 <li>Showing a histogram or distribution alongside the main plot</li>
 <li>Displaying summary statistics or related analysis</li>
-<li>Creating “picture-in-picture” visualizations</li>
+<li>Creating <q>picture-in-picture</q> visualizations</li>
 </ul>
 <p>You can create nested subplots using <code>fig.add_axes()</code> or <code>inset_axes()</code>.</p>
 <section id="using-add_axes-for-precise-control" class="level4" data-number="12.3.5.1">
@@ -1217,7 +1224,7 @@ Access top-left axes: Axes(0.125,0.53;0.352273x0.35)</code></pre>
 <p><strong>Observations:</strong></p>
 <ul>
 <li>Most complaints come from residential buildings and houses (as expected for party/music noise)</li>
-<li>The y-axis now shows “1,000” instead of “1000” - much easier to read!</li>
+<li>The y-axis now shows <q>1,000</q> instead of <q>1000</q> - much easier to read!</li>
 <li>Pandas <code>.plot.bar()</code> returns an axes object that we can further customize</li>
 <li>We rotated x-axis labels 45° for better readability using <code>set_xticklabels()</code></li>
 </ul>

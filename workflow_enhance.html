@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -691,7 +698,7 @@ Wall time: 23 ms</code></pre>
 Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
-<p>In most cases, you don’t need to type <code>%</code> before <code>pip install numpy</code> because Jupyter’s “automagic” feature is enabled by default. Automagic lets you use line magics without the <code>%</code> (unless their name conflicts with Python variables or commands).</p>
+<p>In most cases, you don’t need to type <code>%</code> before <code>pip install numpy</code> because Jupyter’s <q>automagic</q> feature is enabled by default. Automagic lets you use line magics without the <code>%</code> (unless their name conflicts with Python variables or commands).</p>
 <p><strong>How automagic works:</strong></p>
 <ul>
 <li>If you type <code>pip install numpy</code>, Jupyter will interpret it as <code>%pip install numpy</code> automatically.</li>

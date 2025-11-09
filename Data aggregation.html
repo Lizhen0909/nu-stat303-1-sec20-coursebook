@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -866,7 +873,7 @@ Use the <code>margins=True</code> argument to add row and column totals. The <co
 <p>So far, we’ve used <code>crosstab()</code> to count frequencies. However, you can also use it to <strong>aggregate numerical values</strong> for each category combination by specifying:</p>
 <ul>
 <li><strong><code>values</code></strong> - The numerical column to aggregate</li>
-<li><strong><code>aggfunc</code></strong> - The aggregation function to apply (e.g., ‘mean’, ‘sum’, ‘median’)</li>
+<li><strong><code>aggfunc</code></strong> - The aggregation function to apply (e.g., <q>mean</q>, <q>sum</q>, <q>median</q>)</li>
 </ul>
 <p>This makes <code>crosstab()</code> a powerful tool that combines categorical grouping with numerical aggregation.</p>
 <p><strong>Example:</strong> Calculate the mean life expectancy for each continent-year combination.</p>
@@ -2870,7 +2877,7 @@ In this example, we are grouping the data by three columns: <code>continent</cod
 <li><p><strong>Aggregating Multiple Variables</strong>:<br>
 We apply multiple aggregation functions (<code>mean</code>, <code>std</code>, <code>max</code>, and <code>min</code>) to multiple variables (<code>lifeExp</code>, <code>pop</code>, and <code>gdpPercap</code>).</p></li>
 </ul>
-<p>This type of operation is commonly referred to as <strong>“multi-column grouping with multiple aggregations”</strong> in pandas. It’s a powerful approach because it allows us to obtain a detailed statistical summary for each combination of grouping columns across several variables.</p>
+<p>This type of operation is commonly referred to as <strong><q>multi-column grouping with multiple aggregations</q></strong> in pandas. It’s a powerful approach because it allows us to obtain a detailed statistical summary for each combination of grouping columns across several variables.</p>
 <div id="cell-82" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># its columns are also two levels deep</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>grouped_continent_contry_multi.columns.nlevels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3319,7 +3326,7 @@ Length: 142, dtype: float64</code></pre>
 </section>
 <section id="section-1" class="level4" data-number="15.12.1.2">
 <h4 data-number="15.12.1.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">15.12.1.2</span> </h4>
-<p>Create a new categorical column, <code>energy_lvl</code>, with two levels – ‘Low energy’ and ‘High energy’ – using equal-sized bins based on the track’s energy level. Then, calculate the mean, standard deviation, and 90th percentile of track popularity for each genre and energy level combination</p>
+<p>Create a new categorical column, <code>energy_lvl</code>, with two levels – <q>Low energy</q> and <q>High energy</q> – using equal-sized bins based on the track’s energy level. Then, calculate the mean, standard deviation, and 90th percentile of track popularity for each genre and energy level combination</p>
 </section>
 <section id="section-2" class="level4" data-number="15.12.1.3">
 <h4 data-number="15.12.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">15.12.1.3</span> </h4>

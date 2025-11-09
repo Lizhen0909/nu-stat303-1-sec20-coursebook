@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -566,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="./Datasets/dataviz.png" width="675">
 </div>
 </div>
-<p><strong><em>“One picture is worth a thousand words”</em></strong> - Fred R. Barnard</p>
+<p><strong><em><q>One picture is worth a thousand words</q></em></strong> - Fred R. Barnard</p>
 <p>Visual perception offers the highest bandwidth channel, as we acquire much more information through visual perception than with all of the other channels combined, as billions of our neurons are dedicated to this task. Moreover, the processing of visual information is, at its first stages, a highly parallel process. Thus, it is generally easier for humans to comprehend information with plots, diagrams and pictures, rather than with text and numbers. This makes data visualizations a vital part of data science. Some of the key purposes of data visualization are:</p>
 <ol type="1">
 <li>Data visualization is the first step towards exploratory data analysis (EDA), which reveals trends, patterns, insights, or even irregularities in data.</li>
@@ -819,7 +826,7 @@ Seaborn
 <p>Let’s understand what each import does:</p>
 <p><strong><code>import pandas as pd</code></strong> - Imports the pandas library for data manipulation - Provides the <code>.plot()</code> method on DataFrames - <code>pd</code> is the universally recognized alias</p>
 <p><strong><code>import matplotlib.pyplot as plt</code></strong> - Imports matplotlib’s pyplot module for plotting - <code>pyplot</code> provides MATLAB-like interface for creating plots - <code>plt</code> is the standard alias used in all documentation</p>
-<p><strong><code>import seaborn as sns</code></strong> - Imports seaborn for statistical visualizations - Built on top of matplotlib with enhanced styling - <code>sns</code> alias comes from the TV show “The West Wing”</p>
+<p><strong><code>import seaborn as sns</code></strong> - Imports seaborn for statistical visualizations - Built on top of matplotlib with enhanced styling - <code>sns</code> alias comes from the TV show <q>The West Wing</q></p>
 <p><strong><code>import numpy as np</code></strong> - Not a visualization library, but essential for: - Generating sample data for demonstrations - Performing numerical calculations - Creating arrays for plotting</p>
 </section>
 <section id="step-3-configure-your-environment" class="level3" data-number="11.3.6">
@@ -1525,7 +1532,7 @@ Seaborn
 <li><strong>plt</strong> = The conventional alias used when importing pyplot</li>
 </ul>
 <p><strong>The State-Based Interface:</strong></p>
-<p>pyplot maintains an internal “current” figure and axes. When you call functions like <code>plt.plot()</code>, <code>plt.xlabel()</code>, etc., they automatically apply to the current figure. This makes it easy to build plots step by step without explicitly managing figure objects.</p>
+<p>pyplot maintains an internal <q>current</q> figure and axes. When you call functions like <code>plt.plot()</code>, <code>plt.xlabel()</code>, etc., they automatically apply to the current figure. This makes it easy to build plots step by step without explicitly managing figure objects.</p>
 <p><strong>Import Convention:</strong></p>
 <p>The standard way to import pyplot is:</p>
 <div id="2b54ae7e" class="cell" data-execution_count="18">
@@ -1874,7 +1881,7 @@ Seaborn
 </div>
 </div>
 </div>
-<p><strong>Much simpler code!</strong> The fmt string <code>'s-b'</code> means “square markers, solid line, blue” and <code>'o--r'</code> means “circle markers, dashed line, red”.</p>
+<p><strong>Much simpler code!</strong> The fmt string <code>'s-b'</code> means <q>square markers, solid line, blue</q> and <code>'o--r'</code> means <q>circle markers, dashed line, red</q>.</p>
 </section>
 <section id="markers-without-lines" class="level4" data-number="11.5.7.4">
 <h4 data-number="11.5.7.4" class="anchored" data-anchor-id="markers-without-lines"><span class="header-section-number">11.5.7.4</span> Markers Without Lines</h4>
@@ -2156,7 +2163,7 @@ Seaborn
 </section>
 <section id="advanced-pie-chart-with-explode" class="level4" data-number="11.5.9.4">
 <h4 data-number="11.5.9.4" class="anchored" data-anchor-id="advanced-pie-chart-with-explode"><span class="header-section-number">11.5.9.4</span> Advanced Pie Chart with Explode</h4>
-<p>You can “explode” (pull out) specific slices to emphasize them:</p>
+<p>You can <q>explode</q> (pull out) specific slices to emphasize them:</p>
 <div id="60d54eea" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2712,7 +2719,7 @@ Seaborn
 <img src="./Datasets/boxplot.jpg" width="600">
 </div>
 </div>
-<p><strong>Box Plot Elements:</strong> - <strong>Box</strong> = 25th to 75th percentile (middle 50% of data - the “interquartile range”) - <strong>Line inside box</strong> = Median (50th percentile) - <strong>Whiskers</strong> = Extend to show the data range (typically 1.5 × IQR) - <strong>Individual points</strong> = Outliers (unusually high or low values)</p>
+<p><strong>Box Plot Elements:</strong> - <strong>Box</strong> = 25th to 75th percentile (middle 50% of data - the <q>interquartile range</q>) - <strong>Line inside box</strong> = Median (50th percentile) - <strong>Whiskers</strong> = Extend to show the data range (typically 1.5 × IQR) - <strong>Individual points</strong> = Outliers (unusually high or low values)</p>
 </section>
 <section id="creating-a-box-plot" class="level4" data-number="11.6.7.2">
 <h4 data-number="11.6.7.2" class="anchored" data-anchor-id="creating-a-box-plot"><span class="header-section-number">11.6.7.2</span> Creating a Box Plot</h4>
@@ -3069,7 +3076,7 @@ Seaborn
 </li>
 <li><strong>Light colors near 0</strong> = Little to no linear relationship</li>
 </ul>
-<p><strong>Important Note:</strong> In this course, “correlation” always refers to <strong>Pearson’s correlation coefficient</strong>, which measures <strong>linear</strong> association between variables.</p>
+<p><strong>Important Note:</strong> In this course, <q>correlation</q> always refers to <strong>Pearson’s correlation coefficient</strong>, which measures <strong>linear</strong> association between variables.</p>
 <p><strong>Critical Caveat:</strong> Correlation does NOT imply causation! A strong correlation means variables move together, but doesn’t tell us if one causes the other.</p>
 </section>
 <section id="computing-correlations-with-pandas" class="level4" data-number="11.6.9.2">
@@ -4385,13 +4392,13 @@ dtype: float64</code></pre>
 <ol type="1">
 <li><p><strong>Always Label Your Axes</strong></p>
 <ul>
-<li>Include units: “Temperature (°C)” not just “Temperature”</li>
+<li>Include units: <q>Temperature (°C)</q> not just <q>Temperature</q></li>
 <li>Make labels descriptive and self-explanatory</li>
 </ul></li>
 <li><p><strong>Add Informative Titles</strong></p>
 <ul>
 <li>Describe what the plot shows</li>
-<li>Answer: “What am I looking at?”</li>
+<li>Answer: <q>What am I looking at?</q></li>
 </ul></li>
 <li><p><strong>Choose Appropriate Colors</strong></p>
 <ul>

@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -368,8 +369,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -1102,7 +1109,7 @@ Rows with NaN values (no match in right dataset): 2
 <ul>
 <li>Left: All employee records</li>
 <li>Right: Recent performance reviews (not all employees reviewed yet)</li>
-<li><strong>Why left join?</strong> Maintain complete employee roster. Missing reviews can be handled separately (e.g., “Pending” status).</li>
+<li><strong>Why left join?</strong> Maintain complete employee roster. Missing reviews can be handled separately (e.g., <q>Pending</q> status).</li>
 </ul></li>
 </ol>
 <p><strong>Key principle:</strong> Use left join when you can’t afford to lose the left dataset’s records, and missing right-side values can be reasonably handled (imputed, filled with defaults, or marked as missing).</p>
@@ -2275,7 +2282,7 @@ Right join:
 <p>The right strategy depends on <strong>why the data is missing</strong> and <strong>what you’re analyzing</strong>.</p>
 <section id="strategy-1-keep-the-missing-values" class="level4" data-number="17.6.2.1">
 <h4 data-number="17.6.2.1" class="anchored" data-anchor-id="strategy-1-keep-the-missing-values"><span class="header-section-number">17.6.2.1</span> Strategy 1: Keep the Missing Values</h4>
-<p><strong>When to use:</strong> Missing values are meaningful and represent “absence” of something.</p>
+<p><strong>When to use:</strong> Missing values are meaningful and represent <q>absence</q> of something.</p>
 <p><strong>Example:</strong> Customer purchase analysis with left join</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All customers + their purchases (if any)</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df_customer_purchases <span class="op">=</span> customers.merge(purchases, on<span class="op">=</span><span class="st">'CustomerID'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2283,7 +2290,7 @@ Right join:
 <ul>
 <li>NaN in purchase columns = Customer hasn’t made a purchase yet</li>
 <li>This is <strong>informative</strong> - these customers might be new or inactive</li>
-<li>Analysis: “What percentage of customers have never purchased?” requires keeping NaN</li>
+<li>Analysis: <q>What percentage of customers have never purchased?</q> requires keeping NaN</li>
 </ul>
 <p><strong>Action:</strong> Keep NaN and analyze it as a category (e.g., <code>df['Purchase'].isna().sum()</code>)</p>
 </section>
@@ -2423,13 +2430,13 @@ Finally, print the <strong>first two rows</strong> of the merged DataFrame.</p>
 </section>
 <section id="merging-datasets-with-similar-values-in-the-key-column" class="level3" data-number="17.7.2">
 <h3 data-number="17.7.2" class="anchored" data-anchor-id="merging-datasets-with-similar-values-in-the-key-column"><span class="header-section-number">17.7.2</span> Merging datasets with <em>similar</em> values in the <em>key</em> column</h3>
-<p>We suspect that population of more countries may be available in <code>population_data</code>. However, due to unclean country names, the observations could not merge. For example, the country <em>Guinea Bissau</em> is mentioned as <em>GuineaBissau</em> in <code>gdp_per_capita_data</code> and <em>Guinea-Bissau</em> in <code>population_data</code>. To resolve this issue, we’ll use a different approach to merge datasts. We’ll merge the population of a country to an observation in the GDP per capita dataset, whose name in <code>population_data</code> is the most <em>‘similar’</em> to the name of the country in <code>gdp_per_capita_data</code>.</p>
+<p>We suspect that population of more countries may be available in <code>population_data</code>. However, due to unclean country names, the observations could not merge. For example, the country <em>Guinea Bissau</em> is mentioned as <em>GuineaBissau</em> in <code>gdp_per_capita_data</code> and <em>Guinea-Bissau</em> in <code>population_data</code>. To resolve this issue, we’ll use a different approach to merge datasts. We’ll merge the population of a country to an observation in the GDP per capita dataset, whose name in <code>population_data</code> is the most <em><q>similar</q></em> to the name of the country in <code>gdp_per_capita_data</code>.</p>
 <section id="section-1" class="level4" data-number="17.7.2.1">
 <h4 data-number="17.7.2.1" class="anchored" data-anchor-id="section-1"><span class="header-section-number">17.7.2.1</span> </h4>
 <p>Proceed as follows:</p>
 <ol type="1">
-<li><p>For each country in <code>gdp_per_capita_data</code>, find the <code>country</code> with the most <em>‘similar’</em> name in <code>population_data</code>, based on the similarity score. Use the lambda function provided below to compute the similarity score between two strings <em>(The higher the score, the more similar are the strings. The similarity score is <span class="math inline">\(1.0\)</span> if two strings are exactly the same).</em></p></li>
-<li><p>Merge the population of the most <em>‘similar’</em> country to the country in <code>gdp_per_capita_data</code>. The merged dataset must include 5 columns - the country name as it appears in <code>gdp_per_capita_data</code>, the GDP per capita, the country name of the most <em>‘similar’</em> country as it appears in <code>population_data</code>, the population of that country, and the similarity score between the country names.</p></li>
+<li><p>For each country in <code>gdp_per_capita_data</code>, find the <code>country</code> with the most <em><q>similar</q></em> name in <code>population_data</code>, based on the similarity score. Use the lambda function provided below to compute the similarity score between two strings <em>(The higher the score, the more similar are the strings. The similarity score is <span class="math inline">\(1.0\)</span> if two strings are exactly the same).</em></p></li>
+<li><p>Merge the population of the most <em><q>similar</q></em> country to the country in <code>gdp_per_capita_data</code>. The merged dataset must include 5 columns - the country name as it appears in <code>gdp_per_capita_data</code>, the GDP per capita, the country name of the most <em><q>similar</q></em> country as it appears in <code>population_data</code>, the population of that country, and the similarity score between the country names.</p></li>
 <li><p>After creating the merged dataset, <strong>print</strong> the rows of the dataset that have similarity scores less than 1.</p></li>
 </ol>
 <p>Use the function below to compute the similarity score between the <code>Country</code> names of the two datasets:</p>
@@ -2438,7 +2445,7 @@ Finally, print the <strong>first two rows</strong> of the merged DataFrame.</p>
 <p><strong>Note: You may use one <code>for</code> loop only for this particular question. However, it would be perfect if don’t use a <code>for</code> loop</strong></p>
 <p><strong>Hint:</strong></p>
 <ol type="1">
-<li><p>Define a function that computes the index of the observation having the most <em>‘similar’</em> country name in <code>population_data</code> for an observation in <code>gdp_per_capita_data</code>. The function returns a Series consisting of the most <em>‘similar’</em> country name, its population, and its similarity score <em>(This function can be written with only one line in its body, excluding the return statement and the definition statement. However, you may use as many lines as you wish)</em>.</p></li>
+<li><p>Define a function that computes the index of the observation having the most <em><q>similar</q></em> country name in <code>population_data</code> for an observation in <code>gdp_per_capita_data</code>. The function returns a Series consisting of the most <em><q>similar</q></em> country name, its population, and its similarity score <em>(This function can be written with only one line in its body, excluding the return statement and the definition statement. However, you may use as many lines as you wish)</em>.</p></li>
 <li><p>Apply the function on the <code>Country</code> column of <code>gdp_per_capita_data</code>. A DataFrame will be obtained.</p></li>
 <li><p>Concatenate the DataFrame obtained in (2) with <code>gdp_per_capita_data</code> with the pandas <code>concat()</code> function.</p></li>
 </ol>

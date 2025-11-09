@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -368,8 +369,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -656,17 +663,17 @@ window.Quarto = {
 </section>
 <section id="data-binning" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="data-binning"><span class="header-section-number">14.3</span> Data Binning</h2>
-<p>Data binning is a practical technique in data analysis where continuous numerical values are grouped into discrete intervals, or “bins.” Think of it as sorting a long list of numbers into a few meaningful categories—like putting marbles of different colors into separate jars. Binning helps us simplify complex data, spot patterns, and make comparisons that would be hard to see otherwise.</p>
+<p>Data binning is a practical technique in data analysis where continuous numerical values are grouped into discrete intervals, or <q>bins.</q> Think of it as sorting a long list of numbers into a few meaningful categories—like putting marbles of different colors into separate jars. Binning helps us simplify complex data, spot patterns, and make comparisons that would be hard to see otherwise.</p>
 <p><strong>Why do we use binning?</strong></p>
 <ul>
-<li><p><strong>Easier interpretation:</strong> Instead of analyzing hundreds of unique values, we can summarize data into a handful of groups. For example, rather than looking at every possible age, we might use age groups like ‘under 20’, ‘20-30’, ‘30-40’, and ‘40 and over’.</p></li>
+<li><p><strong>Easier interpretation:</strong> Instead of analyzing hundreds of unique values, we can summarize data into a handful of groups. For example, rather than looking at every possible age, we might use age groups like <q>under 20</q>, <q>20-30</q>, <q>30-40</q>, and <q>40 and over</q>.</p></li>
 <li><p><strong>Better recommendations:</strong> Grouping data helps us make targeted decisions. For instance, a doctor might recommend different treatments for children, adults, and seniors—each defined by an age bin.</p></li>
 <li><p><strong>Noise reduction:</strong> Binning can smooth out random fluctuations in data, making trends clearer. For example, daily sales numbers might be noisy, but weekly or monthly bins reveal the bigger picture.</p></li>
 </ul>
 <p><strong>Real-world examples:</strong></p>
 <ul>
-<li><strong>Tax brackets:</strong> Income is grouped into ranges (bins) to determine tax rates, such as ‘up to $11,000’, ‘$11,001 to $44,725’, etc.</li>
-<li><strong>Credit card marketing:</strong> Customers are binned as ‘High spenders’, ‘Medium spenders’, or ‘Low spenders’ to tailor marketing strategies.</li>
+<li><strong>Tax brackets:</strong> Income is grouped into ranges (bins) to determine tax rates, such as <q>up to $11,000</q>, <q>$11,001 to $44,725</q>, etc.</li>
+<li><strong>Credit card marketing:</strong> Customers are binned as <q>High spenders</q>, <q>Medium spenders</q>, or <q>Low spenders</q> to tailor marketing strategies.</li>
 <li><strong>Medical guidelines:</strong> Vaccine recommendations often depend on age bins (e.g., under 12, 12-18, 18-65, over 65).</li>
 </ul>
 <p>In this section, we’ll see how binning can help us interpret and communicate insights from data, using real datasets and practical code examples. We’ll also compare different binning methods and discuss when each is most useful.</p>
@@ -681,7 +688,7 @@ window.Quarto = {
 </div>
 <p>Now, let’s see how binning can help us uncover meaningful insights from our college dataset. We’ll focus on two key variables: instructional expenditure per student (<code>Expend</code>) and graduation rate (<code>Grad.Rate</code>) for U.S. universities.</p>
 <p>By grouping universities into expenditure bins, we can more clearly observe how spending levels relate to graduation outcomes. This approach not only simplifies the analysis but also enables us to make practical, data-driven recommendations for different types of institutions.</p>
-<p>Before we apply binning, let’s revisit the scatterplot of ‘Grad.Rate’ versus ‘Expend’ with a trendline. This plot shows the overall relationship, but as we’ll see, binning can reveal patterns and actionable insights that might be hidden in the raw data.</p>
+<p>Before we apply binning, let’s revisit the scatterplot of <q>Grad.Rate</q> versus <q>Expend</q> with a trendline. This plot shows the overall relationship, but as we’ll see, binning can reveal patterns and actionable insights that might be hidden in the raw data.</p>
 <div id="460318fe" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot of Expend vs Grad.Rate</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>sns.regplot(data <span class="op">=</span> college, x <span class="op">=</span> <span class="st">"Expend"</span>, y <span class="op">=</span> <span class="st">"Grad.Rate"</span>,scatter_kws<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"orange"</span>}, line_kws<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"blue"</span>})</span>
@@ -711,7 +718,7 @@ window.Quarto = {
 </ul></li>
 <li><strong>Custom binning:</strong> Bins are defined based on domain knowledge or specific cutoffs relevant to the problem. This approach is flexible and can make results more interpretable for your audience.
 <ul>
-<li><em>Example:</em> Income groups defined as ‘Low’ (&lt;$30,000), ‘Middle’ ($30,000–$70,000), and ‘High’ (&gt;$70,000) based on policy or business needs.</li>
+<li><em>Example:</em> Income groups defined as <q>Low</q> (&lt;$30,000), <q>Middle</q> ($30,000–$70,000), and <q>High</q> (&gt;$70,000) based on policy or business needs.</li>
 </ul></li>
 </ul>
 <p>In practice, the choice of binning method should be guided by the data distribution and the questions you want to answer. We’ll demonstrate each of these methods in the following examples.</p>
@@ -997,7 +1004,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>college_data_without_outliers <span class="op">=</span> college[((college.Expend<span class="op">&gt;=</span>lower_bound) <span class="op">&amp;</span> (college.Expend<span class="op">&lt;=</span>upper_bound))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s visualize ‘Expend’ before and after outlier removal and show bounds</p>
+<p>Let’s visualize <q>Expend</q> before and after outlier removal and show bounds</p>
 <div id="49095377" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>))</span>
@@ -1134,10 +1141,10 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Now we see the same trend that we saw in the scatterplot, but without the noise. We have smoothed the data. Note that making equal-sized bins helps reduce the effect of outliers in the overall trend.</p>
-<p>Suppose this analysis was done to provide recommendations to universities for increasing their graduation rate. With binning, we can can provide one recommendation to <em>‘Low expend’</em> universities, and another one to <em>‘Med expend’</em> universities. For example, the recommendations can be:</p>
+<p>Suppose this analysis was done to provide recommendations to universities for increasing their graduation rate. With binning, we can can provide one recommendation to <em><q>Low expend</q></em> universities, and another one to <em><q>Med expend</q></em> universities. For example, the recommendations can be:</p>
 <ol type="1">
-<li><em>‘Low expend’</em> universities can expect an increase of 9 percentage points in <code>Grad.Rate</code>, if they migrate to the <em>‘Med expend’</em> category.</li>
-<li><em>‘Med expend’</em> universities can expect an increase of 7 percentage points in <code>Grad.Rate</code>, if they migrate to the <em>‘High expend’</em> category.</li>
+<li><em><q>Low expend</q></em> universities can expect an increase of 9 percentage points in <code>Grad.Rate</code>, if they migrate to the <em><q>Med expend</q></em> category.</li>
+<li><em><q>Med expend</q></em> universities can expect an increase of 7 percentage points in <code>Grad.Rate</code>, if they migrate to the <em><q>High expend</q></em> category.</li>
 </ol>
 <p>The numbers in the above recommendations are based on the table below.</p>
 <div id="f9d9831d" class="cell" data-execution_count="86">
@@ -1409,11 +1416,11 @@ Name: Grad.Rate, dtype: float64</code></pre>
 <p>Label encoding assigns each unique category in a variable a unique integer value. This is simple and memory-efficient, but it can introduce unintended ordinal relationships (e.g., 0 &lt; 1 &lt; 2) that may mislead some models.</p>
 <p><strong>When to use:</strong></p>
 <ul>
-<li>For ordinal variables (where categories have a natural order, e.g., ‘Low’, ‘Medium’, ‘High’).</li>
+<li>For ordinal variables (where categories have a natural order, e.g., <q>Low</q>, <q>Medium</q>, <q>High</q>).</li>
 <li>For target variables in classification tasks, where labels must be numeric.</li>
 </ul>
 <p><strong>When to avoid:</strong> - For nominal variables (no order), especially with linear models, as the numeric codes may be misinterpreted as ordered.</p>
-<p>Let’s use the ‘Private’ column (Yes/No) in the college dataset as an example</p>
+<p>Let’s use the <q>Private</q> column (Yes/No) in the college dataset as an example</p>
 <div id="78ea34f1" class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Label encoding a categorical column</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
@@ -1468,8 +1475,8 @@ Name: Grad.Rate, dtype: float64</code></pre>
 <section id="one-hot-encoding" class="level3" data-number="14.4.2">
 <h3 data-number="14.4.2" class="anchored" data-anchor-id="one-hot-encoding"><span class="header-section-number">14.4.2</span> One-Hot Encoding</h3>
 <p>One-hot encoding creates a new binary column for each category, with a 1 indicating the presence of that category and 0 otherwise. This avoids introducing any ordinal relationship between categories.</p>
-<p><strong>When to use:</strong> - For nominal variables (no natural order), e.g., ‘State’, ‘Major’, ‘Color’. - For most linear models and neural networks.</p>
-<p><strong>When to avoid:</strong> - When the variable has many unique categories (can create too many columns, known as the “curse of dimensionality”).</p>
+<p><strong>When to use:</strong> - For nominal variables (no natural order), e.g., <q>State</q>, <q>Major</q>, <q>Color</q>. - For most linear models and neural networks.</p>
+<p><strong>When to avoid:</strong> - When the variable has many unique categories (can create too many columns, known as the <q>curse of dimensionality</q>).</p>
 <section id="how-to-create-dummy-variables" class="level4" data-number="14.4.2.1">
 <h4 data-number="14.4.2.1" class="anchored" data-anchor-id="how-to-create-dummy-variables"><span class="header-section-number">14.4.2.1</span> How to Create Dummy variables</h4>
 <p>The pandas library in Python has a built-in function, <a href="https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html"><code>pd.get_dummies()</code></a>, to generate dummy variables. If a column in a DataFrame has <span class="math inline">\(k\)</span> distinct values, we will get a DataFrame with <span class="math inline">\(k\)</span> columns containing 0s and 1s</p>
@@ -1910,8 +1917,8 @@ dtype: float64</code></pre>
 <h3 data-number="14.5.1" class="anchored" data-anchor-id="how-to-scale-features-in-practice"><span class="header-section-number">14.5.1</span> How to Scale Features in Practice</h3>
 <p>Let’s demonstrate how to scale the continuous numerical features in the college dataset. We’ll use both Min-Max scaling and Standardization (Z-score). We’ll <strong>exclude all categorical and encoded categorical variables</strong> from scaling, including:</p>
 <ul>
-<li>The original ‘Private’ column (categorical)</li>
-<li>Any label-encoded columns (e.g., ‘Private_label’)</li>
+<li>The original <q>Private</q> column (categorical)</li>
+<li>Any label-encoded columns (e.g., <q>Private_label</q>)</li>
 <li>Any one-hot/dummy variables (e.g., columns created by <code>pd.get_dummies</code>)</li>
 </ul>
 <p>Scaling these columns would destroy their categorical meaning. For example, one-hot encoded columns are meant to be 0 or 1, representing category membership. Scaling would turn them into non-binary values, which is not meaningful for models.</p>

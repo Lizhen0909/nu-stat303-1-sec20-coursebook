@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -511,7 +518,7 @@ In this course, you will install and use several core packages:</p>
 <section id="backing-up-and-sharing-your-environment" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="backing-up-and-sharing-your-environment"><span class="header-section-number">2.4.2</span> Backing Up and Sharing Your Environment</h3>
 <p>Reproducibility is a cornerstone of good data science. To ensure your code works for you, your collaborators, and on other machines, you need a way to recreate your Python environment exactly.</p>
-<p>Backing up your environment makes it easy to share your work and avoid “it works on my machine” problems.</p>
+<p>Backing up your environment makes it easy to share your work and avoid <q>it works on my machine</q> problems.</p>
 <p><strong>How to back up your environment:</strong></p>
 <p>Step 1: <strong>Create a <code>requirements.txt</code> file</strong></p>
 <ul>
@@ -659,7 +666,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <p>This ensures your code runs the same way everywhere—whether on your computer, a collaborator’s machine, or a server.</p>
 <p><strong>Why is this important?</strong></p>
 <ul>
-<li>Guarantees everyone is using the same package versions, reducing errors and “works on my machine” problems.</li>
+<li>Guarantees everyone is using the same package versions, reducing errors and <q>works on my machine</q> problems.</li>
 <li>Makes it easy to set up your project on a new computer, server, or cloud environment.</li>
 <li>Simplifies troubleshooting and collaboration—everyone starts from the same setup.</li>
 </ul>

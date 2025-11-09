@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -2235,7 +2242,7 @@ This is the most common way to extract a subset of data, such as selecting all r
 <li>Uses <strong>integer positions</strong> (0-based indexing like Python lists)</li>
 <li><strong>Exclusive</strong> of end point in slicing (like Python slicing)</li>
 <li>Great for <strong>systematic sampling</strong> or <strong>first/last N records</strong></li>
-<li>Think: “<strong>i</strong>nteger <strong>loc</strong>ation”</li>
+<li>Think: <q><strong>i</strong>nteger <strong>loc</strong>ation</q></li>
 </ul>
 <table class="caption-top table">
 <thead>
@@ -2787,8 +2794,8 @@ This is the most common way to extract a subset of data, such as selecting all r
 </table>
 <p><strong>Mental Model</strong>:</p>
 <ul>
-<li><code>.loc</code> = “Give me the data <strong>by name/label</strong>”</li>
-<li><code>.iloc</code> = “Give me the data <strong>by position number</strong>”</li>
+<li><code>.loc</code> = <q>Give me the data <strong>by name/label</strong></q></li>
+<li><code>.iloc</code> = <q>Give me the data <strong>by position number</strong></q></li>
 </ul>
 </section>
 </section>
@@ -4907,13 +4914,13 @@ dtype: object</code></pre>
 <tr class="odd">
 <td></td>
 <td><code>.dt.day_name()</code></td>
-<td>‘Monday’, ‘Tuesday’…</td>
+<td><q>Monday</q>, <q>Tuesday</q>…</td>
 <td>Human-readable days</td>
 </tr>
 <tr class="even">
 <td></td>
 <td><code>.dt.month_name()</code></td>
-<td>‘January’, ‘February’…</td>
+<td><q>January</q>, <q>February</q>…</td>
 <td>Human-readable months</td>
 </tr>
 <tr class="odd">
@@ -5525,7 +5532,7 @@ Name: count, dtype: int64
 Name: Name, Length: 891, dtype: object</code></pre>
 </div>
 </div>
-<p>The <code>Name</code> column varies in length and contains passengers’ last names, titles, and first names. By extracting the title from the <code>Name</code> column, we could infer the <strong>sex</strong> of the passenger and add it as a new feature. This could potentially be a significant predictor of survival, as the “ladies first” principle was often applied during the Titanic evacuation. Adding this feature may enhance the model’s ability to predict whether a passenger survived.</p>
+<p>The <code>Name</code> column varies in length and contains passengers’ last names, titles, and first names. By extracting the title from the <code>Name</code> column, we could infer the <strong>sex</strong> of the passenger and add it as a new feature. This could potentially be a significant predictor of survival, as the <q>ladies first</q> principle was often applied during the Titanic evacuation. Adding this feature may enhance the model’s ability to predict whether a passenger survived.</p>
 <div id="7856ba04" class="cell" data-execution_count="125">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check the length of the name of each passenger</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>titanic[<span class="st">"Name"</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -6340,7 +6347,7 @@ std           1.111257         0.757334     5.918766         2013.967471
 <section id="summary-statistics-rows-vs-columns-with-axis-parameter" class="level4" data-number="7.7.2.1">
 <h4 data-number="7.7.2.1" class="anchored" data-anchor-id="summary-statistics-rows-vs-columns-with-axis-parameter"><span class="header-section-number">7.7.2.1</span> Summary Statistics: Rows vs Columns with <code>axis</code> Parameter</h4>
 <p><strong>Critical Concept</strong>: The <code>axis</code> parameter controls the <strong>direction</strong> of calculation: - <strong><code>axis=0</code></strong> (default): Calculate <strong>down</strong> the rows (column-wise aggregation) - <strong><code>axis=1</code></strong>: Calculate <strong>across</strong> the columns (row-wise aggregation)</p>
-<p><strong>💡 Memory Trick</strong>: - <code>axis=0</code> → “<strong>0</strong> rows away” → Column results - <code>axis=1</code> → “<strong>1</strong> column away” → Row results</p>
+<p><strong>💡 Memory Trick</strong>: - <code>axis=0</code> → <q><strong>0</strong> rows away</q> → Column results - <code>axis=1</code> → <q><strong>1</strong> column away</q> → Row results</p>
 <div id="b4a902ce" class="cell" data-execution_count="140">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>movie_ratings.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="140">
@@ -7330,7 +7337,7 @@ Original now has no NaN: True</code></pre>
 <section id="section-2" class="level4" data-number="7.9.1.3">
 <h4 data-number="7.9.1.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">7.9.1.3</span> </h4>
 <p>Update the DataFrame so that <code>Worldwide Sales</code> is included in the summary statistics table. Print the summary statistics table.</p>
-<p><strong>Hint</strong>: Sometimes it may not be possible to convert an object to numeric(). For example, the object ‘hi’ cannot be converted to a numeric() by the python compiler. To avoid getting an error, use the <code>errors</code> argument of <code>to_numeric()</code> to force such conversions to NaN (missing value).</p>
+<p><strong>Hint</strong>: Sometimes it may not be possible to convert an object to numeric(). For example, the object <q>hi</q> cannot be converted to a numeric() by the python compiler. To avoid getting an error, use the <code>errors</code> argument of <code>to_numeric()</code> to force such conversions to NaN (missing value).</p>
 <div id="531285ea" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>album_data[<span class="st">'Worldwide Sales'</span>] <span class="op">=</span> pd.to_numeric(album_data[<span class="st">'Worldwide Sales'</span>], errors <span class="op">=</span> <span class="st">'coerce'</span>)</span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>album_data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

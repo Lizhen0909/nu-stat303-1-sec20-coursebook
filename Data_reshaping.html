@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -368,8 +369,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -472,7 +479,7 @@ window.Quarto = {
 <li><strong>Wide format</strong> spreads variables across multiple columns</li>
 <li><strong>Long format</strong> stacks variables into fewer columns with more rows</li>
 </ul>
-<p>Neither format is inherently “better”—the right format depends on what you’re trying to accomplish.</p>
+<p>Neither format is inherently <q>better</q>—the right format depends on what you’re trying to accomplish.</p>
 <section id="why-data-reshaping-matters" class="level3" data-number="16.1.1">
 <h3 data-number="16.1.1" class="anchored" data-anchor-id="why-data-reshaping-matters"><span class="header-section-number">16.1.1</span> Why Data Reshaping Matters</h3>
 <p><strong>1. Different Tools Require Different Formats</strong></p>
@@ -718,7 +725,7 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 <li>Creating a <strong>cross-tabulation</strong> structure that’s easy to read</li>
 <li>Automatically <strong>aggregating</strong> when there are multiple values per group</li>
 </ul>
-<p>Think of it as “pivoting” your data 90 degrees—what was vertical becomes horizontal.</p>
+<p>Think of it as <q>pivoting</q> your data 90 degrees—what was vertical becomes horizontal.</p>
 <p>Let’s start with a simple example before moving to more complex scenarios.</p>
 </section>
 <section id="example-1-simple-pivot-with-single-index" class="level3" data-number="16.2.2">
@@ -1626,7 +1633,7 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 </section>
 <section id="melting-from-wide-to-long-melt" class="level2" data-number="16.3">
 <h2 data-number="16.3" class="anchored" data-anchor-id="melting-from-wide-to-long-melt"><span class="header-section-number">16.3</span> Melting from Wide to Long: <code>melt()</code></h2>
-<p><strong><code>melt()</code></strong> is the inverse operation of pivoting—it transforms <strong>wide format</strong> data into <strong>long format</strong> by “unpivoting” columns into rows. This is also called “melting” because you’re “melting” wide columns down into a taller, narrower structure.</p>
+<p><strong><code>melt()</code></strong> is the inverse operation of pivoting—it transforms <strong>wide format</strong> data into <strong>long format</strong> by <q>unpivoting</q> columns into rows. This is also called <q>melting</q> because you’re <q>melting</q> wide columns down into a taller, narrower structure.</p>
 <section id="why-melt-your-data" class="level3" data-number="16.3.1">
 <h3 data-number="16.3.1" class="anchored" data-anchor-id="why-melt-your-data"><span class="header-section-number">16.3.1</span> Why Melt Your Data?</h3>
 <p><strong>Visualization Libraries Prefer Long Format:</strong></p>
@@ -1636,7 +1643,7 @@ Characteristics: Fewer rows, more columns, years spread across columns</code></p
 </ul>
 <p><strong>Better for Statistical Analysis:</strong></p>
 <ul>
-<li>Long format is “tidy data”—each variable in one column, each observation in one row</li>
+<li>Long format is <q>tidy data</q>—each variable in one column, each observation in one row</li>
 <li>Required for many statistical models and tests</li>
 </ul>
 <p><strong>More Flexible for groupby() Operations:</strong></p>
@@ -1927,8 +1934,8 @@ LONG FORMAT (after melting):
 </ol>
 <p><strong>Key Parameters Used:</strong></p>
 <ul>
-<li><code>var_name='year'</code> - Column header values (1952, 1957, etc.) go into a new column called ‘year’</li>
-<li><code>value_name='lifeExp'</code> - Cell values go into a new column called ‘lifeExp’</li>
+<li><code>var_name='year'</code> - Column header values (1952, 1957, etc.) go into a new column called <q>year</q></li>
+<li><code>value_name='lifeExp'</code> - Cell values go into a new column called <q>lifeExp</q></li>
 <li><code>ignore_index=False</code> - Preserve the multi-level index (continent, country)</li>
 </ul>
 <p>This is now in <strong>tidy format</strong>, perfect for plotting and analysis!</p>
@@ -2051,7 +2058,7 @@ Shape: (1704, 4)
 <h2 data-number="16.4" class="anchored" data-anchor-id="stacking-and-unstacking-using-stack-and-unstack"><span class="header-section-number">16.4</span> Stacking and Unstacking using <code>stack()</code> and <code>unstack()</code></h2>
 <p>Stacking and unstacking are powerful techniques used to reshape DataFrames by moving data between rows and columns. These operations are particularly useful when working with <strong>multi-level index</strong> or <strong>multi-level columns</strong>, where the data is structured in a hierarchical format.</p>
 <ul>
-<li><code>stack()</code>: Converts columns into rows, which means it “stacks” the data into a long format.</li>
+<li><code>stack()</code>: Converts columns into rows, which means it <q>stacks</q> the data into a long format.</li>
 <li><code>unstack()</code>: Converts rows into columns, reversing the effect of <code>stack()</code>.</li>
 </ul>
 <p>Let’s use the GDP per capita dataset and create a DataFrame with a multi-level index (e.g., continent, country) and multi-level columns (e.g., lifeExp , gdpPercap, and pop).</p>

@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -1200,7 +1207,7 @@ This process—also called <strong>type coercion</strong> or <strong>type promot
 <pre><code>&lt;U32</code></pre>
 </div>
 </div>
-<p>“&lt;U32” means: a Unicode string array where each element can hold up to 32 characters, using little-endian byte order.</p>
+<p><q>&lt;U32</q> means: a Unicode string array where each element can hold up to 32 characters, using little-endian byte order.</p>
 </section>
 </section>
 <section id="array-indexing-and-slicing-accessing-your-data" class="level2" data-number="9.6">
@@ -2231,7 +2238,7 @@ Broadcasting successful!
 <li><code>axis=0</code>: <strong>Down the rows</strong> (column-wise aggregation) → Result has shape (n_cols,)</li>
 <li><code>axis=1</code>: <strong>Across the columns</strong> (row-wise aggregation) → Result has shape (n_rows,)</li>
 </ul>
-<p>💡 <strong>Memory Tip</strong>: “Axis 0 goes down, Axis 1 goes across”</p>
+<p>💡 <strong>Memory Tip</strong>: <q>Axis 0 goes down, Axis 1 goes across</q></p>
 <div id="1dab499a" class="cell" data-execution_count="46">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -3837,8 +3844,8 @@ Sample day 1: Prices=[107.49080238 119.01428613 114.63987884 111.97316968]
 Use NumPy to print the <strong>name</strong> and <strong>coordinates</strong> of the capital city <strong>closest</strong> to the U.S. capital, <strong>Washington, D.C.</strong> (exclude Washington, D.C. itself).</p>
 <p><strong>Notes</strong></p>
 <ol type="1">
-<li>The <strong>Country Name</strong> for the U.S. is <strong>“United States of America”</strong> in the dataset.</li>
-<li>“Closeness” is measured by <strong>Euclidean distance</strong> computed on the latitude/longitude pairs (for this exercise).</li>
+<li>The <strong>Country Name</strong> for the U.S. is <strong><q>United States of America</q></strong> in the dataset.</li>
+<li><q>Closeness</q> is measured by <strong>Euclidean distance</strong> computed on the latitude/longitude pairs (for this exercise).</li>
 <li><strong>Exclude</strong> the U.S. capital row to avoid the trivial zero distance.</li>
 </ol>
 <p><strong>Hints</strong></p>

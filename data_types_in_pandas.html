@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -339,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -3158,7 +3165,7 @@ Method                         Time (s)     Speedup      Status
 </section>
 <section id="quick-decision-guide" class="level4" data-number="8.5.11.4">
 <h4 data-number="8.5.11.4" class="anchored" data-anchor-id="quick-decision-guide"><span class="header-section-number">8.5.11.4</span> Quick Decision Guide</h4>
-<p><strong>“How should I perform this operation?”</strong></p>
+<p><strong><q>How should I perform this operation?</q></strong></p>
 <ol type="1">
 <li><p>**Can I use a basic operator? (+, -, *, /, &gt;, &lt;, etc.)**<br>
 → ✅ Use it directly: <code>df['col1'] + df['col2']</code></p></li>
@@ -3180,7 +3187,7 @@ Method                         Time (s)     Speedup      Status
 <h4 data-number="8.5.11.5" class="anchored" data-anchor-id="pro-tips"><span class="header-section-number">8.5.11.5</span> 💡 Pro Tips</h4>
 <ol type="1">
 <li><strong>Profile your code</strong>: Use <code>%%timeit</code> in Jupyter to measure performance</li>
-<li><strong>Start vectorized</strong>: Don’t write loops first “because it’s easier”</li>
+<li><strong>Start vectorized</strong>: Don’t write loops first <q>because it’s easier</q></li>
 <li><strong>Think in columns</strong>: Pandas works best with column-wise operations</li>
 <li><strong>Combine operations</strong>: Chain multiple vectorized operations together</li>
 <li><strong>Use NumPy</strong>: Many NumPy functions work directly on pandas Series</li>
